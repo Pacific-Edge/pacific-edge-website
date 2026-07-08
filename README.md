@@ -1,6 +1,6 @@
 # Pacific Edge AI — Website
 
-Marketing site for [Pacific Edge AI](https://pacificedge.ai): a multi-page Next.js site for Vancouver local businesses (clinics, restaurants, salons, trades, retail).
+Marketing site for [Pacific Edge AI](https://pacificedge.ai): a multi-page Next.js site for Vancouver local businesses (clinics, restaurants, salons, trades, retail). 
 
 ## Stack
 
