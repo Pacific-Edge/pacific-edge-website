@@ -144,8 +144,14 @@ export default function Nav() {
               ))}
             </nav>
 
-            {/* Right: CTA + hamburger */}
-            <div className="flex items-center gap-3">
+            {/* Right: login + CTA + hamburger */}
+            <div className="flex items-center gap-2 sm:gap-3">
+              <Link
+                href="/login"
+                className="hidden lg:inline-flex font-ui text-sm text-navy-900/65 hover:text-navy-900 px-3 py-2 rounded-md transition-colors"
+              >
+                Client Login
+              </Link>
               <Link href="/contact" className="btn-primary text-sm px-5 py-2.5 hidden lg:inline-flex">
                 Book a Call
               </Link>
@@ -252,7 +258,14 @@ export default function Nav() {
                 ))}
               </div>
 
-              <div className="mt-8 pt-8 border-t border-ash-300/50">
+              <div className="mt-8 pt-8 border-t border-ash-300/50 space-y-3">
+                <Link
+                  href="/login"
+                  onClick={() => setMobileOpen(false)}
+                  className="btn-secondary block w-full text-center text-base px-5 py-4"
+                >
+                  Client Login
+                </Link>
                 <Link
                   href="/contact"
                   onClick={() => setMobileOpen(false)}
@@ -266,20 +279,20 @@ export default function Nav() {
         )}
       </AnimatePresence>
 
-      {/* ── Mobile sticky bottom CTA (appears after first viewport) ── */}
+      {/* ── Mobile sticky bottom CTA (appears after first viewport; hidden on /contact) ── */}
       <AnimatePresence>
-        {showMobileCta && !mobileOpen && (
+        {showMobileCta && !mobileOpen && pathname !== "/contact" && (
           <motion.div
             key="mobile-cta"
             initial={{ opacity: 0, y: 12 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: 12 }}
             transition={{ duration: 0.3, ease: EASE_OUT }}
-            className="lg:hidden fixed bottom-6 left-4 right-4 z-40 flex justify-center"
+            className="lg:hidden fixed bottom-[max(1.5rem,env(safe-area-inset-bottom))] left-4 right-4 z-40 flex justify-center pointer-events-none"
           >
             <Link
               href="/contact"
-              className="btn-primary shadow-card text-sm px-8 py-3.5"
+              className="btn-primary shadow-card text-sm px-8 py-3.5 pointer-events-auto"
             >
               Book a Free Call
             </Link>

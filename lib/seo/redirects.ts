@@ -1,0 +1,22 @@
+/** Old static HTML paths → new App Router paths (used for _redirects and vercel.json). */
+export const LEGACY_REDIRECTS: { source: string; destination: string }[] = [
+  { source: "/index.html", destination: "/" },
+  { source: "/ai-employee.html", destination: "/solutions/janice" },
+  { source: "/login.html", destination: "/login" },
+  { source: "/app.html", destination: "/app" },
+  { source: "/dashboard-mock.html", destination: "/dashboard" },
+  { source: "/industries.html", destination: "/" },
+  { source: "/dental.html", destination: "/industries/dental" },
+  { source: "/restaurants.html", destination: "/industries/restaurants" },
+  { source: "/salons.html", destination: "/industries/salons" },
+  { source: "/trades.html", destination: "/industries/trades" },
+  { source: "/retail.html", destination: "/industries/retail" },
+  { source: "/dental-single-location.html", destination: "/industries/dental/single-location" },
+  { source: "/dental-multi-location.html", destination: "/industries/dental/multi-location" },
+  { source: "/dental-savings-calculator.html", destination: "/tools/savings/dental" },
+  { source: "/restaurants-savings-calculator.html", destination: "/tools/savings/restaurants" },
+  { source: "/salons-savings-calculator.html", destination: "/tools/savings/salons" },
+  { source: "/trades-savings-calculator.html", destination: "/tools/savings/trades" },
+  { source: "/retail-savings-calculator.html", destination: "/tools/savings/retail" },
+  { source: "/careers.html", destination: "/" },
+]

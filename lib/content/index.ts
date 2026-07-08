@@ -1,0 +1,6 @@
+export * from "./founders"
+export * from "./testimonials"
+export * from "./faq"
+export * from "./integrations"
+export * from "./industries"
+export * from "./site"
