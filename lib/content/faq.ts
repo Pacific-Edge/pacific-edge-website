@@ -1,0 +1,73 @@
+export type FaqItem = {
+  question: string
+  answer: string
+}
+
+export const SITE_FAQ: FaqItem[] = [
+  {
+    question: "Do I need to be tech-savvy?",
+    answer:
+      "No. If you can use a smartphone, you can use what we build. We handle the technical work and walk you through everything in plain English.",
+  },
+  {
+    question: "How long does setup take?",
+    answer:
+      "Most clients have a working prototype within the first week. Full deployment typically wraps in two to three weeks depending on complexity.",
+  },
+  {
+    question: "How much does it cost?",
+    answer:
+      "Pricing is custom-built around your workflows and team size. Book a free discovery call for a transparent quote — no hidden fees.",
+  },
+  {
+    question: "What if I want to cancel?",
+    answer:
+      "Your first month is free. After that, engagements run an initial six months — long enough to prove ROI. Then month-to-month, scale up, or part ways with full handover docs.",
+  },
+  {
+    question: "Will this actually work for my industry?",
+    answer:
+      "If your business relies on appointments, customer communication, or online reviews, the answer is almost certainly yes. We work with hospitality, wellness, trades, retail, and clinics.",
+  },
+  {
+    question: "Will my data be safe?",
+    answer:
+      "Yes. Encryption, restricted access, no selling your data. Your business data stays yours.",
+  },
+  {
+    question: "What happens on the discovery call?",
+    answer:
+      "Fifteen minutes. We learn where you're losing time or money and which automations would help most. No pitch deck, no pressure.",
+  },
+]
+
+export const JANICE_FAQ: FaqItem[] = [
+  {
+    question: "Is Janice a real person?",
+    answer:
+      "No. Janice is your AI front desk from Pacific Edge. She handles calls and messages automatically and hands anything sensitive to your team.",
+  },
+  {
+    question: "Will Janice sound like a robot?",
+    answer:
+      "No. We train her on your business and tone. You approve the voice before she goes live.",
+  },
+  {
+    question: "What channels does Janice work across?",
+    answer: "Phone, SMS, Instagram, web chat, and email — from one place, on your existing number.",
+  },
+  {
+    question: "How does Janice fill a cancelled spot?",
+    answer:
+      "The moment a slot opens, Janice offers it to your waitlist and books the first yes — so the time is not wasted.",
+  },
+  {
+    question: "Do I stay in control?",
+    answer:
+      "Always. You set the rules, approve the tone, and can jump into any conversation at any time.",
+  },
+  {
+    question: "How long until Janice is live?",
+    answer: "Usually about a week from our first call — setup, test, fine-tune, then go live.",
+  },
+]

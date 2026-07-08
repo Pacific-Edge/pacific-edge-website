@@ -61,3 +61,6 @@ Thumbs.db
 *.pem
 .turbo
 .cache/
+
+# Legacy reference site (kept locally, not tracked)
+/old-website/

@@ -1,0 +1,20 @@
+# Legacy static HTML → Next.js routes (Netlify / compatible hosts)
+/index.html                         /                         301
+/ai-employee.html                     /solutions/janice           301
+/login.html                           /login                      301
+/app.html                             /app                        301
+/dashboard-mock.html                  /dashboard                  301
+/industries.html                      /                           301
+/dental.html                          /industries/dental          301
+/restaurants.html                     /industries/restaurants     301
+/salons.html                          /industries/salons          301
+/trades.html                          /industries/trades          301
+/retail.html                          /industries/retail          301
+/dental-single-location.html          /industries/dental/single-location   301
+/dental-multi-location.html           /industries/dental/multi-location    301
+/dental-savings-calculator.html       /tools/savings/dental       301
+/restaurants-savings-calculator.html  /tools/savings/restaurants  301
+/salons-savings-calculator.html       /tools/savings/salons       301
+/trades-savings-calculator.html       /tools/savings/trades       301
+/retail-savings-calculator.html       /tools/savings/retail       301
+/careers.html                         /                           301
