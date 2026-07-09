@@ -1,6 +1,6 @@
 "use client"
 
-import { useEffect, useRef, useState } from "react"
+import { useEffect, useLayoutEffect, useRef, useState } from "react"
 import Link from "next/link"
 import { useReducedMotion } from "framer-motion"
 import gsap from "gsap"
@@ -86,7 +86,7 @@ export default function ProductGlimpse() {
     return () => mq.removeEventListener("change", update)
   }, [])
 
-  useEffect(() => {
+  useLayoutEffect(() => {
     if (reduce || isMobile || !sectionRef.current) return
 
     const ctx = gsap.context(() => {
@@ -111,6 +111,7 @@ export default function ProductGlimpse() {
           end: () => `+=${window.innerHeight * SCROLL_CONFIG.pinDurationVh}`,
           pin: true,
           pinSpacing: true,
+          pinReparent: false,
           scrub: SCROLL_CONFIG.scrub,
           invalidateOnRefresh: true,
         },
