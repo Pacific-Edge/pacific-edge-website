@@ -5,7 +5,7 @@ import { createPageMetadata } from "@/lib/seo/metadata"
 
 export const metadata = createPageMetadata({
   title: "Coverage",
-  description: "Pacific Edge serves Greater Vancouver — Vancouver, Burnaby, Surrey, North Shore, Richmond, and across BC.",
+  description: "Pacific Edge serves Greater Vancouver: Vancouver, Burnaby, Surrey, North Shore, Richmond, and across BC.",
   path: "/coverage",
 })
 
@@ -15,7 +15,7 @@ export default function CoveragePage() {
       <PageHero
         eyebrow="Company"
         title="Greater Vancouver & BC"
-        description="Local, hands-on support across five regions — and new clients province-wide."
+        description="Local, hands-on support across five regions, and new clients province-wide."
       />
 
       <section className="section-py bg-cream-50">

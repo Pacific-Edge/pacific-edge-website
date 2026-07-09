@@ -17,12 +17,12 @@ export const SITE_FAQ: FaqItem[] = [
   {
     question: "How much does it cost?",
     answer:
-      "Pricing is custom-built around your workflows and team size. Book a free discovery call for a transparent quote — no hidden fees.",
+      "Pricing is custom-built around your workflows and team size. Book a free discovery call for a transparent quote, no hidden fees.",
   },
   {
     question: "What if I want to cancel?",
     answer:
-      "Your first month is free. After that, engagements run an initial six months — long enough to prove ROI. Then month-to-month, scale up, or part ways with full handover docs.",
+      "Your first month is free. After that, engagements run an initial six months, long enough to prove ROI. Then month-to-month, scale up, or part ways with full handover docs.",
   },
   {
     question: "Will this actually work for my industry?",
@@ -41,25 +41,25 @@ export const SITE_FAQ: FaqItem[] = [
   },
 ]
 
-export const JANICE_FAQ: FaqItem[] = [
+export const PLATFORM_FAQ: FaqItem[] = [
   {
-    question: "Is Janice a real person?",
+    question: "Does this replace my receptionist?",
     answer:
-      "No. Janice is your AI front desk from Pacific Edge. She handles calls and messages automatically and hands anything sensitive to your team.",
+      "No. We are not building an AI receptionist. The platform helps your front desk team work faster and keeps sensitive conversations in human hands.",
   },
   {
-    question: "Will Janice sound like a robot?",
+    question: "Will messages sound robotic?",
     answer:
-      "No. We train her on your business and tone. You approve the voice before she goes live.",
+      "No. We configure replies around your business and tone. You approve messaging before anything goes live.",
   },
   {
-    question: "What channels does Janice work across?",
-    answer: "Phone, SMS, Instagram, web chat, and email — from one place, on your existing number.",
+    question: "What channels does the platform work across?",
+    answer: "Phone, SMS, Instagram, web chat, and email, from one place, on your existing number.",
   },
   {
-    question: "How does Janice fill a cancelled spot?",
+    question: "How does a cancelled spot get filled?",
     answer:
-      "The moment a slot opens, Janice offers it to your waitlist and books the first yes — so the time is not wasted.",
+      "The moment a slot opens, the waitlist is surfaced. Your team confirms the offer and books the patient, so the time is not wasted.",
   },
   {
     question: "Do I stay in control?",
@@ -67,7 +67,7 @@ export const JANICE_FAQ: FaqItem[] = [
       "Always. You set the rules, approve the tone, and can jump into any conversation at any time.",
   },
   {
-    question: "How long until Janice is live?",
-    answer: "Usually about a week from our first call — setup, test, fine-tune, then go live.",
+    question: "How long until we are live?",
+    answer: "Usually about a week from our first call: setup, test, fine-tune, then go live.",
   },
 ]

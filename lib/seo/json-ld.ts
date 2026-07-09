@@ -45,7 +45,7 @@ export function localBusinessJsonLd(): JsonLd {
     email: SITE_EMAIL,
     image: `${SITE_URL}/og-image.png`,
     description:
-      "Done-for-you AI operations software for Vancouver local businesses — calls, bookings, and reviews handled in the background.",
+      "Done-for-you AI operations software for Vancouver local businesses: calls, bookings, and reviews handled in the background.",
     address: {
       "@type": "PostalAddress",
       addressLocality: "Vancouver",

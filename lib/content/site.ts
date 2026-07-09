@@ -2,7 +2,7 @@ export const JANICE_CAPABILITIES = [
   {
     title: "Answers every call",
     label: "Calls",
-    description: "Missed-call text-back in seconds — before they call someone else.",
+    description: "Missed-call text-back in seconds, before they call someone else.",
   },
   {
     title: "Replies on every channel",
@@ -72,7 +72,7 @@ export const WHY_US_PILLARS = [
 ] as const
 
 export const PROCESS_STEPS = [
-  { step: 1, title: "Discovery Call", description: "15 min — find time and money leaks. No sales pitch." },
+  { step: 1, title: "Discovery Call", description: "15 min: find time and money leaks. No sales pitch." },
   { step: 2, title: "Deep-Dive Session", description: "Map workflow, pick automations." },
   { step: 3, title: "Custom Build", description: "Working prototype within the first week." },
   { step: 4, title: "Launch & Train", description: "Deploy and walk your team through it." },
@@ -86,12 +86,12 @@ export const SITE_CONTACT = {
 } as const
 
 export const WHY_US_INTRO =
-  "Operators, not agencies. We sell time back — face-to-face when you want it."
+  "Operators, not agencies. We sell time back, face-to-face when you want it."
 
 export const PRICING = {
   headline: "Your first month is on us",
   body: "Try it for a full month free. See the bookings, the hours saved, the calls that didn't go to voicemail.",
   terms:
-    "After your free month, engagements run an initial six months — long enough to prove ROI. Transparent pricing upfront. Then month-to-month, scale up, or part ways with full handover docs.",
+    "After your free month, engagements run an initial six months, long enough to prove ROI. Transparent pricing upfront. Then month-to-month, scale up, or part ways with full handover docs.",
   cta: "Book Your Free Setup Call",
 } as const

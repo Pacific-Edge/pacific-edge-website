@@ -50,7 +50,7 @@ const INTENTS: { keys: string[]; replies: JaniceReply[] }[] = [
     keys: ["what can you do", "what do you do", "how can you help", "capabilities"],
     replies: [
       {
-        text: "I answer calls and texts 24/7, book appointments, fill cancellations from your waitlist, send reminders, and reply to reviews — in your voice. Want to try booking a time?",
+        text: "I answer calls and texts 24/7, book appointments, fill cancellations from your waitlist, send reminders, and reply to reviews, in your voice. Want to try booking a time?",
         offer: "times",
       },
     ],
@@ -77,7 +77,7 @@ const INTENTS: { keys: string[]; replies: JaniceReply[] }[] = [
     keys: ["book", "appointment", "reserve", "reservation", "schedule", "opening", "saturday", "tomorrow"],
     replies: [
       {
-        text: "Happy to help — I've got tomorrow at 2:30 PM or Saturday at 11 AM open. Which works better?",
+        text: "Happy to help, I've got tomorrow at 2:30 PM or Saturday at 11 AM open. Which works better?",
         offer: "times",
       },
     ],
@@ -95,7 +95,7 @@ const INTENTS: { keys: string[]; replies: JaniceReply[] }[] = [
     keys: ["real person", "human", "robot", "bot", "are you ai", "are you real"],
     replies: [
       {
-        text: "I'm Janice — the AI front desk Pacific Edge builds for local businesses. I handle routine calls and texts and pass anything sensitive to your team. How can I help?",
+        text: "I'm the automated front desk for this clinic. Routine scheduling goes through me, and anything sensitive gets passed to the reception team. How can I help?",
       },
     ],
   },
@@ -111,7 +111,7 @@ const INTENTS: { keys: string[]; replies: JaniceReply[] }[] = [
     keys: ["complaint", "unhappy", "refund", "bad experience", "upset"],
     replies: [
       {
-        text: "I'm sorry to hear that — I'm flagging this for the team so someone can make it right. What's the best number to reach you on?",
+        text: "I'm sorry to hear that, I'm flagging this for the team so someone can make it right. What's the best number to reach you on?",
         offer: "callback",
       },
     ],
@@ -120,32 +120,32 @@ const INTENTS: { keys: string[]; replies: JaniceReply[] }[] = [
     keys: ["call me", "phone me", "give me a call"],
     replies: [
       {
-        text: "Of course — want someone from the team to give you a quick call back?",
+        text: "Of course, want someone from the team to give you a quick call back?",
         offer: "callback",
       },
     ],
   },
   {
     keys: ["thanks", "thank you", "ty", "cheers"],
-    replies: [{ text: "Anytime — I'm here 24/7 if you need anything else." }],
+    replies: [{ text: "Anytime, I'm here 24/7 if you need anything else." }],
   },
   {
     keys: ["hi", "hello", "hey", "good morning", "good afternoon"],
     replies: [
       {
-        text: "Hey there — I can check hours, share pricing, or get you booked in. What do you need?",
+        text: "Hey there, I can check hours, share pricing, or get you booked in. What do you need?",
       },
     ],
   },
   {
     keys: ["bye", "goodbye", "later", "that's all"],
-    replies: [{ text: "Take care — text anytime, day or night." }],
+    replies: [{ text: "Take care, text anytime, day or night." }],
   },
   {
     keys: ["my business", "sign up", "get janice", "hire you", "for my shop"],
     replies: [
       {
-        text: "Love that — tap Book a Call on the site and the Pacific Edge team will walk you through setup. Usually live in about a week.",
+        text: "Love that, tap Book a Call on the site and the Pacific Edge team will walk you through setup. Usually live in about a week.",
       },
     ],
   },
@@ -153,7 +153,7 @@ const INTENTS: { keys: string[]; replies: JaniceReply[] }[] = [
 
 const FALLBACK: JaniceReply[] = [
   {
-    text: "I want to get that right — I'll loop in the team. Meanwhile I can book you in, check hours, or share pricing. What helps most?",
+    text: "I want to get that right, I'll loop in the team. Meanwhile I can book you in, check hours, or share pricing. What helps most?",
   },
   {
     text: "That's better for a human on the team. I'll pass it along. Want me to book you a time or answer the basics?",
@@ -179,7 +179,7 @@ function matches(text: string, keys: string[]): boolean {
 function bookReply(pickSaturday: boolean): JaniceReply {
   const when = pickSaturday ? "Saturday at 11 AM" : "tomorrow at 2:30 PM"
   return {
-    text: `Done — you're booked for ${when}. I'll text a reminder beforehand. Anything else?`,
+    text: `Done, you're booked for ${when}. I'll text a reminder beforehand. Anything else?`,
     badge: "Booked in seconds. Reminder scheduled.",
   }
 }
@@ -207,7 +207,7 @@ export function getJaniceReply(userText: string, state: JaniceChatState): Janice
 
   if (matches(raw, [...DECLINE])) {
     state.pendingOffer = null
-    return { text: "No worries — I'm here whenever you're ready." }
+    return { text: "No worries, I'm here whenever you're ready." }
   }
 
   if (matches(raw, ["book it", "lock it in", "book me in", "just book it"])) {
@@ -223,14 +223,14 @@ export function getJaniceReply(userText: string, state: JaniceChatState): Janice
         return bookReply(matches(raw, ["saturday", "sat", "11", "morning"]))
       case "pricelist":
         state.pendingOffer = "times"
-        return { text: "Sent — full price list is on its way. Want me to book you in too?" }
+        return { text: "Sent, full price list is on its way. Want me to book you in too?" }
       case "menu":
         state.pendingOffer = "times"
-        return { text: "Sent — menu is on its way. Want me to find you a time?" }
+        return { text: "Sent, menu is on its way. Want me to find you a time?" }
       case "directions":
-        return { text: "On their way — directions headed to your phone. Anything else?" }
+        return { text: "On their way, directions headed to your phone. Anything else?" }
       case "callback":
-        return { text: "Perfect — someone from the team will call you shortly." }
+        return { text: "Perfect, someone from the team will call you shortly." }
       default:
         break
     }
@@ -239,7 +239,7 @@ export function getJaniceReply(userText: string, state: JaniceChatState): Janice
   if (matches(raw, [...AFFIRM])) {
     state.pendingOffer = "times"
     return {
-      text: "Happy to — tomorrow at 2:30 PM or Saturday at 11 AM. Which works?",
+      text: "Happy to, tomorrow at 2:30 PM or Saturday at 11 AM. Which works?",
       offer: "times",
     }
   }
@@ -256,5 +256,5 @@ export function getJaniceReply(userText: string, state: JaniceChatState): Janice
 }
 
 export const JANICE_GREETING: JaniceReply = {
-  text: "Hi — I'm Janice. I answer calls and texts for local businesses 24/7. Ask about hours, pricing, or try booking a time.",
+  text: "Hi! This is the clinic's messaging line. Ask about hours, pricing, or try booking a time.",
 }

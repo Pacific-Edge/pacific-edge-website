@@ -16,7 +16,7 @@ export default function AboutPage() {
       <PageHero
         eyebrow="Company"
         title="The people behind Pacific Edge"
-        description="Vancouver-based operators building software that hands admin time back — without enterprise pricing."
+        description="Vancouver-based operators building software that hands admin time back, without enterprise pricing."
       />
 
       <section className="section-py bg-cream-50">

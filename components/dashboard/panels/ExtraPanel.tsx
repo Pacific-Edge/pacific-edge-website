@@ -9,7 +9,7 @@ export default function ExtraPanel({ data }: { data: ClientDashboardData }) {
     <div className="rounded-xl border border-ash-300/40 bg-cream-50 p-5">
       <div className="flex items-center justify-between mb-4">
         <p className="font-ui text-sm font-medium text-navy-900">{data.extraTitle}</p>
-        <p className="font-ui text-[10px] uppercase tracking-wide text-navy-900/40">Handled by Janice</p>
+        <p className="font-ui text-[10px] uppercase tracking-wide text-navy-900/40">Handled by the platform</p>
       </div>
       <div className="divide-y divide-ash-300/30">
         {data.extra.map(([icon, title, sub, pill, statusClass], i) => (

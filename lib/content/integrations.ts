@@ -8,7 +8,7 @@ export const INTEGRATION_STACKS: IntegrationStack[] = [
   {
     industry: "Dental & Health",
     slug: "dental",
-    tools: ["Dentrix", "Open Dental", "ClearDent", "Tracker", "AbelDent", "Curve Dental"],
+    tools: ["Tracker", "Dentrix", "Open Dental", "AbelDent", "Curve Dental"],
   },
   {
     industry: "Restaurants",

@@ -13,15 +13,15 @@ import LiveChatDemo from "@/components/demo/LiveChatDemo"
 import { createPageMetadata } from "@/lib/seo/metadata"
 
 export const metadata = createPageMetadata({
-  title: "Meet Janice",
+  title: "The Platform",
   description:
-    "Janice answers calls and messages, books appointments, fills cancellations from your waitlist, sends reminders, and replies to reviews — 24/7 in your voice.",
+    "Done-for-you operations software that helps your front desk team answer leads, fill cancellations, send reminders, and manage reviews, without replacing anyone on staff.",
   path: "/solutions/janice",
 })
 
 const CAPABILITIES = [
   {
-    title: "Answers every call",
+    title: "Captures every call",
     label: "Missed-call text-back in seconds",
     icon: Phone,
   },
@@ -62,20 +62,20 @@ const CHANNELS = [
 
 const FAQ = [
   {
-    q: "Is Janice a real person?",
-    a: "Janice is the name Pacific Edge gives your AI front desk. She handles routine calls and texts and passes anything sensitive to your team.",
+    q: "Does this replace my receptionist?",
+    a: "No. We are not building an AI receptionist. The platform is designed to help your front desk team work faster, keep the schedule full, and spend less time on repetitive coordination.",
   },
   {
-    q: "Will she sound like a robot?",
-    a: "We train her on your business and tone before she goes live. Replies read like they came from someone on your team.",
+    q: "Will patient messages sound robotic?",
+    a: "We configure replies around your clinic's tone. Your team reviews and approves messaging before anything goes live.",
   },
   {
-    q: "What channels does she cover?",
-    a: "Phone, SMS, Instagram and Facebook messages, web chat, and email — from the number and tools you already use.",
+    q: "What channels does it cover?",
+    a: "Phone, SMS, Instagram and Facebook messages, web chat, and email, from the number and tools you already use.",
   },
   {
-    q: "How does she fill a cancelled spot?",
-    a: "The moment something opens, Janice texts your waitlist and books the first person who says yes — often within minutes.",
+    q: "How does a cancelled slot get filled?",
+    a: "The moment something opens, the waitlist is surfaced. Your team confirms the offer and books the patient, often within minutes.",
   },
 ] as const
 
@@ -89,16 +89,18 @@ export default function JanicePage() {
             <div className="max-w-xl">
               <p className="eyebrow text-ash-400 mb-4">Product</p>
               <h1 className="text-display-lg text-navy-900 mb-4">
-                Meet Janice.
-                <span className="block text-navy-700">She never misses.</span>
+                Software for your front desk.
+                <span className="block text-navy-700">Not a replacement for it.</span>
               </h1>
               <p className="font-ui text-sm text-navy-900/55 mb-8 leading-relaxed max-w-md">
-                Janice is the AI front desk Pacific Edge builds for local businesses — calls,
-                texts, bookings, waitlist fills, and reviews, around the clock in your voice.
+                Pacific Edge builds a platform around the tools your team already uses: scheduling,
+                waitlists, reminders, and reviews. For dental clinics, we are also developing
+                insurance and payment integrations to simplify coordination between receptionist
+                and patient.
               </p>
               <div className="flex flex-wrap gap-3">
-                <a href="#try-janice" className="btn-primary">
-                  Try Janice live
+                <a href="#try-demo" className="btn-primary">
+                  Try the demo
                 </a>
                 <Link href="/contact" className="btn-secondary text-sm">
                   Book a call
@@ -106,7 +108,7 @@ export default function JanicePage() {
               </div>
             </div>
 
-            <div id="try-janice" className="lg:justify-self-end w-full">
+            <div id="try-demo" className="lg:justify-self-end w-full">
               <LiveChatDemo />
             </div>
           </div>
@@ -117,8 +119,8 @@ export default function JanicePage() {
       <section className="section-py bg-cream-100/50 border-y border-ash-300/25">
         <div className="container-x">
           <div className="max-w-2xl mb-12 lg:mb-16">
-            <p className="eyebrow text-ash-500 mb-4">What Janice does</p>
-            <h2 className="text-display-md text-navy-900">Your front desk, always on</h2>
+            <p className="eyebrow text-ash-500 mb-4">What it does</p>
+            <h2 className="text-display-md text-navy-900">Helps your team, behind the scenes</h2>
           </div>
 
           <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
@@ -145,7 +147,7 @@ export default function JanicePage() {
         <div className="container-x text-center">
           <p className="eyebrow text-ash-400 mb-4">Channels</p>
           <h2 className="text-display-md text-navy-900 mb-10 lg:mb-14">
-            One Janice, every channel
+            One platform, every channel
           </h2>
 
           <div className="flex flex-wrap items-center justify-center gap-3 sm:gap-4">
@@ -167,7 +169,7 @@ export default function JanicePage() {
         <div className="container-x">
           <div className="max-w-2xl mx-auto">
             <p className="eyebrow text-ash-500 mb-4 text-center">FAQ</p>
-            <h2 className="text-display-sm text-navy-900 mb-10 text-center">About Janice</h2>
+            <h2 className="text-display-sm text-navy-900 mb-10 text-center">Common questions</h2>
 
             <dl className="space-y-6">
               {FAQ.map((item) => (
@@ -190,10 +192,10 @@ export default function JanicePage() {
       <section className="section-py bg-navy-900">
         <div className="container-x text-center">
           <h2 className="text-display-sm text-cream-50 mb-4">
-            Ready to put Janice on your front desk?
+            Ready to see it on your tools?
           </h2>
           <p className="font-ui text-sm text-cream-50/60 mb-8 max-w-md mx-auto">
-            Book a 15-minute call. We map your workflow and show you Janice on your tools.
+            Book a 15-minute call. We map your workflow and show you how the platform fits your team.
           </p>
           <Link href="/contact" className="btn-primary bg-cream-50 text-navy-900 hover:bg-cream-100">
             Book a call

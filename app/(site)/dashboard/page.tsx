@@ -15,7 +15,7 @@ export default function DashboardPage() {
           <p className="eyebrow text-ash-500 mb-4">Product</p>
           <h1 className="text-display-lg text-navy-900 mb-4">Your business, at a glance</h1>
           <p className="font-ui text-sm text-navy-900/55 mb-6">
-            One dashboard for calls answered, slots filled, and reviews managed — tailored to how you work.
+            One dashboard for calls answered, slots filled, and reviews managed, tailored to how you work.
           </p>
           <Link href="/login" className="btn-secondary text-sm">
             Client login

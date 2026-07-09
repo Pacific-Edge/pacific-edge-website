@@ -8,7 +8,7 @@ import {
 } from "./site"
 
 type PageMetadataInput = {
-  /** Short page title — "About" becomes "About — Pacific Edge AI" */
+  /** Short page title — "About" becomes "About | Pacific Edge AI" */
   title: string
   description?: string
   /** Path without domain, e.g. "/about" */
@@ -23,7 +23,7 @@ function absoluteUrl(path: string) {
 
 function formatTitle(title: string) {
   if (title.includes("Pacific Edge")) return title
-  return `${title} — ${SITE_NAME}`
+  return `${title} | ${SITE_NAME}`
 }
 
 /** Per-page metadata with canonical URL, Open Graph, and Twitter cards. */
@@ -54,7 +54,7 @@ export function createPageMetadata({
           url: imageUrl,
           width: 1200,
           height: 630,
-          alt: `${SITE_NAME} — done-for-you operations for Vancouver local businesses`,
+          alt: `${SITE_NAME} | done-for-you operations for Vancouver local businesses`,
         },
       ],
     },
@@ -72,8 +72,8 @@ export function createPageMetadata({
 export const rootMetadata: Metadata = {
   metadataBase: new URL(SITE_URL),
   title: {
-    default: `${SITE_NAME} — Done-For-You Operations for Local Businesses`,
-    template: `%s — ${SITE_NAME}`,
+    default: `${SITE_NAME} | Done-For-You Operations for Local Businesses`,
+    template: `%s | ${SITE_NAME}`,
   },
   description: DEFAULT_DESCRIPTION,
   applicationName: SITE_NAME,
@@ -97,7 +97,7 @@ export const rootMetadata: Metadata = {
         url: DEFAULT_OG_IMAGE,
         width: 1200,
         height: 630,
-        alt: `${SITE_NAME} — done-for-you operations for Vancouver local businesses`,
+        alt: `${SITE_NAME} | done-for-you operations for Vancouver local businesses`,
       },
     ],
   },

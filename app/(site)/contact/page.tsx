@@ -5,7 +5,7 @@ import { createPageMetadata } from "@/lib/seo/metadata"
 
 export const metadata = createPageMetadata({
   title: "Contact",
-  description: "Book a free 15-minute call with Pacific Edge AI. Vancouver, BC — hello@pacificedge.ai",
+  description: "Book a free 15-minute call with Pacific Edge AI. Vancouver, BC | hello@pacificedge.ai",
   path: "/contact",
 })
 

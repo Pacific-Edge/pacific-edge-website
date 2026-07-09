@@ -22,7 +22,7 @@ export default function ReviewsPanel({ data }: { data: ClientDashboardData }) {
       <div className="rounded-xl border border-ash-300/40 bg-cream-50 p-5">
         <div className="flex items-center justify-between mb-4">
           <p className="font-ui text-sm font-medium text-navy-900">Reviews to approve</p>
-          <p className="font-ui text-[10px] uppercase tracking-wide text-navy-900/40">Janice drafts, you approve</p>
+          <p className="font-ui text-[10px] uppercase tracking-wide text-navy-900/40">Platform drafts, you approve</p>
         </div>
         <div className="space-y-4">
           {data.reviews.map((review) => (

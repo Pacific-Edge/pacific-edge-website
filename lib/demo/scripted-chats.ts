@@ -4,7 +4,7 @@ export const SCRIPTED_CHATS: Record<string, ScriptedChatScript> = {
   dental: {
     industry: "dental",
     businessName: "Cedar Dental",
-    headerSub: "AI desk · replies instantly",
+    headerSub: "Front desk · auto-reply",
     bubbles: [
       { type: "timestamp", text: "Mon 9:12 AM · Missed call" },
       {
@@ -15,7 +15,7 @@ export const SCRIPTED_CHATS: Record<string, ScriptedChatScript> = {
       { type: "typing", durationMs: 1200 },
       {
         type: "janice",
-        text: "So sorry to hear that! Yes, we're welcoming new patients. We have an exam open tomorrow at 10:40 AM — want me to book it?",
+        text: "So sorry to hear that! Yes, we're welcoming new patients. We have an exam open tomorrow at 10:40 AM, want me to book it?",
         delayMs: 200,
         meta: "Auto-reply · 21s after the missed call",
       },
@@ -36,7 +36,7 @@ export const SCRIPTED_CHATS: Record<string, ScriptedChatScript> = {
   restaurants: {
     industry: "restaurants",
     businessName: "Wildfire Kitchen",
-    headerSub: "AI desk · replies instantly",
+    headerSub: "Front desk · auto-reply",
     bubbles: [
       { type: "timestamp", text: "Fri 7:14 PM · Missed call" },
       {
@@ -47,7 +47,7 @@ export const SCRIPTED_CHATS: Record<string, ScriptedChatScript> = {
       { type: "typing", durationMs: 1200 },
       {
         type: "janice",
-        text: "Hi, this is Wildfire Kitchen! We have a 7:45 table for 4 — want me to lock it in?",
+        text: "Hi, this is Wildfire Kitchen! We have a 7:45 table for 4, want me to lock it in?",
         delayMs: 200,
         meta: "Auto-reply · 19s after the missed call",
       },
@@ -80,7 +80,7 @@ export const SCRIPTED_CHATS: Record<string, ScriptedChatScript> = {
       { type: "customer", text: "Omg yes please!!", delayMs: 200 },
       {
         type: "janice",
-        text: "Done — you're booked at 1:30 with Alexa. I'll send a reminder beforehand.",
+        text: "Done, you're booked at 1:30 with Alexa. I'll send a reminder beforehand.",
         delayMs: 900,
       },
       {
@@ -93,7 +93,7 @@ export const SCRIPTED_CHATS: Record<string, ScriptedChatScript> = {
   trades: {
     industry: "trades",
     businessName: "Coastal Plumbing & Heating",
-    headerSub: "AI desk · replies instantly",
+    headerSub: "Front desk · auto-reply",
     bubbles: [
       { type: "timestamp", text: "Wed 2:38 PM · Missed call" },
       {
@@ -117,7 +117,7 @@ export const SCRIPTED_CHATS: Record<string, ScriptedChatScript> = {
       },
       {
         type: "badge",
-        text: "Held, confirmed with your team, then booked — no false promises to the customer.",
+        text: "Held, confirmed with your team, then booked, no false promises to the customer.",
         delayMs: 650,
       },
     ],
@@ -137,7 +137,7 @@ export const SCRIPTED_CHATS: Record<string, ScriptedChatScript> = {
       { type: "customer", text: "Yes!! Please hold it", delayMs: 200 },
       {
         type: "janice",
-        text: "Done — holding 1 for you at the counter until 6 PM tomorrow.",
+        text: "Done, holding 1 for you at the counter until 6 PM tomorrow.",
         delayMs: 900,
       },
       {

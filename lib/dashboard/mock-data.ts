@@ -24,7 +24,7 @@ const BASE: Record<Exclude<DashboardIndustry, "all">, ClientDashboardData> = {
         sub: "Table request · 2:14 PM",
         pill: "Booked · +$220",
         status: "ok",
-        detail: "Wanted a table for 4 tonight. Janice offered 7:45 and booked it.",
+        detail: "Wanted a table for 4 tonight. Platform offered 7:45 and booked it.",
       },
       {
         icon: "refill",
@@ -32,7 +32,7 @@ const BASE: Record<Exclude<DashboardIndustry, "all">, ClientDashboardData> = {
         sub: "Refilled from waitlist · 1:30 PM",
         pill: "Refilled",
         status: "ok",
-        detail: "A party cancelled. Janice offered the slot to the waitlist and rebooked in 7 min.",
+        detail: "A party cancelled. Platform offered the slot to the waitlist and rebooked in 7 min.",
       },
       {
         icon: "sms",
@@ -48,7 +48,7 @@ const BASE: Record<Exclude<DashboardIndustry, "all">, ClientDashboardData> = {
         sub: "Large party · 11:10 AM",
         pill: "Quote sent",
         status: "warn",
-        detail: "30-person event. Janice captured details and sent a quote.",
+        detail: "30-person event. Platform captured details and sent a quote.",
       },
     ],
     convos: [
@@ -63,7 +63,7 @@ const BASE: Record<Exclude<DashboardIndustry, "all">, ClientDashboardData> = {
         statusClass: "ok",
         messages: [
           { from: "customer", text: "Table for 4 tonight around 7?" },
-          { from: "janice", text: "We have 7:15 for 4, book it?", meta: "Janice · 19s" },
+          { from: "janice", text: "We have 7:15 for 4, book it?", meta: "Auto · 19s" },
           { from: "customer", text: "Yes please" },
           { from: "janice", text: "Booked for 7:15, party of 4!" },
           { from: "customer", text: "Perfect, see you at 7:15!" },
@@ -100,7 +100,7 @@ const BASE: Record<Exclude<DashboardIndustry, "all">, ClientDashboardData> = {
           {
             from: "janice",
             text: "We do! For 20+ our manager tailors a menu. I have flagged this for the team.",
-            meta: "Janice · 22s",
+            meta: "Auto · 22s",
           },
         ],
       },
@@ -188,7 +188,7 @@ const BASE: Record<Exclude<DashboardIndustry, "all">, ClientDashboardData> = {
         sub: "DM booked · 2:14 PM",
         pill: "Booked",
         status: "ok",
-        detail: "Asked about balayage. Janice offered Saturday 1:30 and booked it.",
+        detail: "Asked about balayage. Platform offered Saturday 1:30 and booked it.",
       },
       {
         icon: "refill",
@@ -196,7 +196,7 @@ const BASE: Record<Exclude<DashboardIndustry, "all">, ClientDashboardData> = {
         sub: "Refilled · 1:30 PM",
         pill: "Refilled",
         status: "ok",
-        detail: "A client cancelled. Janice offered the chair to the waitlist and rebooked in 9 min.",
+        detail: "A client cancelled. Platform offered the chair to the waitlist and rebooked in 9 min.",
       },
       {
         icon: "phone",
@@ -227,7 +227,7 @@ const BASE: Record<Exclude<DashboardIndustry, "all">, ClientDashboardData> = {
         statusClass: "ok",
         messages: [
           { from: "customer", text: "Any openings for balayage this weekend?" },
-          { from: "janice", text: "Saturday 1:30 with Alexa, ~2.5 hrs. Book it?", meta: "Janice · 22s" },
+          { from: "janice", text: "Saturday 1:30 with Alexa, ~2.5 hrs. Book it?", meta: "Auto · 22s" },
           { from: "customer", text: "Yes book me in!" },
           { from: "janice", text: "Booked! Saturday 1:30 with Alexa." },
         ],
@@ -258,7 +258,7 @@ const BASE: Record<Exclude<DashboardIndustry, "all">, ClientDashboardData> = {
         statusClass: "ok",
         messages: [
           { from: "customer", text: "How much for partial highlights?" },
-          { from: "janice", text: "Partial highlights start at $160. Want me to find a time?", meta: "Janice · 18s" },
+          { from: "janice", text: "Partial highlights start at $160. Want me to find a time?", meta: "Auto · 18s" },
         ],
       },
     ],
@@ -346,7 +346,7 @@ const BASE: Record<Exclude<DashboardIndustry, "all">, ClientDashboardData> = {
         sub: "Water heater leak · 2:14 PM",
         pill: "Job booked",
         status: "ok",
-        detail: "Urgent leak. Janice triaged it and booked a tech for 4 PM today.",
+        detail: "Urgent leak. Platform triaged it and booked a tech for 4 PM today.",
       },
       {
         icon: "quote",
@@ -354,7 +354,7 @@ const BASE: Record<Exclude<DashboardIndustry, "all">, ClientDashboardData> = {
         sub: "Followed up · 1:02 PM",
         pill: "Accepted",
         status: "ok",
-        detail: "Janice followed up on a $2,400 quote. Customer accepted.",
+        detail: "Platform followed up on a $2,400 quote. Customer accepted.",
       },
       {
         icon: "sms",
@@ -388,7 +388,7 @@ const BASE: Record<Exclude<DashboardIndustry, "all">, ClientDashboardData> = {
           {
             from: "janice",
             text: "Sorry to hear that! Tech can come 4-6 PM today. Lock it in?",
-            meta: "Janice · 16s",
+            meta: "Auto · 16s",
           },
           { from: "customer", text: "Yes that works, thank you" },
           { from: "janice", text: "Booked! Mike will text when on the way. Address?" },
@@ -420,7 +420,7 @@ const BASE: Record<Exclude<DashboardIndustry, "all">, ClientDashboardData> = {
         statusClass: "ok",
         messages: [
           { from: "customer", text: "How soon for a clogged drain?" },
-          { from: "janice", text: "We have tomorrow 8 AM. Book it?", meta: "Janice · 20s" },
+          { from: "janice", text: "We have tomorrow 8 AM. Book it?", meta: "Auto · 20s" },
         ],
       },
     ],
@@ -505,7 +505,7 @@ const BASE: Record<Exclude<DashboardIndustry, "all">, ClientDashboardData> = {
         sub: "Held at counter · 1:20 PM",
         pill: "Held",
         status: "ok",
-        detail: "Asked about stock. Janice confirmed and held it at the counter.",
+        detail: "Asked about stock. Platform confirmed and held it at the counter.",
       },
       {
         icon: "sms",
@@ -521,7 +521,7 @@ const BASE: Record<Exclude<DashboardIndustry, "all">, ClientDashboardData> = {
         sub: "Win-back sent · 10:30 AM",
         pill: "Returned",
         status: "ok",
-        detail: "No visit in 60 days. Janice sent a win-back and they came in.",
+        detail: "No visit in 60 days. Platform sent a win-back and they came in.",
       },
       {
         icon: "campaign",
@@ -544,7 +544,7 @@ const BASE: Record<Exclude<DashboardIndustry, "all">, ClientDashboardData> = {
         statusClass: "ok",
         messages: [
           { from: "customer", text: "Still have the olive linen jacket in a medium?" },
-          { from: "janice", text: "We do! Hold it at the counter til tomorrow?", meta: "Janice · 18s" },
+          { from: "janice", text: "We do! Hold it at the counter til tomorrow?", meta: "Auto · 18s" },
           { from: "customer", text: "Yes please" },
           { from: "janice", text: "Holding 1 olive linen (M) til 6 PM tomorrow." },
           { from: "customer", text: "Amazing, thank you!" },
@@ -561,7 +561,7 @@ const BASE: Record<Exclude<DashboardIndustry, "all">, ClientDashboardData> = {
         statusClass: "ok",
         messages: [
           { from: "customer", text: "Do you do personal shopping?" },
-          { from: "janice", text: "We do! Saturday 11 AM with our stylist. Book it?", meta: "Janice · 21s" },
+          { from: "janice", text: "We do! Saturday 11 AM with our stylist. Book it?", meta: "Auto · 21s" },
           { from: "customer", text: "Perfect, see you Sat" },
         ],
       },
@@ -576,7 +576,7 @@ const BASE: Record<Exclude<DashboardIndustry, "all">, ClientDashboardData> = {
         statusClass: "ok",
         messages: [
           { from: "customer", text: "What are your hours Sunday?" },
-          { from: "janice", text: "Sunday 11 AM to 5 PM. Anything you are after?", meta: "Janice · 15s" },
+          { from: "janice", text: "Sunday 11 AM to 5 PM. Anything you are after?", meta: "Auto · 15s" },
         ],
       },
     ],
@@ -661,7 +661,7 @@ const BASE: Record<Exclude<DashboardIndustry, "all">, ClientDashboardData> = {
         sub: "New patient · 2:14 PM",
         pill: "Exam booked",
         status: "ok",
-        detail: "New patient with a chipped tooth. Janice booked a 10:40 exam and queued intake.",
+        detail: "New patient with a chipped tooth. Platform booked a 10:40 exam and queued intake.",
       },
       {
         icon: "refill",
@@ -669,7 +669,7 @@ const BASE: Record<Exclude<DashboardIndustry, "all">, ClientDashboardData> = {
         sub: "Refilled · 1:30 PM",
         pill: "Refilled",
         status: "ok",
-        detail: "A patient cancelled. Janice offered the chair to the waitlist and rebooked in 12 min.",
+        detail: "A patient cancelled. Platform offered the chair to the waitlist and rebooked in 12 min.",
       },
       {
         icon: "recall",
@@ -677,7 +677,7 @@ const BASE: Record<Exclude<DashboardIndustry, "all">, ClientDashboardData> = {
         sub: "Reminder sent · 10:30 AM",
         pill: "Rebooked",
         status: "ok",
-        detail: "Patient overdue for a cleaning. Janice sent a recall and they rebooked.",
+        detail: "Patient overdue for a cleaning. Platform sent a recall and they rebooked.",
       },
       {
         icon: "treatment",
@@ -703,7 +703,7 @@ const BASE: Record<Exclude<DashboardIndustry, "all">, ClientDashboardData> = {
           {
             from: "janice",
             text: "So sorry! Yes, we have an exam tomorrow 10:40 AM, book it?",
-            meta: "Janice · 21s",
+            meta: "Auto · 21s",
           },
           { from: "customer", text: "Yes please, thank you" },
           { from: "janice", text: "Booked! Tomorrow 10:40 with Dr. Lee. Sending your form." },
@@ -829,7 +829,7 @@ function buildAllIndustryData(session: ClientSession): ClientDashboardData {
         sub: "New caller · 2:14 PM",
         pill: "Booked · +$340",
         status: "ok",
-        detail: "Janice offered two times and booked the first, then sent a confirmation.",
+        detail: "Platform offered two times and booked the first, then sent a confirmation.",
       },
       {
         icon: "sms",
@@ -853,7 +853,7 @@ function buildAllIndustryData(session: ClientSession): ClientDashboardData {
         sub: "Missed · texted back · 10:30 AM",
         pill: "Following up",
         status: "warn",
-        detail: "Quote sent, Janice follows up tomorrow.",
+        detail: "Quote sent, platform follows up tomorrow.",
       },
     ],
     convos: [
@@ -868,7 +868,7 @@ function buildAllIndustryData(session: ClientSession): ClientDashboardData {
         statusClass: "ok",
         messages: [
           { from: "customer", text: "Hi! Can I book in this week?" },
-          { from: "janice", text: "We have Thursday 2 PM, want me to book it?", meta: "Janice · 19s" },
+          { from: "janice", text: "We have Thursday 2 PM, want me to book it?", meta: "Auto · 19s" },
           { from: "customer", text: "Yes please" },
           { from: "janice", text: "Booked for Thursday 2 PM!" },
           { from: "customer", text: "Perfect, see you then!" },
@@ -885,7 +885,7 @@ function buildAllIndustryData(session: ClientSession): ClientDashboardData {
         statusClass: "ok",
         messages: [
           { from: "customer", text: "Any openings Saturday?" },
-          { from: "janice", text: "Saturday 1:30 PM is open. Hold it?", meta: "Janice · 24s" },
+          { from: "janice", text: "Saturday 1:30 PM is open. Hold it?", meta: "Auto · 24s" },
         ],
       },
       {
@@ -924,7 +924,7 @@ function buildAllIndustryData(session: ClientSession): ClientDashboardData {
         ["6:00 PM", "Lopez", "Booking · 8", "Confirmed", "ok"],
       ],
       [],
-      [["12:00 PM", "Walk-in block", "Held by Janice", "Held", "ok"]],
+      [["12:00 PM", "Walk-in block", "Held by platform", "Held", "ok"]],
     ],
     extraLabel: "Follow-ups",
     extraTitle: "Pending follow-ups",

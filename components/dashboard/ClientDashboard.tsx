@@ -60,7 +60,7 @@ export default function ClientDashboard({ session }: { session: ClientSession })
 function WelcomeHeader({ session, data }: { session: ClientSession; data: ClientDashboardData }) {
   const since = session.since
     ? new Date(session.since).toLocaleDateString("en-CA", { month: "short", year: "numeric" })
-    : "—"
+    : "-"
 
   return (
     <div className="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-4 mb-8">

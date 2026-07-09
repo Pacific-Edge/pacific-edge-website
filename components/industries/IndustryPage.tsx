@@ -81,12 +81,12 @@ export default function IndustryPage({ data }: IndustryPageProps) {
         </div>
       </section>
 
-      {/* What Janice does */}
+      {/* Platform capabilities */}
       <section className="section-py bg-cream-50">
         <div className="container-x">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-start">
             <div>
-              <p className="eyebrow text-ash-500 mb-4">Janice</p>
+              <p className="eyebrow text-ash-500 mb-4">Platform</p>
               <h2 className="text-display-md text-navy-900 mb-10">{data.janiceTitle}</h2>
               <div className="space-y-6">
                 {data.janiceCapabilities.map((cap) => (
@@ -120,7 +120,7 @@ export default function IndustryPage({ data }: IndustryPageProps) {
             <p className="eyebrow text-ash-500 mb-4">Dashboard</p>
             <h2 className="text-display-md text-navy-900 mb-4">See it all in one place</h2>
             <p className="font-ui text-sm text-navy-900/55">
-              Calls answered, slots filled, reviews managed — tailored to {data.name.toLowerCase()}.
+              Calls answered, slots filled, reviews managed, tailored to {data.name.toLowerCase()}.
             </p>
           </div>
           <DashboardMock industry={dashboardIndustry} />

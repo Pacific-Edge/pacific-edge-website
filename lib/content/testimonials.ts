@@ -17,7 +17,7 @@ export const TESTIMONIALS: Testimonial[] = [
   },
   {
     quote:
-      "Like adding a front-desk hire without the payroll — callbacks and cancelled slots handled for us.",
+      "Like adding a front-desk hire without the payroll, callbacks and cancelled slots handled for us.",
     name: "AJ",
     business: "AJ Consulting",
     industry: "Professional Services",

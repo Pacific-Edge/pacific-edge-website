@@ -8,6 +8,16 @@ import {
   createJaniceChatState,
   getJaniceReply,
 } from "@/lib/demo"
+import {
+  BUBBLE_RECEIVED_CLASS,
+  BUBBLE_SENT_CLASS,
+  PHONE_CHAT_CLASS,
+  PHONE_FRAME_CLASS,
+  PHONE_NOTCH_CLASS,
+  PHONE_SCREEN_CLASS,
+  PHONE_SHELL_CLASS,
+  TYPING_INDICATOR_CLASS,
+} from "@/components/demo/phone-chat-styles"
 
 type ChatMessage = {
   id: string
@@ -23,14 +33,11 @@ export type LiveChatDemoProps = {
 
 function TypingIndicator() {
   return (
-    <div
-      className="self-start flex items-center gap-1 px-3.5 py-3 rounded-2xl rounded-bl-md bg-cream-100 border border-ash-300/30"
-      aria-label="Janice is typing"
-    >
+    <div className={TYPING_INDICATOR_CLASS} aria-label="Reply is being drafted">
       {[0, 1, 2].map((i) => (
         <span
           key={i}
-          className="w-1.5 h-1.5 rounded-full bg-navy-900/35 animate-pulse"
+          className="h-1.5 w-1.5 rounded-full bg-navy-900/35 animate-pulse"
           style={{ animationDelay: `${i * 150}ms` }}
         />
       ))}
@@ -51,7 +58,7 @@ export default function LiveChatDemo({
     {
       id: "greeting",
       role: "timestamp",
-      text: "Now · Live demo · text Janice anything",
+      text: "Now · Live demo · text the clinic anything",
     },
     {
       id: "janice-0",
@@ -117,18 +124,18 @@ export default function LiveChatDemo({
   }
 
   return (
-    <div className={`mx-auto w-full max-w-[340px] ${className}`}>
-      <div className="relative rounded-[2.25rem] border border-ash-300/50 bg-navy-950 p-2.5 shadow-card">
-        <div className="absolute left-1/2 top-2.5 z-10 h-5 w-24 -translate-x-1/2 rounded-full bg-navy-950" aria-hidden />
+    <div className={`${PHONE_SHELL_CLASS} ${className}`}>
+      <div className={PHONE_FRAME_CLASS}>
+        <div className={PHONE_NOTCH_CLASS} aria-hidden />
 
-        <div className="overflow-hidden rounded-[1.75rem] bg-cream-50">
-          <div className="flex items-center gap-3 border-b border-ash-300/30 px-4 py-3 pt-7">
+        <div className={PHONE_SCREEN_CLASS}>
+          <div className="flex shrink-0 items-center gap-3 border-b border-ash-300/30 px-4 py-3 pt-7">
             <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-navy-900 font-display text-sm font-bold text-cream-50">
-              J
+              {businessName.charAt(0)}
             </div>
             <div className="min-w-0">
               <p className="truncate font-ui text-sm font-medium text-navy-900">
-                Janice · {businessName}
+                {businessName}
               </p>
               <p className="font-ui text-[11px] text-navy-900/45">Online now</p>
             </div>
@@ -136,7 +143,7 @@ export default function LiveChatDemo({
 
           <div
             ref={chatRef}
-            className="flex max-h-[min(52vh,420px)] min-h-[280px] flex-col gap-2 overflow-y-auto px-3 py-4 scroll-smooth [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
+            className={PHONE_CHAT_CLASS}
             aria-live="polite"
             aria-relevant="additions"
           >
@@ -161,15 +168,11 @@ export default function LiveChatDemo({
                   </p>
                 )
               }
-              const isJanice = msg.role === "janice"
+              const isUser = msg.role === "user"
               return (
                 <div
                   key={msg.id}
-                  className={`max-w-[88%] px-3.5 py-2.5 font-ui text-sm leading-relaxed ${
-                    isJanice
-                      ? "self-end rounded-2xl rounded-br-md bg-navy-900 text-cream-50"
-                      : "self-start rounded-2xl rounded-bl-md border border-ash-300/30 bg-cream-100 text-navy-900"
-                  }`}
+                  className={isUser ? BUBBLE_SENT_CLASS : BUBBLE_RECEIVED_CLASS}
                 >
                   {msg.text}
                   {msg.meta && (
@@ -183,7 +186,7 @@ export default function LiveChatDemo({
             {typing && <TypingIndicator />}
           </div>
 
-          <div className="flex flex-wrap gap-1.5 border-t border-ash-300/25 px-3 py-2.5">
+          <div className="flex shrink-0 flex-wrap gap-1.5 border-t border-ash-300/25 px-3 py-2.5">
             {JANICE_QUICK_CHIPS.map((chip) => (
               <button
                 key={chip.label}
@@ -200,10 +203,10 @@ export default function LiveChatDemo({
           <form
             id={formId}
             onSubmit={handleSubmit}
-            className="flex items-center gap-2 border-t border-ash-300/30 px-3 py-3"
+            className="flex shrink-0 items-center gap-2 border-t border-ash-300/30 px-3 py-3"
           >
             <label htmlFor={`${formId}-input`} className="sr-only">
-              Type a message to Janice
+              Type a message to the clinic
             </label>
             <input
               ref={inputRef}

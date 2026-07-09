@@ -20,7 +20,7 @@ const TESTIMONIALS: Testimonial[] = [
     role: "Professional Services",
     company: "AJ Consulting",
     content:
-      "The biggest surprise was how much time it gave us back. My team used to lose hours every week to callbacks and chasing cancelled slots — Pacific Edge handles all of it now. It's like adding a front-desk hire without the payroll.",
+      "The biggest surprise was how much time it gave us back. My team used to lose hours every week to callbacks and chasing cancelled slots, Pacific Edge handles all of it now. It's like adding a front-desk hire without the payroll.",
     rating: 5,
     initials: "AJ",
   },

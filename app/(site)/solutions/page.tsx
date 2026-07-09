@@ -24,10 +24,10 @@ export default function SolutionsPage() {
           <div className="max-w-3xl mb-16 lg:mb-20">
             <p className="eyebrow text-ash-500 mb-6">Product</p>
             <h1 className="text-display-lg text-navy-900 mb-4">
-              Four ways Janice gives you the edge
+              Four ways we give you the edge
             </h1>
             <p className="font-ui text-base text-navy-900/55 max-w-xl">
-              Done-for-you operations software — configured around your calendar, phone, and reviews.
+              Done-for-you operations software, configured around your calendar, phone, and reviews.
             </p>
           </div>
 

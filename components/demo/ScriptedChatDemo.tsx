@@ -4,6 +4,16 @@ import { useCallback, useEffect, useRef, useState } from "react"
 import { useReducedMotion } from "framer-motion"
 import { getScriptedChat } from "@/lib/demo"
 import type { ScriptedBubble } from "@/lib/demo"
+import {
+  BUBBLE_RECEIVED_CLASS,
+  BUBBLE_SENT_CLASS,
+  PHONE_CHAT_CLASS,
+  PHONE_FRAME_CLASS,
+  PHONE_NOTCH_CLASS,
+  PHONE_SCREEN_CLASS,
+  PHONE_SHELL_CLASS,
+  TYPING_INDICATOR_CLASS,
+} from "@/components/demo/phone-chat-styles"
 
 type RenderedBubble =
   | { key: string; kind: "timestamp"; text: string }
@@ -18,14 +28,11 @@ export type ScriptedChatDemoProps = {
 
 function TypingIndicator() {
   return (
-    <div
-      className="self-start flex items-center gap-1 px-3.5 py-3 rounded-2xl rounded-bl-md bg-cream-100 border border-ash-300/30"
-      aria-hidden
-    >
+    <div className={TYPING_INDICATOR_CLASS} aria-hidden>
       {[0, 1, 2].map((i) => (
         <span
           key={i}
-          className="w-1.5 h-1.5 rounded-full bg-navy-900/35 animate-pulse"
+          className="h-1.5 w-1.5 rounded-full bg-navy-900/35 animate-pulse"
           style={{ animationDelay: `${i * 150}ms` }}
         />
       ))}
@@ -145,18 +152,18 @@ export default function ScriptedChatDemo({ industry, className = "" }: ScriptedC
   if (!script) return null
 
   return (
-    <div ref={containerRef} className={`mx-auto w-full max-w-[340px] ${className}`}>
-      <div className="relative rounded-[2.25rem] border border-ash-300/50 bg-navy-950 p-2.5 shadow-card">
-        <div className="absolute left-1/2 top-2.5 z-10 h-5 w-24 -translate-x-1/2 rounded-full bg-navy-950" aria-hidden />
+    <div ref={containerRef} className={`${PHONE_SHELL_CLASS} ${className}`}>
+      <div className={PHONE_FRAME_CLASS}>
+        <div className={PHONE_NOTCH_CLASS} aria-hidden />
 
-        <div className="overflow-hidden rounded-[1.75rem] bg-cream-50">
-          <div className="flex items-center gap-3 border-b border-ash-300/30 px-4 py-3 pt-7">
+        <div className={PHONE_SCREEN_CLASS}>
+          <div className="flex shrink-0 items-center gap-3 border-b border-ash-300/30 px-4 py-3 pt-7">
             <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-navy-900 font-display text-sm font-bold text-cream-50">
-              J
+              {script.businessName.charAt(0)}
             </div>
             <div className="min-w-0">
               <p className="truncate font-ui text-sm font-medium text-navy-900">
-                Janice · {script.businessName}
+                {script.businessName}
               </p>
               <p className="truncate font-ui text-[11px] text-navy-900/45">{script.headerSub}</p>
             </div>
@@ -164,7 +171,7 @@ export default function ScriptedChatDemo({ industry, className = "" }: ScriptedC
 
           <div
             ref={chatRef}
-            className="flex min-h-[300px] flex-col gap-2 overflow-y-auto px-3 py-4 scroll-smooth [scrollbar-width:none] [&::-webkit-scrollbar]:hidden sm:min-h-[340px]"
+            className={PHONE_CHAT_CLASS}
             aria-live="polite"
             aria-busy={started && typing}
           >
@@ -195,15 +202,11 @@ export default function ScriptedChatDemo({ industry, className = "" }: ScriptedC
                   </p>
                 )
               }
-              const isJanice = msg.kind === "janice"
+              const isCustomer = msg.kind === "customer"
               return (
                 <div
                   key={msg.key}
-                  className={`max-w-[88%] px-3.5 py-2.5 font-ui text-sm leading-relaxed ${
-                    isJanice
-                      ? "self-end rounded-2xl rounded-br-md bg-navy-900 text-cream-50"
-                      : "self-start rounded-2xl rounded-bl-md border border-ash-300/30 bg-cream-100 text-navy-900"
-                  }`}
+                  className={isCustomer ? BUBBLE_SENT_CLASS : BUBBLE_RECEIVED_CLASS}
                 >
                   {msg.text}
                   {"meta" in msg && msg.meta ? (

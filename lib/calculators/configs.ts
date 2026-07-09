@@ -9,7 +9,7 @@ export const CALCULATOR_CONFIGS: Record<CalculatorIndustry, CalculatorConfig> = 
     headline: "What Are Your",
     headlineAccent: "Empty Chairs Worth?",
     subcopy:
-      "Cancellations and no-shows leave chair time empty. See what Janice could recover by filling those slots from your waitlist.",
+      "Cancellations and no-shows leave chair time empty. See what the platform could recover by filling those slots from your waitlist.",
     resultsHeadline: "You could recover about",
     resultsSubcopy: "per year, from filled cancellations and empty slots",
     rowLabels: {
@@ -67,7 +67,7 @@ export const CALCULATOR_CONFIGS: Record<CalculatorIndustry, CalculatorConfig> = 
       {
         id: "refill",
         type: "range",
-        label: "How much Janice refills",
+        label: "How much gets refilled",
         defaultValue: 65,
         min: 30,
         max: 90,
@@ -101,7 +101,7 @@ export const CALCULATOR_CONFIGS: Record<CalculatorIndustry, CalculatorConfig> = 
     headline: "What Are Your",
     headlineAccent: "Empty Tables Worth?",
     subcopy:
-      "Missed reservations and no-shows leave tables empty. See what Janice could recover by filling them from your waitlist.",
+      "Missed reservations and no-shows leave tables empty. See what the platform could recover by filling them from your waitlist.",
     resultsHeadline: "You could recover about",
     resultsSubcopy: "per year, from filled cancellations and empty tables",
     rowLabels: {
@@ -159,7 +159,7 @@ export const CALCULATOR_CONFIGS: Record<CalculatorIndustry, CalculatorConfig> = 
       {
         id: "refill",
         type: "range",
-        label: "How much Janice refills",
+        label: "How much gets refilled",
         defaultValue: 65,
         min: 30,
         max: 90,
@@ -193,7 +193,7 @@ export const CALCULATOR_CONFIGS: Record<CalculatorIndustry, CalculatorConfig> = 
     headline: "What Are Your",
     headlineAccent: "Empty Chairs Worth?",
     subcopy:
-      "Cancellations leave chairs empty. See what Janice could recover by filling those slots from your waitlist.",
+      "Cancellations leave chairs empty. See what the platform could recover by filling those slots from your waitlist.",
     resultsHeadline: "You could recover about",
     resultsSubcopy: "per year, from filled cancellations and empty chairs",
     rowLabels: {
@@ -251,7 +251,7 @@ export const CALCULATOR_CONFIGS: Record<CalculatorIndustry, CalculatorConfig> = 
       {
         id: "refill",
         type: "range",
-        label: "How much Janice refills",
+        label: "How much gets refilled",
         defaultValue: 65,
         min: 30,
         max: 90,
@@ -285,7 +285,7 @@ export const CALCULATOR_CONFIGS: Record<CalculatorIndustry, CalculatorConfig> = 
     headline: "What Are Missed",
     headlineAccent: "Jobs Worth?",
     subcopy:
-      "Missed calls and after-hours leads slip away on the job. See what Janice could book back onto your calendar.",
+      "Missed calls and after-hours leads slip away on the job. See what the platform could book back onto your calendar.",
     resultsHeadline: "You could recover about",
     resultsSubcopy: "per year, from booked jobs you'd have missed",
     rowLabels: {
@@ -379,7 +379,7 @@ export const CALCULATOR_CONFIGS: Record<CalculatorIndustry, CalculatorConfig> = 
     headline: "What Are Lost",
     headlineAccent: "Sales Worth?",
     subcopy:
-      "Unanswered questions and lapsed buyers add up. See what Janice could recover by re-engaging customers automatically.",
+      "Unanswered questions and lapsed buyers add up. See what the platform could recover by re-engaging customers automatically.",
     resultsHeadline: "You could recover about",
     resultsSubcopy: "per year, from recovered sales and win-backs",
     rowLabels: {

@@ -27,7 +27,7 @@ export default function AppBar({ session }: { session: ClientSession }) {
         <div className="flex items-center gap-3 sm:gap-5 min-w-0">
           <span className="hidden sm:inline-flex items-center gap-2 font-ui text-[10px] font-medium uppercase tracking-widest text-navy-700 px-3 py-1.5 rounded-full border border-navy-900/15 bg-navy-900/5">
             <span className="w-1.5 h-1.5 rounded-full bg-navy-700 animate-pulse" aria-hidden />
-            Janice live
+            Demo live
           </span>
 
           <div className="flex items-center gap-2.5 min-w-0">

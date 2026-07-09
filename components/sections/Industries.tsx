@@ -31,7 +31,7 @@ const INDUSTRIES: Industry[] = [
     pain: "New patients going to voicemail. Cancellations sitting empty.",
     href: "/industries/dental",
     image: "/clinic.jpg",
-    integrations: ["Dentrix", "Open Dental", "ClearDent"],
+    integrations: ["Tracker", "Dentrix", "Open Dental"],
     icon: Stethoscope,
   },
   {

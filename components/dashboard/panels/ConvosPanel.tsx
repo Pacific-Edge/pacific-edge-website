@@ -59,9 +59,9 @@ export default function ConvosPanel({ data }: { data: ClientDashboardData }) {
               <div
                 key={i}
                 className={`max-w-[85%] px-3.5 py-2.5 rounded-2xl font-ui text-sm leading-relaxed ${
-                  msg.from === "janice"
-                    ? "self-end bg-navy-900 text-cream-50 rounded-br-md"
-                    : "self-start bg-cream-100 text-navy-900 rounded-bl-md border border-ash-300/30"
+                  msg.from === "customer"
+                    ? "self-end bg-[#007AFF] text-white rounded-br-md"
+                    : "self-start bg-[#E9E9EB] text-navy-900 rounded-bl-md"
                 }`}
               >
                 {msg.text}
@@ -76,12 +76,12 @@ export default function ConvosPanel({ data }: { data: ClientDashboardData }) {
             <input
               type="text"
               disabled
-              placeholder="Janice is handling this thread"
+              placeholder="Your team is handling this thread"
               className="flex-1 font-ui text-sm px-3 py-2.5 rounded-lg border border-ash-300/40 bg-cream-100 text-navy-900/40"
             />
             <span className="eyebrow text-navy-700 hidden sm:inline-flex items-center gap-1.5">
               <span className="w-1.5 h-1.5 rounded-full bg-navy-700" />
-              Janice
+              Platform
             </span>
           </div>
         </div>

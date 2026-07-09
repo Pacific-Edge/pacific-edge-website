@@ -204,7 +204,7 @@ export default function SavingsCalculatorClient({ industry }: SavingsCalculatorC
                 Book a Free Call
               </Link>
               <p className="font-ui text-[11px] text-cream-50/40 text-center mt-3">
-                Estimates only — we&apos;ll pressure-test these against your real numbers on the call.
+                Estimates only, we&apos;ll pressure-test these against your real numbers on the call.
               </p>
             </div>
           </div>

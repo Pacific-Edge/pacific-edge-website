@@ -8,7 +8,7 @@ import { reviewsJsonLd } from "@/lib/seo/json-ld"
 
 export const metadata = createPageMetadata({
   title: "Reviews",
-  description: "What local business owners say about Pacific Edge — trades, salons, and professional services.",
+  description: "What local business owners say about Pacific Edge: trades, salons, and professional services.",
   path: "/reviews",
 })
 
@@ -19,7 +19,7 @@ export default function ReviewsPage() {
       <PageHero
         eyebrow="Proof"
         title="From the operators using it"
-        description="Real businesses across Greater Vancouver — missed calls answered, slots filled, time back."
+        description="Real businesses across Greater Vancouver. Missed calls answered, slots filled, time back."
       />
 
       <section className="section-py bg-cream-50">

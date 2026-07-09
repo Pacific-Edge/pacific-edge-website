@@ -62,7 +62,7 @@ export default function LoginForm() {
         <p className="eyebrow text-ash-500 mb-4">Client portal</p>
         <h1 className="text-display-sm text-navy-900 mb-2">Welcome back</h1>
         <p className="font-ui text-sm text-navy-900/55 mb-8">
-          Sign in to view your live dashboard — calls, bookings, and reviews in one place.
+          Sign in to view your live dashboard, calls, bookings, and reviews in one place.
         </p>
 
         {error && (
@@ -134,7 +134,7 @@ export default function LoginForm() {
         </form>
 
         <p className="mt-6 text-center font-ui text-xs text-navy-900/45">
-          Demo workspace —{" "}
+          Demo workspace:{" "}
           <button
             type="button"
             onClick={fillDemo}

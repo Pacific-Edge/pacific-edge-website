@@ -25,7 +25,7 @@ export default function CallsPanel({ data }: { data: ClientDashboardData }) {
             <span className="w-2 h-2 rounded-full bg-orange-500 animate-pulse" />
             Live now
           </p>
-          <p className="font-ui text-[10px] uppercase tracking-wide text-navy-900/40">Janice is on the line</p>
+          <p className="font-ui text-[10px] uppercase tracking-wide text-navy-900/40">Call in progress</p>
         </div>
         <div className="flex flex-col sm:flex-row sm:items-center gap-4 p-4 rounded-xl border border-navy-900/10 bg-navy-900/[0.03]">
           <div className="w-12 h-12 rounded-xl bg-navy-900/10 flex items-center justify-center shrink-0">
@@ -38,7 +38,7 @@ export default function CallsPanel({ data }: { data: ClientDashboardData }) {
           </div>
           <div className="flex sm:flex-col items-center sm:items-end gap-2 shrink-0">
             <p className="font-ui text-sm font-medium tabular-nums text-navy-900">0:47</p>
-            <StatusPill status="ok">Janice handling</StatusPill>
+            <StatusPill status="ok">Platform handling</StatusPill>
           </div>
         </div>
       </div>

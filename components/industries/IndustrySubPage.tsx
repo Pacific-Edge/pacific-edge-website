@@ -29,7 +29,7 @@ export default function IndustrySubPage({ data }: IndustrySubPageProps) {
       <section className="section-py bg-cream-100/50 border-y border-ash-300/30">
         <div className="container-x">
           <div className="max-w-2xl mb-12">
-            <p className="eyebrow text-ash-500 mb-4">What Janice handles</p>
+            <p className="eyebrow text-ash-500 mb-4">What the platform handles</p>
             <h2 className="text-display-md text-navy-900">Solutions for {data.title.toLowerCase()}</h2>
           </div>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -47,7 +47,7 @@ export default function IndustrySubPage({ data }: IndustrySubPageProps) {
       <section className="section-py bg-cream-50">
         <div className="container-x text-center max-w-xl mx-auto">
           <p className="font-ui text-sm text-navy-900/55 mb-6">
-            Placeholder page — Leone to expand with segment-specific copy and visuals.
+            Placeholder page, Leone to expand with segment-specific copy and visuals.
           </p>
           <div className="flex flex-wrap items-center justify-center gap-4">
             <Link href="/contact" className="btn-primary">

@@ -20,7 +20,7 @@ export default function PrivacyPage() {
     <article className="section-py pt-28 sm:pt-32 bg-cream-50">
       <div className="container-x max-w-3xl">
         <p className="rounded-xl border border-ash-400/40 bg-ash-400/10 px-5 py-4 font-ui text-sm text-navy-900/80 mb-10">
-          This is a general template — have a qualified lawyer review before relying on it in
+          This is a general template. Have a qualified lawyer review before relying on it in
           production.
         </p>
 
