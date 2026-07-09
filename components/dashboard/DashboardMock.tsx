@@ -198,7 +198,7 @@ function LiveView({ skin }: { skin: DashboardPreviewSkin }) {
         <div className="rounded-xl border border-ash-300/40 bg-cream-50 p-5">
           <p className="eyebrow text-ash-500 mb-3">Activity · Vancouver</p>
           <div className="relative h-28 rounded-lg bg-cream-100 border border-ash-300/30 overflow-hidden">
-            <div className="absolute top-[35%] left-[48%] w-2 h-2 rounded-full bg-navy-700 shadow-[0_0_0_4px_rgba(10,22,40,0.08)]" />
+            <div className="absolute top-[35%] left-[48%] w-2 h-2 rounded-full bg-navy-700 shadow-[0_0_0_4px_var(--overlay-dark-08)]" />
             <div className="absolute top-[60%] left-[25%] w-1.5 h-1.5 rounded-full bg-ash-400/80" />
             <div className="absolute top-[48%] left-[75%] w-1.5 h-1.5 rounded-full bg-ash-400/80" />
           </div>

@@ -64,3 +64,10 @@ Thumbs.db
 
 # Legacy reference site (kept locally, not tracked)
 /old-website/
+
+# Archived / retired code (kept locally for reference, not tracked)
+/archive/
+
+# graphify (local derived cache — never commit)
+graphify-out/
+raw/

@@ -8,27 +8,27 @@
 
 @theme {
   /* ── COLOURS ─────────────────────────────────────────────────────────
-     Base: off-white cream surfaces
-     Primary: midnight blue (headlines, buttons, UI chrome)
-     Accent: gold (eyebrows, hover highlights — one per section)
-     Tertiary: steel slate (borders, dividers, muted labels)
+     Base: white surfaces
+     Primary: black (headlines, buttons, UI chrome)
+     Accent: neutral gray (eyebrows, hover highlights — one per section)
+     Tertiary: light gray (borders, dividers, muted labels)
   */
 
-  /* Cream — page backgrounds, large surfaces */
-  --color-cream-50:   #F5F0E6;
-  --color-cream-100:  #EBE4D6;
-  --color-cream-200:  #DDD4C4;
+  /* Cream — page backgrounds, large surfaces (token names unchanged) */
+  --color-cream-50:   #FFFFFF;
+  --color-cream-100:  #F5F5F5;
+  --color-cream-200:  #E5E5E5;
 
-  /* Navy → midnight (token names unchanged for compatibility) */
-  --color-navy-700:   #162B4A;
-  --color-navy-800:   #0F1F38;
-  --color-navy-900:   #0A1628;
-  --color-navy-950:   #060E18;
+  /* Navy — dark surfaces and text (token names unchanged for compatibility) */
+  --color-navy-700:   #404040;
+  --color-navy-800:   #1A1A1A;
+  --color-navy-900:   #000000;
+  --color-navy-950:   #000000;
 
-  /* Ash → gold + slate (light → accent → muted) */
-  --color-ash-300:    #9BAABD;   /* slate — borders, hairlines */
-  --color-ash-400:    #C9A962;   /* gold — eyebrows, primary accent */
-  --color-ash-500:    #5C6F85;   /* slate — secondary labels, muted UI */
+  /* Ash — neutral grays (borders, accent, muted labels) */
+  --color-ash-300:    #D4D4D4;   /* borders, hairlines */
+  --color-ash-400:    #737373;   /* eyebrows, primary accent */
+  --color-ash-500:    #525252;   /* secondary labels, muted UI */
 
   /* Electric — coastal electric blue (accent for CTAs, active states, gradient text) */
   --color-electric-900: #0B3260;   /* deep anchor — very dark, for gradients */
@@ -43,7 +43,31 @@
   --glow-electric-sm:    0 0 10px rgba(26, 109, 206, 0.35), 0 0 24px rgba(26, 109, 206, 0.14);
 
   /* Semantic aliases */
-  --color-background: #F5F0E6;   /* = cream-50 */
+  --color-background: #FFFFFF;   /* = cream-50 */
+  --color-light:        var(--color-cream-50);
+  --color-dark:         var(--color-navy-900);
+  --color-dark-surface: var(--color-navy-950);
+
+  /* Derived overlays — always mix from light/dark tokens */
+  --overlay-dark-08:  color-mix(in srgb, var(--color-dark) 8%, transparent);
+  --overlay-dark-35:  color-mix(in srgb, var(--color-dark) 35%, transparent);
+  --overlay-dark-40:  color-mix(in srgb, var(--color-dark) 40%, transparent);
+  --overlay-dark-55:  color-mix(in srgb, var(--color-dark) 55%, transparent);
+  --overlay-dark-60:  color-mix(in srgb, var(--color-dark) 60%, transparent);
+  --overlay-dark-85:  color-mix(in srgb, var(--color-dark) 85%, transparent);
+
+  --overlay-light-06: color-mix(in srgb, var(--color-light) 6%, transparent);
+  --overlay-light-12: color-mix(in srgb, var(--color-light) 12%, transparent);
+  --overlay-light-30: color-mix(in srgb, var(--color-light) 30%, transparent);
+  --overlay-light-35: color-mix(in srgb, var(--color-light) 35%, transparent);
+  --overlay-light-40: color-mix(in srgb, var(--color-light) 40%, transparent);
+  --overlay-light-60: color-mix(in srgb, var(--color-light) 60%, transparent);
+  --overlay-light-88: color-mix(in srgb, var(--color-light) 88%, transparent);
+
+  /* Composed gradients — reference overlay tokens */
+  --gradient-hero-vignette:         radial-gradient(ellipse at center, transparent 45%, var(--overlay-dark-60) 100%);
+  --gradient-testimonial-vignette:  radial-gradient(ellipse at 70% 50%, var(--overlay-dark-60) 0%, transparent 60%);
+  --gradient-photo-scrim:           linear-gradient(to top, var(--overlay-dark-85) 0%, var(--overlay-dark-55) 50%, var(--overlay-dark-35) 100%);
 
   /* ── TYPOGRAPHY ──────────────────────────────────────────────────────
      Syne + DM Sans. --font-syne and --font-dm-sans injected by next/font
@@ -68,10 +92,10 @@
   /* ── SHADOWS ─────────────────────────────────────────────────────────
      Ambient-only. No harsh drop shadows.
   */
-  --shadow-card:       0 30px 60px -30px rgba(10, 22, 40, 0.18);
-  --shadow-card-hover: 0 40px 80px -30px rgba(10, 22, 40, 0.26);
-  --shadow-nav:        0 1px 0 rgba(10, 22, 40, 0.08);
-  --shadow-soft:       0 2px 12px rgba(10, 22, 40, 0.07);
+  --shadow-card:       0 30px 60px -30px color-mix(in srgb, var(--color-dark) 12%, transparent);
+  --shadow-card-hover: 0 40px 80px -30px color-mix(in srgb, var(--color-dark) 18%, transparent);
+  --shadow-nav:        0 1px 0 var(--overlay-dark-08);
+  --shadow-soft:       0 2px 12px color-mix(in srgb, var(--color-dark) 6%, transparent);
 
   /* ── EASING ──────────────────────────────────────────────────────────
      Named easings used across Framer Motion + GSAP + CSS transitions.
@@ -209,7 +233,7 @@ body {
 
   /* ── BUTTONS ── */
 
-  /* Primary: midnight fill → cream text */
+  /* Primary: black fill → white text */
   .btn-primary {
     display: inline-flex;
     align-items: center;
@@ -258,7 +282,7 @@ body {
     transform: translateY(-1px);
   }
 
-  /* Ghost: cream text + transparent border (for dark section use) */
+  /* Ghost: white text + transparent border (for dark section use) */
   .btn-ghost {
     display: inline-flex;
     align-items: center;
@@ -270,7 +294,7 @@ body {
     font-weight: 500;
     padding: 0.875rem 1.75rem;
     border-radius: var(--radius-pill);
-    border: 1.5px solid rgba(245, 240, 230, 0.3);
+    border: 1.5px solid var(--overlay-light-30);
     transition: border-color 0.2s var(--ease-out), background-color 0.2s var(--ease-out);
     text-decoration: none;
     white-space: nowrap;
@@ -278,13 +302,13 @@ body {
   }
 
   .btn-ghost:hover {
-    border-color: rgba(245, 240, 230, 0.6);
-    background-color: rgba(245, 240, 230, 0.06);
+    border-color: var(--overlay-light-60);
+    background-color: var(--overlay-light-06);
   }
 
   /* ── CARDS ── */
 
-  /* Standard card: cream surface + slate hairline + ambient shadow */
+  /* Standard card: white surface + gray hairline + ambient shadow */
   .card {
     background-color: var(--color-cream-50);
     border: 1px solid var(--color-ash-300);
@@ -297,7 +321,7 @@ body {
   }
 
   /* ── ELECTRIC GRADIENT TEXT ──────────────────────────────────────────────
-     Static variant: anchored gradient, safe on cream and navy surfaces.
+     Static variant: anchored gradient, safe on light and dark surfaces.
      Animated variant: gradient slowly drifts — the "alive" feeling.
      For letter-split components (LetterSwapPingPong etc.) use the
      .gradient-letters-electric wrapper — applies per-letter at display scale.
@@ -334,6 +358,21 @@ body {
     color: transparent;
   }
 
+  /* Dark-surface variant — uses the sky/pale electric tones called out for
+     dark/navy backgrounds so gradient text stays legible on hero-dark scenes. */
+  .text-gradient-electric-dark {
+    background: linear-gradient(
+      120deg,
+      var(--color-electric-100) 0%,
+      var(--color-electric-300) 45%,
+      var(--color-electric-400) 100%
+    );
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    color: transparent;
+  }
+
   /* For LetterSwapPingPong — applies gradient to each animated letter span */
   .gradient-letters-electric .letter,
   .gradient-letters-electric .letter-secondary {
@@ -348,7 +387,7 @@ body {
     -webkit-text-fill-color: transparent;
   }
 
-  /* Electric CTA button — gradient fill, cream text, electric glow on hover */
+  /* Electric CTA button — gradient fill, white text, electric glow on hover */
   .btn-electric {
     display: inline-flex;
     align-items: center;
@@ -358,7 +397,7 @@ body {
       var(--color-electric-700) 0%,
       var(--color-electric-500) 100%
     );
-    color: #fff;
+    color: var(--color-light);
     font-family: var(--font-ui);
     font-size: 0.875rem;
     font-weight: 500;

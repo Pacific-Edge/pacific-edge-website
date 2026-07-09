@@ -4,7 +4,7 @@ import { createPageMetadata } from "@/lib/seo/metadata"
 import { websiteJsonLd } from "@/lib/seo/json-ld"
 
 export const metadata = createPageMetadata({
-  title: "Done-For-You Operations for Local Businesses",
+  title: "Pacific Edge",
   description:
     "Vancouver-based AI operations for restaurants, salons, clinics, trades, and retail. Missed calls answered, bookings filled, reviews managed.",
   path: "/",

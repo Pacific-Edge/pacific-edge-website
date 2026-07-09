@@ -4,7 +4,7 @@ import { useEffect, useState } from "react"
 import Link from "next/link"
 import { motion, useReducedMotion } from "framer-motion"
 import { EASE_IN, EASE_LINEAR, EASE_OUT } from "@/lib/motion"
-import OceanGrid from "@/components/ui/OceanGrid"
+import LightPillar from "@/components/ui/LightPillar"
 import { Typewriter } from "@/components/ui/typewriter-text"
 
 /** When each animation phase begins (ms from mount). */
@@ -12,13 +12,11 @@ const TIMING = {
   preLine1:         500,
   preLine2:         1500,
   preIntroOut:      3000,
-  oceanGrid:        4000,
-  eyebrow:          4000,
+  pillar:           4000,
   headline:         4200,
   taglineReveal:    4800,
   typewriter:       4800,
   ctas:             5200,
-  scrollAffordance: 5700,
   unlock:           5200,
 } as const
 
@@ -26,13 +24,10 @@ const TIMING = {
 const IN_DURATIONS = {
   preLine1:         0.85,
   preLine2:         0.85,
-  oceanGrid:        8.0,
-  eyebrow:          0.7,
+  pillar:           8.0,
   headline:         1.8,
   taglineReveal:    0.5,
   ctas:             0.8,
-  scrollAffordance: 0.7,
-  scrollLineBounce: 1.8,
 } as const
 
 /** How long each element takes to animate out (seconds). */
@@ -40,22 +35,25 @@ const OUT_DURATIONS = {
   preLine1:    0,
   preLine2:    0,
   preIntro:    0.9,
-  oceanGrid:   0,
-  eyebrow:     0,
+  pillar:      0,
   headline:    0,
   tagline:     0,
   ctas:        0,
-  scrollAffordance: 0,
 } as const
 
 /** Typewriter character interval (ms per character). */
 const TYPEWRITER_CHAR_MS = 42
 
+/** Solid colour behind the pillar (section base background, shows through
+ *  the pillar's "screen" blend mode). The pillar's own gradient colours
+ *  (top/bottom) are configured in LightPillar.tsx — not duplicated here. */
+const HERO_BACKDROP = "#000000"
+
 const msToSec = (ms: number) => ms / 1000
 const delayAfter = (startMs: number, anchorMs: number) =>
   Math.max(0, msToSec(startMs - anchorMs))
 
-const brandPhaseStart = Math.min(TIMING.oceanGrid, TIMING.eyebrow, TIMING.headline)
+const brandPhaseStart = Math.min(TIMING.pillar, TIMING.headline)
 const typewriterPhaseStart = Math.max(TIMING.typewriter, TIMING.taglineReveal)
 
 const PRE_LINE: React.CSSProperties = {
@@ -69,17 +67,17 @@ const PRE_LINE: React.CSSProperties = {
 export default function Hero() {
   const reduce = useReducedMotion()
 
-  const [line1,    setLine1]    = useState(false)
-  const [line2,    setLine2]    = useState(false)
-  const [linesOut, setLinesOut] = useState(false)
-  const [gridIn,   setGridIn]   = useState(false)
-  const [brandIn,  setBrandIn]  = useState(false)
-  const [typeOn,   setTypeOn]   = useState(false)
-  const [unlocked, setUnlocked] = useState(false)
+  const [line1,     setLine1]     = useState(false)
+  const [line2,     setLine2]     = useState(false)
+  const [linesOut,  setLinesOut]  = useState(false)
+  const [pillarIn,  setPillarIn]  = useState(false)
+  const [brandIn,   setBrandIn]   = useState(false)
+  const [typeOn,    setTypeOn]    = useState(false)
+  const [unlocked,  setUnlocked]  = useState(false)
 
   useEffect(() => {
     if (reduce) {
-      setGridIn(true)
+      setPillarIn(true)
       setBrandIn(true)
       setTypeOn(true)
       setUnlocked(true)
@@ -90,7 +88,7 @@ export default function Hero() {
       setTimeout(() => setLine1(true),    TIMING.preLine1),
       setTimeout(() => setLine2(true),    TIMING.preLine2),
       setTimeout(() => setLinesOut(true), TIMING.preIntroOut),
-      setTimeout(() => setGridIn(true),   TIMING.preIntroOut),
+      setTimeout(() => setPillarIn(true), TIMING.preIntroOut),
       setTimeout(() => setBrandIn(true),  brandPhaseStart),
       setTimeout(() => setTypeOn(true),   typewriterPhaseStart),
       setTimeout(() => setUnlocked(true), TIMING.unlock),
@@ -102,28 +100,34 @@ export default function Hero() {
   return (
     <section
       className="relative min-h-screen flex flex-col justify-center overflow-hidden"
-      style={{ background: "var(--color-navy-900)" }}
+      style={{ background: HERO_BACKDROP }}
     >
-      {/* OceanGrid — starts fading in as pre-lines fade out, finishes as headline arrives */}
+      {/* LightPillar — starts fading in as pre-lines fade out, finishes as headline arrives */}
       <motion.div
         className="absolute inset-0"
         initial={{ opacity: 0 }}
-        animate={{ opacity: gridIn ? 1 : 0 }}
+        animate={{ opacity: pillarIn ? 1 : 0 }}
         transition={{
-          duration: gridIn ? 1.4 : 0,
+          duration: pillarIn ? 1.4 : 0,
           ease: EASE_OUT,
         }}
       >
-        <OceanGrid className="w-full h-full block" />
+        <LightPillar
+          intensity={1.1}
+          rotationSpeed={0.22}
+          glowAmount={0.006}
+          pillarWidth={2.6}
+          pillarHeight={0.4}
+          noiseIntensity={0.4}
+          interactive={false}
+          mixBlendMode="screen"
+        />
       </motion.div>
 
       {/* Edge vignette */}
       <div
         className="absolute inset-0 pointer-events-none"
-        style={{
-          background:
-            "radial-gradient(ellipse at center, transparent 45%, rgba(10, 22, 40, 0.6) 100%)",
-        }}
+        style={{ background: "var(--gradient-hero-vignette)" }}
       />
 
       {/* ── PRE-INTRO OVERLAY ── */}
@@ -165,31 +169,18 @@ export default function Hero() {
       )}
 
       {/* ── BRAND HERO ── */}
-      <div className="relative z-10 container-x pt-20 pb-20 sm:pt-28 sm:pb-32">
+      <div className="relative z-10 container-x pt-20 pb-20 sm:pt-28 sm:pb-32 flex flex-col items-center text-center">
 
-        {/* Eyebrow — appears with headline */}
-        <motion.p
-          className="eyebrow text-ash-400 mb-8"
-          initial={{ opacity: 0 }}
-          animate={{ opacity: brandIn ? 1 : 0 }}
-          transition={{
-            duration: brandIn ? IN_DURATIONS.eyebrow : OUT_DURATIONS.eyebrow,
-            delay: delayAfter(TIMING.eyebrow, brandPhaseStart),
-            ease: EASE_OUT,
-          }}
-        >
-          AI Consulting · Vancouver, BC
-        </motion.p>
-
-        {/* Pacific Edge — slow fade, monumental all-caps */}
+        {/* Pacific Edge — slow fade, monumental all-caps, flat white */}
         <motion.h1
-          className="text-cream-50 mb-6 uppercase"
+          className="mb-6 uppercase"
           style={{
             fontFamily:    "var(--font-display)",
             fontWeight:    800,
             fontSize:      "clamp(2.25rem, 12vw, 9rem)",
             letterSpacing: "0.06em",
             lineHeight:    1,
+            color:         "#FFFFFF",
           }}
           initial={{ opacity: 0, y: 10 }}
           animate={{ opacity: brandIn ? 1 : 0, y: brandIn ? 0 : 10 }}
@@ -202,9 +193,8 @@ export default function Hero() {
           Pacific Edge
         </motion.h1>
 
-        {/* Tagline — placeholder height held, typewriter starts after headline lands */}
-        {/* Two-line height always reserved: 2 × (1.875rem × 1.3 line-height) ≈ 4.875rem */}
-        <div className="mb-8 sm:mb-12 max-w-xl min-h-[2.6rem] sm:min-h-[4.875rem]">
+        {/* Tagline — one line, placeholder height held so typewriter doesn't shift layout */}
+        <div className="mb-8 sm:mb-12 max-w-2xl mx-auto min-h-[1.5rem] sm:min-h-[2.5rem]">
           <motion.p
             className="text-cream-50/75"
             style={{
@@ -223,10 +213,10 @@ export default function Hero() {
             }}
           >
             {reduce ? (
-              <>Giving your business<br />the edge it deserves.</>
+              <>Giving your business the edge it deserves.</>
             ) : typeOn ? (
               <Typewriter
-                text={"Giving your business\nthe edge it deserves."}
+                text={"Giving your business the edge it deserves."}
                 speed={TYPEWRITER_CHAR_MS}
                 cursor="|"
                 cursorClassName="ml-0.5 text-ash-400/60 animate-pulse"
@@ -237,7 +227,7 @@ export default function Hero() {
 
         {/* CTAs — appear at unlock */}
         <motion.div
-          className="flex flex-wrap items-center gap-4"
+          className="flex flex-wrap items-center justify-center gap-4"
           initial={{ opacity: 0, y: 12 }}
           animate={{ opacity: unlocked ? 1 : 0, y: unlocked ? 0 : 12 }}
           transition={{
@@ -261,37 +251,13 @@ export default function Hero() {
 
           <Link
             href="/solutions"
-            className="inline-flex items-center justify-center text-cream-50 text-sm font-medium px-7 py-3.5 rounded-full whitespace-nowrap border transition-colors duration-200 hover:bg-cream-50/10 focus:outline-none focus-visible:ring-2 focus-visible:ring-cream-50/40"
-            style={{
-              fontFamily:  "var(--font-ui)",
-              borderColor: "rgba(245, 240, 230, 0.4)",
-            }}
+            className="inline-flex items-center justify-center text-cream-50 text-sm font-medium px-7 py-3.5 rounded-full whitespace-nowrap border border-cream-50/40 transition-colors duration-200 hover:bg-cream-50/10 focus:outline-none focus-visible:ring-2 focus-visible:ring-cream-50/40"
+            style={{ fontFamily: "var(--font-ui)" }}
           >
             See What We Do →
           </Link>
         </motion.div>
       </div>
-
-      {/* Scroll affordance */}
-      <motion.div
-        className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 pointer-events-none"
-        initial={{ opacity: 0 }}
-        animate={{ opacity: unlocked ? 1 : 0 }}
-        transition={{
-          duration: unlocked ? IN_DURATIONS.scrollAffordance : OUT_DURATIONS.scrollAffordance,
-          delay: delayAfter(TIMING.scrollAffordance, TIMING.unlock),
-        }}
-      >
-        <span className="eyebrow text-cream-50/30">Scroll</span>
-        <motion.div
-          className="w-px h-10"
-          animate={{ y: [0, 7, 0] }}
-          transition={{ repeat: Infinity, duration: IN_DURATIONS.scrollLineBounce, ease: "easeInOut" }}
-          style={{
-            background: "linear-gradient(to bottom, rgba(245, 240, 230, 0.3), transparent)",
-          }}
-        />
-      </motion.div>
     </section>
   )
 }

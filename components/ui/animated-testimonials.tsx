@@ -73,10 +73,7 @@ export function AnimatedTestimonials({
       {/* Subtle texture layer to match Proof aesthetic */}
       <div
         className="absolute inset-0 pointer-events-none opacity-30"
-        style={{
-          background:
-            "radial-gradient(ellipse at 70% 50%, rgba(22, 43, 74, 0.6) 0%, transparent 60%)",
-        }}
+        style={{ background: "var(--gradient-testimonial-vignette)" }}
       />
 
       <div className="container-x relative z-10">

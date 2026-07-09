@@ -115,10 +115,9 @@ export default function Industries() {
                 className="group flex flex-1 min-w-0 flex-col items-center gap-1.5 py-2 focus:outline-none focus-visible:ring-2 focus-visible:ring-navy-900/30 rounded-md transition-colors cursor-pointer"
               >
                 <span
-                  className="flex items-center justify-center transition-colors"
-                  style={{
-                    color: isActive ? "var(--color-navy-900)" : "rgba(10, 22, 40, 0.35)",
-                  }}
+                  className={`flex items-center justify-center transition-colors ${
+                    isActive ? "text-navy-900" : "text-navy-900/35"
+                  }`}
                 >
                   <Icon size={26} strokeWidth={1.5} aria-hidden="true" />
                 </span>
@@ -170,10 +169,11 @@ export default function Industries() {
                     {String(i + 1).padStart(2, "0")}
                   </span>
                   <span
-                    className="font-display leading-tight transition-colors duration-300"
+                    className={`font-display leading-tight transition-colors duration-300 ${
+                      isActive ? "text-navy-900" : "text-navy-900/40"
+                    }`}
                     style={{
                       fontSize: "clamp(1.25rem, 2.2vw, 1.875rem)",
-                      color: isActive ? "var(--color-navy-900)" : "rgba(10, 22, 40, 0.4)",
                       fontWeight: 400,
                     }}
                   >
@@ -210,18 +210,15 @@ export default function Industries() {
                 sizes="(min-width: 1024px) 66vw, 100vw"
                 className="object-cover"
               />
-              {/* Navy scrim — heavy darkening so the photo reads as background.
+              {/* Dark scrim — heavy darkening so the photo reads as background.
                   Base flat veil + bottom-weighted gradient for headline contrast. */}
               <div
                 className="absolute inset-0"
-                style={{ background: "rgba(6, 14, 24, 0.55)" }}
+                style={{ background: "var(--overlay-dark-55)" }}
               />
               <div
                 className="absolute inset-0"
-                style={{
-                  background:
-                    "linear-gradient(to top, rgba(6, 14, 24, 0.85) 0%, rgba(6, 14, 24, 0.55) 50%, rgba(6, 14, 24, 0.35) 100%)",
-                }}
+                style={{ background: "var(--gradient-photo-scrim)" }}
               />
             </motion.div>
           </AnimatePresence>
