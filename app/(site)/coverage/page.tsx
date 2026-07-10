@@ -1,11 +1,11 @@
 import PageHero from "@/components/sections/PageHero"
 import PageCTA from "@/components/sections/PageCTA"
-import { COVERAGE_FOOTNOTE, COVERAGE_REGIONS } from "@/lib/content/industries"
+import { COVERAGE_FOOTNOTE, COVERAGE_REGIONS } from "@/lib/content/coverage"
 import { createPageMetadata } from "@/lib/seo/metadata"
 
 export const metadata = createPageMetadata({
   title: "Coverage",
-  description: "Pacific Edge serves Greater Vancouver: Vancouver, Burnaby, Surrey, North Shore, Richmond, and across BC.",
+  description: "Pacific Edge serves dental clinics across Greater Vancouver and BC.",
   path: "/coverage",
 })
 
@@ -15,10 +15,10 @@ export default function CoveragePage() {
       <PageHero
         eyebrow="Company"
         title="Greater Vancouver & BC"
-        description="Local, hands-on support across five regions, and new clients province-wide."
+        description="Local, hands-on support for dental clinics across five regions, and new practices province-wide."
       />
 
-      <section className="section-py bg-cream-50">
+      <section className="section-py bg-white-50">
         <div className="container-x">
           <div className="max-w-3xl">
             <ol className="divide-y divide-ash-300/50 border-y border-ash-300/50">
@@ -31,10 +31,10 @@ export default function CoveragePage() {
                     {String(i + 1).padStart(2, "0")}
                   </span>
                   <div>
-                    <h2 className="font-display text-xl font-semibold text-navy-900 mb-1">
+                    <h2 className="font-display text-xl font-semibold text-midnight-900 mb-1">
                       {region.name}
                     </h2>
-                    <p className="font-ui text-sm text-navy-900/55">{region.desc}</p>
+                    <p className="font-ui text-sm text-midnight-900/55">{region.desc}</p>
                   </div>
                 </li>
               ))}
@@ -48,8 +48,8 @@ export default function CoveragePage() {
       </section>
 
       <PageCTA
-        headline="Serving local businesses across BC"
-        body="Book a call to see if we're the right fit for your shop."
+        headline="Serving dental clinics across BC"
+        body="Book a call to see if we're the right fit for your practice."
       />
     </>
   )

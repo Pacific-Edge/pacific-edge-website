@@ -19,7 +19,7 @@ export default function ProcessPage() {
         description="From a 15-minute discovery call to a working prototype. No pitch decks, no orphaned systems."
       />
 
-      <section className="section-py bg-cream-50">
+      <section className="section-py bg-white-50">
         <div className="container-x">
           <div className="max-w-3xl">
             <ProcessStepper steps={PROCESS_STEPS} />

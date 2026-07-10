@@ -19,7 +19,7 @@ export default function AboutPage() {
         description="Vancouver-based operators building software that hands admin time back, without enterprise pricing."
       />
 
-      <section className="section-py bg-cream-50">
+      <section className="section-py bg-white-50">
         <div className="container-x">
           <div className="grid gap-12 sm:grid-cols-2 lg:grid-cols-3 lg:gap-10">
             {FOUNDERS.map((founder) => (

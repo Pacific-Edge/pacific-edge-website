@@ -17,25 +17,25 @@ const TRUST_BULLETS = [
 
 export default function PrivacyPage() {
   return (
-    <article className="section-py pt-28 sm:pt-32 bg-cream-50">
+    <article className="section-py pt-28 sm:pt-32 bg-white-50">
       <div className="container-x max-w-3xl">
-        <p className="rounded-xl border border-ash-400/40 bg-ash-400/10 px-5 py-4 font-ui text-sm text-navy-900/80 mb-10">
+        <p className="rounded-xl border border-ash-400/40 bg-ash-400/10 px-5 py-4 font-ui text-sm text-midnight-900/80 mb-10">
           This is a general template. Have a qualified lawyer review before relying on it in
           production.
         </p>
 
-        <h1 className="text-display-md text-navy-900 mb-4">Privacy Policy</h1>
-        <p className="font-ui text-sm text-navy-900/50 mb-12">
+        <h1 className="text-display-md text-midnight-900 mb-4">Privacy Policy</h1>
+        <p className="font-ui text-sm text-midnight-900/50 mb-12">
           Last updated: July 8, 2026 · Pacific Edge AI · Vancouver, British Columbia, Canada
         </p>
 
         <section className="mb-12">
-          <h2 className="font-display text-xl text-navy-900 mb-6">Your data stays yours</h2>
+          <h2 className="font-display text-xl text-midnight-900 mb-6">Your data stays yours</h2>
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
             {TRUST_BULLETS.map((item) => (
-              <div key={item.title} className="rounded-xl border border-ash-300/50 bg-cream-100/50 p-5">
-                <p className="font-ui text-sm font-medium text-navy-900 mb-1">{item.title}</p>
-                <p className="font-ui text-sm text-navy-900/55">{item.description}</p>
+              <div key={item.title} className="rounded-xl border border-ash-300/50 bg-white-100/50 p-5">
+                <p className="font-ui text-sm font-medium text-midnight-900 mb-1">{item.title}</p>
+                <p className="font-ui text-sm text-midnight-900/55">{item.description}</p>
               </div>
             ))}
           </div>
@@ -46,7 +46,7 @@ export default function PrivacyPage() {
             Pacific Edge AI (&quot;Pacific Edge,&quot; &quot;we,&quot; &quot;us&quot;) provides
             done-for-you operations software for local businesses. We are based in Vancouver,
             British Columbia, Canada. Contact:{" "}
-            <a href={`mailto:${SITE_CONTACT.email}`} className="text-navy-700 underline">
+            <a href={`mailto:${SITE_CONTACT.email}`} className="text-midnight-700 underline">
               {SITE_CONTACT.email}
             </a>
             .
@@ -114,7 +114,7 @@ export default function PrivacyPage() {
             Depending on your location, you may have rights to access, correct, delete, or restrict
             certain processing of your personal information. Canadian residents may have rights under
             PIPEDA and applicable provincial privacy laws. To make a request, email{" "}
-            <a href={`mailto:${SITE_CONTACT.email}`} className="text-navy-700 underline">
+            <a href={`mailto:${SITE_CONTACT.email}`} className="text-midnight-700 underline">
               {SITE_CONTACT.email}
             </a>
             .
@@ -138,7 +138,7 @@ export default function PrivacyPage() {
         <LegalSection title="11. Contact">
           <p>
             Privacy questions or requests:{" "}
-            <a href={`mailto:${SITE_CONTACT.email}`} className="text-navy-700 underline">
+            <a href={`mailto:${SITE_CONTACT.email}`} className="text-midnight-700 underline">
               {SITE_CONTACT.email}
             </a>
             . {SITE_CONTACT.location}.
@@ -146,7 +146,7 @@ export default function PrivacyPage() {
         </LegalSection>
 
         <div className="mt-12 pt-8 border-t border-ash-300/40">
-          <Link href="/terms" className="font-ui text-sm text-navy-900/55 hover:text-navy-900 underline">
+          <Link href="/terms" className="font-ui text-sm text-midnight-900/55 hover:text-midnight-900 underline">
             Terms of Service
           </Link>
         </div>
@@ -158,8 +158,8 @@ export default function PrivacyPage() {
 function LegalSection({ title, children }: { title: string; children: React.ReactNode }) {
   return (
     <section className="mb-10">
-      <h2 className="font-display text-xl text-navy-900 mb-3">{title}</h2>
-      <div className="font-ui text-sm text-navy-900/70 leading-relaxed space-y-3 [&_ul]:list-disc [&_ul]:pl-5 [&_ul]:space-y-1">
+      <h2 className="font-display text-xl text-midnight-900 mb-3">{title}</h2>
+      <div className="font-ui text-sm text-midnight-900/70 leading-relaxed space-y-3 [&_ul]:list-disc [&_ul]:pl-5 [&_ul]:space-y-1">
         {children}
       </div>
     </section>

@@ -1,5 +1,4 @@
 import { CALCULATOR_SLUGS } from "@/lib/calculators/routes"
-import { INDUSTRY_SLUGS } from "@/lib/content/industries"
 import { SITE_URL } from "./site"
 
 export type SitemapEntry = {
@@ -15,13 +14,7 @@ export const SITEMAP_ROUTES: SitemapEntry[] = [
   { path: "/solutions/janice", changeFrequency: "monthly", priority: 0.9 },
   { path: "/dashboard", changeFrequency: "monthly", priority: 0.8 },
   { path: "/integrations", changeFrequency: "monthly", priority: 0.8 },
-  ...INDUSTRY_SLUGS.map((slug) => ({
-    path: `/industries/${slug}`,
-    changeFrequency: "monthly" as const,
-    priority: 0.8,
-  })),
-  { path: "/industries/dental/single-location", changeFrequency: "monthly", priority: 0.7 },
-  { path: "/industries/dental/multi-location", changeFrequency: "monthly", priority: 0.7 },
+  { path: "/clinics", changeFrequency: "monthly", priority: 0.9 },
   ...CALCULATOR_SLUGS.map((slug) => ({
     path: `/tools/savings/${slug}`,
     changeFrequency: "monthly" as const,
@@ -29,7 +22,7 @@ export const SITEMAP_ROUTES: SitemapEntry[] = [
   })),
   { path: "/about", changeFrequency: "monthly", priority: 0.7 },
   { path: "/why-us", changeFrequency: "monthly", priority: 0.7 },
-  { path: "/reviews", changeFrequency: "monthly", priority: 0.7 },
+  // { path: "/reviews", changeFrequency: "monthly", priority: 0.7 }, // Hidden until we have live client deployments
   { path: "/coverage", changeFrequency: "monthly", priority: 0.6 },
   { path: "/process", changeFrequency: "monthly", priority: 0.7 },
   { path: "/pricing", changeFrequency: "monthly", priority: 0.8 },

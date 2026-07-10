@@ -41,7 +41,7 @@ export default function ProcessStepper({ steps }: { steps: readonly Step[] }) {
             className="relative flex gap-5 sm:gap-8 items-start"
           >
             <div
-              className="shrink-0 w-10 h-10 sm:w-12 sm:h-12 rounded-full border-2 border-electric-500 flex items-center justify-center bg-cream-50 relative z-10"
+              className="shrink-0 w-10 h-10 sm:w-12 sm:h-12 rounded-full border-2 border-electric-500 flex items-center justify-center bg-white-50 relative z-10"
               aria-hidden="true"
             >
               <span className="font-display font-bold text-electric-500 text-sm sm:text-base">
@@ -50,8 +50,8 @@ export default function ProcessStepper({ steps }: { steps: readonly Step[] }) {
             </div>
 
             <div className="flex-1 min-w-0 pt-1">
-              <h2 className="font-display text-display-sm text-navy-900 mb-2">{step.title}</h2>
-              <p className="font-ui text-sm sm:text-base text-navy-900/60 leading-relaxed max-w-xl">
+              <h2 className="font-display text-display-sm text-midnight-900 mb-2">{step.title}</h2>
+              <p className="font-ui text-sm sm:text-base text-midnight-900/60 leading-relaxed max-w-xl">
                 {step.description}
               </p>
             </div>

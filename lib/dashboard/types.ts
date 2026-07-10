@@ -15,7 +15,7 @@ export const DASHBOARD_INDUSTRIES: readonly DashboardIndustry[] = [
   "dental",
 ] as const
 
-export type StatusClass = "ok" | "warn" | "new" | "gold"
+export type StatusClass = "ok" | "warn" | "new" | "muted"
 
 export type CallRecord = {
   icon: string
@@ -27,7 +27,7 @@ export type CallRecord = {
 }
 
 export type ConvoMessage = {
-  from: "customer" | "janice"
+  from: "customer" | "assistant"
   text: string
   meta?: string
 }

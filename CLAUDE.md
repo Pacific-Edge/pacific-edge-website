@@ -14,49 +14,88 @@ A visual and copy refresh of [pacificedge.ai](https://pacificedge.ai/) for **Pac
 
 ---
 
+## Design system law — read this before changing anything visual
+
+This site has a **working, already-implemented** design system: tokens live in `app/globals.css` (`@theme` block) and the button variants in `components/ui/button.tsx`. Those files are the source of truth for color, radius, type, and shadow — read them before writing new CSS or Tailwind classes. What follows is the reasoning behind the current choices, so new work extends the system instead of drifting from it session to session.
+
+New sections, pages, and content changes are expected and welcome — this is a live business site. The constraint is on *how* things are built, not *what* gets added.
+
+**On tone:** if a requested change conflicts with something below, explain the concrete reasoning in a sentence or two and offer the token-compliant alternative. State it plainly — don't lecture or moralize about taste.
+
+### Empty space is an asset, not a gap to fill
+
+Don't add filler cards, decorative icons, extra badges, or background texture to "finish" a section that looks sparse. Negative space is what makes the one important thing in a section — a headline, a metric, a single product shot — read as important. A section where every inch carries content reads as noise; a section with deliberate breathing room reads as considered and expensive. If a section feels empty, the fix is almost always tighter copy or a bigger single visual, not more elements. Extend the existing padding scale (`.section-py`, `.container-x` in `app/globals.css`) rather than inventing tighter one-off spacing.
+
+### Sharp corners are a positioning choice, not a placeholder
+
+Every `--radius-*` token in `app/globals.css` is pinned to `0`. This is deliberate:
+
+- **Audience fit:** a meaningful share of our clinic customers already run Microsoft-ecosystem practice software — straight edges, thin borders, minimal chrome. A soft, heavily-rounded, glassy look reads as "consumer AI app," not "software a clinic front desk will trust."
+- **Category differentiation:** rounded corners + gradients + floating cards is the default look of nearly every AI-consulting-startup site right now. Straight edges read as more established and more software-grade, less like a demo.
+- **The only exceptions** are things that are genuinely circular or organic — `rounded-full` (avatars, status dots, icon chips) and the phone-mockup bezel. Those aren't "cards that got rounded"; don't generalize from them.
+- Don't add new `rounded-sm/md/lg/xl/2xl/pill` *overrides* anywhere — they resolve to `0` from the token on purpose (see `components/ui/button.tsx`, where `rounded-pill` renders square by design). If a component seems to need visible rounding to look right, that's a signal to flag it, not to route around the token.
+
+### Motion signals "built with intent," not "entertaining"
+
+The one sanctioned motion pattern is **entrance on scroll**: content rolls/fades in as a section reaches the viewport, which is what's already used across `components/sections/*`. That's the whole job motion does here — it makes the layout feel assembled deliberately.
+
+- No new idle/looping decorative motion beyond what already exists (`electric-drift`, the `motif-*` keyframes, and the ambient `LightPillar` / `FloatingLines` / `SoftAurora` backgrounds) — those are tuned to be barely-noticed texture, not a pattern to copy into new sections.
+- Hover states stay simple: color/opacity/background transitions, matching `components/ui/button.tsx`. No hover-lift, hover-tilt, or hover-glow stacks.
+- Before adding any new animation, the test is: does this help the user read hierarchy or sequence, or is it decoration? If it's decoration, skip it.
+- `prefers-reduced-motion` handling in `globals.css` must keep working for every new animation.
+
+### 3D and depth effects are allowlisted, not a pattern to extend
+
+`three` / `ogl` are already in the stack for a specific, small set of ambient background effects (`components/ui/LightPillar.tsx`, `FloatingLines.tsx`, `SoftAurora.tsx`) plus the phone-mockup demo. That's the full list. Don't add new 3D scenes, tilting/parallax card stacks, or WebGL hero pieces without checking in first — each one is a real performance cost and a step toward the generic "AI product site" this system is built to avoid.
+
+### Color: the reasoning behind the tokens
+
+Actual values live in `app/globals.css`; use those tokens, not the numbers below directly. In short:
+
+- **Near-black / near-white base** (`--color-midnight-900` / `--color-white-50`) — maximum, unambiguous contrast. This is itself a trust signal: readable, no-nonsense, nothing hidden in a gradient.
+- **Electric blue accent** (`--color-electric-*`) — blue reads as "modern software" and "medical/clinical" at the same time, which is exactly the dual positioning this product needs: tech-forward, but credible to a dental or clinic front desk. Used sparingly — CTAs, active states, gradient text — never as a large fill or base surface.
+- **Ash grays** — hairline borders and muted labels only, never a large fill color.
+- High contrast throughout is intentional: it directs the eye to the one thing that matters in a section instead of letting everything compete at once.
+- No purple gradients, no dark mesh heroes, no rainbow feature cards.
+
+### Typography (2 fonts only — do not change without asking)
+
+| Role | Font | Why |
+|------|------|-----|
+| **Display / headlines** | **Syne** (`--font-syne`, loaded in `app/layout.tsx`) | Bold, geometric, tech-forward — the display voice of the current system |
+| **UI / body / nav** | **DM Sans** (`--font-dm-sans`) | Clean geometric sans; pairs cleanly, reads well at small sizes |
+
+Use the existing scale classes (`.text-display-xl/lg/md/sm`, `.eyebrow`) instead of arbitrary `text-*` sizes — they already encode the fluid `clamp()` scaling. Avoid Inter, Roboto, Arial, or system-ui as a display font.
+
+### Components & imagery
+
+- Cards: white surface, ash hairline border, sharp corners, flat (no soft ambient shadow) — see `.card` in `globals.css`.
+- **Imagery:** product UI mocks, the phone-chat demo, industry photography where available — never "person pointing at hologram."
+- **No emoji** in UI.
+
+### Tech stack — fixed, do not swap or add frameworks/libraries
+
+Next.js App Router, Tailwind CSS v4 (`@theme` token system in `globals.css`), Framer Motion + GSAP for animation, `three` / `ogl` for the existing ambient 3D only. Don't introduce a new UI kit, CSS framework, animation library, or 3D library to solve a problem — the existing stack already covers scroll reveals, entrance animation, gradients, and ambient depth. If something genuinely can't be built with what's here, say so and ask before adding a dependency.
+
+### How to extend this system
+
+1. Reuse existing tokens (`--color-*`, `--radius-*`, `.text-display-*`, `.eyebrow`, `.card`, `.section-py`, `.container-x`) instead of hardcoding new values.
+2. If a new pattern is genuinely needed (a new color, a new motion pattern), add it as a token in `globals.css` and note why — don't hardcode one-off Tailwind arbitrary values that drift from the system.
+3. When unsure whether something fits, state the tradeoff plainly and ask, rather than defaulting to the most common AI-generated-site pattern (rounded cards, purple/blue gradients, three identical feature cards, hover-lift everything, filled-to-the-edges sections). Avoiding that default is the whole point of this system.
+
+---
+
 ## Design read (default for every session)
 
-> **Reading this as:** Multi-page B2B marketing site for local business owners, with an elegant coastal / trust-first language — creamy white + navy, spacious editorial layouts, product-led visuals over copy.
+> **Reading this as:** Multi-page B2B marketing site for local business owners — clinical-precise, high-contrast, dental/Microsoft-software-familiar aesthetic. Near-black + near-white base, electric-blue accent, sharp corners, spacious editorial layouts, product-led visuals over copy.
 
 ### Three dials
 
 | Dial | Value | Meaning |
 |------|-------|---------|
 | Design variance | 7 | Asymmetric layouts, varied section rhythms — still credible |
-| Motion intensity | 5 | Scroll reveals, nav expand, hover depth — never gimmicky |
-| Visual density | 2 | Very airy; one focal point per viewport band |
-
-### Color palette (mandatory)
-
-| Role | Direction | Tailwind-style tokens (starting point) |
-|------|-----------|----------------------------------------|
-| **Base** | Creamy white | `#FAF8F5` / `cream-50` — page background, large surfaces |
-| **Primary** | Coastal navy | `#1E3A5F` / `navy-900` — headlines, nav, primary buttons, key UI chrome |
-| **Tertiary** | Beige-gold ash gray | `#B8A992` / `ash-400` — sparingly: eyebrows, dividers, hover accents, icon strokes, one highlight per section max |
-| **Text** | Navy at 90% on cream | Body never pure black; use navy-muted for secondary labels |
-
-- No purple gradients, no dark mesh heroes, no rainbow feature cards.
-- Navy on cream must pass WCAG AA for all body text sizes.
-
-### Typography (mandatory — 2 fonts only)
-
-Modern, slightly healthcare-adjacent, industry-elegant. **Default pairing:**
-
-| Role | Font | Why |
-|------|------|-----|
-| **Display / headlines** | **Fraunces** (variable) | Warm serif-soft curves; credible for clinics without feeling clinical |
-| **UI / body / nav** | **DM Sans** | Clean geometric sans; pairs cleanly, reads well at small sizes |
-
-Alternatives only if user asks: Cormorant + Outfit, or Instrument Serif + Instrument Sans.
-
-- **Type scale:** Use size contrast boldly — display headlines `text-5xl`–`text-7xl` on landing; supporting labels `text-xs`–`text-sm` uppercase tracking-wide. Let hierarchy replace paragraphs.
-- **Avoid:** Inter, Roboto, Arial, system-ui as display.
-
-### Components & imagery
-
-- Cards: soft ambient shadows on cream, navy text, optional ash hairline borders — not glassmorphism stacks.
-- **Imagery:** Product UI mocks, abstract coastal textures, industry photography if available — never "person pointing at hologram."
-- **No emoji** in UI.
+| Motion intensity | 3 | Scroll-entrance reveals only — no idle/decorative motion, never gimmicky |
+| Visual density | 2 | Very airy; one focal point per viewport band; empty space is deliberate |
 
 ---
 
@@ -73,7 +112,7 @@ One stylish **top nav bar** sitewide. This is the primary way users move between
 - Logo/wordmark left.
 - **4 category labels** visible horizontally (not every page link — categories only).
 - Primary CTA pill right: **Book a Call**.
-- Bar sits on cream; navy text; subtle bottom border or shadow on scroll.
+- Bar sits on white; midnight text; subtle bottom border or shadow on scroll.
 - Full width, fixed or sticky top — **not** a floating island pill.
 
 ### Expanded (hover desktop category OR click expand control)
@@ -304,10 +343,10 @@ AI (as filler), automation, leverage, unlock, seamless, cutting-edge, revolution
 
 - **Stack:** Next.js (App Router) + Tailwind CSS unless repo specifies otherwise.
 - **Pages:** Multi-page per Site architecture above — shared layout with mega-menu nav + footer.
-- **Fonts:** Load Fraunces + DM Sans via `next/font/google`.
+- **Fonts:** Load Syne + DM Sans via `next/font/google`.
 - **Responsive (mandatory):** Read and apply the `responsive` skill on **every** page, section, and nav state. Mobile-first implementation. Test breakpoints: 375px, 768px, 1024px, 1440px. No hover-only interactions. Mega-menu becomes accordion on mobile. Images and type scale down gracefully — never horizontal scroll.
 - **Performance:** Animate `transform` + `opacity` only; respect `prefers-reduced-motion`.
-- **Accessibility:** Semantic HTML, focus states, keyboard-navigable mega-menu, sufficient contrast (navy on cream).
+- **Accessibility:** Semantic HTML, focus states, keyboard-navigable mega-menu, sufficient contrast (midnight on white).
 
 ---
 
@@ -346,8 +385,8 @@ Read before generating UI:
 | **Site shape** | Multi-page site with mega-menu top nav — not a single long scroll |
 | **Landing page** | ~6 sections only — hook content; depth on inner pages |
 | **Nav** | Logo + 4 categories at rest; expand downward to columnar sub-links on hover/click |
-| **Colors** | Creamy white base · coastal navy primary · beige-gold ash tertiary (sparingly) |
-| **Fonts** | Fraunces (display) + DM Sans (UI/body) — modern, elegant, clinic-credible |
+| **Colors** | Near-black/near-white base · electric-blue accent (sparingly) · ash-gray hairlines and borders |
+| **Fonts** | Syne (display) + DM Sans (UI/body) — bold, geometric, tech-forward with clinical-precise contrast |
 | **Copy density** | Minimal supporting text — show-don't-tell; spacious layouts |
 | **Janice persona** | Remove entirely — describe the product/system impersonally |
 | **Hero headline** | Placeholder — layout + CTA now; headline TBD in workshop |

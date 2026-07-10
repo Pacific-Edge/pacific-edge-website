@@ -68,7 +68,7 @@ export const WHY_US_PILLARS = [
   { title: "No jargon", description: "Plain English. If you don't understand it, we haven't done our job." },
   { title: "Speed to value", description: "Working prototype in week one." },
   { title: "Built to deliver", description: "Six-month engagements. Transparent pricing upfront." },
-  { title: "Local & hands-on", description: "Vancouver-based. We meet at your shop when you want." },
+  { title: "Local & hands-on", description: "Vancouver-based. We meet at your clinic when you want." },
 ] as const
 
 export const PROCESS_STEPS = [
@@ -90,8 +90,62 @@ export const WHY_US_INTRO =
 
 export const PRICING = {
   headline: "Your first month is on us",
-  body: "Try it for a full month free. See the bookings, the hours saved, the calls that didn't go to voicemail.",
+  body: "Try it for a full month free. See the appointments booked, the hours saved, the calls that didn't go to voicemail.",
+  tiers: [
+    {
+      name: "Standard",
+      price: { monthly: 349, yearly: 3350 },
+      description: "For single-location clinics that need calls, messages, bookings, and reviews handled cleanly.",
+      features: [
+        "Missed-call text-back",
+        "Booking and reminder flows",
+        "Review reply support",
+        "Calendar synced to your existing tools",
+        "Plain-English onboarding and training",
+      ],
+      isFeatured: false,
+    },
+    {
+      name: "Professional",
+      price: { monthly: 749, yearly: 7190 },
+      description: "For busier front desks with more channels, waitlists, recalls, and reporting needs.",
+      features: [
+        "Everything in Standard",
+        "Waitlist and cancellation recovery",
+        "Dashboard and workflow reporting",
+        "Multi-channel inbox — calls, texts, DMs",
+        "Recall and follow-up sequences",
+      ],
+      isFeatured: true,
+    },
+    {
+      name: "Custom",
+      price: { monthly: 1149, yearly: 11030 },
+      description: "For multi-location or higher-volume clinics that need deeper workflows around their tools.",
+      features: [
+        "Everything in Professional",
+        "Custom integration buildout",
+        "Priority optimization support",
+        "Multi-location rollouts",
+        "Dedicated workflow tuning sessions",
+      ],
+      isFeatured: false,
+    },
+  ],
+  variance: "Exact fit depends on location count and message volume. We confirm the right tier on the call.",
   terms:
     "After your free month, engagements run an initial six months, long enough to prove ROI. Transparent pricing upfront. Then month-to-month, scale up, or part ways with full handover docs.",
   cta: "Book Your Free Setup Call",
 } as const
+
+/** Plans shaped for the interactive pricing table. */
+export const PRICING_PLANS = PRICING.tiers.map((tier) => ({
+  title: tier.name,
+  price: tier.price,
+  description: tier.description,
+  features: [...tier.features],
+  ctaText: PRICING.cta,
+  ctaHref: "/contact",
+  isFeatured: tier.isFeatured,
+  accent: tier.isFeatured ? ("blue" as const) : tier.name === "Custom" ? ("dark" as const) : ("default" as const),
+}))

@@ -9,27 +9,18 @@ export const NAV_ITEMS = [
     ],
   },
   {
-    label: "Industries",
-    links: [
-      { label: "Dental & Health",      href: "/industries/dental" },
-      { label: "Restaurants",          href: "/industries/restaurants" },
-      { label: "Salons & Spas",        href: "/industries/salons" },
-      { label: "Trades",               href: "/industries/trades" },
-      { label: "Retail",               href: "/industries/retail" },
-    ],
-  },
-  {
     label: "Company",
     links: [
       { label: "Why Us",    href: "/why-us" },
       { label: "About",     href: "/about" },
       { label: "Coverage",  href: "/coverage" },
-      { label: "Reviews",   href: "/reviews" },
+      // { label: "Reviews",   href: "/reviews" }, // Hidden until we have live client deployments
     ],
   },
   {
     label: "Get Started",
     links: [
+      { label: "Clinics",  href: "/clinics" },
       { label: "Process",  href: "/process" },
       { label: "Pricing",  href: "/pricing" },
       { label: "FAQ",      href: "/faq" },

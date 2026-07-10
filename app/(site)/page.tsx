@@ -6,13 +6,15 @@ import { websiteJsonLd } from "@/lib/seo/json-ld"
 export const metadata = createPageMetadata({
   title: "Pacific Edge",
   description:
-    "Vancouver-based AI operations for restaurants, salons, clinics, trades, and retail. Missed calls answered, bookings filled, reviews managed.",
+    "Vancouver-based operations software for dental clinics. Missed calls answered, chairs filled, recalls handled.",
   path: "/",
 })
 import ProductGlimpse from "@/components/sections/ProductGlimpse"
-import Industries from "@/components/sections/Industries"
+import FrontDeskDemo from "@/components/sections/FrontDeskDemo"
 import ProcessTeaser from "@/components/sections/ProcessTeaser"
-import Proof from "@/components/sections/Proof"
+import WhyUsTeaser from "@/components/sections/WhyUsTeaser"
+import PricingTeaser from "@/components/sections/PricingTeaser"
+// import Proof from "@/components/sections/Proof" // Hidden until we have live client deployments
 import CTABand from "@/components/sections/CTABand"
 
 export default function Home() {
@@ -21,9 +23,11 @@ export default function Home() {
       <JsonLd data={websiteJsonLd()} />
       <Hero />
       <ProductGlimpse />
-      <Industries />
+      <FrontDeskDemo />
+      <WhyUsTeaser />
+      <PricingTeaser />
       <ProcessTeaser />
-      <Proof />
+      {/* <Proof /> — hidden until we have live client deployments */}
       <CTABand />
     </>
   )

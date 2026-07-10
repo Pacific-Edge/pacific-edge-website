@@ -1,9 +1,16 @@
 "use client"
 
-import { useEffect, useRef, useState } from "react"
+import { useLayoutEffect, useRef, useState } from "react"
 import Link from "next/link"
 import { motion, useReducedMotion } from "framer-motion"
+import gsap from "gsap"
+import { ScrollTrigger } from "gsap/ScrollTrigger"
 import { EASE_OUT } from "@/lib/motion"
+import { Button } from "@/components/ui/button"
+
+if (typeof window !== "undefined") {
+  gsap.registerPlugin(ScrollTrigger)
+}
 
 /* ─── Step data ──────────────────────────────────────────────────────────── */
 
@@ -46,44 +53,38 @@ type StepData = (typeof STEPS)[number]
 
 export default function ProcessTeaser() {
   const containerRef = useRef<HTMLDivElement>(null)
-  const [progress, setProgress] = useState(0)
+  const activeCountRef = useRef(1)
+  const [activeCount, setActiveCount] = useState(1)
   const reduce = useReducedMotion()
 
-  useEffect(() => {
-    // Instantly show all steps when motion is reduced
-    if (reduce) {
-      setProgress(1)
-      return
-    }
-
+  useLayoutEffect(() => {
+    if (reduce) return
     const el = containerRef.current
     if (!el) return
 
-    // Sticky scroll driver is desktop/tablet only — mobile uses IntersectionObserver
     const mq = window.matchMedia("(min-width: 768px)")
     if (!mq.matches) return
 
-    const handleScroll = () => {
-      const rect = el.getBoundingClientRect()
-      // Total scrollable distance = container height minus one viewport height
-      const scrollableDistance = el.offsetHeight - window.innerHeight
-      if (scrollableDistance <= 0) return
-      // rect.top starts at 0 when container hits viewport top, then goes negative
-      const p = Math.max(0, Math.min(1, -rect.top / scrollableDistance))
-      setProgress(p)
-    }
+    const ctx = gsap.context(() => {
+      ScrollTrigger.create({
+        trigger: el,
+        start: "top top",
+        end: "bottom bottom",
+        scrub: 0.3,
+        onUpdate: (self) => {
+          const next = Math.min(5, Math.floor(self.progress / 0.2) + 1)
+          if (next !== activeCountRef.current) {
+            activeCountRef.current = next
+            setActiveCount(next)
+          }
+        },
+      })
+    }, el)
 
-    window.addEventListener("scroll", handleScroll, { passive: true })
-    // Initialise immediately in case page loads mid-section
-    handleScroll()
-
-    return () => window.removeEventListener("scroll", handleScroll)
+    return () => ctx.revert()
   }, [reduce])
 
-  // Column i activates when progress passes i × 20 %.
-  // At progress = 0: only column 0 is active (first step always lit on enter).
-  // At progress ≥ 0.8: all five are active.
-  const activeCount = reduce ? 5 : Math.min(5, Math.floor(progress / 0.2) + 1)
+  const displayedActiveCount = reduce ? 5 : activeCount
 
   return (
     <>
@@ -94,7 +95,7 @@ export default function ProcessTeaser() {
         style={{ minHeight: "500vh" }}
         aria-label="Our process in five steps"
       >
-        <div className="sticky top-0 w-full h-screen flex flex-col overflow-hidden bg-[var(--color-cream-50)]">
+        <div className="sticky top-0 w-full h-screen flex flex-col overflow-hidden bg-[var(--color-white-50)]">
 
           {/* Header row — top 25 % of viewport, eyebrow + heading only */}
           <div
@@ -106,8 +107,8 @@ export default function ProcessTeaser() {
           >
             <div>
               <p className="eyebrow text-[var(--color-ash-400)] mb-3">The Process</p>
-              <h2 className="text-display-md text-[var(--color-navy-900)]">
-                Five steps, one week.
+              <h2 className="text-display-md text-[var(--color-midnight-900)]">
+                Five steps to a quieter front desk.
               </h2>
             </div>
           </div>
@@ -118,36 +119,20 @@ export default function ProcessTeaser() {
               <DesktopColumn
                 key={step.number}
                 step={step}
-                isActive={i < activeCount}
+                isActive={i < displayedActiveCount}
                 showDivider={i > 0}
               />
             ))}
           </div>
 
-          {/* CTA row — centered button, sits above the progress bar */}
+          {/* CTA row */}
           <div
             className="shrink-0 flex justify-center items-center"
             style={{ paddingTop: "2rem", paddingBottom: "2.75rem" }}
           >
-            <Link href="/process" className="btn-primary">
-              Full process details →
-            </Link>
-          </div>
-
-          {/* Progress bar — 2 px at very bottom edge */}
-          <div
-            className="absolute bottom-0 left-0 right-0"
-            style={{ height: "2px", backgroundColor: "var(--color-ash-300)", opacity: 0.4 }}
-            aria-hidden="true"
-          >
-            <div
-              style={{
-                height: "100%",
-                width: `${progress * 100}%`,
-                backgroundColor: "var(--color-electric-500)",
-                transition: "width 0.06s linear",
-              }}
-            />
+            <Button asChild variant="black">
+              <Link href="/process">Full process details →</Link>
+            </Button>
           </div>
 
         </div>
@@ -155,14 +140,14 @@ export default function ProcessTeaser() {
 
       {/* ── Mobile: vertical list, IntersectionObserver fade-up ─────────── */}
       <section
-        className="md:hidden bg-[var(--color-cream-50)] section-py"
+        className="md:hidden bg-[var(--color-white-50)] section-py"
         aria-label="Our process in five steps"
       >
         <div className="container-x">
           <div className="mb-10">
             <p className="eyebrow text-[var(--color-ash-400)] mb-3">The Process</p>
-            <h2 className="text-display-md text-[var(--color-navy-900)]">
-              Five steps, one week.
+            <h2 className="text-display-md text-[var(--color-midnight-900)]">
+              Five steps to a quieter front desk.
             </h2>
           </div>
 
@@ -175,7 +160,7 @@ export default function ProcessTeaser() {
           <div className="mt-10">
             <Link
               href="/process"
-              className="font-ui text-sm text-[var(--color-navy-900)]/50 hover:text-[var(--color-navy-900)] underline underline-offset-4 transition-colors duration-200"
+              className="font-ui text-sm text-[var(--color-midnight-900)]/50 hover:text-[var(--color-midnight-900)] underline underline-offset-4 transition-colors duration-200"
             >
               Full process details →
             </Link>
@@ -206,7 +191,7 @@ function DesktopColumn({
       className="flex-1 flex flex-col justify-start overflow-hidden"
       style={{
         borderLeft: showDivider ? "1px solid rgba(155, 170, 189, 0.55)" : "none",
-        backgroundColor: isActive ? "rgba(26,109,206,0.038)" : "var(--color-cream-50)",
+        backgroundColor: isActive ? "rgba(26,109,206,0.038)" : "var(--color-white-50)",
         transition: `background-color ${dur.bg} ${ease}`,
         padding: "2.5rem 1.75rem 2rem",
       }}
@@ -255,7 +240,7 @@ function DesktopColumn({
             fontSize: "clamp(1.125rem, 1.6vw, 1.5rem)",
             lineHeight: 1.2,
             letterSpacing: "-0.02em",
-            color: "var(--color-navy-900)",
+            color: "var(--color-midnight-900)",
             opacity: isActive ? 1 : 0.18,
             transition: `opacity ${dur.title} ${ease}`,
             marginBottom: "0.65rem",
@@ -323,7 +308,7 @@ function MobileStep({
           {step.detail}
         </span>
         <h3
-          className="text-[var(--color-navy-900)] leading-snug mb-3"
+          className="text-[var(--color-midnight-900)] leading-snug mb-3"
           style={{
             fontFamily: "var(--font-display)",
             fontWeight: 600,

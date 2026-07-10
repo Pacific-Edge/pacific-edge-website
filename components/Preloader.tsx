@@ -4,7 +4,7 @@ import { useEffect, useState } from "react"
 import { AnimatePresence, motion } from "framer-motion"
 import { EASE_OUT } from "@/lib/motion"
 
-/* Thin navy overlay that covers the initial paint until fonts settle.
+/* Thin midnight overlay that covers the initial paint until fonts settle.
    Scroll locking is owned entirely by the Hero component — this overlay
    is visual only and must not touch document.body/html overflow. */
 export default function Preloader() {
@@ -33,7 +33,7 @@ export default function Preloader() {
         <motion.div
           key="preloader"
           className="fixed inset-0 z-[9999] pointer-events-none"
-          style={{ background: "var(--color-navy-900)" }}
+          style={{ background: "var(--color-midnight-900)" }}
           exit={{ opacity: 0 }}
           transition={{ duration: 0.4, ease: EASE_OUT }}
           aria-hidden="true"

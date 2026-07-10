@@ -20,7 +20,7 @@ export const metadata = rootMetadata
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en" className={`${syne.variable} ${dmSans.variable}`}>
-      <body className="bg-cream-50 text-navy-900 antialiased">{children}</body>
+      <body className="bg-white-50 text-midnight-900 antialiased">{children}</body>
     </html>
   )
 }

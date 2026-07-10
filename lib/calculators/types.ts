@@ -1,9 +1,4 @@
-export type CalculatorIndustry =
-  | "dental"
-  | "restaurants"
-  | "salons"
-  | "trades"
-  | "retail"
+export type CalculatorIndustry = "dental"
 
 export type SelectOption = {
   value: string

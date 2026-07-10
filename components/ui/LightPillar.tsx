@@ -25,6 +25,7 @@ export interface LightPillarProps {
   mixBlendMode?: React.CSSProperties["mixBlendMode"]
   pillarRotation?: number
   quality?: LightPillarQuality
+  pauseWhenOffscreen?: boolean
 }
 
 interface QualitySettings {
@@ -60,7 +61,8 @@ export default function LightPillar({
   noiseIntensity = 0.5,
   mixBlendMode = "screen",
   pillarRotation = 45,
-  quality = "high",
+  quality = "medium",
+  pauseWhenOffscreen = true,
 }: LightPillarProps) {
   const containerRef = useRef<HTMLDivElement>(null)
   const rafRef = useRef<number | null>(null)
@@ -72,16 +74,28 @@ export default function LightPillar({
   const mouseRef = useRef(new THREE.Vector2(0, 0))
   const timeRef = useRef(0)
   const rotationSpeedRef = useRef(rotationSpeed)
-  const [webGLSupported, setWebGLSupported] = useState(true)
+  const visibleRef = useRef(true)
+  const runningRef = useRef(false)
+  const [webGLSupported, setWebGLSupported] = useState(() => {
+    if (typeof window === "undefined") return true
+    const canvas = document.createElement("canvas")
+    return Boolean(canvas.getContext("webgl") || canvas.getContext("experimental-webgl"))
+  })
+  const [reducedMotion, setReducedMotion] = useState(() =>
+    typeof window !== "undefined" && window.matchMedia("(prefers-reduced-motion: reduce)").matches
+  )
 
   useEffect(() => {
-    const canvas = document.createElement("canvas")
-    const gl = canvas.getContext("webgl") || canvas.getContext("experimental-webgl")
-    if (!gl) setWebGLSupported(false)
+    const mq = window.matchMedia("(prefers-reduced-motion: reduce)")
+    const updateReducedMotion = () => {
+      setReducedMotion(mq.matches)
+    }
+    mq.addEventListener("change", updateReducedMotion)
+    return () => mq.removeEventListener("change", updateReducedMotion)
   }, [])
 
   useEffect(() => {
-    if (!containerRef.current || !webGLSupported) return
+    if (!containerRef.current || !webGLSupported || reducedMotion) return
 
     const container = containerRef.current
     const width = container.clientWidth
@@ -112,7 +126,7 @@ export default function LightPillar({
         depth: false,
       })
     } catch {
-      setWebGLSupported(false)
+      queueMicrotask(() => setWebGLSupported(false))
       return
     }
 
@@ -277,6 +291,12 @@ export default function LightPillar({
     const targetFPS = effectiveQuality === "low" ? 30 : 60
     const frameTime = 1000 / targetFPS
 
+    const stopLoop = () => {
+      if (rafRef.current) cancelAnimationFrame(rafRef.current)
+      rafRef.current = null
+      runningRef.current = false
+    }
+
     const animate = (currentTime: number) => {
       if (!materialRef.current || !rendererRef.current || !sceneRef.current || !cameraRef.current) return
 
@@ -294,7 +314,28 @@ export default function LightPillar({
 
       rafRef.current = requestAnimationFrame(animate)
     }
-    rafRef.current = requestAnimationFrame(animate)
+
+    const startLoop = () => {
+      if (runningRef.current) return
+      runningRef.current = true
+      lastTime = performance.now()
+      rafRef.current = requestAnimationFrame(animate)
+    }
+
+    startLoop()
+
+    let observer: IntersectionObserver | null = null
+    if (pauseWhenOffscreen) {
+      observer = new IntersectionObserver(
+        ([entry]) => {
+          visibleRef.current = entry.isIntersecting
+          if (entry.isIntersecting) startLoop()
+          else stopLoop()
+        },
+        { threshold: 0.01 }
+      )
+      observer.observe(container)
+    }
 
     let resizeTimeout: number | null = null
     const handleResize = () => {
@@ -312,11 +353,12 @@ export default function LightPillar({
     window.addEventListener("resize", handleResize, { passive: true })
 
     return () => {
+      observer?.disconnect()
       window.removeEventListener("resize", handleResize)
       if (interactive) {
         container.removeEventListener("mousemove", handleMouseMove)
       }
-      if (rafRef.current) cancelAnimationFrame(rafRef.current)
+      stopLoop()
       if (rendererRef.current) {
         rendererRef.current.dispose()
         rendererRef.current.forceContextLoss()
@@ -335,7 +377,7 @@ export default function LightPillar({
       rafRef.current = null
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [webGLSupported, quality])
+  }, [webGLSupported, reducedMotion, quality, pauseWhenOffscreen])
 
   useEffect(() => {
     rotationSpeedRef.current = rotationSpeed
@@ -390,14 +432,16 @@ export default function LightPillar({
     materialRef.current.uniforms.uPillarRotSin.value = Math.sin(pillarRotRad)
   }, [pillarRotation])
 
-  if (!webGLSupported) {
+  if (!webGLSupported || reducedMotion) {
     return (
       <div
-        className={`w-full h-full absolute top-0 left-0 flex items-center justify-center bg-black/10 text-gray-500 text-sm ${className}`}
-        style={{ mixBlendMode }}
-      >
-        WebGL not supported
-      </div>
+        className={`w-full h-full absolute top-0 left-0 ${className}`}
+        style={{
+          mixBlendMode,
+          background: `radial-gradient(ellipse at 50% 42%, ${bottomColor}55 0%, ${topColor}28 30%, transparent 68%)`,
+        }}
+        aria-hidden="true"
+      />
     )
   }
 

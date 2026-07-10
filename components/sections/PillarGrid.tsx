@@ -31,7 +31,7 @@ export default function PillarGrid({ pillars }: { pillars: readonly Pillar[] }) 
         <motion.article
           key={pillar.title}
           variants={item}
-          className="rounded-xl border border-ash-300/40 bg-cream-50 p-8 shadow-soft"
+          className="rounded-xl border border-ash-300/40 bg-white-50 p-8 shadow-soft"
         >
           <span
             className="font-display font-bold text-electric-500 block mb-4"
@@ -40,10 +40,10 @@ export default function PillarGrid({ pillars }: { pillars: readonly Pillar[] }) 
           >
             {String(i + 1).padStart(2, "0")}
           </span>
-          <h2 className="font-display text-xl font-semibold text-navy-900 mb-2">
+          <h2 className="font-display text-xl font-semibold text-midnight-900 mb-2">
             {pillar.title}
           </h2>
-          <p className="font-ui text-sm text-navy-900/60 leading-relaxed">{pillar.description}</p>
+          <p className="font-ui text-sm text-midnight-900/60 leading-relaxed">{pillar.description}</p>
         </motion.article>
       ))}
     </motion.div>

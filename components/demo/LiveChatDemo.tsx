@@ -37,7 +37,7 @@ function TypingIndicator() {
       {[0, 1, 2].map((i) => (
         <span
           key={i}
-          className="h-1.5 w-1.5 rounded-full bg-navy-900/35 animate-pulse"
+          className="h-1.5 w-1.5 rounded-full bg-midnight-900/35 animate-pulse"
           style={{ animationDelay: `${i * 150}ms` }}
         />
       ))}
@@ -130,14 +130,14 @@ export default function LiveChatDemo({
 
         <div className={PHONE_SCREEN_CLASS}>
           <div className="flex shrink-0 items-center gap-3 border-b border-ash-300/30 px-4 py-3 pt-7">
-            <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-navy-900 font-display text-sm font-bold text-cream-50">
+            <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-midnight-900 font-display text-sm font-bold text-white-50">
               {businessName.charAt(0)}
             </div>
             <div className="min-w-0">
-              <p className="truncate font-ui text-sm font-medium text-navy-900">
+              <p className="truncate font-ui text-sm font-medium text-midnight-900">
                 {businessName}
               </p>
-              <p className="font-ui text-[11px] text-navy-900/45">Online now</p>
+              <p className="font-ui text-[11px] text-midnight-900/45">Online now</p>
             </div>
           </div>
 
@@ -152,7 +152,7 @@ export default function LiveChatDemo({
                 return (
                   <p
                     key={msg.id}
-                    className="text-center font-ui text-[10px] uppercase tracking-wide text-navy-900/35"
+                    className="text-center font-ui text-[10px] uppercase tracking-wide text-midnight-900/35"
                   >
                     {msg.text}
                   </p>
@@ -162,7 +162,7 @@ export default function LiveChatDemo({
                 return (
                   <p
                     key={msg.id}
-                    className="mx-2 rounded-lg border border-ash-400/30 bg-ash-400/10 px-3 py-2 text-center font-ui text-[11px] leading-snug text-navy-800"
+                    className="mx-2 rounded-lg border border-ash-400/30 bg-ash-400/10 px-3 py-2 text-center font-ui text-[11px] leading-snug text-midnight-800"
                   >
                     {msg.text}
                   </p>
@@ -193,7 +193,7 @@ export default function LiveChatDemo({
                 type="button"
                 disabled={sending}
                 onClick={() => void sendMessage(chip.message)}
-                className="rounded-pill border border-ash-300/50 bg-cream-50 px-2.5 py-1 font-ui text-[11px] text-navy-800 transition-colors hover:border-navy-900/25 hover:bg-cream-100 disabled:opacity-50"
+                className="rounded-pill border border-ash-300/50 bg-white-50 px-2.5 py-1 font-ui text-[11px] text-midnight-800 transition-colors hover:border-midnight-900/25 hover:bg-white-100 disabled:opacity-50"
               >
                 {chip.label}
               </button>
@@ -217,13 +217,13 @@ export default function LiveChatDemo({
               placeholder="Type a message…"
               maxLength={160}
               disabled={sending}
-              className="min-w-0 flex-1 rounded-lg border border-ash-300/40 bg-cream-100 px-3 py-2.5 font-ui text-sm text-navy-900 placeholder:text-navy-900/35 focus:border-navy-900/30 focus:outline-none disabled:opacity-60"
+              className="min-w-0 flex-1 rounded-lg border border-ash-300/40 bg-white-100 px-3 py-2.5 font-ui text-sm text-midnight-900 placeholder:text-midnight-900/35 focus:border-midnight-900/30 focus:outline-none disabled:opacity-60"
             />
             <button
               type="submit"
               disabled={sending || !input.trim()}
               aria-label="Send message"
-              className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-navy-900 font-ui text-cream-50 transition-opacity hover:opacity-90 disabled:opacity-40"
+              className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-midnight-900 font-ui text-white-50 transition-opacity hover:opacity-90 disabled:opacity-40"
             >
               →
             </button>

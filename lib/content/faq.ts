@@ -25,9 +25,9 @@ export const SITE_FAQ: FaqItem[] = [
       "Your first month is free. After that, engagements run an initial six months, long enough to prove ROI. Then month-to-month, scale up, or part ways with full handover docs.",
   },
   {
-    question: "Will this actually work for my industry?",
+    question: "Will this work for our clinic?",
     answer:
-      "If your business relies on appointments, customer communication, or online reviews, the answer is almost certainly yes. We work with hospitality, wellness, trades, retail, and clinics.",
+      "If your practice relies on appointments, patient communication, or online reviews, the answer is almost certainly yes. We build around dental clinics and the tools you already use.",
   },
   {
     question: "Will my data be safe?",

@@ -49,9 +49,9 @@ export default function Accordion({ items, allowMultiple = false }: AccordionPro
                 aria-expanded={isOpen}
                 aria-controls={panelId}
                 onClick={() => toggle(item.id)}
-                className="flex w-full items-center justify-between gap-4 py-6 text-left focus:outline-none focus-visible:ring-2 focus-visible:ring-navy-900/30 rounded-sm"
+                className="flex w-full items-center justify-between gap-4 py-6 text-left focus:outline-none focus-visible:ring-2 focus-visible:ring-midnight-900/30 rounded-sm"
               >
-                <span className="font-display text-lg sm:text-xl font-semibold text-navy-900 leading-snug">
+                <span className="font-display text-lg sm:text-xl font-semibold text-midnight-900 leading-snug">
                   {item.question}
                 </span>
                 <span
@@ -78,7 +78,7 @@ export default function Accordion({ items, allowMultiple = false }: AccordionPro
               }
               className="overflow-hidden"
             >
-              <p className="font-ui text-sm sm:text-base text-navy-900/60 leading-relaxed pb-6 pr-12">
+              <p className="font-ui text-sm sm:text-base text-midnight-900/60 leading-relaxed pb-6 pr-12">
                 {item.answer}
               </p>
             </motion.div>

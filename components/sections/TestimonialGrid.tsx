@@ -28,16 +28,16 @@ export default function TestimonialGrid({ testimonials }: { testimonials: Testim
         <motion.blockquote
           key={t.name}
           variants={item}
-          className="flex flex-col rounded-xl border border-ash-300/40 bg-cream-50 p-8 shadow-soft"
+          className="flex flex-col rounded-xl border border-ash-300/40 bg-white-50 p-8 shadow-soft"
         >
           <Quote className="w-8 h-8 text-ash-400 mb-6 shrink-0" aria-hidden="true" />
-          <p className="font-ui text-base text-navy-900/80 leading-relaxed flex-1 mb-8">
+          <p className="font-ui text-base text-midnight-900/80 leading-relaxed flex-1 mb-8">
             &ldquo;{t.quote}&rdquo;
           </p>
           <footer>
             <cite className="not-italic">
-              <p className="font-display font-semibold text-navy-900">{t.name}</p>
-              <p className="font-ui text-sm text-navy-900/50 mt-1">
+              <p className="font-display font-semibold text-midnight-900">{t.name}</p>
+              <p className="font-ui text-sm text-midnight-900/50 mt-1">
                 {t.business} · {t.industry}
               </p>
             </cite>

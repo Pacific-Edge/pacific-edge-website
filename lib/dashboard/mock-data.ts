@@ -63,9 +63,9 @@ const BASE: Record<Exclude<DashboardIndustry, "all">, ClientDashboardData> = {
         statusClass: "ok",
         messages: [
           { from: "customer", text: "Table for 4 tonight around 7?" },
-          { from: "janice", text: "We have 7:15 for 4, book it?", meta: "Auto · 19s" },
+          { from: "assistant", text: "We have 7:15 for 4, book it?", meta: "Auto · 19s" },
           { from: "customer", text: "Yes please" },
-          { from: "janice", text: "Booked for 7:15, party of 4!" },
+          { from: "assistant", text: "Booked for 7:15, party of 4!" },
           { from: "customer", text: "Perfect, see you at 7:15!" },
         ],
       },
@@ -79,11 +79,11 @@ const BASE: Record<Exclude<DashboardIndustry, "all">, ClientDashboardData> = {
         status: "Booked",
         statusClass: "ok",
         messages: [
-          { from: "janice", text: "Sorry we missed your call. How can we help?" },
+          { from: "assistant", text: "Sorry we missed your call. How can we help?" },
           { from: "customer", text: "Table for 2 Friday" },
-          { from: "janice", text: "Friday 6:30 for 2, book it?" },
+          { from: "assistant", text: "Friday 6:30 for 2, book it?" },
           { from: "customer", text: "Yes please, book it" },
-          { from: "janice", text: "Done! Friday 6:30, party of 2." },
+          { from: "assistant", text: "Done! Friday 6:30, party of 2." },
         ],
       },
       {
@@ -98,7 +98,7 @@ const BASE: Record<Exclude<DashboardIndustry, "all">, ClientDashboardData> = {
         messages: [
           { from: "customer", text: "Do you do private events?" },
           {
-            from: "janice",
+            from: "assistant",
             text: "We do! For 20+ our manager tailors a menu. I have flagged this for the team.",
             meta: "Auto · 22s",
           },
@@ -227,9 +227,9 @@ const BASE: Record<Exclude<DashboardIndustry, "all">, ClientDashboardData> = {
         statusClass: "ok",
         messages: [
           { from: "customer", text: "Any openings for balayage this weekend?" },
-          { from: "janice", text: "Saturday 1:30 with Alexa, ~2.5 hrs. Book it?", meta: "Auto · 22s" },
+          { from: "assistant", text: "Saturday 1:30 with Alexa, ~2.5 hrs. Book it?", meta: "Auto · 22s" },
           { from: "customer", text: "Yes book me in!" },
-          { from: "janice", text: "Booked! Saturday 1:30 with Alexa." },
+          { from: "assistant", text: "Booked! Saturday 1:30 with Alexa." },
         ],
       },
       {
@@ -242,9 +242,9 @@ const BASE: Record<Exclude<DashboardIndustry, "all">, ClientDashboardData> = {
         status: "Confirmed",
         statusClass: "ok",
         messages: [
-          { from: "janice", text: "Reminder: colour & cut tomorrow 11 AM. Reply C." },
+          { from: "assistant", text: "Reminder: colour & cut tomorrow 11 AM. Reply C." },
           { from: "customer", text: "C" },
-          { from: "janice", text: "Confirmed! See you at 11." },
+          { from: "assistant", text: "Confirmed! See you at 11." },
         ],
       },
       {
@@ -258,7 +258,7 @@ const BASE: Record<Exclude<DashboardIndustry, "all">, ClientDashboardData> = {
         statusClass: "ok",
         messages: [
           { from: "customer", text: "How much for partial highlights?" },
-          { from: "janice", text: "Partial highlights start at $160. Want me to find a time?", meta: "Auto · 18s" },
+          { from: "assistant", text: "Partial highlights start at $160. Want me to find a time?", meta: "Auto · 18s" },
         ],
       },
     ],
@@ -386,12 +386,12 @@ const BASE: Record<Exclude<DashboardIndustry, "all">, ClientDashboardData> = {
         messages: [
           { from: "customer", text: "Water heater is leaking, can someone come today?" },
           {
-            from: "janice",
+            from: "assistant",
             text: "Sorry to hear that! Tech can come 4-6 PM today. Lock it in?",
             meta: "Auto · 16s",
           },
           { from: "customer", text: "Yes that works, thank you" },
-          { from: "janice", text: "Booked! Mike will text when on the way. Address?" },
+          { from: "assistant", text: "Booked! Mike will text when on the way. Address?" },
         ],
       },
       {
@@ -404,9 +404,9 @@ const BASE: Record<Exclude<DashboardIndustry, "all">, ClientDashboardData> = {
         status: "Accepted",
         statusClass: "ok",
         messages: [
-          { from: "janice", text: "Following up on your panel upgrade quote ($2,400). Questions?" },
+          { from: "assistant", text: "Following up on your panel upgrade quote ($2,400). Questions?" },
           { from: "customer", text: "Sounds good, go ahead" },
-          { from: "janice", text: "Great! Booked Tuesday 9 AM." },
+          { from: "assistant", text: "Great! Booked Tuesday 9 AM." },
         ],
       },
       {
@@ -420,7 +420,7 @@ const BASE: Record<Exclude<DashboardIndustry, "all">, ClientDashboardData> = {
         statusClass: "ok",
         messages: [
           { from: "customer", text: "How soon for a clogged drain?" },
-          { from: "janice", text: "We have tomorrow 8 AM. Book it?", meta: "Auto · 20s" },
+          { from: "assistant", text: "We have tomorrow 8 AM. Book it?", meta: "Auto · 20s" },
         ],
       },
     ],
@@ -544,9 +544,9 @@ const BASE: Record<Exclude<DashboardIndustry, "all">, ClientDashboardData> = {
         statusClass: "ok",
         messages: [
           { from: "customer", text: "Still have the olive linen jacket in a medium?" },
-          { from: "janice", text: "We do! Hold it at the counter til tomorrow?", meta: "Auto · 18s" },
+          { from: "assistant", text: "We do! Hold it at the counter til tomorrow?", meta: "Auto · 18s" },
           { from: "customer", text: "Yes please" },
-          { from: "janice", text: "Holding 1 olive linen (M) til 6 PM tomorrow." },
+          { from: "assistant", text: "Holding 1 olive linen (M) til 6 PM tomorrow." },
           { from: "customer", text: "Amazing, thank you!" },
         ],
       },
@@ -561,7 +561,7 @@ const BASE: Record<Exclude<DashboardIndustry, "all">, ClientDashboardData> = {
         statusClass: "ok",
         messages: [
           { from: "customer", text: "Do you do personal shopping?" },
-          { from: "janice", text: "We do! Saturday 11 AM with our stylist. Book it?", meta: "Auto · 21s" },
+          { from: "assistant", text: "We do! Saturday 11 AM with our stylist. Book it?", meta: "Auto · 21s" },
           { from: "customer", text: "Perfect, see you Sat" },
         ],
       },
@@ -576,7 +576,7 @@ const BASE: Record<Exclude<DashboardIndustry, "all">, ClientDashboardData> = {
         statusClass: "ok",
         messages: [
           { from: "customer", text: "What are your hours Sunday?" },
-          { from: "janice", text: "Sunday 11 AM to 5 PM. Anything you are after?", meta: "Auto · 15s" },
+          { from: "assistant", text: "Sunday 11 AM to 5 PM. Anything you are after?", meta: "Auto · 15s" },
         ],
       },
     ],
@@ -701,12 +701,12 @@ const BASE: Record<Exclude<DashboardIndustry, "all">, ClientDashboardData> = {
         messages: [
           { from: "customer", text: "Do you take new patients? I chipped a tooth." },
           {
-            from: "janice",
+            from: "assistant",
             text: "So sorry! Yes, we have an exam tomorrow 10:40 AM, book it?",
             meta: "Auto · 21s",
           },
           { from: "customer", text: "Yes please, thank you" },
-          { from: "janice", text: "Booked! Tomorrow 10:40 with Dr. Lee. Sending your form." },
+          { from: "assistant", text: "Booked! Tomorrow 10:40 with Dr. Lee. Sending your form." },
         ],
       },
       {
@@ -719,9 +719,9 @@ const BASE: Record<Exclude<DashboardIndustry, "all">, ClientDashboardData> = {
         status: "Confirmed",
         statusClass: "ok",
         messages: [
-          { from: "janice", text: "Reminder: hygiene tomorrow 11 AM. Reply C." },
+          { from: "assistant", text: "Reminder: hygiene tomorrow 11 AM. Reply C." },
           { from: "customer", text: "C" },
-          { from: "janice", text: "Confirmed, see you then!" },
+          { from: "assistant", text: "Confirmed, see you then!" },
         ],
       },
       {
@@ -735,7 +735,7 @@ const BASE: Record<Exclude<DashboardIndustry, "all">, ClientDashboardData> = {
         statusClass: "warn",
         messages: [
           {
-            from: "janice",
+            from: "assistant",
             text: "Hi Priya, you are due for your 6-month cleaning. Openings next week, book one?",
           },
           { from: "customer", text: "Let me check my calendar" },
@@ -868,9 +868,9 @@ function buildAllIndustryData(session: ClientSession): ClientDashboardData {
         statusClass: "ok",
         messages: [
           { from: "customer", text: "Hi! Can I book in this week?" },
-          { from: "janice", text: "We have Thursday 2 PM, want me to book it?", meta: "Auto · 19s" },
+          { from: "assistant", text: "We have Thursday 2 PM, want me to book it?", meta: "Auto · 19s" },
           { from: "customer", text: "Yes please" },
-          { from: "janice", text: "Booked for Thursday 2 PM!" },
+          { from: "assistant", text: "Booked for Thursday 2 PM!" },
           { from: "customer", text: "Perfect, see you then!" },
         ],
       },
@@ -885,7 +885,7 @@ function buildAllIndustryData(session: ClientSession): ClientDashboardData {
         statusClass: "ok",
         messages: [
           { from: "customer", text: "Any openings Saturday?" },
-          { from: "janice", text: "Saturday 1:30 PM is open. Hold it?", meta: "Auto · 24s" },
+          { from: "assistant", text: "Saturday 1:30 PM is open. Hold it?", meta: "Auto · 24s" },
         ],
       },
       {
@@ -898,9 +898,9 @@ function buildAllIndustryData(session: ClientSession): ClientDashboardData {
         status: "Confirmed",
         statusClass: "ok",
         messages: [
-          { from: "janice", text: "Reminder: tomorrow at 2 PM. Reply C to confirm." },
+          { from: "assistant", text: "Reminder: tomorrow at 2 PM. Reply C to confirm." },
           { from: "customer", text: "C" },
-          { from: "janice", text: "Confirmed!" },
+          { from: "assistant", text: "Confirmed!" },
           { from: "customer", text: "Thanks!" },
         ],
       },

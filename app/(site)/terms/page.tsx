@@ -10,15 +10,15 @@ export const metadata = createPageMetadata({
 
 export default function TermsPage() {
   return (
-    <article className="section-py pt-28 sm:pt-32 bg-cream-50">
+    <article className="section-py pt-28 sm:pt-32 bg-white-50">
       <div className="container-x max-w-3xl">
-        <p className="rounded-xl border border-ash-400/40 bg-ash-400/10 px-5 py-4 font-ui text-sm text-navy-900/80 mb-10">
+        <p className="rounded-xl border border-ash-400/40 bg-ash-400/10 px-5 py-4 font-ui text-sm text-midnight-900/80 mb-10">
           This is a general template. Have a qualified lawyer review before relying on it in
           production.
         </p>
 
-        <h1 className="text-display-md text-navy-900 mb-4">Terms of Service</h1>
-        <p className="font-ui text-sm text-navy-900/50 mb-12">
+        <h1 className="text-display-md text-midnight-900 mb-4">Terms of Service</h1>
+        <p className="font-ui text-sm text-midnight-900/50 mb-12">
           Last updated: July 8, 2026 · Pacific Edge AI · Vancouver, British Columbia, Canada
         </p>
 
@@ -118,7 +118,7 @@ export default function TermsPage() {
         <LegalSection title="12. Contact">
           <p>
             Questions about these terms:{" "}
-            <a href={`mailto:${SITE_CONTACT.email}`} className="text-navy-700 underline">
+            <a href={`mailto:${SITE_CONTACT.email}`} className="text-midnight-700 underline">
               {SITE_CONTACT.email}
             </a>
             . {SITE_CONTACT.location}.
@@ -126,7 +126,7 @@ export default function TermsPage() {
         </LegalSection>
 
         <div className="mt-12 pt-8 border-t border-ash-300/40">
-          <Link href="/privacy" className="font-ui text-sm text-navy-900/55 hover:text-navy-900 underline">
+          <Link href="/privacy" className="font-ui text-sm text-midnight-900/55 hover:text-midnight-900 underline">
             Privacy Policy
           </Link>
         </div>
@@ -138,8 +138,8 @@ export default function TermsPage() {
 function LegalSection({ title, children }: { title: string; children: React.ReactNode }) {
   return (
     <section className="mb-10">
-      <h2 className="font-display text-xl text-navy-900 mb-3">{title}</h2>
-      <div className="font-ui text-sm text-navy-900/70 leading-relaxed space-y-3 [&_ul]:list-disc [&_ul]:pl-5 [&_ul]:space-y-1">
+      <h2 className="font-display text-xl text-midnight-900 mb-3">{title}</h2>
+      <div className="font-ui text-sm text-midnight-900/70 leading-relaxed space-y-3 [&_ul]:list-disc [&_ul]:pl-5 [&_ul]:space-y-1">
         {children}
       </div>
     </section>
