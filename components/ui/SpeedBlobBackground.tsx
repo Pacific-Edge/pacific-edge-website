@@ -37,7 +37,7 @@ export default function SpeedBlobBackground({ className }: { className?: string 
       delay: 2,
       opacity: 0.22,
     },
-  ] as const
+  ]
 
   return (
     <div

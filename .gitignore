@@ -72,6 +72,3 @@ Thumbs.db
 # graphify (local derived cache — never commit)
 graphify-out/
 raw/
-
-# Cursor
-.cursor/
