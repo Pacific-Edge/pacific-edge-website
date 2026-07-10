@@ -29,16 +29,16 @@ export default function FaqPage() {
         description="Setup, pricing, cancellation, and what to expect on your first call."
       />
 
-      <section className="section-py bg-cream-50">
+      <section className="section-py bg-white-50">
         <div className="container-x">
           <div className="max-w-3xl mx-auto">
             <Accordion items={faqItems} />
 
-            <p className="font-ui text-sm text-navy-900/50 mt-10 text-center">
+            <p className="font-ui text-sm text-midnight-900/50 mt-10 text-center">
               Still have questions?{" "}
               <Link
                 href={`mailto:${SITE_CONTACT.email}`}
-                className="text-navy-900 underline underline-offset-4 hover:text-navy-700"
+                className="text-midnight-900 underline underline-offset-4 hover:text-midnight-700"
               >
                 {SITE_CONTACT.email}
               </Link>

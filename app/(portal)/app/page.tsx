@@ -21,7 +21,7 @@ export default function AppPage() {
   if (!session) {
     return (
       <div className="min-h-dvh flex items-center justify-center">
-        <p className="font-ui text-sm text-navy-900/50">Loading your dashboard…</p>
+        <p className="font-ui text-sm text-midnight-900/50">Loading your dashboard…</p>
       </div>
     )
   }

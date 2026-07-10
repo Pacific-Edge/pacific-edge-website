@@ -6,6 +6,7 @@ import { useReducedMotion } from "framer-motion"
 import gsap from "gsap"
 import { ScrollTrigger } from "gsap/ScrollTrigger"
 import DashboardMock from "@/components/dashboard/DashboardMock"
+import { Button } from "@/components/ui/button"
 
 if (typeof window !== "undefined") {
   gsap.registerPlugin(ScrollTrigger)
@@ -180,11 +181,11 @@ export default function ProductGlimpse() {
   /* Reduced-motion / mobile fallback: static layout, everything visible. */
   if (reduce || isMobile) {
     return (
-      <section className="section-py bg-cream-50">
+      <section className="section-py bg-white-50">
         <div className="container-x">
-          <div className="mb-12 lg:mb-16">
+          <div className="mb-8 lg:mb-12">
             <h2
-              className="text-navy-900 max-w-xl"
+              className="text-midnight-900 max-w-xl"
               style={{
                 fontFamily: "var(--font-display)",
                 fontWeight: 700,
@@ -193,19 +194,18 @@ export default function ProductGlimpse() {
                 lineHeight: 1.1,
               }}
             >
-              Your business, at a glance.
+              All appointments, managed with ease.
             </h2>
             <div className="mt-6">
-              <Link
-                href="/dashboard"
-                className="group inline-flex items-center gap-2 font-ui text-sm font-medium px-6 py-3 rounded-full border border-navy-900/20 text-navy-900/70 hover:text-navy-900 hover:border-navy-900/50 hover:bg-navy-900/5 transition-all duration-300"
-              >
-                See the full dashboard
-                <span className="inline-block transition-transform duration-300 group-hover:translate-x-1">→</span>
-              </Link>
+              <Button asChild variant="transparent" tone="dark" size="sm" className="group gap-2">
+                <Link href="/dashboard">
+                  See the full dashboard
+                  <span className="inline-block transition-transform duration-300 group-hover:translate-x-1">→</span>
+                </Link>
+              </Button>
             </div>
           </div>
-          <DashboardMock />
+          <DashboardMock industry="dental" />
         </div>
       </section>
     )
@@ -214,7 +214,7 @@ export default function ProductGlimpse() {
   return (
     <section
       ref={sectionRef}
-      className="relative bg-cream-50 h-screen overflow-hidden"
+      className="relative bg-white-50 h-screen overflow-hidden"
       aria-label="Dashboard preview"
     >
       <div className="relative h-full w-full">
@@ -237,7 +237,7 @@ export default function ProductGlimpse() {
                 ref={eyebrowRef}
                 className="eyebrow text-ash-400 absolute left-1/2 -translate-x-1/2 -top-7 whitespace-nowrap"
               >
-                The Dashboard
+                Your clinic dashboard
               </p>
               <h2
                 className="text-gradient-electric-animated text-center"
@@ -250,7 +250,7 @@ export default function ProductGlimpse() {
                   whiteSpace:    "nowrap",
                 }}
               >
-                Your business, at a glance.
+                All appointments, managed with ease.
               </h2>
             </div>
 
@@ -261,13 +261,12 @@ export default function ProductGlimpse() {
               className="mt-3 will-change-[opacity]"
               style={{ pointerEvents: "auto" }}
             >
-              <Link
-                href="/dashboard"
-                className="group inline-flex items-center gap-2 font-ui text-sm font-medium px-6 py-3 rounded-full border border-navy-900/20 text-navy-900/70 hover:text-navy-900 hover:border-navy-900/50 hover:bg-navy-900/5 transition-all duration-300"
-              >
-                See the full dashboard
-                <span className="inline-block transition-transform duration-300 group-hover:translate-x-1">→</span>
-              </Link>
+              <Button asChild variant="transparent" tone="dark" size="sm" className="group gap-2">
+                <Link href="/dashboard">
+                  See the full dashboard
+                  <span className="inline-block transition-transform duration-300 group-hover:translate-x-1">→</span>
+                </Link>
+              </Button>
             </div>
           </div>
         </div>
@@ -284,7 +283,7 @@ export default function ProductGlimpse() {
           }}
         >
           <div className="mx-auto h-full max-w-5xl px-4 sm:px-6 lg:px-12 overflow-hidden">
-            <DashboardMock />
+            <DashboardMock industry="dental" />
           </div>
         </div>
 

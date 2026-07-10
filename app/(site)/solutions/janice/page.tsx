@@ -10,6 +10,7 @@ import {
   Globe,
 } from "lucide-react"
 import LiveChatDemo from "@/components/demo/LiveChatDemo"
+import { Button } from "@/components/ui/button"
 import { createPageMetadata } from "@/lib/seo/metadata"
 
 export const metadata = createPageMetadata({
@@ -63,7 +64,7 @@ const CHANNELS = [
 const FAQ = [
   {
     q: "Does this replace my receptionist?",
-    a: "No. We are not building an AI receptionist. The platform is designed to help your front desk team work faster, keep the schedule full, and spend less time on repetitive coordination.",
+    a: "No. The platform is designed to help your front desk team work faster, keep the schedule full, and spend less time on repetitive coordination.",
   },
   {
     q: "Will patient messages sound robotic?",
@@ -83,28 +84,28 @@ export default function JanicePage() {
   return (
     <>
       {/* Hero */}
-      <section className="section-py pt-28 sm:pt-32 bg-cream-50">
+      <section className="section-py pt-28 sm:pt-32 bg-white-50">
         <div className="container-x">
-          <div className="grid items-center gap-12 lg:grid-cols-2 lg:gap-16 xl:gap-20">
+          <div className="grid items-center gap-8 lg:grid-cols-2 lg:gap-12 xl:gap-14">
             <div className="max-w-xl">
               <p className="eyebrow text-ash-400 mb-4">Product</p>
-              <h1 className="text-display-lg text-navy-900 mb-4">
+              <h1 className="text-display-lg text-midnight-900 mb-4">
                 Software for your front desk.
-                <span className="block text-navy-700">Not a replacement for it.</span>
+                <span className="block text-midnight-700">Not a replacement for it.</span>
               </h1>
-              <p className="font-ui text-sm text-navy-900/55 mb-8 leading-relaxed max-w-md">
+              <p className="font-ui text-sm text-midnight-900/55 mb-8 leading-relaxed max-w-md">
                 Pacific Edge builds a platform around the tools your team already uses: scheduling,
                 waitlists, reminders, and reviews. For dental clinics, we are also developing
                 insurance and payment integrations to simplify coordination between receptionist
                 and patient.
               </p>
               <div className="flex flex-wrap gap-3">
-                <a href="#try-demo" className="btn-primary">
-                  Try the demo
-                </a>
-                <Link href="/contact" className="btn-secondary text-sm">
-                  Book a call
-                </Link>
+                <Button asChild variant="black">
+                  <a href="#try-demo">Try the demo</a>
+                </Button>
+                <Button asChild variant="transparent" tone="dark" size="sm">
+                  <Link href="/contact">Book a call</Link>
+                </Button>
               </div>
             </div>
 
@@ -116,26 +117,26 @@ export default function JanicePage() {
       </section>
 
       {/* Capabilities */}
-      <section className="section-py bg-cream-100/50 border-y border-ash-300/25">
+      <section className="section-py bg-white-100/50 border-y border-ash-300/25">
         <div className="container-x">
-          <div className="max-w-2xl mb-12 lg:mb-16">
+          <div className="max-w-2xl mb-8 lg:mb-12">
             <p className="eyebrow text-ash-500 mb-4">What it does</p>
-            <h2 className="text-display-md text-navy-900">Helps your team, behind the scenes</h2>
+            <h2 className="text-display-md text-midnight-900">Helps your team, behind the scenes</h2>
           </div>
 
           <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
             {CAPABILITIES.map((cap) => (
               <article
                 key={cap.title}
-                className="rounded-xl border border-ash-300/40 bg-cream-50 p-6 shadow-soft transition-shadow hover:shadow-card"
+                className="rounded-xl border border-ash-300/40 bg-white-50 p-6 shadow-soft transition-shadow hover:shadow-card"
               >
-                <div className="mb-4 flex h-10 w-10 items-center justify-center rounded-lg border border-ash-300/40 bg-cream-100 text-navy-800">
+                <div className="mb-4 flex h-10 w-10 items-center justify-center rounded-lg border border-ash-300/40 bg-white-100 text-midnight-800">
                   <cap.icon className="h-5 w-5" strokeWidth={1.75} aria-hidden />
                 </div>
-                <h3 className="font-display text-lg font-semibold text-navy-900 mb-1">
+                <h3 className="font-display text-lg font-semibold text-midnight-900 mb-1">
                   {cap.title}
                 </h3>
-                <p className="font-ui text-sm text-navy-900/50">{cap.label}</p>
+                <p className="font-ui text-sm text-midnight-900/50">{cap.label}</p>
               </article>
             ))}
           </div>
@@ -143,10 +144,10 @@ export default function JanicePage() {
       </section>
 
       {/* Channels */}
-      <section className="section-py bg-cream-50">
+      <section className="section-py bg-white-50">
         <div className="container-x text-center">
           <p className="eyebrow text-ash-400 mb-4">Channels</p>
-          <h2 className="text-display-md text-navy-900 mb-10 lg:mb-14">
+          <h2 className="text-display-md text-midnight-900 mb-10 lg:mb-14">
             One platform, every channel
           </h2>
 
@@ -154,7 +155,7 @@ export default function JanicePage() {
             {CHANNELS.map((ch) => (
               <span
                 key={ch.label}
-                className="inline-flex items-center gap-2 rounded-pill border border-ash-300/50 bg-cream-50 px-4 py-2.5 font-ui text-sm text-navy-800 shadow-soft"
+                className="inline-flex items-center gap-2 rounded-pill border border-ash-300/50 bg-white-50 px-4 py-2.5 font-ui text-sm text-midnight-800 shadow-soft"
               >
                 <ch.icon className="h-4 w-4 text-ash-500" strokeWidth={1.75} aria-hidden />
                 {ch.label}
@@ -165,22 +166,22 @@ export default function JanicePage() {
       </section>
 
       {/* FAQ */}
-      <section className="section-py bg-cream-100/50 border-t border-ash-300/25">
+      <section className="section-py bg-white-100/50 border-t border-ash-300/25">
         <div className="container-x">
           <div className="max-w-2xl mx-auto">
             <p className="eyebrow text-ash-500 mb-4 text-center">FAQ</p>
-            <h2 className="text-display-sm text-navy-900 mb-10 text-center">Common questions</h2>
+            <h2 className="text-display-sm text-midnight-900 mb-10 text-center">Common questions</h2>
 
             <dl className="space-y-6">
               {FAQ.map((item) => (
                 <div
                   key={item.q}
-                  className="rounded-xl border border-ash-300/40 bg-cream-50 px-5 py-5 sm:px-6"
+                  className="rounded-xl border border-ash-300/40 bg-white-50 px-5 py-5 sm:px-6"
                 >
-                  <dt className="font-display text-base font-semibold text-navy-900 mb-2">
+                  <dt className="font-display text-base font-semibold text-midnight-900 mb-2">
                     {item.q}
                   </dt>
-                  <dd className="font-ui text-sm text-navy-900/55 leading-relaxed">{item.a}</dd>
+                  <dd className="font-ui text-sm text-midnight-900/55 leading-relaxed">{item.a}</dd>
                 </div>
               ))}
             </dl>
@@ -189,17 +190,17 @@ export default function JanicePage() {
       </section>
 
       {/* CTA */}
-      <section className="section-py bg-navy-900">
+      <section className="section-py bg-midnight-900">
         <div className="container-x text-center">
-          <h2 className="text-display-sm text-cream-50 mb-4">
+          <h2 className="text-display-sm text-white-50 mb-4">
             Ready to see it on your tools?
           </h2>
-          <p className="font-ui text-sm text-cream-50/60 mb-8 max-w-md mx-auto">
+          <p className="font-ui text-sm text-white-50/60 mb-8 max-w-md mx-auto">
             Book a 15-minute call. We map your workflow and show you how the platform fits your team.
           </p>
-          <Link href="/contact" className="btn-primary bg-cream-50 text-navy-900 hover:bg-cream-100">
-            Book a call
-          </Link>
+          <Button asChild variant="white">
+            <Link href="/contact">Book a call</Link>
+          </Button>
         </div>
       </section>
     </>

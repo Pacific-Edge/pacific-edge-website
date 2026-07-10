@@ -1,10 +1,10 @@
 import type { StatusClass } from "@/lib/dashboard/types"
 
 const STATUS_STYLES: Record<StatusClass, string> = {
-  ok: "text-navy-700 bg-navy-900/8 border-navy-900/15",
+  ok: "text-midnight-700 bg-midnight-900/8 border-midnight-900/15",
   warn: "text-amber-800 bg-amber-500/10 border-amber-500/25",
   new: "text-orange-800 bg-orange-500/10 border-orange-500/25",
-  gold: "text-ash-500 bg-ash-400/15 border-ash-400/30",
+  muted: "text-ash-500 bg-ash-400/15 border-ash-400/30",
 }
 
 export function StatusPill({
@@ -26,7 +26,7 @@ export function StatusPill({
 }
 
 export function valueClassName(token?: string): string {
-  if (token === "mint") return "text-navy-700"
+  if (token === "mint") return "text-midnight-700"
   if (token === "warn") return "text-amber-800"
-  return "text-navy-900"
+  return "text-midnight-900"
 }

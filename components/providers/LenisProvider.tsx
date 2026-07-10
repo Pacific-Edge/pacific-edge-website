@@ -9,6 +9,13 @@ if (typeof window !== "undefined") {
   gsap.registerPlugin(ScrollTrigger)
 }
 
+const SCROLL_CONFIG = {
+  lerp: 0.075,
+  wheelMultiplier: 0.82,
+  touchMultiplier: 0.88,
+  maxWheelDelta: 90,
+} as const
+
 export default function LenisProvider({ children }: { children: React.ReactNode }) {
   useEffect(() => {
     // Disable browser scroll restoration so every page load starts at the top
@@ -24,27 +31,32 @@ export default function LenisProvider({ children }: { children: React.ReactNode 
     if (reduced) return
 
     const lenis = new Lenis({
-      duration: 1.2,
-      easing: (t: number) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+      lerp: SCROLL_CONFIG.lerp,
+      wheelMultiplier: SCROLL_CONFIG.wheelMultiplier,
+      touchMultiplier: SCROLL_CONFIG.touchMultiplier,
       smoothWheel: true,
-    })
+      virtualScroll: (data: { deltaX: number; deltaY: number }) => {
+        const cap = SCROLL_CONFIG.maxWheelDelta
+        if (Math.abs(data.deltaY) > cap) data.deltaY = Math.sign(data.deltaY) * cap
+        if (Math.abs(data.deltaX) > cap) data.deltaX = Math.sign(data.deltaX) * cap
+        return true
+      },
+    } as ConstructorParameters<typeof Lenis>[0])
 
     // Bridge Lenis → ScrollTrigger so pinned/scrubbed timelines stay in sync
     // with Lenis's smoothed scroll position.
     const onScroll = () => ScrollTrigger.update()
     lenis.on("scroll", onScroll)
 
-    let rafId: number
-
-    function raf(time: number) {
-      lenis.raf(time)
-      rafId = requestAnimationFrame(raf)
+    const tick = (time: number) => {
+      lenis.raf(time * 1000)
     }
 
-    rafId = requestAnimationFrame(raf)
+    gsap.ticker.add(tick)
+    gsap.ticker.lagSmoothing(0)
 
     return () => {
-      cancelAnimationFrame(rafId)
+      gsap.ticker.remove(tick)
       lenis.off("scroll", onScroll)
       lenis.destroy()
     }

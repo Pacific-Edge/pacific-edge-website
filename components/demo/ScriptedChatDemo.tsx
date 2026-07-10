@@ -1,9 +1,10 @@
 "use client"
 
 import { useCallback, useEffect, useRef, useState } from "react"
-import { useReducedMotion } from "framer-motion"
+import { AnimatePresence, motion, useReducedMotion } from "framer-motion"
 import { getScriptedChat } from "@/lib/demo"
 import type { ScriptedBubble } from "@/lib/demo"
+import { EASE_OUT } from "@/lib/motion"
 import {
   BUBBLE_RECEIVED_CLASS,
   BUBBLE_SENT_CLASS,
@@ -18,7 +19,7 @@ import {
 type RenderedBubble =
   | { key: string; kind: "timestamp"; text: string }
   | { key: string; kind: "customer"; text: string; meta?: string }
-  | { key: string; kind: "janice"; text: string; meta?: string }
+  | { key: string; kind: "assistant"; text: string; meta?: string }
   | { key: string; kind: "badge"; text: string }
 
 export type ScriptedChatDemoProps = {
@@ -32,7 +33,7 @@ function TypingIndicator() {
       {[0, 1, 2].map((i) => (
         <span
           key={i}
-          className="h-1.5 w-1.5 rounded-full bg-navy-900/35 animate-pulse"
+          className="h-1.5 w-1.5 rounded-full bg-midnight-900/35 animate-pulse"
           style={{ animationDelay: `${i * 150}ms` }}
         />
       ))}
@@ -46,10 +47,10 @@ function bubbleToRendered(bubble: ScriptedBubble, index: number): RenderedBubble
       return { key: `ts-${index}`, kind: "timestamp", text: bubble.text }
     case "customer":
       return { key: `cust-${index}`, kind: "customer", text: bubble.text, meta: bubble.meta }
-    case "janice":
+    case "assistant":
       return {
         key: `jan-${index}`,
-        kind: "janice",
+        kind: "assistant",
         text: bubble.text,
         meta: bubble.meta,
       }
@@ -71,7 +72,7 @@ export default function ScriptedChatDemo({ industry, className = "" }: ScriptedC
   const script = getScriptedChat(industry)
   const containerRef = useRef<HTMLDivElement>(null)
   const chatRef = useRef<HTMLDivElement>(null)
-  const playedRef = useRef(false)
+  const startedLoopRef = useRef(false)
   const [visible, setVisible] = useState<RenderedBubble[]>([])
   const [typing, setTyping] = useState(false)
   const [started, setStarted] = useState(false)
@@ -86,58 +87,80 @@ export default function ScriptedChatDemo({ industry, className = "" }: ScriptedC
     scrollToBottom()
   }, [visible, typing, scrollToBottom])
 
-  const playScript = useCallback(async () => {
-    if (!script || playedRef.current) return
-    playedRef.current = true
-    setStarted(true)
+  const runLoop = useCallback(
+    async (isCancelled: () => boolean) => {
+      if (!script) return
+      setStarted(true)
 
-    if (reduceMotion) {
-      const all = script.bubbles
-        .map((b, i) => bubbleToRendered(b, i))
-        .filter((b): b is RenderedBubble => b !== null)
-      setVisible(all)
-      return
-    }
-
-    for (let i = 0; i < script.bubbles.length; i++) {
-      const bubble = script.bubbles[i]
-
-      if (bubble.type === "typing") {
-        setTyping(true)
-        await sleep(bubble.durationMs)
-        setTyping(false)
-        await sleep(160)
-        continue
+      if (reduceMotion) {
+        const all = script.bubbles
+          .map((b, i) => bubbleToRendered(b, i))
+          .filter((b): b is RenderedBubble => b !== null)
+        setVisible(all)
+        return
       }
 
-      const delay =
-        bubble.type === "timestamp"
-          ? 0
-          : "delayMs" in bubble
-            ? (bubble.delayMs ?? 260)
-            : 260
+      while (!isCancelled()) {
+        for (let i = 0; i < script.bubbles.length; i++) {
+          if (isCancelled()) return
+          const bubble = script.bubbles[i]
 
-      if (delay > 0) await sleep(delay)
+          if (bubble.type === "typing") {
+            setTyping(true)
+            await sleep(bubble.durationMs)
+            setTyping(false)
+            await sleep(160)
+            continue
+          }
 
-      const rendered = bubbleToRendered(bubble, i)
-      if (rendered) setVisible((prev) => [...prev, rendered])
-    }
-  }, [reduceMotion, script])
+          const delay =
+            bubble.type === "timestamp"
+              ? 0
+              : "delayMs" in bubble
+                ? (bubble.delayMs ?? 450)
+                : 450
+
+          if (delay > 0) await sleep(delay)
+
+          const rendered = bubbleToRendered(bubble, i)
+          if (rendered) setVisible((prev) => [...prev, rendered])
+        }
+
+        if (isCancelled()) return
+        await sleep(4800)
+        if (isCancelled()) return
+        setVisible([])
+        await sleep(700)
+      }
+    },
+    [reduceMotion, script],
+  )
 
   useEffect(() => {
     const el = containerRef.current
     if (!el || !script) return
 
+    let cancelled = false
+    const isCancelled = () => cancelled
+
+    const start = () => {
+      if (startedLoopRef.current) return
+      startedLoopRef.current = true
+      void runLoop(isCancelled)
+    }
+
     if (!("IntersectionObserver" in window)) {
-      void playScript()
-      return
+      queueMicrotask(start)
+      return () => {
+        cancelled = true
+      }
     }
 
     const obs = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
-            void playScript()
+            start()
             obs.unobserve(entry.target)
           }
         })
@@ -146,8 +169,11 @@ export default function ScriptedChatDemo({ industry, className = "" }: ScriptedC
     )
 
     obs.observe(el)
-    return () => obs.disconnect()
-  }, [playScript, script])
+    return () => {
+      cancelled = true
+      obs.disconnect()
+    }
+  }, [runLoop, script])
 
   if (!script) return null
 
@@ -158,14 +184,14 @@ export default function ScriptedChatDemo({ industry, className = "" }: ScriptedC
 
         <div className={PHONE_SCREEN_CLASS}>
           <div className="flex shrink-0 items-center gap-3 border-b border-ash-300/30 px-4 py-3 pt-7">
-            <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-navy-900 font-display text-sm font-bold text-cream-50">
+            <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-midnight-900 font-display text-sm font-bold text-white-50">
               {script.businessName.charAt(0)}
             </div>
             <div className="min-w-0">
-              <p className="truncate font-ui text-sm font-medium text-navy-900">
+              <p className="truncate font-ui text-sm font-medium text-midnight-900">
                 {script.businessName}
               </p>
-              <p className="truncate font-ui text-[11px] text-navy-900/45">{script.headerSub}</p>
+              <p className="truncate font-ui text-[11px] text-midnight-900/45">{script.headerSub}</p>
             </div>
           </div>
 
@@ -176,48 +202,69 @@ export default function ScriptedChatDemo({ industry, className = "" }: ScriptedC
             aria-busy={started && typing}
           >
             {!started && (
-              <p className="text-center font-ui text-[10px] uppercase tracking-wide text-navy-900/35">
-                Scroll to play
+              <p className="text-center font-ui text-[10px] uppercase tracking-wide text-midnight-900/35">
+                Live demo
               </p>
             )}
 
-            {visible.map((msg) => {
-              if (msg.kind === "timestamp") {
+            <AnimatePresence initial={false}>
+              {visible.map((msg) => {
+                if (msg.kind === "timestamp") {
+                  return (
+                    <motion.p
+                      key={msg.key}
+                      initial={{ opacity: 0 }}
+                      animate={{ opacity: 1 }}
+                      transition={{ duration: 0.5, ease: EASE_OUT }}
+                      className="text-center font-ui text-[10px] uppercase tracking-wide text-midnight-900/35"
+                    >
+                      {msg.text}
+                    </motion.p>
+                  )
+                }
+                if (msg.kind === "badge") {
+                  return (
+                    <motion.p
+                      key={msg.key}
+                      initial={{ opacity: 0, y: 6 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      transition={{ duration: 0.5, ease: EASE_OUT }}
+                      className="mx-2 rounded-lg border border-ash-400/30 bg-ash-400/10 px-3 py-2 text-center font-ui text-[11px] leading-snug text-midnight-800"
+                    >
+                      {msg.text}
+                    </motion.p>
+                  )
+                }
+                const isCustomer = msg.kind === "customer"
                 return (
-                  <p
+                  <motion.div
                     key={msg.key}
-                    className="text-center font-ui text-[10px] uppercase tracking-wide text-navy-900/35"
+                    initial={{ opacity: 0, y: 10 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.55, ease: EASE_OUT }}
+                    className={isCustomer ? BUBBLE_SENT_CLASS : BUBBLE_RECEIVED_CLASS}
                   >
                     {msg.text}
-                  </p>
+                    {"meta" in msg && msg.meta ? (
+                      <span className="mt-1 block text-[9px] uppercase tracking-wide opacity-70">
+                        {msg.meta}
+                      </span>
+                    ) : null}
+                  </motion.div>
                 )
-              }
-              if (msg.kind === "badge") {
-                return (
-                  <p
-                    key={msg.key}
-                    className="mx-2 rounded-lg border border-ash-400/30 bg-ash-400/10 px-3 py-2 text-center font-ui text-[11px] leading-snug text-navy-800"
-                  >
-                    {msg.text}
-                  </p>
-                )
-              }
-              const isCustomer = msg.kind === "customer"
-              return (
-                <div
-                  key={msg.key}
-                  className={isCustomer ? BUBBLE_SENT_CLASS : BUBBLE_RECEIVED_CLASS}
+              })}
+              {typing && (
+                <motion.div
+                  key="typing-indicator"
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  exit={{ opacity: 0 }}
+                  transition={{ duration: 0.35, ease: EASE_OUT }}
                 >
-                  {msg.text}
-                  {"meta" in msg && msg.meta ? (
-                    <span className="mt-1 block text-[9px] uppercase tracking-wide opacity-70">
-                      {msg.meta}
-                    </span>
-                  ) : null}
-                </div>
-              )
-            })}
-            {typing && <TypingIndicator />}
+                  <TypingIndicator />
+                </motion.div>
+              )}
+            </AnimatePresence>
           </div>
         </div>
       </div>

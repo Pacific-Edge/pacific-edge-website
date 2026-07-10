@@ -3,6 +3,7 @@
 import { useMemo, useState } from "react"
 import Link from "next/link"
 import AnimatedValue from "@/components/calculators/AnimatedValue"
+import { Button } from "@/components/ui/button"
 import {
   computeSavings,
   formatMoney,
@@ -63,15 +64,15 @@ export default function SavingsCalculatorClient({ industry }: SavingsCalculatorC
 
   return (
     <>
-      <header className="pt-28 sm:pt-32 pb-10 sm:pb-14 bg-cream-50">
+      <header className="pt-28 sm:pt-32 pb-10 sm:pb-14 bg-white-50">
         <div className="container-x">
           <div className="max-w-3xl">
             <p className="eyebrow text-ash-500 mb-4">{config.eyebrow}</p>
-            <h1 className="text-display-lg text-navy-900 mb-4">
+            <h1 className="text-display-lg text-midnight-900 mb-4">
               {config.headline}{" "}
               <span className="italic text-ash-500">{config.headlineAccent}</span>
             </h1>
-            <p className="font-ui text-base leading-relaxed max-w-xl text-navy-900/55">
+            <p className="font-ui text-base leading-relaxed max-w-xl text-midnight-900/55">
               {config.subcopy}
             </p>
           </div>
@@ -96,7 +97,7 @@ export default function SavingsCalculatorClient({ industry }: SavingsCalculatorC
                       <div key={field.id}>
                         <label
                           htmlFor={field.id}
-                          className="block font-ui text-xs font-medium text-navy-900/70 mb-1.5"
+                          className="block font-ui text-xs font-medium text-midnight-900/70 mb-1.5"
                         >
                           {field.label}
                         </label>
@@ -104,7 +105,7 @@ export default function SavingsCalculatorClient({ industry }: SavingsCalculatorC
                           id={field.id}
                           value={String(value)}
                           onChange={(e) => handleSelect(e.target.value)}
-                          className="w-full font-ui text-sm px-4 py-3 rounded-lg border border-ash-300/60 bg-cream-50 text-navy-900 focus:outline-none focus:ring-2 focus:ring-navy-900/20 focus:border-navy-900/30"
+                          className="w-full font-ui text-sm px-4 py-3 rounded-lg border border-ash-300/60 bg-white-50 text-midnight-900 focus:outline-none focus:ring-2 focus:ring-midnight-900/20 focus:border-midnight-900/30"
                         >
                           {field.options.map((opt) => (
                             <option key={opt.value} value={opt.value}>
@@ -124,10 +125,10 @@ export default function SavingsCalculatorClient({ industry }: SavingsCalculatorC
                       <div key={field.id}>
                         <label
                           htmlFor={field.id}
-                          className="flex items-center justify-between font-ui text-xs font-medium text-navy-900/70 mb-2"
+                          className="flex items-center justify-between font-ui text-xs font-medium text-midnight-900/70 mb-2"
                         >
                           <span>{field.label}</span>
-                          <span className="text-navy-900 font-semibold tabular-nums">{label}</span>
+                          <span className="text-midnight-900 font-semibold tabular-nums">{label}</span>
                         </label>
                         <input
                           id={field.id}
@@ -137,7 +138,7 @@ export default function SavingsCalculatorClient({ industry }: SavingsCalculatorC
                           step={field.step}
                           value={Number(value)}
                           onChange={(e) => handleNumber(field, e.target.value)}
-                          className="w-full accent-navy-900"
+                          className="w-full accent-midnight-900"
                         />
                       </div>
                     )
@@ -147,7 +148,7 @@ export default function SavingsCalculatorClient({ industry }: SavingsCalculatorC
                     <div key={field.id}>
                       <label
                         htmlFor={field.id}
-                        className="block font-ui text-xs font-medium text-navy-900/70 mb-1.5"
+                        className="block font-ui text-xs font-medium text-midnight-900/70 mb-1.5"
                       >
                         {field.label}
                       </label>
@@ -160,7 +161,7 @@ export default function SavingsCalculatorClient({ industry }: SavingsCalculatorC
                         step={field.step}
                         value={Number(value)}
                         onChange={(e) => handleNumber(field, e.target.value)}
-                        className="w-full font-ui text-sm px-4 py-3 rounded-lg border border-ash-300/60 bg-cream-50 text-navy-900 focus:outline-none focus:ring-2 focus:ring-navy-900/20 focus:border-navy-900/30"
+                        className="w-full font-ui text-sm px-4 py-3 rounded-lg border border-ash-300/60 bg-white-50 text-midnight-900 focus:outline-none focus:ring-2 focus:ring-midnight-900/20 focus:border-midnight-900/30"
                       />
                     </div>
                   )
@@ -169,23 +170,23 @@ export default function SavingsCalculatorClient({ industry }: SavingsCalculatorC
             </div>
 
             {/* Results */}
-            <div className="rounded-2xl bg-navy-900 text-cream-50 p-6 sm:p-8 shadow-card lg:sticky lg:top-24">
+            <div className="rounded-2xl bg-midnight-900 text-white-50 p-6 sm:p-8 shadow-card lg:sticky lg:top-24">
               <p className="eyebrow text-ash-400 mb-3">{config.resultsHeadline}</p>
               <AnimatedValue
                 value={results.yearly}
                 format={formatMoney}
                 className="block font-display text-5xl sm:text-6xl leading-none tracking-tight"
               />
-              <p className="font-ui text-sm text-cream-50/55 mt-2 mb-6">{config.resultsSubcopy}</p>
+              <p className="font-ui text-sm text-white-50/55 mt-2 mb-6">{config.resultsSubcopy}</p>
 
-              <div className="h-2 rounded-full bg-cream-50/10 overflow-hidden mb-6">
+              <div className="h-2 rounded-full bg-white-50/10 overflow-hidden mb-6">
                 <div
                   className="h-full rounded-full bg-ash-400 transition-[width] duration-500 ease-out"
                   style={{ width: `${refillPct}%` }}
                 />
               </div>
 
-              <dl className="divide-y divide-cream-50/10">
+              <dl className="divide-y divide-white-50/10">
                 <ResultRow label={config.rowLabels.monthly}>
                   <AnimatedValue value={results.monthly} format={formatMoney} />
                 </ResultRow>
@@ -200,10 +201,10 @@ export default function SavingsCalculatorClient({ industry }: SavingsCalculatorC
                 </ResultRow>
               </dl>
 
-              <Link href="/contact" className="btn-primary w-full mt-8 bg-cream-50 text-navy-900 hover:!shadow-none">
-                Book a Free Call
-              </Link>
-              <p className="font-ui text-[11px] text-cream-50/40 text-center mt-3">
+              <Button asChild variant="white" className="w-full mt-8">
+                <Link href="/contact">Book a Free Call</Link>
+              </Button>
+              <p className="font-ui text-[11px] text-white-50/40 text-center mt-3">
                 Estimates only, we&apos;ll pressure-test these against your real numbers on the call.
               </p>
             </div>
@@ -217,7 +218,7 @@ export default function SavingsCalculatorClient({ industry }: SavingsCalculatorC
 function ResultRow({ label, children }: { label: string; children: React.ReactNode }) {
   return (
     <div className="flex items-center justify-between gap-4 py-3">
-      <dt className="font-ui text-sm text-cream-50/60">{label}</dt>
+      <dt className="font-ui text-sm text-white-50/60">{label}</dt>
       <dd className="font-ui text-base font-semibold tabular-nums">{children}</dd>
     </div>
   )

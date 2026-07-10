@@ -23,7 +23,7 @@ const TABS = [
   { id: "convos", label: "Conversations", badge: 2 },
   { id: "sched", label: "Bookings" },
   { id: "extra", label: "Follow-ups", badge: 4 },
-  { id: "reviews", label: "Reviews", badge: "gold" as const },
+  { id: "reviews", label: "Reviews", badge: "muted" as const },
 ] as const
 
 type TabId = (typeof TABS)[number]["id"]
@@ -41,13 +41,13 @@ export default function ClientDashboard({ session }: { session: ClientSession })
         <IndustrySwitcher industry={industry} onChange={setIndustry} />
         <TabBar tab={tab} onChange={setTab} data={data} />
         <TabPanels tab={tab} industry={industry} data={data} />
-        <p className="mt-10 text-center font-ui text-xs text-navy-900/40">
+        <p className="mt-10 text-center font-ui text-xs text-midnight-900/40">
           Demo workspace · Questions?{" "}
           <a
             href="https://cal.com/pacificedge"
             target="_blank"
             rel="noopener noreferrer"
-            className="text-navy-700 hover:underline"
+            className="text-midnight-700 hover:underline"
           >
             Talk to your Pacific Edge team
           </a>
@@ -65,15 +65,15 @@ function WelcomeHeader({ session, data }: { session: ClientSession; data: Client
   return (
     <div className="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-4 mb-8">
       <div>
-        <h1 className="text-display-sm text-navy-900">
-          Good afternoon, <span className="text-navy-700">{session.name}</span>
+        <h1 className="text-display-sm text-midnight-900">
+          Good afternoon, <span className="text-midnight-700">{session.name}</span>
         </h1>
-        <p className="font-ui text-sm text-navy-900/55 mt-2 max-w-xl">{data.subtitle}</p>
+        <p className="font-ui text-sm text-midnight-900/55 mt-2 max-w-xl">{data.subtitle}</p>
       </div>
-      <p className="font-ui text-[10px] uppercase tracking-widest text-navy-900/40 sm:text-right">
+      <p className="font-ui text-[10px] uppercase tracking-widest text-midnight-900/40 sm:text-right">
         {data.business}
         <br />
-        <span className="text-navy-900/55">Client since {since}</span>
+        <span className="text-midnight-900/55">Client since {since}</span>
       </p>
     </div>
   )
@@ -87,9 +87,9 @@ function IndustrySwitcher({
   onChange: (ind: DashboardIndustry) => void
 }) {
   return (
-    <div className="flex flex-col sm:flex-row sm:items-center gap-3 sm:gap-4 mb-6 p-4 rounded-xl border border-ash-300/40 bg-cream-50">
+    <div className="flex flex-col sm:flex-row sm:items-center gap-3 sm:gap-4 mb-6 p-4 rounded-xl border border-ash-300/40 bg-white-50">
       <p className="eyebrow text-ash-500 shrink-0">Industry view</p>
-      <div className="flex gap-1.5 flex-wrap bg-cream-100 border border-ash-300/40 rounded-xl p-1.5">
+      <div className="flex gap-1.5 flex-wrap bg-white-100 border border-ash-300/40 rounded-xl p-1.5">
         {listDashboardIndustries().map((ind) => (
           <button
             key={ind}
@@ -97,8 +97,8 @@ function IndustrySwitcher({
             onClick={() => onChange(ind)}
             className={`font-ui text-sm px-3 py-2 rounded-lg whitespace-nowrap transition-colors ${
               industry === ind
-                ? "bg-cream-50 text-navy-900 shadow-soft"
-                : "text-navy-900/55 hover:text-navy-900"
+                ? "bg-white-50 text-midnight-900 shadow-soft"
+                : "text-midnight-900/55 hover:text-midnight-900"
             }`}
           >
             {industryLabel(ind)}
@@ -119,7 +119,7 @@ function TabBar({
   data: ClientDashboardData
 }) {
   return (
-    <div className="flex gap-1 overflow-x-auto scrollbar-none bg-cream-100 border border-ash-300/40 rounded-xl p-1.5 mb-6 max-w-full">
+    <div className="flex gap-1 overflow-x-auto scrollbar-none bg-white-100 border border-ash-300/40 rounded-xl p-1.5 mb-6 max-w-full">
       {TABS.map((t) => {
         const label =
           t.id === "sched" ? data.schedLabel : t.id === "extra" ? data.extraLabel : t.label
@@ -130,8 +130,8 @@ function TabBar({
             onClick={() => onChange(t.id)}
             className={`font-ui text-sm px-3 py-2.5 rounded-lg whitespace-nowrap inline-flex items-center gap-2 transition-colors ${
               tab === t.id
-                ? "bg-cream-50 text-navy-900 shadow-soft"
-                : "text-navy-900/55 hover:text-navy-900"
+                ? "bg-white-50 text-midnight-900 shadow-soft"
+                : "text-midnight-900/55 hover:text-midnight-900"
             }`}
           >
             {label}
@@ -141,12 +141,12 @@ function TabBar({
               </span>
             )}
             {t.id === "convos" && (
-              <span className="text-[10px] font-medium px-1.5 py-0.5 rounded-full bg-navy-900 text-cream-50">
+              <span className="text-[10px] font-medium px-1.5 py-0.5 rounded-full bg-midnight-900 text-white-50">
                 {data.convos.length}
               </span>
             )}
             {t.id === "extra" && (
-              <span className="text-[10px] font-medium px-1.5 py-0.5 rounded-full bg-navy-900/10 text-navy-900">
+              <span className="text-[10px] font-medium px-1.5 py-0.5 rounded-full bg-midnight-900/10 text-midnight-900">
                 {data.extra.length}
               </span>
             )}
@@ -181,7 +181,7 @@ function TabPanels({
         <div className="rounded-2xl border border-ash-300/40 overflow-hidden shadow-card">
           <DashboardMock industry={industry} />
         </div>
-        <p className="mt-3 text-center font-ui text-[11px] text-navy-900/40">
+        <p className="mt-3 text-center font-ui text-[11px] text-midnight-900/40">
           Live dashboard · switch industry above to see it tailored
         </p>
       </section>

@@ -19,11 +19,11 @@ export default function WhyUsPage() {
         description={WHY_US_INTRO}
       />
 
-      <section className="section-py bg-cream-50">
+      <section className="section-py bg-white-50">
         <div className="container-x">
-          <div className="max-w-2xl mb-12 lg:mb-16">
+          <div className="max-w-2xl mb-8 lg:mb-12">
             <p className="eyebrow text-ash-500 mb-3">Why Pacific Edge</p>
-            <h2 className="text-display-md text-navy-900">Four things we stand by</h2>
+            <h2 className="text-display-md text-midnight-900">Four things we stand by</h2>
           </div>
           <PillarGrid pillars={WHY_US_PILLARS} />
         </div>

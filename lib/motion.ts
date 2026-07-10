@@ -25,3 +25,24 @@ export const fadeIn = {
   hidden:  { opacity: 0 } as const,
   visible: { opacity: 1 } as const,
 }
+
+export const viewportOnce = {
+  once: true,
+  margin: "-80px",
+} as const
+
+export const revealContainer = (stagger = 0.07) => ({
+  hidden: {},
+  visible: {
+    transition: { staggerChildren: stagger },
+  },
+})
+
+export const revealItem = {
+  hidden: { opacity: 0, y: 22 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: t.base(),
+  },
+}
