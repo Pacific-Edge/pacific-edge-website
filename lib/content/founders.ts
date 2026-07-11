@@ -9,7 +9,7 @@ export const FOUNDERS: Founder[] = [
   {
     name: "Leone Jiwani",
     role: "Co-Founder",
-    photo: "/founders/leone.png",
+    photo: "/founders/leone.jpg",
     bio: "BBA, BCIT. Built ventures across finance and brand: BCIT REA, Concord Pacific, Glarehawks. Founded Pacific Edge to hand admin time back without enterprise pricing.",
   },
   {

@@ -70,9 +70,14 @@ export default function Nav() {
   const categoryNavRef = useRef<HTMLElement>(null)
 
   useMotionValueEvent(scrollY, "change", (y) => {
-    const progress = isHome ? Math.min(1, Math.max(0, y / NAV_BG_FADE_PX)) : 1
-    setNavBgProgress(progress)
-    bgProgressRef.current = progress
+    // Once solid, stay solid — only recompute while still inside the fade band.
+    if (isHome && (bgProgressRef.current < 1 || y < NAV_BG_FADE_PX)) {
+      const progress = Math.min(1, Math.max(0, y / NAV_BG_FADE_PX))
+      if (progress !== bgProgressRef.current) {
+        setNavBgProgress(progress)
+        bgProgressRef.current = progress
+      }
+    }
     setShowMobileCta(y > window.innerHeight * 0.6)
   })
 

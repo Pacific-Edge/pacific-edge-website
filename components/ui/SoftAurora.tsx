@@ -27,8 +27,6 @@ export interface SoftAuroraProps {
   octaveDecay?: number
   layerOffset?: number
   colorSpeed?: number
-  enableMouseInteraction?: boolean
-  mouseInfluence?: number
   /** `vertical` = column down the middle; `horizontal` = band across. */
   orientation?: SoftAuroraOrientation
   className?: string
@@ -201,12 +199,11 @@ export default function SoftAurora({
   octaveDecay = 0.25,
   layerOffset = 0.25,
   colorSpeed = 0.4,
-  enableMouseInteraction = true,
-  mouseInfluence = 0.1,
   orientation = "vertical",
   className = "",
 }: SoftAuroraProps) {
   const containerRef = useRef<HTMLDivElement>(null)
+  const runningRef = useRef(false)
   const [reduceMotion, setReduceMotion] = useState(false)
 
   useEffect(() => {
@@ -226,29 +223,6 @@ export default function SoftAurora({
     gl.clearColor(0, 0, 0, 0)
 
     let program: Program
-    let currentMouse = [0.5, 0.5]
-    let targetMouse = [0.5, 0.5]
-
-    // Track pointer on window so interaction still works when the canvas
-    // sits behind content (pointer-events-none background layers).
-    function handleMouseMove(e: MouseEvent) {
-      const rect = container.getBoundingClientRect()
-      const inside =
-        e.clientX >= rect.left &&
-        e.clientX <= rect.right &&
-        e.clientY >= rect.top &&
-        e.clientY <= rect.bottom
-
-      if (!inside) {
-        targetMouse = [0.5, 0.5]
-        return
-      }
-
-      targetMouse = [
-        (e.clientX - rect.left) / rect.width,
-        1.0 - (e.clientY - rect.top) / rect.height,
-      ]
-    }
 
     function resize() {
       renderer.setSize(container.offsetWidth, container.offsetHeight)
@@ -286,8 +260,8 @@ export default function SoftAurora({
         uLayerOffset: { value: layerOffset },
         uColorSpeed: { value: colorSpeed },
         uMouse: { value: new Float32Array([0.5, 0.5]) },
-        uMouseInfluence: { value: mouseInfluence },
-        uEnableMouse: { value: enableMouseInteraction },
+        uMouseInfluence: { value: 0.1 },
+        uEnableMouse: { value: false },
         uVertical: { value: orientation === "vertical" ? 1 : 0 },
       },
     })
@@ -295,36 +269,41 @@ export default function SoftAurora({
     const mesh = new Mesh(gl, { geometry, program })
     container.appendChild(gl.canvas)
 
-    if (enableMouseInteraction) {
-      window.addEventListener("mousemove", handleMouseMove)
-    }
-
     let animationFrameId = 0
 
     function update(time: number) {
       animationFrameId = requestAnimationFrame(update)
       program.uniforms.uTime.value = time * 0.001
-
-      if (enableMouseInteraction) {
-        currentMouse[0] += 0.05 * (targetMouse[0] - currentMouse[0])
-        currentMouse[1] += 0.05 * (targetMouse[1] - currentMouse[1])
-        program.uniforms.uMouse.value[0] = currentMouse[0]
-        program.uniforms.uMouse.value[1] = currentMouse[1]
-      } else {
-        program.uniforms.uMouse.value[0] = 0.5
-        program.uniforms.uMouse.value[1] = 0.5
-      }
-
       renderer.render({ scene: mesh })
     }
-    animationFrameId = requestAnimationFrame(update)
+
+    const stopLoop = () => {
+      if (animationFrameId) cancelAnimationFrame(animationFrameId)
+      animationFrameId = 0
+      runningRef.current = false
+    }
+
+    const startLoop = () => {
+      if (runningRef.current) return
+      runningRef.current = true
+      animationFrameId = requestAnimationFrame(update)
+    }
+
+    startLoop()
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) startLoop()
+        else stopLoop()
+      },
+      { threshold: 0.01 }
+    )
+    observer.observe(container)
 
     return () => {
-      cancelAnimationFrame(animationFrameId)
+      observer.disconnect()
+      stopLoop()
       window.removeEventListener("resize", resize)
-      if (enableMouseInteraction) {
-        window.removeEventListener("mousemove", handleMouseMove)
-      }
       if (gl.canvas.parentNode === container) {
         container.removeChild(gl.canvas)
       }
@@ -344,8 +323,6 @@ export default function SoftAurora({
     octaveDecay,
     layerOffset,
     colorSpeed,
-    enableMouseInteraction,
-    mouseInfluence,
     orientation,
   ])
 

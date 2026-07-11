@@ -1,12 +1,14 @@
 "use client"
 
 import Link from "next/link"
+import dynamic from "next/dynamic"
 import { motion } from "framer-motion"
 import ScriptedChatDemo from "@/components/demo/ScriptedChatDemo"
-import FloatingLines from "@/components/ui/FloatingLines"
 import RollInText from "@/components/ui/RollInText"
 import { Button } from "@/components/ui/button"
 import { EASE_OUT, revealContainer, revealItem, viewportOnce } from "@/lib/motion"
+
+const FloatingLines = dynamic(() => import("@/components/ui/FloatingLines"), { ssr: false })
 
 const signals = [
   "Patient cancels",

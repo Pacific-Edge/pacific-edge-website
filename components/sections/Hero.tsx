@@ -1,10 +1,12 @@
 "use client"
 
 import Link from "next/link"
+import dynamic from "next/dynamic"
 import { motion, useReducedMotion } from "framer-motion"
 import { EASE_OUT } from "@/lib/motion"
-import LightPillar from "@/components/ui/LightPillar"
 import { Button } from "@/components/ui/button"
+
+const LightPillar = dynamic(() => import("@/components/ui/LightPillar"), { ssr: false })
 
 /** Solid colour behind the pillar (section base background, shows through
  *  the pillar's "screen" blend mode). */

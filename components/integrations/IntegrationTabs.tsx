@@ -1,5 +1,3 @@
-"use client"
-
 import Link from "next/link"
 import { DENTAL_INTEGRATIONS, INTEGRATIONS_CLOSING } from "@/lib/content/integrations"
 import { Button } from "@/components/ui/button"

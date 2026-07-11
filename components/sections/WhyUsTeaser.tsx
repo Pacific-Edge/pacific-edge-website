@@ -1,14 +1,16 @@
 "use client"
 
 import Link from "next/link"
+import dynamic from "next/dynamic"
 import { motion, useReducedMotion } from "framer-motion"
-import SoftAurora from "@/components/ui/SoftAurora"
 import SpeedBlobBackground from "@/components/ui/SpeedBlobBackground"
 import { Button } from "@/components/ui/button"
 import { LetterSwapForward } from "@/components/ui/letter-swap"
 import { WHY_US_PILLARS } from "@/lib/content"
 import { EASE_OUT, revealContainer, revealItem, viewportOnce } from "@/lib/motion"
 import { cn } from "@/lib/utils"
+
+const SoftAurora = dynamic(() => import("@/components/ui/SoftAurora"), { ssr: false })
 
 type VisualProps = { reduce: boolean | null; wide?: boolean }
 
@@ -201,9 +203,9 @@ function SpeedVisual({ reduce }: VisualProps) {
           </div>
           <div className="h-2 overflow-hidden rounded-pill bg-midnight-900/8">
             <motion.div
-              className="h-full rounded-pill bg-gradient-to-r from-electric-700 to-electric-400"
-              initial={reduce ? false : { width: "0%" }}
-              whileInView={{ width: "94%" }}
+              className="h-full w-[94%] origin-left rounded-pill bg-gradient-to-r from-electric-700 to-electric-400"
+              initial={reduce ? false : { scaleX: 0 }}
+              whileInView={{ scaleX: 1 }}
               viewport={{ once: true }}
               transition={{ delay: 0.45, duration: 1.1, ease: EASE_OUT }}
             />
@@ -334,9 +336,10 @@ function DeliverVisual({ reduce }: VisualProps) {
         <div className="relative">
           <div className="absolute left-[8%] right-[8%] top-3.5 h-px bg-ash-300/70" />
           <motion.div
-            className="absolute left-[8%] top-3.5 h-px bg-electric-500"
-            initial={reduce ? false : { width: "0%" }}
-            whileInView={{ width: `${(activePhase / (phases.length - 1)) * 84}%` }}
+            className="absolute left-[8%] top-3.5 h-px origin-left bg-electric-500"
+            style={{ width: `${(activePhase / (phases.length - 1)) * 84}%` }}
+            initial={reduce ? false : { scaleX: 0 }}
+            whileInView={{ scaleX: 1 }}
             viewport={{ once: true }}
             transition={{ delay: 0.4, duration: 1, ease: EASE_OUT }}
           />
@@ -717,8 +720,6 @@ export default function WhyUsTeaser() {
                       octaveDecay={0.25}
                       layerOffset={0.25}
                       colorSpeed={0.4}
-                      enableMouseInteraction
-                      mouseInfluence={0.1}
                     />
                   </div>
                 ) : isLocal ? null : (
