@@ -71,8 +71,8 @@ export default function Hero() {
           }}
           {...(reduce ? {} : enter(0.12))}
         >
-          <span className="block">Helping your clinic</span>
-          <span className="block">operate with an edge.</span>
+          <span className="block">Giving your clinic</span>
+          <span className="block">the operational edge.</span>
         </motion.h1>
 
         <div className="mb-8 sm:mb-12 max-w-xl mx-auto">
