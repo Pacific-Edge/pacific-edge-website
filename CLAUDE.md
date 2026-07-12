@@ -1,5 +1,17 @@
 # Pacific Edge AI — Website Redesign
 
+> **⚠️ 2026-07-12 — `main` now serves the ORIGINAL static site, not the Next.js redesign.**
+> Owner decision: deploy the real previous `pacificedge.ai` (static HTML) instead of the
+> Next.js rebuild. The static site lives in **`public/`** (index.html + all pages, `logos/`,
+> `vendor/lenis.min.js`, `smooth-scroll.js`, `pricing.html`). `next build` (`output: "export"`)
+> copies `public/` verbatim into `out/`, which Cloudflare Pages serves — the tech stack is
+> unchanged. The Next.js `app/` is reduced to a build shell (`app/layout.tsx` + `app/status`);
+> the marketing routes were removed. Lenis is added site-wide via `public/smooth-scroll.js`.
+> Everything below describes the (now shelved) Next.js redesign — kept for reference. The
+> redesign code still exists under `components/`, `lib/` (unused by the build), on branch
+> `origin/thomas-redesign`, and the earlier paper/mint re-theme is at git tag `rethemed-nextjs`.
+> **Do not "restore" the Next.js marketing site to `main` without the owner asking.**
+
 ## What this project is
 
 A visual and copy refresh of [pacificedge.ai](https://pacificedge.ai/) for **Pacific Edge AI**, a Vancouver-based startup that builds done-for-you AI operations software for local businesses.

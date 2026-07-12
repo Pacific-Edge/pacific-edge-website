@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Careers at Pacific Edge AI | Build The AI Edge For Local Business</title>
+<meta name="description" content="Join Pacific Edge AI. We build custom AI that helps Vancouver small businesses never miss a lead. Small team, founder-level ownership, real impact. See open roles.">
+<meta name="keywords" content="Pacific Edge AI careers, AI jobs Vancouver, AI startup jobs, AI engineer Vancouver, sales jobs Vancouver startup">
+<meta name="robots" content="index, follow, max-image-preview:large">
+<link rel="canonical" href="https://pacificedge.ai/careers.html">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://pacificedge.ai/careers.html">
+<meta property="og:title" content="Careers at Pacific Edge AI">
+<meta property="og:description" content="Small team, founder-level ownership, real impact. Help local business win with AI.">
+<meta property="og:image" content="https://pacificedge.ai/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://pacificedge.ai/og-image.png">
+<link rel="icon" type="image/svg+xml" href="favicon.svg">
+<link rel="icon" type="image/x-icon" href="favicon.ico">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Outfit:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="industry.css">
+<style>
+/* ===== Careers page extras ===== */
+.cr-chips{display:flex;flex-wrap:wrap;gap:12px;justify-content:center;margin-top:44px;perspective:900px}
+.cr-chip{display:inline-flex;align-items:center;gap:9px;padding:12px 19px;border-radius:100px;background:linear-gradient(160deg,rgba(255,255,255,.95),rgba(255,255,255,.78));backdrop-filter:blur(8px);border:1px solid rgba(255,255,255,.92);box-shadow:0 20px 36px -16px rgba(28,25,20,.3);font-size:14px;font-weight:600;color:var(--text);animation:crFloat 5.5s ease-in-out infinite}
+.cr-chip span{font-size:17px}
+.cr-chip:nth-child(2){animation-delay:.7s}.cr-chip:nth-child(3){animation-delay:1.4s}.cr-chip:nth-child(4){animation-delay:2.1s}.cr-chip:nth-child(5){animation-delay:2.8s}
+@keyframes crFloat{0%,100%{transform:translateY(0) rotate(-.6deg)}50%{transform:translateY(-11px) rotate(.6deg)}}
+
+.role-grid{display:flex;flex-direction:column;gap:16px;margin-top:52px;max-width:940px;margin-left:auto;margin-right:auto}
+.role{display:flex;align-items:center;gap:26px;padding:26px 30px;border:1px solid var(--border);border-radius:16px;background:var(--card);transition:transform .4s cubic-bezier(.16,1,.3,1),border-color .35s,box-shadow .35s;position:relative;overflow:hidden}
+.role::before{content:'';position:absolute;left:0;top:0;bottom:0;width:3px;background:var(--grad);opacity:0;transition:opacity .35s}
+.role:hover{border-color:var(--border-a);transform:translateY(-3px);box-shadow:0 28px 64px -32px rgba(0,0,0,.20)}
+.role:hover::before{opacity:1}
+.role-main{flex:1;min-width:0}
+.role-title{font-size:19px;font-weight:600;letter-spacing:-.3px;margin-bottom:9px}
+.role-meta{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:11px}
+.role-tag{font-family:var(--mono);font-size:10px;letter-spacing:.6px;text-transform:uppercase;color:var(--accent-ink);background:rgba(74,240,192,.10);border:1px solid var(--border-a);border-radius:100px;padding:4px 11px}
+.role-desc{font-size:14.5px;color:var(--text2);line-height:1.6;font-weight:300}
+.role-apply{flex-shrink:0;display:inline-flex;align-items:center;gap:8px;font-weight:600;font-size:14px;color:var(--on-accent);background:var(--accent);padding:12px 22px;border-radius:9px;text-decoration:none;transition:transform .3s,box-shadow .3s}
+.role-apply .arr{transition:transform .3s}.role-apply:hover{box-shadow:0 0 30px var(--glow);transform:translateY(-2px)}.role-apply:hover .arr{transform:translateX(3px)}
+.role-open{display:flex;align-items:center;justify-content:space-between;gap:20px;flex-wrap:wrap;margin-top:18px;padding:22px 30px;border:1px dashed var(--border-a);border-radius:16px;background:rgba(74,240,192,.04);max-width:940px;margin-left:auto;margin-right:auto}
+.role-open p{font-size:15px;color:var(--text2);font-weight:300}
+.role-open b{color:var(--text);font-weight:600}
+@media(max-width:680px){.role{flex-direction:column;align-items:flex-start;gap:16px}.role-apply{width:100%;justify-content:center}}
+
+.cr-perks{display:flex;flex-wrap:wrap;gap:13px;justify-content:center;margin-top:44px;max-width:880px;margin-left:auto;margin-right:auto}
+.cr-perk{display:inline-flex;align-items:center;gap:10px;font-size:14px;color:var(--text2);padding:12px 18px;border:1px solid var(--border);border-radius:12px;background:var(--card);transition:transform .3s,border-color .3s}
+.cr-perk:hover{transform:translateY(-2px);border-color:var(--border-a)}
+.cr-perk span{font-size:18px}
+@media(prefers-reduced-motion:reduce){.cr-chip{animation:none}}
+/* === Apply modal (shown on desktop; mobile uses the mail app) === */
+.contact-modal{position:fixed;inset:0;z-index:99998;display:flex;align-items:center;justify-content:center;padding:24px;pointer-events:none;opacity:0;visibility:hidden;transition:opacity .3s ease,visibility .3s}
+.contact-modal.open{opacity:1;pointer-events:auto;visibility:visible}
+.contact-backdrop{position:absolute;inset:0;background:rgba(40,37,32,.55);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);cursor:pointer}
+.contact-panel{position:relative;width:100%;max-width:560px;max-height:92vh;overflow-y:auto;background:linear-gradient(160deg,rgba(251,249,244,.96),rgba(244,241,234,.98));border:1px solid rgba(74,240,192,.18);border-radius:20px;padding:46px 40px 34px;box-shadow:0 40px 120px rgba(0,0,0,.55),inset 0 1px 0 rgba(28,25,20,.04);transform:translateY(20px) scale(.96);transition:transform .4s cubic-bezier(.16,1,.3,1)}
+.contact-modal.open .contact-panel{transform:translateY(0) scale(1)}
+.contact-panel::before{content:'';position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,rgba(74,240,192,.5),transparent)}
+.contact-close{position:absolute;top:16px;right:16px;width:36px;height:36px;border-radius:50%;background:transparent;border:1px solid var(--border);color:var(--text2);font-size:20px;cursor:pointer;transition:all .25s;display:flex;align-items:center;justify-content:center;line-height:1;padding:0;z-index:2}
+.contact-close:hover{border-color:var(--accent);color:var(--accent-ink);transform:rotate(90deg)}
+.contact-eyebrow{font-family:var(--mono);font-size:10px;letter-spacing:2.5px;text-transform:uppercase;color:var(--accent-ink);margin-bottom:16px;display:inline-flex;align-items:center;gap:8px}
+.contact-eyebrow-dot{width:6px;height:6px;border-radius:50%;background:var(--accent)}
+.contact-title{font-family:var(--display);font-size:clamp(28px,4vw,40px);letter-spacing:1px;text-transform:uppercase;line-height:1.05;margin-bottom:12px;font-weight:400}
+.contact-title .a{color:var(--accent-ink)}
+.contact-desc{color:var(--text2);font-size:14px;line-height:1.6;margin-bottom:26px;font-weight:300}
+.contact-form{display:flex;flex-direction:column;gap:16px}
+.contact-form .hp{position:absolute;left:-9999px;visibility:hidden}
+.form-row{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.form-field{display:flex;flex-direction:column;gap:6px;min-width:0}
+.form-field label{font-family:var(--mono);font-size:10px;letter-spacing:1.5px;text-transform:uppercase;color:var(--text3)}
+.form-field label span{color:rgba(28,25,20,.2);font-size:9px;margin-left:4px}
+.form-field input,.form-field textarea,.form-field select{background:rgba(28,25,20,.03);border:1px solid var(--border);border-radius:8px;padding:12px 14px;color:var(--text);font-family:var(--body);font-size:14px;transition:border-color .25s,background .25s;-webkit-appearance:none;appearance:none;width:100%}
+.form-field select{cursor:pointer;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%238a8273' stroke-width='1.6' fill='none' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 14px center;padding-right:34px}
+.form-field textarea{resize:vertical;min-height:92px;line-height:1.5}
+.form-field input::placeholder,.form-field textarea::placeholder{color:rgba(28,25,20,.2)}
+.form-field input:focus,.form-field textarea:focus,.form-field select:focus{outline:none;border-color:var(--accent);background:rgba(74,240,192,.04)}
+.file-drop{display:flex;align-items:center;gap:10px;cursor:pointer;background:rgba(28,25,20,.03);border:1px dashed var(--border);border-radius:8px;padding:13px 14px;transition:border-color .25s,background .25s;position:relative}
+.file-drop:hover{border-color:var(--accent);background:rgba(74,240,192,.04)}
+.file-drop input[type=file]{position:absolute;width:1px;height:1px;opacity:0;overflow:hidden;clip:rect(0 0 0 0)}
+.file-ico{font-size:16px;flex-shrink:0}
+.file-text{font-size:13.5px;color:var(--text2);overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.file-drop.has-file{border-style:solid;border-color:rgba(74,240,192,.55);background:rgba(74,240,192,.06)}
+.file-drop.has-file .file-text{color:var(--text);font-weight:500}
+.file-drop.file-err{border-style:solid;border-color:rgba(199,93,60,.55);background:rgba(199,93,60,.06)}
+.file-drop.file-err .file-text{color:#b5532f}
+.contact-submit{background:var(--accent);color:var(--on-accent);font-family:var(--body);font-weight:600;font-size:14px;padding:14px 28px;border:none;border-radius:8px;cursor:pointer;display:inline-flex;align-items:center;justify-content:center;gap:10px;transition:all .25s;margin-top:6px}
+.contact-submit:hover{box-shadow:0 0 32px rgba(74,240,192,.3);transform:translateY(-1px)}
+.contact-submit:disabled{opacity:.5;cursor:not-allowed;transform:none}
+.contact-submit .arrow{transition:transform .25s}.contact-submit:hover .arrow{transform:translateX(3px)}
+.contact-footnote{font-family:var(--mono);font-size:10px;color:var(--text3);letter-spacing:1px;text-align:center;margin-top:6px}
+.contact-success-view{text-align:center;padding:20px 0}
+.contact-success-view .success-icon{width:72px;height:72px;border-radius:50%;background:rgba(74,240,192,.1);border:2px solid rgba(74,240,192,.4);display:inline-flex;align-items:center;justify-content:center;margin:0 auto 22px;animation:checkPop .6s cubic-bezier(.34,1.56,.64,1)}
+@keyframes checkPop{from{transform:scale(0);opacity:0}to{transform:scale(1);opacity:1}}
+body.modal-open{overflow:hidden}
+@media(max-width:600px){.contact-modal{padding:14px}.contact-panel{padding:36px 22px 26px;max-height:94vh;border-radius:16px}.form-row{grid-template-columns:1fr}.contact-title{font-size:26px}}
+</style>
+</head>
+<body>
+<nav>
+<a href="index.html" class="nav-logo"><span class="nav-slash"><i></i><i></i><i></i></span>pacific<span class="ai">edge.ai</span></a>
+<div class="nav-right"><a href="dental.html" class="nav-back" style="color:#0a7d5d;font-weight:600">Dental</a><a href="pricing.html" class="nav-back">Pricing</a>
+<a href="index.html" class="nav-back">&larr; Home</a>
+<a href="ai-employee.html" class="nav-back">AI Employee</a>
+<a href="login.html" class="nav-back">Client Login</a>
+<a href="https://cal.com/pacificedge" target="_blank" rel="noopener" class="nav-cta">Book a Call</a>
+</div>
+</nav>
+
+<header class="ihero">
+<div class="ihero-orb ihero-orb-1"></div>
+<div class="ihero-orb ihero-orb-2"></div>
+<div class="ihero-inner">
+<div class="eyebrow reveal"><span class="eyebrow-dot"></span>Careers &middot; Vancouver, BC</div>
+<h1 class="reveal d1">Help Local Business<br><span class="a">Win With AI.</span></h1>
+<p class="ihero-sub reveal d2">We build the custom AI that means a Vancouver restaurant, salon, or trade never misses another lead. It's a small team doing real work with real results, and we're looking for sharp people to build it with us.</p>
+<div class="ihero-actions reveal d4">
+<a href="#roles" class="btn-primary">See Open Roles</a>
+<a href="mailto:hello@pacificedge.ai?subject=Pacific%20Edge%20AI%20-%20Careers" class="btn-ghost">Email Us</a>
+</div>
+<div class="cr-chips reveal d5">
+<div class="cr-chip"><span>&#129504;</span>Real AI impact</div>
+<div class="cr-chip"><span>&#128640;</span>Move fast</div>
+<div class="cr-chip"><span>&#129309;</span>Founder-level ownership</div>
+<div class="cr-chip"><span>&#128205;</span>Vancouver + remote</div>
+<div class="cr-chip"><span>&#127793;</span>Ground floor</div>
+</div>
+</div>
+</header>
+
+<div class="divhr"></div>
+
+<section id="why">
+<div class="wrap">
+<div class="sl reveal">Why Pacific Edge</div>
+<h2 class="st reveal d1">A Place To <span class="a">Actually Build.</span></h2>
+<p class="sd reveal d2">No layers, no busywork. You'll own real problems for real local businesses and see the impact in weeks, not quarters.</p>
+<div class="icards">
+<div class="icard reveal d1"><div class="icard-num">01</div><h3>Real, visible impact</h3><p>Every build puts time and money back on a local owner's books. You'll watch the results land, fast, and often hear the thank-you yourself.</p><span class="tag">Outcomes</span></div>
+<div class="icard reveal d2"><div class="icard-num">02</div><h3>Founder-level ownership</h3><p>Small team, big surface area. You own outcomes, not tickets, and your call shapes the product and the company.</p><span class="tag">Ownership</span></div>
+<div class="icard reveal d3"><div class="icard-num">03</div><h3>Built by operators</h3><p>We ship real software for real businesses, not slideware. Pragmatic, hands-on, and allergic to theatre.</p><span class="tag">Craft</span></div>
+</div>
+</div>
+</section>
+
+<div class="divhr"></div>
+
+<section id="roles">
+<div class="wrap">
+<div class="sl reveal sl-c tac">Open Roles</div>
+<h2 class="st reveal d1 tac">Where You <span class="a">Fit In.</span></h2>
+<p class="sd reveal d2 tac" style="margin:0 auto">Early-stage means wide-open lanes. If one of these sounds like you, or close to it, let's talk.</p>
+<p class="reveal d2 tac" style="margin:12px auto 0;font-size:14px;color:var(--text2);max-width:560px">Tap a role to apply, or just email <a href="mailto:hello@pacificedge.ai?subject=Application%20-%20Pacific%20Edge%20AI" style="color:var(--accent-ink);font-weight:600;text-decoration:underline;text-underline-offset:3px">hello@pacificedge.ai</a> and tell us which role.</p>
+<div class="role-grid">
+<div class="role reveal d1">
+<div class="role-main"><div class="role-title">AI Automation Engineer</div><div class="role-meta"><span class="role-tag">Full-time</span><span class="role-tag">Vancouver / Remote</span><span class="role-tag">Engineering</span></div><p class="role-desc">Build the systems behind Janice, our AI employee: telephony, LLM workflows, calendar and CRM integrations, and the dashboards clients live in. You turn "it should just book the job" into shipped software.</p></div>
+<a class="role-apply" href="mailto:hello@pacificedge.ai?subject=Application%20-%20AI%20Automation%20Engineer">Apply Now<span class="arr">&rarr;</span></a>
+</div>
+<div class="role reveal d2">
+<div class="role-main"><div class="role-title">Founding Account Executive</div><div class="role-meta"><span class="role-tag">Full-time</span><span class="role-tag">Vancouver</span><span class="role-tag">Sales</span></div><p class="role-desc">Own the full cycle with local SMBs, from a 15-minute discovery call to a signed client who never misses a lead again. You're the face of Pacific Edge to the businesses we serve.</p></div>
+<a class="role-apply" href="mailto:hello@pacificedge.ai?subject=Application%20-%20Founding%20Account%20Executive">Apply Now<span class="arr">&rarr;</span></a>
+</div>
+<div class="role reveal d3">
+<div class="role-main"><div class="role-title">AI Solutions Consultant</div><div class="role-meta"><span class="role-tag">Full-time</span><span class="role-tag">Vancouver / Remote</span><span class="role-tag">Implementation</span></div><p class="role-desc">Map how each business actually runs, then tailor Janice to fit, from first call to go-live in about a week. Part strategist, part builder, fully focused on getting clients a result.</p></div>
+<a class="role-apply" href="mailto:hello@pacificedge.ai?subject=Application%20-%20AI%20Solutions%20Consultant">Apply Now<span class="arr">&rarr;</span></a>
+</div>
+<div class="role reveal d1">
+<div class="role-main"><div class="role-title">Growth &amp; Content Marketer</div><div class="role-meta"><span class="role-tag">Contract &rarr; Full-time</span><span class="role-tag">Remote</span><span class="role-tag">Marketing</span></div><p class="role-desc">Tell the Pacific Edge story and build the demand engine, content, campaigns, and the kind of marketing that fills a pipeline with the right local owners.</p></div>
+<a class="role-apply" href="mailto:hello@pacificedge.ai?subject=Application%20-%20Growth%20%26%20Content%20Marketer">Apply Now<span class="arr">&rarr;</span></a>
+</div>
+</div>
+<div class="role-open reveal d2"><p><b>Don't see your role?</b> We're always meeting sharp, driven people. Pitch us on where you'd make a dent.</p><a class="role-apply" href="mailto:hello@pacificedge.ai?subject=Careers%20-%20General%20Interest">Get In Touch<span class="arr">&rarr;</span></a></div>
+</div>
+</section>
+
+<div class="statband">
+<div class="stat-row">
+<div class="stat-cell reveal"><div class="stat-big">&lt;<span class="count" data-to="2">0</span><span class="u">wk</span></div><div class="stat-lbl">From first hello to an offer</div></div>
+<div class="stat-cell reveal d1"><div class="stat-big"><span class="count" data-to="1">0</span><span class="u">wk</span></div><div class="stat-lbl">To ship your first real thing</div></div>
+<div class="stat-cell reveal d2"><div class="stat-big"><span class="count" data-to="100">0</span><span class="u">%</span></div><div class="stat-lbl">Custom builds, zero slideware</div></div>
+<div class="stat-cell reveal d3"><div class="stat-big"><span class="count" data-to="0">0</span></div><div class="stat-lbl">Layers of red tape</div></div>
+</div>
+<p class="tac" style="margin:30px auto 0;font-size:12px;color:var(--text3);font-family:var(--mono);letter-spacing:.5px">How we like to work</p>
+</div>
+
+<section id="hire">
+<div class="wrap">
+<div class="show-grid">
+<div class="show-text">
+<div class="sl reveal">How We Hire</div>
+<h2 class="st reveal d1">Fast, Human, <span class="a">No Theatre.</span></h2>
+<p class="sd reveal d2">No six-page forms, no eight rounds. We move quickly and we respect your time, you'll know where you stand at every step.</p>
+<div class="show-steps">
+<div class="show-step reveal d2"><div class="show-step-n">1</div><div><h4>Say hello</h4><p>Send a short note and whatever best shows your work. That's it, no essay required.</p></div></div>
+<div class="show-step reveal d3"><div class="show-step-n">2</div><div><h4>Intro call</h4><p>Twenty minutes to see if there's a real fit, both ways. Honest and low-pressure.</p></div></div>
+<div class="show-step reveal d4"><div class="show-step-n">3</div><div><h4>A short, paid practical</h4><p>A real slice of the work so we both see how you think. We pay for your time.</p></div></div>
+<div class="show-step reveal d4"><div class="show-step-n">4</div><div><h4>Meet the team &amp; offer</h4><p>Meet who you'd build with, then an offer, usually within two weeks of the first hello.</p></div></div>
+</div>
+</div>
+<div class="phone-wrap reveal d2">
+<div class="sig-panel" style="min-height:auto">
+<div class="sig-head"><span class="sig-live"><i></i>Perks &amp; the deal</span></div>
+<div class="cr-perks" style="margin-top:6px;justify-content:flex-start">
+<div class="cr-perk"><span>&#129521;</span>Ground-floor equity</div>
+<div class="cr-perk"><span>&#127968;</span>Flexible &amp; remote-friendly</div>
+<div class="cr-perk"><span>&#128218;</span>Learning budget</div>
+<div class="cr-perk"><span>&#128187;</span>Top gear, your setup</div>
+<div class="cr-perk"><span>&#127881;</span>Real ownership &amp; upside</div>
+<div class="cr-perk"><span>&#9749;</span>Vancouver team days</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+
+<section class="icta">
+<div class="ihero-inner" style="margin:0 auto">
+<div class="sl reveal sl-c" style="justify-content:center">Join Us</div>
+<h2 class="icta-title reveal d1">Ready To Join<br><span class="a">The Future.</span></h2>
+<p class="icta-desc reveal d2">Tell us who you are and where you'd make a dent. A short, honest note beats a polished resume, every time.</p>
+<a href="mailto:hello@pacificedge.ai?subject=Pacific%20Edge%20AI%20-%20Careers" class="btn-primary reveal d2">Email hello@pacificedge.ai</a>
+<div class="icta-bullets reveal d3">
+<span><i></i>Real impact, fast</span>
+<span><i></i>Founder-level ownership</span>
+<span><i></i>Vancouver-based</span>
+</div>
+</div>
+</section>
+
+<footer>
+<div class="footer-grid">
+<div class="footer-brand">
+<div class="footer-logo"><div class="footer-mark"><i></i><i></i><i></i></div><span class="footer-wordmark">pacific<span class="ai">edge.ai</span></span></div>
+<p class="footer-tagline">AI consulting and automation for local Vancouver small businesses. Done-for-you. Transparent terms. Real results.</p>
+<div class="footer-meta">
+<a href="mailto:hello@pacificedge.ai" class="footer-meta-item"><svg width="14" height="14" viewBox="0 0 16 16" fill="none"><rect x="2" y="3" width="12" height="10" rx="1.5" stroke="currentColor" stroke-width="1.2"/><path d="M2.5 4l5.5 4.5L13.5 4" stroke="currentColor" stroke-width="1.2"/></svg>hello@pacificedge.ai</a>
+<a href="index.html" class="footer-meta-item"><svg width="14" height="14" viewBox="0 0 16 16" fill="none"><circle cx="8" cy="8" r="6.2" stroke="currentColor" stroke-width="1.2"/><path d="M2 8h12M8 2c2 2 2 10 0 12M8 2c-2 2-2 10 0 12" stroke="currentColor" stroke-width="1.2"/></svg>pacificedge.ai</a>
+<span class="footer-meta-item"><svg width="14" height="14" viewBox="0 0 16 16" fill="none"><path d="M8 1.5C5.2 1.5 3 3.7 3 6.5c0 3.7 5 8 5 8s5-4.3 5-8c0-2.8-2.2-5-5-5z" stroke="currentColor" stroke-width="1.2" stroke-linejoin="round"/><circle cx="8" cy="6.5" r="1.5" stroke="currentColor" stroke-width="1.2"/></svg>Vancouver, BC</span>
+</div>
+</div>
+<div class="footer-col">
+<div class="footer-col-label">Industries</div>
+<a href="dental.html">Dental</a>
+<a href="restaurants.html">Restaurants</a>
+<a href="salons.html">Salons &amp; Spas</a>
+<a href="trades.html">Trades &amp; Home Services</a>
+<a href="retail.html">Retail</a>
+<a href="industries.html">All Industries</a>
+<a href="ai-employee.html">Meet Janice</a>
+</div>
+<div class="footer-nav">
+<div class="footer-nav-label">Navigation</div>
+<a href="index.html">Home</a>
+<a href="index.html#services">Services</a>
+<a href="index.html#process">How It Works</a>
+<a href="careers.html">Careers</a>
+<a href="https://cal.com/pacificedge" target="_blank" rel="noopener">Book a Call</a>
+</div>
+</div>
+<div class="footer-bottom">
+<span>&copy; <script>document.write(new Date().getFullYear())</script> Pacific Edge AI. All rights reserved.</span>
+<span>Vancouver, British Columbia, Canada</span>
+</div>
+</footer>
+
+<script src="industry.js"></script>
+
+<div class="contact-modal" id="applyModal" aria-hidden="true">
+  <div class="contact-backdrop" data-close></div>
+  <div class="contact-panel" role="dialog" aria-labelledby="apply-title" aria-modal="true">
+    <button class="contact-close" data-close aria-label="Close">&times;</button>
+    <div class="contact-form-view">
+      <div class="contact-eyebrow"><span class="contact-eyebrow-dot"></span>Apply to Pacific Edge</div>
+      <h3 class="contact-title" id="apply-title">Tell us<br><span class="a">about you.</span></h3>
+      <p class="contact-desc">A few quick details and a note on why you'd be a fit. We read every application and reply in the order received.</p>
+      <form class="contact-form" id="applyForm" name="careers" method="POST" data-netlify="true" netlify-honeypot="bot-field" enctype="multipart/form-data" action="/?form=success">
+        <input type="hidden" name="form-name" value="careers">
+        <p class="hp"><label>Don't fill this out: <input name="bot-field"></label></p>
+        <div class="form-row">
+          <div class="form-field"><label for="af-name">Your name</label><input type="text" id="af-name" name="name" required autocomplete="name"></div>
+          <div class="form-field"><label for="af-email">Email</label><input type="email" id="af-email" name="email" required autocomplete="email"></div>
+        </div>
+        <div class="form-field"><label for="af-role">Role you're applying for</label>
+          <select id="af-role" name="role" required>
+            <option value="AI Automation Engineer">AI Automation Engineer</option>
+            <option value="Founding Account Executive">Founding Account Executive</option>
+            <option value="AI Solutions Consultant">AI Solutions Consultant</option>
+            <option value="Growth &amp; Content Marketer">Growth &amp; Content Marketer</option>
+            <option value="General interest">General interest</option>
+          </select>
+        </div>
+        <div class="form-field"><label for="af-resume">Résumé <span>(PDF or Word &middot; required)</span></label>
+          <label class="file-drop" id="resumeDrop"><input type="file" id="af-resume" name="resume" accept=".pdf,.doc,.docx,application/pdf,application/msword,application/vnd.openxmlformats-officedocument.wordprocessingml.document" required><span class="file-ico">&#128206;</span><span class="file-text">Click to attach your résumé</span></label>
+        </div>
+        <div class="form-field"><label for="af-link">LinkedIn / portfolio <span>(optional)</span></label><input type="url" id="af-link" name="link" placeholder="https://" autocomplete="url"></div>
+        <div class="form-field"><label for="af-why">A bit about you, and why you'd be a great fit</label><textarea id="af-why" name="message" rows="4" required placeholder="Tell us a couple of things about yourself and why you'd be great at Pacific Edge..."></textarea></div>
+        <button type="submit" class="contact-submit"><span class="submit-text">Send Application</span> <span class="arrow">&rarr;</span></button>
+        <div class="contact-footnote">&#8627; We reply within a few days &middot; Vancouver-based</div>
+      </form>
+    </div>
+    <div class="contact-success-view" hidden>
+      <div class="success-icon"><svg width="32" height="32" viewBox="0 0 32 32" fill="none"><path d="M8 16l5 5 11-11" stroke="#0a9d76" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+      <h3 class="contact-title"><span class="a">Application sent.</span></h3>
+      <p class="contact-desc">Thanks for applying! We've got it and we'll be in touch at the email you provided.</p>
+      <button class="btn-primary" data-close style="font-size:14px;padding:14px 28px">Close</button>
+    </div>
+  </div>
+</div>
+<script>
+/* Careers apply: desktop opens the form, mobile opens the mail app. */
+(function(){
+  var modal=document.getElementById('applyModal'); if(!modal) return;
+  var formView=modal.querySelector('.contact-form-view');
+  var successView=modal.querySelector('.contact-success-view');
+  var form=document.getElementById('applyForm');
+  var roleSel=document.getElementById('af-role');
+  function isMobile(){ return (window.matchMedia && (window.matchMedia('(max-width: 768px)').matches || window.matchMedia('(hover: none) and (pointer: coarse)').matches)); }
+  function openModal(role){
+    if(roleSel){ var set=false; for(var i=0;i<roleSel.options.length;i++){ if(roleSel.options[i].value===role){ roleSel.selectedIndex=i; set=true; break; } } if(!set) roleSel.value='General interest'; }
+    modal.classList.add('open'); modal.setAttribute('aria-hidden','false'); document.body.classList.add('modal-open');
+    if(formView) formView.style.display=''; if(successView) successView.hidden=true;
+    setTimeout(function(){ var f=modal.querySelector('input[name="name"]'); if(f) f.focus(); },350);
+  }
+  function closeModal(){ modal.classList.remove('open'); modal.setAttribute('aria-hidden','true'); document.body.classList.remove('modal-open'); }
+  document.addEventListener('click', function(e){
+    var a = e.target.closest && e.target.closest('a[href^="mailto:hello@pacificedge.ai?subject="]');
+    if(!a) return;
+    e.stopImmediatePropagation();        /* suppress the global "copied" toast for these buttons */
+    if(isMobile()) return;                /* mobile: let the mail app open via the mailto */
+    e.preventDefault();                   /* desktop: open the application form instead */
+    var m=/subject=([^&]*)/.exec(a.getAttribute('href')||'');
+    var subj = m ? decodeURIComponent(m[1].replace(/\+/g,' ')) : '';
+    var role = /^Application/.test(subj) ? subj.replace(/^Application\s*-\s*/,'') : 'General interest';
+    openModal(role);
+  }, true);
+  modal.querySelectorAll('[data-close]').forEach(function(el){ el.addEventListener('click', closeModal); });
+  document.addEventListener('keydown', function(e){ if(e.key==='Escape' && modal.classList.contains('open')) closeModal(); });
+  var fileInput=document.getElementById('af-resume');
+  var drop=document.getElementById('resumeDrop');
+  function resetFile(){ if(!drop) return; drop.classList.remove('has-file','file-err'); var t=drop.querySelector('.file-text'); if(t) t.textContent='Click to attach your résumé'; }
+  if(fileInput && drop){
+    fileInput.addEventListener('change', function(){
+      var t=drop.querySelector('.file-text');
+      if(fileInput.files && fileInput.files[0]){ t.textContent=fileInput.files[0].name; drop.classList.add('has-file'); drop.classList.remove('file-err'); }
+      else resetFile();
+    });
+  }
+  if(form){
+    form.addEventListener('submit', function(e){
+      e.preventDefault();
+      if(fileInput && (!fileInput.files || !fileInput.files.length)){
+        if(drop){ drop.classList.add('file-err'); var ft=drop.querySelector('.file-text'); if(ft) ft.textContent='Please attach your résumé (PDF or Word)'; drop.scrollIntoView({block:'center',behavior:'smooth'}); }
+        return;
+      }
+      var btn=form.querySelector('.contact-submit'), bt=btn.querySelector('.submit-text'), orig=bt?bt.textContent:'';
+      btn.disabled=true; if(bt) bt.textContent='Sending...';
+      fetch('/',{method:'POST',body:new FormData(form)})  /* multipart, includes the résumé file; browser sets the boundary */
+        .then(function(r){ if(r.ok||r.status===200){ if(formView)formView.style.display='none'; if(successView)successView.hidden=false; form.reset(); resetFile(); } else { throw new Error('x'); } })
+        .catch(function(){ btn.disabled=false; if(bt)bt.textContent=orig||'Send Application'; alert('Something went wrong, please email us directly at hello@pacificedge.ai'); });
+    });
+  }
+})();
+</script>
+<script src="vendor/lenis.min.js"></script>
+<script src="smooth-scroll.js"></script>
+</body>
+</html>

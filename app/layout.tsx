@@ -1,26 +1,15 @@
-import { Syne, DM_Sans } from "next/font/google"
-import { rootMetadata } from "@/lib/seo/metadata"
-import "./globals.css"
-
-const syne = Syne({
-  subsets: ["latin"],
-  variable: "--font-syne",
-  display: "swap",
-  weight: ["400", "500", "600", "700", "800"],
-})
-
-const dmSans = DM_Sans({
-  subsets: ["latin"],
-  variable: "--font-dm-sans",
-  display: "swap",
-})
-
-export const metadata = rootMetadata
+// Minimal Next.js shell. The live site is the static HTML in `public/`,
+// which `next build` (output: "export") copies verbatim into `out/`.
+// This shell only exists so the Cloudflare Pages "static Next.js" build
+// still runs and produces `out/`. No marketing routes live here.
+export const metadata = {
+  title: "Pacific Edge AI",
+}
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en" className={`${syne.variable} ${dmSans.variable}`}>
-      <body className="bg-white-50 text-midnight-900 antialiased">{children}</body>
+    <html lang="en">
+      <body>{children}</body>
     </html>
   )
 }

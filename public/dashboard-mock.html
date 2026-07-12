@@ -1,0 +1,1293 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dashboard Preview · Pacific Edge AI</title>
+<meta name="robots" content="noindex, nofollow">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#f4f1ea; --bg2:#ece7db;
+  --card:#ffffff;
+  --card-strong:#ffffff;
+  --border:rgba(28,25,20,0.10);
+  --border-a:rgba(74,240,192,0.30);
+  --text:#1e1b16; --text2:rgba(30,27,22,0.55); --text3:rgba(30,27,22,0.32);
+  --accent:#4af0c0;--accent-ink:#0a7d5d;--accent-bright:#0a9d76;--on-accent:#04130f; --accent2:#c75d3c;
+  --warn:#c7791f; --error:#cf4444; --gold:#b8860b;
+  --mono:'JetBrains Mono',ui-monospace,monospace;
+  --body:'Outfit',system-ui,sans-serif;
+}
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+html,body{background:#f4f1ea;color:var(--text);font-family:var(--body);-webkit-font-smoothing:antialiased;min-height:100vh;overflow-x:hidden;width:100%;max-width:100vw}
+body{
+  padding:48px 24px;
+  display:flex;align-items:center;justify-content:center;
+  background:
+    radial-gradient(circle at 15% 10%, rgba(74,240,192,0.08), transparent 40%),
+    radial-gradient(circle at 85% 90%, rgba(199,93,60,0.06), transparent 45%),
+    #f4f1ea;
+}
+
+.dash{
+  width:100%;max-width:1240px;
+  background:linear-gradient(160deg,rgba(243,239,230,0.85),rgba(244,241,234,0.95));
+  border:1px solid var(--border);
+  border-radius:20px;
+  overflow:hidden;
+  position:relative;
+  box-shadow:0 40px 100px -40px rgba(28,25,20,0.22), 0 0 0 1px rgba(28,25,20,0.05);
+  backdrop-filter:blur(20px);
+}
+.dash::before{
+  content:'';position:absolute;inset:0;
+  background-image:radial-gradient(circle, rgba(28,25,20,0.05) 1px, transparent 1px);
+  background-size:24px 24px;
+  opacity:0.5;pointer-events:none;
+}
+.dash::after{
+  content:'';position:absolute;
+  width:520px;height:520px;
+  top:-200px;right:-160px;border-radius:50%;
+  background:radial-gradient(circle, rgba(74,240,192,0.07), transparent 70%);
+  pointer-events:none;
+}
+.dash-inner{position:relative;z-index:1;padding:24px}
+
+/* HEADER */
+.dh{display:flex;align-items:center;justify-content:space-between;padding:8px 12px 24px;border-bottom:1px solid var(--border);margin-bottom:24px}
+.dh-brand{display:flex;align-items:center;gap:14px}
+.dh-mark{display:flex;gap:3px}
+.dh-mark i{display:block;width:3px;height:18px;border-radius:1.5px;background:var(--accent);transform:rotate(15deg)}
+.dh-mark i:nth-child(2){opacity:.6}
+.dh-mark i:nth-child(3){opacity:.45}
+.dh-brand-text{font-weight:700;font-size:14px;letter-spacing:-0.2px}
+.dh-brand-text .ai{color:var(--accent-ink)}
+.dh-tabs{display:flex;gap:4px;background:rgba(28,25,20,0.02);border:1px solid var(--border);border-radius:10px;padding:4px}
+.dh-tabs button{background:transparent;border:none;color:var(--text2);font-family:var(--body);font-size:12px;font-weight:500;letter-spacing:0.2px;padding:8px 14px;border-radius:7px;cursor:pointer;transition:all .2s}
+.dh-tabs button:hover{color:var(--text)}
+.dh-tabs button.active{background:rgba(74,240,192,0.10);color:var(--accent-ink);box-shadow:inset 0 0 0 1px rgba(74,240,192,0.18)}
+.dh-meta{display:flex;align-items:center;gap:10px;font-family:var(--mono);font-size:11px;color:var(--text2);letter-spacing:1px}
+.dh-meta .live-dot{width:6px;height:6px;border-radius:50%;background:var(--accent);box-shadow:0 0 0 0 rgba(74,240,192,0.5);animation:pulse 2s infinite}
+@keyframes pulse{0%{box-shadow:0 0 0 0 rgba(74,240,192,0.6)}100%{box-shadow:0 0 0 8px rgba(74,240,192,0)}}
+
+/* VIEW CONTAINER + TRANSITION */
+.view{display:none}
+.view.active{display:block;animation:fadeIn .35s cubic-bezier(.16,1,.3,1)}
+@keyframes fadeIn{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:translateY(0)}}
+
+/* STATS */
+.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-bottom:18px}
+.stat{background:var(--card);border:1px solid var(--border);border-radius:14px;padding:18px 20px;position:relative;overflow:hidden;transition:border-color .3s}
+.stat:hover{border-color:var(--border-a)}
+.stat::before{content:'';position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,rgba(74,240,192,0.3),transparent);opacity:0.5}
+.stat-label{font-family:var(--mono);font-size:9px;letter-spacing:1.5px;color:var(--text3);text-transform:uppercase;margin-bottom:14px}
+.stat-value{font-family:var(--body);font-weight:600;font-size:36px;letter-spacing:-1.5px;line-height:1;margin-bottom:8px}
+.stat-value .unit{font-size:18px;color:var(--text2);font-weight:400;margin-left:2px}
+.stat-sub{font-size:11px;color:var(--text2);font-weight:400;display:flex;align-items:center;gap:5px}
+.mint{color:var(--accent-ink)}
+.warn{color:var(--warn)}
+.err{color:var(--error)}
+.gold{color:var(--gold)}
+
+/* MAIN GRID */
+.main-grid{display:grid;grid-template-columns:1.2fr 1fr;gap:14px;margin-bottom:18px}
+.card{background:var(--card);border:1px solid var(--border);border-radius:14px;padding:20px;position:relative;overflow:hidden}
+.card-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:16px}
+.card-label{font-family:var(--mono);font-size:9px;letter-spacing:1.5px;color:var(--text3);text-transform:uppercase}
+.card-meta{font-family:var(--mono);font-size:10px;color:var(--text3);letter-spacing:0.5px}
+
+/* Big stat with chart */
+.big-stat{display:flex;align-items:baseline;gap:12px;margin-bottom:16px}
+.big-num{font-size:56px;font-weight:600;letter-spacing:-2px;line-height:1}
+.big-unit{font-size:14px;color:var(--text2);font-family:var(--mono);letter-spacing:1px}
+.trend{font-size:11px;font-weight:500;margin-left:auto}
+.spark-wrap{position:relative;height:120px;margin-top:8px}
+.spark-wrap svg{width:100%;height:100%;display:block}
+.chart-axis{display:flex;justify-content:space-between;margin-top:8px;font-family:var(--mono);font-size:9px;color:var(--text3);letter-spacing:1px}
+
+/* Map card */
+.map-card{padding-bottom:0}
+.map-stage{position:relative;border-radius:10px;overflow:hidden;height:230px;background:#ece7db;border:1px solid var(--border);margin:0 -4px -4px}
+.map-svg{position:absolute;inset:0;width:100%;height:100%;opacity:0.7}
+.pin{position:absolute;width:10px;height:10px;border-radius:50%;background:var(--accent);box-shadow:0 0 0 4px rgba(74,240,192,0.15),0 0 12px rgba(74,240,192,0.6);transform:translate(-50%,-50%)}
+.pin.alt{background:var(--warn);box-shadow:0 0 0 4px rgba(199,121,31,0.18),0 0 12px rgba(199,121,31,0.5)}
+.pin.dim{width:6px;height:6px;background:rgba(74,240,192,0.6);box-shadow:0 0 0 3px rgba(74,240,192,0.08)}
+.pin-label{position:absolute;top:12px;left:50%;transform:translateX(-50%);font-family:var(--mono);font-size:9px;color:var(--text);background:rgba(244,241,234,0.85);padding:3px 7px;border-radius:4px;border:1px solid var(--border);white-space:nowrap;letter-spacing:0.5px}
+.map-overlay-stats{position:absolute;left:14px;bottom:14px;display:flex;gap:18px;font-family:var(--mono);font-size:10px;color:var(--text2);letter-spacing:1px;z-index:2;background:rgba(244,241,234,0.6);backdrop-filter:blur(8px);padding:8px 14px;border-radius:8px;border:1px solid var(--border)}
+.map-overlay-stats strong{color:var(--text);font-weight:700}
+.map-corner-tag{position:absolute;top:12px;right:12px;font-family:var(--mono);font-size:9px;color:var(--text3);letter-spacing:1px;background:rgba(244,241,234,0.8);padding:5px 9px;border-radius:6px;border:1px solid var(--border);z-index:2}
+
+/* CUSTOMER CARDS */
+.cust-row{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-bottom:18px}
+.cust{background:var(--card-strong);border:1px solid var(--border);border-radius:14px;padding:18px;position:relative;overflow:hidden;transition:transform .3s,border-color .3s}
+.cust:hover{transform:translateY(-2px);border-color:var(--border-a)}
+.cust-head{display:flex;align-items:flex-start;justify-content:space-between;margin-bottom:14px}
+.cust-id{font-weight:600;font-size:13px;letter-spacing:-0.2px;margin-bottom:4px}
+.cust-time{font-family:var(--mono);font-size:9px;color:var(--text3);letter-spacing:1px;text-transform:uppercase}
+.cust-arrow{color:var(--text3);font-size:14px;transform:rotate(-45deg);transition:transform .3s,color .3s}
+.cust:hover .cust-arrow{color:var(--accent-ink);transform:rotate(0deg)}
+.cust-viz{position:relative;height:90px;background:#ece7db;border:1px solid var(--border);border-radius:10px;margin-bottom:14px;display:flex;align-items:center;justify-content:center;overflow:hidden}
+.phone-wire{width:36px;height:60px;position:relative;opacity:0.85}
+.phone-wire svg{width:100%;height:100%}
+.cust-viz-mini-map{position:absolute;left:8px;bottom:8px;width:90px;height:48px;border-radius:6px;border:1px solid var(--border);background:#ece7db;overflow:hidden}
+.cust-viz-mini-map::before{content:'';position:absolute;inset:0;background-image:linear-gradient(rgba(28,25,20,0.04) 1px,transparent 1px),linear-gradient(90deg,rgba(28,25,20,0.04) 1px,transparent 1px);background-size:8px 8px}
+.cust-viz-mini-map svg{position:absolute;inset:0;width:100%;height:100%}
+.cust-viz-mini-map .pin{width:6px;height:6px;box-shadow:0 0 0 2px rgba(74,240,192,0.15),0 0 6px rgba(74,240,192,0.5)}
+.cust-status-tag{position:absolute;top:8px;right:8px;font-family:var(--mono);font-size:9px;letter-spacing:1px;color:var(--accent-ink);background:rgba(74,240,192,0.08);padding:4px 8px;border-radius:5px;border:1px solid rgba(74,240,192,0.18)}
+.cust-status-tag.warn{color:var(--warn);background:rgba(199,121,31,0.08);border-color:rgba(199,121,31,0.18)}
+.cust-status-tag.gold{color:var(--gold);background:rgba(184,134,11,0.08);border-color:rgba(184,134,11,0.20)}
+.cust-status-tag.err{color:var(--error);background:rgba(207,68,68,0.08);border-color:rgba(207,68,68,0.18)}
+.cust-channels{position:absolute;top:8px;left:8px;display:flex;gap:6px;font-family:var(--mono);font-size:9px;color:var(--text3);letter-spacing:1px}
+.cust-channels span{display:flex;align-items:center;gap:3px}
+.cust-channels .dot{width:4px;height:4px;border-radius:50%;background:var(--accent);display:inline-block}
+.cust-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;font-size:11px}
+.cust-grid-label{font-family:var(--mono);font-size:9px;letter-spacing:1.2px;color:var(--text3);text-transform:uppercase;margin-bottom:4px}
+.cust-grid-val{font-weight:500;font-size:13px}
+
+/* ALERTS */
+.alerts{background:var(--card);border:1px solid var(--border);border-radius:14px;padding:18px 20px;display:flex;align-items:center;gap:24px;flex-wrap:wrap;position:relative;overflow:hidden}
+.alert{display:flex;align-items:center;gap:10px;font-size:12px;color:var(--text2);min-width:0}
+.alert strong{color:var(--text);font-weight:600}
+.alert-dot{width:7px;height:7px;border-radius:50%;flex-shrink:0;background:var(--accent);box-shadow:0 0 8px rgba(74,240,192,0.4)}
+.alert-dot.warn{background:var(--warn);box-shadow:0 0 8px rgba(199,121,31,0.4)}
+.alert-dot.dim{background:var(--text3);box-shadow:none}
+.alert-dot.err{background:var(--error);box-shadow:0 0 8px rgba(207,68,68,0.4)}
+.alert-time{font-family:var(--mono);font-size:9px;color:var(--text3);letter-spacing:1px;margin-left:auto;flex-shrink:0}
+
+/* SPARKLINE */
+.spark-wrap{position:relative}
+.spark-wrap[data-hoverable]{cursor:crosshair}
+.spark-line{stroke:var(--accent);stroke-width:1.5;fill:none;stroke-linejoin:round;stroke-linecap:round}
+.spark-fill{fill:url(#sparkGrad);opacity:0.4}
+.spark-target{stroke:rgba(28,25,20,0.15);stroke-width:1;stroke-dasharray:3 3;fill:none}
+.spark-marker{fill:var(--accent);stroke:#f4f1ea;stroke-width:2;transition:opacity .2s}
+.spark-marker-glow{fill:rgba(74,240,192,0.3);filter:blur(3px);transition:opacity .2s}
+
+/* Hover guide */
+.spark-guide{stroke:rgba(74,240,192,0.35);stroke-width:1;stroke-dasharray:2 3;opacity:0;transition:opacity .18s ease;pointer-events:none}
+.spark-hover-dot{fill:var(--accent);stroke:#f4f1ea;stroke-width:2;opacity:0;transition:opacity .18s ease;pointer-events:none}
+.spark-hover-glow{fill:rgba(74,240,192,0.55);filter:blur(4px);opacity:0;transition:opacity .18s ease;pointer-events:none}
+.spark-wrap.hovering .spark-guide,
+.spark-wrap.hovering .spark-hover-dot,
+.spark-wrap.hovering .spark-hover-glow{opacity:1}
+.spark-wrap.hovering .spark-marker,
+.spark-wrap.hovering .spark-marker-glow{opacity:0.25}
+
+/* Floating tooltip */
+.spark-tooltip{
+  position:absolute;
+  background:rgba(244,241,234,0.94);
+  border:1px solid rgba(74,240,192,0.25);
+  padding:8px 12px;
+  border-radius:8px;
+  pointer-events:none;
+  white-space:nowrap;
+  box-shadow:0 8px 28px rgba(0,0,0,0.55), inset 0 1px 0 rgba(28,25,20,0.04);
+  backdrop-filter:blur(10px);
+  -webkit-backdrop-filter:blur(10px);
+  z-index:10;
+  opacity:0;
+  transform:translate(-50%, calc(-100% - 12px));
+  transition:opacity .15s ease;
+  will-change:left,top;
+  left:0;top:0;
+}
+.spark-tooltip::after{
+  content:'';position:absolute;
+  bottom:-4px;left:50%;
+  width:7px;height:7px;
+  background:rgba(244,241,234,0.94);
+  border-right:1px solid rgba(74,240,192,0.25);
+  border-bottom:1px solid rgba(74,240,192,0.25);
+  transform:translateX(-50%) rotate(45deg);
+}
+.spark-wrap.hovering .spark-tooltip{opacity:1}
+.spark-tt-label{font-family:var(--mono);font-size:9px;letter-spacing:1.5px;text-transform:uppercase;color:var(--text3);margin-bottom:3px}
+.spark-tt-value{font-family:var(--body);font-weight:700;font-size:14px;color:var(--accent-ink);letter-spacing:-0.2px}
+
+/* BAR CHART (calls hourly) */
+.bar-chart{display:flex;align-items:flex-end;gap:3px;height:130px;padding:8px 0;border-bottom:1px solid var(--border);margin-bottom:12px}
+.bar{flex:1;background:linear-gradient(to top,rgba(74,240,192,0.08),rgba(74,240,192,0.4));border-radius:2px 2px 0 0;position:relative;transition:opacity .2s}
+.bar:hover{opacity:.7}
+.bar.recovered{background:linear-gradient(to top,rgba(74,240,192,0.4),rgba(74,240,192,0.9))}
+.bar.warn{background:linear-gradient(to top,rgba(199,121,31,0.2),rgba(199,121,31,0.6))}
+
+/* DONUT */
+.donut-wrap{display:flex;align-items:center;justify-content:center;gap:24px;height:230px}
+.donut{width:140px;height:140px;position:relative}
+.donut svg{transform:rotate(-90deg)}
+.donut-center{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center}
+.donut-center .num{font-size:28px;font-weight:600;letter-spacing:-1px}
+.donut-center .lbl{font-family:var(--mono);font-size:9px;color:var(--text3);letter-spacing:1.2px;margin-top:2px}
+.donut-legend{display:flex;flex-direction:column;gap:10px;font-size:11px}
+.donut-legend-item{display:flex;align-items:center;gap:8px;color:var(--text2)}
+.donut-legend-item .swatch{width:10px;height:10px;border-radius:2px}
+.donut-legend-item strong{color:var(--text);font-weight:600;margin-left:auto;font-family:var(--mono);font-size:11px}
+
+/* RATING DISTRIBUTION */
+.rating-dist{display:flex;flex-direction:column;gap:10px}
+.rating-row{display:flex;align-items:center;gap:10px;font-size:11px}
+.rating-stars{font-family:var(--mono);font-size:11px;color:var(--gold);width:46px}
+.rating-bar{flex:1;height:8px;background:rgba(28,25,20,0.04);border-radius:4px;overflow:hidden}
+.rating-fill{height:100%;background:linear-gradient(90deg,rgba(184,134,11,0.6),rgba(184,134,11,0.9));border-radius:4px}
+.rating-fill.dim{background:linear-gradient(90deg,rgba(199,121,31,0.3),rgba(199,121,31,0.5))}
+.rating-fill.low{background:linear-gradient(90deg,rgba(207,68,68,0.3),rgba(207,68,68,0.5))}
+.rating-count{font-family:var(--mono);color:var(--text2);width:30px;text-align:right;font-size:10px}
+
+/* WORKFLOW STATUS GRID */
+.wf-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:10px}
+.wf-row{display:flex;align-items:center;gap:10px;padding:10px 12px;background:rgba(28,25,20,0.02);border:1px solid var(--border);border-radius:8px;font-size:12px}
+.wf-dot{width:8px;height:8px;border-radius:50%;background:var(--accent);box-shadow:0 0 6px rgba(74,240,192,0.4);flex-shrink:0}
+.wf-dot.paused{background:var(--text3);box-shadow:none}
+.wf-name{flex:1;color:var(--text);font-weight:500}
+.wf-runs{font-family:var(--mono);font-size:10px;color:var(--text2)}
+
+/* FUNNEL */
+.funnel{display:flex;flex-direction:column;gap:8px;padding:10px 0}
+.funnel-step{position:relative;padding:14px 18px;border:1px solid var(--border);border-radius:10px;background:rgba(28,25,20,0.02);display:flex;justify-content:space-between;align-items:center}
+.funnel-step:nth-child(1){width:100%}
+.funnel-step:nth-child(2){width:75%;align-self:center}
+.funnel-step:nth-child(3){width:50%;align-self:center;border-color:var(--border-a);background:rgba(74,240,192,0.05)}
+.funnel-step:nth-child(4){width:30%;align-self:center;border-color:rgba(74,240,192,0.4);background:rgba(74,240,192,0.10)}
+.funnel-name{font-size:12px;color:var(--text2)}
+.funnel-step:nth-child(3) .funnel-name,.funnel-step:nth-child(4) .funnel-name{color:var(--text)}
+.funnel-num{font-family:var(--mono);font-size:13px;font-weight:600}
+.funnel-step:nth-child(4) .funnel-num{color:var(--accent-ink)}
+
+/* === ENTRANCE ANIMATIONS === */
+@keyframes dashFadeUp{
+  from{opacity:0;transform:translateY(14px)}
+  to{opacity:1;transform:translateY(0)}
+}
+@keyframes dashFadeIn{
+  from{opacity:0}
+  to{opacity:1}
+}
+@keyframes dashScaleY{
+  from{transform:scaleY(0)}
+  to{transform:scaleY(1)}
+}
+@keyframes dashDraw{
+  from{stroke-dashoffset:1500}
+  to{stroke-dashoffset:0}
+}
+@keyframes dashScaleIn{
+  from{opacity:0;transform:scale(0)}
+  to{opacity:1;transform:scale(1)}
+}
+@keyframes dashTickFlash{
+  0%{opacity:1}
+  40%{opacity:0.35;transform:translateY(-3px) scale(1.02);color:var(--accent-ink)}
+  100%{opacity:1;transform:translateY(0) scale(1)}
+}
+@keyframes dashBarPulse{
+  0%,100%{box-shadow:0 0 8px rgba(74,240,192,0.4)}
+  50%{box-shadow:0 0 16px rgba(74,240,192,0.7)}
+}
+
+/* Stats: stagger fade-in */
+.view.active .stat{
+  animation:dashFadeUp .7s cubic-bezier(.16,1,.3,1) both;
+}
+.view.active .stat:nth-child(1){animation-delay:.05s}
+.view.active .stat:nth-child(2){animation-delay:.13s}
+.view.active .stat:nth-child(3){animation-delay:.21s}
+.view.active .stat:nth-child(4){animation-delay:.29s}
+
+/* Main grid cards: fade in */
+.view.active .main-grid > .card{
+  animation:dashFadeUp .8s cubic-bezier(.16,1,.3,1) both;
+}
+.view.active .main-grid > .card:nth-child(1){animation-delay:.35s}
+.view.active .main-grid > .card:nth-child(2){animation-delay:.45s}
+
+/* Customer / row cards: stagger */
+.view.active .cust-row .cust{
+  animation:dashFadeUp .7s cubic-bezier(.16,1,.3,1) both;
+}
+.view.active .cust-row .cust:nth-child(1){animation-delay:.6s}
+.view.active .cust-row .cust:nth-child(2){animation-delay:.7s}
+.view.active .cust-row .cust:nth-child(3){animation-delay:.8s}
+
+/* Alerts row */
+.view.active .alerts{
+  animation:dashFadeUp .8s .9s cubic-bezier(.16,1,.3,1) both;
+}
+
+/* Sparkline draws on */
+.view.active .spark-line{
+  stroke-dasharray:1500;
+  stroke-dashoffset:1500;
+  animation:dashDraw 2.2s .55s cubic-bezier(.16,1,.3,1) forwards;
+}
+.view.active .spark-fill{
+  opacity:0;
+  animation:dashFadeIn 1.5s 1.4s ease forwards;
+  animation-fill-mode:both;
+}
+.view.active .spark-marker,.view.active .spark-marker-glow{
+  opacity:0;
+  animation:dashScaleIn .5s 2.4s cubic-bezier(.34,1.56,.64,1) forwards;
+  transform-origin:center;
+}
+
+/* Bar chart bars grow from bottom */
+.view.active .bar{
+  transform-origin:bottom;
+  animation:dashScaleY .8s cubic-bezier(.34,1.56,.64,1) both;
+}
+.view.active .bar:nth-child(n){animation-delay:calc(.5s + (var(--i, 0) * 25ms))}
+
+/* Map pins reveal */
+.view.active .pin{
+  animation:dashScaleIn .6s cubic-bezier(.34,1.56,.64,1) both;
+}
+.view.active .pin:nth-child(n+3){animation-delay:.7s}
+.view.active .pin:nth-child(n+5){animation-delay:.85s}
+.view.active .pin:nth-child(n+8){animation-delay:1s}
+
+/* Donut animates in */
+.view.active .donut svg circle{
+  transform-origin:center;
+  animation:dashFadeIn .8s .5s ease both;
+}
+
+/* Tick flash on stat update */
+.stat-value.ticking{
+  animation:dashTickFlash .55s cubic-bezier(.16,1,.3,1)
+}
+
+/* === Donut entrance: segments draw, donut spins in, center scales up, legend staggers === */
+.donut svg{transition:filter .35s, transform .4s cubic-bezier(.16,1,.3,1)}
+.view.active .donut svg{
+  animation:donutSpinIn 1.6s cubic-bezier(.16,1,.3,1) .35s both;
+}
+@keyframes donutSpinIn{
+  from{transform:rotate(-450deg)}
+  to{transform:rotate(-90deg)}
+}
+
+.donut-seg{transition:stroke-width .35s cubic-bezier(.16,1,.3,1),filter .35s}
+.view.active .donut .seg-1{
+  stroke-dasharray:0 240;
+  animation:donutDraw1 .9s cubic-bezier(.34,1.4,.64,1) .55s forwards;
+}
+.view.active .donut .seg-2{
+  stroke-dasharray:0 240;
+  animation:donutDraw2 .65s cubic-bezier(.34,1.4,.64,1) 1.2s forwards;
+}
+.view.active .donut .seg-3{
+  stroke-dasharray:0 240;
+  animation:donutDraw3 .5s cubic-bezier(.34,1.4,.64,1) 1.6s forwards;
+}
+@keyframes donutDraw1{to{stroke-dasharray:148 240}}
+@keyframes donutDraw2{to{stroke-dasharray:60 240}}
+@keyframes donutDraw3{to{stroke-dasharray:32 240}}
+
+/* Center number + label scale-in */
+.view.active .donut-center{
+  animation:donutCenterIn .8s cubic-bezier(.34,1.5,.64,1) .55s both;
+}
+@keyframes donutCenterIn{
+  from{opacity:0;transform:scale(0.4)}
+  to{opacity:1;transform:scale(1)}
+}
+
+/* Legend stagger */
+.view.active .donut-legend-item{
+  animation:donutLegendIn .55s cubic-bezier(.16,1,.3,1) both;
+}
+.view.active .donut-legend-item:nth-child(1){animation-delay:.95s}
+.view.active .donut-legend-item:nth-child(2){animation-delay:1.4s}
+.view.active .donut-legend-item:nth-child(3){animation-delay:1.7s}
+@keyframes donutLegendIn{
+  from{opacity:0;transform:translateX(-12px)}
+  to{opacity:1;transform:translateX(0)}
+}
+
+/* Hover: segments thicken, soft mint glow, swatch dots glow */
+.donut:hover svg{filter:drop-shadow(0 0 18px rgba(74,240,192,.32))}
+.donut:hover .donut-seg{stroke-width:16}
+.donut-wrap:hover .donut-legend-item .swatch{box-shadow:0 0 8px currentColor}
+.donut-legend-item{transition:color .25s,transform .25s}
+.donut-legend-item:hover{color:var(--text);transform:translateX(2px)}
+
+/* Live dot already pulses; add subtle glow boost */
+.dh-meta .live-dot{box-shadow:0 0 0 0 rgba(74,240,192,0.5)}
+
+/* Reduced motion: disable all heavy animations */
+@media (prefers-reduced-motion: reduce){
+  *,*::before,*::after{
+    animation-duration:0.01ms !important;
+    animation-iteration-count:1 !important;
+    transition-duration:0.01ms !important;
+    scroll-behavior:auto !important;
+  }
+}
+
+/* RESPONSIVE */
+@media (max-width:980px){
+  body{padding:14px 8px;display:block}
+  .dash{margin:0 auto}
+  .dash-inner{padding:16px}
+  .dh{flex-wrap:wrap;gap:12px;padding:6px 4px 20px;margin-bottom:18px}
+  .dh-brand{order:1}
+  .dh-meta{order:2;margin-left:auto}
+  .dh-tabs{order:3;width:100%;overflow-x:auto;-webkit-overflow-scrolling:touch;justify-content:flex-start;scrollbar-width:none}
+  .dh-tabs::-webkit-scrollbar{display:none}
+  .dh-tabs button{flex-shrink:0;font-size:11px;padding:7px 12px}
+  .stats{grid-template-columns:repeat(2,1fr);gap:10px}
+  .stat{padding:14px 16px}
+  .stat-value{font-size:30px}
+  .main-grid{grid-template-columns:1fr;gap:10px}
+  .cust-row{grid-template-columns:1fr;gap:10px}
+  .wf-grid{grid-template-columns:1fr}
+  .donut-wrap{flex-direction:column;height:auto;gap:18px;padding:8px 0}
+  .map-stage{height:200px}
+  .big-num{font-size:44px}
+  /* Funnel: less aggressive narrowing on mobile so labels + numbers fit */
+  .funnel-step{padding:12px 14px;gap:12px}
+  .funnel-step:nth-child(2){width:90%}
+  .funnel-step:nth-child(3){width:78%}
+  .funnel-step:nth-child(4){width:66%}
+}
+@media (max-width:520px){
+  .stats{grid-template-columns:1fr}
+  .funnel-step:nth-child(2){width:95%}
+  .funnel-step:nth-child(3){width:85%}
+  .funnel-step:nth-child(4){width:75%}
+  .alerts{flex-direction:column;align-items:flex-start;gap:14px}
+  .alert{width:100%}
+  .alert-time{margin-left:auto}
+}
+</style>
+</head>
+<body>
+
+<div class="dash">
+  <div class="dash-inner">
+
+    <!-- HEADER -->
+    <div class="dh">
+      <div class="dh-brand">
+        <div class="dh-mark"><i></i><i></i><i></i></div>
+        <div class="dh-brand-text">pacific<span class="ai">edge.ai</span></div>
+      </div>
+      <div class="dh-tabs">
+        <button class="active" data-view="live">Live</button>
+        <button data-view="calls">Calls</button>
+        <button data-view="reviews">Reviews</button>
+        <button data-view="workflows">Workflows</button>
+        <button data-view="insights">Insights</button>
+      </div>
+      <div class="dh-meta">
+        <span class="live-dot"></span>
+        <span>LIVE · 14:23 PST</span>
+      </div>
+    </div>
+
+    <!-- ========== LIVE VIEW ========== -->
+    <div class="view active" data-view="live">
+      <div class="stats">
+        <div class="stat"><div class="stat-label">Calls Today</div><div class="stat-value">47</div><div class="stat-sub"><span class="mint">▲ 12</span> recovered by AI</div></div>
+        <div class="stat"><div class="stat-label">Response Rate</div><div class="stat-value">92<span class="unit">.4%</span></div><div class="stat-sub"><span class="mint">▲ 12pp</span> this week</div></div>
+        <div class="stat"><div class="stat-label">Bookings</div><div class="stat-value">18</div><div class="stat-sub">+$4,350 expected</div></div>
+        <div class="stat"><div class="stat-label">Recovered Revenue</div><div class="stat-value">$2,847</div><div class="stat-sub"><span class="mint">▲ 7</span> deals saved</div></div>
+      </div>
+
+      <div class="main-grid">
+        <div class="card">
+          <div class="card-header"><span class="card-label">AI Response Time · 24h</span><span class="card-meta">target ‹ 1m</span></div>
+          <div class="big-stat"><span class="big-num">0:23</span><span class="big-unit">avg</span><span class="trend mint">▼ 37s vs last wk</span></div>
+          <div class="spark-wrap">
+            <svg viewBox="0 0 600 120" preserveAspectRatio="none">
+              <defs><linearGradient id="sparkGrad" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#4af0c0" stop-opacity="0.35"/><stop offset="100%" stop-color="#4af0c0" stop-opacity="0"/></linearGradient></defs>
+              <line class="spark-target" x1="0" y1="30" x2="600" y2="30"/>
+              <path class="spark-fill" d="M0,33 L25,36 L50,28 L75,40 L100,36 L125,48 L150,40 L175,53 L200,46 L225,50 L250,56 L275,48 L300,60 L325,53 L350,66 L375,58 L400,70 L425,63 L450,76 L475,68 L500,80 L525,73 L550,78 L580,76 L600,73 L600,120 L0,120 Z"/>
+              <path class="spark-line" d="M0,33 L25,36 L50,28 L75,40 L100,36 L125,48 L150,40 L175,53 L200,46 L225,50 L250,56 L275,48 L300,60 L325,53 L350,66 L375,58 L400,70 L425,63 L450,76 L475,68 L500,80 L525,73 L550,78 L580,76 L600,73"/>
+              <circle class="spark-marker-glow" cx="600" cy="73" r="8"/>
+              <circle class="spark-marker" cx="600" cy="73" r="4"/>
+            </svg>
+          </div>
+          <div class="chart-axis"><span>00:00</span><span>06:00</span><span>12:00</span><span>NOW</span></div>
+        </div>
+
+        <div class="card map-card">
+          <div class="card-header"><span class="card-label">Customer Activity · Vancouver</span><span class="card-meta">142 active · 23 today</span></div>
+          <div class="map-stage">
+            <span class="map-corner-tag">VAN · 49.28°N</span>
+            <svg class="map-svg" viewBox="0 0 700 230" preserveAspectRatio="xMidYMid slice">
+              <defs><linearGradient id="terrainGrad" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#e3dccc"/><stop offset="100%" stop-color="#ece7db"/></linearGradient></defs>
+              <rect width="700" height="230" fill="url(#terrainGrad)"/>
+              <g stroke="rgba(74,240,192,0.07)" fill="none" stroke-width="0.7"><path d="M-20,40 Q 100,30 200,55 T 400,60 T 700,50"/><path d="M-20,90 Q 120,80 240,105 T 470,95 T 720,110"/><path d="M-20,150 Q 130,140 260,160 T 480,155 T 720,170"/><path d="M-20,200 Q 140,195 270,215 T 490,210 T 720,220"/></g>
+              <g stroke="rgba(28,25,20,0.04)" stroke-width="0.5" fill="none"><line x1="100" y1="0" x2="100" y2="230"/><line x1="240" y1="0" x2="240" y2="230"/><line x1="380" y1="0" x2="380" y2="230"/><line x1="520" y1="0" x2="520" y2="230"/><line x1="0" y1="60" x2="700" y2="60"/><line x1="0" y1="130" x2="700" y2="130"/></g>
+              <path d="M120,180 Q 220,140 340,120 T 540,80" stroke="rgba(74,240,192,0.25)" stroke-width="1" stroke-dasharray="4 4" fill="none"/>
+            </svg>
+            <div class="pin" style="top:35%;left:48%"><div class="pin-label">Yaletown · live call</div></div>
+            <div class="pin alt" style="top:60%;left:25%"></div>
+            <div class="pin" style="top:48%;left:75%"></div>
+            <div class="pin dim" style="top:25%;left:15%"></div>
+            <div class="pin dim" style="top:70%;left:55%"></div>
+            <div class="pin dim" style="top:30%;left:65%"></div>
+            <div class="pin dim" style="top:80%;left:80%"></div>
+            <div class="pin dim" style="top:55%;left:42%"></div>
+            <div class="map-overlay-stats"><span><strong>142</strong> active</span><span><strong>23</strong> new</span><span><strong>3</strong> in conversation</span></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="cust-row">
+        <div class="cust">
+          <div class="cust-head"><div><div class="cust-id">Lead #4581</div><div class="cust-time">14:22 · 2m ago</div></div><div class="cust-arrow">↗</div></div>
+          <div class="cust-viz">
+            <div class="cust-channels"><span><i class="dot"></i>SMS</span></div>
+            <span class="cust-status-tag">RECOVERED</span>
+            <div class="phone-wire"><svg viewBox="0 0 36 60" fill="none" stroke="rgba(74,240,192,0.6)" stroke-width="0.7"><rect x="2" y="2" width="32" height="56" rx="5"/><rect x="5" y="9" width="26" height="38" rx="1.5"/><circle cx="18" cy="53" r="1.6"/><line x1="14" y1="5" x2="22" y2="5" stroke-width="1"/><path d="M9,22 h18 v6 h-12 l-3,3 v-3 h-3 z" stroke="rgba(74,240,192,0.9)" stroke-width="0.5"/></svg></div>
+            <div class="cust-viz-mini-map"><svg viewBox="0 0 90 48"><path d="M0,30 Q 30,25 60,32 T 90,30" stroke="rgba(74,240,192,0.3)" fill="none" stroke-width="0.5"/></svg><div class="pin" style="top:50%;left:60%"></div></div>
+          </div>
+          <div class="cust-grid"><div><div class="cust-grid-label">Channel</div><div class="cust-grid-val">Missed call</div></div><div><div class="cust-grid-label">Outcome</div><div class="cust-grid-val mint">+$340 booked</div></div></div>
+        </div>
+
+        <div class="cust">
+          <div class="cust-head"><div><div class="cust-id">Review · ★★★★★</div><div class="cust-time">14:18 · 6m ago</div></div><div class="cust-arrow">↗</div></div>
+          <div class="cust-viz">
+            <div class="cust-channels"><span><i class="dot"></i>GOOGLE</span></div>
+            <span class="cust-status-tag warn">DRAFT READY</span>
+            <div class="phone-wire"><svg viewBox="0 0 60 60" fill="none" stroke="rgba(199,121,31,0.7)" stroke-width="0.7"><g transform="translate(4,18)"><path d="M5,0 L6.5,4 L10.5,4.2 L7.4,7 L8.5,11 L5,8.8 L1.5,11 L2.6,7 L-0.5,4.2 L3.5,4 Z" fill="rgba(199,121,31,0.8)"/></g><g transform="translate(15,18)"><path d="M5,0 L6.5,4 L10.5,4.2 L7.4,7 L8.5,11 L5,8.8 L1.5,11 L2.6,7 L-0.5,4.2 L3.5,4 Z" fill="rgba(199,121,31,0.8)"/></g><g transform="translate(26,18)"><path d="M5,0 L6.5,4 L10.5,4.2 L7.4,7 L8.5,11 L5,8.8 L1.5,11 L2.6,7 L-0.5,4.2 L3.5,4 Z" fill="rgba(199,121,31,0.8)"/></g><g transform="translate(37,18)"><path d="M5,0 L6.5,4 L10.5,4.2 L7.4,7 L8.5,11 L5,8.8 L1.5,11 L2.6,7 L-0.5,4.2 L3.5,4 Z" fill="rgba(199,121,31,0.8)"/></g><g transform="translate(48,18)"><path d="M5,0 L6.5,4 L10.5,4.2 L7.4,7 L8.5,11 L5,8.8 L1.5,11 L2.6,7 L-0.5,4.2 L3.5,4 Z" fill="rgba(199,121,31,0.8)"/></g><line x1="6" y1="36" x2="54" y2="36" stroke-width="0.4"/><line x1="6" y1="40" x2="46" y2="40" stroke-width="0.4"/></svg></div>
+          </div>
+          <div class="cust-grid"><div><div class="cust-grid-label">From</div><div class="cust-grid-val">Sarah K.</div></div><div><div class="cust-grid-label">AI Draft</div><div class="cust-grid-val warn">1-tap approve</div></div></div>
+        </div>
+
+        <div class="cust">
+          <div class="cust-head"><div><div class="cust-id">Booking #2104</div><div class="cust-time">14:05 · 19m ago</div></div><div class="cust-arrow">↗</div></div>
+          <div class="cust-viz">
+            <div class="cust-channels"><span><i class="dot"></i>WEB</span></div>
+            <span class="cust-status-tag">CONFIRMED</span>
+            <div class="phone-wire"><svg viewBox="0 0 60 60" fill="none" stroke="rgba(74,240,192,0.6)" stroke-width="0.7"><rect x="6" y="10" width="48" height="42" rx="3"/><line x1="6" y1="20" x2="54" y2="20"/><line x1="18" y1="6" x2="18" y2="14" stroke-width="1.2"/><line x1="42" y1="6" x2="42" y2="14" stroke-width="1.2"/><rect x="26" y="32" width="8" height="8" rx="1" fill="rgba(74,240,192,0.7)"/><g stroke="rgba(74,240,192,0.25)" stroke-width="0.4"><line x1="14" y1="28" x2="50" y2="28"/><line x1="14" y1="36" x2="50" y2="36"/><line x1="14" y1="44" x2="50" y2="44"/><line x1="22" y1="22" x2="22" y2="50"/><line x1="30" y1="22" x2="30" y2="50"/><line x1="38" y1="22" x2="38" y2="50"/><line x1="46" y1="22" x2="46" y2="50"/></g></svg></div>
+            <div class="cust-viz-mini-map"><svg viewBox="0 0 90 48"><line x1="0" y1="14" x2="90" y2="14" stroke="rgba(28,25,20,0.06)" stroke-width="0.5"/><line x1="0" y1="28" x2="90" y2="28" stroke="rgba(28,25,20,0.06)" stroke-width="0.5"/><path d="M5,32 L20,32 L20,18 L40,18 L40,28 L70,28 L70,12 L88,12" stroke="rgba(74,240,192,0.4)" fill="none" stroke-width="0.6"/></svg><div class="pin" style="top:25%;left:80%"></div></div>
+          </div>
+          <div class="cust-grid"><div><div class="cust-grid-label">Slot</div><div class="cust-grid-val">Sat · 6:30 PM</div></div><div><div class="cust-grid-label">Value</div><div class="cust-grid-val mint">$185</div></div></div>
+        </div>
+      </div>
+
+      <div class="alerts">
+        <div class="alert"><span class="alert-dot"></span><span><strong>3 calls</strong> auto-recovered in last hour</span><span class="alert-time">5M AGO</span></div>
+        <div class="alert"><span class="alert-dot warn"></span><span><strong>Review pending</strong> · 5★ from Sarah K.</span><span class="alert-time">12M AGO</span></div>
+        <div class="alert"><span class="alert-dot dim"></span><span>Weekly report ready · revenue <strong class="mint">+22%</strong></span><span class="alert-time">1H AGO</span></div>
+      </div>
+    </div>
+
+    <!-- ========== CALLS VIEW ========== -->
+    <div class="view" data-view="calls">
+      <div class="stats">
+        <div class="stat"><div class="stat-label">Calls Today</div><div class="stat-value">47</div><div class="stat-sub"><span class="mint">▲ 8</span> vs yesterday</div></div>
+        <div class="stat"><div class="stat-label">Recovered by AI</div><div class="stat-value">12</div><div class="stat-sub mint">$2,847 saved</div></div>
+        <div class="stat"><div class="stat-label">Avg Response</div><div class="stat-value">0:23</div><div class="stat-sub"><span class="mint">▼ 37s</span> vs last wk</div></div>
+        <div class="stat"><div class="stat-label">Voicemails</div><div class="stat-value">3</div><div class="stat-sub warn">awaiting review</div></div>
+      </div>
+
+      <div class="main-grid">
+        <div class="card">
+          <div class="card-header"><span class="card-label">Hourly Call Volume · Today</span><span class="card-meta">peak 18:00</span></div>
+          <div class="bar-chart">
+            <div class="bar" style="height:18%;--i:0"></div><div class="bar" style="height:12%;--i:1"></div><div class="bar" style="height:8%;--i:2"></div>
+            <div class="bar" style="height:25%;--i:3"></div><div class="bar" style="height:38%;--i:4"></div><div class="bar" style="height:42%;--i:5"></div>
+            <div class="bar recovered" style="height:55%;--i:6"></div><div class="bar" style="height:48%;--i:7"></div><div class="bar" style="height:62%;--i:8"></div>
+            <div class="bar recovered" style="height:70%;--i:9"></div><div class="bar" style="height:75%;--i:10"></div><div class="bar" style="height:65%;--i:11"></div>
+            <div class="bar" style="height:58%;--i:12"></div><div class="bar recovered" style="height:80%;--i:13"></div><div class="bar" style="height:72%;--i:14"></div>
+            <div class="bar" style="height:68%;--i:15"></div><div class="bar recovered" style="height:88%;--i:16"></div><div class="bar recovered" style="height:95%;--i:17"></div>
+            <div class="bar" style="height:78%;--i:18"></div><div class="bar" style="height:60%;--i:19"></div><div class="bar" style="height:42%;--i:20"></div>
+            <div class="bar" style="height:28%;--i:21"></div><div class="bar" style="height:18%;--i:22"></div><div class="bar" style="height:10%;--i:23"></div>
+          </div>
+          <div class="chart-axis"><span>00:00</span><span>06:00</span><span>12:00</span><span>18:00</span><span>23:00</span></div>
+        </div>
+
+        <div class="card">
+          <div class="card-header"><span class="card-label">Channel Mix</span><span class="card-meta">last 24h</span></div>
+          <div class="donut-wrap">
+            <div class="donut">
+              <svg viewBox="0 0 100 100">
+                <circle cx="50" cy="50" r="38" fill="none" stroke="rgba(28,25,20,0.04)" stroke-width="14"/>
+                <circle class="donut-seg seg-1" cx="50" cy="50" r="38" fill="none" stroke="#4af0c0" stroke-width="14" stroke-dasharray="148 240" stroke-dashoffset="0"/>
+                <circle class="donut-seg seg-2" cx="50" cy="50" r="38" fill="none" stroke="rgba(74,240,192,0.55)" stroke-width="14" stroke-dasharray="60 240" stroke-dashoffset="-148"/>
+                <circle class="donut-seg seg-3" cx="50" cy="50" r="38" fill="none" stroke="rgba(199,121,31,0.7)" stroke-width="14" stroke-dasharray="32 240" stroke-dashoffset="-208"/>
+              </svg>
+              <div class="donut-center"><div class="num">47</div><div class="lbl">CALLS</div></div>
+            </div>
+            <div class="donut-legend">
+              <div class="donut-legend-item"><span class="swatch" style="background:#4af0c0"></span>Inbound voice<strong>62%</strong></div>
+              <div class="donut-legend-item"><span class="swatch" style="background:rgba(74,240,192,0.55)"></span>AI text reply<strong>25%</strong></div>
+              <div class="donut-legend-item"><span class="swatch" style="background:rgba(199,121,31,0.7)"></span>Voicemail<strong>13%</strong></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="cust-row">
+        <div class="cust">
+          <div class="cust-head"><div><div class="cust-id">Call #4581</div><div class="cust-time">14:22 · 2m ago</div></div><div class="cust-arrow">↗</div></div>
+          <div class="cust-viz">
+            <span class="cust-status-tag">RECOVERED</span>
+            <div class="phone-wire"><svg viewBox="0 0 36 60" fill="none" stroke="rgba(74,240,192,0.6)" stroke-width="0.7"><rect x="2" y="2" width="32" height="56" rx="5"/><rect x="5" y="9" width="26" height="38" rx="1.5"/><circle cx="18" cy="53" r="1.6"/><path d="M9,22 h18 v6 h-12 l-3,3 v-3 h-3 z" stroke="rgba(74,240,192,0.9)" stroke-width="0.5"/></svg></div>
+          </div>
+          <div class="cust-grid"><div><div class="cust-grid-label">Type</div><div class="cust-grid-val">Missed → SMS</div></div><div><div class="cust-grid-label">Outcome</div><div class="cust-grid-val mint">+$340</div></div></div>
+        </div>
+
+        <div class="cust">
+          <div class="cust-head"><div><div class="cust-id">Call #4576</div><div class="cust-time">13:48 · 36m ago</div></div><div class="cust-arrow">↗</div></div>
+          <div class="cust-viz">
+            <span class="cust-status-tag warn">VOICEMAIL</span>
+            <div class="phone-wire"><svg viewBox="0 0 60 60" fill="none" stroke="rgba(199,121,31,0.6)" stroke-width="0.7"><circle cx="30" cy="30" r="20"/><path d="M22,28 v6 M30,24 v14 M38,28 v6" stroke="rgba(199,121,31,0.8)" stroke-width="1.2" stroke-linecap="round"/></svg></div>
+          </div>
+          <div class="cust-grid"><div><div class="cust-grid-label">Duration</div><div class="cust-grid-val">0:42</div></div><div><div class="cust-grid-label">Status</div><div class="cust-grid-val warn">Transcribing</div></div></div>
+        </div>
+
+        <div class="cust">
+          <div class="cust-head"><div><div class="cust-id">Call #4565</div><div class="cust-time">12:15 · 2h ago</div></div><div class="cust-arrow">↗</div></div>
+          <div class="cust-viz">
+            <span class="cust-status-tag err">SPAM BLOCKED</span>
+            <div class="phone-wire"><svg viewBox="0 0 50 60" fill="none" stroke="rgba(207,68,68,0.5)" stroke-width="0.7"><rect x="6" y="14" width="38" height="34" rx="3"/><line x1="6" y1="14" x2="44" y2="48" stroke-width="1.2"/><line x1="44" y1="14" x2="6" y2="48" stroke-width="1.2"/></svg></div>
+          </div>
+          <div class="cust-grid"><div><div class="cust-grid-label">Source</div><div class="cust-grid-val">Unknown</div></div><div><div class="cust-grid-label">Action</div><div class="cust-grid-val err">Auto-blocked</div></div></div>
+        </div>
+      </div>
+
+      <div class="alerts">
+        <div class="alert"><span class="alert-dot"></span><span><strong>12 calls</strong> recovered today via SMS auto-reply</span><span class="alert-time">LIVE</span></div>
+        <div class="alert"><span class="alert-dot warn"></span><span><strong>Peak hour:</strong> 18:00 · 11 calls</span><span class="alert-time">5H AGO</span></div>
+        <div class="alert"><span class="alert-dot dim"></span><span>3 voicemails awaiting your review</span><span class="alert-time">36M AGO</span></div>
+      </div>
+    </div>
+
+    <!-- ========== REVIEWS VIEW ========== -->
+    <div class="view" data-view="reviews">
+      <div class="stats">
+        <div class="stat"><div class="stat-label">Avg Rating</div><div class="stat-value">4<span class="unit">.8★</span></div><div class="stat-sub"><span class="mint">▲ 0.2</span> this month</div></div>
+        <div class="stat"><div class="stat-label">This Week</div><div class="stat-value">31</div><div class="stat-sub mint">+12 vs last wk</div></div>
+        <div class="stat"><div class="stat-label">Reply Rate</div><div class="stat-value">89<span class="unit">%</span></div><div class="stat-sub">within 1 hour</div></div>
+        <div class="stat"><div class="stat-label">Sentiment</div><div class="stat-value">+85<span class="unit">%</span></div><div class="stat-sub mint">positive trend</div></div>
+      </div>
+
+      <div class="main-grid">
+        <div class="card">
+          <div class="card-header"><span class="card-label">Rating Distribution · Last 30d</span><span class="card-meta">128 total</span></div>
+          <div class="rating-dist" style="margin-top:8px">
+            <div class="rating-row"><span class="rating-stars">★★★★★</span><div class="rating-bar"><div class="rating-fill" style="width:78%"></div></div><span class="rating-count">99</span></div>
+            <div class="rating-row"><span class="rating-stars">★★★★</span><div class="rating-bar"><div class="rating-fill" style="width:18%"></div></div><span class="rating-count">23</span></div>
+            <div class="rating-row"><span class="rating-stars">★★★</span><div class="rating-bar"><div class="rating-fill dim" style="width:3%"></div></div><span class="rating-count">4</span></div>
+            <div class="rating-row"><span class="rating-stars">★★</span><div class="rating-bar"><div class="rating-fill low" style="width:1%"></div></div><span class="rating-count">1</span></div>
+            <div class="rating-row"><span class="rating-stars">★</span><div class="rating-bar"><div class="rating-fill low" style="width:1%"></div></div><span class="rating-count">1</span></div>
+          </div>
+          <div style="margin-top:18px;padding-top:14px;border-top:1px solid var(--border);display:flex;justify-content:space-between;font-family:var(--mono);font-size:10px;color:var(--text3);letter-spacing:1px">
+            <span>5★ DOMINANCE <strong style="color:var(--gold)">77%</strong></span>
+            <span>NEGATIVE <strong style="color:var(--error)">2</strong></span>
+            <span>WAITING <strong style="color:var(--warn)">5</strong></span>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="card-header"><span class="card-label">Live Review Feed</span><span class="card-meta">last 24h</span></div>
+          <div style="display:flex;flex-direction:column;gap:10px">
+            <div style="padding:12px;background:rgba(28,25,20,0.02);border:1px solid var(--border);border-radius:8px">
+              <div style="display:flex;justify-content:space-between;margin-bottom:6px"><span style="color:var(--gold);font-size:12px">★★★★★</span><span class="cust-time">14:18</span></div>
+              <div style="font-size:11px;color:var(--text2);line-height:1.5">"Honestly the easiest booking experience I've had. Fast reply, friendly staff..."</div>
+              <div style="margin-top:8px;font-family:var(--mono);font-size:9px;color:var(--accent-ink);letter-spacing:1px">DRAFT REPLY READY</div>
+            </div>
+            <div style="padding:12px;background:rgba(28,25,20,0.02);border:1px solid var(--border);border-radius:8px">
+              <div style="display:flex;justify-content:space-between;margin-bottom:6px"><span style="color:var(--gold);font-size:12px">★★★★★</span><span class="cust-time">11:42</span></div>
+              <div style="font-size:11px;color:var(--text2);line-height:1.5">"Quick to respond when I missed the first call. Loved it!"</div>
+              <div style="margin-top:8px;font-family:var(--mono);font-size:9px;color:var(--accent-ink);letter-spacing:1px">✓ AUTO-REPLIED</div>
+            </div>
+            <div style="padding:12px;background:rgba(199,121,31,0.04);border:1px solid rgba(199,121,31,0.18);border-radius:8px">
+              <div style="display:flex;justify-content:space-between;margin-bottom:6px"><span style="color:var(--gold);font-size:12px">★★★★</span><span class="cust-time">09:15</span></div>
+              <div style="font-size:11px;color:var(--text2);line-height:1.5">"Great service overall, parking was tough though..."</div>
+              <div style="margin-top:8px;font-family:var(--mono);font-size:9px;color:var(--warn);letter-spacing:1px">NEEDS REVIEW</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="cust-row">
+        <div class="cust">
+          <div class="cust-head"><div><div class="cust-id">Sarah K. · ★★★★★</div><div class="cust-time">14:18 · 6m ago</div></div><div class="cust-arrow">↗</div></div>
+          <div class="cust-viz"><span class="cust-status-tag">DRAFT READY</span><div class="phone-wire"><svg viewBox="0 0 60 60" fill="none" stroke="rgba(184,134,11,0.7)" stroke-width="0.7"><g transform="translate(4,18)"><path d="M5,0 L6.5,4 L10.5,4.2 L7.4,7 L8.5,11 L5,8.8 L1.5,11 L2.6,7 L-0.5,4.2 L3.5,4 Z" fill="rgba(184,134,11,0.8)"/></g><g transform="translate(15,18)"><path d="M5,0 L6.5,4 L10.5,4.2 L7.4,7 L8.5,11 L5,8.8 L1.5,11 L2.6,7 L-0.5,4.2 L3.5,4 Z" fill="rgba(184,134,11,0.8)"/></g><g transform="translate(26,18)"><path d="M5,0 L6.5,4 L10.5,4.2 L7.4,7 L8.5,11 L5,8.8 L1.5,11 L2.6,7 L-0.5,4.2 L3.5,4 Z" fill="rgba(184,134,11,0.8)"/></g><g transform="translate(37,18)"><path d="M5,0 L6.5,4 L10.5,4.2 L7.4,7 L8.5,11 L5,8.8 L1.5,11 L2.6,7 L-0.5,4.2 L3.5,4 Z" fill="rgba(184,134,11,0.8)"/></g><g transform="translate(48,18)"><path d="M5,0 L6.5,4 L10.5,4.2 L7.4,7 L8.5,11 L5,8.8 L1.5,11 L2.6,7 L-0.5,4.2 L3.5,4 Z" fill="rgba(184,134,11,0.8)"/></g><line x1="6" y1="36" x2="54" y2="36" stroke-width="0.4"/><line x1="6" y1="40" x2="46" y2="40" stroke-width="0.4"/></svg></div></div>
+          <div class="cust-grid"><div><div class="cust-grid-label">Source</div><div class="cust-grid-val">Google</div></div><div><div class="cust-grid-label">AI Reply</div><div class="cust-grid-val mint">1-tap</div></div></div>
+        </div>
+
+        <div class="cust">
+          <div class="cust-head"><div><div class="cust-id">Mike T. · ★★★★</div><div class="cust-time">09:15 · 5h ago</div></div><div class="cust-arrow">↗</div></div>
+          <div class="cust-viz"><span class="cust-status-tag warn">NEEDS REVIEW</span><div class="phone-wire"><svg viewBox="0 0 60 60" fill="none" stroke="rgba(199,121,31,0.7)" stroke-width="0.7"><g transform="translate(4,18)"><path d="M5,0 L6.5,4 L10.5,4.2 L7.4,7 L8.5,11 L5,8.8 L1.5,11 L2.6,7 L-0.5,4.2 L3.5,4 Z" fill="rgba(199,121,31,0.8)"/></g><g transform="translate(15,18)"><path d="M5,0 L6.5,4 L10.5,4.2 L7.4,7 L8.5,11 L5,8.8 L1.5,11 L2.6,7 L-0.5,4.2 L3.5,4 Z" fill="rgba(199,121,31,0.8)"/></g><g transform="translate(26,18)"><path d="M5,0 L6.5,4 L10.5,4.2 L7.4,7 L8.5,11 L5,8.8 L1.5,11 L2.6,7 L-0.5,4.2 L3.5,4 Z" fill="rgba(199,121,31,0.8)"/></g><g transform="translate(37,18)"><path d="M5,0 L6.5,4 L10.5,4.2 L7.4,7 L8.5,11 L5,8.8 L1.5,11 L2.6,7 L-0.5,4.2 L3.5,4 Z" fill="rgba(199,121,31,0.8)"/></g><line x1="6" y1="36" x2="54" y2="36" stroke-width="0.4"/></svg></div></div>
+          <div class="cust-grid"><div><div class="cust-grid-label">Mention</div><div class="cust-grid-val">Parking</div></div><div><div class="cust-grid-label">Tone</div><div class="cust-grid-val warn">Mixed</div></div></div>
+        </div>
+
+        <div class="cust">
+          <div class="cust-head"><div><div class="cust-id">Anna L. · ★★★★★</div><div class="cust-time">11:42 · 3h ago</div></div><div class="cust-arrow">↗</div></div>
+          <div class="cust-viz"><span class="cust-status-tag">REPLIED</span><div class="phone-wire"><svg viewBox="0 0 60 60" fill="none" stroke="rgba(74,240,192,0.7)" stroke-width="0.7"><g transform="translate(4,18)"><path d="M5,0 L6.5,4 L10.5,4.2 L7.4,7 L8.5,11 L5,8.8 L1.5,11 L2.6,7 L-0.5,4.2 L3.5,4 Z" fill="rgba(74,240,192,0.8)"/></g><g transform="translate(15,18)"><path d="M5,0 L6.5,4 L10.5,4.2 L7.4,7 L8.5,11 L5,8.8 L1.5,11 L2.6,7 L-0.5,4.2 L3.5,4 Z" fill="rgba(74,240,192,0.8)"/></g><g transform="translate(26,18)"><path d="M5,0 L6.5,4 L10.5,4.2 L7.4,7 L8.5,11 L5,8.8 L1.5,11 L2.6,7 L-0.5,4.2 L3.5,4 Z" fill="rgba(74,240,192,0.8)"/></g><g transform="translate(37,18)"><path d="M5,0 L6.5,4 L10.5,4.2 L7.4,7 L8.5,11 L5,8.8 L1.5,11 L2.6,7 L-0.5,4.2 L3.5,4 Z" fill="rgba(74,240,192,0.8)"/></g><g transform="translate(48,18)"><path d="M5,0 L6.5,4 L10.5,4.2 L7.4,7 L8.5,11 L5,8.8 L1.5,11 L2.6,7 L-0.5,4.2 L3.5,4 Z" fill="rgba(74,240,192,0.8)"/></g></svg></div></div>
+          <div class="cust-grid"><div><div class="cust-grid-label">Source</div><div class="cust-grid-val">Google</div></div><div><div class="cust-grid-label">Reply Time</div><div class="cust-grid-val mint">2 min</div></div></div>
+        </div>
+      </div>
+
+      <div class="alerts">
+        <div class="alert"><span class="alert-dot"></span><span><strong>5 reviews</strong> drafted, awaiting approval</span><span class="alert-time">2H AGO</span></div>
+        <div class="alert"><span class="alert-dot warn"></span><span>1 review mentions <strong>parking</strong>, pattern detected</span><span class="alert-time">5H AGO</span></div>
+        <div class="alert"><span class="alert-dot dim"></span><span>Reviews trending <strong class="mint">+22%</strong> this week</span><span class="alert-time">1H AGO</span></div>
+      </div>
+    </div>
+
+    <!-- ========== WORKFLOWS VIEW ========== -->
+    <div class="view" data-view="workflows">
+      <div class="stats">
+        <div class="stat"><div class="stat-label">Active Workflows</div><div class="stat-value">6</div><div class="stat-sub"><span class="mint">●</span> all operational</div></div>
+        <div class="stat"><div class="stat-label">Runs Today</div><div class="stat-value">247</div><div class="stat-sub mint">▲ 18% vs avg</div></div>
+        <div class="stat"><div class="stat-label">Success Rate</div><div class="stat-value">99<span class="unit">.2%</span></div><div class="stat-sub">last 7 days</div></div>
+        <div class="stat"><div class="stat-label">Time Saved</div><div class="stat-value">18<span class="unit">h</span></div><div class="stat-sub">this week</div></div>
+      </div>
+
+      <div class="main-grid">
+        <div class="card">
+          <div class="card-header"><span class="card-label">Execution Timeline · Today</span><span class="card-meta">247 runs</span></div>
+          <div class="spark-wrap" style="height:160px">
+            <svg viewBox="0 0 600 160" preserveAspectRatio="none">
+              <defs><linearGradient id="wfGrad" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#4af0c0" stop-opacity="0.4"/><stop offset="100%" stop-color="#4af0c0" stop-opacity="0"/></linearGradient></defs>
+              <line class="spark-target" x1="0" y1="100" x2="600" y2="100"/>
+              <path class="spark-fill" fill="url(#wfGrad)" d="M0,140 L20,135 L40,128 L60,130 L80,118 L100,115 L120,105 L140,98 L160,90 L180,82 L200,75 L220,68 L240,60 L260,55 L280,48 L300,52 L320,42 L340,38 L360,32 L380,28 L400,32 L420,40 L440,48 L460,55 L480,62 L500,68 L520,72 L540,78 L560,82 L580,88 L600,92 L600,160 L0,160 Z"/>
+              <path class="spark-line" d="M0,140 L20,135 L40,128 L60,130 L80,118 L100,115 L120,105 L140,98 L160,90 L180,82 L200,75 L220,68 L240,60 L260,55 L280,48 L300,52 L320,42 L340,38 L360,32 L380,28 L400,32 L420,40 L440,48 L460,55 L480,62 L500,68 L520,72 L540,78 L560,82 L580,88 L600,92"/>
+              <!-- Run dots scattered -->
+              <g fill="rgba(74,240,192,0.7)">
+                <circle cx="80" cy="118" r="2"/><circle cx="140" cy="98" r="2"/><circle cx="200" cy="75" r="2"/>
+                <circle cx="280" cy="48" r="2.5"/><circle cx="340" cy="38" r="2.5"/><circle cx="380" cy="28" r="3"/>
+                <circle cx="440" cy="48" r="2"/><circle cx="500" cy="68" r="2"/><circle cx="560" cy="82" r="2"/>
+              </g>
+            </svg>
+          </div>
+          <div class="chart-axis"><span>00:00</span><span>06:00</span><span>12:00</span><span>18:00</span><span>NOW</span></div>
+        </div>
+
+        <div class="card">
+          <div class="card-header"><span class="card-label">Workflow Status</span><span class="card-meta">6 active</span></div>
+          <div class="wf-grid">
+            <div class="wf-row"><span class="wf-dot"></span><span class="wf-name">Missed Call → SMS</span><span class="wf-runs">12 runs</span></div>
+            <div class="wf-row"><span class="wf-dot"></span><span class="wf-name">Review Drafter</span><span class="wf-runs">31 runs</span></div>
+            <div class="wf-row"><span class="wf-dot"></span><span class="wf-name">Booking Reminder</span><span class="wf-runs">18 runs</span></div>
+            <div class="wf-row"><span class="wf-dot"></span><span class="wf-name">Follow-up Drip</span><span class="wf-runs">94 runs</span></div>
+            <div class="wf-row"><span class="wf-dot"></span><span class="wf-name">No-Show Recovery</span><span class="wf-runs">8 runs</span></div>
+            <div class="wf-row"><span class="wf-dot paused"></span><span class="wf-name">Social Schedule</span><span class="wf-runs">paused</span></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="cust-row">
+        <div class="cust">
+          <div class="cust-head"><div><div class="cust-id">Missed Call → SMS</div><div class="cust-time">RUNNING · 12 today</div></div><div class="cust-arrow">↗</div></div>
+          <div class="cust-viz"><span class="cust-status-tag">ACTIVE</span><div class="phone-wire"><svg viewBox="0 0 60 60" fill="none" stroke="rgba(74,240,192,0.6)" stroke-width="0.7"><circle cx="20" cy="30" r="14"/><circle cx="40" cy="30" r="14"/><line x1="34" y1="30" x2="26" y2="30" stroke-width="1.2"/><polyline points="32,27 26,30 32,33" stroke-width="1.2"/></svg></div></div>
+          <div class="cust-grid"><div><div class="cust-grid-label">Trigger</div><div class="cust-grid-val">Missed call</div></div><div><div class="cust-grid-label">Avg time</div><div class="cust-grid-val mint">0:23</div></div></div>
+        </div>
+
+        <div class="cust">
+          <div class="cust-head"><div><div class="cust-id">Review Drafter</div><div class="cust-time">RUNNING · 31 today</div></div><div class="cust-arrow">↗</div></div>
+          <div class="cust-viz"><span class="cust-status-tag">ACTIVE</span><div class="phone-wire"><svg viewBox="0 0 60 60" fill="none" stroke="rgba(74,240,192,0.6)" stroke-width="0.7"><rect x="10" y="14" width="40" height="32" rx="3"/><line x1="14" y1="22" x2="46" y2="22" stroke-width="0.4"/><line x1="14" y1="28" x2="38" y2="28" stroke-width="0.4"/><line x1="14" y1="34" x2="42" y2="34" stroke-width="0.4"/><circle cx="50" cy="48" r="6" fill="rgba(74,240,192,0.7)"/><path d="M48,48 l1.5,1.5 l3,-3" stroke="#f4f1ea" stroke-width="1"/></svg></div></div>
+          <div class="cust-grid"><div><div class="cust-grid-label">Trigger</div><div class="cust-grid-val">New review</div></div><div><div class="cust-grid-label">Approval</div><div class="cust-grid-val">1-tap</div></div></div>
+        </div>
+
+        <div class="cust">
+          <div class="cust-head"><div><div class="cust-id">Social Schedule</div><div class="cust-time">PAUSED · 0 today</div></div><div class="cust-arrow">↗</div></div>
+          <div class="cust-viz"><span class="cust-status-tag warn">PAUSED</span><div class="phone-wire"><svg viewBox="0 0 60 60" fill="none" stroke="rgba(199,121,31,0.5)" stroke-width="0.7"><rect x="14" y="16" width="32" height="28" rx="2"/><line x1="22" y1="22" x2="22" y2="38" stroke-width="2"/><line x1="38" y1="22" x2="38" y2="38" stroke-width="2"/></svg></div></div>
+          <div class="cust-grid"><div><div class="cust-grid-label">Last run</div><div class="cust-grid-val">3 days ago</div></div><div><div class="cust-grid-label">Action</div><div class="cust-grid-val warn">Resume</div></div></div>
+        </div>
+      </div>
+
+      <div class="alerts">
+        <div class="alert"><span class="alert-dot"></span><span>All <strong>6 workflows</strong> running smoothly</span><span class="alert-time">LIVE</span></div>
+        <div class="alert"><span class="alert-dot dim"></span><span>This week saved <strong>18 hours</strong> of manual work</span><span class="alert-time">1H AGO</span></div>
+        <div class="alert"><span class="alert-dot warn"></span><span>Recommended: enable <strong>Customer Win-Back</strong> flow</span><span class="alert-time">YESTERDAY</span></div>
+      </div>
+    </div>
+
+    <!-- ========== INSIGHTS VIEW ========== -->
+    <div class="view" data-view="insights">
+      <div class="stats">
+        <div class="stat"><div class="stat-label">Revenue (week)</div><div class="stat-value">$24<span class="unit">.7k</span></div><div class="stat-sub mint">▲ 22% vs prev wk</div></div>
+        <div class="stat"><div class="stat-label">Top Channel</div><div class="stat-value">Calls</div><div class="stat-sub">62% of bookings</div></div>
+        <div class="stat"><div class="stat-label">New Customers</div><div class="stat-value">18</div><div class="stat-sub mint">▲ 6 vs avg</div></div>
+        <div class="stat"><div class="stat-label">ROI</div><div class="stat-value">4<span class="unit">.2x</span></div><div class="stat-sub">on automation</div></div>
+      </div>
+
+      <div class="main-grid">
+        <div class="card">
+          <div class="card-header"><span class="card-label">Revenue Trend · 8 weeks</span><span class="card-meta">+22% this wk</span></div>
+          <div class="big-stat"><span class="big-num">$24.7<span style="font-size:24px;color:var(--text2)">k</span></span><span class="big-unit">last 7d</span><span class="trend mint">▲ $4.4k</span></div>
+          <div class="spark-wrap">
+            <svg viewBox="0 0 600 120" preserveAspectRatio="none">
+              <defs><linearGradient id="revGrad" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#4af0c0" stop-opacity="0.4"/><stop offset="100%" stop-color="#4af0c0" stop-opacity="0"/></linearGradient></defs>
+              <path fill="url(#revGrad)" opacity="0.5" d="M0,90 L75,82 L150,78 L225,68 L300,72 L375,55 L450,48 L525,38 L600,28 L600,120 L0,120 Z"/>
+              <path class="spark-line" d="M0,90 L75,82 L150,78 L225,68 L300,72 L375,55 L450,48 L525,38 L600,28"/>
+              <g fill="var(--accent)" stroke="#f4f1ea" stroke-width="2">
+                <circle cx="0" cy="90" r="3"/><circle cx="75" cy="82" r="3"/><circle cx="150" cy="78" r="3"/><circle cx="225" cy="68" r="3"/>
+                <circle cx="300" cy="72" r="3"/><circle cx="375" cy="55" r="3"/><circle cx="450" cy="48" r="3"/><circle cx="525" cy="38" r="3"/>
+              </g>
+              <circle class="spark-marker-glow" cx="600" cy="28" r="9"/>
+              <circle class="spark-marker" cx="600" cy="28" r="5"/>
+            </svg>
+          </div>
+          <div class="chart-axis"><span>W-7</span><span>W-5</span><span>W-3</span><span>W-1</span><span>NOW</span></div>
+        </div>
+
+        <div class="card">
+          <div class="card-header"><span class="card-label">Customer Funnel · This Month</span><span class="card-meta">conv. 8.2%</span></div>
+          <div class="funnel">
+            <div class="funnel-step"><span class="funnel-name">Visitors</span><span class="funnel-num">2,184</span></div>
+            <div class="funnel-step"><span class="funnel-name">Engaged</span><span class="funnel-num">847</span></div>
+            <div class="funnel-step"><span class="funnel-name">Leads</span><span class="funnel-num">312</span></div>
+            <div class="funnel-step"><span class="funnel-name">Customers</span><span class="funnel-num">179</span></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="cust-row">
+        <div class="cust">
+          <div class="cust-head"><div><div class="cust-id">Pattern Detected</div><div class="cust-time">PEAK HOUR</div></div><div class="cust-arrow">↗</div></div>
+          <div class="cust-viz"><span class="cust-status-tag">INSIGHT</span><div class="phone-wire"><svg viewBox="0 0 60 60" fill="none" stroke="rgba(74,240,192,0.6)" stroke-width="0.7"><circle cx="30" cy="30" r="20"/><line x1="30" y1="30" x2="30" y2="14" stroke-width="1.2"/><line x1="30" y1="30" x2="42" y2="36" stroke-width="1.2"/><circle cx="30" cy="30" r="2" fill="rgba(74,240,192,0.8)"/></svg></div></div>
+          <div class="cust-grid"><div><div class="cust-grid-label">Window</div><div class="cust-grid-val">Fri 6-7 PM</div></div><div><div class="cust-grid-label">Volume</div><div class="cust-grid-val mint">+38%</div></div></div>
+        </div>
+
+        <div class="cust">
+          <div class="cust-head"><div><div class="cust-id">Top Neighborhood</div><div class="cust-time">YALETOWN</div></div><div class="cust-arrow">↗</div></div>
+          <div class="cust-viz"><span class="cust-status-tag">INSIGHT</span><div class="phone-wire"><svg viewBox="0 0 60 60" fill="none" stroke="rgba(74,240,192,0.6)" stroke-width="0.7"><path d="M30,8 C 18,8 12,18 12,30 C 12,42 30,52 30,52 C 30,52 48,42 48,30 C 48,18 42,8 30,8 Z"/><circle cx="30" cy="28" r="6" fill="rgba(74,240,192,0.6)"/></svg></div></div>
+          <div class="cust-grid"><div><div class="cust-grid-label">Customers</div><div class="cust-grid-val">42</div></div><div><div class="cust-grid-label">AOV</div><div class="cust-grid-val mint">+23%</div></div></div>
+        </div>
+
+        <div class="cust">
+          <div class="cust-head"><div><div class="cust-id">Best Workflow</div><div class="cust-time">ROI LEADER</div></div><div class="cust-arrow">↗</div></div>
+          <div class="cust-viz"><span class="cust-status-tag">INSIGHT</span><div class="phone-wire"><svg viewBox="0 0 60 60" fill="none" stroke="rgba(74,240,192,0.6)" stroke-width="0.7"><path d="M30,12 L36,28 L52,28 L40,38 L44,52 L30,44 L16,52 L20,38 L8,28 L24,28 Z" fill="rgba(74,240,192,0.4)"/></svg></div></div>
+          <div class="cust-grid"><div><div class="cust-grid-label">Workflow</div><div class="cust-grid-val">Missed Call</div></div><div><div class="cust-grid-label">ROI</div><div class="cust-grid-val mint">8.4x</div></div></div>
+        </div>
+      </div>
+
+      <div class="alerts">
+        <div class="alert"><span class="alert-dot"></span><span>Weekly report ready · revenue <strong class="mint">+22%</strong></span><span class="alert-time">1H AGO</span></div>
+        <div class="alert"><span class="alert-dot dim"></span><span>Pattern: <strong>Friday 6PM</strong> drives 38% more bookings</span><span class="alert-time">2H AGO</span></div>
+        <div class="alert"><span class="alert-dot warn"></span><span>Suggestion: ad spend boost on <strong>Yaletown</strong></span><span class="alert-time">YESTERDAY</span></div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<script>
+(function(){
+  var tabs = document.querySelectorAll('.dh-tabs button');
+  var views = document.querySelectorAll('.view');
+
+  // Tell the parent page (if embedded) how tall the dashboard is, so the iframe can auto-size.
+  function reportHeight(){
+    if(window.parent && window.parent !== window){
+      var h = Math.max(document.documentElement.scrollHeight, document.body.scrollHeight);
+      window.parent.postMessage({type:'pe-dash-height', height:h}, '*');
+    }
+  }
+
+  // Number count-up animation (for donut center "47").
+  // Robust: derive start from the first rAF timestamp (single clock, avoids
+  // performance.now() vs rAF time-origin mismatches inside iframes), and clamp
+  // both progress and the output so it can never render a stray/negative value.
+  function animateCount(el, finalValue, duration){
+    if(!el) return;
+    finalValue = Number(finalValue);
+    if(!isFinite(finalValue)){ return; }
+    var start = null;
+    function step(now){
+      if(start === null){ start = now; }
+      var t = (now - start) / duration;
+      if(!(t > 0)){ t = 0; }        // guards NaN and negative first frame
+      if(t > 1){ t = 1; }
+      var eased = 1 - Math.pow(1 - t, 3); // cubic ease-out
+      var v = Math.round(finalValue * eased);
+      if(v < 0){ v = 0; }
+      if(v > finalValue){ v = finalValue; }
+      el.textContent = v;
+      if(t < 1){ requestAnimationFrame(step); }
+      else { el.textContent = finalValue; }
+    }
+    requestAnimationFrame(step);
+  }
+
+  tabs.forEach(function(btn){
+    btn.addEventListener('click', function(){
+      var target = btn.getAttribute('data-view');
+      tabs.forEach(function(b){ b.classList.toggle('active', b === btn); });
+      views.forEach(function(v){ v.classList.toggle('active', v.getAttribute('data-view') === target); });
+      // Re-report height after view swap (some views are taller than others).
+      setTimeout(reportHeight, 400);
+      // Trigger donut center count-up when calls view becomes active
+      if(target === 'calls'){
+        var donutNum = document.querySelector('.view[data-view="calls"] .donut-center .num');
+        setTimeout(function(){ animateCount(donutNum, 47, 1100); }, 700);
+      }
+    });
+  });
+
+  window.addEventListener('load', reportHeight);
+  window.addEventListener('resize', reportHeight);
+  // Belt-and-suspenders for fonts/images that load after main load
+  setTimeout(reportHeight, 800);
+
+  // === Live ticker: occasionally bump stat values so the dashboard feels alive ===
+  // Skip if user prefers reduced motion.
+  if(window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+
+  // Pick which stat to bump. Each entry: how to find the element + how to update.
+  var liveTickers = [
+    // Live view: Calls Today (47 → 48 → 49 ...)
+    {
+      view: 'live', sel: '.stats .stat:nth-child(1) .stat-value',
+      get: function(el){ return parseInt(el.textContent, 10) || 0; },
+      next: function(v){ return v + 1; }
+    },
+    // Live view: Bookings (18 → 19)
+    {
+      view: 'live', sel: '.stats .stat:nth-child(3) .stat-value',
+      get: function(el){ return parseInt(el.textContent, 10) || 0; },
+      next: function(v){ return v + 1; }
+    },
+    // Live view: Recovered Revenue ($2,847 → $2,9xx)
+    {
+      view: 'live', sel: '.stats .stat:nth-child(4) .stat-value',
+      get: function(el){
+        return parseInt(el.textContent.replace(/[^0-9]/g,''), 10) || 0;
+      },
+      next: function(v){ return v + Math.floor(Math.random()*200) + 80; },
+      format: function(v){ return '$' + v.toLocaleString(); }
+    },
+    // Calls view: Calls Today
+    {
+      view: 'calls', sel: '.stats .stat:nth-child(1) .stat-value',
+      get: function(el){ return parseInt(el.textContent, 10) || 0; },
+      next: function(v){ return v + 1; }
+    },
+    // Calls view: Recovered count
+    {
+      view: 'calls', sel: '.stats .stat:nth-child(2) .stat-value',
+      get: function(el){ return parseInt(el.textContent, 10) || 0; },
+      next: function(v){ return v + 1; }
+    },
+    // Workflows view: Runs today
+    {
+      view: 'workflows', sel: '.stats .stat:nth-child(2) .stat-value',
+      get: function(el){ return parseInt(el.textContent, 10) || 0; },
+      next: function(v){ return v + Math.floor(Math.random()*3) + 1; }
+    }
+  ];
+
+  function tickRandomStat(){
+    // Industry-skinned dashboards use fixed, hand-set KPIs (some non-integer),
+    // so skip the random bumps there to avoid corrupting them.
+    if (window.__peDashInd) return;
+    // Find which view is currently active
+    var activeView = document.querySelector('.view.active');
+    if(!activeView) return;
+    var viewName = activeView.getAttribute('data-view');
+    // Filter tickers for this view
+    var candidates = liveTickers.filter(function(t){ return t.view === viewName; });
+    if(!candidates.length) return;
+    var ticker = candidates[Math.floor(Math.random() * candidates.length)];
+    var el = activeView.querySelector(ticker.sel);
+    if(!el) return;
+    var current = ticker.get(el);
+    var next = ticker.next(current);
+    var formatted = ticker.format ? ticker.format(next) : String(next);
+    // Flash animation
+    el.classList.remove('ticking');
+    void el.offsetWidth; // restart animation
+    el.classList.add('ticking');
+    // Swap text mid-flash
+    setTimeout(function(){
+      el.textContent = formatted;
+    }, 180);
+    setTimeout(function(){ el.classList.remove('ticking'); }, 600);
+  }
+
+  // Start ticking after entrance animations complete
+  setTimeout(function(){
+    setInterval(tickRandomStat, 6500 + Math.random()*3000);
+  }, 4000);
+
+  // === Chart hover: cursor follows the line, tooltip shows time + value ===
+  var SVG_NS = 'http://www.w3.org/2000/svg';
+
+  function parsePathPoints(d){
+    var pts = [];
+    var re = /[ML]\s*(-?\d+(?:\.\d+)?)\s*,?\s*(-?\d+(?:\.\d+)?)/g;
+    var m;
+    while ((m = re.exec(d)) !== null) {
+      pts.push({x: parseFloat(m[1]), y: parseFloat(m[2])});
+    }
+    return pts;
+  }
+
+  function valueAtX(targetX, pts){
+    if (targetX <= pts[0].x) return {x: pts[0].x, y: pts[0].y};
+    if (targetX >= pts[pts.length-1].x) return {x: pts[pts.length-1].x, y: pts[pts.length-1].y};
+    for (var i = 0; i < pts.length - 1; i++) {
+      var a = pts[i], b = pts[i+1];
+      if (a.x <= targetX && targetX <= b.x) {
+        var t = (targetX - a.x) / (b.x - a.x);
+        return {x: targetX, y: a.y + (b.y - a.y) * t};
+      }
+    }
+    return {x: pts[pts.length-1].x, y: pts[pts.length-1].y};
+  }
+
+  function setupChartHover(sparkWrap, opts){
+    var svg = sparkWrap.querySelector('svg');
+    var path = sparkWrap.querySelector('.spark-line');
+    if (!svg || !path) return;
+
+    var d = path.getAttribute('d');
+    var pts = parsePathPoints(d);
+    if (pts.length < 2) return;
+
+    var vbParts = svg.getAttribute('viewBox').split(/\s+|,/).map(parseFloat);
+    var vbW = vbParts[2], vbH = vbParts[3];
+
+    // Build hover SVG elements
+    var guide = document.createElementNS(SVG_NS, 'line');
+    guide.setAttribute('class', 'spark-guide');
+    guide.setAttribute('y1', 0);
+    guide.setAttribute('y2', vbH);
+    guide.setAttribute('vector-effect', 'non-scaling-stroke');
+    svg.appendChild(guide);
+
+    var glow = document.createElementNS(SVG_NS, 'circle');
+    glow.setAttribute('class', 'spark-hover-glow');
+    glow.setAttribute('r', 8);
+    svg.appendChild(glow);
+
+    var dot = document.createElementNS(SVG_NS, 'circle');
+    dot.setAttribute('class', 'spark-hover-dot');
+    dot.setAttribute('r', 4);
+    svg.appendChild(dot);
+
+    // HTML tooltip
+    var tooltip = document.createElement('div');
+    tooltip.className = 'spark-tooltip';
+    tooltip.innerHTML = '<div class="spark-tt-label"></div><div class="spark-tt-value"></div>';
+    sparkWrap.appendChild(tooltip);
+    var ttLabel = tooltip.querySelector('.spark-tt-label');
+    var ttValue = tooltip.querySelector('.spark-tt-value');
+
+    sparkWrap.setAttribute('data-hoverable', '');
+
+    var rafPending = false;
+    var lastE = null;
+    function flushMove(){
+      rafPending = false;
+      if (!lastE) return;
+      var e = lastE;
+      var rect = sparkWrap.getBoundingClientRect();
+      var clientX = e.clientX != null ? e.clientX : (e.touches && e.touches[0] ? e.touches[0].clientX : 0);
+      var xPct = Math.max(0, Math.min(1, (clientX - rect.left) / rect.width));
+      var targetX = xPct * vbW;
+      var p = valueAtX(targetX, pts);
+
+      guide.setAttribute('x1', p.x);
+      guide.setAttribute('x2', p.x);
+      glow.setAttribute('cx', p.x);
+      glow.setAttribute('cy', p.y);
+      dot.setAttribute('cx', p.x);
+      dot.setAttribute('cy', p.y);
+
+      var ttX = (p.x / vbW) * rect.width;
+      var ttY = (p.y / vbH) * rect.height;
+      tooltip.style.left = ttX + 'px';
+      tooltip.style.top = ttY + 'px';
+
+      ttLabel.textContent = opts.label(p.x, vbW);
+      ttValue.textContent = opts.value(p.y, vbH);
+    }
+    function onMove(e){
+      lastE = e;
+      if (rafPending) return;
+      rafPending = true;
+      requestAnimationFrame(flushMove);
+    }
+
+    function onEnter(){ sparkWrap.classList.add('hovering'); }
+    function onLeave(){ sparkWrap.classList.remove('hovering'); }
+
+    sparkWrap.addEventListener('mouseenter', onEnter);
+    sparkWrap.addEventListener('mouseleave', onLeave);
+    sparkWrap.addEventListener('mousemove', onMove);
+    // Touch support
+    sparkWrap.addEventListener('touchstart', function(e){ onEnter(); onMove(e); }, {passive:true});
+    sparkWrap.addEventListener('touchmove', function(e){ onMove(e); }, {passive:true});
+    sparkWrap.addEventListener('touchend', onLeave);
+  }
+
+  function pad2(n){ return n < 10 ? '0' + n : '' + n; }
+
+  // Hour formatter where the chart axis shows 00:00, 06:00, 12:00, NOW
+  // (4 evenly spaced ticks → x range maps to 18 hours total, NOW=18:00)
+  function timeLabel(x, vbW){
+    if (x / vbW >= 0.985) return 'NOW';
+    var hours = (x / vbW) * 18;
+    var h = Math.floor(hours);
+    var m = Math.floor((hours - h) * 60);
+    return pad2(h) + ':' + pad2(m);
+  }
+
+  // --- AI Response Time chart (Live view) ---
+  var liveChart = document.querySelector('.view[data-view="live"] .spark-wrap');
+  if (liveChart) {
+    setupChartHover(liveChart, {
+      label: timeLabel,
+      value: function(y){
+        // Top of chart (y=28) = slowest (~55s). Bottom (y=80) = fastest (~18s).
+        // Lower line on chart = faster response. NOW at y=73 → 0:23 (matches big stat).
+        var sec = Math.round(55 - (y - 28) * (55 - 18) / (80 - 28));
+        sec = Math.max(15, Math.min(60, sec));
+        return '0:' + pad2(sec);
+      }
+    });
+  }
+
+  // --- Workflow Execution Timeline (Workflows view) ---
+  var wfChart = document.querySelector('.view[data-view="workflows"] .spark-wrap');
+  if (wfChart) {
+    setupChartHover(wfChart, {
+      label: timeLabel,
+      value: function(y){
+        // viewBox is 160 tall here. y=140 (low activity) → 2 runs/h, y=28 (peak) → 24 runs/h.
+        var runs = Math.round(2 + (140 - y) * (24 - 2) / (140 - 28));
+        return Math.max(1, runs) + ' runs';
+      }
+    });
+  }
+
+  // --- Revenue Trend (Insights view) ---
+  // Axis: W-7, W-5, W-3, W-1, NOW (5 evenly spaced ticks → 4 segments × 2 weeks each = 8 weeks total)
+  var insChart = document.querySelector('.view[data-view="insights"] .spark-wrap');
+  if (insChart) {
+    setupChartHover(insChart, {
+      label: function(x, vbW){
+        if (x / vbW >= 0.985) return 'NOW';
+        var pos = x / vbW;
+        var weeksAgo = 8 * (1 - pos);
+        if (weeksAgo < 0.5) return 'THIS WK';
+        return 'W-' + Math.round(weeksAgo);
+      },
+      value: function(y){
+        // y=90 (start) → $14.0k; y=28 (now) → $24.7k.
+        var rev = 14 + (90 - y) * (24.7 - 14) / (90 - 28);
+        return '$' + rev.toFixed(1) + 'k';
+      }
+    });
+  }
+})();
+</script>
+<script>
+/* Per-industry dashboard skin. Activates only when embedded with ?ind=<industry>.
+   No param (homepage + portal default) leaves the generic dashboard untouched.
+   KPIs are chosen around what each type of owner actually watches. */
+(function(){
+  var ind; try { ind = new URLSearchParams(location.search).get('ind'); } catch(e){ return; }
+  var C = {
+    restaurants:{
+      stats:[
+        {l:'Covers Tonight',v:'86',s:'<span class="mint">&#9650; 14</span> vs avg night'},
+        {l:'Reservations',v:'32',s:'+8 walk-ins expected'},
+        {l:'No-Show Rate',v:'4<span class="unit">%</span>',s:'<span class="mint">&#9660; 6pp</span> this month'},
+        {l:'Recovered Revenue',v:'$3,120',s:'<span class="mint">&#9650; 9</span> tables saved'}
+      ],
+      cards:[
+        {id:'Reservation #2104',st:'CONFIRMED',ch:'PHONE',g:[{l:'Party',v:'4 guests'},{l:'Slot',v:'Tonight 7:15',c:'mint'}]},
+        {id:'Cancellation refilled',st:'REFILLED',ch:'SMS',g:[{l:'Freed',v:'8:00 PM'},{l:'Outcome',v:'+$220 rebooked',c:'mint'}]},
+        {id:'Review &#183; &#9733;&#9733;&#9733;&#9733;&#9733;',st:'DRAFT READY',stc:'warn',ch:'GOOGLE',g:[{l:'From',v:'Sarah K.'},{l:'AI Draft',v:'1-tap approve',c:'warn'}]}
+      ],
+      alerts:['<strong>3 reservation calls</strong> auto-recovered','<strong>Waitlist filled</strong> the 8 PM table','Friday is now <strong class="mint">fully booked</strong>']
+    },
+    salons:{
+      stats:[
+        {l:'Booked Today',v:'24',s:'<span class="mint">&#9650; 5</span> vs avg'},
+        {l:'Rebooking Rate',v:'68<span class="unit">%</span>',s:'<span class="mint">&#9650; 9pp</span> this month'},
+        {l:'No-Show Rate',v:'6<span class="unit">%</span>',s:'<span class="mint">&#9660; 4pp</span>'},
+        {l:'Chair Utilization',v:'91<span class="unit">%</span>',s:'<span class="mint">&#9650; 7pp</span>'}
+      ],
+      cards:[
+        {id:'Appointment #2104',st:'CONFIRMED',ch:'INSTAGRAM',g:[{l:'Service',v:'Balayage 2.5h'},{l:'When',v:'Sat 1:30 PM',c:'mint'}]},
+        {id:'Cancellation refilled',st:'REFILLED',ch:'SMS',g:[{l:'Freed',v:'2:00 PM'},{l:'Outcome',v:'Rebooked in 9m',c:'mint'}]},
+        {id:'Rebooking',st:'BOOKED',ch:'SMS',g:[{l:'Client',v:'Priya K.'},{l:'Due',v:'6-week trim',c:'mint'}]}
+      ],
+      alerts:['<strong>Chair refilled</strong> from the waitlist','<strong>Priya rebooked</strong> via reminder','5&#9733; review <strong class="mint">drafted</strong> to approve']
+    },
+    trades:{
+      stats:[
+        {l:'Jobs Booked',v:'11',s:'<span class="mint">&#9650; 3</span> today'},
+        {l:'Quotes Out',v:'6',s:'$14k in pipeline'},
+        {l:'Avg Response',v:'0:18',s:'<span class="mint">&#9660; 22s</span> vs last wk'},
+        {l:'Revenue Booked',v:'$8,420',s:'<span class="mint">&#9650; 4</span> jobs'}
+      ],
+      cards:[
+        {id:'Job #2104',st:'BOOKED',ch:'PHONE',g:[{l:'Type',v:'Water heater'},{l:'When',v:'Today 4 PM',c:'mint'}]},
+        {id:'Quote #881',st:'ACCEPTED',ch:'SMS',g:[{l:'Value',v:'$2,400 panel',c:'mint'},{l:'Follow-up',v:'Day 1'}]},
+        {id:'After-hours call',st:'RECOVERED',ch:'SMS',g:[{l:'Type',v:'Emergency',c:'warn'},{l:'Outcome',v:'Booked AM',c:'mint'}]}
+      ],
+      alerts:['<strong>Emergency call</strong> booked after hours','<strong>$2,400 quote</strong> accepted','Mike <strong class="mint">en route</strong> to Burnaby']
+    },
+    retail:{
+      stats:[
+        {l:'Orders Today',v:'27',s:'<span class="mint">&#9650; 6</span> vs avg'},
+        {l:'Items Held',v:'9',s:'ready for pickup'},
+        {l:'Repeat Customers',v:'38<span class="unit">%</span>',s:'<span class="mint">&#9650; 5pp</span>'},
+        {l:'Questions Answered',v:'64',s:'<span class="mint">&#9650; 18</span> instant'}
+      ],
+      cards:[
+        {id:'Hold #2104',st:'HELD',ch:'SMS',g:[{l:'Item',v:'Olive linen (M)'},{l:'Until',v:'6 PM tmrw',c:'mint'}]},
+        {id:'Win-back',st:'RETURNED',ch:'SMS',g:[{l:'Customer',v:'Lapsed 60d'},{l:'Outcome',v:'Came in',c:'mint'}]},
+        {id:'Campaign &#183; Fall drop',st:'SENT',ch:'EMAIL',g:[{l:'Reach',v:'240 sent'},{l:'Redeemed',v:'38',c:'mint'}]}
+      ],
+      alerts:['<strong>38 redemptions</strong> from the fall drop','<strong>Olive jacket</strong> held for a customer','Quiet-day promo <strong class="mint">sent</strong>']
+    },
+    dental:{
+      stats:[
+        {l:'New Patients',v:'7',s:'<span class="mint">&#9650; 3</span> this week'},
+        {l:'Recalls Due',v:'41',s:'28 reminders sent'},
+        {l:'No-Show Rate',v:'5<span class="unit">%</span>',s:'<span class="mint">&#9660; 7pp</span>'},
+        {l:'Production Booked',v:'$6,800',s:'<span class="mint">&#9650; 6</span> treatments'}
+      ],
+      cards:[
+        {id:'New patient',st:'BOOKED',ch:'PHONE',g:[{l:'Reason',v:'Chipped tooth'},{l:'Exam',v:'Tmrw 10:40',c:'mint'}]},
+        {id:'Recall &#183; 6mo',st:'REBOOKED',ch:'SMS',g:[{l:'Patient',v:'Overdue'},{l:'Outcome',v:'Hygiene booked',c:'mint'}]},
+        {id:'Treatment plan',st:'BOOKED',ch:'SMS',g:[{l:'Item',v:'Crown'},{l:'Via',v:'Gentle nudge',c:'mint'}]}
+      ],
+      alerts:['<strong>Cancelled chair</strong> refilled from waitlist','<strong>12 recalls</strong> rebooked this week','Treatment follow-up <strong class="mint">booked</strong>']
+    }
+  };
+  var cfg = C[ind]; if(!cfg) return;
+  window.__peDashInd = ind; // stop the random ticker corrupting hand-set KPIs
+  var root = document.querySelector('.view[data-view="live"]'); if(!root) return;
+
+  var stats = root.querySelectorAll('.stats .stat');
+  cfg.stats.forEach(function(st,i){ var s=stats[i]; if(!s) return;
+    var l=s.querySelector('.stat-label'), v=s.querySelector('.stat-value'), sub=s.querySelector('.stat-sub');
+    if(l) l.textContent=st.l; if(v) v.innerHTML=st.v; if(sub) sub.innerHTML=st.s;
+  });
+  var cards = root.querySelectorAll('.cust-row .cust');
+  cfg.cards.forEach(function(cd,i){ var c=cards[i]; if(!c) return;
+    var id=c.querySelector('.cust-id'); if(id) id.innerHTML=cd.id;
+    var tag=c.querySelector('.cust-status-tag'); if(tag){ tag.textContent=cd.st; tag.className='cust-status-tag'+(cd.stc?' '+cd.stc:''); }
+    var ch=c.querySelector('.cust-channels span'); if(ch) ch.innerHTML='<i class="dot"></i>'+cd.ch;
+    var gl=c.querySelectorAll('.cust-grid-label'), gv=c.querySelectorAll('.cust-grid-val');
+    cd.g.forEach(function(g,j){ if(gl[j]) gl[j].textContent=g.l; if(gv[j]){ gv[j].innerHTML=g.v; gv[j].className='cust-grid-val'+(g.c?' '+g.c:''); } });
+  });
+  var alerts = root.querySelectorAll('.alerts .alert');
+  cfg.alerts.forEach(function(a,i){ var al=alerts[i]; if(!al) return; var txt=al.children[1]; if(txt) txt.innerHTML=a; });
+})();
+</script>
+
+<script src="vendor/lenis.min.js"></script>
+<script src="smooth-scroll.js"></script>
+</body>
+</html>
