@@ -61,20 +61,20 @@ export const INDUSTRIES: Record<string, IndustryConfig> = {
       {
         title: "AI phone receptionist",
         description:
-          "Books appointments and answers after-hours messages while your team keeps their hands busy.",
+          "Books appointments, answers after-hours messages, and nudges past clients to rebook, all while your team keeps their hands busy.",
       },
       {
-        title: "Booking system",
+        title: "Booking & waitlist",
         description:
           "A clear view of open times, with the waitlist ready to fill any cancellation in minutes.",
       },
       {
-        title: "Client recall",
+        title: "Custom software solutions",
         description:
-          "Nudges past clients to rebook before they drift to the salon down the block.",
+          "Built around the booking and point-of-sale tools you already run.",
       },
     ],
-    demoKey: "dental",
+    demoKey: "salons",
     integrations: ["Fresha", "Vagaro", "Booksy", "Mindbody", "GlossGenius", "Square Appointments"],
   },
   "professional-services": {
@@ -88,7 +88,7 @@ export const INDUSTRIES: Record<string, IndustryConfig> = {
       {
         title: "AI phone receptionist",
         description:
-          "Every call answered and every message replied to, so no new client hits voicemail.",
+          "Every call answered and every message replied to, with reminders that keep engagements moving, so no new client hits voicemail.",
       },
       {
         title: "Online booking & scheduling",
@@ -96,9 +96,9 @@ export const INDUSTRIES: Record<string, IndustryConfig> = {
           "Clients book real open times themselves, with no back-and-forth email chains.",
       },
       {
-        title: "Client follow-up",
+        title: "Custom software solutions",
         description:
-          "Reminders and check-ins keep engagements moving and clients close.",
+          "Built around the CRM and calendar your practice already runs on.",
       },
     ],
     demoKey: "professional-services",
@@ -123,9 +123,9 @@ export const INDUSTRIES: Record<string, IndustryConfig> = {
           "Every estimate gets a follow-up, so quotes turn into booked work instead of going cold.",
       },
       {
-        title: "Review management",
+        title: "Custom software solutions",
         description:
-          "On-brand replies to every review, and a nudge for happy customers to leave a rating.",
+          "Built around the scheduling and invoicing tools you already run in the field.",
       },
     ],
     demoKey: "trades",
@@ -140,14 +140,14 @@ export const INDUSTRIES: Record<string, IndustryConfig> = {
     painHook: "One-time shoppers, unanswered questions, and slow weeks.",
     services: [
       {
+        title: "AI receptionist & message desk",
+        description:
+          "Calls, website chat, and texts get answered around the clock, so a customer question never goes cold.",
+      },
+      {
         title: "Review management",
         description:
           "On-brand replies to every review, and a nudge for happy shoppers to leave a rating.",
-      },
-      {
-        title: "Customer question answering",
-        description:
-          "Questions from your website, messages, and texts get answered around the clock.",
       },
       {
         title: "Custom software solutions",

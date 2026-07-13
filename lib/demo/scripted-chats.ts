@@ -3,6 +3,50 @@ import type { ScriptedChatScript } from "./scripted-chat-types"
 export const SCRIPTED_CHATS: Record<string, ScriptedChatScript> = {
   dental: {
     industry: "dental",
+    businessName: "Cedar Dental",
+    headerSub: "Front desk · auto-reply",
+    bubbles: [
+      { type: "timestamp", text: "Tue 8:47 AM · Missed call" },
+      {
+        type: "customer",
+        text: "Hi, I'm a new patient and I'd like to book a cleaning and checkup. Any openings soon?",
+        delayMs: 350,
+      },
+      { type: "typing", durationMs: 1200 },
+      {
+        type: "assistant",
+        text: "Welcome! We have a new-patient opening this Thursday at 2:15 PM, want me to hold it for you?",
+        delayMs: 200,
+        meta: "Auto-reply · 20s after the missed call",
+      },
+      { type: "customer", text: "Yes please, that works", delayMs: 900 },
+      { type: "typing", durationMs: 1100 },
+      {
+        type: "assistant",
+        text: "You're penciled in for Thursday 2:15 PM. Our front desk will confirm and send your new-patient forms shortly.",
+        delayMs: 200,
+      },
+      {
+        type: "customer",
+        text: "Do you take my insurance? It's Pacific Blue Cross.",
+        delayMs: 750,
+      },
+      { type: "typing", durationMs: 1000 },
+      {
+        type: "assistant",
+        text: "We do work with Pacific Blue Cross. The team will verify your coverage before the visit so there are no surprises.",
+        delayMs: 200,
+      },
+      { type: "customer", text: "Perfect, thank you!", delayMs: 600 },
+      {
+        type: "badge",
+        text: "New patient booked from a missed call. Front desk to confirm.",
+        delayMs: 650,
+      },
+    ],
+  },
+  salons: {
+    industry: "salons",
     businessName: "Coast Salon & Spa",
     headerSub: "Front desk · auto-reply",
     bubbles: [

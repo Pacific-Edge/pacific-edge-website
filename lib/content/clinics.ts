@@ -75,7 +75,7 @@ export const CLINICS_PAGE: ClinicsPageData = {
     {
       question: "Does this replace our front desk?",
       answer:
-        "No. We are not building an AI receptionist. The platform is designed to help your front desk team work faster and keep the schedule full.",
+        "No. The focus is helping your front desk team work faster and keep the schedule full. Automated call answering is available if you want it, but replacing your team is never the goal.",
     },
     {
       question: "Does it work with our current software?",
