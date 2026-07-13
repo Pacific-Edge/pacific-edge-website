@@ -31,7 +31,6 @@ export const SITEMAP_ROUTES: SitemapEntry[] = [
   // { path: "/reviews", changeFrequency: "monthly", priority: 0.7 }, // Hidden until we have live client deployments
   { path: "/coverage", changeFrequency: "monthly", priority: 0.6 },
   { path: "/process", changeFrequency: "monthly", priority: 0.7 },
-  { path: "/pricing", changeFrequency: "monthly", priority: 0.8 },
   { path: "/faq", changeFrequency: "monthly", priority: 0.7 },
   { path: "/contact", changeFrequency: "monthly", priority: 0.8 },
   { path: "/terms", changeFrequency: "yearly", priority: 0.3 },

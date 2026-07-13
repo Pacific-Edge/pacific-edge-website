@@ -87,12 +87,6 @@ export default function CTABand() {
             <Button asChild variant="black">
               <Link href="/contact">Book Your Free Setup Call</Link>
             </Button>
-            <Link
-              href="/pricing"
-              className="font-ui text-sm text-midnight-900/55 hover:text-midnight-900 underline underline-offset-4 transition-colors duration-200"
-            >
-              See pricing details
-            </Link>
           </motion.div>
         </motion.div>
       </div>

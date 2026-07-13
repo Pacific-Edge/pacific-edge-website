@@ -120,6 +120,23 @@ export default function IndustryPage({ config }: { config: IndustryConfig }) {
         </div>
       </section>
 
+      {/* Pricing */}
+      <section className="section-py bg-white-50 border-b border-ash-300/30">
+        <div className="container-x">
+          <div className="max-w-2xl">
+            <p className="eyebrow text-ash-500 mb-4">Pricing</p>
+            <h2 className="text-display-md text-midnight-900 mb-4">Let&apos;s talk pricing.</h2>
+            <p className="font-ui text-sm text-midnight-900/55 max-w-md mb-8">
+              Every setup is built around your tools and team, so pricing fits what you
+              actually need. Reach out and we&apos;ll put together a quote.
+            </p>
+            <Button asChild variant="black">
+              <Link href="/contact">Contact Us for Pricing</Link>
+            </Button>
+          </div>
+        </div>
+      </section>
+
       {/* CTA */}
       <section className="section-py bg-white-50">
         <div className="container-x">
