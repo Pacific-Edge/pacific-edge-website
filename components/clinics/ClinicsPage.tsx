@@ -76,21 +76,44 @@ export default function ClinicsPage() {
         </div>
       </section>
 
+      {/* Two-category signpost */}
+      <section className="bg-white-50 border-b border-ash-300/30">
+        <div className="container-x py-10 sm:py-12">
+          <p className="eyebrow text-ash-500 mb-6">Two ways we help you</p>
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 lg:gap-10">
+            <div className="border-t-2 border-midnight-900 pt-4">
+              <p className="font-display text-lg text-midnight-900 mb-1">AI Automations</p>
+              <p className="font-ui text-sm text-midnight-900/55">
+                Calls answered and reviews handled, backing up your front desk.
+              </p>
+            </div>
+            <div className="border-t-2 border-electric-500 pt-4">
+              <p className="font-display text-lg text-midnight-900 mb-1">Custom Software</p>
+              <p className="font-ui text-sm text-midnight-900/55">
+                A cancellation-fill system built around your clinic.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Category 1 — AI Automations */}
       <section className="relative overflow-hidden section-py bg-white-50">
         <ElectricMotif variant="arc" className="-left-40 top-16" />
         <div className="container-x relative z-10">
-          <div className="grid grid-cols-1 lg:grid-cols-[minmax(0,0.9fr)_minmax(320px,0.7fr)] gap-10 lg:gap-16 items-center">
-            <div>
-              <p className="eyebrow text-ash-500 mb-4">Platform</p>
-              <h2 className="text-display-md text-midnight-900 mb-10">{data.platformTitle}</h2>
-              <div className="grid gap-4 sm:grid-cols-2">
-                {data.platformCapabilities.map((cap) => (
-                  <div key={cap.title} className="border-t border-ash-300/70 pt-4">
-                    <p className="font-ui text-sm font-medium text-midnight-900 mb-1">{cap.title}</p>
-                    <p className="font-ui text-sm text-midnight-900/55">{cap.description}</p>
-                  </div>
-                ))}
-              </div>
+          <div className="max-w-2xl mb-10 lg:mb-12">
+            <p className="eyebrow text-ash-500 mb-4">AI Automations</p>
+            <h2 className="text-display-md text-midnight-900 mb-4">{data.aiAutomations.heading}</h2>
+            <p className="font-ui text-sm text-midnight-900/55 max-w-md">{data.aiAutomations.lead}</p>
+          </div>
+          <div className="grid grid-cols-1 lg:grid-cols-[minmax(0,1fr)_minmax(300px,0.72fr)] gap-10 lg:gap-16 items-start">
+            <div className="grid gap-4">
+              {data.aiAutomations.items.map((item) => (
+                <div key={item.title} className="card p-6 sm:p-7">
+                  <p className="font-display text-lg text-midnight-900 mb-2">{item.title}</p>
+                  <p className="font-ui text-sm text-midnight-900/55 leading-relaxed">{item.description}</p>
+                </div>
+              ))}
             </div>
             <div className="relative mx-auto w-full max-w-[300px] [perspective:1200px]">
               <div className="absolute inset-x-8 -bottom-6 h-16 rounded-full bg-electric-500/18 blur-2xl" aria-hidden />
@@ -98,6 +121,25 @@ export default function ClinicsPage() {
                 <ScriptedChatDemo industry="dental" />
               </div>
             </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Category 2 — Custom Software */}
+      <section className="section-py bg-white-100/50 border-y border-ash-300/30">
+        <div className="container-x">
+          <div className="max-w-2xl mb-10 lg:mb-12">
+            <p className="eyebrow text-ash-500 mb-4">Custom Software</p>
+            <h2 className="text-display-md text-midnight-900 mb-4">{data.platformTitle}</h2>
+            <p className="font-ui text-sm text-midnight-900/55 max-w-lg">{data.customSoftwareLead}</p>
+          </div>
+          <div className="grid gap-4 sm:grid-cols-2">
+            {data.platformCapabilities.map((cap) => (
+              <div key={cap.title} className="border-t border-ash-300/70 pt-4">
+                <p className="font-ui text-sm font-medium text-midnight-900 mb-1">{cap.title}</p>
+                <p className="font-ui text-sm text-midnight-900/55">{cap.description}</p>
+              </div>
+            ))}
           </div>
         </div>
       </section>

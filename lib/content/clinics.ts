@@ -11,6 +11,14 @@ export type ClinicsPageData = {
   headlineAccent: string
   painHook: string
   pains: [ClinicPain, ClinicPain, ClinicPain]
+  /** Category 1 — AI Automations. Front-desk-first: assists staff, never replaces them. */
+  aiAutomations: {
+    heading: string
+    lead: string
+    items: { title: string; description: string }[]
+  }
+  /** Category 2 — Custom Software (the shipped cancellation-fill platform). */
+  customSoftwareLead: string
   platformTitle: string
   platformCapabilities: { title: string; description: string }[]
   liveEyebrow: string
@@ -39,6 +47,26 @@ export const CLINICS_PAGE: ClinicsPageData = {
       description: "Customers who meant to rebook never get the nudge and quietly drift away.",
     },
   ],
+  aiAutomations: {
+    heading: "Calls answered, reviews handled",
+    lead: "Automations that back up your front desk, never replace it. Anything clinical stays with a human.",
+    items: [
+      {
+        title: "Missed-call text-back",
+        description: "A missed call gets a friendly reply in seconds, offering the caller a real opening.",
+      },
+      {
+        title: "Review management",
+        description: "On-brand replies to every review, and a nudge for happy patients to leave a rating.",
+      },
+      {
+        title: "Patient texting",
+        description: "Hours, insurance, and prep questions answered around the clock, with anything clinical handed to your team.",
+      },
+    ],
+  },
+  customSoftwareLead:
+    "The system we built for dental clinics: when an appointment cancels, it matches the open slot to the right patient and fills it from your waitlist in minutes.",
   platformTitle: "Built for your front desk",
   platformCapabilities: [
     {

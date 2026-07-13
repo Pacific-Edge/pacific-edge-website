@@ -11,7 +11,13 @@ export type IndustryConfig = {
   headline: string
   headlineAccent: string
   painHook: string
-  services: IndustryService[]
+  /** Category 1 — AI Automations: receptionist, reviews, texting. */
+  aiAutomations: IndustryService[]
+  /** Category 2 — Custom Software, framed as illustrative examples (not shipped products). */
+  customSoftware: {
+    lead: string
+    examples: IndustryService[]
+  }
   /** Key into SCRIPTED_CHATS for the phone-chat demo, or null for no demo. */
   demoKey: string | null
   integrations: readonly string[]
@@ -19,8 +25,14 @@ export type IndustryConfig = {
 
 /**
  * Per-industry landing content for the dynamic /industries/[slug] route.
- * Healthcare is intentionally excluded — it lives on /clinics (see CLINICS_PAGE)
- * and, by design, has no AI phone receptionist.
+ * Healthcare is intentionally excluded — it lives on /clinics (see CLINICS_PAGE),
+ * where the custom-software flagship (cancellation fill) is a real, shipped build.
+ *
+ * Every industry tells the same two-part story:
+ *   1. AI Automations — the receptionist / reviews / texting we run for you.
+ *   2. Custom Software — bespoke tools we build around your specific bottleneck.
+ *      For non-dental industries these are illustrative EXAMPLES of what we build,
+ *      not claims of existing products. The dental flagship below is the proof.
  */
 export const INDUSTRIES: Record<string, IndustryConfig> = {
   restaurants: {
@@ -30,7 +42,7 @@ export const INDUSTRIES: Record<string, IndustryConfig> = {
     headline: "Never miss a",
     headlineAccent: "reservation.",
     painHook: "Missed calls, unanswered reviews, and no-shows quietly cost you covers.",
-    services: [
+    aiAutomations: [
       {
         title: "AI phone receptionist",
         description:
@@ -42,11 +54,24 @@ export const INDUSTRIES: Record<string, IndustryConfig> = {
           "On-brand replies to every review, and a nudge for happy guests to leave a rating.",
       },
       {
-        title: "Custom software solutions",
+        title: "After-hours texting",
         description:
-          "Built around the tools you already run, from your point-of-sale to your reservation book.",
+          "Booking requests and questions get answered around the clock, long after last call.",
       },
     ],
+    customSoftware: {
+      lead: "Then we build software around the bottleneck that's costing you covers.",
+      examples: [
+        {
+          title: "No-show risk flags",
+          description: "Spot shaky reservations early and confirm them before the night.",
+        },
+        {
+          title: "Instant table waitlist",
+          description: "The next party gets texted the moment a table frees up.",
+        },
+      ],
+    },
     demoKey: "front-desk-demo",
     integrations: ["OpenTable", "Toast", "TouchBistro", "7shifts", "Lightspeed", "Resy"],
   },
@@ -57,23 +82,36 @@ export const INDUSTRIES: Record<string, IndustryConfig> = {
     headline: "Keep every chair",
     headlineAccent: "booked.",
     painHook: "Empty chairs, after-hours messages, and clients who never rebook.",
-    services: [
+    aiAutomations: [
       {
         title: "AI phone receptionist",
         description:
-          "Books appointments, answers after-hours messages, and nudges past clients to rebook, all while your team keeps their hands busy.",
+          "Books appointments and answers after-hours messages while your team keeps their hands busy.",
       },
       {
-        title: "Booking & waitlist",
+        title: "Review management",
         description:
-          "A clear view of open times, with the waitlist ready to fill any cancellation in minutes.",
+          "On-brand replies to every review, and a nudge for happy clients to leave a rating.",
       },
       {
-        title: "Custom software solutions",
+        title: "Client recall texting",
         description:
-          "Built around the booking and point-of-sale tools you already run.",
+          "Nudges past clients to rebook before they drift to the salon down the block.",
       },
     ],
+    customSoftware: {
+      lead: "Then we build software around the bottleneck that's leaving chairs empty.",
+      examples: [
+        {
+          title: "Cancellation fill",
+          description: "The open chair is offered to the right waitlisted client first, filled in minutes.",
+        },
+        {
+          title: "Rebooking radar",
+          description: "Catches clients who are due before they lapse for good.",
+        },
+      ],
+    },
     demoKey: "salons",
     integrations: ["Fresha", "Vagaro", "Booksy", "Mindbody", "GlossGenius", "Square Appointments"],
   },
@@ -84,23 +122,36 @@ export const INDUSTRIES: Record<string, IndustryConfig> = {
     headline: "Never send a client",
     headlineAccent: "to voicemail.",
     painHook: "Missed calls, scheduling back-and-forth, and follow-ups that slip.",
-    services: [
+    aiAutomations: [
       {
         title: "AI phone receptionist",
         description:
-          "Every call answered and every message replied to, with reminders that keep engagements moving, so no new client hits voicemail.",
+          "Every call answered and every message replied to, so no new client hits voicemail.",
       },
       {
-        title: "Online booking & scheduling",
+        title: "After-hours replies",
         description:
-          "Clients book real open times themselves, with no back-and-forth email chains.",
+          "Enquiries that land after close still get a same-minute response.",
       },
       {
-        title: "Custom software solutions",
+        title: "Follow-up reminders",
         description:
-          "Built around the CRM and calendar your practice already runs on.",
+          "Automated check-ins keep engagements moving and clients close.",
       },
     ],
+    customSoftware: {
+      lead: "Then we build software around the bottleneck that's slowing your intake.",
+      examples: [
+        {
+          title: "Intake to booked",
+          description: "Turns a new enquiry into a scheduled consult without the email chain.",
+        },
+        {
+          title: "Engagement tracker",
+          description: "Flags matters that are stalling before they go cold.",
+        },
+      ],
+    },
     demoKey: "professional-services",
     integrations: ["Calendly", "Acuity", "Google Calendar", "HubSpot", "QuickBooks", "Square"],
   },
@@ -111,23 +162,36 @@ export const INDUSTRIES: Record<string, IndustryConfig> = {
     headline: "Win the job before",
     headlineAccent: "they call the next name.",
     painHook: "Calls missed on the job and quotes that quietly go cold.",
-    services: [
+    aiAutomations: [
       {
         title: "AI phone receptionist",
         description:
           "Missed calls get texted back in seconds while you're on the job, before the caller tries the next name on the list.",
       },
       {
-        title: "Quote & job follow-up",
+        title: "Quote follow-up texting",
         description:
           "Every estimate gets a follow-up, so quotes turn into booked work instead of going cold.",
       },
       {
-        title: "Custom software solutions",
+        title: "Review management",
         description:
-          "Built around the scheduling and invoicing tools you already run in the field.",
+          "On-brand replies to every review, and a nudge for happy customers to leave a rating.",
       },
     ],
+    customSoftware: {
+      lead: "Then we build software around the bottleneck that's losing you jobs.",
+      examples: [
+        {
+          title: "Quote-to-job tracker",
+          description: "Flags estimates going cold and prompts the next touch.",
+        },
+        {
+          title: "Smart dispatch",
+          description: "Routes the next call to the nearest available tech.",
+        },
+      ],
+    },
     demoKey: "trades",
     integrations: ["Jobber", "ServiceTitan", "Housecall Pro", "ServiceM8", "HomeStars", "QuickBooks"],
   },
@@ -138,7 +202,7 @@ export const INDUSTRIES: Record<string, IndustryConfig> = {
     headline: "Turn one-time buyers",
     headlineAccent: "into regulars.",
     painHook: "One-time shoppers, unanswered questions, and slow weeks.",
-    services: [
+    aiAutomations: [
       {
         title: "AI receptionist & message desk",
         description:
@@ -150,11 +214,24 @@ export const INDUSTRIES: Record<string, IndustryConfig> = {
           "On-brand replies to every review, and a nudge for happy shoppers to leave a rating.",
       },
       {
-        title: "Custom software solutions",
+        title: "Order & stock updates",
         description:
-          "Built around your point-of-sale and the tools you already run.",
+          "Customers hear the moment their item lands or their order ships.",
       },
     ],
+    customSoftware: {
+      lead: "Then we build software around the bottleneck that's costing you repeat sales.",
+      examples: [
+        {
+          title: "Back-in-stock alerts",
+          description: "Texts the customer who asked the moment it lands.",
+        },
+        {
+          title: "Local delivery scheduler",
+          description: "Wired to your point-of-sale, so pickup and delivery just work.",
+        },
+      ],
+    },
     demoKey: "retail",
     integrations: ["Shopify", "Lightspeed", "Square", "Clover", "WooCommerce", "Mailchimp"],
   },
@@ -169,6 +246,13 @@ export function getIndustry(slug: string): IndustryConfig | undefined {
 export function isIndustry(slug: string): boolean {
   return slug in INDUSTRIES
 }
+
+/**
+ * Real, shipped custom-software build — used as concrete proof on the industry
+ * pages so the "bespoke examples" above read as capability, not vaporware.
+ */
+export const CUSTOM_SOFTWARE_FLAGSHIP =
+  "Already in the wild: for dental clinics we built a system that fills a cancelled appointment from the waitlist in minutes, matching each open slot to the patient most likely to say yes."
 
 export const INDUSTRIES_CLOSING =
   "Don't see yours? We build custom integrations for whatever your business already runs."
