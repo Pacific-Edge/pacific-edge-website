@@ -5,7 +5,7 @@ import { createPageMetadata } from "@/lib/seo/metadata"
 
 export const metadata = createPageMetadata({
   title: "Coverage",
-  description: "Pacific Edge serves dental clinics across Greater Vancouver and BC.",
+  description: "Pacific Edge serves local businesses across Greater Vancouver and BC.",
   path: "/coverage",
 })
 
@@ -15,7 +15,7 @@ export default function CoveragePage() {
       <PageHero
         eyebrow="Company"
         title="Greater Vancouver & BC"
-        description="Local, hands-on support for dental clinics across five regions, and new practices province-wide."
+        description="Local, hands-on support for businesses across five regions, and new clients province-wide."
       />
 
       <section className="section-py bg-white-50">
@@ -48,8 +48,8 @@ export default function CoveragePage() {
       </section>
 
       <PageCTA
-        headline="Serving dental clinics across BC"
-        body="Book a call to see if we're the right fit for your practice."
+        headline="Serving local businesses across BC"
+        body="Book a call to see if we're the right fit for your business."
       />
     </>
   )

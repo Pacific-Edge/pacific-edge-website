@@ -9,20 +9,20 @@ import { Button } from "@/components/ui/button"
 import { EASE_OUT, revealContainer, revealItem, viewportOnce } from "@/lib/motion"
 
 const signals = [
-  "Patient cancels",
-  "Waitlist offered",
-  "Chair filled",
+  "Call missed",
+  "Instantly replied",
+  "Booking confirmed",
 ] as const
 
 /** Compact appointment day strip — a small proof motif beside the copy.
- *  One slot opens (cancellation) then fills (waitlist) as a quiet visual
+ *  A missed call turns into a confirmed booking as a quiet visual
  *  echo of the chat demo playing alongside it. */
 const dayStrip = [
-  { time: "9:00", label: "Hygiene · M. Patel", state: "booked" },
-  { time: "9:40", label: "Exam · new patient", state: "booked" },
-  { time: "10:20", label: "Filled from waitlist", state: "filled" },
-  { time: "11:00", label: "Cleaning · J. Osei", state: "booked" },
-  { time: "11:40", label: "Filling · Dr. Chen", state: "booked" },
+  { time: "9:00", label: "Booked · M. Patel", state: "booked" },
+  { time: "9:40", label: "New customer", state: "booked" },
+  { time: "10:20", label: "Booked from missed call", state: "filled" },
+  { time: "11:00", label: "Booked · J. Osei", state: "booked" },
+  { time: "11:40", label: "Booked · 11:40", state: "booked" },
 ] as const
 
 export default function FrontDeskDemo() {
@@ -64,7 +64,7 @@ export default function FrontDeskDemo() {
                   by="word"
                   className="font-ui text-sm text-electric-100/70"
                 >
-                  Cancellations filled automatically
+                  Always answering, day or night
                 </RollInText>
                 <RollInText
                   as="h2"
@@ -79,7 +79,7 @@ export default function FrontDeskDemo() {
                     lineHeight: 0.98,
                   }}
                 >
-                  Empty chairs do not stay empty.
+                  Meet your business's AI assistant
                 </RollInText>
                 <RollInText
                   as="p"
@@ -88,7 +88,7 @@ export default function FrontDeskDemo() {
                   delay={0.35}
                   className="mt-7 block max-w-lg font-ui text-base leading-relaxed text-white-50/62"
                 >
-                  When a patient cancels, Pacific Edge surfaces the right waitlist patient and keeps your front desk's booking flow moving.
+                  Every missed call gets a reply in seconds — booked, confirmed, and on the calendar before the customer hangs up.
                 </RollInText>
               </div>
             </motion.div>
@@ -183,14 +183,14 @@ export default function FrontDeskDemo() {
                 className="pointer-events-none absolute -inset-x-24 -top-28 -bottom-28 -z-10"
                 style={{
                   background:
-                    "radial-gradient(ellipse 62% 58% at 50% 36%, rgba(120,185,255,0.18) 0%, rgba(26,109,206,0.08) 34%, transparent 70%)",
+                    "radial-gradient(ellipse 62% 58% at 50% 36%, rgba(95,208,188,0.18) 0%, rgba(10,132,116,0.08) 34%, transparent 70%)",
                 }}
                 aria-hidden
               />
               <div
                 className="pointer-events-none absolute inset-x-4 top-0 h-36 -z-10"
                 style={{
-                  background: "radial-gradient(ellipse 70% 100% at 50% 0%, rgba(26,109,206,0.12) 0%, transparent 78%)",
+                  background: "radial-gradient(ellipse 70% 100% at 50% 0%, rgba(10,132,116,0.12) 0%, transparent 78%)",
                 }}
                 aria-hidden
               />
@@ -205,7 +205,7 @@ export default function FrontDeskDemo() {
                   className="pointer-events-none absolute -inset-2 rounded-[2.6rem]"
                   style={{
                     background:
-                      "linear-gradient(128deg, rgba(26,109,206,0.12) 0%, rgba(26,109,206,0) 22%, rgba(26,109,206,0) 78%, rgba(26,109,206,0.1) 100%)",
+                      "linear-gradient(128deg, rgba(10,132,116,0.12) 0%, rgba(10,132,116,0) 22%, rgba(10,132,116,0) 78%, rgba(10,132,116,0.1) 100%)",
                   }}
                   aria-hidden
                 />

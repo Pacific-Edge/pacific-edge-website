@@ -128,10 +128,10 @@ export default function ClinicsPage() {
             <p className="eyebrow text-ash-500 mb-4">Dashboard</p>
             <h2 className="text-display-md text-midnight-900 mb-4">See it all in one place</h2>
             <p className="font-ui text-sm text-midnight-900/55">
-              Calls answered, slots filled, reviews managed, tailored to your clinic.
+              Calls answered, slots filled, reviews managed, tailored to your business.
             </p>
           </div>
-          <DashboardMock industry="dental" />
+          <DashboardMock industry="all" />
         </div>
       </section>
 

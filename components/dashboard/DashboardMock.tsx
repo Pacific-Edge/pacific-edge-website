@@ -293,7 +293,7 @@ function WorkflowsView({ skin, animate }: { skin: DashboardPreviewSkin; animate:
       <div className="rounded-xl border border-ash-300/40 bg-white-50 p-5 mb-5">
         <p className="eyebrow text-ash-500 mb-4">Active workflows</p>
         <div className="space-y-3">
-          {["Missed call text-back", "Waitlist refill", "Review draft & approve", "Recall reminder"].map(
+          {["Missed call text-back", "Waitlist refill", "Review draft & approve", "Follow-up reminder"].map(
             (name, i) => (
               <div key={name} className="flex items-center justify-between gap-4 py-2 border-b border-ash-300/25 last:border-0">
                 <span className="font-ui text-sm text-midnight-900">{name}</span>

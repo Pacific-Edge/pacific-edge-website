@@ -43,7 +43,7 @@ const CAPABILITIES = [
   },
   {
     title: "Confirms & reminds",
-    label: "Fewer no-shows, recalls on schedule",
+    label: "Fewer no-shows, follow-ups on schedule",
     icon: Bell,
   },
   {
@@ -67,8 +67,8 @@ const FAQ = [
     a: "No. The platform is designed to help your front desk team work faster, keep the schedule full, and spend less time on repetitive coordination.",
   },
   {
-    q: "Will patient messages sound robotic?",
-    a: "We configure replies around your clinic's tone. Your team reviews and approves messaging before anything goes live.",
+    q: "Will messages sound robotic?",
+    a: "We configure replies around your business's tone. Your team reviews and approves messaging before anything goes live.",
   },
   {
     q: "What channels does it cover?",
@@ -76,7 +76,7 @@ const FAQ = [
   },
   {
     q: "How does a cancelled slot get filled?",
-    a: "The moment something opens, the waitlist is surfaced. Your team confirms the offer and books the patient, often within minutes.",
+    a: "The moment something opens, the waitlist is surfaced. Your team confirms the offer and books the customer, often within minutes.",
   },
 ] as const
 
@@ -95,9 +95,8 @@ export default function JanicePage() {
               </h1>
               <p className="font-ui text-sm text-midnight-900/55 mb-8 leading-relaxed max-w-md">
                 Pacific Edge builds a platform around the tools your team already uses: scheduling,
-                waitlists, reminders, and reviews. For dental clinics, we are also developing
-                insurance and payment integrations to simplify coordination between receptionist
-                and patient.
+                waitlists, reminders, and reviews. We are also developing payment integrations to
+                simplify coordination between your front desk and your customers.
               </p>
               <div className="flex flex-wrap gap-3">
                 <Button asChild variant="black">

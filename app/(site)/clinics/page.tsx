@@ -3,7 +3,7 @@ import { CLINICS_PAGE } from "@/lib/content/clinics"
 import { createPageMetadata } from "@/lib/seo/metadata"
 
 export const metadata = createPageMetadata({
-  title: "For Dental Clinics",
+  title: "For Local Businesses",
   description: CLINICS_PAGE.painHook,
   path: "/clinics",
 })

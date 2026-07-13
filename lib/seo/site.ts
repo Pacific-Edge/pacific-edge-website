@@ -5,4 +5,4 @@ export const SITE_LOCALE = "en_CA"
 export const DEFAULT_OG_IMAGE = "/og-image.png"
 
 export const DEFAULT_DESCRIPTION =
-  "Vancouver-based operations software for dental clinics. Missed calls answered, chairs filled, recalls handled, running quietly in the background."
+  "Vancouver-based operations software for local businesses. Missed calls answered, bookings filled, reviews handled, running quietly in the background."

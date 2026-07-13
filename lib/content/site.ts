@@ -68,7 +68,7 @@ export const WHY_US_PILLARS = [
   { title: "No jargon", description: "Plain English. If you don't understand it, we haven't done our job." },
   { title: "Speed to value", description: "Working prototype in week one." },
   { title: "Built to deliver", description: "Six-month engagements. Transparent pricing upfront." },
-  { title: "Local & hands-on", description: "Vancouver-based. We meet at your clinic when you want." },
+  { title: "Local & hands-on", description: "Vancouver-based. We meet at your business when you want." },
 ] as const
 
 export const PROCESS_STEPS = [
@@ -95,7 +95,7 @@ export const PRICING = {
     {
       name: "Standard",
       price: { monthly: 349, yearly: 3350 },
-      description: "For single-location clinics that need calls, messages, bookings, and reviews handled cleanly.",
+      description: "For single-location businesses that need calls, messages, bookings, and reviews handled cleanly.",
       features: [
         "Missed-call text-back",
         "Booking and reminder flows",
@@ -108,20 +108,20 @@ export const PRICING = {
     {
       name: "Professional",
       price: { monthly: 749, yearly: 7190 },
-      description: "For busier front desks with more channels, waitlists, recalls, and reporting needs.",
+      description: "For busier teams with more channels, waitlists, follow-ups, and reporting needs.",
       features: [
         "Everything in Standard",
         "Waitlist and cancellation recovery",
         "Dashboard and workflow reporting",
         "Multi-channel inbox — calls, texts, DMs",
-        "Recall and follow-up sequences",
+        "Reminder and follow-up sequences",
       ],
       isFeatured: true,
     },
     {
       name: "Custom",
       price: { monthly: 1149, yearly: 11030 },
-      description: "For multi-location or higher-volume clinics that need deeper workflows around their tools.",
+      description: "For multi-location or higher-volume businesses that need deeper workflows around their tools.",
       features: [
         "Everything in Professional",
         "Custom integration buildout",

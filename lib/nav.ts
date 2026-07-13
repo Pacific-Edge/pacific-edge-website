@@ -20,7 +20,7 @@ export const NAV_ITEMS = [
   {
     label: "Get Started",
     links: [
-      { label: "Clinics",  href: "/clinics" },
+      { label: "For Business",  href: "/clinics" },
       { label: "Process",  href: "/process" },
       { label: "Pricing",  href: "/pricing" },
       { label: "FAQ",      href: "/faq" },

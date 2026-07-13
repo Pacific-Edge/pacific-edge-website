@@ -205,7 +205,7 @@ export default function ProductGlimpse() {
               </Button>
             </div>
           </div>
-          <DashboardMock industry="dental" />
+          <DashboardMock industry="all" />
         </div>
       </section>
     )
@@ -237,7 +237,7 @@ export default function ProductGlimpse() {
                 ref={eyebrowRef}
                 className="eyebrow text-ash-400 absolute left-1/2 -translate-x-1/2 -top-7 whitespace-nowrap"
               >
-                Your clinic dashboard
+                Your business dashboard
               </p>
               <h2
                 className="text-gradient-electric-animated text-center"
@@ -283,7 +283,7 @@ export default function ProductGlimpse() {
           }}
         >
           <div className="mx-auto h-full max-w-5xl px-4 sm:px-6 lg:px-12 overflow-hidden">
-            <DashboardMock industry="dental" />
+            <DashboardMock industry="all" />
           </div>
         </div>
 

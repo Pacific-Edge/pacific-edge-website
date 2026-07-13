@@ -191,7 +191,7 @@ function DesktopColumn({
       className="flex-1 flex flex-col justify-start overflow-hidden"
       style={{
         borderLeft: showDivider ? "1px solid rgba(155, 170, 189, 0.55)" : "none",
-        backgroundColor: isActive ? "rgba(26,109,206,0.038)" : "var(--color-white-50)",
+        backgroundColor: isActive ? "rgba(10,132,116,0.038)" : "var(--color-white-50)",
         transition: `background-color ${dur.bg} ${ease}`,
         padding: "2.5rem 1.75rem 2rem",
       }}

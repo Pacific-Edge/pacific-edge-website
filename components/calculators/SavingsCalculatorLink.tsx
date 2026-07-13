@@ -7,7 +7,7 @@ type SavingsCalculatorLinkProps = {
   variant?: "primary" | "secondary"
 }
 
-/** Link to the dental savings calculator. */
+/** Link to the savings calculator. */
 export default function SavingsCalculatorLink({
   className = "",
   variant = "secondary",
@@ -22,7 +22,7 @@ export default function SavingsCalculatorLink({
       tone="dark"
       className={className}
     >
-      <Link href={config.path}>Estimate what empty chairs cost</Link>
+      <Link href={config.path}>Estimate what empty slots cost</Link>
     </Button>
   )
 }

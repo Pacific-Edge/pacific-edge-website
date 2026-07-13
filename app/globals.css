@@ -34,18 +34,18 @@
   --color-ash-400:    #737373;   /* eyebrows, primary accent */
   --color-ash-500:    #525252;   /* secondary labels, muted UI */
 
-  /* Electric — coastal electric blue (accent for CTAs, active states, gradient text) */
-  --color-electric-900: #0B3260;   /* deep anchor — very dark, for gradients */
-  --color-electric-700: #1054A8;   /* rich coastal royal */
-  --color-electric-500: #1A6DCE;   /* main electric — vibrant, AA on white at display size */
-  --color-electric-400: #2D86D9;   /* gradient-safe bright (3.4:1 on white) */
-  --color-electric-300: #52A5EF;   /* sky electric — use on dark/midnight backgrounds */
-  --color-electric-100: #B8D9FF;   /* pale tint — dark bg only */
+  /* Electric — coastal teal-mint (accent for CTAs, active states, gradient text) */
+  --color-electric-900: #06342E;   /* deep anchor — very dark, for gradients */
+  --color-electric-700: #086A5C;   /* rich teal-mint */
+  --color-electric-500: #0A8474;   /* main mint — vibrant, AA on white (~4.6:1) */
+  --color-electric-400: #17A892;   /* gradient-safe bright */
+  --color-electric-300: #5FD0BC;   /* sky mint — use on dark/midnight backgrounds */
+  --color-electric-100: #C4F0EA;   /* pale tint — dark bg only */
 
   /* Glow shadow for electric elements — softened for a precise, clinical
      accent rather than a neon/cyber glow. */
-  --glow-electric:       0 0 14px rgba(26, 109, 206, 0.28), 0 0 34px rgba(26, 109, 206, 0.12);
-  --glow-electric-sm:    0 0 8px rgba(26, 109, 206, 0.24), 0 0 18px rgba(26, 109, 206, 0.10);
+  --glow-electric:       0 0 14px rgba(10, 132, 116, 0.28), 0 0 34px rgba(10, 132, 116, 0.12);
+  --glow-electric-sm:    0 0 8px rgba(10, 132, 116, 0.24), 0 0 18px rgba(10, 132, 116, 0.10);
 
   /* Semantic aliases */
   --color-background: #FFFFFF;   /* pure white — one step lighter than white-50 */

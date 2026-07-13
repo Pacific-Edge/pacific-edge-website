@@ -35,7 +35,7 @@ export default function CTABand() {
         >
           {/* Eyebrow */}
           <motion.p variants={line} className="eyebrow text-ash-400 mb-8">
-            For Dental Clinics · Get Started
+            For Local Businesses · Get Started
           </motion.p>
 
           {/* Headline — line 1 */}

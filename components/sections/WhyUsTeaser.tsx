@@ -17,7 +17,7 @@ function ClarityVisual({ reduce }: VisualProps) {
   const items = [
     { jargon: "Synergize workflows", plain: "We handle the busywork" },
     { jargon: "Leverage AI stack", plain: "Calls get answered" },
-    { jargon: "Optimize throughput", plain: "Chairs stay filled" },
+    { jargon: "Optimize throughput", plain: "Bookings stay filled" },
   ] as const
 
   return (
@@ -708,8 +708,8 @@ export default function WhyUsTeaser() {
                       speed={0.6}
                       scale={0.7}
                       brightness={1.15}
-                      color1="#52A5EF"
-                      color2="#1A6DCE"
+                      color1="#5FD0BC"
+                      color2="#0A8474"
                       noiseFrequency={3.5}
                       noiseAmplitude={2}
                       bandHeight={0.5}

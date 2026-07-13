@@ -25,9 +25,9 @@ export const SITE_FAQ: FaqItem[] = [
       "Your first month is free. After that, engagements run an initial six months, long enough to prove ROI. Then month-to-month, scale up, or part ways with full handover docs.",
   },
   {
-    question: "Will this work for our clinic?",
+    question: "Will this work for my business?",
     answer:
-      "If your practice relies on appointments, patient communication, or online reviews, the answer is almost certainly yes. We build around dental clinics and the tools you already use.",
+      "If your business relies on appointments, customer calls and messages, or online reviews, the answer is almost certainly yes. We build around your industry and the tools you already use.",
   },
   {
     question: "Will my data be safe?",
@@ -59,7 +59,7 @@ export const PLATFORM_FAQ: FaqItem[] = [
   {
     question: "How does a cancelled spot get filled?",
     answer:
-      "The moment a slot opens, the waitlist is surfaced. Your team confirms the offer and books the patient, so the time is not wasted.",
+      "The moment a slot opens, the waitlist is surfaced. Your team confirms the offer and books the customer, so the time is not wasted.",
   },
   {
     question: "Do I stay in control?",

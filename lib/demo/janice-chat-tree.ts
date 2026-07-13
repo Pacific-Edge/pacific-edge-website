@@ -95,7 +95,7 @@ const INTENTS: { keys: string[]; replies: JaniceReply[] }[] = [
     keys: ["real person", "human", "robot", "bot", "are you ai", "are you real"],
     replies: [
       {
-        text: "I'm the automated front desk for this clinic. Routine scheduling goes through me, and anything sensitive gets passed to the reception team. How can I help?",
+        text: "I'm the automated front desk for this business. Routine scheduling goes through me, and anything sensitive gets passed to the team. How can I help?",
       },
     ],
   },
@@ -256,5 +256,5 @@ export function getJaniceReply(userText: string, state: JaniceChatState): Janice
 }
 
 export const JANICE_GREETING: JaniceReply = {
-  text: "Hi! This is the clinic's messaging line. Ask about hours, pricing, or try booking a time.",
+  text: "Hi! This is the business's messaging line. Ask about hours, pricing, or try booking a time.",
 }

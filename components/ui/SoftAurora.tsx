@@ -184,9 +184,9 @@ void main() {
 }
 `
 
-/** Brand electric blues — soft sky + main electric. */
-export const SOFT_AURORA_COLOR_1 = "#52A5EF"
-export const SOFT_AURORA_COLOR_2 = "#1A6DCE"
+/** Brand teal-mint — soft sky + main mint. */
+export const SOFT_AURORA_COLOR_1 = "#5FD0BC"
+export const SOFT_AURORA_COLOR_2 = "#0A8474"
 
 export default function SoftAurora({
   speed = 0.6,

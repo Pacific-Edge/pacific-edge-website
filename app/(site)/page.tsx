@@ -6,7 +6,7 @@ import { websiteJsonLd } from "@/lib/seo/json-ld"
 export const metadata = createPageMetadata({
   title: "Pacific Edge",
   description:
-    "Vancouver-based operations software for dental clinics. Missed calls answered, chairs filled, recalls handled.",
+    "Vancouver-based operations software for local businesses. Missed calls answered, bookings filled, reviews handled.",
   path: "/",
 })
 import ProductGlimpse from "@/components/sections/ProductGlimpse"

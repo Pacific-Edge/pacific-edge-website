@@ -21,40 +21,40 @@ export type ClinicsPageData = {
 }
 
 export const CLINICS_PAGE: ClinicsPageData = {
-  eyebrow: "Dental Clinics · Vancouver, BC",
+  eyebrow: "Local Business Software · Vancouver, BC",
   headline: "Fill the schedule.",
   headlineAccent: "Reduce no-shows.",
-  painHook: "New-patient calls to voicemail, no-shows, missed recalls.",
+  painHook: "Missed calls to voicemail, no-shows, follow-ups that slip.",
   pains: [
     {
-      title: "New-patient calls hit voicemail",
-      description: "The line is busy and a new patient calls the clinic down the block.",
+      title: "New-customer calls hit voicemail",
+      description: "The line is busy and a new customer calls the business down the block.",
     },
     {
       title: "No-shows and late cancellations",
-      description: "An empty chair is wasted clinical time with no way to backfill it.",
+      description: "An empty slot is wasted time with no easy way to backfill it.",
     },
     {
-      title: "Recalls slip through the cracks",
-      description: "Patients due for a cleaning never get the nudge and quietly drift away.",
+      title: "Follow-ups slip through the cracks",
+      description: "Customers who meant to rebook never get the nudge and quietly drift away.",
     },
   ],
-  platformTitle: "Built for your reception team",
+  platformTitle: "Built for your front desk",
   platformCapabilities: [
     {
       title: "Optimizes the booking schedule",
       description:
-        "A clear view of open chairs and provider time, so your receptionist can fill the day with confidence.",
+        "A clear view of open slots and team availability, so your front desk can fill the day with confidence.",
     },
     {
       title: "Manages cancellations with ease",
       description:
-        "When a slot opens, the waitlist is surfaced instantly. Your team confirms the offer and books the patient.",
+        "When a slot opens, the waitlist is surfaced instantly. Your team confirms the offer and books the customer.",
     },
     {
-      title: "Insurance coordination (in development)",
+      title: "Review management",
       description:
-        "Integrations to simplify benefit checks and claims handoff between receptionist and patient.",
+        "On-brand replies to every review, and a nudge for happy customers to leave a rating.",
     },
     {
       title: "Payment systems (in development)",
@@ -65,22 +65,22 @@ export const CLINICS_PAGE: ClinicsPageData = {
   liveEyebrow: "Live workflow",
   liveTitle: "Waitlist fills cancellations in minutes",
   liveDescription:
-    "When a patient cancels, your waitlist is ready. Your receptionist confirms the offer and the chair is filled without a scramble.",
+    "When a customer cancels, your waitlist is ready. Your team confirms the offer and the slot is filled without a scramble.",
   faq: [
     {
-      question: "Is patient information kept private?",
+      question: "Is customer information kept private?",
       answer:
-        "Privacy comes first. Scheduling runs without exposing sensitive health details, and your team stays in control of anything that needs a human.",
+        "Privacy comes first. Scheduling runs without exposing sensitive details, and your team stays in control of anything that needs a human.",
     },
     {
-      question: "Does this replace our receptionist?",
+      question: "Does this replace our front desk?",
       answer:
         "No. We are not building an AI receptionist. The platform is designed to help your front desk team work faster and keep the schedule full.",
     },
     {
-      question: "Does it work with our practice software?",
+      question: "Does it work with our current software?",
       answer:
-        "Yes. It connects to Tracker, Dentrix, Open Dental, and the scheduling tools your office already uses.",
+        "Yes. It connects to the booking, point-of-sale, and scheduling tools your business already uses.",
     },
     {
       question: "How long until we are live?",
@@ -89,7 +89,7 @@ export const CLINICS_PAGE: ClinicsPageData = {
     {
       question: "How much does it cost?",
       answer:
-        "It depends on what you need. The discovery call is free, and we scope a flat-priced plan around your call volume and chair count.",
+        "It depends on what you need. The discovery call is free, and we scope a flat-priced plan around your call and booking volume.",
     },
   ],
   calculatorHref: "/tools/savings/dental",

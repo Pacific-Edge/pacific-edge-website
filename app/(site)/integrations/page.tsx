@@ -3,7 +3,7 @@ import { createPageMetadata } from "@/lib/seo/metadata"
 
 export const metadata = createPageMetadata({
   title: "Integrations",
-  description: "Pacific Edge connects to the practice management and scheduling tools your clinic already runs.",
+  description: "Pacific Edge connects to the booking, point-of-sale, and scheduling tools your business already runs.",
   path: "/integrations",
 })
 

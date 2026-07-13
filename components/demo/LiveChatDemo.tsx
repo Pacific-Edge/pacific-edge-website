@@ -58,7 +58,7 @@ export default function LiveChatDemo({
     {
       id: "greeting",
       role: "timestamp",
-      text: "Now · Live demo · text the clinic anything",
+      text: "Now · Live demo · text the business anything",
     },
     {
       id: "janice-0",
@@ -206,7 +206,7 @@ export default function LiveChatDemo({
             className="flex shrink-0 items-center gap-2 border-t border-ash-300/30 px-3 py-3"
           >
             <label htmlFor={`${formId}-input`} className="sr-only">
-              Type a message to the clinic
+              Type a message to the business
             </label>
             <input
               ref={inputRef}

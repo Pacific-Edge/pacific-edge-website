@@ -67,8 +67,8 @@ const QUALITY_SETTINGS: Record<FloatingLinesQuality, QualitySettings> = {
   high: { pixelRatio: 2, precision: "highp" },
 }
 
-/** Default line gradient — brand electric-blue ramp, dark → sky. */
-export const FLOATING_LINES_GRADIENT = ["#0B3260", "#1054A8", "#1A6DCE", "#2D86D9", "#52A5EF"]
+/** Default line gradient — brand teal-mint ramp, dark → sky. */
+export const FLOATING_LINES_GRADIENT = ["#06342E", "#086A5C", "#0A8474", "#17A892", "#5FD0BC"]
 
 const vertexShader = `
 precision highp float;
@@ -601,7 +601,7 @@ export default function FloatingLines({
         className={`w-full h-full absolute inset-0 ${className}`}
         style={{
           mixBlendMode,
-          background: `radial-gradient(ellipse at 50% 45%, ${last ?? "#52A5EF"}33 0%, ${first ?? "#0B3260"}22 35%, transparent 70%)`,
+          background: `radial-gradient(ellipse at 50% 45%, ${last ?? "#5FD0BC"}33 0%, ${first ?? "#06342E"}22 35%, transparent 70%)`,
         }}
         aria-hidden="true"
       />

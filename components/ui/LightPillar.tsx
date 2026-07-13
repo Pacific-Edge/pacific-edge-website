@@ -45,8 +45,8 @@ const QUALITY_SETTINGS: Record<LightPillarQuality, QualitySettings> = {
 /** ── Default pillar gradient colours — the single source of truth for the
  *  light-pillar look. Override via props only if a specific usage needs to
  *  deviate; otherwise change these two values here. */
-export const LIGHT_PILLAR_TOP_COLOR = "#02013b"
-export const LIGHT_PILLAR_BOTTOM_COLOR = "#2290c7"
+export const LIGHT_PILLAR_TOP_COLOR = "#013029"
+export const LIGHT_PILLAR_BOTTOM_COLOR = "#17A892"
 
 export default function LightPillar({
   topColor = LIGHT_PILLAR_TOP_COLOR,

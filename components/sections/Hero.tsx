@@ -56,7 +56,7 @@ export default function Hero() {
           className="eyebrow mb-5 text-white-50/60"
           {...(reduce ? {} : enter(0))}
         >
-          Dental Clinics · Vancouver, BC
+          Local Business Software · Vancouver, BC
         </motion.p>
 
         <motion.h1
@@ -71,7 +71,7 @@ export default function Hero() {
           }}
           {...(reduce ? {} : enter(0.12))}
         >
-          <span className="block">Helping your clinic</span>
+          <span className="block">Helping your business</span>
           <span className="block">operate with an edge.</span>
         </motion.h1>
 
@@ -87,7 +87,7 @@ export default function Hero() {
             }}
             {...(reduce ? {} : enter(0.22))}
           >
-            Missed calls answered. Chairs filled. Recalls handled without replacing the team your patients trust.
+            Missed calls answered. Bookings filled. Reviews handled — without replacing the team your customers trust.
           </motion.p>
         </div>
 
