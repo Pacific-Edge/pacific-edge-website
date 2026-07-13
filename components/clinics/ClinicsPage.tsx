@@ -5,7 +5,6 @@ import { motion } from "framer-motion"
 import { EASE_OUT } from "@/lib/motion"
 import { CLINICS_PAGE } from "@/lib/content/clinics"
 import ScriptedChatDemo from "@/components/demo/ScriptedChatDemo"
-import PricingTeaser from "@/components/sections/PricingTeaser"
 import DashboardMock from "@/components/dashboard/DashboardMock"
 import FaqAccordion from "@/components/ui/FaqAccordion"
 import ElectricMotif from "@/components/ui/ElectricMotif"
@@ -192,7 +191,22 @@ export default function ClinicsPage() {
         </div>
       </section>
 
-      <PricingTeaser />
+      {/* Pricing */}
+      <section className="section-py bg-white-50 border-t border-ash-300/30">
+        <div className="container-x">
+          <div className="max-w-2xl">
+            <p className="eyebrow text-ash-500 mb-4">Pricing</p>
+            <h2 className="text-display-md text-midnight-900 mb-4">Let&apos;s talk pricing.</h2>
+            <p className="font-ui text-sm text-midnight-900/55 max-w-md mb-8">
+              We scope a flat-priced plan around your call and booking volume. The discovery
+              call is free, and your first month is on us.
+            </p>
+            <Button asChild variant="black">
+              <Link href="/contact">Contact Us for Pricing</Link>
+            </Button>
+          </div>
+        </div>
+      </section>
 
       <section className="section-py bg-white-100/50 border-t border-ash-300/30">
         <div className="container-x">
