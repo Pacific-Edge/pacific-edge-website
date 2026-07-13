@@ -89,6 +89,138 @@ export const SCRIPTED_CHATS: Record<string, ScriptedChatScript> = {
       },
     ],
   },
+  "professional-services": {
+    industry: "professional-services",
+    businessName: "Beacon Law Group",
+    headerSub: "Front desk · auto-reply",
+    bubbles: [
+      { type: "timestamp", text: "Tue 4:58 PM · Missed call" },
+      {
+        type: "customer",
+        text: "Hi, I'd like to set up a consultation. Do you have anything this week?",
+        delayMs: 350,
+      },
+      { type: "typing", durationMs: 1200 },
+      {
+        type: "assistant",
+        text: "Happy to help! We have an opening Thursday at 2:00 PM, want me to hold it for you?",
+        delayMs: 200,
+        meta: "Auto-reply · 19s after the missed call",
+      },
+      { type: "customer", text: "Yes, that works. Thank you", delayMs: 900 },
+      { type: "typing", durationMs: 1100 },
+      {
+        type: "assistant",
+        text: "Booked! Thursday 2:00 PM. I'll email a confirmation and send a reminder the day before.",
+        delayMs: 200,
+      },
+      {
+        type: "customer",
+        text: "Great. Should I bring any documents with me?",
+        delayMs: 750,
+      },
+      { type: "typing", durationMs: 1000 },
+      {
+        type: "assistant",
+        text: "Just a photo ID and anything related to your matter. We'll take it from there.",
+        delayMs: 200,
+      },
+      { type: "customer", text: "Perfect, see you Thursday", delayMs: 600 },
+      {
+        type: "badge",
+        text: "New consultation booked from a missed call. Reminder queued.",
+        delayMs: 650,
+      },
+    ],
+  },
+  trades: {
+    industry: "trades",
+    businessName: "Pinnacle Ridge Contracting",
+    headerSub: "Front desk · auto-reply",
+    bubbles: [
+      { type: "timestamp", text: "Wed 11:24 AM · Missed call" },
+      {
+        type: "customer",
+        text: "Hey, my water heater's leaking. Can someone come take a look today?",
+        delayMs: 350,
+      },
+      { type: "typing", durationMs: 1200 },
+      {
+        type: "assistant",
+        text: "Sorry to hear that! I can get a tech to you between 3 and 5 today, want me to lock it in?",
+        delayMs: 200,
+        meta: "Auto-reply · 22s after the missed call",
+      },
+      { type: "customer", text: "Yes please, that'd be great", delayMs: 900 },
+      { type: "typing", durationMs: 1100 },
+      {
+        type: "assistant",
+        text: "You're booked for 3–5 today. I'll text the tech's name and an ETA when they're on the way.",
+        delayMs: 200,
+      },
+      {
+        type: "customer",
+        text: "Can I get a rough quote before then?",
+        delayMs: 750,
+      },
+      { type: "typing", durationMs: 1000 },
+      {
+        type: "assistant",
+        text: "The service call is $120, applied to the repair. The tech will confirm the full quote on site.",
+        delayMs: 200,
+      },
+      { type: "customer", text: "Sounds good, thanks", delayMs: 600 },
+      {
+        type: "badge",
+        text: "New job booked from a missed call. Tech dispatched.",
+        delayMs: 650,
+      },
+    ],
+  },
+  retail: {
+    industry: "retail",
+    businessName: "Harbour & Pine",
+    headerSub: "Store front desk · auto-reply",
+    bubbles: [
+      { type: "timestamp", text: "Sat 2:07 PM · New message" },
+      {
+        type: "customer",
+        text: "Hi! Do you still have the walnut side table in stock?",
+        delayMs: 350,
+      },
+      { type: "typing", durationMs: 1200 },
+      {
+        type: "assistant",
+        text: "We do! Two left in walnut. Want me to set one aside under your name for pickup?",
+        delayMs: 200,
+        meta: "Auto-reply · 15s after the message",
+      },
+      { type: "customer", text: "Yes please, that would be perfect", delayMs: 900 },
+      { type: "typing", durationMs: 1100 },
+      {
+        type: "assistant",
+        text: "Done! It's held for 48 hours. We're open until 6 today if you'd like to come by.",
+        delayMs: 200,
+      },
+      {
+        type: "customer",
+        text: "Do you offer local delivery too?",
+        delayMs: 750,
+      },
+      { type: "typing", durationMs: 1000 },
+      {
+        type: "assistant",
+        text: "We do, flat $15 within Vancouver. I can add it at checkout if that's easier.",
+        delayMs: 200,
+      },
+      { type: "customer", text: "Amazing, I'll take delivery", delayMs: 600 },
+      {
+        type: "badge",
+        text: "Item held and delivery booked from a message. Sale saved.",
+        delayMs: 650,
+      },
+    ],
+  },
 }
 
 export function getScriptedChat(industry: string): ScriptedChatScript | undefined {

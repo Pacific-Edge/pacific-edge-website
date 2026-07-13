@@ -9,6 +9,17 @@ export const NAV_ITEMS = [
     ],
   },
   {
+    label: "Industries",
+    links: [
+      { label: "Healthcare & Dental",     href: "/clinics" },
+      { label: "Restaurants",             href: "/industries/restaurants" },
+      { label: "Salon & Spa",             href: "/industries/salons" },
+      { label: "Professional Services",   href: "/industries/professional-services" },
+      { label: "Trades",                  href: "/industries/trades" },
+      { label: "Retail",                  href: "/industries/retail" },
+    ],
+  },
+  {
     label: "Company",
     links: [
       { label: "Why Us",    href: "/why-us" },
@@ -20,7 +31,6 @@ export const NAV_ITEMS = [
   {
     label: "Get Started",
     links: [
-      { label: "For Business",  href: "/clinics" },
       { label: "Process",  href: "/process" },
       { label: "Pricing",  href: "/pricing" },
       { label: "FAQ",      href: "/faq" },

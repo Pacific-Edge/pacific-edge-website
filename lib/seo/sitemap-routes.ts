@@ -1,4 +1,5 @@
 import { CALCULATOR_SLUGS } from "@/lib/calculators/routes"
+import { INDUSTRY_SLUGS } from "@/lib/content/industries"
 import { SITE_URL } from "./site"
 
 export type SitemapEntry = {
@@ -15,6 +16,11 @@ export const SITEMAP_ROUTES: SitemapEntry[] = [
   { path: "/dashboard", changeFrequency: "monthly", priority: 0.8 },
   { path: "/integrations", changeFrequency: "monthly", priority: 0.8 },
   { path: "/clinics", changeFrequency: "monthly", priority: 0.9 },
+  ...INDUSTRY_SLUGS.map((slug) => ({
+    path: `/industries/${slug}`,
+    changeFrequency: "monthly" as const,
+    priority: 0.8,
+  })),
   ...CALCULATOR_SLUGS.map((slug) => ({
     path: `/tools/savings/${slug}`,
     changeFrequency: "monthly" as const,

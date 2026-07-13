@@ -5,6 +5,7 @@ import { motion } from "framer-motion"
 import { EASE_OUT } from "@/lib/motion"
 import { CLINICS_PAGE } from "@/lib/content/clinics"
 import ScriptedChatDemo from "@/components/demo/ScriptedChatDemo"
+import PricingTeaser from "@/components/sections/PricingTeaser"
 import DashboardMock from "@/components/dashboard/DashboardMock"
 import FaqAccordion from "@/components/ui/FaqAccordion"
 import ElectricMotif from "@/components/ui/ElectricMotif"
@@ -148,6 +149,8 @@ export default function ClinicsPage() {
           </div>
         </div>
       </section>
+
+      <PricingTeaser />
 
       <section className="section-py bg-white-100/50 border-t border-ash-300/30">
         <div className="container-x">

@@ -338,7 +338,7 @@ export default function Nav() {
         >
           <div className="relative py-8">
             <div
-              className="w-max max-w-[min(42rem,calc(100vw-3rem))]"
+              className="w-max max-w-[min(58rem,calc(100vw-3rem))]"
               style={
                 categoryBandCenter != null
                   ? {
@@ -350,7 +350,7 @@ export default function Nav() {
               }
             >
               <motion.div
-                className="grid grid-cols-3 gap-10"
+                className="grid grid-cols-4 gap-10"
                 initial={false}
                 animate={{ opacity: panelOpen ? 1 : 0 }}
                 transition={{
