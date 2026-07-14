@@ -36,6 +36,7 @@ export default function DentalPage() {
           <div className="ihero-actions reveal d4">
             <a href={CAL} target="_blank" rel="noopener" className="btn-primary">Book a Free 15-Min Call</a>
             <a href="/dental-savings-calculator.html" className="btn-calc">📊 What Cancellations Cost You</a>
+            <a href="/dental-pricing.html" className="btn-ghost">💰 See Pricing &amp; Plans</a>
             <a href="#problems" className="btn-ghost">See How It Helps</a>
           </div>
           <div className="ihero-stats reveal d5">

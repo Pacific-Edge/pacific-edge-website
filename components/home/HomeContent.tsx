@@ -125,12 +125,12 @@ export default function HomeContent() {
   const [intg, setIntg] = useState("dental")
   const [openFaq, setOpenFaq] = useState<Set<number>>(new Set())
   const [feed, setFeed] = useState(0)
-  const [dashOn, setDashOn] = useState(false)
   const [scrolled, setScrolled] = useState(false)
 
   const canvasRef = useRef<HTMLCanvasElement>(null)
   const swTrackRef = useRef<HTMLDivElement>(null)
   const processRef = useRef<HTMLElement>(null)
+  const pdFillRef = useRef<HTMLDivElement>(null)
   const iframeRef = useRef<HTMLIFrameElement>(null)
 
   // Particle canvas background
@@ -223,21 +223,54 @@ export default function HomeContent() {
     return () => window.clearInterval(id)
   }, [])
 
-  // Process before/after: flip on view
+  // Process before/after: scroll-scrubbed (ports the old updateDash) — the fill
+  // bar grows and each row flips before->after as you scroll through the section.
   useEffect(() => {
-    const el = processRef.current
-    if (!el) return
-    const io = new IntersectionObserver(
-      (entries) => {
-        if (entries.some((e) => e.isIntersecting && e.intersectionRatio > 0.25)) {
-          setDashOn(true)
-          io.disconnect()
-        }
-      },
-      { threshold: [0, 0.25, 0.5] },
-    )
-    io.observe(el)
-    return () => io.disconnect()
+    const section = processRef.current
+    const fill = pdFillRef.current
+    if (!section || !fill) return
+    const rows = Array.from(section.querySelectorAll<HTMLElement>(".pd-row-val"))
+    const afterLabel = section.querySelector<HTMLElement>(".pd-after-label")
+
+    const apply = (row: HTMLElement, after: boolean) => {
+      const val = after ? row.dataset.after : row.dataset.before
+      if (val != null) row.textContent = val
+      row.classList.toggle("after", after)
+      row.classList.toggle("before", !after)
+      row.dataset.current = after ? "after" : "before"
+    }
+
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+      fill.style.width = "100%"
+      afterLabel?.classList.add("lit")
+      rows.forEach((r) => apply(r, true))
+      return
+    }
+
+    let raf = 0
+    const update = () => {
+      const rect = section.getBoundingClientRect()
+      const scrolled = -rect.top
+      const progress = Math.max(0, Math.min(1, scrolled / (rect.height - window.innerHeight * 0.5)))
+      const total = rows.length
+      const sliderProgress = Math.min(1, progress / (4 / (total + 1)))
+      fill.style.width = sliderProgress * 100 + "%"
+      afterLabel?.classList.toggle("lit", sliderProgress > 0.9)
+      rows.forEach((row, i) => {
+        const shouldAfter = sliderProgress >= (i + 1) / total
+        if (shouldAfter !== (row.dataset.current === "after")) apply(row, shouldAfter)
+      })
+    }
+    const onScroll = () => {
+      cancelAnimationFrame(raf)
+      raf = requestAnimationFrame(update)
+    }
+    window.addEventListener("scroll", onScroll, { passive: true })
+    update()
+    return () => {
+      window.removeEventListener("scroll", onScroll)
+      cancelAnimationFrame(raf)
+    }
   }, [])
 
   // Dashboard iframe autosize
@@ -581,8 +614,8 @@ export default function HomeContent() {
             <div className="pd-top">
               <div className="pd-status"><span className="pd-status-dot" />Live Dashboard Preview</div>
               <div className="pd-progress">
-                <div className="pd-progress-label"><span className="pd-before-label">Before</span><span className={`pd-after-label ${dashOn ? "lit" : ""}`}>After</span></div>
-                <div className="pd-progress-bar"><div className="pd-progress-fill" id="pdFill" style={{ width: dashOn ? "100%" : "0%" }} /></div>
+                <div className="pd-progress-label"><span className="pd-before-label">Before</span><span className="pd-after-label">After</span></div>
+                <div className="pd-progress-bar"><div className="pd-progress-fill" ref={pdFillRef} style={{ width: "0%" }} /></div>
               </div>
             </div>
             <div className="pd-body" id="dashBody">
@@ -590,7 +623,7 @@ export default function HomeContent() {
                 <div className="pd-row" key={row.label}>
                   <div className="pd-row-label"><div className="pd-row-icon">{row.icon}</div>{row.label}</div>
                   <div>
-                    <span className={`pd-row-val ${dashOn ? "after" : "before"}`}>{dashOn ? row.after : row.before}</span>
+                    <span className="pd-row-val before" data-before={row.before} data-after={row.after} data-current="before">{row.before}</span>
                     {row.src ? <a href="#sources" className="stat-src">[{row.src}]</a> : null}
                   </div>
                 </div>
