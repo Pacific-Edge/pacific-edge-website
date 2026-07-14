@@ -43,6 +43,9 @@ export default function LenisProvider({ children }: { children: React.ReactNode 
       },
     } as ConstructorParameters<typeof Lenis>[0])
 
+    // Expose the instance so the contact modal / hash-scroll can pause + target it
+    ;(window as unknown as { __lenis?: Lenis }).__lenis = lenis
+
     // Bridge Lenis → ScrollTrigger so pinned/scrubbed timelines stay in sync
     // with Lenis's smoothed scroll position.
     const onScroll = () => ScrollTrigger.update()
@@ -59,6 +62,7 @@ export default function LenisProvider({ children }: { children: React.ReactNode 
       gsap.ticker.remove(tick)
       lenis.off("scroll", onScroll)
       lenis.destroy()
+      ;(window as unknown as { __lenis?: Lenis }).__lenis = undefined
     }
   }, [])
 

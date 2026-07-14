@@ -1,7 +1,0 @@
-export * from "./founders"
-export * from "./testimonials"
-export * from "./faq"
-export * from "./integrations"
-export * from "./clinics"
-export * from "./coverage"
-export * from "./site"
