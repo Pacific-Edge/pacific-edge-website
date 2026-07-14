@@ -136,6 +136,7 @@ export default function JaniceDemo() {
     let busy = false
     const janice = (userText: string) => {
       const r = pick(userText)
+      try { (window as any).peLogJanice?.(userText, r.text) } catch {}
       const t = typing()
       const delay = Math.min(2200, Math.max(750, 480 + r.text.length * 15))
       setTimeout(() => {

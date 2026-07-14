@@ -65,7 +65,7 @@ section{padding:80px 56px;position:relative}
 
 /* Dashboard embed */
 .idash-wrap{position:relative;border-radius:20px;overflow:hidden;box-shadow:0 50px 120px -40px rgba(0,0,0,0.30),0 0 0 1px rgba(28,25,20,0.06);margin-top:56px;background:#ece7db}
-.idash-frame{width:1px;min-width:100%;max-width:100%;border:none;display:block;height:980px}
+.idash-frame{width:1px;min-width:100%;max-width:100%;border:none;display:block;height:980px;pointer-events:none}
 @media(max-width:960px){.idash-frame{height:1700px}}
 @media(max-width:600px){.idash-frame{height:2400px}}
 

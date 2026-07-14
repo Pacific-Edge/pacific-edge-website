@@ -563,7 +563,7 @@ body.modal-open{overflow:hidden}
 .edge-sub .accent{color:var(--accent-ink);font-weight:400}
 .edge-dashboard{position:relative;border-radius:20px;overflow:hidden;box-shadow:0 60px 140px -40px rgba(0,0,0,0.75),0 0 0 1px rgba(28,25,20,0.04);background:#f4f1ea;width:100%;max-width:100%}
 .edge-dashboard::before{content:'';position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,rgba(74,240,192,0.5),transparent);z-index:2;pointer-events:none}
-.edge-dash-frame{width:1px;min-width:100%;max-width:100%;border:none;display:block;background:transparent;height:980px;transition:height .35s ease}
+.edge-dash-frame{width:1px;min-width:100%;max-width:100%;border:none;display:block;background:transparent;height:980px;transition:height .35s ease;pointer-events:none}
 .edge-meta-row{display:flex;justify-content:space-between;align-items:center;margin-top:28px;font-family:var(--mono);font-size:10px;color:var(--text3);letter-spacing:2px;text-transform:uppercase}
 .edge-meta-row .a{color:var(--accent-ink)}
 @media(max-width:980px){

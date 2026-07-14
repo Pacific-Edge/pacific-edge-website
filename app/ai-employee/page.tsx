@@ -1,6 +1,7 @@
 import type { Metadata } from "next"
 import SiteShell from "@/components/site/SiteShell"
 import JaniceDemo from "@/components/site/JaniceDemo"
+import JaniceInsights from "@/components/site/JaniceInsights"
 
 export const metadata: Metadata = {
   title: { absolute: "Meet Janice, Your AI Employee | Pacific Edge AI" },
@@ -12,6 +13,7 @@ export default function Page() {
   return (
     <SiteShell variant="minimal">
 <JaniceDemo />
+<JaniceInsights />
 <header className="ihero">
 <div className="ihero-orb ihero-orb-1"></div>
 <div className="ihero-orb ihero-orb-2"></div>
