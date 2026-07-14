@@ -123,7 +123,6 @@ export default function HomeContent() {
   const { open } = useContactModal()
   const [scene, setScene] = useState(0)
   const [intg, setIntg] = useState("dental")
-  const [openFaq, setOpenFaq] = useState<Set<number>>(new Set())
   const [feed, setFeed] = useState(0)
   const [scrolled, setScrolled] = useState(false)
 
@@ -283,14 +282,6 @@ export default function HomeContent() {
     window.addEventListener("message", onMsg)
     return () => window.removeEventListener("message", onMsg)
   }, [])
-
-  const toggleFaq = (i: number) =>
-    setOpenFaq((prev) => {
-      const next = new Set(prev)
-      if (next.has(i)) next.delete(i)
-      else next.add(i)
-      return next
-    })
 
   const toTop = () => {
     const lenis = getLenis()
@@ -763,8 +754,8 @@ export default function HomeContent() {
         </div>
         <div className="faq-grid">
           {FAQ.map((item, i) => (
-            <div className={`faq-item r rd${(i % 4) + 1} ${openFaq.has(i) ? "open" : ""}`} key={item.q}>
-              <div className="faq-q" onClick={() => toggleFaq(i)}>
+            <div className={`faq-item r rd${(i % 4) + 1}`} key={item.q}>
+              <div className="faq-q" onClick={(e) => e.currentTarget.parentElement?.classList.toggle("open")}>
                 <h4>{item.q}</h4>
                 <div className="faq-icon"><svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M7 1v12M1 7h12" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" /></svg></div>
               </div>
