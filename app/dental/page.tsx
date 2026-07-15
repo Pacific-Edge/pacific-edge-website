@@ -1,6 +1,8 @@
 import type { Metadata } from "next"
 import Link from "next/link"
 import SiteShell from "@/components/site/SiteShell"
+import DentalInteractive from "@/components/dental/DentalInteractive"
+import "@/styles/dental.css"
 
 const CAL = "https://cal.com/pacificedge"
 
@@ -14,9 +16,10 @@ export const metadata: Metadata = {
 export default function DentalPage() {
   return (
     <SiteShell variant="minimal">
+      <DentalInteractive />
       <header className="ihero">
-        <div className="ihero-orb ihero-orb-1" />
-        <div className="ihero-orb ihero-orb-2" />
+        <div className="ihero-orb ihero-orb-1" data-parallax="26" />
+        <div className="ihero-orb ihero-orb-2" data-parallax="-40" />
         <div className="ihero-inner">
           <div className="eyebrow reveal">
             <span className="eyebrow-dot" />AI for Dental &amp; Health Clinics · Vancouver, BC
@@ -111,6 +114,71 @@ export default function DentalPage() {
 
       <div className="divhr" />
 
+      <section className="dx-tiers dx-sec">
+        <div className="dx-tiers-glow" aria-hidden="true" />
+        <div className="wrap">
+          <div className="sl reveal sl-c tac" style={{ justifyContent: "center" }}>How You Hire Her</div>
+          <h2 className="st reveal d1 tac">Three Ways To Put <span className="a">Janice To Work.</span></h2>
+          <p className="sd reveal d2" style={{ textAlign: "center", margin: "0 auto" }}>
+            Start with the gaps that cost you the most, then scale up as she earns her keep. Flat-priced,
+            month-to-month after your term, first month free.
+          </p>
+          <div className="dx-tier-grid">
+            <article className="dx-tier reveal d1" data-tilt>
+              <div className="dx-tier-shine" aria-hidden="true" />
+              <span className="dx-tier-badge">PART-TIME</span>
+              <div className="dx-tier-ico">🗓️</div>
+              <h3 className="dx-tier-title">Covers what you miss</h3>
+              <p className="dx-tier-sub">Janice answers every text and refills every cancelled chair, around the clock.</p>
+              <ul className="dx-tier-list">
+                <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M5 13l4 4L19 7" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round" /></svg>24/7 text replies in your clinic&apos;s voice</li>
+                <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M5 13l4 4L19 7" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round" /></svg>Unlimited cancellation recovery</li>
+                <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M5 13l4 4L19 7" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round" /></svg>Appointment reminders &amp; confirmations</li>
+                <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M5 13l4 4L19 7" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round" /></svg>Monthly ROI report</li>
+              </ul>
+              <div className="dx-tier-foot"><span className="dx-tier-from">FROM</span><span className="dx-tier-price">$749</span><span className="dx-tier-per">/mo</span></div>
+            </article>
+
+            <article className="dx-tier feat reveal d2" data-tilt>
+              <span className="dx-tier-flag">MOST HIRED</span>
+              <div className="dx-tier-shine" aria-hidden="true" />
+              <span className="dx-tier-badge">FULL-TIME</span>
+              <div className="dx-tier-ico">⚡</div>
+              <h3 className="dx-tier-title">Every channel, working ahead</h3>
+              <p className="dx-tier-sub">She books straight into your schedule and keeps the whole book full, weeks out.</p>
+              <ul className="dx-tier-list">
+                <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M5 13l4 4L19 7" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round" /></svg>Everything in Part-Time</li>
+                <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M5 13l4 4L19 7" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round" /></svg>Books &amp; reschedules in your software</li>
+                <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M5 13l4 4L19 7" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round" /></svg>Hygiene recalls &amp; treatment follow-up</li>
+                <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M5 13l4 4L19 7" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round" /></svg>Patient portal, intake forms &amp; payments</li>
+              </ul>
+              <div className="dx-tier-foot"><span className="dx-tier-from">FROM</span><span className="dx-tier-price">$1,149</span><span className="dx-tier-per">/mo</span></div>
+            </article>
+
+            <article className="dx-tier reveal d3" data-tilt>
+              <div className="dx-tier-shine" aria-hidden="true" />
+              <span className="dx-tier-badge">PARTNER</span>
+              <div className="dx-tier-ico">🚀</div>
+              <h3 className="dx-tier-title">Fills chairs &amp; grows the book</h3>
+              <p className="dx-tier-sub">Marketing muscle on top of the full front desk, for practices going on offence.</p>
+              <ul className="dx-tier-list">
+                <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M5 13l4 4L19 7" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round" /></svg>Everything in Full-Time</li>
+                <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M5 13l4 4L19 7" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round" /></svg>Reactivation &amp; referral campaigns</li>
+                <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M5 13l4 4L19 7" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round" /></svg>Benefits-expiry &amp; win-back waves</li>
+                <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M5 13l4 4L19 7" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round" /></svg>Every add-on included + quarterly strategy</li>
+              </ul>
+              <div className="dx-tier-foot"><span className="dx-tier-from">FROM</span><span className="dx-tier-price">$1,999</span><span className="dx-tier-per">/mo</span></div>
+            </article>
+          </div>
+          <div className="dx-tier-cta reveal d3">
+            <a href="/dental-pricing.html" className="btn-primary">See Every Plan In Detail →</a>
+            <div className="dx-tier-note">Full feature-by-feature comparison · Priced in CAD + GST</div>
+          </div>
+        </div>
+      </section>
+
+      <div className="divhr" />
+
       <section id="what">
         <div className="wrap">
           <div className="sl reveal">What We Automate</div>
@@ -200,6 +268,33 @@ export default function DentalPage() {
 
       <div className="divhr" />
 
+      <section className="dx-cap-sec dx-sec">
+        <div className="wrap">
+          <div className="sl reveal sl-c tac" style={{ justifyContent: "center" }}>Everything She Handles</div>
+          <h2 className="st reveal d1 tac">One Employee. <span className="a">The Whole Front Desk.</span></h2>
+          <p className="sd reveal d2" style={{ textAlign: "center", margin: "0 auto" }}>
+            From the first missed call to the follow-up that fills next month&apos;s schedule, Janice covers
+            the work that keeps chairs full.
+          </p>
+          <div className="dx-cap-grid">
+            <div className="dx-cap reveal d1"><span className="dx-cap-ico">🪑</span><h3>Fills cancelled chairs</h3><p>Best-fit patients are offered your open slot within minutes, unlimited.</p></div>
+            <div className="dx-cap reveal d2"><span className="dx-cap-ico">📞</span><h3>Missed-call text-back <span className="dx-cap-soon">SOON</span></h3><p>Every unanswered call gets an instant text before they dial the next clinic.</p></div>
+            <div className="dx-cap reveal d3"><span className="dx-cap-ico">💬</span><h3>24/7 text replies</h3><p>Patients text your existing number; she books, reschedules and answers in seconds.</p></div>
+            <div className="dx-cap reveal d4"><span className="dx-cap-ico">🦷</span><h3>New-patient capture</h3><p>First exams booked from callers who would have hit voicemail.</p></div>
+            <div className="dx-cap reveal d1"><span className="dx-cap-ico">🔁</span><h3>Hygiene recalls</h3><p>Overdue patients get a nudge with a real open time that fits their routine.</p></div>
+            <div className="dx-cap reveal d2"><span className="dx-cap-ico">✅</span><h3>Reminders &amp; confirms</h3><p>One-tap confirm or reschedule, timed exactly the way you choose.</p></div>
+            <div className="dx-cap reveal d3"><span className="dx-cap-ico">📋</span><h3>Treatment follow-up</h3><p>Diagnosed-but-unbooked work gets a respectful nudge to get scheduled.</p></div>
+            <div className="dx-cap reveal d4"><span className="dx-cap-ico">⭐</span><h3>Review engine</h3><p>Happy visits become Google reviews; unhappy ones route privately to you first.</p></div>
+            <div className="dx-cap reveal d1"><span className="dx-cap-ico">💳</span><h3>Payment links <span className="dx-cap-soon">SOON</span></h3><p>Texts the balance after insurance, collected securely by Stripe.</p></div>
+            <div className="dx-cap reveal d2"><span className="dx-cap-ico">🌱</span><h3>Reactivation</h3><p>Wins back patients gone 12+ months in respectful, well-timed waves.</p></div>
+            <div className="dx-cap reveal d3"><span className="dx-cap-ico">🌐</span><h3>Speaks 5 languages</h3><p>English, Mandarin, Cantonese, Punjabi &amp; Farsi, all included.</p></div>
+            <div className="dx-cap reveal d4"><span className="dx-cap-ico">📊</span><h3>Monthly ROI report</h3><p>Chairs refilled, no-shows down, production recovered, every single month.</p></div>
+          </div>
+        </div>
+      </section>
+
+      <div className="divhr" />
+
       <section id="example">
         <div className="wrap">
           <div className="show-grid">
@@ -270,6 +365,29 @@ export default function DentalPage() {
           </div>
         </div>
       </section>
+
+      <div className="divhr" />
+
+      <section className="dx-day-sec dx-sec">
+        <div className="wrap">
+          <div className="sl reveal sl-c tac" style={{ justifyContent: "center" }}>A Day At Your Front Desk</div>
+          <h2 className="st reveal d1 tac">She Never <span className="a">Clocks Out.</span></h2>
+          <p className="sd reveal d2" style={{ textAlign: "center", margin: "0 auto" }}>
+            Here is a single day, handled, while your team looks after the patients in the chair.
+          </p>
+          <div className="dx-day-wrap">
+            <div className="dx-day-line" aria-hidden="true" />
+            <div className="dx-day-item reveal d1"><span className="dx-day-dot" /><div className="dx-day-time">7:42 AM</div><h3>An overnight text, already booked</h3><p>A patient who messaged at 11pm wakes up to a confirmed cleaning. Janice booked it while the office was dark.</p></div>
+            <div className="dx-day-item reveal d1"><span className="dx-day-dot" /><div className="dx-day-time">9:12 AM</div><h3>A missed new-patient call, recovered</h3><p>The front desk is on two lines. Janice texts the caller back in 21 seconds and books a first exam for tomorrow.</p></div>
+            <div className="dx-day-item warm reveal d2"><span className="dx-day-dot" /><div className="dx-day-time">11:30 AM</div><h3>A cancellation, refilled in 12 minutes</h3><p>A 2pm cancels. Janice offers the slot to your waitlist and rebooks the first patient to say yes.</p></div>
+            <div className="dx-day-item reveal d2"><span className="dx-day-dot" /><div className="dx-day-time">2:15 PM</div><h3>Overdue patients, gently chased</h3><p>Six patients due for hygiene get a reminder with a time that fits their routine. Four rebook on the spot.</p></div>
+            <div className="dx-day-item reveal d3"><span className="dx-day-dot" /><div className="dx-day-time">4:50 PM</div><h3>Accepted treatment, followed up</h3><p>A patient who left without booking a crown gets a warm reminder of what the dentist recommended, and schedules it.</p></div>
+            <div className="dx-day-item warm reveal d3"><span className="dx-day-dot" /><div className="dx-day-time">6:30 PM</div><h3>After hours, still earning</h3><p>Today&apos;s happy patients are asked for a review; tomorrow&apos;s schedule is confirmed. You go home to a full book.</p></div>
+          </div>
+        </div>
+      </section>
+
+      <div className="divhr" />
 
       <div className="statband">
         <div className="stat-row">

@@ -230,9 +230,9 @@ footer{padding:56px 56px 36px;border-top:1px solid var(--border)}
    FAQ ACCORDION
    ============================================================ */
 .faq-list{max-width:800px;margin:46px auto 0;display:flex;flex-direction:column;gap:12px}
-.faq-item{border:1px solid var(--border);border-radius:14px;background:var(--card);overflow:hidden;transition:border-color .3s,box-shadow .3s}
-.faq-item[open]{border-color:var(--border-a);box-shadow:0 14px 40px rgba(0,0,0,.06)}
-.faq-item summary{list-style:none;cursor:pointer;padding:21px 24px;font-weight:600;font-size:16px;display:flex;justify-content:space-between;align-items:center;gap:18px;letter-spacing:-.2px}
+details.faq-item{border:1px solid var(--border);border-radius:14px;background:var(--card);overflow:hidden;transition:border-color .3s,box-shadow .3s}
+details.faq-item[open]{border-color:var(--border-a);box-shadow:0 14px 40px rgba(0,0,0,.06)}
+details.faq-item summary{list-style:none;cursor:pointer;padding:21px 24px;font-weight:600;font-size:16px;display:flex;justify-content:space-between;align-items:center;gap:18px;letter-spacing:-.2px}
 .faq-item summary::-webkit-details-marker{display:none}
 .faq-ico{flex-shrink:0;width:24px;height:24px;position:relative;transition:transform .35s cubic-bezier(.16,1,.3,1)}
 .faq-ico::before,.faq-ico::after{content:'';position:absolute;background:var(--accent);border-radius:2px;top:50%;left:50%;transform:translate(-50%,-50%)}
