@@ -190,7 +190,7 @@ section{padding:88px 56px;position:relative}
 .step:hover .step-circle{background:var(--accent);color:var(--on-accent);box-shadow:0 0 30px rgba(74,240,192,.35)}
 .step-body h3{font-size:22px;font-weight:600;margin-bottom:10px;letter-spacing:-.3px}
 .step-body p{color:var(--text2);font-size:15px;line-height:1.7;max-width:480px;font-weight:300}
-.ind-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:16px;margin-top:60px}
+.ind-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:60px}
 .ind{display:flex;flex-direction:column;text-decoration:none;color:inherit;text-align:left;padding:30px 24px;border:1px solid var(--border);border-radius:20px;background:var(--card);transition:transform .45s cubic-bezier(.16,1,.3,1),border-color .45s,box-shadow .45s;position:relative;overflow:hidden}
 .ind::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:var(--grad);opacity:0;transition:opacity .4s}
 .ind::after{content:'';position:absolute;inset:0;background:radial-gradient(circle at 50% 0%,rgba(74,240,192,.06),transparent 70%);opacity:0;transition:opacity .5s;pointer-events:none}
@@ -371,7 +371,7 @@ body.modal-open{overflow:hidden}
 
   /* Service / industry / about grids */
   .svc-grid{grid-template-columns:1fr;gap:14px}
-  .ind-grid{grid-template-columns:repeat(3,1fr);gap:14px}
+  .ind-grid{grid-template-columns:repeat(2,1fr);gap:14px}
   .step{gap:24px}
   .steps-tl::before{left:27px}
 
