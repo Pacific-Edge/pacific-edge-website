@@ -68,7 +68,7 @@ export default function Footer() {
 
         <div className="footer-nav">
           <div className="footer-nav-label">Products</div>
-          <Link href="/ai-employee">AI Employee — Janice</Link>
+          <Link href="/ai-employee">AI Employee (Janice)</Link>
           <Link href="/custom-builds">Custom Builds</Link>
           <Link href="/ai-training">AI Training</Link>
           <Link href="/careers">Careers</Link>

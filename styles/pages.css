@@ -7,6 +7,9 @@
    ========================================================================= */
 :root{--px-forest:#063a2a;--px-forest2:#04170f}
 
+/* inline emphasis (replaces faux-italic <em>, which overhangs into the next word) */
+.cb-emph{font-weight:600;color:var(--text)}
+
 /* ---- feature grid -------------------------------------------------------- */
 .px-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:52px}
 .px-grid.cols2{grid-template-columns:repeat(2,1fr)}

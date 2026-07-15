@@ -9,7 +9,7 @@ const CAL = "https://cal.com/pacificedge"
 export const metadata: Metadata = {
   title: { absolute: "AI Training for Corporations & SMBs | Pacific Edge AI" },
   description:
-    "Hands-on AI training for corporations and small businesses in Vancouver. Get your team using AI to its full potential — without wasting tokens or leaking data. Prompting, workflows, governance, security, and cost control. PIPEDA & BC PIPA aware.",
+    "Hands-on AI training for corporations and small businesses in Vancouver. Get your team using AI to its full potential without wasting tokens or leaking data. Prompting, workflows, governance, security, and cost control. PIPEDA & BC PIPA aware.",
   alternates: { canonical: "/ai-training" },
 }
 

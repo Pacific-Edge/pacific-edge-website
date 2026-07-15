@@ -9,7 +9,7 @@ const CAL = "https://cal.com/pacificedge"
 export const metadata: Metadata = {
   title: { absolute: "Custom Builds · Bespoke Software for Your Business | Pacific Edge AI" },
   description:
-    "When you need something Janice doesn't cover, we build it. Pacific Edge AI designs and builds custom software around how your business actually runs — tailored CRMs, internal dashboards, and automations. Scoped and quoted per project. Vancouver, BC.",
+    "When you need something Janice doesn't cover, we build it. Pacific Edge AI designs and builds custom software around how your business actually runs: tailored CRMs, internal dashboards, and automations. Scoped and quoted per project. Vancouver, BC.",
   alternates: { canonical: "/custom-builds" },
 }
 
@@ -31,9 +31,9 @@ export default function CustomBuildsPage() {
             <span className="a">We Build It.</span>
           </h1>
           <p className="ihero-sub reveal d2">
-            Janice runs the front desk — calls, texts, bookings, no-show follow-ups, reviews — and for most
-            local businesses that&apos;s the whole job. But sometimes the thing eating your week is specific to
-            how <em>you</em> run. That&apos;s a Custom Build.
+            Janice runs the front desk: calls, texts, bookings, no-show follow-ups, reviews. For most local
+            businesses that&apos;s the whole job. But sometimes the thing eating your week is specific to how{" "}
+            <span className="cb-emph">you</span> run. That&apos;s a Custom Build.
           </p>
           <div className="ihero-actions reveal d3">
             <a href={CAL} target="_blank" rel="noopener" className="btn-primary">Book a Free 15-Min Demo</a>
@@ -55,7 +55,7 @@ export default function CustomBuildsPage() {
           <p className="sd reveal d2">
             A booking flow nobody else has. An internal tool your team keeps wishing existed. A piece of software
             no off-the-shelf product actually sells. We sit down, learn exactly how your business works, and build
-            software that fits it — a tailored CRM, an internal dashboard, an automation that kills the one task
+            software that fits it: a tailored CRM, an internal dashboard, an automation that kills the one task
             that keeps stealing your time.
           </p>
           <div className="px-grid tilt">
@@ -123,7 +123,7 @@ export default function CustomBuildsPage() {
         <div className="ihero-inner" style={{ margin: "0 auto" }}>
           <div className="sl reveal sl-c" style={{ justifyContent: "center" }}>Get Started</div>
           <h2 className="icta-title reveal d1">Got Something<br /><span className="a">Specific In Mind?</span></h2>
-          <p className="icta-desc reveal d2">Tell us about it. Start with a free 15-minute call — we&apos;ll tell you honestly whether it&apos;s a fit, roughly what it takes, and where to start. No pitch, no obligation.</p>
+          <p className="icta-desc reveal d2">Tell us about it. Start with a free 15-minute call. We&apos;ll tell you honestly whether it&apos;s a fit, roughly what it takes, and where to start. No pitch, no obligation.</p>
           <a href={CAL} target="_blank" rel="noopener" className="btn-primary reveal d2">Book a Free 15-Min Demo</a>
           <div className="icta-bullets reveal d3">
             <span><i />Free scoping call</span>

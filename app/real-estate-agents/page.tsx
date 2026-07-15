@@ -9,7 +9,7 @@ const CAL = "https://cal.com/pacificedge"
 export const metadata: Metadata = {
   title: { absolute: "AI for Real Estate Agents & Brokerages | Pacific Edge AI" },
   description:
-    "Be the first agent to reply — every time. Pacific Edge AI answers, qualifies, and books your real estate leads 24/7 and nurtures them for months. Works with Follow Up Boss, kvCORE, BoomTown & more. Vancouver, BC.",
+    "Be the first agent to reply, every time. Pacific Edge AI answers, qualifies, and books your real estate leads 24/7 and nurtures them for months. Works with Follow Up Boss, kvCORE, BoomTown & more. Vancouver, BC.",
   alternates: { canonical: "/real-estate-agents" },
 }
 

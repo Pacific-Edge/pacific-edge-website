@@ -7,7 +7,7 @@ import "@/styles/pages.css"
 const CAL = "https://cal.com/pacificedge"
 
 export const metadata: Metadata = {
-  title: { absolute: "AI for Real Estate — Agents, Brokerages & Developers | Pacific Edge AI" },
+  title: { absolute: "AI for Real Estate: Agents, Brokerages & Developers | Pacific Edge AI" },
   description:
     "AI automation for Vancouver real estate. Answer every lead in seconds 24/7, qualify buyers, book showings, and nurture for months so no lead goes cold. Built for agents, brokerages, and property developers. Works with Follow Up Boss, kvCORE & more.",
   alternates: { canonical: "/real-estate" },
@@ -28,7 +28,7 @@ export default function RealEstatePage() {
           </h1>
           <p className="ihero-sub reveal d2">
             In real estate, the first agent to respond usually wins. Pacific Edge AI answers every call, text,
-            and listing inquiry in seconds, 24/7 — qualifies the lead, books the showing, and keeps following up
+            and listing inquiry in seconds, 24/7. It qualifies the lead, books the showing, and keeps following up
             for months, so nothing slips through the cracks.
           </p>
           <div className="ihero-pain reveal d3">

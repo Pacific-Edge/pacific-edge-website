@@ -7,7 +7,7 @@ import Logo from "./Logo"
 import { getLenis } from "@/lib/lenis"
 
 const PRODUCTS = [
-  { href: "/ai-employee", icon: "🤖", name: "AI Employee — Janice", desc: "Your AI front desk, 24/7" },
+  { href: "/ai-employee", icon: "🤖", name: "AI Employee (Janice)", desc: "Your AI front desk, 24/7" },
   { href: "/custom-builds", icon: "🛠️", name: "Custom Builds", desc: "Bespoke software for your business" },
   { href: "/ai-training", icon: "🎓", name: "AI Training", desc: "Get your team using AI well & safely" },
 ]
@@ -174,9 +174,31 @@ export default function Nav({ variant = "full" }: { variant?: "full" | "minimal"
           </a>
         </li>
       </ul>
-      <a href="/login.html" className="nav-cta">
-        Client Login
-      </a>
+      <div className="nav-actions">
+        <a href="/login.html" className="nav-login">Client Login</a>
+        <a
+          href="https://cal.com/pacificedge"
+          target="_blank"
+          rel="noopener"
+          className="nav-cta"
+        >
+          Book a Demo
+          <svg
+            className="nav-cta-arr"
+            width="13"
+            height="13"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            strokeWidth="2.6"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            aria-hidden="true"
+          >
+            <path d="M5 12h14M13 6l6 6-6 6" />
+          </svg>
+        </a>
+      </div>
       <button
         className={`nav-burger ${menuOpen ? "open" : ""}`}
         aria-label="Toggle menu"
