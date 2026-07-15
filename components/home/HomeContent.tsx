@@ -38,6 +38,7 @@ const JED = [
 
 const INDUSTRIES = [
   { href: "/dental", icon: "🦷", name: "Dental & Health Clinics", desc: "New-patient calls to voicemail, no-shows, missed recalls. We keep the schedule full and the front desk free.", more: "Explore dental AI" },
+  { href: "/real-estate", icon: "🏡", name: "Real Estate", desc: "Leads that go cold in minutes, after-hours inquiries, showings missed. We answer first and book the showing, for agents & developers.", more: "Explore real estate AI" },
   { href: "/restaurants", icon: "🍽️", name: "Restaurants & Food Service", desc: "Missed reservation calls, unanswered reviews, no-shows. We turn the dinner rush into booked tables.", more: "Explore restaurant AI" },
   { href: "/salons", icon: "💆", name: "Salons, Spas & Wellness", desc: "Empty chairs, after-hours DMs, clients who never rebook. We keep your calendar full and your regulars regular.", more: "Explore salon & spa AI" },
   { href: "/trades", icon: "🔧", name: "Trades & Home Services", desc: "Calls missed on the job, quotes gone cold. We capture every lead and follow up, completely hands-free.", more: "Explore trades AI" },
@@ -513,7 +514,7 @@ export default function HomeContent() {
         <div className="r">
           <div className="sl">Industries</div>
           <h2 className="st">Built For<br /><span className="a">Your Business.</span></h2>
-          <p className="sd">Five local industries we know inside out. Click yours to see exactly what we would automate, and what it looks like in action.</p>
+          <p className="sd">Six local industries we know inside out. Click yours to see exactly what we would automate, and what it looks like in action.</p>
         </div>
         <div className="ind-grid">
           {INDUSTRIES.map((ind, i) => (
