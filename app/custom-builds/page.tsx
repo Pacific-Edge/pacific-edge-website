@@ -33,7 +33,8 @@ export default function CustomBuildsPage() {
           <p className="ihero-sub reveal d2">
             Janice runs the front desk: calls, texts, bookings, no-show follow-ups, reviews. For most local
             businesses that&apos;s the whole job. But sometimes the thing eating your week is specific to how{" "}
-            <span className="cb-emph">you</span> run. That&apos;s a Custom Build.
+            <span className="cb-emph">you</span>{" "}
+            run. That&apos;s a Custom Build.
           </p>
           <div className="ihero-actions reveal d3">
             <a href={CAL} target="_blank" rel="noopener" className="btn-primary">Book a Free 15-Min Demo</a>
