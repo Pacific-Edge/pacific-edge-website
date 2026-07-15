@@ -16,6 +16,13 @@
 .dx-sec{position:relative}
 .dx-eyebrow-wrap{text-align:center}
 
+/* decluttered hero: subtle secondary links under the two main buttons */
+.dx-hero-sublinks{display:flex;align-items:center;justify-content:center;gap:15px;flex-wrap:wrap;margin-top:20px;font-size:14px}
+.dx-hero-sublinks a{color:var(--text2);text-decoration:none;border-bottom:1px solid transparent;padding-bottom:1px;font-weight:500;transition:color .25s ease,border-color .25s ease}
+.dx-hero-sublinks a:hover{color:var(--accent-ink);border-bottom-color:var(--border-a)}
+.dx-hero-dot{color:var(--text3)}
+@media(max-width:560px){.dx-hero-dot{display:none}.dx-hero-sublinks{flex-direction:column;gap:9px;margin-top:16px}}
+
 /* =========================================================================
    1. TIER SHOWCASE — three 3D-tilt cards mirroring the pricing plans
    ========================================================================= */

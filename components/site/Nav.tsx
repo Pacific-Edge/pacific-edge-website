@@ -6,8 +6,15 @@ import { usePathname } from "next/navigation"
 import Logo from "./Logo"
 import { getLenis } from "@/lib/lenis"
 
+const PRODUCTS = [
+  { href: "/ai-employee", icon: "🤖", name: "AI Employee — Janice", desc: "Your AI front desk, 24/7" },
+  { href: "/custom-builds", icon: "🛠️", name: "Custom Builds", desc: "Bespoke software for your business" },
+  { href: "/ai-training", icon: "🎓", name: "AI Training", desc: "Get your team using AI well & safely" },
+]
+
 const INDUSTRIES = [
   { href: "/dental", icon: "🦷", name: "Dental & Health Clinics", desc: "New patients, recalls" },
+  { href: "/real-estate", icon: "🏡", name: "Real Estate", desc: "Agents, brokerages & developers" },
   { href: "/restaurants", icon: "🍽️", name: "Restaurants & Food", desc: "Bookings, reviews, no-shows" },
   { href: "/salons", icon: "💆", name: "Salons & Spas", desc: "Booking, rebooking, no-shows" },
   { href: "/trades", icon: "🔧", name: "Trades & Home Services", desc: "Missed calls, quotes, jobs" },
@@ -59,8 +66,10 @@ export default function Nav({ variant = "full" }: { variant?: "full" | "minimal"
       <nav>
         <Logo href="/" />
         <div className="nav-right">
-          <Link href="/" className="nav-back">← All industries</Link>
+          <Link href="/" className="nav-back">← Home</Link>
           <Link href="/ai-employee" className="nav-back">AI Employee</Link>
+          <Link href="/custom-builds" className="nav-back">Custom Builds</Link>
+          <Link href="/ai-training" className="nav-back">AI Training</Link>
           <a href="/login.html" className="nav-back">Client Login</a>
           <a
             href="https://cal.com/pacificedge"
@@ -68,7 +77,7 @@ export default function Nav({ variant = "full" }: { variant?: "full" | "minimal"
             rel="noopener"
             className="nav-cta"
           >
-            Book a Call
+            Book a Demo
           </a>
         </div>
       </nav>
@@ -79,8 +88,36 @@ export default function Nav({ variant = "full" }: { variant?: "full" | "minimal"
     <nav id="siteNav" className={hidden ? "hide" : ""}>
       <Logo href="/" />
       <ul className={`nav-links ${menuOpen ? "open" : ""}`} id="navLinks">
-        <li>
-          <Link href="/#services">Services</Link>
+        <li className="nav-dd">
+          <Link href="/#services" className="nav-dd-trigger">
+            Products
+            <svg
+              className="nav-chev"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="2.5"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+            >
+              <path d="M6 9l6 6 6-6" />
+            </svg>
+          </Link>
+          <div className="nav-dd-panel">
+            {PRODUCTS.map((i) => (
+              <Link key={i.href} href={i.href} className="nav-dd-item">
+                <span className="nav-dd-ico">{i.icon}</span>
+                <span>
+                  <span className="nav-dd-name">{i.name}</span>
+                  <span className="nav-dd-desc">{i.desc}</span>
+                </span>
+              </Link>
+            ))}
+            <div className="nav-dd-foot">
+              <span>New here?</span>
+              <Link href="/ai-employee">Meet Janice →</Link>
+            </div>
+          </div>
         </li>
         <li className="nav-dd">
           <Link href="/#industries" className="nav-dd-trigger">
@@ -114,13 +151,10 @@ export default function Nav({ variant = "full" }: { variant?: "full" | "minimal"
           </div>
         </li>
         <li>
-          <Link href="/ai-employee">AI Employee</Link>
+          <Link href="/dental">Dental</Link>
         </li>
         <li>
           <Link href="/#coverage">Coverage</Link>
-        </li>
-        <li>
-          <Link href="/#dashboard">Dashboard</Link>
         </li>
         <li>
           <Link href="/#process">Process</Link>

@@ -22,7 +22,7 @@ export default function IndustriesPage() {
           <h1 className="reveal d1">Built Around How<br /><span className="a">You Actually Work.</span></h1>
           <p className="ihero-sub reveal d2">We don&apos;t sell one-size-fits-all software. We map the way your business actually runs, the calls, the bookings, the cancellations, the follow-ups, then build an AI employee, Janice, that quietly handles it. Here&apos;s exactly what that looks like in your world.</p>
           <div className="ihero-actions reveal d3">
-            <a href={CAL} target="_blank" rel="noopener" className="btn-primary">Book a Free 15-Min Call</a>
+            <a href={CAL} target="_blank" rel="noopener" className="btn-primary">Book a Free 15-Min Demo</a>
             <Link href="/ai-employee" className="btn-ghost">Meet Janice</Link>
           </div>
           <div className="qnav reveal d4">
@@ -31,6 +31,7 @@ export default function IndustriesPage() {
             <a href="#trades"><span>🔧</span>Trades</a>
             <a href="#retail"><span>🛍️</span>Retail</a>
             <a href="#dental"><span>🦷</span>Dental</a>
+            <a href="#real-estate"><span>🏡</span>Real Estate</a>
           </div>
         </div>
       </header>
@@ -164,6 +165,34 @@ export default function IndustriesPage() {
         </div>
       </section>
 
+      <section className="dind" id="real-estate">
+        <div className="wrap dind-row flip">
+          <div className="dind-text reveal">
+            <div className="dind-ico">🏡</div>
+            <div className="sl">Real Estate</div>
+            <h2 className="st">First To Reply, <span className="a">First To Close.</span></h2>
+            <p className="dind-lead">In real estate the fastest reply wins. Janice answers every lead in seconds, day or night, qualifies the buyer, books the showing, and nurtures for months, for agents, brokerages, and property developers alike.</p>
+            <div className="dind-build">
+              <span className="dind-tag">Instant speed-to-lead</span>
+              <span className="dind-tag">Showing booking</span>
+              <span className="dind-tag">Long-term nurture</span>
+            </div>
+            <div style={{ marginTop: 22 }}>
+              <Link href="/real-estate" className="btn-ghost">Explore Real Estate →</Link>
+            </div>
+          </div>
+          <div className="dind-viz reveal d1">
+            <div className="viz viz-call">
+              <div className="vc-flow">
+                <div className="vc-row miss"><span className="vc-ic">🌙</span><div><b>New lead · 9:42 PM</b><em>from your listing</em></div><span className="vc-meta">after hours</span></div>
+                <div className="vc-row text"><span className="vc-ic">💬</span><div><b>&ldquo;Yes, it&apos;s available! Are you pre-approved?&rdquo;</b><em>auto-replied &amp; qualified</em></div><span className="vc-meta">18s</span></div>
+                <div className="vc-row won">✓&nbsp; Showing booked, while rivals slept</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
       <div className="divhr" />
 
       <section className="dcta">
@@ -173,7 +202,7 @@ export default function IndustriesPage() {
             <h2 className="st reveal d1">Don&apos;t See Your Trade?<br /><span className="a">We Still Build For You.</span></h2>
             <p className="sd reveal d2">If your business runs on calls, bookings, or repeat customers, Janice can help. Book a free 15-minute call and we&apos;ll map out exactly what she&apos;d do for you, no pitch deck, no pressure.</p>
             <div className="ihero-actions reveal d3" style={{ justifyContent: "center", marginTop: "8px" }}>
-              <a href={CAL} target="_blank" rel="noopener" className="btn-primary">Book a Free 15-Min Call</a>
+              <a href={CAL} target="_blank" rel="noopener" className="btn-primary">Book a Free 15-Min Demo</a>
               <Link href="/ai-employee" className="btn-ghost">Meet Janice</Link>
             </div>
           </div>

@@ -8,6 +8,7 @@ import ToastProvider from "@/components/site/ToastProvider"
 import ContactModalProvider from "@/components/site/ContactModalProvider"
 import CursorGlow from "@/components/site/CursorGlow"
 import HashScroll from "@/components/site/HashScroll"
+import ScrollTop from "@/components/site/ScrollTop"
 
 // Display / headlines
 const bebas = Bebas_Neue({
@@ -92,6 +93,7 @@ export default function RootLayout({
           <ToastProvider>
             <ContactModalProvider>
               <HashScroll />
+              <ScrollTop />
               {children}
             </ContactModalProvider>
           </ToastProvider>

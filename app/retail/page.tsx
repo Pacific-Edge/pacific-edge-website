@@ -19,7 +19,7 @@ export default function Page() {
 <p className="ihero-sub reveal d2">Every question answered, every customer brought back, every review handled. Custom AI built for boutiques, specialty shops, and local retailers across Greater Vancouver, online and in store.</p>
 <div className="ihero-pain reveal d3">How many first-time customers this month will you never see walk in again?</div>
 <div className="ihero-actions reveal d4">
-<a href="https://cal.com/pacificedge" target="_blank" rel="noopener" className="btn-primary">Book a Free 15-Min Call</a>
+<a href="https://cal.com/pacificedge" target="_blank" rel="noopener" className="btn-primary">Book a Free 15-Min Demo</a>
 <a href="/retail-savings-calculator.html" className="btn-calc">&#128202; What Missed Sales Cost You</a>
 <a href="#problems" className="btn-ghost">See How It Helps</a>
 </div>
@@ -234,7 +234,7 @@ export default function Page() {
 <div className="sl reveal sl-c" style={{ justifyContent: "center" }}>Get Started</div>
 <h2 className="icta-title reveal d1">Ready To Build<br /><span className="a">A Base Of Regulars?</span></h2>
 <p className="icta-desc reveal d2">Start with a free 15-minute call. We will show you exactly which automations would bring the most customers back through your door. No pitch, no obligation.</p>
-<a href="https://cal.com/pacificedge" target="_blank" rel="noopener" className="btn-primary reveal d2">Book a Free 15-Min Call</a>
+<a href="https://cal.com/pacificedge" target="_blank" rel="noopener" className="btn-primary reveal d2">Book a Free 15-Min Demo</a>
 <div className="reveal d2" style={{ marginTop: "18px" }}><a href="/retail-savings-calculator.html" className="btn-ghost">&#128202; See What Your Missed Customers Are Worth &rarr;</a></div>
 <div className="icta-bullets reveal d3">
 <span><i></i>Free discovery call</span>

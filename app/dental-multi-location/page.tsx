@@ -17,7 +17,7 @@ export default function Page() {
 <h1 className="reveal d1">Every Location.<br /><span className="a">One Standard.</span></h1>
 <p className="dh-sub reveal d2">One consistent front desk across every site, Janice answers, books, and recovers missed calls, with everything rolled into a single dashboard.</p>
 <div className="dh-actions reveal d3">
-<a href="https://cal.com/pacificedge" target="_blank" rel="noopener" className="btn-primary">Book a Free 15-Min Call</a>
+<a href="https://cal.com/pacificedge" target="_blank" rel="noopener" className="btn-primary">Book a Free 15-Min Demo</a>
 <a href="#flow" className="btn-ghost">See How It Works</a>
 </div>
 <div className="dh-stats reveal d4">
@@ -115,7 +115,7 @@ export default function Page() {
 <div className="sl reveal sl-c" style={{ justifyContent: "center" }}>Get Started</div>
 <h2 className="icta-title reveal d1">One Standard,<br /><span className="a">Every Location.</span></h2>
 <p className="icta-desc reveal d2">A free 15-minute call. We'll map where each site is leaking calls and what one standard would recover.</p>
-<a href="https://cal.com/pacificedge" target="_blank" rel="noopener" className="btn-primary reveal d2">Book a Free 15-Min Call</a>
+<a href="https://cal.com/pacificedge" target="_blank" rel="noopener" className="btn-primary reveal d2">Book a Free 15-Min Demo</a>
 <div className="xlinks reveal d3">
 <a href="/dental" className="xlink"><span>&#129463;</span>Dental overview</a>
 <a href="/dental-single-location" className="xlink"><span>&#127973;</span>Single-location clinics</a>

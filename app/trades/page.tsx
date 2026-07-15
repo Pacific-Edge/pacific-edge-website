@@ -34,7 +34,7 @@ export default function TradesPage() {
             How many jobs went to the next guy last week because you couldn&apos;t pick up from the jobsite?
           </div>
           <div className="ihero-actions reveal d4">
-            <a href={CAL} target="_blank" rel="noopener" className="btn-primary">Book a Free 15-Min Call</a>
+            <a href={CAL} target="_blank" rel="noopener" className="btn-primary">Book a Free 15-Min Demo</a>
             <a href="/trades-savings-calculator.html" className="btn-calc">📊 What Missed Calls Cost You</a>
             <a href="#problems" className="btn-ghost">See How It Helps</a>
           </div>
@@ -267,7 +267,7 @@ export default function TradesPage() {
           <div className="sl reveal sl-c" style={{ justifyContent: "center" }}>Get Started</div>
           <h2 className="icta-title reveal d1">Ready To Win<br /><span className="a">Every Lead?</span></h2>
           <p className="icta-desc reveal d2">Start with a free 15-minute call. We will show you exactly which automations would capture the most jobs you are missing right now. No pitch, no obligation.</p>
-          <a href={CAL} target="_blank" rel="noopener" className="btn-primary reveal d2">Book a Free 15-Min Call</a>
+          <a href={CAL} target="_blank" rel="noopener" className="btn-primary reveal d2">Book a Free 15-Min Demo</a>
           <div className="reveal d2" style={{ marginTop: 18 }}><a href="/trades-savings-calculator.html" className="btn-ghost">📊 See What Your Missed Calls Are Worth →</a></div>
           <div className="icta-bullets reveal d3">
             <span><i />Free discovery call</span>

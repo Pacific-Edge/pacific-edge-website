@@ -75,7 +75,7 @@ export default function Footer() {
           <Link href="/#faq">FAQ</Link>
           <Link href="/careers">Careers</Link>
           <a href="https://cal.com/pacificedge" target="_blank" rel="noopener">
-            Book a Call
+            Book a Demo
           </a>
         </div>
       </div>

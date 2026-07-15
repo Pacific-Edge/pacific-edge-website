@@ -37,10 +37,13 @@ export default function DentalPage() {
             How many new patients hung up last week because the front desk was already on another line?
           </div>
           <div className="ihero-actions reveal d4">
-            <a href={CAL} target="_blank" rel="noopener" className="btn-primary">Book a Free 15-Min Call</a>
-            <a href="/dental-savings-calculator.html" className="btn-calc">📊 What Cancellations Cost You</a>
+            <a href={CAL} target="_blank" rel="noopener" className="btn-primary">Book a Free 15-Min Demo</a>
             <a href="/dental-pricing.html" className="btn-ghost">💰 See Pricing &amp; Plans</a>
-            <a href="#problems" className="btn-ghost">See How It Helps</a>
+          </div>
+          <div className="dx-hero-sublinks reveal d4">
+            <a href="/dental-savings-calculator.html">📊 What cancellations cost you</a>
+            <span className="dx-hero-dot" aria-hidden="true">·</span>
+            <a href="#problems">See how it helps ↓</a>
           </div>
           <div className="ihero-stats reveal d5">
             <div className="ihero-stat"><b>25s</b><span>Answer a new-patient call</span></div>
@@ -431,7 +434,7 @@ export default function DentalPage() {
           <div className="sl reveal sl-c" style={{ justifyContent: "center" }}>Get Started</div>
           <h2 className="icta-title reveal d1">Ready To Fill<br /><span className="a">Every Chair?</span></h2>
           <p className="icta-desc reveal d2">Start with a free 15-minute call. We will show you exactly which automations would keep your schedule full and your front desk free. No pitch, no obligation.</p>
-          <a href={CAL} target="_blank" rel="noopener" className="btn-primary reveal d2">Book a Free 15-Min Call</a>
+          <a href={CAL} target="_blank" rel="noopener" className="btn-primary reveal d2">Book a Free 15-Min Demo</a>
           <div className="icta-bullets reveal d3">
             <span><i />Free discovery call</span>
             <span><i />Working prototype in about a week</span>

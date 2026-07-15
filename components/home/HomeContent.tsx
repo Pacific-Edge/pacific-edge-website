@@ -316,7 +316,7 @@ export default function HomeContent() {
         <div className="hero-pain">Tired of watching leads slip through the cracks?</div>
         <div className="hero-actions">
           <a href={CAL} target="_blank" rel="noopener" className="btn-primary">
-            Book a Free 15-Min Call{" "}
+            Book a Free 15-Min Demo{" "}
             <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
               <path d="M3 8h10m0 0L9 4m4 4L9 12" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
             </svg>
@@ -788,7 +788,7 @@ export default function HomeContent() {
           <h2 className="cta-title">Ready To Get<br /><span className="a">The Edge?</span></h2>
           <p className="cta-desc">Start with a free 15-minute discovery call. No pitch, no obligation. Just an honest conversation about what&apos;s costing your business the most right now.</p>
           <div className="cta-actions">
-            <a href={CAL} target="_blank" rel="noopener" className="btn-primary" style={{ fontSize: 16, padding: "18px 44px" }}>Book a Free 15-Min Call</a>
+            <a href={CAL} target="_blank" rel="noopener" className="btn-primary" style={{ fontSize: 16, padding: "18px 44px" }}>Book a Free 15-Min Demo</a>
             <button type="button" className="cta-email" onClick={open}>Or email hello@pacificedge.ai →</button>
           </div>
           <div className="cta-bullets">
@@ -811,7 +811,7 @@ export default function HomeContent() {
       </div>
 
       {/* Floating controls */}
-      <a href={CAL} target="_blank" rel="noopener" className={`float-book ${scrolled ? "show" : ""}`}>Book a Call</a>
+      <a href={CAL} target="_blank" rel="noopener" className={`float-book ${scrolled ? "show" : ""}`}>Book a Demo</a>
       <button className={`scroll-top ${scrolled ? "show" : ""}`} onClick={toTop} aria-label="Scroll to top">
         <svg width="18" height="18" viewBox="0 0 16 16" fill="none"><path d="M8 13V3m0 0L4 7m4-4l4 4" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" /></svg>
       </button>
