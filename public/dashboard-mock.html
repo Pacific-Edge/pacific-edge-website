@@ -881,6 +881,30 @@ body{
   var tabs = document.querySelectorAll('.dh-tabs button');
   var views = document.querySelectorAll('.view');
 
+  // When embedded in the marketing site, this iframe runs its own Lenis, which
+  // would otherwise swallow the mouse wheel and freeze the parent page's scroll
+  // whenever the cursor is over the dashboard. Forward wheel input to the parent
+  // window so its Lenis keeps scrolling the page, while clicks and hover inside
+  // the dashboard stay fully interactive (tabs, tooltips, etc.).
+  if (window.parent && window.parent !== window) {
+    window.addEventListener('wheel', function(e){
+      var P = window.parent;
+      try {
+        if (P.__lenis) {
+          // Parent uses Lenis smooth scroll: re-dispatch the wheel on the parent
+          // window so Lenis scrolls the page exactly as if the wheel happened there.
+          P.dispatchEvent(new P.WheelEvent('wheel', {
+            deltaX: e.deltaX, deltaY: e.deltaY, deltaZ: e.deltaZ,
+            deltaMode: e.deltaMode, bubbles: false, cancelable: true
+          }));
+        } else {
+          // Reduced-motion / no Lenis: scroll the parent page natively.
+          P.scrollBy(e.deltaX, e.deltaY);
+        }
+      } catch (_) {}
+    }, { passive: true, capture: true });
+  }
+
   // Tell the parent page (if embedded) how tall the dashboard is, so the iframe can auto-size.
   function reportHeight(){
     if(window.parent && window.parent !== window){
