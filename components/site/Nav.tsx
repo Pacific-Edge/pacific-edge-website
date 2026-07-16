@@ -5,21 +5,7 @@ import { useEffect, useState } from "react"
 import { usePathname } from "next/navigation"
 import Logo from "./Logo"
 import { getLenis } from "@/lib/lenis"
-
-const PRODUCTS = [
-  { href: "/ai-employee", icon: "🤖", name: "AI Employee (Janice)", desc: "Your AI front desk, 24/7" },
-  { href: "/custom-builds", icon: "🛠️", name: "Custom Builds", desc: "Bespoke software for your business" },
-  { href: "/ai-training", icon: "🎓", name: "AI Training", desc: "Get your team using AI well & safely" },
-]
-
-const INDUSTRIES = [
-  { href: "/dental", icon: "🦷", name: "Dental & Health Clinics", desc: "New patients, recalls" },
-  { href: "/real-estate", icon: "🏡", name: "Real Estate", desc: "Agents, brokerages & developers" },
-  { href: "/restaurants", icon: "🍽️", name: "Restaurants & Food", desc: "Bookings, reviews, no-shows" },
-  { href: "/salons", icon: "💆", name: "Salons & Spas", desc: "Booking, rebooking, no-shows" },
-  { href: "/trades", icon: "🔧", name: "Trades & Home Services", desc: "Missed calls, quotes, jobs" },
-  { href: "/retail", icon: "🛍️", name: "Retail & Local Shops", desc: "Questions, repeat customers" },
-]
+import { NAV_CATEGORIES } from "@/lib/nav"
 
 export default function Nav({ variant = "full" }: { variant?: "full" | "minimal" }) {
   const [menuOpen, setMenuOpen] = useState(false)
@@ -67,10 +53,11 @@ export default function Nav({ variant = "full" }: { variant?: "full" | "minimal"
         <Logo href="/" />
         <div className="nav-right">
           <Link href="/" className="nav-back">← Home</Link>
-          <Link href="/ai-employee" className="nav-back">AI Employee</Link>
-          <Link href="/custom-builds" className="nav-back">Custom Builds</Link>
-          <Link href="/ai-training" className="nav-back">AI Training</Link>
-          <a href="/login.html" className="nav-back">Client Login</a>
+          {NAV_CATEGORIES.map((cat) => (
+            <Link key={cat.key} href={cat.items[0].href} className="nav-back">
+              {cat.label}
+            </Link>
+          ))}
           <a
             href="https://cal.com/pacificedge"
             target="_blank"
@@ -88,86 +75,43 @@ export default function Nav({ variant = "full" }: { variant?: "full" | "minimal"
     <nav id="siteNav" className={hidden ? "hide" : ""}>
       <Logo href="/" />
       <ul className={`nav-links ${menuOpen ? "open" : ""}`} id="navLinks">
-        <li className="nav-dd">
-          <Link href="/#services" className="nav-dd-trigger">
-            Products
-            <svg
-              className="nav-chev"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              strokeWidth="2.5"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-            >
-              <path d="M6 9l6 6 6-6" />
-            </svg>
-          </Link>
-          <div className="nav-dd-panel">
-            {PRODUCTS.map((i) => (
-              <Link key={i.href} href={i.href} className="nav-dd-item">
-                <span className="nav-dd-ico">{i.icon}</span>
-                <span>
-                  <span className="nav-dd-name">{i.name}</span>
-                  <span className="nav-dd-desc">{i.desc}</span>
-                </span>
-              </Link>
-            ))}
-            <div className="nav-dd-foot">
-              <span>New here?</span>
-              <Link href="/ai-employee">Meet Janice →</Link>
+        {NAV_CATEGORIES.map((cat) => (
+          <li className="nav-dd" key={cat.key}>
+            <Link href={cat.items[0].href} className="nav-dd-trigger">
+              {cat.label}
+              <svg
+                className="nav-chev"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="2.5"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              >
+                <path d="M6 9l6 6 6-6" />
+              </svg>
+            </Link>
+            <div className="nav-dd-panel">
+              {cat.items.map((i) => (
+                <Link
+                  key={i.href + i.name}
+                  href={i.href}
+                  className={`nav-dd-item ${i.comingSoon ? "nav-dd-item-soon" : ""}`}
+                  aria-disabled={i.comingSoon || undefined}
+                >
+                  <span>
+                    <span className="nav-dd-name">{i.name}</span>
+                    <span className="nav-dd-desc">{i.desc}</span>
+                  </span>
+                </Link>
+              ))}
+              <div className="nav-dd-foot">
+                <span>{cat.footLabel}</span>
+                <Link href={cat.footHref}>{cat.footText}</Link>
+              </div>
             </div>
-          </div>
-        </li>
-        <li className="nav-dd">
-          <Link href="/#industries" className="nav-dd-trigger">
-            Industries
-            <svg
-              className="nav-chev"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              strokeWidth="2.5"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-            >
-              <path d="M6 9l6 6 6-6" />
-            </svg>
-          </Link>
-          <div className="nav-dd-panel">
-            {INDUSTRIES.map((i) => (
-              <Link key={i.href} href={i.href} className="nav-dd-item">
-                <span className="nav-dd-ico">{i.icon}</span>
-                <span>
-                  <span className="nav-dd-name">{i.name}</span>
-                  <span className="nav-dd-desc">{i.desc}</span>
-                </span>
-              </Link>
-            ))}
-            <div className="nav-dd-foot">
-              <span>Not sure which fits?</span>
-              <Link href="/industries">View all →</Link>
-            </div>
-          </div>
-        </li>
-        <li>
-          <Link href="/dental">Dental</Link>
-        </li>
-        <li>
-          <Link href="/#coverage">Coverage</Link>
-        </li>
-        <li>
-          <Link href="/#process">Process</Link>
-        </li>
-        <li>
-          <Link href="/#about">About</Link>
-        </li>
-        <li>
-          <Link href="/#faq">FAQ</Link>
-        </li>
-        <li>
-          <Link href="/#contact">Contact</Link>
-        </li>
+          </li>
+        ))}
         <li className="nav-links-cta-mobile">
           <a href="/login.html" className="btn-primary" style={{ marginTop: 16 }}>
             Client Login

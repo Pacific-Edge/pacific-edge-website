@@ -1,36 +1,27 @@
 import type { Metadata } from "next"
-import { Bebas_Neue, Outfit, JetBrains_Mono } from "next/font/google"
+import { Syne, DM_Sans } from "next/font/google"
 import "./globals.css"
 import "@/styles/legacy.css"
 import "@/components/site/chrome.css"
 import LenisProvider from "@/components/providers/LenisProvider"
 import ToastProvider from "@/components/site/ToastProvider"
 import ContactModalProvider from "@/components/site/ContactModalProvider"
-import CursorGlow from "@/components/site/CursorGlow"
 import HashScroll from "@/components/site/HashScroll"
 import ScrollTop from "@/components/site/ScrollTop"
 
 // Display / headlines
-const bebas = Bebas_Neue({
-  weight: "400",
+const syne = Syne({
+  weight: ["600", "700", "800"],
   subsets: ["latin"],
-  variable: "--font-bebas",
+  variable: "--font-syne",
   display: "swap",
 })
 
 // Body / UI
-const outfit = Outfit({
-  weight: ["300", "400", "500", "600", "700"],
+const dmSans = DM_Sans({
+  weight: ["400", "500", "600", "700"],
   subsets: ["latin"],
-  variable: "--font-outfit",
-  display: "swap",
-})
-
-// Eyebrows / labels / mono
-const jetbrains = JetBrains_Mono({
-  weight: ["400", "500", "700"],
-  subsets: ["latin"],
-  variable: "--font-jetbrains",
+  variable: "--font-dm-sans",
   display: "swap",
 })
 
@@ -85,10 +76,9 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${bebas.variable} ${outfit.variable} ${jetbrains.variable}`}
+      className={`${syne.variable} ${dmSans.variable}`}
     >
       <body>
-        <CursorGlow />
         <LenisProvider>
           <ToastProvider>
             <ContactModalProvider>

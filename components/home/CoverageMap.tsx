@@ -179,7 +179,7 @@ export default function CoverageMap() {
               left: 0,
               right: 0,
               height: 3,
-              background: "linear-gradient(90deg,#4af0c0,#c75d3c)",
+              background: "var(--color-accent)",
               zIndex: 10,
               borderRadius: "20px 20px 0 0",
               pointerEvents: "none",

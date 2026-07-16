@@ -2,6 +2,7 @@
 
 import Link from "next/link"
 import { useContactModal } from "./ContactModalProvider"
+import { NAV_CATEGORIES } from "@/lib/nav"
 
 export default function Footer() {
   const { open } = useContactModal()
@@ -55,28 +56,16 @@ export default function Footer() {
           </div>
         </div>
 
-        <div className="footer-col">
-          <div className="footer-col-label">Industries</div>
-          <Link href="/dental">Dental</Link>
-          <Link href="/real-estate">Real Estate</Link>
-          <Link href="/restaurants">Restaurants</Link>
-          <Link href="/salons">Salons &amp; Spas</Link>
-          <Link href="/trades">Trades &amp; Home Services</Link>
-          <Link href="/retail">Retail</Link>
-          <Link href="/industries">All Industries</Link>
-        </div>
-
-        <div className="footer-nav">
-          <div className="footer-nav-label">Products</div>
-          <Link href="/ai-employee">AI Employee (Janice)</Link>
-          <Link href="/custom-builds">Custom Builds</Link>
-          <Link href="/ai-training">AI Training</Link>
-          <Link href="/careers">Careers</Link>
-          <Link href="/#faq">FAQ</Link>
-          <a href="https://cal.com/pacificedge" target="_blank" rel="noopener">
-            Book a Demo
-          </a>
-        </div>
+        {NAV_CATEGORIES.map((cat) => (
+          <div className="footer-col" key={cat.key}>
+            <div className="footer-col-label">{cat.label}</div>
+            {cat.items.map((i) => (
+              <Link key={i.href + i.name} href={i.href}>
+                {i.name}
+              </Link>
+            ))}
+          </div>
+        ))}
       </div>
 
       <div className="footer-bottom">
