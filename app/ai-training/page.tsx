@@ -32,8 +32,8 @@ export default function AiTrainingPage() {
             per result, and keeping your data safe while they do it.
           </p>
           <div className="ihero-actions reveal d3">
-            <a href={CAL} target="_blank" rel="noopener" className="btn-primary">Book a Free 15-Min Demo</a>
-            <a href="#curriculum" className="btn-ghost">See What We Cover ↓</a>
+            <a href={CAL} target="_blank" rel="noopener" className="btn-mint">Book a Free 15-Min Demo</a>
+            <a href="#curriculum" className="btn-light">See What We Cover ↓</a>
           </div>
           <div className="ihero-trust reveal d4">
             On-site or remote · Vendor-neutral · Built around PIPEDA &amp; BC PIPA
@@ -194,7 +194,7 @@ export default function AiTrainingPage() {
           <div className="sl reveal sl-c" style={{ justifyContent: "center" }}>Get Started</div>
           <h2 className="icta-title reveal d1">Ready To Make AI<br /><span className="a">Actually Pay Off?</span></h2>
           <p className="icta-desc reveal d2">Start with a free 15-minute call. We&apos;ll learn how your team works, show you the quickest wins, and lay out a training plan that fits. No pitch, no obligation.</p>
-          <a href={CAL} target="_blank" rel="noopener" className="btn-primary reveal d2">Book a Free 15-Min Demo</a>
+          <a href={CAL} target="_blank" rel="noopener" className="btn-mint reveal d2">Book a Free 15-Min Demo</a>
           <div className="icta-bullets reveal d3">
             <span><i />On-site or remote</span>
             <span><i />Vendor-neutral</span>

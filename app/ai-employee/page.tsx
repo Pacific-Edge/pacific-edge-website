@@ -23,8 +23,8 @@ export default function Page() {
 <h1 className="reveal d2">Meet Janice.<br /><span className="a">She Never Misses.</span></h1>
 <p className="ihero-sub reveal d3">Janice is the AI employee behind Pacific Edge AI. She answers your calls and messages, books the work, fills cancelled spots from your waitlist, sends reminders, and keeps your reviews glowing. Around the clock, in your voice.</p>
 <div className="ihero-actions reveal d4">
-<a href="https://cal.com/pacificedge" target="_blank" rel="noopener" className="btn-primary">Book a Free 15-Min Demo</a>
-<a href="#example" className="btn-ghost"><svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg>Try Janice Live</a>
+<a href="https://cal.com/pacificedge" target="_blank" rel="noopener" className="btn-mint">Book a Free 15-Min Demo</a>
+<a href="#example" className="btn-light"><svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg>Try Janice Live</a>
 </div>
 <div className="ihero-stats reveal d5">
 <div className="ihero-stat"><b>24/7</b><span>Always on</span></div>
@@ -263,7 +263,7 @@ export default function Page() {
 <div className="sl reveal sl-c" style={{ justifyContent: "center" }}>Get Started</div>
 <h2 className="icta-title reveal d1">Ready To <br /><span className="a">Hire Janice?</span></h2>
 <p className="icta-desc reveal d2">Start with a free 15-minute call. We will show you exactly what Janice would handle for your business, and what it would put back on your books. No pitch, no obligation.</p>
-<a href="https://cal.com/pacificedge" target="_blank" rel="noopener" className="btn-primary reveal d2">Book a Free 15-Min Demo</a>
+<a href="https://cal.com/pacificedge" target="_blank" rel="noopener" className="btn-mint reveal d2">Book a Free 15-Min Demo</a>
 <div className="icta-bullets reveal d3">
 <span><i></i>Free discovery call</span>
 <span><i></i>Live in about a week</span>

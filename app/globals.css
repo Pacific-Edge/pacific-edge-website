@@ -31,10 +31,10 @@
   --color-accent-bright: color-mix(in oklab, var(--color-accent) 75%, black);
   --color-on-accent:     color-mix(in oklab, var(--color-accent) 85%, black);
 
-  /* ── Border radius — sharp-ish, consistent ── */
-  --radius-btn:   6px;
-  --radius-card:  12px;
-  --radius-pill:  100px;
+  /* ── Border radius — one value, everywhere. Only true circles (50%)
+        are exempt, since a circle has no corners to round. Never
+        hardcode a radius elsewhere — use var(--radius). ── */
+  --radius: 4px;
 
   /* ── Type — inner vars (--font-syne/-dm-sans) injected by
         next/font in app/layout.tsx via a CSS variable on <html>. ── */
@@ -68,10 +68,12 @@
    BASE RESET & DEFAULTS
    ═══════════════════════════════════════════════════════════════════════ */
 
-*, *::before, *::after {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
+@layer base {
+  *, *::before, *::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
 }
 
 html {

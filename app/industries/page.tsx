@@ -22,8 +22,8 @@ export default function IndustriesPage() {
           <h1 className="reveal d1">Built Around How<br /><span className="a">You Actually Work.</span></h1>
           <p className="ihero-sub reveal d2">We don&apos;t sell one-size-fits-all software. We map the way your business actually runs, the calls, the bookings, the cancellations, the follow-ups, then build an AI employee, Janice, that quietly handles it. Here&apos;s exactly what that looks like in your world.</p>
           <div className="ihero-actions reveal d3">
-            <a href={CAL} target="_blank" rel="noopener" className="btn-primary">Book a Free 15-Min Demo</a>
-            <Link href="/ai-employee" className="btn-ghost">Meet Janice</Link>
+            <a href={CAL} target="_blank" rel="noopener" className="btn-mint">Book a Free 15-Min Demo</a>
+            <Link href="/ai-employee" className="btn-light">Meet Janice</Link>
           </div>
           <div className="qnav reveal d4">
             <a href="#restaurants"><span>🍽️</span>Restaurants</a>
@@ -178,7 +178,7 @@ export default function IndustriesPage() {
               <span className="dind-tag">Long-term nurture</span>
             </div>
             <div style={{ marginTop: 22 }}>
-              <Link href="/real-estate" className="btn-ghost">Explore Real Estate →</Link>
+              <Link href="/real-estate" className="btn-light">Explore Real Estate →</Link>
             </div>
           </div>
           <div className="dind-viz reveal d1">
@@ -202,8 +202,8 @@ export default function IndustriesPage() {
             <h2 className="st reveal d1">Don&apos;t See Your Trade?<br /><span className="a">We Still Build For You.</span></h2>
             <p className="sd reveal d2">If your business runs on calls, bookings, or repeat customers, Janice can help. Book a free 15-minute call and we&apos;ll map out exactly what she&apos;d do for you, no pitch deck, no pressure.</p>
             <div className="ihero-actions reveal d3" style={{ justifyContent: "center", marginTop: "8px" }}>
-              <a href={CAL} target="_blank" rel="noopener" className="btn-primary">Book a Free 15-Min Demo</a>
-              <Link href="/ai-employee" className="btn-ghost">Meet Janice</Link>
+              <a href={CAL} target="_blank" rel="noopener" className="btn-mint">Book a Free 15-Min Demo</a>
+              <Link href="/ai-employee" className="btn-light">Meet Janice</Link>
             </div>
           </div>
         </div>

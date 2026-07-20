@@ -176,7 +176,7 @@ export default function ContactModalProvider({
                 provided.
               </p>
               <button
-                className="btn-primary"
+                className="btn-mint"
                 onClick={close}
                 style={{ fontSize: 14, padding: "14px 28px" }}
               >

@@ -37,8 +37,8 @@ export default function DentalPage() {
             How many new patients hung up last week because the front desk was already on another line?
           </div>
           <div className="ihero-actions reveal d4">
-            <a href={CAL} target="_blank" rel="noopener" className="btn-primary">Book a Free 15-Min Demo</a>
-            <a href="/dental-pricing.html" className="btn-ghost">💰 See Pricing &amp; Plans</a>
+            <a href={CAL} target="_blank" rel="noopener" className="btn-mint">Book a Free 15-Min Demo</a>
+            <a href="/dental-pricing.html" className="btn-light">💰 See Pricing &amp; Plans</a>
           </div>
           <div className="dx-hero-sublinks reveal d4">
             <a href="/dental-savings-calculator.html">📊 What cancellations cost you</a>
@@ -85,7 +85,7 @@ export default function DentalPage() {
             <div className="ptype-card reveal d2">
               <div className="ptype-visual"><div className="ptype-phone"><div className="ptype-screen">
                 <svg viewBox="0 0 120 158" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice">
-                  <rect width="120" height="158" fill="#f4f1ea" />
+                  <rect width="120" height="158" fill="#f6f7f8" />
                   <g fill="rgba(74,240,192,.12)"><rect x="8" y="10" width="32" height="26" rx="4" /><rect x="80" y="96" width="32" height="44" rx="4" /><rect x="12" y="110" width="40" height="34" rx="4" /></g>
                   <g stroke="rgba(28,25,20,.09)" strokeWidth="2"><line x1="0" y1="48" x2="120" y2="48" /><line x1="0" y1="94" x2="120" y2="94" /><line x1="46" y1="0" x2="46" y2="158" /><line x1="86" y1="0" x2="86" y2="158" /></g>
                   <path d="M22 138 L46 94 L86 66 L102 30" fill="none" stroke="#0a9d76" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" strokeDasharray="1 7" opacity=".75" />
@@ -94,12 +94,12 @@ export default function DentalPage() {
               </div></div></div>
               <h3 className="ptype-title">Single-Location Clinics</h3>
               <ul className="ptype-list"><li>Reduce front-desk stress</li><li>Capture every missed call</li><li>Handle after-hours &amp; overflow</li></ul>
-              <Link href="/dental-single-location" className="btn-ghost ptype-btn">See How It Works →</Link>
+              <Link href="/dental-single-location" className="btn-light ptype-btn">See How It Works →</Link>
             </div>
             <div className="ptype-card reveal d3">
               <div className="ptype-visual"><div className="ptype-phone"><div className="ptype-screen">
                 <svg viewBox="0 0 120 158" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice">
-                  <rect width="120" height="158" fill="#f4f1ea" />
+                  <rect width="120" height="158" fill="#f6f7f8" />
                   <g fill="rgba(74,240,192,.12)"><rect x="10" y="14" width="28" height="24" rx="4" /><rect x="82" y="20" width="28" height="28" rx="4" /><rect x="48" y="104" width="34" height="36" rx="4" /></g>
                   <g stroke="rgba(28,25,20,.09)" strokeWidth="2"><line x1="0" y1="58" x2="120" y2="58" /><line x1="0" y1="104" x2="120" y2="104" /><line x1="40" y1="0" x2="40" y2="158" /><line x1="84" y1="0" x2="84" y2="158" /></g>
                   <path d="M32 48 L90 44 M90 44 L64 120 M64 120 L32 48" fill="none" stroke="#0a9d76" strokeWidth="2" strokeDasharray="1 6" strokeLinecap="round" opacity=".6" />
@@ -108,10 +108,10 @@ export default function DentalPage() {
               </div></div></div>
               <h3 className="ptype-title">Multi-Location &amp; DSOs</h3>
               <ul className="ptype-list"><li>Standardize workflows across sites</li><li>Centralize reporting</li><li>Grow revenue at scale</li></ul>
-              <Link href="/dental-multi-location" className="btn-ghost ptype-btn">See How It Works →</Link>
+              <Link href="/dental-multi-location" className="btn-light ptype-btn">See How It Works →</Link>
             </div>
           </div>
-          <div className="reveal d4" style={{ textAlign: "center", marginTop: 34 }}><a href="/dental-savings-calculator.html" className="btn-ghost">📊 Estimate What Filling Them Is Worth →</a></div>
+          <div className="reveal d4" style={{ textAlign: "center", marginTop: 34 }}><a href="/dental-savings-calculator.html" className="btn-light">📊 Estimate What Filling Them Is Worth →</a></div>
         </div>
       </section>
 
@@ -174,7 +174,7 @@ export default function DentalPage() {
             </article>
           </div>
           <div className="dx-tier-cta reveal d3">
-            <a href="/dental-pricing.html" className="btn-primary">See Every Plan In Detail →</a>
+            <a href="/dental-pricing.html" className="btn-mint">See Every Plan In Detail →</a>
             <div className="dx-tier-note">Full feature-by-feature comparison · Priced in CAD + GST</div>
           </div>
         </div>
@@ -434,7 +434,7 @@ export default function DentalPage() {
           <div className="sl reveal sl-c" style={{ justifyContent: "center" }}>Get Started</div>
           <h2 className="icta-title reveal d1">Ready To Fill<br /><span className="a">Every Chair?</span></h2>
           <p className="icta-desc reveal d2">Start with a free 15-minute call. We will show you exactly which automations would keep your schedule full and your front desk free. No pitch, no obligation.</p>
-          <a href={CAL} target="_blank" rel="noopener" className="btn-primary reveal d2">Book a Free 15-Min Demo</a>
+          <a href={CAL} target="_blank" rel="noopener" className="btn-mint reveal d2">Book a Free 15-Min Demo</a>
           <div className="icta-bullets reveal d3">
             <span><i />Free discovery call</span>
             <span><i />Working prototype in about a week</span>

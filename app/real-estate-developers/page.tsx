@@ -35,8 +35,8 @@ export default function RealEstateDevelopersPage() {
             How many registrations sat unanswered over your last launch weekend?
           </div>
           <div className="ihero-actions reveal d4">
-            <a href={CAL} target="_blank" rel="noopener" className="btn-primary">Book a Free 15-Min Demo</a>
-            <a href="#what" className="btn-ghost">See How It Works ↓</a>
+            <a href={CAL} target="_blank" rel="noopener" className="btn-mint">Book a Free 15-Min Demo</a>
+            <a href="#what" className="btn-light">See How It Works ↓</a>
           </div>
           <div className="ihero-trust reveal d5">
             For pre-sale, new construction &amp; multi-phase projects · Works with your sales CRM
@@ -100,7 +100,7 @@ export default function RealEstateDevelopersPage() {
           <div className="sl reveal sl-c" style={{ justifyContent: "center" }}>Get Started</div>
           <h2 className="icta-title reveal d1">Make Your Next Launch<br /><span className="a">Leak-Proof.</span></h2>
           <p className="icta-desc reveal d2">Book a free 15-minute call and we&apos;ll map how to capture and warm every registration from day one. No pitch, no obligation.</p>
-          <a href={CAL} target="_blank" rel="noopener" className="btn-primary reveal d2">Book a Free 15-Min Demo</a>
+          <a href={CAL} target="_blank" rel="noopener" className="btn-mint reveal d2">Book a Free 15-Min Demo</a>
           <div className="xlinks reveal d3">
             <Link href="/real-estate" className="xlink"><span>←</span>Real Estate</Link>
             <Link href="/real-estate-agents" className="xlink"><span>🏡</span>For Agents</Link>

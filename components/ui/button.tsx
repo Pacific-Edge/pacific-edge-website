@@ -5,24 +5,23 @@ import * as React from "react"
 import { cn } from "@/lib/utils"
 
 /**
- * The shared CTA button for the whole site — ports the old site's
- * `.btn-primary` / `.btn-ghost` / `.btn-calc` classes into one component.
- * Sharp-ish corners (--radius-btn), flat mint fill, hairline outline — no glow.
+ * The one shared button for the whole site — three variants (light / dark /
+ * mint), each a swipe-fill hover: a full-bleed panel slides in from the left
+ * on hover and the label color flips to match. Same radius (--radius), same
+ * motion, everywhere — see `.btn` / `.btn-light` / `.btn-dark` / `.btn-mint`
+ * in styles/legacy.css for the raw-markup equivalent used across ported pages.
  */
 const buttonVariants = cva(
-  "inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-btn font-body font-semibold cursor-pointer transition-all duration-300 ease-[cubic-bezier(0.16,1,0.3,1)] disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:shrink-0 outline-offset-2 focus-visible:outline focus-visible:outline-2 focus-visible:outline-accent-ink",
+  "btn inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-[var(--radius)] font-body font-semibold cursor-pointer disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:shrink-0 outline-offset-2 focus-visible:outline focus-visible:outline-2 focus-visible:outline-accent-ink",
   {
     variants: {
       variant: {
-        // mint fill, dark ink — primary CTA
-        primary:
-          "bg-accent text-on-accent border border-transparent hover:bg-accent-bright hover:-translate-y-0.5",
-        // hairline outline — secondary
-        ghost:
-          "bg-transparent text-text border border-border hover:border-accent hover:text-accent-ink",
-        // mint tint — savings-calculator CTA
-        calc:
-          "text-accent-ink bg-[color-mix(in_oklab,var(--color-accent)_14%,transparent)] border border-[color-mix(in_oklab,var(--color-accent-ink)_38%,transparent)] hover:bg-[color-mix(in_oklab,var(--color-accent)_24%,transparent)] hover:border-[color-mix(in_oklab,var(--color-accent-ink)_60%,transparent)] hover:-translate-y-0.5",
+        // white fill, black ink — swipes to black fill, white ink
+        light: "btn-light",
+        // black fill, white ink — swipes to white fill, black ink
+        dark: "btn-dark",
+        // mint fill, dark ink — swipes to white fill, mint ink
+        mint: "btn-mint",
       },
       size: {
         sm: "px-5 py-2.5 text-[13px]",
@@ -31,7 +30,7 @@ const buttonVariants = cva(
       },
     },
     defaultVariants: {
-      variant: "primary",
+      variant: "mint",
       size: "default",
     },
   },

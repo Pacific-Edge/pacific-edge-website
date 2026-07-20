@@ -18,8 +18,8 @@ export default function Page() {
 <h1 className="reveal d1">Help Local Business<br /><span className="a">Win With AI.</span></h1>
 <p className="ihero-sub reveal d2">We build the custom AI that means a Vancouver restaurant, salon, or trade never misses another lead. It's a small team doing real work with real results, and we're looking for sharp people to build it with us.</p>
 <div className="ihero-actions reveal d4">
-<a href="#roles" className="btn-primary">See Open Roles</a>
-<a href="mailto:hello@pacificedge.ai?subject=Pacific%20Edge%20AI%20-%20Careers" className="btn-ghost">Email Us</a>
+<a href="#roles" className="btn-mint">See Open Roles</a>
+<a href="mailto:hello@pacificedge.ai?subject=Pacific%20Edge%20AI%20-%20Careers" className="btn-light">Email Us</a>
 </div>
 <div className="cr-chips reveal d5">
 <div className="cr-chip"><span>&#129504;</span>Real AI impact</div>
@@ -122,7 +122,7 @@ export default function Page() {
 <div className="sl reveal sl-c" style={{ justifyContent: "center" }}>Join Us</div>
 <h2 className="icta-title reveal d1">Ready To Join<br /><span className="a">The Future.</span></h2>
 <p className="icta-desc reveal d2">Tell us who you are and where you'd make a dent. A short, honest note beats a polished resume, every time.</p>
-<a href="mailto:hello@pacificedge.ai?subject=Pacific%20Edge%20AI%20-%20Careers" className="btn-primary reveal d2">Email hello@pacificedge.ai</a>
+<a href="mailto:hello@pacificedge.ai?subject=Pacific%20Edge%20AI%20-%20Careers" className="btn-mint reveal d2">Email hello@pacificedge.ai</a>
 <div className="icta-bullets reveal d3">
 <span><i></i>Real impact, fast</span>
 <span><i></i>Founder-level ownership</span>

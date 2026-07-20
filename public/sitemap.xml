@@ -103,6 +103,30 @@
     <priority>0.8</priority>
   </url>
   <url>
+    <loc>https://pacificedge.ai/faq</loc>
+    <lastmod>2026-07-16</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://pacificedge.ai/about</loc>
+    <lastmod>2026-07-16</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://pacificedge.ai/how-it-works</loc>
+    <lastmod>2026-07-16</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://pacificedge.ai/contact</loc>
+    <lastmod>2026-07-16</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
     <loc>https://pacificedge.ai/dental-savings-calculator.html</loc>
     <lastmod>2026-06-01</lastmod>
     <changefreq>monthly</changefreq>

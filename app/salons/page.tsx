@@ -19,9 +19,9 @@ export default function Page() {
 <p className="ihero-sub reveal d2">Every booking request answered, every no-show headed off, every client reminded to rebook. Custom AI built for how a busy salon, spa, or clinic actually runs, from the front desk to the treatment room.</p>
 <div className="ihero-pain reveal d3">How many appointments sat empty last week because a no-show never got a reminder?</div>
 <div className="ihero-actions reveal d4">
-<a href="https://cal.com/pacificedge" target="_blank" rel="noopener" className="btn-primary">Book a Free 15-Min Demo</a>
-<a href="/salons-savings-calculator.html" className="btn-calc">&#128202; What Empty Chairs Cost You</a>
-<a href="#problems" className="btn-ghost">See How It Helps</a>
+<a href="https://cal.com/pacificedge" target="_blank" rel="noopener" className="btn-mint">Book a Free 15-Min Demo</a>
+<a href="/salons-savings-calculator.html" className="btn-mint">&#128202; What Empty Chairs Cost You</a>
+<a href="#problems" className="btn-light">See How It Helps</a>
 </div>
 <div className="ihero-stats reveal d5">
 <div className="ihero-stat"><b>30s</b><span>Reply to a booking request</span></div>
@@ -236,8 +236,8 @@ export default function Page() {
 <div className="sl reveal sl-c" style={{ justifyContent: "center" }}>Get Started</div>
 <h2 className="icta-title reveal d1">Ready To Keep<br /><span className="a">Every Chair Full?</span></h2>
 <p className="icta-desc reveal d2">Start with a free 15-minute call. We will show you exactly which automations would put the most appointments back on your calendar. No pitch, no obligation.</p>
-<a href="https://cal.com/pacificedge" target="_blank" rel="noopener" className="btn-primary reveal d2">Book a Free 15-Min Demo</a>
-<div className="reveal d2" style={{ marginTop: "18px" }}><a href="/salons-savings-calculator.html" className="btn-ghost">&#128202; See What Your Empty Chairs Are Worth &rarr;</a></div>
+<a href="https://cal.com/pacificedge" target="_blank" rel="noopener" className="btn-mint reveal d2">Book a Free 15-Min Demo</a>
+<div className="reveal d2" style={{ marginTop: "18px" }}><a href="/salons-savings-calculator.html" className="btn-light">&#128202; See What Your Empty Chairs Are Worth &rarr;</a></div>
 <div className="icta-bullets reveal d3">
 <span><i></i>Free discovery call</span>
 <span><i></i>Working prototype in about a week</span>

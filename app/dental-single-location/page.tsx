@@ -17,8 +17,8 @@ export default function Page() {
 <h1 className="reveal d1">Never Miss<br /><span className="a">Another Patient.</span></h1>
 <p className="dh-sub reveal d2">Janice answers every call and text, books the appointment, and fills cancellations, 24/7, in your clinic's voice.</p>
 <div className="dh-actions reveal d3">
-<a href="https://cal.com/pacificedge" target="_blank" rel="noopener" className="btn-primary">Book a Free 15-Min Demo</a>
-<a href="#flow" className="btn-ghost">See How It Works</a>
+<a href="https://cal.com/pacificedge" target="_blank" rel="noopener" className="btn-mint">Book a Free 15-Min Demo</a>
+<a href="#flow" className="btn-light">See How It Works</a>
 </div>
 <div className="dh-stats reveal d4">
 <div className="dh-stat"><b>25s</b><span>To answer a call</span></div>
@@ -115,7 +115,7 @@ export default function Page() {
 <div className="sl reveal sl-c" style={{ justifyContent: "center" }}>Get Started</div>
 <h2 className="icta-title reveal d1">Stop Missing<br /><span className="a">Patients.</span></h2>
 <p className="icta-desc reveal d2">A free 15-minute call. We'll show you exactly which calls you're missing and how Janice catches them.</p>
-<a href="https://cal.com/pacificedge" target="_blank" rel="noopener" className="btn-primary reveal d2">Book a Free 15-Min Demo</a>
+<a href="https://cal.com/pacificedge" target="_blank" rel="noopener" className="btn-mint reveal d2">Book a Free 15-Min Demo</a>
 <div className="xlinks reveal d3">
 <a href="/dental" className="xlink"><span>&#129463;</span>Dental overview</a>
 <a href="/dental-multi-location" className="xlink"><span>&#127970;</span>Multi-location &amp; DSOs</a>

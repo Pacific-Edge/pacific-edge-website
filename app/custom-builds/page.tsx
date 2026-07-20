@@ -37,8 +37,8 @@ export default function CustomBuildsPage() {
             run. That&apos;s a Custom Build.
           </p>
           <div className="ihero-actions reveal d3">
-            <a href={CAL} target="_blank" rel="noopener" className="btn-primary">Book a Free 15-Min Demo</a>
-            <a href="#what" className="btn-ghost">See What We Build ↓</a>
+            <a href={CAL} target="_blank" rel="noopener" className="btn-mint">Book a Free 15-Min Demo</a>
+            <a href="#what" className="btn-light">See What We Build ↓</a>
           </div>
           <div className="ihero-trust reveal d4">
             Scoped &amp; quoted per project · No templates, no bloat · Vancouver-based
@@ -125,7 +125,7 @@ export default function CustomBuildsPage() {
           <div className="sl reveal sl-c" style={{ justifyContent: "center" }}>Get Started</div>
           <h2 className="icta-title reveal d1">Got Something<br /><span className="a">Specific In Mind?</span></h2>
           <p className="icta-desc reveal d2">Tell us about it. Start with a free 15-minute call. We&apos;ll tell you honestly whether it&apos;s a fit, roughly what it takes, and where to start. No pitch, no obligation.</p>
-          <a href={CAL} target="_blank" rel="noopener" className="btn-primary reveal d2">Book a Free 15-Min Demo</a>
+          <a href={CAL} target="_blank" rel="noopener" className="btn-mint reveal d2">Book a Free 15-Min Demo</a>
           <div className="icta-bullets reveal d3">
             <span><i />Free scoping call</span>
             <span><i />Fixed per-project price</span>

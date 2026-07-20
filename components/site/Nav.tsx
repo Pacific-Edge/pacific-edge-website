@@ -62,7 +62,7 @@ export default function Nav({ variant = "full" }: { variant?: "full" | "minimal"
             href="https://cal.com/pacificedge"
             target="_blank"
             rel="noopener"
-            className="nav-cta"
+            className="btn-mint nav-cta"
           >
             Book a Demo
           </a>
@@ -113,7 +113,7 @@ export default function Nav({ variant = "full" }: { variant?: "full" | "minimal"
           </li>
         ))}
         <li className="nav-links-cta-mobile">
-          <a href="/login.html" className="btn-primary" style={{ marginTop: 16 }}>
+          <a href="/login.html" className="btn-mint" style={{ marginTop: 16 }}>
             Client Login
           </a>
         </li>
@@ -124,7 +124,7 @@ export default function Nav({ variant = "full" }: { variant?: "full" | "minimal"
           href="https://cal.com/pacificedge"
           target="_blank"
           rel="noopener"
-          className="nav-cta"
+          className="btn-mint nav-cta"
         >
           Book a Demo
           <svg

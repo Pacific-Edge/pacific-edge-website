@@ -1,223 +1,520 @@
-"use client"
+'use client'
 
-import { useEffect, useRef } from "react"
+import { useMemo, useState } from 'react'
+import { ComposableMap, Geographies, Geography, Marker } from 'react-simple-maps'
+import { geoMercator } from 'd3-geo'
+import type { FeatureCollection, Polygon } from 'geojson'
 
-/* eslint-disable @typescript-eslint/no-explicit-any */
+/** SVG viewBox dimensions — matches ComposableMap width/height */
+const VW = 800
+const VH = 500
 
-type Biz = { i: string; n: string; c: string }
-type Area = {
-  n: string
-  lat: number
-  lng: number
-  s: number
-  main?: boolean
-  type: string
-  biz: Biz[]
+/** geoMercator config: centred on the Lower Mainland */
+const PROJECTION_CENTER: [number, number] = [-122.85, 49.22]
+const PROJECTION_SCALE = 75000
+
+type CityId =
+  | 'vancouver'
+  | 'north-van-district'
+  | 'north-van-city'
+  | 'west-vancouver'
+  | 'burnaby'
+  | 'new-westminster'
+  | 'coquitlam'
+  | 'port-moody'
+  | 'richmond'
+  | 'delta'
+  | 'surrey'
+  | 'langley-city'
+  | 'langley-township'
+  | 'white-rock'
+
+interface CityProps {
+  name: string
 }
 
-// Ported verbatim from the old index.html map init.
-const AREAS: Area[] = [
-  { n: "Vancouver", lat: 49.2827, lng: -123.1207, s: 34, main: true, type: "HEADQUARTERS", biz: [{ i: "🍣", n: "Downtown Fine Dining", c: "FINE DINING" }, { i: "💇", n: "City Salon & Spa", c: "BEAUTY" }, { i: "🏢", n: "Downtown Law Group", c: "PROFESSIONAL SERVICES" }, { i: "☕", n: "Corner Cafe", c: "CAFE" }] },
-  { n: "North Vancouver", lat: 49.32, lng: -123.0724, s: 22, type: "NORTH SHORE", biz: [{ i: "🎿", n: "Mountain View Lodge", c: "HOSPITALITY" }, { i: "🔧", n: "North Shore Plumbing Co.", c: "TRADES" }, { i: "🧘", n: "North Shore Yoga", c: "WELLNESS" }] },
-  { n: "West Vancouver", lat: 49.328, lng: -123.16, s: 16, type: "NORTH SHORE", biz: [{ i: "🍽", n: "Waterfront Bistro", c: "RESTAURANT" }, { i: "💎", n: "West Side Beauty Bar", c: "SPA" }] },
-  { n: "Burnaby", lat: 49.2488, lng: -122.9805, s: 22, type: "BURNABY & NEW WEST", biz: [{ i: "🍜", n: "East Side Noodle House", c: "RESTAURANT" }, { i: "💼", n: "Burnaby Accounting Co.", c: "ACCOUNTING" }, { i: "💆", n: "Studio Salon", c: "BEAUTY" }] },
-  { n: "New Westminster", lat: 49.2057, lng: -122.911, s: 16, type: "BURNABY & NEW WEST", biz: [{ i: "🎬", n: "River City Studios", c: "FILM PRODUCTION" }, { i: "🍰", n: "Heritage Bakery", c: "FOOD SERVICE" }] },
-  { n: "Coquitlam", lat: 49.2838, lng: -122.7932, s: 18, type: "TRI-CITIES", biz: [{ i: "🏥", n: "Valley Physiotherapy", c: "HEALTH & WELLNESS" }, { i: "⚙️", n: "Tri-City Heating & Cooling", c: "TRADES" }, { i: "🛒", n: "Eastgate Shopping", c: "RETAIL" }] },
-  { n: "Port Moody", lat: 49.2783, lng: -122.8608, s: 14, type: "TRI-CITIES", biz: [{ i: "🍺", n: "Inlet Brewing Co.", c: "BREWERY" }, { i: "🏋️", n: "Shoreline Fitness", c: "WELLNESS" }] },
-  { n: "Richmond", lat: 49.1666, lng: -123.1336, s: 22, type: "RICHMOND & DELTA", biz: [{ i: "🍣", n: "Garden City Dim Sum", c: "RESTAURANT" }, { i: "🛒", n: "South Arm Mall", c: "RETAIL" }, { i: "💰", n: "Pacific Wealth Group", c: "FINANCE" }] },
-  { n: "Delta", lat: 49.0847, lng: -123.0587, s: 14, type: "RICHMOND & DELTA", biz: [{ i: "🌾", n: "Fraser Valley Market", c: "RETAIL" }, { i: "🔧", n: "Delta Electrical Services", c: "TRADES" }] },
-  { n: "Surrey", lat: 49.1913, lng: -122.849, s: 22, type: "SURREY & LANGLEY", biz: [{ i: "🏥", n: "Surrey Spine & Sport", c: "HEALTH" }, { i: "🍔", n: "Newton Eats", c: "FOOD SERVICE" }, { i: "💼", n: "Fraser Accounting", c: "ACCOUNTING" }] },
-  { n: "Langley", lat: 49.1044, lng: -122.6615, s: 16, type: "LANGLEY", biz: [{ i: "🐎", n: "Valley Riding Club", c: "RECREATION" }, { i: "🍽️", n: "Langley Craft Brewery", c: "HOSPITALITY" }, { i: "⚙️", n: "Fraser Roofing Co.", c: "TRADES" }] },
-  { n: "White Rock", lat: 49.0253, lng: -122.8026, s: 14, type: "SOUTH SURREY", biz: [{ i: "🌊", n: "Pier Street Cafe", c: "HOSPITALITY" }, { i: "💇", n: "Beachside Wellness Spa", c: "WELLNESS" }] },
+interface City {
+  id: CityId
+  name: string
+  /** [lon, lat] — WGS84 */
+  center: [number, number]
+}
+
+/** Marker centroids for each municipality (WGS84 lon/lat). */
+const CITIES: City[] = [
+  { id: 'vancouver', name: 'Vancouver', center: [-123.115, 49.245] },
+  { id: 'north-van-district', name: 'North Vancouver District', center: [-123.02, 49.37] },
+  { id: 'north-van-city', name: 'City of North Vancouver', center: [-123.065, 49.318] },
+  { id: 'west-vancouver', name: 'West Vancouver', center: [-123.2, 49.345] },
+  { id: 'burnaby', name: 'Burnaby', center: [-122.955, 49.245] },
+  { id: 'port-moody', name: 'Port Moody', center: [-122.88, 49.283] },
+  { id: 'coquitlam', name: 'Coquitlam', center: [-122.8, 49.29] },
+  { id: 'new-westminster', name: 'New Westminster', center: [-122.94, 49.205] },
+  { id: 'richmond', name: 'Richmond', center: [-123.13, 49.167] },
+  { id: 'delta', name: 'Delta', center: [-123.02, 49.06] },
+  { id: 'surrey', name: 'Surrey', center: [-122.83, 49.13] },
+  { id: 'white-rock', name: 'White Rock', center: [-122.8, 49.025] },
+  { id: 'langley-township', name: 'Township of Langley', center: [-122.65, 49.13] },
+  { id: 'langley-city', name: 'City of Langley', center: [-122.595, 49.098] },
 ]
 
-const REGIONS = [
-  { lat: 49.2827, lng: -123.1207, zoom: 14, name: "Vancouver & Downtown", desc: "Restaurants, retail, professional services" },
-  { lat: 49.2488, lng: -122.9805, zoom: 13, name: "Burnaby & New Westminster", desc: "Trades, wellness clinics, food service" },
-  { lat: 49.1913, lng: -122.849, zoom: 12, name: "Surrey & Langley", desc: "Growing businesses ready to scale" },
-  { lat: 49.32, lng: -123.0724, zoom: 13, name: "North Shore & Tri-Cities", desc: "Local operators, service-based businesses" },
-  { lat: 49.1666, lng: -123.1336, zoom: 13, name: "Richmond & Delta", desc: "Retail, hospitality, e-commerce" },
-]
-
-function markerHtml(a: Area): string {
-  const s = a.s
-  let h = `<div style="width:${s}px;height:${s}px;position:relative;cursor:pointer">`
-  h += `<div style="position:absolute;inset:${a.main ? -22 : -14}px;border-radius:50%;border:${a.main ? 2 : 1}px solid rgba(74,240,192,.3);animation:_mp 2.5s infinite"></div>`
-  if (a.main) h += `<div style="position:absolute;inset:-38px;border-radius:50%;border:1px solid rgba(74,240,192,.12);animation:_mp 3.5s infinite .7s"></div>`
-  h += `<div style="position:absolute;inset:-${Math.round(s * 0.8)}px;border-radius:50%;background:radial-gradient(circle,rgba(74,240,192,${a.main ? 0.25 : 0.12}),transparent 65%);pointer-events:none"></div>`
-  h += `<div style="width:100%;height:100%;border-radius:50%;background:radial-gradient(circle at 35% 35%,#7fffd4,#4af0c0 50%,#20a080);box-shadow:0 0 ${a.main ? 25 : 12}px rgba(74,240,192,.7);position:relative;z-index:2;animation:_mg 2.5s infinite"></div>`
-  if (a.main) h += `<div style="position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:10px;height:10px;border-radius:50%;background:white;box-shadow:0 0 10px white;z-index:3"></div>`
-  h += `<div style="position:absolute;left:50%;transform:translateX(-50%);top:${s + 8}px;white-space:nowrap;font-family:monospace;font-size:${a.main ? 11 : 9}px;color:rgba(74,240,192,${a.main ? 1 : 0.8});letter-spacing:${a.main ? 2 : 1.5}px;text-shadow:0 0 10px #000,0 0 20px #000;font-weight:${a.main ? "bold" : "normal"};pointer-events:none;z-index:4">${a.n.toUpperCase()}</div>`
-  h += `</div>`
-  return h
+/**
+ * Simplified but geographically representative polygons (WGS84 lon/lat) for
+ * each Lower Mainland municipality. Coordinates are hand-simplified from the
+ * real coastlines/borders — accurate enough to be recognisable, not
+ * survey-grade.
+ */
+const COVERAGE_GEOJSON: FeatureCollection<Polygon, CityProps> = {
+  type: 'FeatureCollection',
+  features: [
+    {
+      type: 'Feature',
+      properties: { name: 'Vancouver' },
+      geometry: {
+        type: 'Polygon',
+        coordinates: [
+          [
+            [-123.202, 49.263],
+            [-123.185, 49.278],
+            [-123.161, 49.288],
+            [-123.145, 49.302],
+            [-123.117, 49.309],
+            [-123.1, 49.291],
+            [-123.07, 49.288],
+            [-123.023, 49.286],
+            [-123.023, 49.245],
+            [-123.023, 49.201],
+            [-123.07, 49.206],
+            [-123.12, 49.208],
+            [-123.17, 49.211],
+            [-123.203, 49.216],
+            [-123.211, 49.231],
+            [-123.209, 49.25],
+            [-123.202, 49.263],
+          ],
+        ],
+      },
+    },
+    {
+      type: 'Feature',
+      properties: { name: 'North Vancouver District' },
+      geometry: {
+        type: 'Polygon',
+        coordinates: [
+          [
+            [-123.15, 49.312],
+            [-123.15, 49.36],
+            [-123.13, 49.42],
+            [-123.02, 49.43],
+            [-122.95, 49.41],
+            [-122.93, 49.36],
+            [-122.94, 49.33],
+            [-122.955, 49.312],
+            [-123.02, 49.31],
+            [-123.02, 49.325],
+            [-123.075, 49.325],
+            [-123.075, 49.31],
+            [-123.1, 49.31],
+            [-123.15, 49.312],
+          ],
+        ],
+      },
+    },
+    {
+      type: 'Feature',
+      properties: { name: 'City of North Vancouver' },
+      geometry: {
+        type: 'Polygon',
+        coordinates: [
+          [
+            [-123.1, 49.31],
+            [-123.1, 49.325],
+            [-123.085, 49.332],
+            [-123.06, 49.333],
+            [-123.03, 49.328],
+            [-123.02, 49.312],
+            [-123.045, 49.305],
+            [-123.075, 49.305],
+            [-123.1, 49.31],
+          ],
+        ],
+      },
+    },
+    {
+      type: 'Feature',
+      properties: { name: 'West Vancouver' },
+      geometry: {
+        type: 'Polygon',
+        coordinates: [
+          [
+            [-123.15, 49.312],
+            [-123.15, 49.345],
+            [-123.17, 49.37],
+            [-123.2, 49.385],
+            [-123.23, 49.38],
+            [-123.26, 49.365],
+            [-123.28, 49.375],
+            [-123.27, 49.355],
+            [-123.24, 49.34],
+            [-123.21, 49.325],
+            [-123.18, 49.315],
+            [-123.15, 49.312],
+          ],
+        ],
+      },
+    },
+    {
+      type: 'Feature',
+      properties: { name: 'Burnaby' },
+      geometry: {
+        type: 'Polygon',
+        coordinates: [
+          [
+            [-123.023, 49.286],
+            [-122.98, 49.295],
+            [-122.937, 49.293],
+            [-122.91, 49.278],
+            [-122.9, 49.26],
+            [-122.9, 49.22],
+            [-122.94, 49.205],
+            [-122.97, 49.202],
+            [-123.0, 49.208],
+            [-123.023, 49.212],
+            [-123.023, 49.245],
+            [-123.023, 49.286],
+          ],
+        ],
+      },
+    },
+    {
+      type: 'Feature',
+      properties: { name: 'Port Moody' },
+      geometry: {
+        type: 'Polygon',
+        coordinates: [
+          [
+            [-122.937, 49.293],
+            [-122.91, 49.3],
+            [-122.87, 49.295],
+            [-122.84, 49.283],
+            [-122.845, 49.27],
+            [-122.87, 49.265],
+            [-122.9, 49.27],
+            [-122.92, 49.278],
+            [-122.937, 49.293],
+          ],
+        ],
+      },
+    },
+    {
+      type: 'Feature',
+      properties: { name: 'Coquitlam' },
+      geometry: {
+        type: 'Polygon',
+        coordinates: [
+          [
+            [-122.9, 49.278],
+            [-122.87, 49.265],
+            [-122.85, 49.28],
+            [-122.82, 49.3],
+            [-122.78, 49.34],
+            [-122.75, 49.38],
+            [-122.7, 49.36],
+            [-122.69, 49.32],
+            [-122.71, 49.28],
+            [-122.74, 49.25],
+            [-122.78, 49.238],
+            [-122.82, 49.235],
+            [-122.86, 49.24],
+            [-122.89, 49.25],
+            [-122.9, 49.26],
+            [-122.9, 49.278],
+          ],
+        ],
+      },
+    },
+    {
+      type: 'Feature',
+      properties: { name: 'New Westminster' },
+      geometry: {
+        type: 'Polygon',
+        coordinates: [
+          [
+            [-122.97, 49.222],
+            [-122.94, 49.22],
+            [-122.913, 49.213],
+            [-122.905, 49.2],
+            [-122.92, 49.19],
+            [-122.945, 49.188],
+            [-122.968, 49.195],
+            [-122.975, 49.208],
+            [-122.97, 49.222],
+          ],
+        ],
+      },
+    },
+    {
+      type: 'Feature',
+      properties: { name: 'Richmond' },
+      geometry: {
+        type: 'Polygon',
+        coordinates: [
+          [
+            [-123.185, 49.208],
+            [-123.15, 49.212],
+            [-123.1, 49.213],
+            [-123.05, 49.211],
+            [-123.02, 49.205],
+            [-123.03, 49.185],
+            [-123.055, 49.165],
+            [-123.07, 49.14],
+            [-123.1, 49.128],
+            [-123.14, 49.12],
+            [-123.18, 49.125],
+            [-123.205, 49.15],
+            [-123.215, 49.18],
+            [-123.205, 49.2],
+            [-123.185, 49.208],
+          ],
+        ],
+      },
+    },
+    {
+      type: 'Feature',
+      properties: { name: 'Delta' },
+      geometry: {
+        type: 'Polygon',
+        coordinates: [
+          [
+            [-123.1, 49.128],
+            [-123.07, 49.14],
+            [-123.03, 49.13],
+            [-122.99, 49.12],
+            [-122.95, 49.1],
+            [-122.92, 49.07],
+            [-122.91, 49.02],
+            [-122.95, 49.0],
+            [-123.02, 49.005],
+            [-123.08, 49.01],
+            [-123.13, 49.02],
+            [-123.16, 49.045],
+            [-123.15, 49.08],
+            [-123.12, 49.105],
+            [-123.1, 49.128],
+          ],
+        ],
+      },
+    },
+    {
+      type: 'Feature',
+      properties: { name: 'Surrey' },
+      geometry: {
+        type: 'Polygon',
+        coordinates: [
+          [
+            [-122.95, 49.22],
+            [-122.9, 49.222],
+            [-122.85, 49.218],
+            [-122.8, 49.21],
+            [-122.75, 49.19],
+            [-122.72, 49.15],
+            [-122.7, 49.1],
+            [-122.72, 49.06],
+            [-122.78, 49.03],
+            [-122.83, 49.02],
+            [-122.88, 49.015],
+            [-122.92, 49.03],
+            [-122.94, 49.06],
+            [-122.945, 49.1],
+            [-122.95, 49.15],
+            [-122.95, 49.19],
+            [-122.95, 49.22],
+          ],
+        ],
+      },
+    },
+    {
+      type: 'Feature',
+      properties: { name: 'White Rock' },
+      geometry: {
+        type: 'Polygon',
+        coordinates: [
+          [
+            [-122.82, 49.02],
+            [-122.805, 49.018],
+            [-122.79, 49.02],
+            [-122.782, 49.028],
+            [-122.79, 49.032],
+            [-122.805, 49.03],
+            [-122.818, 49.028],
+            [-122.82, 49.02],
+          ],
+        ],
+      },
+    },
+    {
+      type: 'Feature',
+      properties: { name: 'Township of Langley' },
+      geometry: {
+        type: 'Polygon',
+        coordinates: [
+          [
+            [-122.8, 49.21],
+            [-122.75, 49.215],
+            [-122.7, 49.21],
+            [-122.65, 49.205],
+            [-122.6, 49.195],
+            [-122.56, 49.18],
+            [-122.55, 49.14],
+            [-122.56, 49.1],
+            [-122.58, 49.06],
+            [-122.62, 49.03],
+            [-122.68, 49.02],
+            [-122.72, 49.03],
+            [-122.75, 49.06],
+            [-122.76, 49.1],
+            [-122.78, 49.15],
+            [-122.79, 49.19],
+            [-122.8, 49.21],
+          ],
+        ],
+      },
+    },
+    {
+      type: 'Feature',
+      properties: { name: 'City of Langley' },
+      geometry: {
+        type: 'Polygon',
+        coordinates: [
+          [
+            [-122.605, 49.11],
+            [-122.585, 49.108],
+            [-122.575, 49.098],
+            [-122.585, 49.088],
+            [-122.605, 49.087],
+            [-122.615, 49.098],
+            [-122.605, 49.11],
+          ],
+        ],
+      },
+    },
+  ],
 }
 
-function popupHtml(a: Area): string {
-  let p = `<div style="background:rgba(7,7,15,.95);border:1px solid rgba(74,240,192,.25);border-radius:14px;padding:18px 20px;min-width:220px;max-width:280px;backdrop-filter:blur(8px)">`
-  p += `<div style="font-size:15px;font-weight:700;color:#eeeef2;margin:0 0 4px">${a.n}</div>`
-  p += `<div style="font-size:10px;color:#4af0c0;font-family:monospace;letter-spacing:2px;margin-bottom:12px">${a.type}</div>`
-  a.biz.forEach((b) => {
-    p += `<div style="display:flex;align-items:center;gap:8px;padding:7px 0;border-top:1px solid rgba(74,240,192,.08)"><span style="font-size:16px">${b.i}</span><div><div style="font-size:12px;color:#ccc;font-weight:500">${b.n}</div><div style="font-size:9px;color:rgba(74,240,192,.6);font-family:monospace;letter-spacing:1px">${b.c}</div></div></div>`
-  })
-  p += `</div>`
-  return p
+/* ─── Popup alignment helpers (percentages of the SVG viewBox) ──────── */
+
+type Align = 'left' | 'center' | 'right'
+type VPos = 'above' | 'below'
+
+/** Popup extends right from node when node is near the left edge, vice-versa. */
+function xAlign(xPct: number): Align {
+  if (xPct < 22) return 'right'
+  if (xPct > 80) return 'left'
+  return 'center'
 }
 
-function loadLeaflet(): Promise<void> {
-  return new Promise((resolve, reject) => {
-    if ((window as any).L) return resolve()
-    if (!document.querySelector("link[data-leaflet]")) {
-      const link = document.createElement("link")
-      link.rel = "stylesheet"
-      link.href = "https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
-      link.setAttribute("data-leaflet", "")
-      document.head.appendChild(link)
-    }
-    const existing = document.querySelector("script[data-leaflet]") as HTMLScriptElement | null
-    if (existing) {
-      existing.addEventListener("load", () => resolve())
-      existing.addEventListener("error", () => reject(new Error("leaflet failed")))
-      return
-    }
-    const s = document.createElement("script")
-    s.src = "https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
-    s.setAttribute("data-leaflet", "")
-    s.onload = () => resolve()
-    s.onerror = () => reject(new Error("leaflet failed"))
-    document.head.appendChild(s)
-  })
+/** Show popup below when node is in the top quarter (prevents cropping). */
+function yPos(yPct: number): VPos {
+  return yPct < 25 ? 'below' : 'above'
 }
 
-function injectMapStyles() {
-  if (document.getElementById("pe-map-style")) return
-  const st = document.createElement("style")
-  st.id = "pe-map-style"
-  st.textContent =
-    "@keyframes _mp{0%,100%{transform:scale(1);opacity:.8}50%{transform:scale(1.6);opacity:.1}}@keyframes _mg{0%,100%{box-shadow:0 0 12px rgba(74,240,192,.5)}50%{box-shadow:0 0 28px rgba(74,240,192,.9)}}.leaflet-popup-content-wrapper{background:transparent!important;box-shadow:none!important;border:none!important}.leaflet-popup-content{margin:0!important;padding:0!important}.leaflet-popup-tip-container{display:none!important}.leaflet-container .leaflet-control-attribution{background:rgba(7,7,15,.7)!important;color:rgba(255,255,255,.3)!important;font-size:9px!important}"
-  document.head.appendChild(st)
+function popupTransform(align: Align, vpos: VPos): string {
+  const y = vpos === 'above' ? 'calc(-100% - 14px)' : '14px'
+  const x = align === 'right' ? '-10px' : align === 'left' ? 'calc(-100% + 10px)' : '-50%'
+  return `translate(${x}, ${y})`
 }
+
+/* ─── Component ───────────────────────────────────────────────────── */
 
 export default function CoverageMap() {
-  const mapElRef = useRef<HTMLDivElement>(null)
-  const mapRef = useRef<any>(null)
+  const [active, setActive] = useState<CityId | null>(null)
 
-  useEffect(() => {
-    const el = mapElRef.current
-    if (!el) return
-    let cancelled = false
+  /** Same projection math as the map, used to place the popup in the DOM. */
+  const projection = useMemo(
+    () => geoMercator().center(PROJECTION_CENTER).scale(PROJECTION_SCALE).translate([VW / 2, VH / 2]),
+    []
+  )
 
-    const init = () => {
-      const L = (window as any).L
-      if (!L || !mapElRef.current || mapRef.current || cancelled) return
-      const map = L.map(mapElRef.current, {
-        center: [49.25, -123.05],
-        zoom: 10,
-        zoomControl: false,
-        attributionControl: true,
-      })
-      mapRef.current = map
-      L.tileLayer("https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png", {
-        attribution: '&copy; <a href="https://carto.com">CartoDB</a>',
-        subdomains: "abcd",
-        maxZoom: 19,
-      }).addTo(map)
-      L.control.zoom({ position: "bottomright" }).addTo(map)
-      injectMapStyles()
-      AREAS.forEach((a) => {
-        const icon = L.divIcon({ html: markerHtml(a), className: "", iconSize: [a.s, a.s], iconAnchor: [Math.round(a.s / 2), Math.round(a.s / 2)] })
-        const marker = L.marker([a.lat, a.lng], { icon })
-        marker.bindPopup(L.popup({ offset: [0, -Math.round(a.s / 2)], closeButton: false, maxWidth: 280 }).setContent(popupHtml(a)))
-        marker.on("mouseover", function (this: any) { this.openPopup() })
-        marker.on("mouseout", function (this: any) { this.closePopup() })
-        marker.addTo(map)
-      })
-    }
+  const selected = active ? (CITIES.find(c => c.id === active) ?? null) : null
 
-    const io = new IntersectionObserver(
-      (entries) => {
-        if (entries.some((e) => e.isIntersecting)) {
-          io.disconnect()
-          loadLeaflet().then(init).catch(() => {})
-        }
-      },
-      { rootMargin: "200px" },
-    )
-    io.observe(el)
+  const toggle = (id: CityId) => setActive(prev => (prev === id ? null : id))
 
-    return () => {
-      cancelled = true
-      io.disconnect()
-      if (mapRef.current) {
-        mapRef.current.remove()
-        mapRef.current = null
+  const selectedPoint = selected ? projection(selected.center) : null
+
+  const popupPct = selectedPoint ? { x: (selectedPoint[0] / VW) * 100, y: (selectedPoint[1] / VH) * 100 } : null
+
+  const popupStyle = popupPct
+    ? {
+        left: `${popupPct.x}%`,
+        top: `${popupPct.y}%`,
+        transform: popupTransform(xAlign(popupPct.x), yPos(popupPct.y)),
       }
-    }
-  }, [])
+    : undefined
 
-  const flyTo = (lat: number, lng: number, zoom: number) => {
-    mapRef.current?.flyTo([lat, lng], zoom, { duration: 2 })
-  }
+  const popupCls = popupPct ? `cm-popup ${yPos(popupPct.y)} cm-align-${xAlign(popupPct.x)}` : 'cm-popup'
 
   return (
-    <section className="map-section" id="coverage">
-      <span className="sn">03</span>
-      <div className="r">
-        <div className="sl">Coverage</div>
-        <h2 className="st">
-          Proudly Serving
-          <br />
-          <span className="a">Greater Vancouver</span>
-        </h2>
+    <section className="cm-section" id="coverage">
+      <div className="cm-header">
+        <h2 className="cm-title">Proudly serving the greater Vancouver area.</h2>
       </div>
-      <div className="map-grid">
-        <div className="map-container r rd1" style={{ position: "relative", background: "#060612" }}>
-          <div ref={mapElRef} id="map3d" style={{ width: "100%", height: "100%", borderRadius: 20 }} />
-          <div
-            style={{
-              position: "absolute",
-              top: 0,
-              left: 0,
-              right: 0,
-              height: 3,
-              background: "var(--color-accent)",
-              zIndex: 10,
-              borderRadius: "20px 20px 0 0",
-              pointerEvents: "none",
-            }}
-          />
-        </div>
-        <div className="map-info r rd2">
-          <h3>
-            Your Neighborhood.
-            <br />
-            <span className="a">Our Priority.</span>
-          </h3>
-          <p>
-            We work with businesses across the Lower Mainland. Whether you&apos;re in downtown
-            Vancouver or out in the Fraser Valley, we&apos;re close enough to meet face-to-face and
-            understand the local market your business operates in.
-          </p>
-          <div className="map-areas">
-            {REGIONS.map((r) => (
-              <div
-                key={r.name}
-                className="map-area"
-                style={{ cursor: "pointer" }}
-                onClick={() => flyTo(r.lat, r.lng, r.zoom)}
-              >
-                <div className="map-area-dot" />
-                <div>
-                  <div className="map-area-name">{r.name}</div>
-                  <div className="map-area-desc">{r.desc}</div>
-                </div>
-              </div>
-            ))}
+
+      <div className="cm-container">
+        <ComposableMap
+          width={VW}
+          height={VH}
+          projection="geoMercator"
+          projectionConfig={{ center: PROJECTION_CENTER, scale: PROJECTION_SCALE }}
+          className="cm-svg"
+          aria-label="Service coverage map of Greater Vancouver"
+        >
+          <Geographies geography={COVERAGE_GEOJSON}>
+            {({ geographies }) =>
+              geographies.map(geo => (
+                <Geography
+                  key={geo.rsmKey}
+                  geography={geo}
+                  aria-hidden="true"
+                  style={{
+                    default: { fill: '#f0f1f3', stroke: '#b8bcc6', strokeWidth: 0.5, outline: 'none' },
+                    hover: { fill: '#f0f1f3', outline: 'none' },
+                    pressed: { fill: '#f0f1f3', outline: 'none' },
+                  }}
+                />
+              ))
+            }
+          </Geographies>
+
+          {CITIES.map(city => (
+            <Marker
+              key={city.id}
+              coordinates={city.center}
+              className="cm-node-g"
+              onClick={() => toggle(city.id)}
+              onKeyDown={e => {
+                if (e.key === 'Enter' || e.key === ' ') {
+                  e.preventDefault()
+                  toggle(city.id)
+                }
+              }}
+              tabIndex={0}
+              role="button"
+              aria-label={city.name}
+              aria-pressed={active === city.id}
+            >
+              <circle r={4} fill="#0a0a0a" className="cm-dot" />
+            </Marker>
+          ))}
+        </ComposableMap>
+
+        {selected && (
+          <div className={popupCls} style={popupStyle} role="tooltip" aria-live="polite">
+            <button className="cm-popup-x" onClick={() => setActive(null)} aria-label="Close">
+              ×
+            </button>
+            <span className="cm-popup-name">{selected.name}</span>
           </div>
-          <div className="map-badge">
-            <span className="map-badge-pulse" />
-            Accepting new clients across BC
-          </div>
-        </div>
+        )}
       </div>
     </section>
   )

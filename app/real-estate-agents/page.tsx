@@ -35,8 +35,8 @@ export default function RealEstateAgentsPage() {
             When a portal lead comes in during a showing, who&apos;s replying for you?
           </div>
           <div className="ihero-actions reveal d4">
-            <a href={CAL} target="_blank" rel="noopener" className="btn-primary">Book a Free 15-Min Demo</a>
-            <a href="#what" className="btn-ghost">See How It Works ↓</a>
+            <a href={CAL} target="_blank" rel="noopener" className="btn-mint">Book a Free 15-Min Demo</a>
+            <a href="#what" className="btn-light">See How It Works ↓</a>
           </div>
           <div className="ihero-trust reveal d5">
             Works with Follow Up Boss, kvCORE, BoomTown, Lofty &amp; more · Vancouver-based
@@ -100,7 +100,7 @@ export default function RealEstateAgentsPage() {
           <div className="sl reveal sl-c" style={{ justifyContent: "center" }}>Get Started</div>
           <h2 className="icta-title reveal d1">Stop Losing Leads<br /><span className="a">To A Slow Reply.</span></h2>
           <p className="icta-desc reveal d2">Book a free 15-minute call and we&apos;ll show you exactly how to be first on every lead. No pitch, no obligation.</p>
-          <a href={CAL} target="_blank" rel="noopener" className="btn-primary reveal d2">Book a Free 15-Min Demo</a>
+          <a href={CAL} target="_blank" rel="noopener" className="btn-mint reveal d2">Book a Free 15-Min Demo</a>
           <div className="xlinks reveal d3">
             <Link href="/real-estate" className="xlink"><span>←</span>Real Estate</Link>
             <Link href="/real-estate-developers" className="xlink"><span>🏗️</span>For Developers</Link>

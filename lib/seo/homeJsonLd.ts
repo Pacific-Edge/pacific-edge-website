@@ -85,21 +85,8 @@ export const homeJsonLd = {
       audience: { "@type": "BusinessAudience", audienceType: "Small and medium-sized businesses", geographicArea: { "@type": "AdministrativeArea", name: "British Columbia" } },
     },
     {
-      "@type": "FAQPage",
-      "@id": "https://pacificedge.ai/#faq",
-      mainEntity: [
-        { "@type": "Question", name: "Do I need to be tech-savvy?", acceptedAnswer: { "@type": "Answer", text: "Not even a little. If you can use a smartphone, you can use what we build. We handle all the technical work and walk you through everything in plain English. Our whole business exists because most AI tools are built for developers - we translate that into something anyone can use." } },
-        { "@type": "Question", name: "How long does setup take?", acceptedAnswer: { "@type": "Answer", text: "Most clients have a working prototype within the first week. Full deployment and training typically wraps up in two to three weeks depending on complexity. You'll see real results before most agencies finish their discovery phase." } },
-        { "@type": "Question", name: "How much does it cost?", acceptedAnswer: { "@type": "Answer", text: "Every business is different - a single-location salon has very different needs than a multi-site restaurant group. Our solutions are custom-built around your specific workflows, team size, and goals, so pricing reflects exactly what you need and nothing you don't. Book a free discovery call and we'll put together a transparent quote tailored to your business." } },
-        { "@type": "Question", name: "What if I want to cancel?", acceptedAnswer: { "@type": "Answer", text: "Your first month is on us, so you can make sure Janice is the right fit before anything kicks in. From there, engagements run for an initial 6 months, long enough to build, deploy, train your team, and prove real ROI. Pricing is transparent and agreed upfront, with no hidden fees and no surprise renewals. After that you can renew month-to-month, scale up, or part ways with everything we've built fully documented for handover." } },
-        { "@type": "Question", name: "Will this actually work for my industry?", acceptedAnswer: { "@type": "Answer", text: "If your business relies on appointments, customer communication, or online reviews, the answer is almost certainly yes. We've designed our workflows specifically for hospitality, wellness, trades, and retail - the industries where these automations have the highest impact." } },
-        { "@type": "Question", name: "Will my data be safe?", acceptedAnswer: { "@type": "Answer", text: "Absolutely. Security isn't an afterthought - it's built into everything we do. All data is encrypted, access is restricted to only what's needed, and we never share your information with third parties. Your business data stays your business data, period." } },
-        { "@type": "Question", name: "What happens on the discovery call?", acceptedAnswer: { "@type": "Answer", text: "Fifteen minutes. We learn about your business, identify where you're losing time or money, and tell you exactly which automations would make the biggest difference. No pitch deck, no pressure. If we're not the right fit, we'll tell you that too." } },
-      ],
-    },
-    {
       "@type": "HowTo",
-      "@id": "https://pacificedge.ai/#process",
+      "@id": "https://pacificedge.ai/how-it-works#process",
       name: "How AI consulting works at Pacific Edge AI",
       description: "Our 5-step process for delivering AI consulting and automation to Vancouver small businesses.",
       totalTime: "P21D",

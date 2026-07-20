@@ -34,9 +34,9 @@ export default function RestaurantsPage() {
             How many bookings walked out the door last week because nobody could get to the phone?
           </div>
           <div className="ihero-actions reveal d4">
-            <a href={CAL} target="_blank" rel="noopener" className="btn-primary">Book a Free 15-Min Demo</a>
-            <a href="/restaurants-savings-calculator.html" className="btn-calc">📊 What Empty Tables Cost You</a>
-            <a href="#problems" className="btn-ghost">See How It Helps</a>
+            <a href={CAL} target="_blank" rel="noopener" className="btn-mint">Book a Free 15-Min Demo</a>
+            <a href="/restaurants-savings-calculator.html" className="btn-mint">📊 What Empty Tables Cost You</a>
+            <a href="#problems" className="btn-light">See How It Helps</a>
           </div>
           <div className="ihero-stats reveal d5">
             <div className="ihero-stat"><b>19s</b><span>Text back a missed call</span></div>
@@ -246,8 +246,8 @@ export default function RestaurantsPage() {
           <div className="sl reveal sl-c" style={{ justifyContent: "center" }}>Get Started</div>
           <h2 className="icta-title reveal d1">Ready To Fill<br /><span className="a">Every Table?</span></h2>
           <p className="icta-desc reveal d2">Start with a free 15-minute call. We will show you exactly which automations would put the most covers back on your books. No pitch, no obligation.</p>
-          <a href={CAL} target="_blank" rel="noopener" className="btn-primary reveal d2">Book a Free 15-Min Demo</a>
-          <div className="reveal d2" style={{ marginTop: 18 }}><a href="/restaurants-savings-calculator.html" className="btn-ghost">📊 See What Your Empty Tables Are Worth →</a></div>
+          <a href={CAL} target="_blank" rel="noopener" className="btn-mint reveal d2">Book a Free 15-Min Demo</a>
+          <div className="reveal d2" style={{ marginTop: 18 }}><a href="/restaurants-savings-calculator.html" className="btn-light">📊 See What Your Empty Tables Are Worth →</a></div>
           <div className="icta-bullets reveal d3">
             <span><i />Free discovery call</span>
             <span><i />Working prototype in about a week</span>

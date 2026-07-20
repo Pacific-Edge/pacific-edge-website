@@ -35,8 +35,8 @@ export default function RealEstatePage() {
             How many leads went cold last month because you were mid-showing when they called?
           </div>
           <div className="ihero-actions reveal d4">
-            <a href={CAL} target="_blank" rel="noopener" className="btn-primary">Book a Free 15-Min Demo</a>
-            <a href="#problems" className="btn-ghost">See How It Helps ↓</a>
+            <a href={CAL} target="_blank" rel="noopener" className="btn-mint">Book a Free 15-Min Demo</a>
+            <a href="#problems" className="btn-light">See How It Helps ↓</a>
           </div>
           <div className="ihero-stats reveal d5">
             <div className="ihero-stat"><b>18s</b><span>Answer a new lead</span></div>
@@ -87,7 +87,7 @@ export default function RealEstatePage() {
                 <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M5 13l4 4L19 7" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round" /></svg>Showings booked into your calendar</li>
                 <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M5 13l4 4L19 7" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round" /></svg>Months-long nurture in your voice</li>
               </ul>
-              <Link href="/real-estate-agents" className="btn-primary">For Agents &amp; Brokerages →</Link>
+              <Link href="/real-estate-agents" className="btn-mint">For Agents &amp; Brokerages →</Link>
             </article>
             <article className="px-aud reveal d2" data-tilt>
               <div className="px-aud-shine" aria-hidden="true" />
@@ -99,7 +99,7 @@ export default function RealEstatePage() {
                 <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M5 13l4 4L19 7" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round" /></svg>Waitlist &amp; investor comms at scale</li>
                 <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M5 13l4 4L19 7" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round" /></svg>Sales-centre overflow, handled</li>
               </ul>
-              <Link href="/real-estate-developers" className="btn-ghost">For Property Developers →</Link>
+              <Link href="/real-estate-developers" className="btn-light">For Property Developers →</Link>
             </article>
           </div>
         </div>
@@ -213,7 +213,7 @@ export default function RealEstatePage() {
           <div className="sl reveal sl-c" style={{ justifyContent: "center" }}>Get Started</div>
           <h2 className="icta-title reveal d1">Ready To Be First<br /><span className="a">Every Time?</span></h2>
           <p className="icta-desc reveal d2">Start with a free 15-minute call. We&apos;ll show you exactly how to answer every lead in seconds and stop losing deals to a slow reply. No pitch, no obligation.</p>
-          <a href={CAL} target="_blank" rel="noopener" className="btn-primary reveal d2">Book a Free 15-Min Demo</a>
+          <a href={CAL} target="_blank" rel="noopener" className="btn-mint reveal d2">Book a Free 15-Min Demo</a>
           <div className="icta-bullets reveal d3">
             <span><i />Free discovery call</span>
             <span><i />Live in about a week</span>
