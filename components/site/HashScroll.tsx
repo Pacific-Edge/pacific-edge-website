@@ -49,14 +49,20 @@ export default function HashScroll() {
         return
       }
       if (!el) return
+      // Fully own same-page hash clicks. Capture phase + stopImmediatePropagation
+      // keeps the event from ever reaching Next's <Link> onClick (React's
+      // delegated root listener), which otherwise fought the scroll: on a
+      // re-click of the already-active hash it preventDefault'd and did nothing,
+      // and on a fresh click it reset scroll after Lenis had started.
       e.preventDefault()
+      e.stopImmediatePropagation()
       const lenis = getLenis()
       if (lenis) lenis.scrollTo(el as HTMLElement, { offset: NAV_OFFSET })
       else (el as HTMLElement).scrollIntoView({ behavior: "smooth" })
-      history.pushState(null, "", url.hash)
+      if (window.location.hash !== url.hash) history.pushState(null, "", url.hash)
     }
-    document.addEventListener("click", onClick)
-    return () => document.removeEventListener("click", onClick)
+    document.addEventListener("click", onClick, true)
+    return () => document.removeEventListener("click", onClick, true)
   }, [])
 
   return null
