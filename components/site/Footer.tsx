@@ -71,6 +71,7 @@ export default function Footer() {
           <Link href="/ai-employee">AI Employee (Janice)</Link>
           <Link href="/custom-builds">Custom Builds</Link>
           <Link href="/ai-training">AI Training</Link>
+          <Link href="/about">About</Link>
           <Link href="/careers">Careers</Link>
           <Link href="/#faq">FAQ</Link>
           <a href="https://cal.com/pacificedge" target="_blank" rel="noopener">

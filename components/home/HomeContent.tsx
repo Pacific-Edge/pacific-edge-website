@@ -638,62 +638,6 @@ export default function HomeContent() {
 
       <div className="divhr" />
 
-      {/* ABOUT + FOUNDERS */}
-      <section className="about" id="about">
-        <span className="sn">05</span>
-        <div className="r">
-          <div className="sl">Why Us</div>
-          <h2 className="st">Built By Operators,<br /><span className="a">Not Agencies</span></h2>
-          <p className="sd">We&apos;re not a faceless dev shop. We&apos;re business owners who got tired of watching local companies drown in admin work that machines should be handling.</p>
-        </div>
-        <div className="about-grid">
-          <div className="about-content r rd1">
-            <h3>We speak business, not just code.</h3>
-            <p>Most AI companies sell technology. We sell time back. Every automation we build starts with one question: what&apos;s costing you the most hours and dollars right now? Then we fix that first.</p>
-            <p>We&apos;re based in Vancouver, we work face-to-face when you want it, and we don&apos;t disappear after launch. Your success is our case study.</p>
-            <div className="about-values">
-              <div className="about-val"><div className="about-val-num">01</div><div className="about-val-ico">💬</div><h4>No jargon</h4><p>We explain everything in plain English. If you don&apos;t understand it, we haven&apos;t done our job.</p></div>
-              <div className="about-val"><div className="about-val-num">02</div><div className="about-val-ico">⚡</div><h4>Speed to value</h4><p>Working prototype in week one. Not month three. Not after a &ldquo;strategy phase.&rdquo;</p></div>
-              <div className="about-val"><div className="about-val-num">03</div><div className="about-val-ico">🎯</div><h4>Built to deliver</h4><p>6-month engagements with transparent pricing upfront. Long enough to deliver real ROI, never longer than the value justifies.</p></div>
-              <div className="about-val"><div className="about-val-num">04</div><div className="about-val-ico">📍</div><h4>Local &amp; hands-on</h4><p>Vancouver-based. We&apos;ll meet you at your shop, learn your workflow, and build around it.</p></div>
-            </div>
-          </div>
-          <div className="about-highlight r rd2">
-            <div className="about-founder">
-              <div className="about-founder-av">PE</div>
-              <div><div className="about-founder-name">The Pacific Edge team</div><div className="about-founder-role">Operators &amp; builders · Vancouver, BC</div></div>
-            </div>
-            <div className="about-highlight-quote">We Don&apos;t Just<br />Build Tools.<br /><span className="a">We Build Time.</span></div>
-            <p>Every hour your staff spends chasing missed calls, copy-pasting review replies, or manually following up with customers is an hour they&apos;re not spending on the work that actually grows your business.</p>
-            <p>We automated these exact workflows for our own businesses first. That is how Janice, your AI employee, was born. Now we bring what works to the businesses that need it most.</p>
-            <div className="about-proof">
-              {["Vancouver-based, face-to-face when you want it", "Working prototype in week one", "Transparent, flat pricing upfront", "We run it in our own businesses"].map((t) => (
-                <span className="about-proof-item" key={t}><span className="about-proof-ck"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#0a9d76" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"><path d="M5 13l4 4 11-13" /></svg></span>{t}</span>
-              ))}
-            </div>
-          </div>
-          <div className="founders-label r rd2">The Founders</div>
-          <div className="founders">
-            <div className="founder-card r rd3">
-              <div className="founder-photo"><img src="/leone.png" alt="Leone Jiwani, co-founder of Pacific Edge AI" loading="lazy" width={124} height={124} /></div>
-              <div className="founder-info">
-                <div className="founder-name">Leone Jiwani <span className="founder-role">Co-Founder</span></div>
-                <p className="founder-bio">A BBA graduate of BCIT, Leone has spent years building and scaling real ventures, leading finance for the BCIT Real Estate Association, running special projects at Concord Pacific, and growing his own brand, Glarehawks, past 23,500 followers. Across all of it, one pattern kept repeating: capable owners losing their nights to admin that good software could finish in minutes. He started Pacific Edge to hand that time back, without the enterprise price tag.</p>
-              </div>
-            </div>
-            <div className="founder-card r rd4">
-              <div className="founder-photo"><img src="/sam.jpg" alt="Sam Rezaei, co-founder of Pacific Edge AI" loading="lazy" width={124} height={124} /></div>
-              <div className="founder-info">
-                <div className="founder-name">Sam Rezaei <span className="founder-role">Co-Founder</span></div>
-                <p className="founder-bio">A finance student at UBC Sauder and Dean&rsquo;s List honoree, Sam has worked on institutional real estate and finance at QuadReal and Wesgroup, and spent three years coordinating projects at a rebar fabrication plant, where he watched capable teams buried under busywork the right tools could have erased. He co-founded Pacific Edge AI to give local businesses that leverage: less manual work, and clear answers from the data they already have.</p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <div className="divhr" />
-
       {/* TRUST */}
       <section className="trust">
         <div className="trust-head r">

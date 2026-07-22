@@ -70,6 +70,7 @@ export default function Nav({ variant = "full" }: { variant?: "full" | "minimal"
           <Link href="/ai-employee" className="nav-back">AI Employee</Link>
           <Link href="/custom-builds" className="nav-back">Custom Builds</Link>
           <Link href="/ai-training" className="nav-back">AI Training</Link>
+          <Link href="/about" className="nav-back">About</Link>
           <a href="/login.html" className="nav-back">Client Login</a>
           <a
             href="https://cal.com/pacificedge"
@@ -160,7 +161,7 @@ export default function Nav({ variant = "full" }: { variant?: "full" | "minimal"
           <Link href="/#process">Process</Link>
         </li>
         <li>
-          <Link href="/#about">About</Link>
+          <Link href="/about">About</Link>
         </li>
         <li>
           <Link href="/#faq">FAQ</Link>
