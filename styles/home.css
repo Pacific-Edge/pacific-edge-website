@@ -900,4 +900,30 @@ body::before{content:'';position:fixed;inset:-12%;z-index:-1;pointer-events:none
 .pt-btn:hover .arr{transform:translateX(4px)}
 @media(max-width:960px){.pt{padding:48px 24px 56px}.pt-grid{grid-template-columns:1fr;gap:14px}}
 
+
+/* PRODUCT SHOWCASE: Janice-in-action phone gallery */
+.pgal-section{position:relative}
+.pgal-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:30px;margin-top:56px;max-width:1080px;margin-left:auto;margin-right:auto}
+.pgal-item{display:flex;flex-direction:column;align-items:center;gap:18px}
+.pgal-phone{position:relative;width:100%;max-width:292px;background:#0d0d15;border-radius:42px;padding:11px;box-shadow:0 44px 100px -44px rgba(0,0,0,.55),0 0 0 1px rgba(28,25,20,.06);border:1px solid rgba(255,255,255,.05);transition:transform .45s cubic-bezier(.16,1,.3,1),box-shadow .45s}
+.pgal-item:hover .pgal-phone{transform:translateY(-6px);box-shadow:0 56px 120px -44px rgba(0,0,0,.6)}
+.pgal-notch{position:absolute;top:19px;left:50%;transform:translateX(-50%);width:96px;height:22px;background:#0d0d15;border-radius:0 0 14px 14px;z-index:5}
+.pgal-screen{background:linear-gradient(185deg,#15151f,#0c0c13);border-radius:31px;overflow:hidden;min-height:474px;display:flex;flex-direction:column}
+.pgal-top{padding:30px 15px 12px;display:flex;align-items:center;gap:10px;border-bottom:1px solid rgba(255,255,255,.06);background:rgba(255,255,255,.02)}
+.pgal-av{width:34px;height:34px;border-radius:50%;background:linear-gradient(135deg,#0a9d76,#0a6a50);display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.pgal-name{font-size:13px;font-weight:600;color:#f0f0f4;line-height:1.2}
+.pgal-sub{font-size:9.5px;color:#6ee7c4;font-family:var(--mono);letter-spacing:.4px;display:flex;align-items:center;gap:5px;margin-top:2px}
+.pgal-sub::before{content:'';width:5px;height:5px;border-radius:50%;background:#4af0c0;box-shadow:0 0 7px #4af0c0;flex-shrink:0}
+.pgal-chat{flex:1;padding:15px 13px;display:flex;flex-direction:column;gap:7px}
+.pgal-time{text-align:center;font-size:9.5px;color:rgba(255,255,255,.3);font-family:var(--mono);letter-spacing:.5px;margin-bottom:4px}
+.pgal-b{max-width:84%;padding:9px 12px;font-size:12.5px;line-height:1.42}
+.pgal-b.them{align-self:flex-start;background:#262633;color:#e9e9f0;border-radius:15px 15px 15px 4px}
+.pgal-b.me{align-self:flex-end;background:linear-gradient(135deg,#0a9d76,#0a6a50);color:#fff;border-radius:15px 15px 4px 15px}
+.pgal-b small{display:block;font-size:9px;opacity:.62;margin-top:4px;font-family:var(--mono);letter-spacing:.3px;line-height:1.3}
+.pgal-badge{margin:auto 2px 4px;display:flex;align-items:center;gap:8px;padding:9px 11px;border-radius:11px;background:rgba(74,240,192,.08);border:1px solid rgba(74,240,192,.18);font-size:10.5px;color:#9af5d6;font-family:var(--mono);letter-spacing:.2px;line-height:1.35}
+.pgal-badge svg{flex-shrink:0}
+.pgal-cap{font-family:var(--mono);font-size:11px;letter-spacing:1.5px;text-transform:uppercase;color:var(--text2)}
+.pgal-cta{display:flex;gap:14px;justify-content:center;align-items:center;margin-top:48px;flex-wrap:wrap}
+@media(max-width:900px){.pgal-grid{grid-template-columns:1fr;max-width:330px}.pgal-phone{max-width:300px}}
+
 }

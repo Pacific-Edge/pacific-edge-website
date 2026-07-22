@@ -7,6 +7,7 @@ import {
   Bot,
   Building2,
   CalendarCheck,
+  Check,
   Clock,
   DollarSign,
   GraduationCap,
@@ -99,6 +100,52 @@ const INTG: { key: string; label: string; cards: IntgCard[] }[] = [
     { c: "#5E8E3E", ini: "Sh", name: "Shopify" }, { c: "#F5333F", ini: "Ls", name: "Lightspeed" }, { c: "#1c1b16", ini: "Sq", name: "Square" },
     { c: "#4CA22F", ini: "Cl", name: "Clover", img: "/logos/clover.png" }, { c: "#7F54B3", ini: "Wo", name: "WooCommerce" }, { c: "#1a1a1a", ini: "MC", name: "Mailchimp", img: "/logos/mailchimp.png" },
   ] },
+]
+
+type PhoneMsg = { who: "them" | "me"; text: string; meta?: string }
+const PHONES: { biz: string; sub: string; Icon: LucideIcon; time: string; msgs: PhoneMsg[]; badge: string; caption: string }[] = [
+  {
+    biz: "Coastal Kitchen",
+    sub: "AI host",
+    Icon: UtensilsCrossed,
+    time: "Fri 7:14 PM · Missed call",
+    msgs: [
+      { who: "them", text: "Hi! Any chance you could fit 4 of us in tonight around 7:30?" },
+      { who: "me", text: "Hi, this is Coastal Kitchen! We have a 7:45 table for 4, want me to lock it in?", meta: "Auto-reply · 19s after the missed call" },
+      { who: "them", text: "Perfect, yes please" },
+      { who: "me", text: "Booked for 7:45 under your name. See you tonight!" },
+    ],
+    badge: "Table booked and added to tonight's covers.",
+    caption: "Missed call, recovered",
+  },
+  {
+    biz: "Bloom Hair Studio",
+    sub: "AI front desk",
+    Icon: Scissors,
+    time: "Wed 9:02 PM · After hours",
+    msgs: [
+      { who: "them", text: "Do you have anything for a cut and colour this Saturday?" },
+      { who: "me", text: "We just had 1:00 PM open up with Mia. Want me to hold it for you?" },
+      { who: "them", text: "Yes please!" },
+      { who: "me", text: "You're booked Saturday at 1:00 with Mia. I'll text a reminder the day before." },
+    ],
+    badge: "Cancellation refilled from the waitlist.",
+    caption: "Empty chair, filled",
+  },
+  {
+    biz: "North Shore Plumbing",
+    sub: "AI dispatch",
+    Icon: Wrench,
+    time: "Sun 11:48 PM · After hours",
+    msgs: [
+      { who: "them", text: "Our water heater is leaking, are you open?" },
+      { who: "me", text: "Sorry to hear that. We can send a tech first thing tomorrow, 8 to 10 AM window. Should I book it?" },
+      { who: "them", text: "That would be great, thank you" },
+      { who: "me", text: "Booked for 8 to 10 AM. You'll get a text when the tech is on the way." },
+    ],
+    badge: "After-hours job booked while you slept.",
+    caption: "After-hours lead, captured",
+  },
 ]
 
 const STEPS = [
@@ -564,6 +611,48 @@ export default function HomeContent() {
               ))}
             </div>
           </div>
+        </div>
+      </section>
+
+      {/* PRODUCT SHOWCASE: Janice in action */}
+      <section className="pgal-section" id="product">
+        <div className="r">
+          <div className="sl">The Product</div>
+          <h2 className="st">See Janice <span className="a">At Work.</span></h2>
+          <p className="sd">Real conversations your customers would have. No app to download, just a normal text thread that ends in a booking.</p>
+        </div>
+        <div className="pgal-grid">
+          {PHONES.map((p, i) => (
+            <figure className={`pgal-item r rd${i + 1}`} key={p.biz}>
+              <div className="pgal-phone">
+                <span className="pgal-notch" />
+                <div className="pgal-screen">
+                  <div className="pgal-top">
+                    <span className="pgal-av"><p.Icon size={15} strokeWidth={1.9} style={{ color: "#fff" }} aria-hidden /></span>
+                    <div>
+                      <div className="pgal-name">{p.biz}</div>
+                      <div className="pgal-sub">{p.sub} · replies instantly</div>
+                    </div>
+                  </div>
+                  <div className="pgal-chat">
+                    <div className="pgal-time">{p.time}</div>
+                    {p.msgs.map((m, j) => (
+                      <div className={`pgal-b ${m.who}`} key={`${p.biz}-${j}`}>
+                        {m.text}
+                        {m.meta ? <small>{m.meta}</small> : null}
+                      </div>
+                    ))}
+                    <div className="pgal-badge"><Check size={13} strokeWidth={2.6} style={{ color: "#4af0c0" }} aria-hidden />{p.badge}</div>
+                  </div>
+                </div>
+              </div>
+              <figcaption className="pgal-cap">{p.caption}</figcaption>
+            </figure>
+          ))}
+        </div>
+        <div className="pgal-cta r rd3">
+          <Link href="/ai-employee" className="btn-primary">Meet Janice<span className="arr">→</span></Link>
+          <Link href="/roi-calculator" className="btn-ghost">See what she could recover</Link>
         </div>
       </section>
 
