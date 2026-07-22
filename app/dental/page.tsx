@@ -3,8 +3,42 @@ import Link from "next/link"
 import SiteShell from "@/components/site/SiteShell"
 import DentalInteractive from "@/components/dental/DentalInteractive"
 import "@/styles/dental.css"
+import {
+  DollarSign,
+  BarChart3,
+  Phone,
+  PhoneCall,
+  Calendar,
+  Stethoscope,
+  ClipboardList,
+  Star,
+  CalendarDays,
+  Zap,
+  Rocket,
+  X,
+  RotateCcw,
+  CheckCircle2,
+  Armchair,
+  MessageCircle,
+  CreditCard,
+  Sprout,
+  Globe,
+  UtensilsCrossed,
+  Sparkles,
+  Moon,
+  Clock,
+} from "lucide-react"
 
 const CAL = "https://cal.com/pacificedge"
+
+const COMPARE = [
+  { Ico: Moon, cat: "After-hours calls", before: "Sent to voicemail overnight", after: "Answered and booked, 24/7" },
+  { Ico: Phone, cat: "New-patient calls", before: "Hits voicemail, they call the next clinic", after: "Texted back in 21s, exam booked" },
+  { Ico: Calendar, cat: "Cancellations", before: "A chair sits empty for the day", after: "Refilled from your waitlist in minutes" },
+  { Ico: Stethoscope, cat: "Recalls", before: "Patients quietly fall off the schedule", after: "Recall reminders rebook hygiene visits" },
+  { Ico: Star, cat: "Reviews", before: "Great care, quiet online reputation", after: "Requested and drafted automatically" },
+  { Ico: Clock, cat: "Front-desk time", before: "Hours on hold music and reminder calls", after: "Time back for the patients in the chair" },
+]
 
 export const metadata: Metadata = {
   title: { absolute: "AI for Vancouver Dental & Health Clinics | Pacific Edge AI" },
@@ -15,7 +49,7 @@ export const metadata: Metadata = {
 
 export default function DentalPage() {
   return (
-    <SiteShell variant="minimal">
+    <SiteShell>
       <DentalInteractive />
       <header className="ihero">
         <div className="ihero-orb ihero-orb-1" data-parallax="26" />
@@ -38,10 +72,10 @@ export default function DentalPage() {
           </div>
           <div className="ihero-actions reveal d4">
             <a href={CAL} target="_blank" rel="noopener" className="btn-mint">Book a Free 15-Min Demo</a>
-            <a href="/dental-pricing.html" className="btn-light">💰 See Pricing &amp; Plans</a>
+            <a href="/dental-pricing.html" className="btn-dark"><DollarSign size={16} strokeWidth={2} /> See Pricing &amp; Plans</a>
           </div>
           <div className="dx-hero-sublinks reveal d4">
-            <a href="/dental-savings-calculator.html">📊 What cancellations cost you</a>
+            <a href="/dental-savings-calculator.html"><BarChart3 size={16} strokeWidth={2} /> What cancellations cost you</a>
             <span className="dx-hero-dot" aria-hidden="true">·</span>
             <a href="#problems">See how it helps ↓</a>
           </div>
@@ -64,12 +98,42 @@ export default function DentalPage() {
           <h2 className="st reveal d1">Sound <span className="a">Familiar?</span></h2>
           <p className="sd reveal d2">If this is your front desk, your schedule has gaps that booked patients would happily fill.</p>
           <div className="prob-grid">
-            <div className="prob reveal d1"><div className="prob-ico">📞</div><h3>New-patient calls hit voicemail</h3><p>The line is busy and a brand-new patient gets sent to voicemail. They do not leave a message, they call the clinic down the block.</p><div className="prob-cost">A new patient on voicemail calls the next clinic</div></div>
-            <div className="prob reveal d2"><div className="prob-ico">📅</div><h3>No-shows and late cancellations</h3><p>A patient forgets, the chair sits empty, and that block of clinical time is simply gone with no way to backfill it.</p><div className="prob-cost">An empty chair is wasted clinical time</div></div>
-            <div className="prob reveal d3"><div className="prob-ico">🦷</div><h3>Recalls and hygiene reminders slip</h3><p>Patients due for a cleaning never get the nudge, so they quietly fall off the schedule and out of the practice.</p><div className="prob-cost">Patients overdue for a recall drift away</div></div>
-            <div className="prob reveal d1"><div className="prob-ico">☎️</div><h3>The front desk is overwhelmed</h3><p>Your team is stuck on hold music and reminder calls instead of looking after the patients standing right in front of them.</p><div className="prob-cost">Your team is on the phone, not with patients</div></div>
-            <div className="prob reveal d2"><div className="prob-ico">📋</div><h3>Treatment plans go unbooked</h3><p>A patient agrees to follow-up treatment, then leaves without scheduling it, and there is no system to gently bring them back.</p><div className="prob-cost">Unbooked treatment is care left on the table</div></div>
-            <div className="prob reveal d3"><div className="prob-ico">⭐</div><h3>Reviews don&apos;t match the care</h3><p>You deliver excellent care every day, but few of those happy patients are ever asked to leave a review online.</p><div className="prob-cost">Great care, quiet online reputation</div></div>
+            <div className="prob reveal d1"><div className="prob-ico"><Phone size={22} strokeWidth={1.75} /></div><h3>New-patient calls hit voicemail</h3><p>The line is busy and a brand-new patient gets sent to voicemail. They do not leave a message, they call the clinic down the block.</p><div className="prob-cost">A new patient on voicemail calls the next clinic</div></div>
+            <div className="prob reveal d2"><div className="prob-ico"><Calendar size={22} strokeWidth={1.75} /></div><h3>No-shows and late cancellations</h3><p>A patient forgets, the chair sits empty, and that block of clinical time is simply gone with no way to backfill it.</p><div className="prob-cost">An empty chair is wasted clinical time</div></div>
+            <div className="prob reveal d3"><div className="prob-ico"><Stethoscope size={22} strokeWidth={1.75} /></div><h3>Recalls and hygiene reminders slip</h3><p>Patients due for a cleaning never get the nudge, so they quietly fall off the schedule and out of the practice.</p><div className="prob-cost">Patients overdue for a recall drift away</div></div>
+            <div className="prob reveal d1"><div className="prob-ico"><PhoneCall size={22} strokeWidth={1.75} /></div><h3>The front desk is overwhelmed</h3><p>Your team is stuck on hold music and reminder calls instead of looking after the patients standing right in front of them.</p><div className="prob-cost">Your team is on the phone, not with patients</div></div>
+            <div className="prob reveal d2"><div className="prob-ico"><ClipboardList size={22} strokeWidth={1.75} /></div><h3>Treatment plans go unbooked</h3><p>A patient agrees to follow-up treatment, then leaves without scheduling it, and there is no system to gently bring them back.</p><div className="prob-cost">Unbooked treatment is care left on the table</div></div>
+            <div className="prob reveal d3"><div className="prob-ico"><Star size={22} strokeWidth={1.75} /></div><h3>Reviews don&apos;t match the care</h3><p>You deliver excellent care every day, but few of those happy patients are ever asked to leave a review online.</p><div className="prob-cost">Great care, quiet online reputation</div></div>
+          </div>
+        </div>
+      </section>
+
+      <div className="divhr" />
+
+      <section id="difference">
+        <div className="wrap">
+          <div className="sl reveal">The Difference</div>
+          <h2 className="st reveal d1">Before &amp; <span className="a">After.</span></h2>
+          <p className="sd reveal d2">What a week at the front desk looks like before and after Janice, your AI employee, starts working in the background.</p>
+          <div className="cmp reveal d2">
+            <div className="cmp-row cmp-head">
+              <div className="cmp-cell cmp-corner" />
+              <div className="cmp-cell cmp-before">Without Pacific Edge AI</div>
+              <div className="cmp-cell cmp-after"><span className="cmp-janice"><span className="cmp-jav">J</span><span className="cmp-jname">With Janice<span className="cmp-jsub">Your AI employee</span></span></span></div>
+            </div>
+            {COMPARE.map((row) => (
+              <div className="cmp-row" key={row.cat}>
+                <div className="cmp-cell cmp-cat"><span className="cmp-ico"><row.Ico size={16} strokeWidth={2} /></span>{row.cat}</div>
+                <div className="cmp-cell cmp-before">
+                  <span className="cmp-x"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3.4" strokeLinecap="round"><path d="M6 6l12 12M18 6L6 18" /></svg></span>
+                  {row.before}
+                </div>
+                <div className="cmp-cell cmp-after">
+                  <span className="cmp-check"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"><path d="M5 13l4 4 11-13" /></svg></span>
+                  {row.after}
+                </div>
+              </div>
+            ))}
           </div>
         </div>
       </section>
@@ -94,7 +158,7 @@ export default function DentalPage() {
               </div></div></div>
               <h3 className="ptype-title">Single-Location Clinics</h3>
               <ul className="ptype-list"><li>Reduce front-desk stress</li><li>Capture every missed call</li><li>Handle after-hours &amp; overflow</li></ul>
-              <Link href="/dental-single-location" className="btn-light ptype-btn">See How It Works →</Link>
+              <Link href="/dental-single-location" className="btn-dark ptype-btn">See How It Works <span className="arr">→</span></Link>
             </div>
             <div className="ptype-card reveal d3">
               <div className="ptype-visual"><div className="ptype-phone"><div className="ptype-screen">
@@ -108,10 +172,10 @@ export default function DentalPage() {
               </div></div></div>
               <h3 className="ptype-title">Multi-Location &amp; DSOs</h3>
               <ul className="ptype-list"><li>Standardize workflows across sites</li><li>Centralize reporting</li><li>Grow revenue at scale</li></ul>
-              <Link href="/dental-multi-location" className="btn-light ptype-btn">See How It Works →</Link>
+              <Link href="/dental-multi-location" className="btn-dark ptype-btn">See How It Works <span className="arr">→</span></Link>
             </div>
           </div>
-          <div className="reveal d4" style={{ textAlign: "center", marginTop: 34 }}><a href="/dental-savings-calculator.html" className="btn-light">📊 Estimate What Filling Them Is Worth →</a></div>
+          <div className="reveal d4" style={{ textAlign: "center", marginTop: 34 }}><a href="/dental-savings-calculator.html" className="btn-dark"><BarChart3 size={16} strokeWidth={2} /> Estimate What Filling Them Is Worth <span className="arr">→</span></a></div>
         </div>
       </section>
 
@@ -130,7 +194,7 @@ export default function DentalPage() {
             <article className="dx-tier reveal d1" data-tilt>
               <div className="dx-tier-shine" aria-hidden="true" />
               <span className="dx-tier-badge">PART-TIME</span>
-              <div className="dx-tier-ico">🗓️</div>
+              <div className="dx-tier-ico"><CalendarDays size={32} strokeWidth={1.5} /></div>
               <h3 className="dx-tier-title">Covers what you miss</h3>
               <p className="dx-tier-sub">Janice answers every text and refills every cancelled chair, around the clock.</p>
               <ul className="dx-tier-list">
@@ -146,7 +210,7 @@ export default function DentalPage() {
               <span className="dx-tier-flag">MOST HIRED</span>
               <div className="dx-tier-shine" aria-hidden="true" />
               <span className="dx-tier-badge">FULL-TIME</span>
-              <div className="dx-tier-ico">⚡</div>
+              <div className="dx-tier-ico"><Zap size={32} strokeWidth={1.5} /></div>
               <h3 className="dx-tier-title">Every channel, working ahead</h3>
               <p className="dx-tier-sub">She books straight into your schedule and keeps the whole book full, weeks out.</p>
               <ul className="dx-tier-list">
@@ -161,7 +225,7 @@ export default function DentalPage() {
             <article className="dx-tier reveal d3" data-tilt>
               <div className="dx-tier-shine" aria-hidden="true" />
               <span className="dx-tier-badge">PARTNER</span>
-              <div className="dx-tier-ico">🚀</div>
+              <div className="dx-tier-ico"><Rocket size={32} strokeWidth={1.5} /></div>
               <h3 className="dx-tier-title">Fills chairs &amp; grows the book</h3>
               <p className="dx-tier-sub">Marketing muscle on top of the full front desk, for practices going on offence.</p>
               <ul className="dx-tier-list">
@@ -174,7 +238,7 @@ export default function DentalPage() {
             </article>
           </div>
           <div className="dx-tier-cta reveal d3">
-            <a href="/dental-pricing.html" className="btn-mint">See Every Plan In Detail →</a>
+            <a href="/dental-pricing.html" className="btn-mint">See Every Plan In Detail <span className="arr">→</span></a>
             <div className="dx-tier-note">Full feature-by-feature comparison · Priced in CAD + GST</div>
           </div>
         </div>
@@ -203,8 +267,8 @@ export default function DentalPage() {
                 <div className="mock" data-live>
                   <div className="mock-head"><span className="mock-dot" /><span className="mock-title">Cancellation · Refilled</span></div>
                   <div className="mock-typing" data-typing="1300">Texting your waitlist<i /><i /><i /></div>
-                  <div className="mock-row"><div className="mock-row-l"><div className="mock-avatar">❌</div><div><div className="mock-name">2:00 PM cancelled</div><div className="mock-sub">Offered to your waitlist</div></div></div><span className="mock-pill warn">Open</span></div>
-                  <div className="mock-row"><div className="mock-row-l"><div className="mock-avatar">🔁</div><div><div className="mock-name">Rebooked in 12 min</div><div className="mock-sub">Filled from waitlist</div></div></div><span className="mock-pill ok">Refilled</span></div>
+                  <div className="mock-row"><div className="mock-row-l"><div className="mock-avatar"><X size={15} strokeWidth={2} /></div><div><div className="mock-name">2:00 PM cancelled</div><div className="mock-sub">Offered to your waitlist</div></div></div><span className="mock-pill warn">Open</span></div>
+                  <div className="mock-row"><div className="mock-row-l"><div className="mock-avatar"><RotateCcw size={15} strokeWidth={2} /></div><div><div className="mock-name">Rebooked in 12 min</div><div className="mock-sub">Filled from waitlist</div></div></div><span className="mock-pill ok">Refilled</span></div>
                 </div>
               </div>
             </div>
@@ -222,8 +286,8 @@ export default function DentalPage() {
               <div className="frow-visual reveal d2">
                 <div className="mock" data-live>
                   <div className="mock-head"><span className="mock-dot" /><span className="mock-title">New Patient · Recovered</span></div>
-                  <div className="mock-row"><div className="mock-row-l"><div className="mock-avatar">📞</div><div><div className="mock-name">+1 (604) 555-0173</div><div className="mock-sub">Missed at 9:12 AM</div></div></div><span className="mock-pill ok">Texted · 21s</span></div>
-                  <div className="mock-row"><div className="mock-row-l"><div className="mock-avatar">🦷</div><div><div className="mock-name">New patient exam</div><div className="mock-sub">Tomorrow 10:40 AM</div></div></div><span className="mock-pill ok">Booked</span></div>
+                  <div className="mock-row"><div className="mock-row-l"><div className="mock-avatar"><Phone size={15} strokeWidth={2} /></div><div><div className="mock-name">+1 (604) 555-0173</div><div className="mock-sub">Missed at 9:12 AM</div></div></div><span className="mock-pill ok">Texted · 21s</span></div>
+                  <div className="mock-row"><div className="mock-row-l"><div className="mock-avatar"><Stethoscope size={15} strokeWidth={2} /></div><div><div className="mock-name">New patient exam</div><div className="mock-sub">Tomorrow 10:40 AM</div></div></div><span className="mock-pill ok">Booked</span></div>
                 </div>
               </div>
             </div>
@@ -241,8 +305,8 @@ export default function DentalPage() {
               <div className="frow-visual reveal d2">
                 <div className="mock" data-live>
                   <div className="mock-head"><span className="mock-dot" /><span className="mock-title">Tomorrow · 22 appointments</span></div>
-                  <div className="mock-row"><div className="mock-row-l"><div className="mock-avatar">✅</div><div><div className="mock-name">Hygiene · 11:00 AM</div><div className="mock-sub">Reminder confirmed</div></div></div><span className="mock-pill ok">Confirmed</span></div>
-                  <div className="mock-row"><div className="mock-row-l"><div className="mock-avatar">🦷</div><div><div className="mock-name">Recall · 6 months due</div><div className="mock-sub">Reminder sent · rebooked</div></div></div><span className="mock-pill ok">Rebooked</span></div>
+                  <div className="mock-row"><div className="mock-row-l"><div className="mock-avatar"><CheckCircle2 size={15} strokeWidth={2} /></div><div><div className="mock-name">Hygiene · 11:00 AM</div><div className="mock-sub">Reminder confirmed</div></div></div><span className="mock-pill ok">Confirmed</span></div>
+                  <div className="mock-row"><div className="mock-row-l"><div className="mock-avatar"><Stethoscope size={15} strokeWidth={2} /></div><div><div className="mock-name">Recall · 6 months due</div><div className="mock-sub">Reminder sent · rebooked</div></div></div><span className="mock-pill ok">Rebooked</span></div>
                 </div>
               </div>
             </div>
@@ -260,8 +324,8 @@ export default function DentalPage() {
               <div className="frow-visual reveal d2">
                 <div className="mock" data-live>
                   <div className="mock-head"><span className="mock-dot" /><span className="mock-title">Treatment · Follow-up</span></div>
-                  <div className="mock-row"><div className="mock-row-l"><div className="mock-avatar">📋</div><div><div className="mock-name">Crown · recommended</div><div className="mock-sub">Reminder sent · booked</div></div></div><span className="mock-pill ok">Booked</span></div>
-                  <div className="mock-row"><div className="mock-row-l"><div className="mock-avatar">⭐</div><div><div className="mock-name">Patient since 2019</div><div className="mock-sub">Review request sent</div></div></div><span className="mock-pill ok">5-star</span></div>
+                  <div className="mock-row"><div className="mock-row-l"><div className="mock-avatar"><ClipboardList size={15} strokeWidth={2} /></div><div><div className="mock-name">Crown · recommended</div><div className="mock-sub">Reminder sent · booked</div></div></div><span className="mock-pill ok">Booked</span></div>
+                  <div className="mock-row"><div className="mock-row-l"><div className="mock-avatar"><Star size={15} strokeWidth={2} /></div><div><div className="mock-name">Patient since 2019</div><div className="mock-sub">Review request sent</div></div></div><span className="mock-pill ok">5-star</span></div>
                 </div>
               </div>
             </div>
@@ -280,18 +344,18 @@ export default function DentalPage() {
             the work that keeps chairs full.
           </p>
           <div className="dx-cap-grid">
-            <div className="dx-cap reveal d1"><span className="dx-cap-ico">🪑</span><h3>Fills cancelled chairs</h3><p>Best-fit patients are offered your open slot within minutes, unlimited.</p></div>
-            <div className="dx-cap reveal d2"><span className="dx-cap-ico">📞</span><h3>Missed-call text-back <span className="dx-cap-soon">SOON</span></h3><p>Every unanswered call gets an instant text before they dial the next clinic.</p></div>
-            <div className="dx-cap reveal d3"><span className="dx-cap-ico">💬</span><h3>24/7 text replies</h3><p>Patients text your existing number; she books, reschedules and answers in seconds.</p></div>
-            <div className="dx-cap reveal d4"><span className="dx-cap-ico">🦷</span><h3>New-patient capture</h3><p>First exams booked from callers who would have hit voicemail.</p></div>
-            <div className="dx-cap reveal d1"><span className="dx-cap-ico">🔁</span><h3>Hygiene recalls</h3><p>Overdue patients get a nudge with a real open time that fits their routine.</p></div>
-            <div className="dx-cap reveal d2"><span className="dx-cap-ico">✅</span><h3>Reminders &amp; confirms</h3><p>One-tap confirm or reschedule, timed exactly the way you choose.</p></div>
-            <div className="dx-cap reveal d3"><span className="dx-cap-ico">📋</span><h3>Treatment follow-up</h3><p>Diagnosed-but-unbooked work gets a respectful nudge to get scheduled.</p></div>
-            <div className="dx-cap reveal d4"><span className="dx-cap-ico">⭐</span><h3>Review engine</h3><p>Happy visits become Google reviews; unhappy ones route privately to you first.</p></div>
-            <div className="dx-cap reveal d1"><span className="dx-cap-ico">💳</span><h3>Payment links <span className="dx-cap-soon">SOON</span></h3><p>Texts the balance after insurance, collected securely by Stripe.</p></div>
-            <div className="dx-cap reveal d2"><span className="dx-cap-ico">🌱</span><h3>Reactivation</h3><p>Wins back patients gone 12+ months in respectful, well-timed waves.</p></div>
-            <div className="dx-cap reveal d3"><span className="dx-cap-ico">🌐</span><h3>Speaks 5 languages</h3><p>English, Mandarin, Cantonese, Punjabi &amp; Farsi, all included.</p></div>
-            <div className="dx-cap reveal d4"><span className="dx-cap-ico">📊</span><h3>Monthly ROI report</h3><p>Chairs refilled, no-shows down, production recovered, every single month.</p></div>
+            <div className="dx-cap reveal d1"><span className="dx-cap-ico"><Armchair size={24} strokeWidth={1.75} /></span><h3>Fills cancelled chairs</h3><p>Best-fit patients are offered your open slot within minutes, unlimited.</p></div>
+            <div className="dx-cap reveal d2"><span className="dx-cap-ico"><Phone size={24} strokeWidth={1.75} /></span><h3>Missed-call text-back <span className="dx-cap-soon">SOON</span></h3><p>Every unanswered call gets an instant text before they dial the next clinic.</p></div>
+            <div className="dx-cap reveal d3"><span className="dx-cap-ico"><MessageCircle size={24} strokeWidth={1.75} /></span><h3>24/7 text replies</h3><p>Patients text your existing number; she books, reschedules and answers in seconds.</p></div>
+            <div className="dx-cap reveal d4"><span className="dx-cap-ico"><Stethoscope size={24} strokeWidth={1.75} /></span><h3>New-patient capture</h3><p>First exams booked from callers who would have hit voicemail.</p></div>
+            <div className="dx-cap reveal d1"><span className="dx-cap-ico"><RotateCcw size={24} strokeWidth={1.75} /></span><h3>Hygiene recalls</h3><p>Overdue patients get a nudge with a real open time that fits their routine.</p></div>
+            <div className="dx-cap reveal d2"><span className="dx-cap-ico"><CheckCircle2 size={24} strokeWidth={1.75} /></span><h3>Reminders &amp; confirms</h3><p>One-tap confirm or reschedule, timed exactly the way you choose.</p></div>
+            <div className="dx-cap reveal d3"><span className="dx-cap-ico"><ClipboardList size={24} strokeWidth={1.75} /></span><h3>Treatment follow-up</h3><p>Diagnosed-but-unbooked work gets a respectful nudge to get scheduled.</p></div>
+            <div className="dx-cap reveal d4"><span className="dx-cap-ico"><Star size={24} strokeWidth={1.75} /></span><h3>Review engine</h3><p>Happy visits become Google reviews; unhappy ones route privately to you first.</p></div>
+            <div className="dx-cap reveal d1"><span className="dx-cap-ico"><CreditCard size={24} strokeWidth={1.75} /></span><h3>Payment links <span className="dx-cap-soon">SOON</span></h3><p>Texts the balance after insurance, collected securely by Stripe.</p></div>
+            <div className="dx-cap reveal d2"><span className="dx-cap-ico"><Sprout size={24} strokeWidth={1.75} /></span><h3>Reactivation</h3><p>Wins back patients gone 12+ months in respectful, well-timed waves.</p></div>
+            <div className="dx-cap reveal d3"><span className="dx-cap-ico"><Globe size={24} strokeWidth={1.75} /></span><h3>Speaks 5 languages</h3><p>English, Mandarin, Cantonese, Punjabi &amp; Farsi, all included.</p></div>
+            <div className="dx-cap reveal d4"><span className="dx-cap-ico"><BarChart3 size={24} strokeWidth={1.75} /></span><h3>Monthly ROI report</h3><p>Chairs refilled, no-shows down, production recovered, every single month.</p></div>
           </div>
         </div>
       </section>
@@ -316,7 +380,7 @@ export default function DentalPage() {
                 <div className="phone-notch" />
                 <div className="phone-screen">
                   <div className="phone-top">
-                    <div className="phone-av">🦷</div>
+                    <div className="phone-av"><Stethoscope size={16} strokeWidth={2} /></div>
                     <div><div className="phone-top-name">Cedar Dental</div><div className="phone-top-sub">AI desk · replies instantly</div></div>
                   </div>
                   <div className="chat" data-chat>
@@ -327,7 +391,7 @@ export default function DentalPage() {
                     <div className="bubble them" data-delay="900">Yes please, thank you</div>
                     <div className="typing" data-typing="1100"><i /><i /><i /></div>
                     <div className="bubble me" data-delay="200">Booked! Tomorrow 10:40 AM with Dr. Lee. I&apos;ll text your new-patient form and a reminder. Take care until then!</div>
-                    <div className="chat-badge" data-delay="650"><span className="chat-badge-ico">✅</span><span>New patient booked from a missed call. Intake and reminder already queued.</span></div>
+                    <div className="chat-badge" data-delay="650"><span className="chat-badge-ico"><CheckCircle2 size={13} strokeWidth={2.5} /></span><span>New patient booked from a missed call. Intake and reminder already queued.</span></div>
                   </div>
                 </div>
               </div>
@@ -441,10 +505,8 @@ export default function DentalPage() {
             <span><i />Vancouver-based</span>
           </div>
           <div className="xlinks reveal d3">
-            <Link href="/restaurants" className="xlink"><span>🍽️</span>Restaurants</Link>
-            <Link href="/salons" className="xlink"><span>💆</span>Salons &amp; Spas</Link>
-            <Link href="/trades" className="xlink"><span>🔧</span>Trades</Link>
-            <Link href="/retail" className="xlink"><span>🛍️</span>Retail</Link>
+            <Link href="/restaurants" className="xlink"><span><UtensilsCrossed size={14} strokeWidth={2} /></span>Restaurants</Link>
+            <Link href="/salons" className="xlink"><span><Sparkles size={14} strokeWidth={2} /></span>Salons &amp; Spas</Link>
           </div>
         </div>
       </section>

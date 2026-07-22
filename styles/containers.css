@@ -1,0 +1,246 @@
+/* ============================================================
+   containers.css — shared surface system
+   ------------------------------------------------------------
+   Brings every container up to the WhyUsSection standard:
+   a soft floating shadow, an optional crosshatch texture, and
+   high-contrast tonal registers. Imported after globals.css +
+   legacy.css so the tokens resolve. These are OPT-IN utility
+   classes (no blanket element overrides) — per-class hover /
+   shadow refinements live in the individual stylesheets.
+
+   Four-colors rule (globals.css:3-9): every value below derives
+   from an existing --color-* token. No standalone hexes.
+   ============================================================ */
+
+:root {
+  /* Floating card shadow — the WhyUsSection recipe (0 30px 70px -42px). */
+  --shadow-float: 0 30px 70px -42px rgba(10, 10, 10, 0.24);
+  --shadow-float-lg: 0 44px 96px -48px rgba(10, 10, 10, 0.36);
+  /* Inner preview/mock card shadow — the OpsDashVisual/WhyUsSection mini-card recipe. */
+  --shadow-mock: 0 16px 48px -24px rgba(0, 0, 0, 0.35);
+  --hatch-tile: 26px;
+}
+
+/* --- Crosshatch texture -------------------------------------
+   Two crossed repeating-linear-gradients at +/-45deg, thin 1px
+   lines on a small tile. Opt in with `.hatch`; tune per surface
+   with --hatch-color / --hatch-opacity / --hatch-tile. Content
+   must sit above it — direct children are lifted to z-index:1. */
+.hatch {
+  position: relative;
+}
+.hatch > * {
+  position: relative;
+  z-index: 1;
+}
+.hatch::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  border-radius: inherit;
+  background-image:
+    repeating-linear-gradient(
+      45deg,
+      var(--hatch-color, rgba(10, 10, 10, 0.9)) 0,
+      var(--hatch-color, rgba(10, 10, 10, 0.9)) 1px,
+      transparent 1px,
+      transparent var(--hatch-tile)
+    ),
+    repeating-linear-gradient(
+      -45deg,
+      var(--hatch-color, rgba(10, 10, 10, 0.9)) 0,
+      var(--hatch-color, rgba(10, 10, 10, 0.9)) 1px,
+      transparent 1px,
+      transparent var(--hatch-tile)
+    );
+  background-size: var(--hatch-tile) var(--hatch-tile);
+  opacity: var(--hatch-opacity, 0.05);
+}
+
+/* Slow diagonal drift for high-emphasis surfaces only. Static
+   unless the user is OK with motion. */
+@media (prefers-reduced-motion: no-preference) {
+  .hatch--drift::before {
+    animation: hatchDrift 22s linear infinite;
+  }
+}
+@keyframes hatchDrift {
+  from {
+    background-position: 0 0;
+  }
+  to {
+    background-position: var(--hatch-tile) var(--hatch-tile);
+  }
+}
+
+/* --- Tonal registers ----------------------------------------
+   Mirror the four WhyUsSection registers. Set background +
+   border + a default hatch color. Text-color flips are applied
+   at the call site (paired with these) so accent spans survive. */
+.surface--ink {
+  background: var(--color-text);
+  border-color: color-mix(in oklab, var(--color-accent) 16%, transparent);
+  --hatch-color: var(--color-accent);
+  --hatch-opacity: 0.1;
+  box-shadow: var(--shadow-float-lg);
+}
+.surface--mint {
+  /* Canonical mint-fill gradient — kept identical to .sc-bg-mint above. */
+  background: linear-gradient(
+    135deg,
+    var(--color-accent),
+    var(--color-accent-bright) 55%,
+    var(--color-accent-ink)
+  );
+  border-color: color-mix(in oklab, var(--color-accent-ink) 25%, transparent);
+  --hatch-color: rgba(255, 255, 255, 0.9);
+  --hatch-opacity: 0.22;
+  box-shadow: var(--shadow-float-lg);
+}
+.surface--soft {
+  background: var(--color-bg2);
+  border-color: var(--color-border);
+  --hatch-color: var(--color-text);
+  --hatch-opacity: 0.04;
+  box-shadow: var(--shadow-float);
+}
+
+/* Utility: attach the floating shadow to any surface. */
+.u-float {
+  box-shadow: var(--shadow-float);
+}
+
+/* ============================================================
+   StyledContainer engine — two ORTHOGONAL axes
+   ------------------------------------------------------------
+   `background` (.sc-bg-*) sets ONLY the fill (+ a --sc-line color
+   token for contrast). `pattern` (.sc-pat-*) sets ONLY a ::before
+   overlay of continuous, edge-to-edge diagonal lines. Swapping one
+   axis never touches the other. Backing CSS for components/ui/
+   StyledContainer.tsx. Tile spacing is exposed via --sc-tile-*
+   custom props so density is workshoppable without editing gradients.
+   ============================================================ */
+.sc {
+  position: relative;
+  overflow: hidden;
+}
+.sc > * {
+  position: relative;
+  z-index: 1;
+}
+
+/* --- background axis (fill + line color it should be drawn with) ---
+   Line color is token-derived: on dark fills it's a low-alpha mix of the white
+   canvas token (--color-bg is #ffffff); on the white fill it's the ink-derived
+   gray line token (--color-border) so the lines stay visible. */
+.sc-bg-mint {
+  /* Same recipe as .surface--ink's mint counterpart, .surface--mint, below —
+     keep both in sync (explicit 55% stop) so there is one canonical mint fill. */
+  background: linear-gradient(
+    135deg,
+    var(--color-accent),
+    var(--color-accent-bright) 55%,
+    var(--color-accent-ink)
+  );
+  --sc-line: color-mix(in oklab, var(--color-bg) 22%, transparent);
+}
+.sc-bg-black {
+  background: var(--color-text);
+  /* Lowered 16% -> 8%: the mesh was too commanding on the dashboard preview. The
+     dashboard is the only black-fill surface using --sc-line (ts-ai's diag-wide is the
+     curve component, which sets its own color), so this only softens that mesh. */
+  --sc-line: color-mix(in oklab, var(--color-bg) 8%, transparent);
+}
+.sc-bg-white {
+  background: var(--color-bg);
+  /* Lowered from --color-border (~10% ink) — the plain gray mesh was reading as a
+     distracting flat wash on the Local card. Workshoppable. */
+  --sc-line: color-mix(in oklab, var(--color-text) 6%, transparent);
+}
+
+/* --- optional line-color override (orthogonal: touches only --sc-line, never
+   the fill). Defined AFTER .sc-bg-* so equal-specificity source order wins. --- */
+.sc-line-mint {
+  --sc-line: color-mix(in oklab, var(--color-accent-bright) 45%, transparent);
+}
+
+/* --- pattern axis --------------------------------------------------
+   mesh + diag-tight are pure-CSS repeating-gradient overlays on ::before.
+   Direction: repeating-linear-gradient(-45deg) -> `/`, (45deg) -> `\`.
+   Pattern 1 (diag-wide) is NOT here — it's the animated CardCurveBackground
+   component, rendered by StyledContainer as a `.sc-curve` layer (see below). */
+.sc-pat-mesh::before,
+.sc-pat-diag-tight::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  border-radius: inherit;
+}
+
+/* Pattern 1 — diag-wide: the animated two-layer curve field (CardCurveBackground).
+   The component is a real child, so `.sc > *` (position:relative;z-index:1) would pull
+   it into flow; this higher-specificity rule keeps it a harmless out-of-flow layer
+   behind content. Stroke uses currentColor -> a SOLID mint per fill (the SVG's own
+   per-path opacity supplies the fade, so no --sc-line alpha here). Workshoppable. */
+.sc > .sc-curve {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+}
+.sc-bg-black > .sc-curve {
+  color: var(--color-accent);
+} /* bright mint on black */
+.sc-bg-white > .sc-curve {
+  color: var(--color-accent-bright);
+} /* deeper mint stays legible on white */
+.sc-bg-mint > .sc-curve {
+  color: var(--color-bg);
+} /* white curves on the mint fill */
+
+/* Pattern 3 — closer-spaced `/` (top-right -> bottom-left) */
+.sc-pat-diag-tight::before {
+  background-image: repeating-linear-gradient(
+    -45deg,
+    var(--sc-line) 0,
+    var(--sc-line) 1px,
+    transparent 1px,
+    transparent var(--sc-tile-tight, 26px)
+  );
+}
+/* Pattern 2 — `/` and `\` overlapping into a diamond mesh (the industries crosshatch).
+   A radial mask concentrates the mesh: fully opaque at the center, fading hard toward
+   the edges so the field reads as a dense core dissolving into the fill (not one flat
+   uniform opacity). Workshoppable via the mask stop alphas / radius. */
+.sc-pat-mesh::before {
+  background-image:
+    repeating-linear-gradient(
+      -45deg,
+      var(--sc-line) 0,
+      var(--sc-line) 1px,
+      transparent 1px,
+      transparent var(--sc-tile-mesh, 26px)
+    ),
+    repeating-linear-gradient(
+      45deg,
+      var(--sc-line) 0,
+      var(--sc-line) 1px,
+      transparent 1px,
+      transparent var(--sc-tile-mesh, 26px)
+    );
+  -webkit-mask-image: radial-gradient(
+    ellipse 75% 75% at 50% 50%,
+    #000 0%,
+    rgba(0, 0, 0, 0.85) 40%,
+    rgba(0, 0, 0, 0.08) 100%
+  );
+  mask-image: radial-gradient(
+    ellipse 75% 75% at 50% 50%,
+    #000 0%,
+    rgba(0, 0, 0, 0.85) 40%,
+    rgba(0, 0, 0, 0.08) 100%
+  );
+}

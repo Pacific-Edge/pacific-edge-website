@@ -20,7 +20,6 @@ export const NAV_CATEGORIES: NavCategory[] = [
     label: "Solutions",
     items: [
       { href: "/ai-employee", name: "AI Voice Receptionist", desc: "Your AI front desk, 24/7" },
-      { href: "/custom-builds", name: "Software Solutions", desc: "PMS · POS · operations, integrated" },
       { href: "/custom-builds", name: "Custom Builds", desc: "Bespoke software for your business" },
       { href: "/ai-training", name: "AI Training", desc: "Get your team using AI well & safely" },
     ],
@@ -33,12 +32,9 @@ export const NAV_CATEGORIES: NavCategory[] = [
     label: "Industries",
     items: [
       { href: "/dental", name: "Dental & Health Clinics", desc: "New patients, recalls" },
-      { href: "/real-estate", name: "Real Estate", desc: "Agents, brokerages & developers" },
       { href: "/restaurants", name: "Restaurants & Food", desc: "Bookings, reviews, no-shows" },
       { href: "/salons", name: "Salons & Spas", desc: "Booking, rebooking, no-shows" },
-      { href: "/trades", name: "Trades & Home Services", desc: "Missed calls, quotes, jobs" },
-      { href: "/retail", name: "Retail & Local Shops", desc: "Questions, repeat customers" },
-      { href: "/industries", name: "Automotive", desc: "Coming soon", comingSoon: true },
+      { href: "/trades", name: "Trades & Home Services", desc: "Missed calls, cold quotes" },
     ],
     footLabel: "Not sure which fits?",
     footHref: "/industries",
@@ -49,7 +45,6 @@ export const NAV_CATEGORIES: NavCategory[] = [
     label: "Company",
     items: [
       { href: "/about", name: "About", desc: "Built by operators, not agencies" },
-      { href: "/#coverage", name: "Coverage", desc: "Where we work across Greater Vancouver" },
       { href: "/careers", name: "Careers", desc: "Join the team" },
       { href: "/faq", name: "FAQ", desc: "Common questions, answered" },
     ],

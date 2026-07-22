@@ -13,7 +13,7 @@ export const metadata: Metadata = {
 
 export default function TradesPage() {
   return (
-    <SiteShell variant="minimal">
+    <SiteShell>
       <header className="ihero">
         <div className="ihero-orb ihero-orb-1" />
         <div className="ihero-orb ihero-orb-2" />

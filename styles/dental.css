@@ -31,9 +31,9 @@
   background:radial-gradient(ellipse at center,rgba(74,240,192,.18),transparent 68%);pointer-events:none;filter:blur(6px);z-index:0}
 .dx-tier-grid{position:relative;z-index:1;display:grid;grid-template-columns:repeat(3,1fr);gap:22px;margin-top:54px;
   perspective:1500px}
-.dx-tier{position:relative;background:#fff;border:1px solid var(--border);border-radius:var(--radius);padding:34px 28px 30px;
+.dx-tier{position:relative;background:var(--bg);border:1px solid var(--border);border-radius:var(--radius);padding:34px 28px 30px;
   transform-style:preserve-3d;transition:transform .6s cubic-bezier(.16,1,.3,1),box-shadow .45s ease,border-color .45s ease;
-  box-shadow:0 2px 14px rgba(30,27,22,.05);will-change:transform}
+  box-shadow:var(--shadow-float);will-change:transform}
 .dx-tier.dx-tilting{transition:transform .12s ease-out,box-shadow .45s ease,border-color .45s ease}
 @media (hover:hover){.dx-tier:hover{box-shadow:0 30px 70px -26px rgba(30,27,22,.34);border-color:var(--border-a)}}
 .dx-tier-shine{position:absolute;inset:0;border-radius:var(--radius);pointer-events:none;opacity:0;transition:opacity .4s ease;
@@ -43,7 +43,8 @@
 .dx-tier-badge{display:inline-block;font-family:var(--mono);font-weight:700;font-size:10.5px;letter-spacing:.16em;
   color:var(--accent-ink);background:rgba(74,240,192,.14);border:1px solid var(--border-a);border-radius:var(--radius);
   padding:6px 13px;transform:translateZ(26px)}
-.dx-tier-ico{font-size:38px;line-height:1;margin:20px 0 14px;transform:translateZ(40px)}
+.dx-tier-ico{font-size:38px;line-height:1;color:var(--accent-ink);margin:20px 0 14px;transform:translateZ(40px)}
+.dx-tier.feat .dx-tier-ico{color:#fff}
 .dx-tier-title{font-family:var(--body);font-weight:600;font-size:20px;letter-spacing:-.3px;margin:0 0 8px;
   transform:translateZ(22px)}
 .dx-tier-sub{color:var(--text2);font-size:14.5px;line-height:1.6;font-weight:300;margin:0 0 20px;min-height:46px;
@@ -60,8 +61,8 @@
 .dx-tier-per{font-family:var(--mono);font-size:11px;color:var(--text3);letter-spacing:.05em}
 
 /* featured (Full-Time) — dark forest card like the pricing hero card */
-.dx-tier.feat{background:linear-gradient(165deg,var(--dx-forest) 0%,var(--dx-forest2) 100%);border-color:transparent;
-  color:#fff;box-shadow:0 26px 64px -22px rgba(4,19,15,.6)}
+.dx-tier.feat{background-image:repeating-linear-gradient(45deg,rgba(74,240,192,.14) 0,rgba(74,240,192,.14) 1px,transparent 1px,transparent 24px),repeating-linear-gradient(-45deg,rgba(74,240,192,.14) 0,rgba(74,240,192,.14) 1px,transparent 1px,transparent 24px),linear-gradient(165deg,var(--dx-forest) 0%,var(--dx-forest2) 100%);border-color:transparent;
+  color:#fff;box-shadow:var(--shadow-float-lg)}
 .dx-tier.feat .dx-tier-badge{color:var(--dx-forest2);background:var(--accent);border-color:transparent}
 .dx-tier.feat .dx-tier-title{color:#fff}
 .dx-tier.feat .dx-tier-sub{color:rgba(255,255,255,.66)}
@@ -80,16 +81,13 @@
    2. CAPABILITIES GRID — everything Janice handles
    ========================================================================= */
 .dx-cap-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-top:52px}
-.dx-cap{position:relative;background:#fff;border:1px solid var(--border);border-radius:var(--radius);padding:24px 22px 22px;
+.dx-cap{position:relative;background:var(--bg);border:1px solid var(--border);border-radius:var(--radius);padding:24px 22px 22px;box-shadow:var(--shadow-float);
   overflow:hidden;transition:transform .4s cubic-bezier(.16,1,.3,1),box-shadow .4s ease,border-color .4s ease}
-.dx-cap::after{content:"";position:absolute;inset:0;background:linear-gradient(150deg,rgba(74,240,192,.1),transparent 55%);
-  opacity:0;transition:opacity .4s ease;pointer-events:none}
 @media (hover:hover){
   .dx-cap:hover{transform:translateY(-7px);box-shadow:0 20px 42px -16px rgba(30,27,22,.2);border-color:var(--border-a)}
-  .dx-cap:hover::after{opacity:1}
   .dx-cap:hover .dx-cap-ico{transform:scale(1.16) rotate(-7deg)}
 }
-.dx-cap-ico{font-size:27px;line-height:1;display:inline-block;margin-bottom:13px;transition:transform .45s cubic-bezier(.34,1.56,.64,1)}
+.dx-cap-ico{font-size:27px;line-height:1;color:var(--accent-ink);display:inline-block;margin-bottom:13px;transition:transform .45s cubic-bezier(.34,1.56,.64,1)}
 .dx-cap h3{font-family:var(--body);font-weight:600;font-size:15.5px;letter-spacing:-.2px;margin:0 0 7px;position:relative;z-index:1}
 .dx-cap p{color:var(--text2);font-size:13px;line-height:1.55;font-weight:300;margin:0;position:relative;z-index:1}
 .dx-cap-soon{display:inline-block;font-family:var(--mono);font-weight:700;font-size:8.5px;letter-spacing:.12em;

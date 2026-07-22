@@ -6,6 +6,9 @@ import { useEffect, useRef, useState } from "react"
 import { cn } from "@/lib/utils"
 
 const TILE = 28
+// Horizontal drift distance whose projection onto the 45deg stripe axis is
+// exactly one full TILE period, so the looping animation has no visible seam.
+const DRIFT = TILE * Math.SQRT2
 
 /**
  * Thin white diagonal lattice, drifting via `background-position`. No blur
@@ -39,13 +42,9 @@ export default function SpeedLatticeBackground({ className }: { className?: stri
       <motion.div
         className="absolute inset-0 opacity-[0.28]"
         style={{
-          backgroundImage: [
-            `repeating-linear-gradient(45deg, rgba(255,255,255,0.9) 0px, rgba(255,255,255,0.9) 1px, transparent 1px, transparent ${TILE}px)`,
-            `repeating-linear-gradient(-45deg, rgba(255,255,255,0.9) 0px, rgba(255,255,255,0.9) 1px, transparent 1px, transparent ${TILE}px)`,
-          ].join(", "),
-          backgroundSize: `${TILE}px ${TILE}px`,
+          backgroundImage: `repeating-linear-gradient(45deg, rgba(255,255,255,0.9) 0px, rgba(255,255,255,0.9) 1px, transparent 1px, transparent ${TILE}px)`,
         }}
-        animate={animate ? undefined : { backgroundPosition: [`0px 0px`, `${TILE}px ${TILE}px`] }}
+        animate={animate ? undefined : { backgroundPosition: [`0px 0px`, `${DRIFT}px 0px`] }}
         transition={animate ? undefined : { duration: 20, repeat: Infinity, ease: "linear" }}
       />
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_28%_18%,rgba(255,255,255,0.35),transparent_60%)]" />

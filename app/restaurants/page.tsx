@@ -1,8 +1,32 @@
 import type { Metadata } from "next"
 import Link from "next/link"
+import {
+  BarChart3,
+  Phone,
+  Star,
+  Calendar,
+  PhoneCall,
+  Mail,
+  RotateCcw,
+  X,
+  UtensilsCrossed,
+  CheckCircle2,
+  Sparkles,
+  Stethoscope,
+  Moon,
+} from "lucide-react"
 import SiteShell from "@/components/site/SiteShell"
 
 const CAL = "https://cal.com/pacificedge"
+
+const COMPARE = [
+  { Ico: Moon, cat: "After-hours calls", before: "Ring out, guest calls elsewhere", after: "Answered 24/7, table booked" },
+  { Ico: Phone, cat: "Rush-hour calls", before: "Ring out while you're plating tables", after: "Text-back in 19 seconds" },
+  { Ico: Calendar, cat: "No-shows", before: "An empty table, no chance to refill it", after: "Reminders and waitlist refill the gap" },
+  { Ico: Star, cat: "Reviews", before: "Pile up unanswered for days", after: "Replied to in seconds, you approve" },
+  { Ico: Mail, cat: "Catering & large parties", before: "Inquiries go cold overnight", after: "Answered immediately, booked by morning" },
+  { Ico: RotateCcw, cat: "Repeat guests", before: "One great night, then silence", after: "Automatic follow-up brings them back" },
+]
 
 export const metadata: Metadata = {
   title: { absolute: "AI for Vancouver Restaurants | Pacific Edge AI" },
@@ -13,7 +37,7 @@ export const metadata: Metadata = {
 
 export default function RestaurantsPage() {
   return (
-    <SiteShell variant="minimal">
+    <SiteShell>
       <header className="ihero">
         <div className="ihero-orb ihero-orb-1" />
         <div className="ihero-orb ihero-orb-2" />
@@ -35,8 +59,8 @@ export default function RestaurantsPage() {
           </div>
           <div className="ihero-actions reveal d4">
             <a href={CAL} target="_blank" rel="noopener" className="btn-mint">Book a Free 15-Min Demo</a>
-            <a href="/restaurants-savings-calculator.html" className="btn-mint">📊 What Empty Tables Cost You</a>
-            <a href="#problems" className="btn-light">See How It Helps</a>
+            <a href="/restaurants-savings-calculator.html" className="btn-mint"><BarChart3 size={16} strokeWidth={2} /> What Empty Tables Cost You</a>
+            <a href="#problems" className="btn-dark">See How It Helps</a>
           </div>
           <div className="ihero-stats reveal d5">
             <div className="ihero-stat"><b>19s</b><span>Text back a missed call</span></div>
@@ -57,12 +81,42 @@ export default function RestaurantsPage() {
           <h2 className="st reveal d1">Sound <span className="a">Familiar?</span></h2>
           <p className="sd reveal d2">If your evenings look anything like this, you are leaving money on the table. Literally.</p>
           <div className="prob-grid">
-            <div className="prob reveal d1"><div className="prob-ico">📞</div><h3>Calls ring out during the rush</h3><p>The phone goes while you are plating six tables. By the time anyone gets to it, the guest has already called the place down the street.</p><div className="prob-cost">A missed call is a table you never seat</div></div>
-            <div className="prob reveal d2"><div className="prob-ico">⭐</div><h3>Reviews pile up unanswered</h3><p>Replying to every Google and Yelp review takes hours you do not have, so most just sit there while your rating drifts.</p><div className="prob-cost">Diners read reviews before they pick you</div></div>
-            <div className="prob reveal d3"><div className="prob-ico">📅</div><h3>No-shows leave empty tables</h3><p>A party of six books for Friday and never turns up. That prime-time table sat empty all night with no chance to refill it.</p><div className="prob-cost">An empty Friday 6-top is gone for good</div></div>
-            <div className="prob reveal d1"><div className="prob-ico">☎️</div><h3>The same questions, all day</h3><p>Hours, parking, do you take walk-ins, are you dog friendly. Your host answers the phone more than they greet guests.</p><div className="prob-cost">Your host is a receptionist, not a closer</div></div>
-            <div className="prob reveal d2"><div className="prob-ico">📩</div><h3>Big inquiries go cold</h3><p>Catering and large-party emails come in after close. By morning the customer has booked with whoever replied first.</p><div className="prob-cost">High-value bookings go to the fastest reply</div></div>
-            <div className="prob reveal d3"><div className="prob-ico">🔁</div><h3>One-time diners never return</h3><p>Someone has a great night, then you never hear from them again because there is no time to follow up and bring them back.</p><div className="prob-cost">Regulars are built on follow-up you skip</div></div>
+            <div className="prob reveal d1"><div className="prob-ico"><Phone size={22} strokeWidth={1.75} /></div><h3>Calls ring out during the rush</h3><p>The phone goes while you are plating six tables. By the time anyone gets to it, the guest has already called the place down the street.</p><div className="prob-cost">A missed call is a table you never seat</div></div>
+            <div className="prob reveal d2"><div className="prob-ico"><Star size={22} strokeWidth={1.75} /></div><h3>Reviews pile up unanswered</h3><p>Replying to every Google and Yelp review takes hours you do not have, so most just sit there while your rating drifts.</p><div className="prob-cost">Diners read reviews before they pick you</div></div>
+            <div className="prob reveal d3"><div className="prob-ico"><Calendar size={22} strokeWidth={1.75} /></div><h3>No-shows leave empty tables</h3><p>A party of six books for Friday and never turns up. That prime-time table sat empty all night with no chance to refill it.</p><div className="prob-cost">An empty Friday 6-top is gone for good</div></div>
+            <div className="prob reveal d1"><div className="prob-ico"><PhoneCall size={22} strokeWidth={1.75} /></div><h3>The same questions, all day</h3><p>Hours, parking, do you take walk-ins, are you dog friendly. Your host answers the phone more than they greet guests.</p><div className="prob-cost">Your host is a receptionist, not a closer</div></div>
+            <div className="prob reveal d2"><div className="prob-ico"><Mail size={22} strokeWidth={1.75} /></div><h3>Big inquiries go cold</h3><p>Catering and large-party emails come in after close. By morning the customer has booked with whoever replied first.</p><div className="prob-cost">High-value bookings go to the fastest reply</div></div>
+            <div className="prob reveal d3"><div className="prob-ico"><RotateCcw size={22} strokeWidth={1.75} /></div><h3>One-time diners never return</h3><p>Someone has a great night, then you never hear from them again because there is no time to follow up and bring them back.</p><div className="prob-cost">Regulars are built on follow-up you skip</div></div>
+          </div>
+        </div>
+      </section>
+
+      <div className="divhr" />
+
+      <section id="difference">
+        <div className="wrap">
+          <div className="sl reveal">The Difference</div>
+          <h2 className="st reveal d1">Before &amp; <span className="a">After.</span></h2>
+          <p className="sd reveal d2">What a week at the host stand looks like before and after Janice, your AI employee, starts working in the background.</p>
+          <div className="cmp reveal d2">
+            <div className="cmp-row cmp-head">
+              <div className="cmp-cell cmp-corner" />
+              <div className="cmp-cell cmp-before">Without Pacific Edge AI</div>
+              <div className="cmp-cell cmp-after"><span className="cmp-janice"><span className="cmp-jav">J</span><span className="cmp-jname">With Janice<span className="cmp-jsub">Your AI employee</span></span></span></div>
+            </div>
+            {COMPARE.map((row) => (
+              <div className="cmp-row" key={row.cat}>
+                <div className="cmp-cell cmp-cat"><span className="cmp-ico"><row.Ico size={16} strokeWidth={2} /></span>{row.cat}</div>
+                <div className="cmp-cell cmp-before">
+                  <span className="cmp-x"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3.4" strokeLinecap="round"><path d="M6 6l12 12M18 6L6 18" /></svg></span>
+                  {row.before}
+                </div>
+                <div className="cmp-cell cmp-after">
+                  <span className="cmp-check"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"><path d="M5 13l4 4 11-13" /></svg></span>
+                  {row.after}
+                </div>
+              </div>
+            ))}
           </div>
         </div>
       </section>
@@ -90,8 +144,8 @@ export default function RestaurantsPage() {
                 <div className="mock" data-live>
                   <div className="mock-head"><span className="mock-dot" /><span className="mock-title">Cancellation · Refilled</span></div>
                   <div className="mock-typing" data-typing="1300">Refilling the table<i /><i /><i /></div>
-                  <div className="mock-row"><div className="mock-row-l"><div className="mock-avatar">❌</div><div><div className="mock-name">8:00 PM table freed</div><div className="mock-sub">Offered to 5 on waitlist</div></div></div><span className="mock-pill warn">Open</span></div>
-                  <div className="mock-row"><div className="mock-row-l"><div className="mock-avatar">🔁</div><div><div className="mock-name">Rebooked in 7 min</div><div className="mock-sub">Party of 4 from waitlist</div></div></div><span className="mock-pill ok">Refilled · +$220</span></div>
+                  <div className="mock-row"><div className="mock-row-l"><div className="mock-avatar"><X size={15} strokeWidth={2} /></div><div><div className="mock-name">8:00 PM table freed</div><div className="mock-sub">Offered to 5 on waitlist</div></div></div><span className="mock-pill warn">Open</span></div>
+                  <div className="mock-row"><div className="mock-row-l"><div className="mock-avatar"><RotateCcw size={15} strokeWidth={2} /></div><div><div className="mock-name">Rebooked in 7 min</div><div className="mock-sub">Party of 4 from waitlist</div></div></div><span className="mock-pill ok">Refilled · +$220</span></div>
                 </div>
               </div>
             </div>
@@ -109,8 +163,8 @@ export default function RestaurantsPage() {
               <div className="frow-visual reveal d2">
                 <div className="mock" data-live>
                   <div className="mock-head"><span className="mock-dot" /><span className="mock-title">Missed Call · Recovered</span></div>
-                  <div className="mock-row"><div className="mock-row-l"><div className="mock-avatar">📞</div><div><div className="mock-name">+1 (604) 555-0148</div><div className="mock-sub">Missed at 7:14 PM</div></div></div><span className="mock-pill ok">Texted · 19s</span></div>
-                  <div className="mock-row"><div className="mock-row-l"><div className="mock-avatar">🍽️</div><div><div className="mock-name">Table for 4 · 7:45 PM</div><div className="mock-sub">Booked by AI</div></div></div><span className="mock-pill ok">Confirmed</span></div>
+                  <div className="mock-row"><div className="mock-row-l"><div className="mock-avatar"><Phone size={15} strokeWidth={2} /></div><div><div className="mock-name">+1 (604) 555-0148</div><div className="mock-sub">Missed at 7:14 PM</div></div></div><span className="mock-pill ok">Texted · 19s</span></div>
+                  <div className="mock-row"><div className="mock-row-l"><div className="mock-avatar"><UtensilsCrossed size={15} strokeWidth={2} /></div><div><div className="mock-name">Table for 4 · 7:45 PM</div><div className="mock-sub">Booked by AI</div></div></div><span className="mock-pill ok">Confirmed</span></div>
                 </div>
               </div>
             </div>
@@ -157,7 +211,7 @@ export default function RestaurantsPage() {
                 <div className="phone-notch" />
                 <div className="phone-screen">
                   <div className="phone-top">
-                    <div className="phone-av">🍽️</div>
+                    <div className="phone-av"><UtensilsCrossed size={16} strokeWidth={2} /></div>
                     <div><div className="phone-top-name">Wildfire Kitchen</div><div className="phone-top-sub">AI host · replies instantly</div></div>
                   </div>
                   <div className="chat" data-chat>
@@ -168,7 +222,7 @@ export default function RestaurantsPage() {
                     <div className="bubble them" data-delay="900">Perfect, yes please</div>
                     <div className="typing" data-typing="1100"><i /><i /><i /></div>
                     <div className="bubble me" data-delay="200">Booked for 7:45, party of 4 under your name. Reply C to change anytime. See you tonight!</div>
-                    <div className="chat-badge" data-delay="650"><span className="chat-badge-ico">✅</span><span>Table booked and added to tonight&apos;s covers. Zero host time spent.</span></div>
+                    <div className="chat-badge" data-delay="650"><span className="chat-badge-ico"><CheckCircle2 size={13} strokeWidth={2.5} /></span><span>Table booked and added to tonight&apos;s covers. Zero host time spent.</span></div>
                   </div>
                 </div>
               </div>
@@ -197,7 +251,7 @@ export default function RestaurantsPage() {
                 <div className="sig-head"><span className="sig-live"><i />Tonight · Live</span><span className="sig-num"><span className="count" data-to="58">0</span> covers</span></div>
                 <div className="cov-bar"><i /></div>
                 <div className="cov-tiles"><i /><i /><i /><i /><i /><i /><i /><i /><i /><i /><i /><i /></div>
-                <div className="cov-toast" style={{ marginTop: "auto" }}><span style={{ fontSize: 17 }}>🍽️</span><div><b style={{ display: "block", fontSize: 13 }}>Table for 4 · 7:45 PM</b><span style={{ fontSize: 11, color: "var(--text3)" }}>Just booked by Janice</span></div><span className="mock-pill ok" style={{ marginLeft: "auto", alignSelf: "center" }}>+$220</span></div>
+                <div className="cov-toast" style={{ marginTop: "auto" }}><UtensilsCrossed size={16} strokeWidth={2} style={{ color: "var(--accent-ink)" }} /><div><b style={{ display: "block", fontSize: 13 }}>Table for 4 · 7:45 PM</b><span style={{ fontSize: 11, color: "var(--text3)" }}>Just booked by Janice</span></div><span className="mock-pill ok" style={{ marginLeft: "auto", alignSelf: "center" }}>+$220</span></div>
               </div>
             </div>
           </div>
@@ -247,17 +301,15 @@ export default function RestaurantsPage() {
           <h2 className="icta-title reveal d1">Ready To Fill<br /><span className="a">Every Table?</span></h2>
           <p className="icta-desc reveal d2">Start with a free 15-minute call. We will show you exactly which automations would put the most covers back on your books. No pitch, no obligation.</p>
           <a href={CAL} target="_blank" rel="noopener" className="btn-mint reveal d2">Book a Free 15-Min Demo</a>
-          <div className="reveal d2" style={{ marginTop: 18 }}><a href="/restaurants-savings-calculator.html" className="btn-light">📊 See What Your Empty Tables Are Worth →</a></div>
+          <div className="reveal d2" style={{ marginTop: 18 }}><a href="/restaurants-savings-calculator.html" className="btn-dark"><BarChart3 size={16} strokeWidth={2} /> See What Your Empty Tables Are Worth <span className="arr">→</span></a></div>
           <div className="icta-bullets reveal d3">
             <span><i />Free discovery call</span>
             <span><i />Working prototype in about a week</span>
             <span><i />Vancouver-based</span>
           </div>
           <div className="xlinks reveal d3">
-            <Link href="/salons" className="xlink"><span>💆</span>Salons &amp; Spas</Link>
-            <Link href="/trades" className="xlink"><span>🔧</span>Trades</Link>
-            <Link href="/retail" className="xlink"><span>🛍️</span>Retail</Link>
-            <Link href="/dental" className="xlink"><span>🦷</span>Dental</Link>
+            <Link href="/salons" className="xlink"><span><Sparkles size={14} strokeWidth={2} /></span>Salons &amp; Spas</Link>
+            <Link href="/dental" className="xlink"><span><Stethoscope size={14} strokeWidth={2} /></span>Dental</Link>
           </div>
         </div>
       </section>

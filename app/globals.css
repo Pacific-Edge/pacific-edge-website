@@ -29,17 +29,20 @@
   --color-accent:        #4af0c0;
   --color-accent-ink:    color-mix(in oklab, var(--color-accent) 60%, black);
   --color-accent-bright: color-mix(in oklab, var(--color-accent) 75%, black);
-  --color-on-accent:     color-mix(in oklab, var(--color-accent) 85%, black);
+  --color-on-accent:     color-mix(in oklab, black 92%, var(--color-accent) 8%);
 
   /* ── Border radius — one value, everywhere. Only true circles (50%)
         are exempt, since a circle has no corners to round. Never
         hardcode a radius elsewhere — use var(--radius). ── */
   --radius: 4px;
 
-  /* ── Type — inner vars (--font-syne/-dm-sans) injected by
+  /* ── Type — inner vars (--font-bebas/-outfit/-jetbrains) injected by
         next/font in app/layout.tsx via a CSS variable on <html>. ── */
-  --font-display: var(--font-syne), sans-serif;
-  --font-body:    var(--font-dm-sans), system-ui, sans-serif;
+  --font-display: var(--font-bebas), sans-serif;
+  --font-body:    var(--font-outfit), system-ui, sans-serif;
+  --font-mono:    var(--font-jetbrains), ui-monospace, monospace;
+  /* Apple system font — for the iOS phone chat demo only (components/demo). */
+  --font-system:  -apple-system, BlinkMacSystemFont, "SF Pro Text", "Segoe UI", system-ui, sans-serif;
 }
 
 /* Bare-name aliases so verbatim-ported CSS (var(--accent), var(--grad), …)
@@ -62,6 +65,7 @@
   --grad: var(--color-accent);
   --display: var(--font-display);
   --body: var(--font-body);
+  --mono: var(--font-mono);
 }
 
 /* ═══════════════════════════════════════════════════════════════════════

@@ -19,7 +19,7 @@ const check = (
 
 export default function CustomBuildsPage() {
   return (
-    <SiteShell variant="minimal">
+    <SiteShell>
       <TiltParallax />
       <header className="ihero">
         <div className="ihero-orb ihero-orb-1" data-parallax="26" />
@@ -38,7 +38,7 @@ export default function CustomBuildsPage() {
           </p>
           <div className="ihero-actions reveal d3">
             <a href={CAL} target="_blank" rel="noopener" className="btn-mint">Book a Free 15-Min Demo</a>
-            <a href="#what" className="btn-light">See What We Build ↓</a>
+            <a href="#what" className="btn-dark">See What We Build ↓</a>
           </div>
           <div className="ihero-trust reveal d4">
             Scoped &amp; quoted per project · No templates, no bloat · Vancouver-based

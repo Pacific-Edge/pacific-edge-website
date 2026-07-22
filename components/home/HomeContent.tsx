@@ -1,92 +1,119 @@
 "use client"
 
 import { useEffect, useRef, useState } from "react"
-import Link from "next/link"
+import { motion, useReducedMotion, useScroll, useTransform, type MotionValue } from "framer-motion"
 import {
-  Moon, Phone, Star, Clock, BarChart3, DollarSign,
-  Stethoscope, Home as HomeIcon, Utensils, Sparkles, Wrench,
-  Lock, ShieldCheck, Ban, KeyRound,
+  Phone, Star, Clock, DollarSign,
   MessageSquare, Zap,
-  Mic, LayoutGrid,
 } from "lucide-react"
-import CoverageMap from "./CoverageMap"
 import WhyUsSection from "./WhyUsSection"
+import TrustProofSection from "./TrustProofSection"
+import ScriptedChatDemo from "@/components/demo/ScriptedChatDemo"
+import ColorBends from "@/components/ui/ColorBends"
+import StyledContainer from "@/components/ui/StyledContainer"
+import EmbedLink from "@/components/ui/EmbedLink"
+import HeroRoll from "@/components/ui/HeroRoll"
+import HeroCountUp from "@/components/ui/HeroCountUp"
+import OpsDashVisual from "./OpsDashVisual"
 import { useContactModal } from "@/components/site/ContactModalProvider"
-import { getLenis } from "@/lib/lenis"
 
 const CAL = "https://cal.com/pacificedge"
+
+// Canvas/WebGL contexts can't read CSS custom properties directly (fillStyle/strokeStyle
+// and shader uniforms need literals), so these are the single source of truth for the mint
+// literal used below — keep in sync with --color-accent (#4af0c0) in app/globals.css.
+const ACCENT_RGB = "74,240,192"
+const ACCENT_HEX = "#4af0c0"
+
+// 24/7 second dial: spins ~1.7 turns and lands (stops) on 7.
+const SPIN_TO_7 = [
+  "0", "1", "2", "3", "4", "5", "6", "7", "8", "9",
+  "0", "1", "2", "3", "4", "5", "6", "7",
+]
 
 const MARQUEE = [
   "AI Automation", "Review Management", "Missed Call Recovery", "Customer Follow-Ups",
   "Appointment Booking", "Social Media AI", "Lead Capture", "Workflow Optimization",
 ]
 
-const SCENES = [
-  { i: 0, h: "Answers every lead in seconds", p: "Every missed call gets texted back in seconds and every message is answered around the clock, so a hot lead never goes cold or calls the place down the street." },
-  { i: 1, h: "Turns interest into booked jobs", p: "Janice offers your real open times and fills last-minute cancellations from the waitlist, dropping each one straight into the calendar you already use." },
-  { i: 2, h: "Builds a 5-star reputation", p: "On-brand replies to every review in a tap, and more 5-star ratings nudged from your happiest customers, while the competition stays quiet." },
-  { i: 3, h: "Custom-built around your business", p: "Not a template. We map how your business actually runs, then build the workflows and a live dashboard that fit the tools you already have." },
-]
-
-const COMPARE = [
-  { Ico: Moon, cat: "After-hours coverage", before: "Leads go cold overnight", after: "Answered 24/7, in seconds" },
-  { Ico: Phone, cat: "Missed calls", before: "Lost lead, gone by morning", after: "Texted back in 23 seconds, booked" },
-  { Ico: Star, cat: "Reviews", before: "Hours to reply, if at all", after: "Drafted in seconds, you approve" },
-  { Ico: Clock, cat: "Your time", before: "14+ hours a week on admin", after: "18+ hours handed back to you" },
-  { Ico: BarChart3, cat: "Visibility", before: "Best guess on what's working", after: "Live dashboard on every lead" },
-  { Ico: DollarSign, cat: "Revenue", before: "$3K+ leaking out monthly", after: "Recovered revenue, every month" },
-]
-
 type IntgCard = { ini: string; name: string; img?: string }
-const INDUSTRIES = [
+type IndustryDef = { href: string; name: string; desc: string; more: string; tools: IntgCard[] }
+const INDUSTRIES: IndustryDef[] = [
   {
-    href: "/dental", Icon: Stethoscope, name: "Dental & Health Clinics",
-    desc: "New-patient calls to voicemail, no-shows, missed recalls. We keep the schedule full and the front desk free.", more: "Explore dental AI",
+    href: "/dental", name: "Dental & Health Clinics",
+    desc: "Never miss a new patient call.", more: "Explore dental AI",
     tools: [
-      { ini: "Dx", name: "Dentrix" }, { ini: "OD", name: "Open Dental" }, { ini: "CD", name: "ClearDent" },
-      { ini: "Tk", name: "Tracker" }, { ini: "Ab", name: "AbelDent" }, { ini: "Cv", name: "Curve Dental" },
+      { ini: "Tk", name: "Tracker" }, { ini: "Dx", name: "Dentrix" }, { ini: "OD", name: "Open Dental" },
+      { ini: "CD", name: "ClearDent" },
     ] as IntgCard[],
   },
   {
-    href: "/real-estate", Icon: HomeIcon, name: "Real Estate",
-    desc: "Leads that go cold in minutes, after-hours inquiries, showings missed. We answer first and book the showing, for agents & developers.", more: "Explore real estate AI",
+    href: "/restaurants", name: "Restaurants & Food Service",
+    desc: "Turn the dinner rush into booked tables.", more: "Explore restaurant AI",
     tools: [
-      { ini: "FB", name: "Follow Up Boss" }, { ini: "kv", name: "kvCORE" }, { ini: "Bt", name: "BoomTown" },
-      { ini: "Ds", name: "DocuSign" }, { ini: "Mx", name: "MLS / Matrix" }, { ini: "Rc", name: "Realtor.ca" },
+      { ini: "OT", name: "OpenTable" }, { ini: "To", name: "Toast", img: "/logos/toast.png" },
+      { ini: "Sq", name: "Square" }, { ini: "Cl", name: "Clover" },
     ] as IntgCard[],
   },
   {
-    href: "/restaurants", Icon: Utensils, name: "Restaurants & Food Service",
-    desc: "Missed reservation calls, unanswered reviews, no-shows. We turn the dinner rush into booked tables.", more: "Explore restaurant AI",
+    href: "/salons", name: "Salons, Spas & Wellness",
+    desc: "Keep your chairs full.", more: "Explore salon & spa AI",
     tools: [
-      { ini: "OT", name: "OpenTable" }, { ini: "To", name: "Toast", img: "/logos/toast.png" }, { ini: "TB", name: "TouchBistro" },
-      { ini: "7s", name: "7shifts", img: "/logos/7shifts.png" }, { ini: "Ls", name: "Lightspeed" }, { ini: "Rs", name: "Resy" },
+      { ini: "Ph", name: "Phorest" }, { ini: "Vg", name: "Vagaro" }, { ini: "Sq", name: "Square Appts" },
+      { ini: "Bk", name: "Booksy" },
     ] as IntgCard[],
   },
   {
-    href: "/salons", Icon: Sparkles, name: "Salons, Spas & Wellness",
-    desc: "Empty chairs, after-hours DMs, clients who never rebook. We keep your calendar full and your regulars regular.", more: "Explore salon & spa AI",
+    href: "/trades", name: "Trades & Home Services",
+    desc: "Win the job, even off the truck.", more: "Explore trades AI",
     tools: [
-      { ini: "Fr", name: "Fresha" }, { ini: "Vg", name: "Vagaro" }, { ini: "Bk", name: "Booksy" },
-      { ini: "Mb", name: "Mindbody" }, { ini: "GG", name: "GlossGenius" }, { ini: "Sq", name: "Square Appts" },
-    ] as IntgCard[],
-  },
-  {
-    href: "/trades", Icon: Wrench, name: "Trades & Home Services",
-    desc: "Calls missed on the job, quotes gone cold. We capture every lead and follow up, completely hands-free.", more: "Explore trades AI",
-    tools: [
-      { ini: "Jb", name: "Jobber" }, { ini: "ST", name: "ServiceTitan" }, { ini: "HC", name: "Housecall Pro" },
-      { ini: "M8", name: "ServiceM8" }, { ini: "HS", name: "HomeStars" }, { ini: "QB", name: "QuickBooks" },
+      { ini: "QB", name: "QuickBooks" }, { ini: "HS", name: "HomeStars" }, { ini: "Jb", name: "Jobber" },
+      { ini: "ST", name: "ServiceTitan" },
     ] as IntgCard[],
   },
 ]
+
+// Scroll-driven parallax rate per row (px of travel each side of rest).
+// All rows share one timeline — the section's scroll progress — and move
+// simultaneously; later rows travel further so the stack gently compresses
+// upward as it crosses the viewport. Alternating rows never overlap.
+const IND_PARALLAX_RATE = [25, 40, 55, 70]
+
+function IndustryRow({ ind, index, progress }: { ind: IndustryDef; index: number; progress: MotionValue<number> }) {
+  const prefersReduced = useReducedMotion()
+  const rate = IND_PARALLAX_RATE[index] ?? 20
+  // Linear with scroll (Lenis supplies the smoothing): +rate when the section
+  // enters at the bottom, -rate as it leaves at the top.
+  const y = useTransform(progress, (t) => (prefersReduced ? 0 : rate * (1 - 2 * t)))
+
+  return (
+    <div className={`ind-frow r${index % 2 === 1 ? " rev" : ""}`}>
+      <motion.div className="ind-frow-text" style={{ y }}>
+        <h3 className="ind-frow-title">{ind.name}</h3>
+        <p className="ind-frow-sub">{ind.desc}</p>
+        <div className="ind-frow-tools">
+          {ind.tools.map((tool) => (
+            <span className="ind-tool" key={tool.name}>
+              <span className="ind-tool-ico">
+                {tool.img ? <img src={tool.img} alt={`${tool.name} logo`} loading="lazy" /> : null}
+                <b>{tool.ini}</b>
+              </span>
+              {tool.name}
+            </span>
+          ))}
+        </div>
+        <EmbedLink href={ind.href} className="ind-row-btn">{ind.more}</EmbedLink>
+      </motion.div>
+    </div>
+  )
+}
 
 const STEPS = [
-  { h: "Discovery Call", p: "15 minutes. We learn about your business, find where you're bleeding time and money, and identify the highest-impact automations. No sales pitch - just clarity." },
-  { h: "Deep-Dive Session", p: "A focused 60-minute session where we map out your entire workflow, pinpoint the bottlenecks costing you the most time and money, and identify exactly which automations will move the needle for your business." },
-  { h: "Custom Build", p: "We design and build your AI workflows using battle-tested tools. You see a working prototype within the first week - not a slide deck, real software." },
-  { h: "Launch & Train", p: "We deploy everything, walk your team through it in plain English, and make sure you're comfortable before we step back. No orphaned systems." },
-  { h: "Optimize & Support", p: "Ongoing monitoring and tweaking. As your business grows, we scale your automations with you. You focus on running the business - we keep the systems humming." },
+  { h: "Discovery Call", p: "15 minutes to learn your business, find where time and money are slipping, and identify what to automate first. No sales pitch." },
+  { h: "Deep-Dive Session", p: "A focused 60-minute session mapping your workflow to find what's costing you the most and which automations matter most." },
+  { h: "Custom Build", p: "We design and build your AI workflows with proven tools. You see a working prototype within the first week - real software, not a slide deck." },
+  { h: "Launch & Train", p: "We roll everything out, train your team, and confirm you're comfortable before we step back." },
+  { h: "Optimize & Support", p: "Ongoing monitoring and refinement. As your business grows, we scale your automations with you." },
 ]
 
 const DASH_ROWS = [
@@ -98,37 +125,14 @@ const DASH_ROWS = [
   { Icon: Zap, label: "Growth bottleneck", before: "YOU", after: "SOLVED" },
 ]
 
-const TRUST = [
-  { Ico: Lock, h: "Encrypted end to end", p: "Every conversation and customer record is encrypted in transit and at rest, protected the whole way through." },
-  { Ico: ShieldCheck, h: "Canadian privacy first", p: "Built to align with PIPEDA and BC's privacy rules, with personal information treated as exactly that, personal." },
-  { Ico: Ban, h: "Never sold or shared", p: "Your data is yours. We never sell it, rent it, or hand it to third parties. Full stop." },
-  { Ico: KeyRound, h: "You stay in control", p: "Strict access, only what is needed is ever touched. And if we ever part ways, everything is documented and handed back." },
-]
-
-const TESTIMONIALS = [
-  { av: "CM", name: "Carter Macintosh", biz: "Pinnacle Ridge Contracting · Trades", q: "Every missed call gets texted back in seconds, and Janice holds the slot until my crew confirms it. We booked three extra jobs our first week." },
-  { av: "AJ", name: "AJ", biz: "AJ Consulting · Professional Services", q: "The biggest surprise was how much time it gave us back. My team used to lose hours every week to callbacks and chasing cancelled slots, Pacific Edge AI handles all of it now. It's like adding a front-desk hire without the payroll." },
-  { av: "PA", name: "Priya Anand", biz: "Coast Beauty Lounge · Salon & Spa", q: "Cancellations used to gut our schedule. The moment someone drops, Janice texts our waitlist and usually fills the spot within minutes, even overnight. My chairs stay full and my front desk isn't chasing anyone anymore." },
-]
-
-const SOURCES = [
-  "Workflow automation reduces repetitive tasks by 60-95%, with time savings of up to 77% on routine activities. PS Global Consulting, citing Jobera et al.",
-  "Approximately 75% of generative AI's value potential falls across customer operations, marketing/sales, software engineering, and R&D. McKinsey & Company.",
-  "Average small business callback response time is approximately 4 hours; average lead response time across businesses is 47 hours. Medium; Dialzara.",
-  "The average business responds to approximately 36% of its reviews. SOCi (2022).",
-  "63% of consumers say businesses never responded to their review. ReplyOnTheFly.",
-  "Small business owners spend an average of 14-16 hours per week on administrative tasks. Turnozo, citing Time Etc / SBA data; Venturu.",
-  "A service business missing 3+ calls per week at average job values can lose $3,000+/month in opportunity cost. Netpartners.",
-  "Businesses that respond to reviews earn up to 52% more revenue. Toister Solutions, citing Harvard Business Review.",
-]
-
 export default function HomeContent() {
   const { open } = useContactModal()
-  const [scene, setScene] = useState(0)
+  const reduce = useReducedMotion()
   const [scrolled, setScrolled] = useState(false)
 
   const canvasRef = useRef<HTMLCanvasElement>(null)
-  const swTrackRef = useRef<HTMLDivElement>(null)
+  const indAltRef = useRef<HTMLDivElement>(null)
+  const { scrollYProgress: indProgress } = useScroll({ target: indAltRef, offset: ["start end", "end start"] })
   const processRef = useRef<HTMLElement>(null)
   const pdFillRef = useRef<HTMLDivElement>(null)
 
@@ -161,7 +165,7 @@ export default function HomeContent() {
         if (a.y > cv.height) a.y = 0
         cx.beginPath()
         cx.arc(a.x, a.y, a.r, 0, Math.PI * 2)
-        cx.fillStyle = "rgba(74,240,192," + a.a + ")"
+        cx.fillStyle = `rgba(${ACCENT_RGB},${a.a})`
         cx.fill()
         for (let j = i + 1; j < pts.length; j++) {
           const b = pts[j]
@@ -172,7 +176,7 @@ export default function HomeContent() {
             cx.beginPath()
             cx.moveTo(a.x, a.y)
             cx.lineTo(b.x, b.y)
-            cx.strokeStyle = "rgba(74,240,192," + 0.018 * (1 - d / 130) + ")"
+            cx.strokeStyle = `rgba(${ACCENT_RGB},${0.018 * (1 - d / 130)})`
             cx.stroke()
           }
         }
@@ -198,18 +202,9 @@ export default function HomeContent() {
     }
   }, [])
 
-  // Scroll-driven services scene (desktop pinned section) + scroll-top toggle
+  // Scroll-top toggle
   useEffect(() => {
-    const onScroll = () => {
-      setScrolled(window.scrollY > 600)
-      const track = swTrackRef.current
-      if (track && window.innerWidth > 960) {
-        const rect = track.getBoundingClientRect()
-        const total = track.offsetHeight - window.innerHeight
-        const p = total > 0 ? Math.min(Math.max(-rect.top / total, 0), 1) : 0
-        setScene(Math.min(SCENES.length - 1, Math.floor(p * SCENES.length)))
-      }
-    }
+    const onScroll = () => setScrolled(window.scrollY > 600)
     window.addEventListener("scroll", onScroll, { passive: true })
     onScroll()
     return () => window.removeEventListener("scroll", onScroll)
@@ -245,7 +240,7 @@ export default function HomeContent() {
       const scrolled = -rect.top
       const progress = Math.max(0, Math.min(1, scrolled / (rect.height - window.innerHeight * 0.5)))
       const total = rows.length
-      const sliderProgress = Math.min(1, progress / (4 / (total + 1)))
+      const sliderProgress = Math.min(1, progress / (2.5 / (total + 1)))
       fill.style.width = sliderProgress * 100 + "%"
       afterLabel?.classList.toggle("lit", sliderProgress > 0.9)
       rows.forEach((row, i) => {
@@ -265,65 +260,47 @@ export default function HomeContent() {
     }
   }, [])
 
-  const toTop = () => {
-    const lenis = getLenis()
-    if (lenis) lenis.scrollTo(0)
-    else window.scrollTo({ top: 0, behavior: "smooth" })
-  }
-
-
   return (
     <div className="pe-home">
       <canvas id="p" ref={canvasRef} />
 
       {/* HERO */}
       <section className="hero">
-        <div className="hero-label">
-          <span className="hero-label-dot" />
-          AI Consulting · Vancouver, BC
-        </div>
         <h1>
           The Unfair Edge
           <br />
           <span className="accent-line">Your Business Deserves.</span>
         </h1>
         <div className="hero-rule" />
-        <p className="hero-sub">
-          Every missed call recovered. Every review answered. Every booking tracked. Custom AI built
-          around how your Vancouver business actually runs.
-        </p>
-        <div className="hero-pain">Tired of watching leads slip through the cracks?</div>
+        <p className="hero-sub">Recover every missed call, answer every review, track every booking. AI systems and custom software built around how your business runs.</p>
         <div className="hero-actions">
           <a href={CAL} target="_blank" rel="noopener" className="btn-mint">
-            Book a Free 15-Min Demo{" "}
-            <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
-              <path d="M3 8h10m0 0L9 4m4 4L9 12" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
-            </svg>
+            Book a Free 15-Min Demo
           </a>
-          <a href="#services" className="btn-light">
+          <a href="#services" className="btn-dark">
             See What We Do
           </a>
         </div>
         <div className="hero-stats">
-          <div>
+          <div className="hero-stat">
             <div className="hero-stat-val">
-              77%<a href="#sources" className="stat-src">[1]</a>
+              <HeroCountUp to={77} delay={1.0} duration={1.6} />%<a href="#sources" className="stat-src">[1]</a>
             </div>
             <div className="hero-stat-lbl">Less admin</div>
           </div>
-          <div className="hero-stat-divider" />
-          <div>
-            <div className="hero-stat-val">3X</div>
+          <div className="hero-stat">
+            <div className="hero-stat-val">
+              <HeroRoll sequence={["1", "2", "3"]} axis="x" enterFrom={-1} startDelayMs={2000} stepMs={450} />X
+            </div>
             <div className="hero-stat-lbl">Faster response</div>
           </div>
-          <div className="hero-stat-divider" />
-          <div>
-            <div className="hero-stat-val">24/7</div>
+          <div className="hero-stat">
+            <div className="hero-stat-val">
+              <HeroRoll sequence={["19", "20", "21", "22", "23", "24"]} axis="y" enterFrom={-1} startDelayMs={1900} stepMs={190} />/
+              <HeroRoll sequence={SPIN_TO_7} axis="y" enterFrom={1} startDelayMs={1200} stepMs={110} />
+            </div>
             <div className="hero-stat-lbl">Always on</div>
           </div>
-        </div>
-        <div className="hero-trust">
-          Built for Vancouver&apos;s restaurants, salons, trades &amp; shops · No tech team required
         </div>
       </section>
 
@@ -339,136 +316,66 @@ export default function HomeContent() {
         </div>
       </div>
 
-      {/* TWO-SIDED: AI Solutions / Custom Software Solutions */}
-      <section className="split" aria-label="Two ways we work with you">
-        <Link href="/ai-employee" className="split-half split-voice">
-          <div className="split-ico"><Mic size={22} strokeWidth={2} /></div>
-          <div className="split-eyebrow">AI Solutions</div>
-          <h3 className="split-h">Trained on your business.</h3>
-          <ul className="split-bullets">
-            <li>
-              <strong>Voice:</strong> An AI receptionist answers every call 24/7, books appointments, and follows up, so nothing slips through.
-            </li>
-            <li>
-              <strong>Chat:</strong> An AI inquiry bot answers customer questions on your site and socials, &ldquo;do you have homes under $1M in this area?&rdquo;, &ldquo;are you open Sunday?&rdquo;, and more.
-            </li>
-          </ul>
-          <span className="split-cta">Meet Janice <span className="arr">→</span></span>
-        </Link>
-        <div className="split-div" aria-hidden="true" />
-        <Link href="/custom-builds" className="split-half split-software">
-          <div className="split-ico"><LayoutGrid size={22} strokeWidth={2} /></div>
-          <div className="split-eyebrow">Custom Software Solutions</div>
-          <h3 className="split-h">Wired into the tools you already run.</h3>
-          <p className="split-p">
-            Dental cancellation and booking management built for Tracker, Open Dental, and Dentrix. Trades job routing integrated with ASA&apos;s API. Plus custom builds for OpenTable, Toast, Fresha, Jobber, and whatever your team runs day to day.
-          </p>
-          <span className="split-cta">See custom builds <span className="arr">→</span></span>
-        </Link>
-      </section>
-
-      {/* SERVICES (pinned scroll scene) */}
-      <section className="sw" id="services">
-        <div className="sw-track" ref={swTrackRef}>
-          <div className="sw-pin">
-            <div className="sw-inner">
-              <div className="sw-left">
-                <div className="sl">Our Solutions</div>
-                <h2 className="st sw-h">
-                  What We
-                  <br />
-                  Build <span className="a">For You</span>
-                </h2>
-                <div className="sw-list">
-                  {SCENES.map((s) => (
-                    <button
-                      key={s.i}
-                      className={`sw-item ${scene === s.i ? "active" : ""}`}
-                      type="button"
-                      onClick={() => setScene(s.i)}
-                    >
-                      <span className="sw-rail" />
-                      <h3>{s.h}</h3>
-                      <p>{s.p}</p>
-                    </button>
-                  ))}
-                </div>
-                <Link href="/ai-employee" className="sw-watch">
-                  Meet Janice
-                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round">
-                    <path d="M5 12h14M13 6l6 6-6 6" />
-                  </svg>
-                </Link>
-              </div>
-              <div className="sw-right">
-                <div className={`sw-scene ${scene === 0 ? "active" : ""}`} data-s="0">
-                  <div className="sw-iso">
-                    <div className="iso-screen">
-                      <div className="sw-msg-h"><i /><i /><i /><b>Messages</b></div>
-                      <div className="sw-bub them">Missed call · 9:42 PM</div>
-                      <div className="sw-bub me">Hi! Sorry we missed you, how can we help?</div>
-                      <div className="sw-bub them">Need a quote for a bathroom reno</div>
-                      <div className="sw-tag">⚡ Replied in 18s</div>
-                    </div>
-                  </div>
-                </div>
-                <div className={`sw-scene ${scene === 1 ? "active" : ""}`} data-s="1">
-                  <div className="swc swc-cal">
-                    <div className="swc-bar"><b>This Week</b><span>Booking</span></div>
-                    <div className="cal-week">
-                      <div className="cal-day">M<b>10</b></div><div className="cal-day">T<b>11</b></div><div className="cal-day">W<b>12</b></div><div className="cal-day">T<b>13</b></div><div className="cal-day">F<b>14</b></div><div className="cal-day on">S<b>15</b></div><div className="cal-day">S<b>16</b></div>
-                    </div>
-                    <div className="cal-appt"><div className="cal-av">JM</div><div><b>Sat 1:30 PM, Jordan M.</b><em>Filled from your waitlist · +$240</em></div><span className="cal-ok">✓</span></div>
-                  </div>
-                </div>
-                <div className={`sw-scene ${scene === 2 ? "active" : ""}`} data-s="2">
-                  <div className="swc swc-rev">
-                    <div className="rev-score"><div className="rev-big">4.9</div><div><div className="rev-stars">★★★★★</div><div className="rev-meta">128 reviews · <b>▲ +12 this week</b></div></div></div>
-                    <div className="rev-card"><div className="rev-stars">★★★★★</div><p>&ldquo;Best in town, they booked us the same day and answered every text.&rdquo;</p><span className="rev-tag">↳ Janice replied in seconds</span></div>
-                  </div>
-                </div>
-                <div className={`sw-scene ${scene === 3 ? "active" : ""}`} data-s="3">
-                  <div className="swc swc-dash">
-                    <div className="swc-bar"><b>Your Dashboard</b><span>Live</span></div>
-                    <div className="dash-tiles"><div className="dash-tile"><b>48</b><span>Calls answered</span></div><div className="dash-tile"><b>31</b><span>Jobs booked</span></div><div className="dash-tile"><b>9</b><span>Slots saved</span></div></div>
-                    <div className="dash-chart"><i /><i /><i /><i /><i /><i /></div>
-                    <div className="dash-int"><span>📞 Phone</span><span>📅 Calendar</span><span>⭐ Reviews</span><span>📁 Your CRM</span></div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <div className="divhr" />
-
-      {/* BEFORE & AFTER */}
-      <section className="compare" id="compare">
+      {/* TWO SIDES TO OUR BUSINESS — full section */}
+      <section className="twosides" id="two-sides">
+        <span className="sn">01</span>
         <div className="r">
-          <div className="sl">The Difference</div>
-          <h2 className="st">Before &amp; <span className="a">After.</span></h2>
-          <p className="sd">What a week running your business looks like before and after Janice, your AI employee, starts working in the background.</p>
+          <div className="sl">What We Do</div>
+          <h2 className="st">How We <span className="a">Grow Your Business.</span></h2>
+          <p className="sd">Two ways we help local businesses run smarter, from ready-to-go AI agents that go live in days to custom software built around exactly how you work.</p>
         </div>
-        <div className="cmp">
-          <div className="cmp-row cmp-head r">
-            <div className="cmp-cell cmp-corner" />
-            <div className="cmp-cell cmp-before">Without Pacific Edge AI</div>
-            <div className="cmp-cell cmp-after"><span className="cmp-janice"><span className="cmp-jav">J</span><span className="cmp-jname">With Janice<span className="cmp-jsub">Your AI employee</span></span></span></div>
-          </div>
-          {COMPARE.map((row, i) => (
-            <div className={`cmp-row r rd${i + 1}`} key={row.cat}>
-              <div className="cmp-cell cmp-cat"><span className="cmp-ico"><row.Ico size={16} strokeWidth={2} /></span>{row.cat}</div>
-              <div className="cmp-cell cmp-before">
-                <span className="cmp-x"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3.4" strokeLinecap="round"><path d="M6 6l12 12M18 6L6 18" /></svg></span>
-                {row.before}
+        <div className="ts-grid">
+          <StyledContainer background="black" pattern="diag-wide" className="ts-card ts-ai">
+            <div className="ts-body">
+              <div className="ts-copy">
+                <h3 className="ts-h">AI Solutions</h3>
+                <p className="ts-p">We build AI agents that answer every call, chat with customers on your site, and get your team trained on the tools from day one.</p>
+                <ul className="ts-inline">
+                  <li>AI Voice Receptionist</li>
+                  <li>AI Inquiry Chatbot</li>
+                  <li>AI Training</li>
+                </ul>
+                <div className="ts-proof">
+                  <span className="ts-proof-dot" aria-hidden="true" />
+                  <span><strong>Live now:</strong> an AI voice receptionist answering calls, booking appointments, and walking callers through the business, 24/7.</span>
+                </div>
+                <EmbedLink href="/ai-employee" variant="dark">Explore AI agents</EmbedLink>
               </div>
-              <div className="cmp-cell cmp-after">
-                <span className="cmp-check"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"><path d="M5 13l4 4 11-13" /></svg></span>
-                {row.after}
+              <div className="ts-phone">
+                <ScriptedChatDemo industry="dental" />
               </div>
             </div>
-          ))}
+          </StyledContainer>
+          {/* Right side — Custom Software Builds. Uses the same .ts-* type
+              system as the left card (identical fonts/sizes); the .ts-cb variant
+              supplies the mint→ink gradient, white text, and wider copy. */}
+          <StyledContainer
+            background="mint"
+            pattern="diag-tight"
+            className="ts-card ts-cb"
+          >
+            <div className="ts-body">
+              <div className="ts-copy">
+                <h3 className="ts-h">Custom Software Builds</h3>
+                <p className="ts-p">We build bespoke backend systems that bring clients in the door, help you manage them once they&apos;re booked, and keep the whole operation running smoothly.</p>
+                <ul className="ts-inline">
+                  <li>Appointment Cancellation Management Software</li>
+                  <li>CRM / Lead Tracking &amp; Sourcing</li>
+                  <li>Reporting Dashboard</li>
+                  <li>Review Management</li>
+                  <li>Websites + SEO</li>
+                </ul>
+                <div className="ts-proof">
+                  <span className="ts-proof-dot" aria-hidden="true" />
+                  <span><strong>Live now:</strong> Janice, our AI cancellation-management platform, keeping the schedule full automatically.</span>
+                </div>
+                <EmbedLink href="/custom-builds" variant="dark">See custom builds</EmbedLink>
+              </div>
+              <div className="ts-cb-dash">
+                <OpsDashVisual reduce={reduce} />
+              </div>
+            </div>
+          </StyledContainer>
         </div>
       </section>
 
@@ -477,43 +384,17 @@ export default function HomeContent() {
       {/* INDUSTRIES */}
       <section id="industries">
         <span className="sn">02</span>
-        <div className="r">
+        <div className="r ind-head">
           <div className="sl">Industries</div>
-          <h2 className="st">Built For<br /><span className="a">Your Business.</span></h2>
-          <p className="sd">Five local industries we know inside out, and the tools we already plug into for each. Click yours to see exactly what we would automate.</p>
+          <h2 className="st ind-head-title">Industries We <span className="a">Serve.</span></h2>
         </div>
-        <div className="ind-rows">
+        <div className="ind-alt" ref={indAltRef}>
           {INDUSTRIES.map((ind, i) => (
-            <div className={`ind-row r rd${i + 1}`} key={ind.href}>
-              <span className="ind-row-icon"><ind.Icon size={24} strokeWidth={1.75} /></span>
-              <div className="ind-row-main">
-                <h4>{ind.name}</h4>
-                <p>{ind.desc}</p>
-                <div className="ind-row-tools">
-                  {ind.tools.map((tool) => (
-                    <span className="ind-tool" key={tool.name}>
-                      <span className="ind-tool-ico">
-                        {tool.img ? <img src={tool.img} alt={`${tool.name} logo`} loading="lazy" /> : null}
-                        <b>{tool.ini}</b>
-                      </span>
-                      {tool.name}
-                    </span>
-                  ))}
-                </div>
-              </div>
-              <Link href={ind.href} className="btn-light ind-row-btn">
-                {ind.more} <span className="arr">→</span>
-              </Link>
-            </div>
+            <IndustryRow ind={ind} index={i} progress={indProgress} key={ind.href} />
           ))}
         </div>
         <p className="intg-note">Don&apos;t see your tools? <b>We build custom integrations</b> for whatever you already run.</p>
       </section>
-
-      <div className="divhr" />
-
-      {/* COVERAGE */}
-      <CoverageMap />
 
       <div className="divhr" />
 
@@ -523,20 +404,19 @@ export default function HomeContent() {
         <div className="r">
           <div className="sl">How It Works</div>
           <h2 className="st">Simple Process,<br /><span className="a">Powerful</span> Results</h2>
-          <p className="sd">Transparent terms, no confusing tech talk. Here&apos;s how we get your business running smarter in days, not months.</p>
+          <p className="sd">Here&apos;s how we get your business running smarter in days, not months.</p>
         </div>
         <div className="process-wrapper">
           <div className="steps-tl">
             {STEPS.map((s, i) => (
               <div className={`step r rd${i + 1}`} key={s.h}>
                 <div className="step-circle">{i + 1}</div>
-                <div className="step-body"><h3>{s.h}</h3><p>{s.p}</p></div>
+                <div className="step-body"><h3 className="title-step">{s.h}</h3><p>{s.p}</p></div>
               </div>
             ))}
           </div>
-          <div className="process-dash r rd2">
+          <StyledContainer background="black" pattern="mesh" className="process-dash r rd2">
             <div className="pd-top">
-              <div className="pd-status"><span className="pd-status-dot" />Live Dashboard Preview</div>
               <div className="pd-progress">
                 <div className="pd-progress-label"><span className="pd-before-label">Before</span><span className="pd-after-label">After</span></div>
                 <div className="pd-progress-bar"><div className="pd-progress-fill" ref={pdFillRef} style={{ width: "0%" }} /></div>
@@ -558,16 +438,13 @@ export default function HomeContent() {
               <div className="pd-footer-stat"><div className="pd-footer-num">24/7</div><div className="pd-footer-label">Always running</div></div>
               <div className="pd-footer-stat"><div className="pd-footer-num">W1</div><div className="pd-footer-label">First results</div></div>
             </div>
-          </div>
+          </StyledContainer>
         </div>
-        <div style={{ textAlign: "center", padding: "40px 56px 0" }}>
-          <Link href="/how-it-works" className="btn-light" style={{ marginRight: 14 }}>
-            See The Full Process
-          </Link>
+        <div style={{ display: "flex", justifyContent: "center", alignItems: "center", gap: 28, padding: "40px 56px 0" }}>
           <a href={CAL} target="_blank" rel="noopener" className="btn-mint">
-            Book a Free Consultation{" "}
-            <svg width="14" height="14" viewBox="0 0 16 16" fill="none"><path d="M3 8h10m0 0L9 4m4 4L9 12" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" /></svg>
+            Book a Free Consultation
           </a>
+          <EmbedLink href="/how-it-works">See The Full Process</EmbedLink>
         </div>
       </section>
 
@@ -576,94 +453,71 @@ export default function HomeContent() {
       {/* WHY US */}
       <section className="about" id="about">
         <span className="sn">05</span>
-        <div className="r">
-          <div className="sl">Why Us</div>
-          <h2 className="st">Built By Operators,<br /><span className="a">Not Agencies</span></h2>
-          <p className="sd">We&apos;re not a faceless dev shop. We&apos;re business owners who got tired of watching local companies drown in admin work that machines should be handling.</p>
+        <div className="r" style={{ textAlign: "center" }}>
+          <div className="sl" style={{ justifyContent: "center" }}>Why Us</div>
+          <h2 className="st">Built By Operators, <span className="a">Not Agencies</span></h2>
+          <p className="sd" style={{ maxWidth: 720, marginLeft: "auto", marginRight: "auto" }}>We&apos;re business owners, not a dev shop, building the automation we wished we had.</p>
         </div>
         <WhyUsSection />
         <div style={{ textAlign: "center", marginTop: 48 }}>
-          <Link href="/about" className="btn-light">
-            Meet The Team{" "}
-            <svg width="14" height="14" viewBox="0 0 16 16" fill="none"><path d="M3 8h10m0 0L9 4m4 4L9 12" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" /></svg>
-          </Link>
+          <EmbedLink href="/about">Meet The Team</EmbedLink>
         </div>
       </section>
 
       <div className="divhr" />
 
-      {/* TRUST */}
-      <section className="trust">
-        <div className="trust-head r">
-          <div className="sl">Built On Trust</div>
-          <h2 className="st">Your Data <span className="a">Stays Yours.</span></h2>
-          <p className="sd" style={{ margin: "0 auto" }}>We treat your customers&apos; information like it&apos;s our own. Here is exactly how we keep it safe.</p>
-        </div>
-        <div className="trust-grid">
-          {TRUST.map((t, i) => (
-            <div className={`trust-card r rd${i + 1}`} key={t.h}>
-              <div className="trust-ico"><t.Ico size={20} strokeWidth={1.75} /></div><h3>{t.h}</h3><p>{t.p}</p>
-            </div>
-          ))}
-        </div>
-      </section>
-
-      <div className="divhr" />
-
-      {/* TESTIMONIALS */}
+      {/* TRUST + TESTIMONIALS */}
       <section id="testimonials">
-        <div className="r">
-          <div className="sl">Proof</div>
-          <h2 className="st">What Owners<br /><span className="a">Are Saying.</span></h2>
-          <p className="sd">Real outcomes from local businesses across Greater Vancouver, in their own words.</p>
+        <div className="r" style={{ textAlign: "center" }}>
+          <div className="sl" style={{ justifyContent: "center" }}>Trust &amp; Proof</div>
+          <h2 className="st" style={{ margin: "0 auto 18px" }}>Trustworthy, <span className="a">Privacy-Focused </span><span style={{ color: "var(--color-text)" }}>Service.</span></h2>
+          <p className="sd sd-oneline" style={{ margin: "0 auto" }}>We treat your customers&apos; data like it&apos;s our own, and local business owners feel the difference.</p>
         </div>
-        <div className="tst-grid tst-three">
-          {TESTIMONIALS.map((t, i) => (
-            <div className={`tst tst-feature r rd${i + 1}`} key={t.name + i}>
-              <div className="tst-stars">★★★★★</div>
-              <p className="tst-q">&quot;{t.q}&quot;</p>
-              <div className="tst-by"><div className="tst-av">{t.av}</div><div><div className="tst-name">{t.name}</div><div className="tst-biz">{t.biz}</div></div></div>
-            </div>
-          ))}
-        </div>
+        <TrustProofSection />
       </section>
 
       <div className="divhr" />
 
       {/* CONTACT CTA */}
       <section className="cta" id="contact">
-        <div className="r">
-          <div className="sl" style={{ justifyContent: "center" }}>No-Risk Start</div>
-          <h2 className="cta-title">One Month<br /><span className="a">On Us.</span></h2>
-          <p className="cta-desc">Put Janice to work in your business for a full month, on us. See the bookings she catches and the hours she saves, then decide. If she is not the right fit, walk away. No strings.</p>
-          <div className="cta-actions">
-            <a href={CAL} target="_blank" rel="noopener" className="btn-mint" style={{ fontSize: 16, padding: "18px 44px" }}>Book a Free 15-Min Demo</a>
-            <button type="button" className="cta-email" onClick={open}>Or email hello@pacificedge.ai →</button>
+        <div className="cta-panel surface--ink">
+          {/* ColorBends field — passive, non-interactive WebGL background glowing
+              over the ink panel. Mint token ramp; pauses when off-screen. */}
+          <div className="cta-bends" aria-hidden>
+            {/* Bespoke 4-stop shader ramp (WebGL uniform, can't consume CSS vars) — only the
+                3rd stop is the design token (--color-accent); the other 3 are one-off shades
+                purpose-built for this gradient, not part of the site's token system. */}
+            <ColorBends
+              colors={["#0a7d5d", "#0a9d76", ACCENT_HEX, "#7ff5d5"]}
+              interactive={false}
+              speed={0.18}
+              scale={1.3}
+              intensity={1.0}
+              noise={0.08}
+              parallax={0}
+              mouseInfluence={0}
+            />
           </div>
-          <div className="cta-bullets">
-            <span><i className="cta-dot" />Free discovery call</span>
-            <span><i className="cta-dot" />Transparent pricing</span>
-            <span><i className="cta-dot" />Working prototype in ~1 week</span>
-            <span><i className="cta-dot" />Vancouver-based</span>
+          <div className="r">
+            <div className="sl" style={{ justifyContent: "center" }}>No-Risk Start</div>
+            <h2 className="cta-title">One Month<br /><span className="a" style={{ color: "#fff" }}>On Us.</span></h2>
+            <p className="cta-desc">Put Janice to work in your business for a full month, on us. See the bookings she catches and the hours she saves, then decide. If she is not the right fit, walk away. No strings.</p>
+            <div className="cta-actions">
+              <a href={CAL} target="_blank" rel="noopener" className="btn-mint" style={{ fontSize: 16, padding: "18px 44px" }}>Book a Free 15-Min Demo</a>
+              <EmbedLink variant="dark" onClick={open}>Or email hello@pacificedge.ai</EmbedLink>
+            </div>
+            <div className="cta-bullets">
+              <span><i className="cta-dot" />Free discovery call</span>
+              <span><i className="cta-dot" />Transparent pricing</span>
+              <span><i className="cta-dot" />Working prototype in ~1 week</span>
+              <span><i className="cta-dot" />Vancouver-based</span>
+            </div>
           </div>
         </div>
       </section>
 
-      {/* SOURCES */}
-      <div className="sources" id="sources">
-        <div className="sources-title">Sources &amp; References</div>
-        <ol>
-          {SOURCES.map((s, i) => (
-            <li key={i}>{s}</li>
-          ))}
-        </ol>
-      </div>
-
       {/* Floating controls */}
       <a href={CAL} target="_blank" rel="noopener" className={`float-book ${scrolled ? "show" : ""}`}>Book a Demo</a>
-      <button className={`scroll-top ${scrolled ? "show" : ""}`} onClick={toTop} aria-label="Scroll to top">
-        <svg width="18" height="18" viewBox="0 0 16 16" fill="none"><path d="M8 13V3m0 0L4 7m4-4l4 4" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" /></svg>
-      </button>
     </div>
   )
 }

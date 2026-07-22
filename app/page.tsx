@@ -8,7 +8,7 @@ import "@/styles/home.css"
 export const metadata: Metadata = {
   title: { absolute: "AI Consulting Vancouver | Pacific Edge AI" },
   description:
-    "AI consulting Vancouver, BC for local business. Pacific Edge AI builds custom AI automation for restaurants, salons, trades, and retail shops. No tech team needed. Free discovery call.",
+    "AI consulting Vancouver, BC for local business. Pacific Edge AI builds custom AI automation for dental clinics, restaurants, and salons & spas. No tech team needed. Free discovery call.",
   keywords: [
     "AI consulting Vancouver",
     "AI consulting Vancouver BC",
@@ -44,7 +44,7 @@ export default function HomePage() {
       <Script id="ga-config" strategy="afterInteractive">
         {`window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-113R1XTVJH');`}
       </Script>
-      <SiteShell variant="full">
+      <SiteShell>
         <HomeContent />
       </SiteShell>
     </>

@@ -4,6 +4,17 @@ import Link from "next/link"
 import { useContactModal } from "./ContactModalProvider"
 import { NAV_CATEGORIES } from "@/lib/nav"
 
+const SOURCES = [
+  "Workflow automation reduces repetitive tasks by 60-95%, with time savings of up to 77% on routine activities. PS Global Consulting, citing Jobera et al.",
+  "Approximately 75% of generative AI's value potential falls across customer operations, marketing/sales, software engineering, and R&D. McKinsey & Company.",
+  "Average small business callback response time is approximately 4 hours; average lead response time across businesses is 47 hours. Medium; Dialzara.",
+  "The average business responds to approximately 36% of its reviews. SOCi (2022).",
+  "63% of consumers say businesses never responded to their review. ReplyOnTheFly.",
+  "Small business owners spend an average of 14-16 hours per week on administrative tasks. Turnozo, citing Time Etc / SBA data; Venturu.",
+  "A service business missing 3+ calls per week at average job values can lose $3,000+/month in opportunity cost. Netpartners.",
+  "Businesses that respond to reviews earn up to 52% more revenue. Toister Solutions, citing Harvard Business Review.",
+]
+
 export default function Footer() {
   const { open } = useContactModal()
   const year = new Date().getFullYear()
@@ -67,6 +78,15 @@ export default function Footer() {
           </div>
         ))}
       </div>
+
+      <p className="footer-sources" id="sources">
+        <span className="footer-sources-title">Sources &amp; References:</span>{" "}
+        {SOURCES.map((s, i) => (
+          <span key={i}>
+            [{i + 1}] {s}{" "}
+          </span>
+        ))}
+      </p>
 
       <div className="footer-bottom">
         <span>&copy; {year} Pacific Edge AI. All rights reserved.</span>

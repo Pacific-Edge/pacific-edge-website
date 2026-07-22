@@ -9,7 +9,7 @@ export const metadata: Metadata = {
 
 export default function Page() {
   return (
-    <SiteShell variant="minimal">
+    <SiteShell>
 <header className="ihero">
 <div className="ihero-orb ihero-orb-1"></div>
 <div className="ihero-orb ihero-orb-2"></div>
@@ -19,7 +19,7 @@ export default function Page() {
 <p className="ihero-sub reveal d2">We build the custom AI that means a Vancouver restaurant, salon, or trade never misses another lead. It's a small team doing real work with real results, and we're looking for sharp people to build it with us.</p>
 <div className="ihero-actions reveal d4">
 <a href="#roles" className="btn-mint">See Open Roles</a>
-<a href="mailto:hello@pacificedge.ai?subject=Pacific%20Edge%20AI%20-%20Careers" className="btn-light">Email Us</a>
+<a href="mailto:hello@pacificedge.ai?subject=Pacific%20Edge%20AI%20-%20Careers" className="btn-dark">Email Us</a>
 </div>
 <div className="cr-chips reveal d5">
 <div className="cr-chip"><span>&#129504;</span>Real AI impact</div>

@@ -28,7 +28,7 @@ const DASH_ROWS = [
 
 export default function HowItWorksPage() {
   return (
-    <SiteShell variant="minimal">
+    <SiteShell>
       <header className="ihero">
         <div className="ihero-orb ihero-orb-1"></div>
         <div className="ihero-orb ihero-orb-2"></div>

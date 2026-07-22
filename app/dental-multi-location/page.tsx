@@ -9,7 +9,7 @@ export const metadata: Metadata = {
 
 export default function Page() {
   return (
-    <SiteShell variant="minimal">
+    <SiteShell>
 <header className="dhero">
 <div className="dhero-grid">
 <div className="dh-copy">
@@ -18,7 +18,7 @@ export default function Page() {
 <p className="dh-sub reveal d2">One consistent front desk across every site, Janice answers, books, and recovers missed calls, with everything rolled into a single dashboard.</p>
 <div className="dh-actions reveal d3">
 <a href="https://cal.com/pacificedge" target="_blank" rel="noopener" className="btn-mint">Book a Free 15-Min Demo</a>
-<a href="#flow" className="btn-light">See How It Works</a>
+<a href="#flow" className="btn-dark">See How It Works</a>
 </div>
 <div className="dh-stats reveal d4">
 <div className="dh-stat"><b>1</b><span>Standard, every site</span></div>

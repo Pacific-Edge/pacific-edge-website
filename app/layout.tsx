@@ -1,7 +1,8 @@
 import type { Metadata } from "next"
-import { Syne, DM_Sans } from "next/font/google"
+import { Bebas_Neue, Outfit, JetBrains_Mono } from "next/font/google"
 import "./globals.css"
 import "@/styles/legacy.css"
+import "@/styles/containers.css"
 import "@/components/site/chrome.css"
 import LenisProvider from "@/components/providers/LenisProvider"
 import ToastProvider from "@/components/site/ToastProvider"
@@ -10,18 +11,26 @@ import HashScroll from "@/components/site/HashScroll"
 import ScrollTop from "@/components/site/ScrollTop"
 
 // Display / headlines
-const syne = Syne({
-  weight: ["600", "700", "800"],
+const bebas = Bebas_Neue({
+  weight: "400",
   subsets: ["latin"],
-  variable: "--font-syne",
+  variable: "--font-bebas",
   display: "swap",
 })
 
 // Body / UI
-const dmSans = DM_Sans({
-  weight: ["400", "500", "600", "700"],
+const outfit = Outfit({
+  weight: ["300", "400", "500", "600", "700"],
   subsets: ["latin"],
-  variable: "--font-dm-sans",
+  variable: "--font-outfit",
+  display: "swap",
+})
+
+// Eyebrows / labels / mono
+const jetbrains = JetBrains_Mono({
+  weight: ["400", "500", "700"],
+  subsets: ["latin"],
+  variable: "--font-jetbrains",
   display: "swap",
 })
 
@@ -32,7 +41,7 @@ export const metadata: Metadata = {
     template: "%s | Pacific Edge AI",
   },
   description:
-    "AI consulting Vancouver, BC for local business. Pacific Edge AI builds custom AI automation for restaurants, salons, trades, and retail shops. No tech team needed. Free discovery call.",
+    "AI consulting Vancouver, BC for local business. Pacific Edge AI builds custom AI automation for dental clinics, restaurants, and salons & spas. No tech team needed. Free discovery call.",
   applicationName: "Pacific Edge AI",
   authors: [{ name: "Pacific Edge AI" }],
   icons: {
@@ -49,7 +58,7 @@ export const metadata: Metadata = {
     url: "https://pacificedge.ai/",
     title: "AI Consulting Vancouver | Pacific Edge AI",
     description:
-      "AI consulting in Vancouver, BC for local business. Custom AI automation for restaurants, salons, trades, and retail. No tech team needed.",
+      "AI consulting in Vancouver, BC for local business. Custom AI automation for dental clinics, restaurants, and salons & spas. No tech team needed.",
     images: [
       {
         url: "/og-image.png",
@@ -76,7 +85,7 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${syne.variable} ${dmSans.variable}`}
+      className={`${bebas.variable} ${outfit.variable} ${jetbrains.variable}`}
     >
       <body>
         <LenisProvider>

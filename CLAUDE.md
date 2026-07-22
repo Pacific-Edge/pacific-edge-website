@@ -121,3 +121,7 @@ Everything is `prefers-reduced-motion` guarded.
 - Per-industry JSON-LD from the old sub-pages was not ported (home carries the main graph).
 - The 5 calculators, `login.html`, `app.html`, `dashboard-mock.html` are still raw static HTML — port to
   React later if desired (remember the collision rule).
+
+  ## TODO
+[] Develop and document consistent and stylish design system based on landing page style that can be propogated consistently to all subpages
+[] Responsiveness passes

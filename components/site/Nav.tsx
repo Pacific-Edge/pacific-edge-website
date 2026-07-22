@@ -7,7 +7,7 @@ import Logo from "./Logo"
 import { getLenis } from "@/lib/lenis"
 import { NAV_CATEGORIES } from "@/lib/nav"
 
-export default function Nav({ variant = "full" }: { variant?: "full" | "minimal" }) {
+export default function Nav() {
   const [menuOpen, setMenuOpen] = useState(false)
   const [hidden, setHidden] = useState(false)
   const pathname = usePathname()
@@ -17,9 +17,8 @@ export default function Nav({ variant = "full" }: { variant?: "full" | "minimal"
     setMenuOpen(false)
   }, [pathname])
 
-  // Hide-on-scroll (full nav only)
+  // Hide-on-scroll
   useEffect(() => {
-    if (variant !== "full") return
     let last = 0
     const onScroll = () => {
       const s = window.scrollY
@@ -28,7 +27,7 @@ export default function Nav({ variant = "full" }: { variant?: "full" | "minimal"
     }
     window.addEventListener("scroll", onScroll, { passive: true })
     return () => window.removeEventListener("scroll", onScroll)
-  }, [variant])
+  }, [])
 
   // Lock body scroll + pause Lenis while the drawer is open; Escape closes it
   useEffect(() => {
@@ -46,30 +45,6 @@ export default function Nav({ variant = "full" }: { variant?: "full" | "minimal"
       document.removeEventListener("keydown", onKey)
     }
   }, [menuOpen])
-
-  if (variant === "minimal") {
-    return (
-      <nav>
-        <Logo href="/" />
-        <div className="nav-right">
-          <Link href="/" className="nav-back">← Home</Link>
-          {NAV_CATEGORIES.map((cat) => (
-            <Link key={cat.key} href={cat.items[0].href} className="nav-back">
-              {cat.label}
-            </Link>
-          ))}
-          <a
-            href="https://cal.com/pacificedge"
-            target="_blank"
-            rel="noopener"
-            className="btn-mint nav-cta"
-          >
-            Book a Demo
-          </a>
-        </div>
-      </nav>
-    )
-  }
 
   return (
     <nav id="siteNav" className={hidden ? "hide" : ""}>
@@ -113,7 +88,7 @@ export default function Nav({ variant = "full" }: { variant?: "full" | "minimal"
           </li>
         ))}
         <li className="nav-links-cta-mobile">
-          <a href="/login.html" className="btn-mint" style={{ marginTop: 16 }}>
+          <a href="/login.html" className="btn-mint nav-nolift" style={{ marginTop: 16 }}>
             Client Login
           </a>
         </li>

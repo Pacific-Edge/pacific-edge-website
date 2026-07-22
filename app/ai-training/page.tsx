@@ -15,7 +15,7 @@ export const metadata: Metadata = {
 
 export default function AiTrainingPage() {
   return (
-    <SiteShell variant="minimal">
+    <SiteShell>
       <TiltParallax />
       <header className="ihero">
         <div className="ihero-orb ihero-orb-1" data-parallax="26" />
@@ -33,7 +33,7 @@ export default function AiTrainingPage() {
           </p>
           <div className="ihero-actions reveal d3">
             <a href={CAL} target="_blank" rel="noopener" className="btn-mint">Book a Free 15-Min Demo</a>
-            <a href="#curriculum" className="btn-light">See What We Cover ↓</a>
+            <a href="#curriculum" className="btn-dark">See What We Cover ↓</a>
           </div>
           <div className="ihero-trust reveal d4">
             On-site or remote · Vendor-neutral · Built around PIPEDA &amp; BC PIPA

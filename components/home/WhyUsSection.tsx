@@ -2,7 +2,7 @@
 
 import { motion, useReducedMotion } from "framer-motion"
 import SoftAurora from "@/components/ui/SoftAurora"
-import SpeedLatticeBackground from "@/components/ui/SpeedLatticeBackground"
+import StyledContainer from "@/components/ui/StyledContainer"
 import { cn } from "@/lib/utils"
 
 const WHY_US_PILLARS = [
@@ -37,7 +37,7 @@ function ClarityVisual({ reduce }: VisualProps) {
   return (
     <div className="relative flex h-full w-full items-end justify-center" aria-hidden>
       <motion.div
-        className="w-full max-w-[17rem] rounded-[var(--radius)] border border-[var(--color-border)] bg-[var(--color-bg)] p-4 shadow-[0_16px_48px_-24px_rgba(0,0,0,.35)] sm:p-5"
+        className="w-full max-w-[17rem] rounded-[var(--radius)] border border-[var(--color-border)] bg-[var(--color-bg)] p-4 shadow-[var(--shadow-mock)] sm:p-5"
         initial={reduce ? false : { opacity: 0, y: 24, rotate: -1.5 }}
         whileInView={{ opacity: 1, y: 0, rotate: -1 }}
         viewport={{ once: true }}
@@ -48,7 +48,7 @@ function ClarityVisual({ reduce }: VisualProps) {
             <p className="font-body text-[10px] font-medium uppercase tracking-[0.14em] text-[var(--color-text3)]">
               Plain English
             </p>
-            <p className="mt-1 font-display text-sm font-semibold text-[var(--color-text)]">
+            <p className="mt-1 font-body text-sm font-semibold text-[var(--color-text)]">
               What we actually mean
             </p>
           </div>
@@ -97,7 +97,7 @@ function ClarityVisual({ reduce }: VisualProps) {
 
               <div className="min-w-0 flex-1 pt-0.5">
                 <motion.p
-                  className="font-body text-[11px] leading-none text-[var(--color-text)]/35 line-through"
+                  className="font-body text-[11px] leading-none text-[var(--color-text3)] line-through"
                   initial={reduce ? false : { opacity: 0 }}
                   whileInView={{ opacity: 1 }}
                   viewport={{ once: true }}
@@ -133,7 +133,7 @@ function SpeedVisual({ reduce }: VisualProps) {
     <div className="relative flex h-full w-full items-end justify-center gap-4 sm:gap-5" aria-hidden>
       {/* Week board */}
       <motion.div
-        className="relative w-[58%] max-w-[22rem] rounded-[var(--radius)] border border-[var(--color-border)] bg-[var(--color-bg)] p-4 shadow-[0_16px_48px_-24px_rgba(0,0,0,.35)] sm:p-5"
+        className="relative w-[58%] max-w-[22rem] rounded-[var(--radius)] border border-[var(--color-border)] bg-[var(--color-bg)] p-4 shadow-[var(--shadow-mock)] sm:p-5"
         initial={reduce ? false : { opacity: 0, y: 28, rotate: -2 }}
         whileInView={{ opacity: 1, y: 0, rotate: -1.5 }}
         viewport={{ once: true }}
@@ -144,7 +144,7 @@ function SpeedVisual({ reduce }: VisualProps) {
             <p className="font-body text-[10px] font-medium uppercase tracking-[0.14em] text-[var(--color-text3)]">
               Build week
             </p>
-            <p className="mt-1 font-display text-sm font-semibold text-[var(--color-text)] sm:text-base">
+            <p className="mt-1 font-body text-sm font-semibold text-[var(--color-text)] sm:text-base">
               Prototype timeline
             </p>
           </div>
@@ -165,11 +165,11 @@ function SpeedVisual({ reduce }: VisualProps) {
             const active = i === doneThrough
             return (
               <div key={day} className="flex flex-col items-center gap-2">
-                <span className="font-body text-[9px] text-[var(--color-text)]/40 sm:text-[10px]">{day}</span>
+                <span className="font-body text-[9px] text-[var(--color-text3)] sm:text-[10px]">{day}</span>
                 <motion.div
                   className={cn(
                     "flex h-8 w-8 items-center justify-center rounded sm:h-9 sm:w-9",
-                    done ? "bg-[var(--color-accent)] text-[var(--color-on-accent)]" : "bg-[var(--color-text)]/6 text-[var(--color-text)]/25",
+                    done ? "bg-[var(--color-accent)] text-[var(--color-on-accent)]" : "bg-[var(--color-text)]/6 text-[var(--color-text3)]",
                     active && "ring-2 ring-[var(--color-accent)]/50 ring-offset-2 ring-offset-[var(--color-bg)]",
                   )}
                   initial={reduce ? false : { scale: 0.5, opacity: 0 }}
@@ -202,7 +202,7 @@ function SpeedVisual({ reduce }: VisualProps) {
 
         <div className="mt-5 space-y-2">
           <div className="flex items-center justify-between">
-            <span className="font-body text-[11px] text-[var(--color-text)]/50">Build progress</span>
+            <span className="font-body text-[11px] text-[var(--color-text2)]">Build progress</span>
             <motion.span
               className="font-display text-sm font-bold text-[var(--color-accent-ink)]"
               initial={reduce ? false : { opacity: 0 }}
@@ -215,7 +215,7 @@ function SpeedVisual({ reduce }: VisualProps) {
           </div>
           <div className="h-2 overflow-hidden rounded-[var(--radius)] bg-[var(--color-text)]/8">
             <motion.div
-              className="h-full rounded-[var(--radius)] bg-gradient-to-r from-[var(--color-accent-ink)] to-[var(--color-accent)]"
+              className="h-full rounded-[var(--radius)] bg-[var(--color-accent)]"
               initial={reduce ? false : { width: "0%" }}
               whileInView={{ width: "94%" }}
               viewport={{ once: true }}
@@ -228,7 +228,7 @@ function SpeedVisual({ reduce }: VisualProps) {
       {/* Floating metric stack */}
       <div className="relative mb-2 flex w-[38%] max-w-[13rem] flex-col gap-3">
         <motion.div
-          className="rounded-[var(--radius)] border border-[var(--color-border)] bg-[var(--color-bg)] p-3.5 shadow-[0_16px_48px_-24px_rgba(0,0,0,.35)] sm:p-4"
+          className="rounded-[var(--radius)] border border-[var(--color-border)] bg-[var(--color-bg)] p-3.5 shadow-[var(--shadow-mock)] sm:p-4"
           initial={reduce ? false : { opacity: 0, x: 24, y: 16 }}
           whileInView={{ opacity: 1, x: 0, y: 0 }}
           viewport={{ once: true }}
@@ -247,7 +247,7 @@ function SpeedVisual({ reduce }: VisualProps) {
             >
               7
             </motion.span>
-            <span className="mb-1 font-body text-xs text-[var(--color-text)]/40">days</span>
+            <span className="mb-1 font-body text-xs text-[var(--color-text3)]">days</span>
           </div>
           <div className="mt-3 flex h-12 items-end gap-1">
             {bars.map((h, i) => (
@@ -267,7 +267,7 @@ function SpeedVisual({ reduce }: VisualProps) {
         </motion.div>
 
         <motion.div
-          className="rounded-[var(--radius)] border border-[var(--color-accent)]/20 bg-[var(--color-text)] p-3.5 text-[var(--color-bg)] shadow-[0_16px_48px_-24px_rgba(0,0,0,.35)] sm:p-4"
+          className="rounded-[var(--radius)] border border-[var(--color-accent)]/20 bg-[var(--color-text)] p-3.5 text-[var(--color-bg)] shadow-[var(--shadow-mock)] sm:p-4"
           initial={reduce ? false : { opacity: 0, x: 28, y: 20 }}
           whileInView={{ opacity: 1, x: 0, y: 0 }}
           viewport={{ once: true }}
@@ -287,7 +287,7 @@ function SpeedVisual({ reduce }: VisualProps) {
               Status
             </span>
           </div>
-          <p className="mt-2 font-display text-sm font-semibold leading-snug sm:text-base">
+          <p className="mt-2 font-body text-sm font-semibold leading-snug sm:text-base">
             Working prototype
           </p>
           <p className="mt-1 font-body text-[11px] text-[var(--color-bg)]/50">Ready for walkthrough</p>
@@ -318,7 +318,7 @@ function DeliverVisual({ reduce }: VisualProps) {
     <div className="relative flex h-full w-full items-end justify-center gap-4 sm:gap-5" aria-hidden>
       {/* Engagement roadmap */}
       <motion.div
-        className="relative w-[58%] max-w-[24rem] rounded-[var(--radius)] border border-[var(--color-border)] bg-[var(--color-bg)] p-4 shadow-[0_16px_48px_-24px_rgba(0,0,0,.35)] sm:p-5"
+        className="relative w-[58%] max-w-[24rem] rounded-[var(--radius)] border border-[var(--color-border)] bg-[var(--color-bg)] p-4 shadow-[var(--shadow-mock)] sm:p-5"
         initial={reduce ? false : { opacity: 0, y: 28, rotate: 1.5 }}
         whileInView={{ opacity: 1, y: 0, rotate: 1 }}
         viewport={{ once: true }}
@@ -329,7 +329,7 @@ function DeliverVisual({ reduce }: VisualProps) {
             <p className="font-body text-[10px] font-medium uppercase tracking-[0.14em] text-[var(--color-text3)]">
               Engagement
             </p>
-            <p className="mt-1 font-display text-sm font-semibold text-[var(--color-text)] sm:text-base">
+            <p className="mt-1 font-body text-sm font-semibold text-[var(--color-text)] sm:text-base">
               Six-month roadmap
             </p>
           </div>
@@ -365,7 +365,7 @@ function DeliverVisual({ reduce }: VisualProps) {
                       "relative z-10 flex h-7 w-7 items-center justify-center rounded-full border-2 sm:h-8 sm:w-8",
                       done
                         ? "border-[var(--color-accent)] bg-[var(--color-accent)] text-[var(--color-on-accent)]"
-                        : "border-[var(--color-border)] bg-[var(--color-bg)] text-[var(--color-text)]/30",
+                        : "border-[var(--color-border)] bg-[var(--color-bg)] text-[var(--color-text3)]",
                     )}
                     initial={reduce ? false : { scale: 0.4, opacity: 0 }}
                     whileInView={{ scale: 1, opacity: 1 }}
@@ -400,10 +400,10 @@ function DeliverVisual({ reduce }: VisualProps) {
                     viewport={{ once: true }}
                     transition={{ delay: 0.45 + i * 0.08, duration: 0.35 }}
                   >
-                    <p className="font-body text-[9px] font-medium text-[var(--color-text)]/70 sm:text-[10px]">
+                    <p className="font-body text-[9px] font-medium text-[var(--color-text2)] sm:text-[10px]">
                       {phase.label}
                     </p>
-                    <p className="font-body text-[8px] text-[var(--color-text)]/35">{phase.month}</p>
+                    <p className="font-body text-[8px] text-[var(--color-text3)]">{phase.month}</p>
                   </motion.div>
                 </div>
               )
@@ -419,7 +419,7 @@ function DeliverVisual({ reduce }: VisualProps) {
           transition={{ delay: 1, duration: 0.4 }}
         >
           <span className="h-1.5 w-1.5 rounded-full bg-[var(--color-accent)]" />
-          <p className="font-body text-[11px] text-[var(--color-text)]/55">
+          <p className="font-body text-[11px] text-[var(--color-text2)]">
             Currently in <span className="font-medium text-[var(--color-text)]">Tune</span> · Month 3
           </p>
         </motion.div>
@@ -427,7 +427,7 @@ function DeliverVisual({ reduce }: VisualProps) {
 
       {/* Transparent pricing card */}
       <motion.div
-        className="mb-3 w-[38%] max-w-[14rem] rounded-[var(--radius)] border border-[var(--color-border)] bg-[var(--color-bg)] p-4 shadow-[0_16px_48px_-24px_rgba(0,0,0,.35)] sm:p-5"
+        className="mb-3 w-[38%] max-w-[14rem] rounded-[var(--radius)] border border-[var(--color-border)] bg-[var(--color-bg)] p-4 shadow-[var(--shadow-mock)] sm:p-5"
         initial={reduce ? false : { opacity: 0, x: 24, y: 18, rotate: 3 }}
         whileInView={{ opacity: 1, x: 0, y: 0, rotate: 2 }}
         viewport={{ once: true }}
@@ -436,7 +436,7 @@ function DeliverVisual({ reduce }: VisualProps) {
         <p className="font-body text-[10px] uppercase tracking-[0.12em] text-[var(--color-text3)]">
           Pricing
         </p>
-        <p className="mt-1 font-display text-sm font-semibold text-[var(--color-text)] sm:text-base">
+        <p className="mt-1 font-body text-sm font-semibold text-[var(--color-text)] sm:text-base">
           Clear from day one
         </p>
 
@@ -450,7 +450,7 @@ function DeliverVisual({ reduce }: VisualProps) {
               viewport={{ once: true }}
               transition={{ delay: 0.55 + i * 0.1, duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
             >
-              <span className="font-body text-[11px] text-[var(--color-text)]/45">{item.label}</span>
+              <span className="font-body text-[11px] text-[var(--color-text3)]">{item.label}</span>
               <span className="font-body text-[11px] font-semibold text-[var(--color-text)]">{item.value}</span>
             </motion.div>
           ))}
@@ -527,7 +527,7 @@ function LocalVisual({ reduce, wide }: VisualProps) {
         x={cx}
         y={cy + outerR + labelGap}
         textAnchor="middle"
-        className="fill-[var(--color-text)]/45"
+        className="fill-[var(--color-text3)]"
         style={{ fontSize: 12, fontFamily: "var(--body)" }}
         initial={reduce ? false : { opacity: 0 }}
         whileInView={{ opacity: 1 }}
@@ -545,78 +545,19 @@ const PILLAR_VISUALS = [ClarityVisual, SpeedVisual, DeliverVisual, LocalVisual] 
 /** Top: 1/3 + 2/3 · Bottom: 2/3 + 1/3 */
 const BENTO_SPAN = ["lg:col-span-1", "lg:col-span-2", "lg:col-span-2", "lg:col-span-1"] as const
 
-/** Curved line fields — one composition per card, no gradient washes */
-const CARD_CURVES = [
-  [
-    "M 200 -60 C 175 60, 225 160, 195 280 S 230 400, 200 520",
-    "M 240 -60 C 215 60, 265 160, 235 280 S 270 400, 240 520",
-    "M 280 -60 C 255 60, 305 160, 275 280 S 310 400, 280 520",
-    "M 320 -60 C 295 60, 345 160, 315 280 S 350 400, 320 520",
-    "M 360 -60 C 335 60, 385 160, 355 280 S 390 400, 360 520",
-    "M 400 -60 C 375 60, 425 160, 395 280 S 430 400, 400 520",
-    "M 440 -60 C 415 60, 465 160, 435 280 S 470 400, 440 520",
-  ],
-] as const
-
-function CardCurveBackground({ reduce }: { reduce: boolean | null }) {
-  const paths = CARD_CURVES[0]
-
-  return (
-    <svg
-      aria-hidden
-      className="pointer-events-none absolute inset-0 h-full w-full origin-center scale-[1.65] -rotate-45 text-[var(--color-accent)]"
-      viewBox="0 0 640 420"
-      preserveAspectRatio="xMidYMid slice"
-    >
-      {paths.map((d, i) => {
-        const opacity = 0.12 + i * 0.035
-        return (
-          <motion.path
-            key={d}
-            d={d}
-            fill="none"
-            stroke="currentColor"
-            strokeWidth={1.35}
-            strokeLinecap="round"
-            vectorEffect="non-scaling-stroke"
-            initial={reduce ? { opacity } : { pathLength: 0, opacity: 0 }}
-            whileInView={{ pathLength: 1, opacity }}
-            viewport={{ once: true }}
-            transition={{
-              duration: reduce ? 0 : 1.35,
-              delay: reduce ? 0 : 0.12 + i * 0.09,
-              ease: [0.16, 1, 0.3, 1],
-            }}
-          />
-        )
-      })}
-      {!reduce
-        ? paths.map((d, i) => (
-            <motion.g
-              key={`drift-${i}`}
-              animate={{ x: [0, 6, 0], y: [0, -4, 0] }}
-              transition={{
-                duration: 9 + i,
-                repeat: Infinity,
-                ease: "easeInOut",
-                delay: i * 0.35,
-              }}
-            >
-              <path
-                d={d}
-                fill="none"
-                stroke="currentColor"
-                strokeWidth={1}
-                strokeLinecap="round"
-                vectorEffect="non-scaling-stroke"
-                opacity={0.05}
-              />
-            </motion.g>
-          ))
-        : null}
-    </svg>
-  )
+/** StyledContainer treatment per pillar (fill + line pattern). `null` = leave the card
+   hand-rolled (index 2 "Built to deliver" keeps its black + SoftAurora glow). */
+type PillarSc = {
+  background: "white" | "mint" | "black"
+  pattern: "diag-wide" | "diag-tight" | "mesh" | "none"
+  line?: "mint"
 }
+const PILLAR_SC: (PillarSc | null)[] = [
+  { background: "white", pattern: "diag-wide" }, //               0 No jargon — white + animated mint curves
+  { background: "mint", pattern: "diag-tight" }, //                1 Speed to value — mint + tight
+  null, //                                                        2 Built to deliver — untouched
+  { background: "white", pattern: "mesh" }, //                    3 Local & hands-on — white + gray mesh
+]
 
 export default function WhyUsSection() {
   const reduce = useReducedMotion()
@@ -630,77 +571,90 @@ export default function WhyUsSection() {
         const isSpeed = index === 1
         const isDeliver = index === 2
         const lightOnDark = isSpeed || isDeliver
-        const titleColor = isSpeed ? "text-white" : lightOnDark ? "text-[var(--color-bg)]" : "text-[var(--color-text)]"
-        const descColor = isSpeed ? "text-white/70" : lightOnDark ? "text-[var(--color-bg)]/65" : "text-[var(--color-text)]/60"
+        const titleColor = lightOnDark ? "text-[var(--color-bg)]" : "text-[var(--color-text)]"
+        const descColor = lightOnDark ? "text-[var(--color-bg)]/65" : "text-[var(--color-text2)]"
 
-        return (
-          <article
-            key={pillar.title}
-            className={cn(
-              "r group relative flex min-h-[24rem] flex-col p-8 shadow-[0_30px_70px_-42px_rgba(10,10,10,.24)] transition-transform duration-300 hover:-translate-y-1 sm:min-h-[26rem] sm:p-9 lg:min-h-[30rem]",
-              isLocal ? "overflow-visible" : "overflow-hidden",
-              isSpeed
-                ? "border border-[var(--color-accent-ink)]/25 bg-gradient-to-br from-[var(--color-accent)] via-[var(--color-accent-bright)] to-[var(--color-accent-ink)]"
-                : isDeliver
-                  ? "border border-[var(--color-accent)]/15 bg-[var(--color-text)]"
-                  : isLocal
-                    ? "border border-[var(--color-border)] bg-[var(--color-bg2)]"
-                    : "border border-[var(--color-border)] bg-[var(--color-bg)]",
-              BENTO_SPAN[index],
-              wide && "lg:min-h-[32rem]",
-              `rd${index + 1}`,
-            )}
-            style={{ borderRadius: "var(--radius)" }}
-          >
-            {isSpeed ? (
-              <SpeedLatticeBackground />
-            ) : isDeliver ? (
-              <div className="pointer-events-none absolute inset-0 z-0 overflow-hidden">
-                <SoftAurora orientation="vertical" speed={0.6} scale={0.7} brightness={1.15} />
-              </div>
-            ) : isLocal ? null : (
-              <CardCurveBackground reduce={reduce} />
-            )}
+        const sc = PILLAR_SC[index]
+        // Fill utilities are dropped for StyledContainer cards (`.sc-bg-*` owns the fill);
+        // index 2 (Built to deliver) keeps its bg utility since it stays a plain <article>.
+        const cardClass = cn(
+          "r group relative flex min-h-[24rem] flex-col p-8 shadow-[var(--shadow-float)] transition-transform duration-300 hover:-translate-y-1 sm:min-h-[26rem] sm:p-9 lg:min-h-[30rem]",
+          isLocal ? "overflow-visible" : "overflow-hidden",
+          isSpeed
+            ? "border border-[var(--color-accent-ink)]/25"
+            : isDeliver
+              ? "border border-[var(--color-accent)]/15 bg-[var(--color-text)]"
+              : "border border-[var(--color-border)]",
+          BENTO_SPAN[index],
+          wide && "lg:min-h-[32rem]",
+          `rd${index + 1}`,
+        )
+        // `.sc` sets overflow:hidden (unlayered, wins over the Tailwind utility); the Local
+        // card's pulse-ring visual must overflow, so restore it inline (inline beats layers).
+        const cardStyle = isLocal
+          ? { borderRadius: "var(--radius)", overflow: "visible" as const }
+          : { borderRadius: "var(--radius)" }
 
-            <div className="relative z-10 flex h-full flex-col">
-              <h3
+        const content = (
+          <div className="relative z-10 flex h-full flex-col">
+            <h3
+              className={cn(
+                "max-w-md font-body font-semibold tracking-tight",
+                titleColor,
+                wide
+                  ? "text-[1.85rem] leading-snug sm:text-4xl lg:max-w-lg lg:text-[2.5rem]"
+                  : "text-[1.75rem] leading-snug sm:text-3xl lg:text-[2.15rem]",
+              )}
+            >
+              {pillar.title}
+            </h3>
+
+            <p
+              className={cn(
+                "mt-4 font-body leading-relaxed",
+                descColor,
+                wide ? "max-w-md text-base" : "max-w-xs text-sm sm:text-[0.95rem]",
+              )}
+            >
+              {pillar.description}
+            </p>
+
+            <div className={cn("relative", isLocal ? "mt-4 flex flex-1 items-center pt-2" : "mt-auto pt-8")}>
+              <div
                 className={cn(
-                  "max-w-md font-display font-semibold tracking-tight",
-                  titleColor,
-                  wide
-                    ? "text-[1.85rem] leading-snug sm:text-4xl lg:max-w-lg lg:text-[2.5rem]"
-                    : "text-[1.75rem] leading-snug sm:text-3xl lg:text-[2.15rem]",
+                  "w-full",
+                  lightOnDark ? "text-[var(--color-bg)]" : "text-[var(--color-text)]",
+                  isLocal
+                    ? "h-64 overflow-visible sm:h-72 lg:h-80"
+                    : wide
+                      ? "h-56 sm:h-64 lg:h-72"
+                      : "h-44 sm:h-52 lg:h-56",
                 )}
               >
-                {pillar.title}
-              </h3>
-
-              <p
-                className={cn(
-                  "mt-4 font-body leading-relaxed",
-                  descColor,
-                  wide ? "max-w-md text-base" : "max-w-xs text-sm sm:text-[0.95rem]",
-                )}
-              >
-                {pillar.description}
-              </p>
-
-              <div className={cn("relative", isLocal ? "mt-4 flex flex-1 items-center pt-2" : "mt-auto pt-8")}>
-                <div
-                  className={cn(
-                    "w-full",
-                    lightOnDark ? "text-[var(--color-bg)]" : "text-[var(--color-text)]",
-                    isLocal
-                      ? "h-64 overflow-visible sm:h-72 lg:h-80"
-                      : wide
-                        ? "h-56 sm:h-64 lg:h-72"
-                        : "h-44 sm:h-52 lg:h-56",
-                  )}
-                >
-                  {Visual ? <Visual reduce={reduce} wide={wide} /> : null}
-                </div>
+                {Visual ? <Visual reduce={reduce} wide={wide} /> : null}
               </div>
             </div>
+          </div>
+        )
+
+        return sc ? (
+          <StyledContainer
+            as="article"
+            key={pillar.title}
+            background={sc.background}
+            pattern={sc.pattern}
+            line={sc.line}
+            className={cardClass}
+            style={cardStyle}
+          >
+            {content}
+          </StyledContainer>
+        ) : (
+          <article key={pillar.title} className={cardClass} style={cardStyle}>
+            <div className="pointer-events-none absolute inset-0 z-0 overflow-hidden">
+              <SoftAurora orientation="vertical" speed={0.6} scale={0.7} brightness={1.15} />
+            </div>
+            {content}
           </article>
         )
       })}
