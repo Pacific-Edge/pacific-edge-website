@@ -842,3 +842,23 @@ body.modal-open{overflow:hidden}
 @media(max-width:960px){.pe-about .about-grid{grid-template-columns:1fr;gap:40px}.pe-about .founders{grid-template-columns:1fr;gap:18px}}
 @media(max-width:600px){.pe-about .about-values{grid-template-columns:1fr}.pe-about .about-highlight{padding:32px 24px}}
 @media(max-width:460px){.pe-about .founder-card{grid-template-columns:1fr;justify-items:center;text-align:center;gap:16px}.pe-about .founder-name{justify-content:center}}
+
+/* ============================================================
+   Professional pass additions (2026-07): real-photo band + honest
+   comparison table. Used across industry pages / about.
+   ============================================================ */
+.pband{padding:26px 26px 0}
+.photo-band{max-width:1200px;margin:0 auto;border-radius:20px;overflow:hidden;border:1px solid var(--border);box-shadow:0 34px 80px -48px rgba(28,25,20,.45);aspect-ratio:21/9;position:relative}
+.photo-band img{width:100%;height:100%;object-fit:cover;display:block}
+.photo-band figcaption{position:absolute;left:14px;bottom:14px;font-family:var(--mono);font-size:10px;letter-spacing:1.2px;text-transform:uppercase;color:#fff;background:rgba(20,17,12,.55);backdrop-filter:blur(6px);padding:6px 12px;border-radius:100px}
+@media(max-width:760px){.pband{padding:18px 16px 0}.photo-band{aspect-ratio:16/10;border-radius:14px}}
+
+.cmp2-wrap{overflow-x:auto;-webkit-overflow-scrolling:touch;margin:52px auto 0;max-width:920px}
+.cmp2{min-width:640px;border:1px solid var(--border);border-radius:16px;overflow:hidden;background:var(--card)}
+.cmp2-row{display:grid;grid-template-columns:1.7fr 1fr 1fr 1.15fr;border-top:1px solid var(--border)}
+.cmp2-row:first-child{border-top:none;background:rgba(28,25,20,.03)}
+.cmp2-cell{padding:13px 16px;font-size:13.5px;color:var(--text);display:flex;align-items:center;gap:7px;font-weight:300}
+.cmp2-row:first-child .cmp2-cell{font-family:var(--mono);font-size:10.5px;letter-spacing:1.2px;text-transform:uppercase;color:var(--text2);font-weight:500}
+.cmp2-cell:first-child{font-weight:500}
+.cmp2-cell.us{background:rgba(74,240,192,.07)}
+.cmp2-row:first-child .cmp2-cell.us{color:var(--accent-ink)}

@@ -2,6 +2,21 @@ import type { Metadata } from "next"
 import Link from "next/link"
 import SiteShell from "@/components/site/SiteShell"
 import TiltParallax from "@/components/site/TiltParallax"
+import {
+  Bot,
+  Building2,
+  CalendarCheck,
+  CalendarX,
+  HelpCircle,
+  Moon,
+  PhoneMissed,
+  RefreshCw,
+  Star,
+  Tag,
+  Target,
+  TrendingDown,
+  Zap,
+} from "lucide-react"
 import "@/styles/pages.css"
 
 const CAL = "https://cal.com/pacificedge"
@@ -52,12 +67,12 @@ export default function RealEstateAgentsPage() {
           <h2 className="st reveal d1">Where Deals <span className="a">Leak Out.</span></h2>
           <p className="sd reveal d2">You&apos;re already paying to generate these leads. Here&apos;s where they slip away.</p>
           <div className="prob-grid">
-            <div className="prob reveal d1"><div className="prob-ico">📵</div><h3>You can&apos;t answer mid-showing</h3><p>A lead calls while you&apos;re with a client. You call back later and they&apos;ve already toured with another agent.</p><div className="prob-cost">The first reply usually wins the client</div></div>
-            <div className="prob reveal d2"><div className="prob-ico">🌙</div><h3>Leads land after hours</h3><p>Portal inquiries and texts arrive nights and weekends, when there&apos;s nobody at a desk to jump on them.</p><div className="prob-cost">Every hour cold cuts your odds</div></div>
-            <div className="prob reveal d3"><div className="prob-ico">❓</div><h3>Unqualified leads eat your day</h3><p>You spend hours on buyers who aren&apos;t pre-approved or serious, while the ready ones wait for a reply.</p><div className="prob-cost">Your best hours go to tire-kickers</div></div>
-            <div className="prob reveal d1"><div className="prob-ico">📅</div><h3>Showings get no-showed</h3><p>Back-and-forth to book a viewing, then a no-show that wastes a trip and a slot you could&apos;ve filled.</p><div className="prob-cost">A no-show is a wasted afternoon</div></div>
-            <div className="prob reveal d2"><div className="prob-ico">🐢</div><h3>Follow-up falls off</h3><p>Most buyers take months. Without steady contact they forget you and transact with whoever stayed in touch.</p><div className="prob-cost">Leads buy from whoever kept in touch</div></div>
-            <div className="prob reveal d3"><div className="prob-ico">⭐</div><h3>Few reviews &amp; referrals</h3><p>You close happy clients all year but rarely turn them into the reviews and intros that drive your next deal.</p><div className="prob-cost">Happy clients, quiet reputation</div></div>
+            <div className="prob reveal d1"><div className="prob-ico"><PhoneMissed size={20} strokeWidth={1.8} style={{ color: "var(--accent2)" }} aria-hidden /></div><h3>You can&apos;t answer mid-showing</h3><p>A lead calls while you&apos;re with a client. You call back later and they&apos;ve already toured with another agent.</p><div className="prob-cost">The first reply usually wins the client</div></div>
+            <div className="prob reveal d2"><div className="prob-ico"><Moon size={20} strokeWidth={1.8} style={{ color: "var(--accent2)" }} aria-hidden /></div><h3>Leads land after hours</h3><p>Portal inquiries and texts arrive nights and weekends, when there&apos;s nobody at a desk to jump on them.</p><div className="prob-cost">Every hour cold cuts your odds</div></div>
+            <div className="prob reveal d3"><div className="prob-ico"><HelpCircle size={20} strokeWidth={1.8} style={{ color: "var(--accent2)" }} aria-hidden /></div><h3>Unqualified leads eat your day</h3><p>You spend hours on buyers who aren&apos;t pre-approved or serious, while the ready ones wait for a reply.</p><div className="prob-cost">Your best hours go to tire-kickers</div></div>
+            <div className="prob reveal d1"><div className="prob-ico"><CalendarX size={20} strokeWidth={1.8} style={{ color: "var(--accent2)" }} aria-hidden /></div><h3>Showings get no-showed</h3><p>Back-and-forth to book a viewing, then a no-show that wastes a trip and a slot you could&apos;ve filled.</p><div className="prob-cost">A no-show is a wasted afternoon</div></div>
+            <div className="prob reveal d2"><div className="prob-ico"><TrendingDown size={20} strokeWidth={1.8} style={{ color: "var(--accent2)" }} aria-hidden /></div><h3>Follow-up falls off</h3><p>Most buyers take months. Without steady contact they forget you and transact with whoever stayed in touch.</p><div className="prob-cost">Leads buy from whoever kept in touch</div></div>
+            <div className="prob reveal d3"><div className="prob-ico"><Star size={20} strokeWidth={1.8} style={{ color: "var(--accent2)" }} aria-hidden /></div><h3>Few reviews &amp; referrals</h3><p>You close happy clients all year but rarely turn them into the reviews and intros that drive your next deal.</p><div className="prob-cost">Happy clients, quiet reputation</div></div>
           </div>
         </div>
       </section>
@@ -70,12 +85,12 @@ export default function RealEstateAgentsPage() {
           <h2 className="st reveal d1 tac">Your 24/7 <span className="a">Inside Agent.</span></h2>
           <p className="sd reveal d2" style={{ textAlign: "center", margin: "0 auto" }}>Everything that has to happen the moment a lead comes in, handled, so you can stay focused on clients.</p>
           <div className="px-grid tilt">
-            <article className="px-card reveal d1" data-tilt><div className="px-card-shine" aria-hidden="true" /><span className="px-card-ico">⚡</span><h3>Instant speed-to-lead</h3><p>Every call, text, and portal inquiry answered in seconds, so you&apos;re first, not fifth.</p></article>
-            <article className="px-card reveal d2" data-tilt><div className="px-card-shine" aria-hidden="true" /><span className="px-card-ico">🎯</span><h3>Qualify while you work</h3><p>Budget, timeline, pre-approval, and area, asked and logged, with serious buyers flagged for you.</p></article>
-            <article className="px-card reveal d3" data-tilt><div className="px-card-shine" aria-hidden="true" /><span className="px-card-ico">🗓️</span><h3>Showings booked</h3><p>Real times from your calendar, booked automatically, with reminders that cut no-shows.</p></article>
-            <article className="px-card reveal d1" data-tilt><div className="px-card-shine" aria-hidden="true" /><span className="px-card-ico">🔁</span><h3>Months-long nurture</h3><p>Steady, in-your-voice follow-up so leads remember you when they&apos;re finally ready to move.</p></article>
-            <article className="px-card reveal d2" data-tilt><div className="px-card-shine" aria-hidden="true" /><span className="px-card-ico">🏷️</span><h3>Listing questions answered</h3><p>Price, status, square footage, and next steps, answered instantly from facts you approve.</p></article>
-            <article className="px-card reveal d3" data-tilt><div className="px-card-shine" aria-hidden="true" /><span className="px-card-ico">⭐</span><h3>Reviews &amp; referrals</h3><p>Happy closings turned into Google reviews and warm referral intros, on autopilot.</p></article>
+            <article className="px-card reveal d1" data-tilt><div className="px-card-shine" aria-hidden="true" /><span className="px-card-ico"><Zap size={22} strokeWidth={1.8} style={{ color: "var(--accent-ink)" }} aria-hidden /></span><h3>Instant speed-to-lead</h3><p>Every call, text, and portal inquiry answered in seconds, so you&apos;re first, not fifth.</p></article>
+            <article className="px-card reveal d2" data-tilt><div className="px-card-shine" aria-hidden="true" /><span className="px-card-ico"><Target size={22} strokeWidth={1.8} style={{ color: "var(--accent-ink)" }} aria-hidden /></span><h3>Qualify while you work</h3><p>Budget, timeline, pre-approval, and area, asked and logged, with serious buyers flagged for you.</p></article>
+            <article className="px-card reveal d3" data-tilt><div className="px-card-shine" aria-hidden="true" /><span className="px-card-ico"><CalendarCheck size={22} strokeWidth={1.8} style={{ color: "var(--accent-ink)" }} aria-hidden /></span><h3>Showings booked</h3><p>Real times from your calendar, booked automatically, with reminders that cut no-shows.</p></article>
+            <article className="px-card reveal d1" data-tilt><div className="px-card-shine" aria-hidden="true" /><span className="px-card-ico"><RefreshCw size={22} strokeWidth={1.8} style={{ color: "var(--accent-ink)" }} aria-hidden /></span><h3>Months-long nurture</h3><p>Steady, in-your-voice follow-up so leads remember you when they&apos;re finally ready to move.</p></article>
+            <article className="px-card reveal d2" data-tilt><div className="px-card-shine" aria-hidden="true" /><span className="px-card-ico"><Tag size={22} strokeWidth={1.8} style={{ color: "var(--accent-ink)" }} aria-hidden /></span><h3>Listing questions answered</h3><p>Price, status, square footage, and next steps, answered instantly from facts you approve.</p></article>
+            <article className="px-card reveal d3" data-tilt><div className="px-card-shine" aria-hidden="true" /><span className="px-card-ico"><Star size={22} strokeWidth={1.8} style={{ color: "var(--accent-ink)" }} aria-hidden /></span><h3>Reviews &amp; referrals</h3><p>Happy closings turned into Google reviews and warm referral intros, on autopilot.</p></article>
           </div>
         </div>
       </section>
@@ -103,8 +118,8 @@ export default function RealEstateAgentsPage() {
           <a href={CAL} target="_blank" rel="noopener" className="btn-primary reveal d2">Book a Free 15-Min Demo</a>
           <div className="xlinks reveal d3">
             <Link href="/real-estate" className="xlink"><span>←</span>Real Estate</Link>
-            <Link href="/real-estate-developers" className="xlink"><span>🏗️</span>For Developers</Link>
-            <Link href="/ai-employee" className="xlink"><span>🤖</span>Meet Janice</Link>
+            <Link href="/real-estate-developers" className="xlink"><span><Building2 size={14} strokeWidth={1.8} style={{ color: "var(--accent-ink)" }} aria-hidden /></span>For Developers</Link>
+            <Link href="/ai-employee" className="xlink"><span><Bot size={14} strokeWidth={1.8} style={{ color: "var(--accent-ink)" }} aria-hidden /></span>Meet Janice</Link>
           </div>
         </div>
       </section>

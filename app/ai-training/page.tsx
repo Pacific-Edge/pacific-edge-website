@@ -2,6 +2,7 @@ import type { Metadata } from "next"
 import Link from "next/link"
 import SiteShell from "@/components/site/SiteShell"
 import TiltParallax from "@/components/site/TiltParallax"
+import { Ban, Blocks, Bot, Brain, Building2, Compass, DollarSign, Gauge, Handshake, PenLine, Recycle, RefreshCw, Rocket, Scale, Scissors, Search, ShieldAlert, ShieldCheck, Target, TrendingUp, Unlock, UserCheck, Wrench } from "lucide-react"
 import "@/styles/pages.css"
 
 const CAL = "https://cal.com/pacificedge"
@@ -57,9 +58,9 @@ export default function AiTrainingPage() {
           <h2 className="st reveal d1">Three Ways Teams <span className="a">Get AI Wrong.</span></h2>
           <p className="sd reveal d2">Most companies aren&apos;t short on AI enthusiasm. They&apos;re short on the habits that make it pay off safely. We fix all three.</p>
           <div className="px-grid">
-            <div className="px-card reveal d1"><span className="px-card-ico">🧠</span><h3>They barely scratch the surface</h3><p>People use AI like a fancy search box and miss the 10x workflows. We show your team what it&apos;s genuinely capable of on your real work.</p></div>
-            <div className="px-card reveal d2"><span className="px-card-ico">💸</span><h3>They quietly waste money</h3><p>Overpowered models for tiny tasks, bloated prompts, re-sending the same context. Small habits that add up to a big bill.</p></div>
-            <div className="px-card reveal d3"><span className="px-card-ico">🔓</span><h3>They leak data without knowing</h3><p>Confidential info pasted into personal accounts on plans that can train on it. Convenient, and a real exposure.</p></div>
+            <div className="px-card reveal d1"><span className="px-card-ico"><Brain size={22} strokeWidth={1.8} style={{ color: "var(--accent-ink)" }} aria-hidden /></span><h3>They barely scratch the surface</h3><p>People use AI like a fancy search box and miss the 10x workflows. We show your team what it&apos;s genuinely capable of on your real work.</p></div>
+            <div className="px-card reveal d2"><span className="px-card-ico"><DollarSign size={22} strokeWidth={1.8} style={{ color: "var(--accent-ink)" }} aria-hidden /></span><h3>They quietly waste money</h3><p>Overpowered models for tiny tasks, bloated prompts, re-sending the same context. Small habits that add up to a big bill.</p></div>
+            <div className="px-card reveal d3"><span className="px-card-ico"><Unlock size={22} strokeWidth={1.8} style={{ color: "var(--accent-ink)" }} aria-hidden /></span><h3>They leak data without knowing</h3><p>Confidential info pasted into personal accounts on plans that can train on it. Convenient, and a real exposure.</p></div>
           </div>
         </div>
       </section>
@@ -73,12 +74,12 @@ export default function AiTrainingPage() {
           <h2 className="st reveal d1 tac">A Curriculum Built On <span className="a">Your Real Work.</span></h2>
           <p className="sd reveal d2" style={{ textAlign: "center", margin: "0 auto" }}>No generic slide decks. We train on the tasks your team actually does, so the skills stick the same afternoon.</p>
           <div className="px-grid tilt">
-            <article className="px-card reveal d1" data-tilt><div className="px-card-shine" aria-hidden="true" /><span className="px-card-ico">🧭</span><h3>Foundations &amp; judgment</h3><p>What today&apos;s AI is genuinely good at, and where it quietly makes things up, so your team trusts it in the right places.</p></article>
-            <article className="px-card reveal d2" data-tilt><div className="px-card-shine" aria-hidden="true" /><span className="px-card-ico">✍️</span><h3>Prompting that works</h3><p>Repeatable prompts and templates for your real tasks, so results are good on the first try, not the fifth.</p></article>
-            <article className="px-card reveal d3" data-tilt><div className="px-card-shine" aria-hidden="true" /><span className="px-card-ico">🎯</span><h3>The right tool for the job</h3><p>Which model and which tool for which task, so you stop overpaying for simple work and underusing AI for hard work.</p></article>
-            <article className="px-card reveal d1" data-tilt><div className="px-card-shine" aria-hidden="true" /><span className="px-card-ico">🔁</span><h3>Into your workflow</h3><p>We embed AI into the tools and processes you already use, not a shiny thing nobody opens twice.</p></article>
-            <article className="px-card reveal d2" data-tilt><div className="px-card-shine" aria-hidden="true" /><span className="px-card-ico">🤝</span><h3>Your own assistants</h3><p>Build internal assistants loaded with your policies, docs, and tone of voice, ready for the whole team to use.</p></article>
-            <article className="px-card reveal d3" data-tilt><div className="px-card-shine" aria-hidden="true" /><span className="px-card-ico">📈</span><h3>Measuring the payoff</h3><p>Track adoption and time saved so you can prove the value and double down on what actually works.</p></article>
+            <article className="px-card reveal d1" data-tilt><div className="px-card-shine" aria-hidden="true" /><span className="px-card-ico"><Compass size={22} strokeWidth={1.8} style={{ color: "var(--accent-ink)" }} aria-hidden /></span><h3>Foundations &amp; judgment</h3><p>What today&apos;s AI is genuinely good at, and where it quietly makes things up, so your team trusts it in the right places.</p></article>
+            <article className="px-card reveal d2" data-tilt><div className="px-card-shine" aria-hidden="true" /><span className="px-card-ico"><PenLine size={22} strokeWidth={1.8} style={{ color: "var(--accent-ink)" }} aria-hidden /></span><h3>Prompting that works</h3><p>Repeatable prompts and templates for your real tasks, so results are good on the first try, not the fifth.</p></article>
+            <article className="px-card reveal d3" data-tilt><div className="px-card-shine" aria-hidden="true" /><span className="px-card-ico"><Target size={22} strokeWidth={1.8} style={{ color: "var(--accent-ink)" }} aria-hidden /></span><h3>The right tool for the job</h3><p>Which model and which tool for which task, so you stop overpaying for simple work and underusing AI for hard work.</p></article>
+            <article className="px-card reveal d1" data-tilt><div className="px-card-shine" aria-hidden="true" /><span className="px-card-ico"><RefreshCw size={22} strokeWidth={1.8} style={{ color: "var(--accent-ink)" }} aria-hidden /></span><h3>Into your workflow</h3><p>We embed AI into the tools and processes you already use, not a shiny thing nobody opens twice.</p></article>
+            <article className="px-card reveal d2" data-tilt><div className="px-card-shine" aria-hidden="true" /><span className="px-card-ico"><Handshake size={22} strokeWidth={1.8} style={{ color: "var(--accent-ink)" }} aria-hidden /></span><h3>Your own assistants</h3><p>Build internal assistants loaded with your policies, docs, and tone of voice, ready for the whole team to use.</p></article>
+            <article className="px-card reveal d3" data-tilt><div className="px-card-shine" aria-hidden="true" /><span className="px-card-ico"><TrendingUp size={22} strokeWidth={1.8} style={{ color: "var(--accent-ink)" }} aria-hidden /></span><h3>Measuring the payoff</h3><p>Track adoption and time saved so you can prove the value and double down on what actually works.</p></article>
           </div>
         </div>
       </section>
@@ -92,10 +93,10 @@ export default function AiTrainingPage() {
           <h2 className="st reveal d1">Your Data <span className="a">Stays Yours.</span></h2>
           <p className="sd reveal d2">Using AI well and keeping data safe aren&apos;t a trade-off. We set up the guardrails first, so your team can move fast without putting the business at risk.</p>
           <div className="px-grid cols2">
-            <div className="px-card reveal d1"><span className="px-card-ico">👤</span><h3>We end &ldquo;shadow AI&rdquo;</h3><p>Most teams already use AI on personal accounts you can&apos;t see. We bring it into the light with a short list of approved, secure tools everyone actually uses.</p></div>
-            <div className="px-card reveal d2"><span className="px-card-ico">🚫</span><h3>No training on your data</h3><p>Consumer AI plans can learn from what your team types in. We move you onto enterprise and zero-retention setups that don&apos;t, and show your team the difference.</p></div>
-            <div className="px-card reveal d3"><span className="px-card-ico">🍁</span><h3>Built around your compliance</h3><p>We work with Canadian privacy expectations, PIPEDA and BC PIPA, plus GDPR and SOC 2 where they apply, with access controls and audit trails.</p></div>
-            <div className="px-card reveal d4"><span className="px-card-ico">🧯</span><h3>Guardrails against mistakes</h3><p>Clear rules and redaction habits so client PII, financials, and health info never leave the building in a prompt by accident.</p></div>
+            <div className="px-card reveal d1"><span className="px-card-ico"><UserCheck size={22} strokeWidth={1.8} style={{ color: "var(--accent-ink)" }} aria-hidden /></span><h3>We end &ldquo;shadow AI&rdquo;</h3><p>Most teams already use AI on personal accounts you can&apos;t see. We bring it into the light with a short list of approved, secure tools everyone actually uses.</p></div>
+            <div className="px-card reveal d2"><span className="px-card-ico"><Ban size={22} strokeWidth={1.8} style={{ color: "var(--accent-ink)" }} aria-hidden /></span><h3>No training on your data</h3><p>Consumer AI plans can learn from what your team types in. We move you onto enterprise and zero-retention setups that don&apos;t, and show your team the difference.</p></div>
+            <div className="px-card reveal d3"><span className="px-card-ico"><ShieldCheck size={22} strokeWidth={1.8} style={{ color: "var(--accent-ink)" }} aria-hidden /></span><h3>Built around your compliance</h3><p>We work with Canadian privacy expectations, PIPEDA and BC PIPA, plus GDPR and SOC 2 where they apply, with access controls and audit trails.</p></div>
+            <div className="px-card reveal d4"><span className="px-card-ico"><ShieldAlert size={22} strokeWidth={1.8} style={{ color: "var(--accent-ink)" }} aria-hidden /></span><h3>Guardrails against mistakes</h3><p>Clear rules and redaction habits so client PII, financials, and health info never leave the building in a prompt by accident.</p></div>
           </div>
         </div>
       </section>
@@ -109,12 +110,12 @@ export default function AiTrainingPage() {
           <h2 className="st reveal d1">Stop Burning <span className="a">Tokens.</span></h2>
           <p className="sd reveal d2">Most AI bills are bigger than they need to be, not because teams use AI too much, but because they use it inefficiently. A few habits cut the cost of every result.</p>
           <div className="px-grid">
-            <div className="px-card reveal d1"><span className="px-card-ico">⚖️</span><h3>Right-size the model</h3><p>Using a top-tier model for a one-line task is like couriering a sticky note. We match the model to the job.</p></div>
-            <div className="px-card reveal d2"><span className="px-card-ico">✂️</span><h3>Trim the prompt</h3><p>Bloated prompts and dumped documents burn tokens for no gain. Tighter inputs, same or better output.</p></div>
-            <div className="px-card reveal d3"><span className="px-card-ico">♻️</span><h3>Cache &amp; reuse</h3><p>Prompt caching and reusable templates mean you stop paying to re-send the same context again and again.</p></div>
-            <div className="px-card reveal d1"><span className="px-card-ico">🔍</span><h3>Retrieve, don&apos;t dump</h3><p>Pull only the relevant passage from your documents instead of pasting the whole manual into every request.</p></div>
-            <div className="px-card reveal d2"><span className="px-card-ico">📊</span><h3>Watch the meter</h3><p>Usage dashboards and budgets so one runaway workflow can&apos;t quietly rack up a surprise bill.</p></div>
-            <div className="px-card reveal d3"><span className="px-card-ico">🧱</span><h3>Build it once</h3><p>Turn your best one-off prompts into shared, tested templates so the whole team gets the efficient version.</p></div>
+            <div className="px-card reveal d1"><span className="px-card-ico"><Scale size={22} strokeWidth={1.8} style={{ color: "var(--accent-ink)" }} aria-hidden /></span><h3>Right-size the model</h3><p>Using a top-tier model for a one-line task is like couriering a sticky note. We match the model to the job.</p></div>
+            <div className="px-card reveal d2"><span className="px-card-ico"><Scissors size={22} strokeWidth={1.8} style={{ color: "var(--accent-ink)" }} aria-hidden /></span><h3>Trim the prompt</h3><p>Bloated prompts and dumped documents burn tokens for no gain. Tighter inputs, same or better output.</p></div>
+            <div className="px-card reveal d3"><span className="px-card-ico"><Recycle size={22} strokeWidth={1.8} style={{ color: "var(--accent-ink)" }} aria-hidden /></span><h3>Cache &amp; reuse</h3><p>Prompt caching and reusable templates mean you stop paying to re-send the same context again and again.</p></div>
+            <div className="px-card reveal d1"><span className="px-card-ico"><Search size={22} strokeWidth={1.8} style={{ color: "var(--accent-ink)" }} aria-hidden /></span><h3>Retrieve, don&apos;t dump</h3><p>Pull only the relevant passage from your documents instead of pasting the whole manual into every request.</p></div>
+            <div className="px-card reveal d2"><span className="px-card-ico"><Gauge size={22} strokeWidth={1.8} style={{ color: "var(--accent-ink)" }} aria-hidden /></span><h3>Watch the meter</h3><p>Usage dashboards and budgets so one runaway workflow can&apos;t quietly rack up a surprise bill.</p></div>
+            <div className="px-card reveal d3"><span className="px-card-ico"><Blocks size={22} strokeWidth={1.8} style={{ color: "var(--accent-ink)" }} aria-hidden /></span><h3>Build it once</h3><p>Turn your best one-off prompts into shared, tested templates so the whole team gets the efficient version.</p></div>
           </div>
         </div>
       </section>
@@ -129,7 +130,7 @@ export default function AiTrainingPage() {
           <div className="px-split">
             <article className="px-aud feat reveal d1" data-tilt>
               <div className="px-aud-shine" aria-hidden="true" />
-              <div className="px-aud-ico">🏢</div>
+              <div className="px-aud-ico"><Building2 size={22} strokeWidth={1.8} style={{ color: "var(--accent-ink)" }} aria-hidden /></div>
               <h3>For Corporations</h3>
               <p>Roll one standard across every team, with the governance and controls a bigger organization needs.</p>
               <ul className="px-aud-list">
@@ -141,7 +142,7 @@ export default function AiTrainingPage() {
             </article>
             <article className="px-aud reveal d2" data-tilt>
               <div className="px-aud-shine" aria-hidden="true" />
-              <div className="px-aud-ico">🚀</div>
+              <div className="px-aud-ico"><Rocket size={22} strokeWidth={1.8} style={{ color: "var(--accent-ink)" }} aria-hidden /></div>
               <h3>For SMBs</h3>
               <p>Punch above your weight. A lean team that uses AI well does the work of a much bigger one.</p>
               <ul className="px-aud-list">
@@ -201,9 +202,9 @@ export default function AiTrainingPage() {
             <span><i />Security-first</span>
           </div>
           <div className="xlinks reveal d3">
-            <Link href="/ai-employee" className="xlink"><span>🤖</span>Meet Janice</Link>
-            <Link href="/custom-builds" className="xlink"><span>🛠️</span>Custom Builds</Link>
-            <Link href="/industries" className="xlink"><span>🏙️</span>Industries</Link>
+            <Link href="/ai-employee" className="xlink"><span><Bot size={14} strokeWidth={1.8} style={{ color: "var(--accent-ink)" }} aria-hidden /></span>Meet Janice</Link>
+            <Link href="/custom-builds" className="xlink"><span><Wrench size={14} strokeWidth={1.8} style={{ color: "var(--accent-ink)" }} aria-hidden /></span>Custom Builds</Link>
+            <Link href="/industries" className="xlink"><span><Building2 size={14} strokeWidth={1.8} style={{ color: "var(--accent-ink)" }} aria-hidden /></span>Industries</Link>
           </div>
         </div>
       </section>

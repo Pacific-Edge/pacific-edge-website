@@ -55,9 +55,8 @@ page, delete its `public/*.html` in the same step. Do **not** add `trailingSlash
 **Fonts** (via `next/font/google` in `app/layout.tsx`): **Bebas Neue** → `--font-display`, **Outfit** →
 `--font-body`, **JetBrains Mono** → `--font-mono` (eyebrows/labels).
 
-**Buttons:** `components/ui/button.tsx` — variants `primary` (mint fill), `ghost` (hairline), `calc`
-(mint tint). The ported markup mostly uses the raw `.btn-primary`/`.btn-ghost`/`.btn-calc` classes from
-the stylesheets below, which match.
+**Buttons:** raw `.btn-primary`/`.btn-ghost`/`.btn-calc` classes from the stylesheets below.
+(`components/ui/button.tsx`, `lib/utils.ts`, `lib/motion.ts` were dead code and deleted 2026-07-21.)
 
 ### Stylesheets
 
@@ -94,7 +93,11 @@ Everything is `prefers-reduced-motion` guarded.
   sources). The previous redesign's "remove Janice / trim / show-don't-tell" rules **no longer apply**.
 - One primary CTA: **Book a Free 15-Min Call** → `https://cal.com/pacificedge` (external). Secondary:
   **Client Login** → `/login.html`. The contact modal (email links) opens site-wide.
-- Emoji ARE used (industry nav icons, dropdown, mocks) — that's the old brand; keep it.
+- **Professional, not playful (2026-07-21 brand decision, reverses the old emoji rule):** NO emojis
+  anywhere in UI or copy; use `lucide-react` line icons (installed) with `strokeWidth 1.7-1.9`,
+  `var(--accent-ink)` on light surfaces / `#4af0c0` on dark. ★/☆ rating glyphs and ✓/▲ data glyphs are
+  fine. **Never use em dashes in copy** (owner rule; use periods/commas/colons). Real photography lives
+  in `public/img/` (compressed; sources were repo originals + 2 Unsplash shots).
 
 ## Routing & SEO
 
@@ -116,6 +119,13 @@ Everything is `prefers-reduced-motion` guarded.
 - **Contact form** posts nowhere (old site used Netlify Forms, dead on Cloudflare). The modal currently
   composes a `mailto:hello@pacificedge.ai` and shows a success view. Wire a real endpoint (Cloudflare
   Pages Function / Formspree) when available — see `components/site/ContactModalProvider.tsx`.
+- **ROI calculator leads** (`/roi-calculator`, embedded on `/restaurants#roi`): configs + formula in
+  `lib/calculator/`. Every unlock POSTs the lead to `/api/lead` (Cloudflare Pages Function in
+  `functions/api/lead.ts`, excluded from tsconfig) AND appends to browser `localStorage` `pe_roi_leads`.
+  **One-time dashboard setup required:** create a KV namespace (e.g. `pacific-edge-leads`) and bind it to
+  the Pages project as `LEADS`; until then the endpoint returns 503 and only the local log captures.
+  The 5 old `public/*-savings-calculator.html` pages now 301 via `_redirects` to
+  `/roi-calculator?industry=<key>` (files kept as fallback). GA gtag loads in `app/layout.tsx` (all routes).
 - **ai-employee**: the standard chat/mock/count animations work; any bespoke inline-JS demos from the old
   page were not ported (that content renders static).
 - Per-industry JSON-LD from the old sub-pages was not ported (home carries the main graph).

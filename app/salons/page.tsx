@@ -1,5 +1,9 @@
 import type { Metadata } from "next"
 import SiteShell from "@/components/site/SiteShell"
+import {
+  Armchair, CalendarX, CheckCircle2, Clock, MessageCircle, PhoneCall, RefreshCw, Scissors,
+  ShoppingBag, Star, Stethoscope, UtensilsCrossed, Wrench,
+} from "lucide-react"
 
 export const metadata: Metadata = {
   title: { absolute: "AI for Vancouver Salons & Spas | Pacific Edge AI" },
@@ -20,7 +24,7 @@ export default function Page() {
 <div className="ihero-pain reveal d3">How many appointments sat empty last week because a no-show never got a reminder?</div>
 <div className="ihero-actions reveal d4">
 <a href="https://cal.com/pacificedge" target="_blank" rel="noopener" className="btn-primary">Book a Free 15-Min Demo</a>
-<a href="/salons-savings-calculator.html" className="btn-calc">&#128202; What Empty Chairs Cost You</a>
+<a href="/roi-calculator?industry=salons" className="btn-calc">What Empty Chairs Cost You</a>
 <a href="#problems" className="btn-ghost">See How It Helps</a>
 </div>
 <div className="ihero-stats reveal d5">
@@ -32,6 +36,13 @@ export default function Page() {
 </div>
 </header>
 
+<div className="pband reveal">
+<figure className="photo-band">
+<img src="/img/salon.jpg" alt="A calm, modern spa interior" loading="lazy" />
+</figure>
+</div>
+
+
 <div className="divhr"></div>
 
 <section id="problems">
@@ -40,12 +51,12 @@ export default function Page() {
 <h2 className="st reveal d1">Sound <span className="a">Familiar?</span></h2>
 <p className="sd reveal d2">If your week looks anything like this, your calendar is quietly leaking revenue.</p>
 <div className="prob-grid">
-<div className="prob reveal d1"><div className="prob-ico">&#128186;</div><h3>No-shows leave chairs empty</h3><p>A client books for Saturday and never turns up. That prime slot sat empty while three other people would have taken it.</p><div className="prob-cost">An empty chair is revenue you can't get back</div></div>
-<div className="prob reveal d2"><div className="prob-ico">&#128242;</div><h3>DMs and calls pile up after hours</h3><p>Requests come in on Instagram and voicemail at 9pm. By the time you reply in the morning, they have booked somewhere else.</p><div className="prob-cost">After-hours requests go to the fastest reply</div></div>
-<div className="prob reveal d3"><div className="prob-ico">&#128257;</div><h3>Clients book once and vanish</h3><p>Someone loves their cut or facial, then you never hear from them again because no one had time to follow up and rebook them.</p><div className="prob-cost">A client who doesn't rebook is a client lost</div></div>
-<div className="prob reveal d1"><div className="prob-ico">&#9742;&#65039;</div><h3>The front desk drowns in scheduling</h3><p>Your team spends the day rescheduling, confirming, and playing phone tag instead of looking after the clients in the room.</p><div className="prob-cost">Your team is on the phone, not with clients</div></div>
-<div className="prob reveal d2"><div className="prob-ico">&#11088;</div><h3>Reviews don't reflect the work</h3><p>You do five-star work all day, but barely any of those happy clients ever leave a review, so your online presence lags behind.</p><div className="prob-cost">Five-star service, three-star presence online</div></div>
-<div className="prob reveal d3"><div className="prob-ico">&#9203;</div><h3>Gaps and cancellations go unfilled</h3><p>A late cancellation opens a slot, but there is no fast way to offer it to your waitlist before the hour is simply gone.</p><div className="prob-cost">A last-minute opening shouldn't mean lost income</div></div>
+<div className="prob reveal d1"><div className="prob-ico"><Armchair size={22} strokeWidth={1.8} style={{ color: "var(--accent-ink)" }} aria-hidden /></div><h3>No-shows leave chairs empty</h3><p>A client books for Saturday and never turns up. That prime slot sat empty while three other people would have taken it.</p><div className="prob-cost">An empty chair is revenue you can't get back</div></div>
+<div className="prob reveal d2"><div className="prob-ico"><MessageCircle size={22} strokeWidth={1.8} style={{ color: "var(--accent-ink)" }} aria-hidden /></div><h3>DMs and calls pile up after hours</h3><p>Requests come in on Instagram and voicemail at 9pm. By the time you reply in the morning, they have booked somewhere else.</p><div className="prob-cost">After-hours requests go to the fastest reply</div></div>
+<div className="prob reveal d3"><div className="prob-ico"><RefreshCw size={22} strokeWidth={1.8} style={{ color: "var(--accent-ink)" }} aria-hidden /></div><h3>Clients book once and vanish</h3><p>Someone loves their cut or facial, then you never hear from them again because no one had time to follow up and rebook them.</p><div className="prob-cost">A client who doesn't rebook is a client lost</div></div>
+<div className="prob reveal d1"><div className="prob-ico"><PhoneCall size={22} strokeWidth={1.8} style={{ color: "var(--accent-ink)" }} aria-hidden /></div><h3>The front desk drowns in scheduling</h3><p>Your team spends the day rescheduling, confirming, and playing phone tag instead of looking after the clients in the room.</p><div className="prob-cost">Your team is on the phone, not with clients</div></div>
+<div className="prob reveal d2"><div className="prob-ico"><Star size={22} strokeWidth={1.8} style={{ color: "var(--accent-ink)" }} aria-hidden /></div><h3>Reviews don't reflect the work</h3><p>You do five-star work all day, but barely any of those happy clients ever leave a review, so your online presence lags behind.</p><div className="prob-cost">Five-star service, three-star presence online</div></div>
+<div className="prob reveal d3"><div className="prob-ico"><Clock size={22} strokeWidth={1.8} style={{ color: "var(--accent-ink)" }} aria-hidden /></div><h3>Gaps and cancellations go unfilled</h3><p>A late cancellation opens a slot, but there is no fast way to offer it to your waitlist before the hour is simply gone.</p><div className="prob-cost">A last-minute opening shouldn't mean lost income</div></div>
 </div>
 </div>
 </section>
@@ -75,8 +86,8 @@ export default function Page() {
 <div className="mock" data-live="">
 <div className="mock-head"><span className="mock-dot"></span><span className="mock-title">Cancellation &middot; Refilled</span></div>
 <div className="mock-typing" data-typing="1300">Texting your waitlist<i></i><i></i><i></i></div>
-<div className="mock-row"><div className="mock-row-l"><div className="mock-avatar">&#10060;</div><div><div className="mock-name">2:00 PM cancelled</div><div className="mock-sub">Offered to your waitlist</div></div></div><span className="mock-pill warn">Open</span></div>
-<div className="mock-row"><div className="mock-row-l"><div className="mock-avatar">&#128257;</div><div><div className="mock-name">Rebooked in 9 min</div><div className="mock-sub">Filled from waitlist</div></div></div><span className="mock-pill ok">Refilled</span></div>
+<div className="mock-row"><div className="mock-row-l"><div className="mock-avatar"><CalendarX size={16} strokeWidth={1.8} style={{ color: "var(--accent-ink)" }} aria-hidden /></div><div><div className="mock-name">2:00 PM cancelled</div><div className="mock-sub">Offered to your waitlist</div></div></div><span className="mock-pill warn">Open</span></div>
+<div className="mock-row"><div className="mock-row-l"><div className="mock-avatar"><RefreshCw size={16} strokeWidth={1.8} style={{ color: "var(--accent-ink)" }} aria-hidden /></div><div><div className="mock-name">Rebooked in 9 min</div><div className="mock-sub">Filled from waitlist</div></div></div><span className="mock-pill ok">Refilled</span></div>
 </div>
 </div>
 </div>
@@ -95,8 +106,8 @@ export default function Page() {
 <div className="frow-visual reveal d2">
 <div className="mock" data-live="">
 <div className="mock-head"><span className="mock-dot"></span><span className="mock-title">Booking Requests &middot; Today</span></div>
-<div className="mock-row"><div className="mock-row-l"><div className="mock-avatar">&#128242;</div><div><div className="mock-name">Balayage &middot; Sat 1:30 PM</div><div className="mock-sub">From Instagram DM</div></div></div><span className="mock-pill ok">Booked</span></div>
-<div className="mock-row"><div className="mock-row-l"><div className="mock-avatar">&#128135;</div><div><div className="mock-name">Men's cut &middot; Thu 5:00 PM</div><div className="mock-sub">After-hours text</div></div></div><span className="mock-pill ok">Booked</span></div>
+<div className="mock-row"><div className="mock-row-l"><div className="mock-avatar"><MessageCircle size={16} strokeWidth={1.8} style={{ color: "var(--accent-ink)" }} aria-hidden /></div><div><div className="mock-name">Balayage &middot; Sat 1:30 PM</div><div className="mock-sub">From Instagram DM</div></div></div><span className="mock-pill ok">Booked</span></div>
+<div className="mock-row"><div className="mock-row-l"><div className="mock-avatar"><Scissors size={16} strokeWidth={1.8} style={{ color: "var(--accent-ink)" }} aria-hidden /></div><div><div className="mock-name">Men's cut &middot; Thu 5:00 PM</div><div className="mock-sub">After-hours text</div></div></div><span className="mock-pill ok">Booked</span></div>
 </div>
 </div>
 </div>
@@ -115,8 +126,8 @@ export default function Page() {
 <div className="frow-visual reveal d2">
 <div className="mock" data-live="">
 <div className="mock-head"><span className="mock-dot"></span><span className="mock-title">Rebooking &middot; This week</span></div>
-<div className="mock-row"><div className="mock-row-l"><div className="mock-avatar">&#128257;</div><div><div className="mock-name">Priya &middot; due for a trim</div><div className="mock-sub">Nudge sent &middot; rebooked</div></div></div><span className="mock-pill ok">Rebooked</span></div>
-<div className="mock-row"><div className="mock-row-l"><div className="mock-avatar">&#11088;</div><div><div className="mock-name">Jordan &middot; loved the facial</div><div className="mock-sub">Review request sent</div></div></div><span className="mock-pill ok">5-star</span></div>
+<div className="mock-row"><div className="mock-row-l"><div className="mock-avatar"><RefreshCw size={16} strokeWidth={1.8} style={{ color: "var(--accent-ink)" }} aria-hidden /></div><div><div className="mock-name">Priya &middot; due for a trim</div><div className="mock-sub">Nudge sent &middot; rebooked</div></div></div><span className="mock-pill ok">Rebooked</span></div>
+<div className="mock-row"><div className="mock-row-l"><div className="mock-avatar"><Star size={16} strokeWidth={1.8} style={{ color: "var(--accent-ink)" }} aria-hidden /></div><div><div className="mock-name">Jordan &middot; loved the facial</div><div className="mock-sub">Review request sent</div></div></div><span className="mock-pill ok">5-star</span></div>
 </div>
 </div>
 </div>
@@ -145,7 +156,7 @@ export default function Page() {
 <div className="phone-notch"></div>
 <div className="phone-screen">
 <div className="phone-top">
-<div className="phone-av">&#128135;</div>
+<div className="phone-av"><Scissors size={16} strokeWidth={1.8} style={{ color: "#fff" }} aria-hidden /></div>
 <div><div className="phone-top-name">Luxe Hair Studio</div><div className="phone-top-sub">AI desk &middot; filling a cancellation</div></div>
 </div>
 <div className="chat" data-chat="">
@@ -154,7 +165,7 @@ export default function Page() {
 <div className="typing" data-typing="1200"><i></i><i></i><i></i></div>
 <div className="bubble them" data-delay="200">Omg yes please!!</div>
 <div className="bubble me" data-delay="900">Done, you're booked at 1:30 with Alexa. I'll send a reminder beforehand, see you this afternoon!</div>
-<div className="chat-badge" data-delay="650"><span className="chat-badge-ico">&#9989;</span><span>Cancelled chair refilled from your waitlist in 4 minutes. No empty seat.</span></div>
+<div className="chat-badge" data-delay="650"><span className="chat-badge-ico"><CheckCircle2 size={14} strokeWidth={1.8} style={{ color: "#4af0c0" }} aria-hidden /></span><span>Cancelled chair refilled from your waitlist in 4 minutes. No empty seat.</span></div>
 </div>
 </div>
 </div>
@@ -237,17 +248,17 @@ export default function Page() {
 <h2 className="icta-title reveal d1">Ready To Keep<br /><span className="a">Every Chair Full?</span></h2>
 <p className="icta-desc reveal d2">Start with a free 15-minute call. We will show you exactly which automations would put the most appointments back on your calendar. No pitch, no obligation.</p>
 <a href="https://cal.com/pacificedge" target="_blank" rel="noopener" className="btn-primary reveal d2">Book a Free 15-Min Demo</a>
-<div className="reveal d2" style={{ marginTop: "18px" }}><a href="/salons-savings-calculator.html" className="btn-ghost">&#128202; See What Your Empty Chairs Are Worth &rarr;</a></div>
+<div className="reveal d2" style={{ marginTop: "18px" }}><a href="/roi-calculator?industry=salons" className="btn-ghost">See What Your Empty Chairs Are Worth &rarr;</a></div>
 <div className="icta-bullets reveal d3">
 <span><i></i>Free discovery call</span>
 <span><i></i>Working prototype in about a week</span>
 <span><i></i>Vancouver-based</span>
 </div>
 <div className="xlinks reveal d3">
-<a href="/restaurants" className="xlink"><span>&#127869;&#65039;</span>Restaurants</a>
-<a href="/trades" className="xlink"><span>&#128295;</span>Trades</a>
-<a href="/retail" className="xlink"><span>&#128717;&#65039;</span>Retail</a>
-<a href="/dental" className="xlink"><span>&#129463;</span>Dental</a>
+<a href="/restaurants" className="xlink"><span><UtensilsCrossed size={14} strokeWidth={1.8} style={{ color: "var(--accent-ink)" }} aria-hidden /></span>Restaurants</a>
+<a href="/trades" className="xlink"><span><Wrench size={14} strokeWidth={1.8} style={{ color: "var(--accent-ink)" }} aria-hidden /></span>Trades</a>
+<a href="/retail" className="xlink"><span><ShoppingBag size={14} strokeWidth={1.8} style={{ color: "var(--accent-ink)" }} aria-hidden /></span>Retail</a>
+<a href="/dental" className="xlink"><span><Stethoscope size={14} strokeWidth={1.8} style={{ color: "var(--accent-ink)" }} aria-hidden /></span>Dental</a>
 </div>
 </div>
 </section>

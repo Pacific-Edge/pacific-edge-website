@@ -9,7 +9,7 @@ export default function Logo({
   className?: string
 }) {
   return (
-    <Link href={href} className={`nav-logo ${className}`.trim()} aria-label="Pacific Edge AI — home">
+    <Link href={href} className={`nav-logo ${className}`.trim()} aria-label="Pacific Edge AI home">
       <span className="nav-slash" aria-hidden="true">
         <i />
         <i />

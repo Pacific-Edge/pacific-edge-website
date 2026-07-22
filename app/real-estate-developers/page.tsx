@@ -2,6 +2,20 @@ import type { Metadata } from "next"
 import Link from "next/link"
 import SiteShell from "@/components/site/SiteShell"
 import TiltParallax from "@/components/site/TiltParallax"
+import {
+  BarChart3,
+  CalendarCheck,
+  ClipboardList,
+  FileText,
+  Handshake,
+  Home,
+  ListChecks,
+  MessageSquare,
+  Moon,
+  Users,
+  Waves,
+  Wrench,
+} from "lucide-react"
 import "@/styles/pages.css"
 
 const CAL = "https://cal.com/pacificedge"
@@ -44,6 +58,13 @@ export default function RealEstateDevelopersPage() {
         </div>
       </header>
 
+<div className="pband reveal">
+<figure className="photo-band">
+<img src="/img/development.jpg" alt="Two residential towers under construction" loading="lazy" />
+</figure>
+</div>
+
+
       <div className="divhr" />
 
       <section id="problems">
@@ -52,12 +73,12 @@ export default function RealEstateDevelopersPage() {
           <h2 className="st reveal d1">Where Interest <span className="a">Leaks Out.</span></h2>
           <p className="sd reveal d2">You spend heavily to drive demand to a launch. Here&apos;s where it drains away before it reaches your sales team.</p>
           <div className="prob-grid">
-            <div className="prob reveal d1"><div className="prob-ico">🌊</div><h3>Launch-day inquiry floods</h3><p>Marketing drives a spike your sales centre can&apos;t answer all at once, and the overflow quietly leaks away.</p><div className="prob-cost">Overflow interest is money left on the table</div></div>
-            <div className="prob reveal d2"><div className="prob-ico">📝</div><h3>Registrations go cold</h3><p>Pre-sale registrations pile up faster than anyone can follow up, and warm buyers drift to the next project.</p><div className="prob-cost">A cold registration is a lost buyer</div></div>
-            <div className="prob reveal d3"><div className="prob-ico">👥</div><h3>Repetitive buyer questions</h3><p>Hundreds of people ask the same things about price, floorplans, deposits, and timelines, all by hand.</p><div className="prob-cost">Your team answers the same 10 questions</div></div>
-            <div className="prob reveal d1"><div className="prob-ico">🌙</div><h3>Interest after hours</h3><p>Buyers browse and register nights and weekends, long after the presentation centre has closed.</p><div className="prob-cost">Closed doors mean lost inquiries</div></div>
-            <div className="prob reveal d2"><div className="prob-ico">📄</div><h3>Chasing documents &amp; deposits</h3><p>Endless back-and-forth to collect forms, IDs, and deposits slows every deal in the pipeline.</p><div className="prob-cost">Slow paperwork stalls sales</div></div>
-            <div className="prob reveal d3"><div className="prob-ico">🤝</div><h3>Keeping brokers &amp; VIPs engaged</h3><p>Nurturing your agent network and VIP list through a long sales cycle is a full-time job on its own.</p><div className="prob-cost">Quiet lists go cold before closing</div></div>
+            <div className="prob reveal d1"><div className="prob-ico"><Waves size={20} strokeWidth={1.8} style={{ color: "var(--accent2)" }} aria-hidden /></div><h3>Launch-day inquiry floods</h3><p>Marketing drives a spike your sales centre can&apos;t answer all at once, and the overflow quietly leaks away.</p><div className="prob-cost">Overflow interest is money left on the table</div></div>
+            <div className="prob reveal d2"><div className="prob-ico"><ClipboardList size={20} strokeWidth={1.8} style={{ color: "var(--accent2)" }} aria-hidden /></div><h3>Registrations go cold</h3><p>Pre-sale registrations pile up faster than anyone can follow up, and warm buyers drift to the next project.</p><div className="prob-cost">A cold registration is a lost buyer</div></div>
+            <div className="prob reveal d3"><div className="prob-ico"><Users size={20} strokeWidth={1.8} style={{ color: "var(--accent2)" }} aria-hidden /></div><h3>Repetitive buyer questions</h3><p>Hundreds of people ask the same things about price, floorplans, deposits, and timelines, all by hand.</p><div className="prob-cost">Your team answers the same 10 questions</div></div>
+            <div className="prob reveal d1"><div className="prob-ico"><Moon size={20} strokeWidth={1.8} style={{ color: "var(--accent2)" }} aria-hidden /></div><h3>Interest after hours</h3><p>Buyers browse and register nights and weekends, long after the presentation centre has closed.</p><div className="prob-cost">Closed doors mean lost inquiries</div></div>
+            <div className="prob reveal d2"><div className="prob-ico"><FileText size={20} strokeWidth={1.8} style={{ color: "var(--accent2)" }} aria-hidden /></div><h3>Chasing documents &amp; deposits</h3><p>Endless back-and-forth to collect forms, IDs, and deposits slows every deal in the pipeline.</p><div className="prob-cost">Slow paperwork stalls sales</div></div>
+            <div className="prob reveal d3"><div className="prob-ico"><Handshake size={20} strokeWidth={1.8} style={{ color: "var(--accent2)" }} aria-hidden /></div><h3>Keeping brokers &amp; VIPs engaged</h3><p>Nurturing your agent network and VIP list through a long sales cycle is a full-time job on its own.</p><div className="prob-cost">Quiet lists go cold before closing</div></div>
           </div>
         </div>
       </section>
@@ -70,12 +91,12 @@ export default function RealEstateDevelopersPage() {
           <h2 className="st reveal d1 tac">A Sales Centre <span className="a">That Never Closes.</span></h2>
           <p className="sd reveal d2" style={{ textAlign: "center", margin: "0 auto" }}>From the first teaser ad to the final closing, every inquiry answered and every buyer kept warm.</p>
           <div className="px-grid tilt">
-            <article className="px-card reveal d1" data-tilt><div className="px-card-shine" aria-hidden="true" /><span className="px-card-ico">📝</span><h3>24/7 registration capture</h3><p>Every pre-sale registration and inquiry captured and acknowledged the instant it comes in.</p></article>
-            <article className="px-card reveal d2" data-tilt><div className="px-card-shine" aria-hidden="true" /><span className="px-card-ico">💬</span><h3>Instant buyer answers</h3><p>Price, floorplans, deposits, and timelines answered instantly from facts you approve, on brand.</p></article>
-            <article className="px-card reveal d3" data-tilt><div className="px-card-shine" aria-hidden="true" /><span className="px-card-ico">📋</span><h3>Waitlist &amp; nurture</h3><p>Your registration list kept warm with updates through every phase, so interest doesn&apos;t fade before launch.</p></article>
-            <article className="px-card reveal d1" data-tilt><div className="px-card-shine" aria-hidden="true" /><span className="px-card-ico">🗓️</span><h3>Presentation-centre booking</h3><p>Appointments and private previews booked automatically, with reminders to cut no-shows.</p></article>
-            <article className="px-card reveal d2" data-tilt><div className="px-card-shine" aria-hidden="true" /><span className="px-card-ico">📄</span><h3>Document &amp; deposit reminders</h3><p>Gentle, automatic nudges to collect forms, IDs, and deposits so deals don&apos;t stall on paperwork.</p></article>
-            <article className="px-card reveal d3" data-tilt><div className="px-card-shine" aria-hidden="true" /><span className="px-card-ico">📊</span><h3>Per-project reporting</h3><p>One view of registrations, response times, and conversion across every project and phase.</p></article>
+            <article className="px-card reveal d1" data-tilt><div className="px-card-shine" aria-hidden="true" /><span className="px-card-ico"><ClipboardList size={22} strokeWidth={1.8} style={{ color: "var(--accent-ink)" }} aria-hidden /></span><h3>24/7 registration capture</h3><p>Every pre-sale registration and inquiry captured and acknowledged the instant it comes in.</p></article>
+            <article className="px-card reveal d2" data-tilt><div className="px-card-shine" aria-hidden="true" /><span className="px-card-ico"><MessageSquare size={22} strokeWidth={1.8} style={{ color: "var(--accent-ink)" }} aria-hidden /></span><h3>Instant buyer answers</h3><p>Price, floorplans, deposits, and timelines answered instantly from facts you approve, on brand.</p></article>
+            <article className="px-card reveal d3" data-tilt><div className="px-card-shine" aria-hidden="true" /><span className="px-card-ico"><ListChecks size={22} strokeWidth={1.8} style={{ color: "var(--accent-ink)" }} aria-hidden /></span><h3>Waitlist &amp; nurture</h3><p>Your registration list kept warm with updates through every phase, so interest doesn&apos;t fade before launch.</p></article>
+            <article className="px-card reveal d1" data-tilt><div className="px-card-shine" aria-hidden="true" /><span className="px-card-ico"><CalendarCheck size={22} strokeWidth={1.8} style={{ color: "var(--accent-ink)" }} aria-hidden /></span><h3>Presentation-centre booking</h3><p>Appointments and private previews booked automatically, with reminders to cut no-shows.</p></article>
+            <article className="px-card reveal d2" data-tilt><div className="px-card-shine" aria-hidden="true" /><span className="px-card-ico"><FileText size={22} strokeWidth={1.8} style={{ color: "var(--accent-ink)" }} aria-hidden /></span><h3>Document &amp; deposit reminders</h3><p>Gentle, automatic nudges to collect forms, IDs, and deposits so deals don&apos;t stall on paperwork.</p></article>
+            <article className="px-card reveal d3" data-tilt><div className="px-card-shine" aria-hidden="true" /><span className="px-card-ico"><BarChart3 size={22} strokeWidth={1.8} style={{ color: "var(--accent-ink)" }} aria-hidden /></span><h3>Per-project reporting</h3><p>One view of registrations, response times, and conversion across every project and phase.</p></article>
           </div>
         </div>
       </section>
@@ -103,8 +124,8 @@ export default function RealEstateDevelopersPage() {
           <a href={CAL} target="_blank" rel="noopener" className="btn-primary reveal d2">Book a Free 15-Min Demo</a>
           <div className="xlinks reveal d3">
             <Link href="/real-estate" className="xlink"><span>←</span>Real Estate</Link>
-            <Link href="/real-estate-agents" className="xlink"><span>🏡</span>For Agents</Link>
-            <Link href="/custom-builds" className="xlink"><span>🛠️</span>Custom Builds</Link>
+            <Link href="/real-estate-agents" className="xlink"><span><Home size={14} strokeWidth={1.8} style={{ color: "var(--accent-ink)" }} aria-hidden /></span>For Agents</Link>
+            <Link href="/custom-builds" className="xlink"><span><Wrench size={14} strokeWidth={1.8} style={{ color: "var(--accent-ink)" }} aria-hidden /></span>Custom Builds</Link>
           </div>
         </div>
       </section>

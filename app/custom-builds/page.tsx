@@ -2,6 +2,7 @@ import type { Metadata } from "next"
 import Link from "next/link"
 import SiteShell from "@/components/site/SiteShell"
 import TiltParallax from "@/components/site/TiltParallax"
+import { Bot, Building2, CalendarCheck, Clock, Database, DoorOpen, FileSpreadsheet, GraduationCap, LayoutDashboard, Link2, Puzzle, Settings } from "lucide-react"
 import "@/styles/pages.css"
 
 const CAL = "https://cal.com/pacificedge"
@@ -12,10 +13,6 @@ export const metadata: Metadata = {
     "When you need something Janice doesn't cover, we build it. Pacific Edge AI designs and builds custom software around how your business actually runs: tailored CRMs, internal dashboards, and automations. Scoped and quoted per project. Vancouver, BC.",
   alternates: { canonical: "/custom-builds" },
 }
-
-const check = (
-  <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M5 13l4 4L19 7" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round" /></svg>
-)
 
 export default function CustomBuildsPage() {
   return (
@@ -60,12 +57,12 @@ export default function CustomBuildsPage() {
             that keeps stealing your time.
           </p>
           <div className="px-grid tilt">
-            <article className="px-card reveal d1" data-tilt><div className="px-card-shine" aria-hidden="true" /><span className="px-card-ico">🗂️</span><h3>Tailored CRM</h3><p>A CRM shaped around your pipeline and your words, not a generic template you fight with every day.</p></article>
-            <article className="px-card reveal d2" data-tilt><div className="px-card-shine" aria-hidden="true" /><span className="px-card-ico">📊</span><h3>Internal dashboards</h3><p>One screen that pulls your numbers together, so you stop stitching spreadsheets by hand every week.</p></article>
-            <article className="px-card reveal d3" data-tilt><div className="px-card-shine" aria-hidden="true" /><span className="px-card-ico">⚙️</span><h3>Workflow automations</h3><p>The repetitive task that eats your week, handled automatically from start to finish.</p></article>
-            <article className="px-card reveal d1" data-tilt><div className="px-card-shine" aria-hidden="true" /><span className="px-card-ico">📅</span><h3>Custom booking flows</h3><p>A booking or intake flow built exactly the way your business actually takes work in.</p></article>
-            <article className="px-card reveal d2" data-tilt><div className="px-card-shine" aria-hidden="true" /><span className="px-card-ico">🔗</span><h3>Tool integrations</h3><p>The two systems that don&apos;t talk to each other, finally connected and kept in sync.</p></article>
-            <article className="px-card reveal d3" data-tilt><div className="px-card-shine" aria-hidden="true" /><span className="px-card-ico">🚪</span><h3>Client &amp; team portals</h3><p>A simple, branded place for clients or staff to do the one thing they need to do.</p></article>
+            <article className="px-card reveal d1" data-tilt><div className="px-card-shine" aria-hidden="true" /><span className="px-card-ico"><Database size={22} strokeWidth={1.8} style={{ color: "var(--accent-ink)" }} aria-hidden /></span><h3>Tailored CRM</h3><p>A CRM shaped around your pipeline and your words, not a generic template you fight with every day.</p></article>
+            <article className="px-card reveal d2" data-tilt><div className="px-card-shine" aria-hidden="true" /><span className="px-card-ico"><LayoutDashboard size={22} strokeWidth={1.8} style={{ color: "var(--accent-ink)" }} aria-hidden /></span><h3>Internal dashboards</h3><p>One screen that pulls your numbers together, so you stop stitching spreadsheets by hand every week.</p></article>
+            <article className="px-card reveal d3" data-tilt><div className="px-card-shine" aria-hidden="true" /><span className="px-card-ico"><Settings size={22} strokeWidth={1.8} style={{ color: "var(--accent-ink)" }} aria-hidden /></span><h3>Workflow automations</h3><p>The repetitive task that eats your week, handled automatically from start to finish.</p></article>
+            <article className="px-card reveal d1" data-tilt><div className="px-card-shine" aria-hidden="true" /><span className="px-card-ico"><CalendarCheck size={22} strokeWidth={1.8} style={{ color: "var(--accent-ink)" }} aria-hidden /></span><h3>Custom booking flows</h3><p>A booking or intake flow built exactly the way your business actually takes work in.</p></article>
+            <article className="px-card reveal d2" data-tilt><div className="px-card-shine" aria-hidden="true" /><span className="px-card-ico"><Link2 size={22} strokeWidth={1.8} style={{ color: "var(--accent-ink)" }} aria-hidden /></span><h3>Tool integrations</h3><p>The two systems that don&apos;t talk to each other, finally connected and kept in sync.</p></article>
+            <article className="px-card reveal d3" data-tilt><div className="px-card-shine" aria-hidden="true" /><span className="px-card-ico"><DoorOpen size={22} strokeWidth={1.8} style={{ color: "var(--accent-ink)" }} aria-hidden /></span><h3>Client &amp; team portals</h3><p>A simple, branded place for clients or staff to do the one thing they need to do.</p></article>
           </div>
         </div>
       </section>
@@ -78,9 +75,9 @@ export default function CustomBuildsPage() {
           <div className="sl reveal">When It&apos;s Worth It</div>
           <h2 className="st reveal d1">Sound Like <span className="a">Your Week?</span></h2>
           <div className="px-grid">
-            <div className="px-card reveal d1"><span className="px-card-ico">🕓</span><h3>&ldquo;I do this by hand every week&rdquo;</h3><p>If a task is repetitive, rule-based, and steals hours, it can almost always be automated away.</p></div>
-            <div className="px-card reveal d2"><span className="px-card-ico">🧩</span><h3>&ldquo;No software does it our way&rdquo;</h3><p>You&apos;ve tried the off-the-shelf tools and end up bending your business to fit them. Build it your way instead.</p></div>
-            <div className="px-card reveal d3"><span className="px-card-ico">📑</span><h3>&ldquo;It lives in ten spreadsheets&rdquo;</h3><p>When the truth is scattered across tabs and inboxes, one purpose-built tool pays for itself fast.</p></div>
+            <div className="px-card reveal d1"><span className="px-card-ico"><Clock size={22} strokeWidth={1.8} style={{ color: "var(--accent-ink)" }} aria-hidden /></span><h3>&ldquo;I do this by hand every week&rdquo;</h3><p>If a task is repetitive, rule-based, and steals hours, it can almost always be automated away.</p></div>
+            <div className="px-card reveal d2"><span className="px-card-ico"><Puzzle size={22} strokeWidth={1.8} style={{ color: "var(--accent-ink)" }} aria-hidden /></span><h3>&ldquo;No software does it our way&rdquo;</h3><p>You&apos;ve tried the off-the-shelf tools and end up bending your business to fit them. Build it your way instead.</p></div>
+            <div className="px-card reveal d3"><span className="px-card-ico"><FileSpreadsheet size={22} strokeWidth={1.8} style={{ color: "var(--accent-ink)" }} aria-hidden /></span><h3>&ldquo;It lives in ten spreadsheets&rdquo;</h3><p>When the truth is scattered across tabs and inboxes, one purpose-built tool pays for itself fast.</p></div>
           </div>
         </div>
       </section>
@@ -132,9 +129,9 @@ export default function CustomBuildsPage() {
             <span><i />You own what we build</span>
           </div>
           <div className="xlinks reveal d3">
-            <Link href="/ai-employee" className="xlink"><span>🤖</span>Meet Janice</Link>
-            <Link href="/ai-training" className="xlink"><span>🎓</span>AI Training</Link>
-            <Link href="/industries" className="xlink"><span>🏙️</span>Industries</Link>
+            <Link href="/ai-employee" className="xlink"><span><Bot size={14} strokeWidth={1.8} style={{ color: "var(--accent-ink)" }} aria-hidden /></span>Meet Janice</Link>
+            <Link href="/ai-training" className="xlink"><span><GraduationCap size={14} strokeWidth={1.8} style={{ color: "var(--accent-ink)" }} aria-hidden /></span>AI Training</Link>
+            <Link href="/industries" className="xlink"><span><Building2 size={14} strokeWidth={1.8} style={{ color: "var(--accent-ink)" }} aria-hidden /></span>Industries</Link>
           </div>
         </div>
       </section>

@@ -2,6 +2,7 @@ import type { Metadata } from "next"
 import SiteShell from "@/components/site/SiteShell"
 import JaniceDemo from "@/components/site/JaniceDemo"
 import JaniceInsights from "@/components/site/JaniceInsights"
+import { Bell, Blocks, CalendarCheck, CalendarX, Camera, CheckCircle2, Mail, MessageCircle, MessageSquare, PenLine, Phone, PhoneMissed, RefreshCw, Scissors, ShoppingBag, Smartphone, Smile, Star, Utensils, Wrench } from "lucide-react"
 
 export const metadata: Metadata = {
   title: { absolute: "Meet Janice, Your AI Employee | Pacific Edge AI" },
@@ -55,12 +56,12 @@ export default function Page() {
 <h2 className="st reveal d1">One Hire, <span className="a">Endless Shifts.</span></h2>
 <p className="sd reveal d2">Think of Janice as the team member who never sleeps, never forgets a follow-up, and never lets a call ring out.</p>
 <div className="icards">
-<div className="icard feat reveal d1"><div className="icard-ico">&#128222;</div><h3>Answers every call</h3><p>Picks up, or texts back a missed call in seconds, so a new customer never hits voicemail and calls the competitor instead.</p><span className="tag">Calls</span></div>
-<div className="icard feat reveal d2"><div className="icard-ico">&#128172;</div><h3>Replies on every channel</h3><p>Phone, SMS, Instagram, web chat, and email, all answered instantly from one place, in your tone of voice.</p><span className="tag">Messaging</span></div>
-<div className="icard feat reveal d3"><div className="icard-ico">&#128197;</div><h3>Books &amp; reschedules</h3><p>Offers real open times and drops the booking straight into the calendar and tools you already use.</p><span className="tag">Booking</span></div>
-<div className="icard feat reveal d1"><div className="icard-ico">&#128257;</div><h3>Fills cancellations</h3><p>The second a spot frees up, Janice offers it to your waitlist and books the first to say yes. No empty chairs or tables.</p><span className="tag">Recovery</span></div>
-<div className="icard feat reveal d2"><div className="icard-ico">&#9989;</div><h3>Confirms &amp; reminds</h3><p>Automatic confirmations, reminders, and recalls that cut no-shows and bring customers back on schedule.</p><span className="tag">Reminders</span></div>
-<div className="icard feat reveal d3"><div className="icard-ico">&#11088;</div><h3>Follows up &amp; earns reviews</h3><p>Chases quotes and treatment plans, then asks your happiest customers for a review at just the right moment.</p><span className="tag">Follow-up</span></div>
+<div className="icard feat reveal d1"><div className="icard-ico"><Phone size={22} strokeWidth={1.8} style={{ color: "var(--accent-ink)" }} aria-hidden /></div><h3>Answers every call</h3><p>Picks up, or texts back a missed call in seconds, so a new customer never hits voicemail and calls the competitor instead.</p><span className="tag">Calls</span></div>
+<div className="icard feat reveal d2"><div className="icard-ico"><MessageSquare size={22} strokeWidth={1.8} style={{ color: "var(--accent-ink)" }} aria-hidden /></div><h3>Replies on every channel</h3><p>Phone, SMS, Instagram, web chat, and email, all answered instantly from one place, in your tone of voice.</p><span className="tag">Messaging</span></div>
+<div className="icard feat reveal d3"><div className="icard-ico"><CalendarCheck size={22} strokeWidth={1.8} style={{ color: "var(--accent-ink)" }} aria-hidden /></div><h3>Books &amp; reschedules</h3><p>Offers real open times and drops the booking straight into the calendar and tools you already use.</p><span className="tag">Booking</span></div>
+<div className="icard feat reveal d1"><div className="icard-ico"><RefreshCw size={22} strokeWidth={1.8} style={{ color: "var(--accent-ink)" }} aria-hidden /></div><h3>Fills cancellations</h3><p>The second a spot frees up, Janice offers it to your waitlist and books the first to say yes. No empty chairs or tables.</p><span className="tag">Recovery</span></div>
+<div className="icard feat reveal d2"><div className="icard-ico"><CheckCircle2 size={22} strokeWidth={1.8} style={{ color: "var(--accent-ink)" }} aria-hidden /></div><h3>Confirms &amp; reminds</h3><p>Automatic confirmations, reminders, and recalls that cut no-shows and bring customers back on schedule.</p><span className="tag">Reminders</span></div>
+<div className="icard feat reveal d3"><div className="icard-ico"><Star size={22} strokeWidth={1.8} style={{ color: "var(--accent-ink)" }} aria-hidden /></div><h3>Follows up &amp; earns reviews</h3><p>Chases quotes and treatment plans, then asks your happiest customers for a review at just the right moment.</p><span className="tag">Follow-up</span></div>
 </div>
 </div>
 </section>
@@ -89,8 +90,8 @@ export default function Page() {
 <div className="frow-visual reveal d2">
 <div className="mock">
 <div className="mock-head"><span className="mock-dot"></span><span className="mock-title">Missed Call &middot; Recovered</span></div>
-<div className="mock-row"><div className="mock-row-l"><div className="mock-avatar">&#128222;</div><div><div className="mock-name">+1 (604) 555-0148</div><div className="mock-sub">Missed at 7:14 PM</div></div></div><span className="mock-pill ok">Texted &middot; 19s</span></div>
-<div className="mock-row"><div className="mock-row-l"><div className="mock-avatar">&#9989;</div><div><div className="mock-name">Booked by Janice</div><div className="mock-sub">Captured &amp; confirmed</div></div></div><span className="mock-pill ok">Done</span></div>
+<div className="mock-row"><div className="mock-row-l"><div className="mock-avatar"><Phone size={16} strokeWidth={1.8} style={{ color: "var(--accent-ink)" }} aria-hidden /></div><div><div className="mock-name">+1 (604) 555-0148</div><div className="mock-sub">Missed at 7:14 PM</div></div></div><span className="mock-pill ok">Texted &middot; 19s</span></div>
+<div className="mock-row"><div className="mock-row-l"><div className="mock-avatar"><CheckCircle2 size={16} strokeWidth={1.8} style={{ color: "var(--accent-ink)" }} aria-hidden /></div><div><div className="mock-name">Booked by Janice</div><div className="mock-sub">Captured &amp; confirmed</div></div></div><span className="mock-pill ok">Done</span></div>
 </div>
 </div>
 </div>
@@ -109,8 +110,8 @@ export default function Page() {
 <div className="frow-visual reveal d2">
 <div className="mock">
 <div className="mock-head"><span className="mock-dot"></span><span className="mock-title">Cancellation &middot; Refilled</span></div>
-<div className="mock-row"><div className="mock-row-l"><div className="mock-avatar">&#10060;</div><div><div className="mock-name">2:00 PM cancelled</div><div className="mock-sub">Offered to 4 on waitlist</div></div></div><span className="mock-pill warn">Open</span></div>
-<div className="mock-row"><div className="mock-row-l"><div className="mock-avatar">&#128257;</div><div><div className="mock-name">Rebooked in 6 min</div><div className="mock-sub">From the waitlist</div></div></div><span className="mock-pill ok">Refilled &middot; +$180</span></div>
+<div className="mock-row"><div className="mock-row-l"><div className="mock-avatar"><CalendarX size={16} strokeWidth={1.8} style={{ color: "var(--accent-ink)" }} aria-hidden /></div><div><div className="mock-name">2:00 PM cancelled</div><div className="mock-sub">Offered to 4 on waitlist</div></div></div><span className="mock-pill warn">Open</span></div>
+<div className="mock-row"><div className="mock-row-l"><div className="mock-avatar"><RefreshCw size={16} strokeWidth={1.8} style={{ color: "var(--accent-ink)" }} aria-hidden /></div><div><div className="mock-name">Rebooked in 6 min</div><div className="mock-sub">From the waitlist</div></div></div><span className="mock-pill ok">Refilled &middot; +$180</span></div>
 </div>
 </div>
 </div>
@@ -129,8 +130,8 @@ export default function Page() {
 <div className="frow-visual reveal d2">
 <div className="mock">
 <div className="mock-head"><span className="mock-dot"></span><span className="mock-title">Review &middot; Drafted For You</span></div>
-<div className="mock-row"><div className="mock-row-l"><div className="mock-avatar">&#11088;</div><div><div className="mock-name">5-star from Sarah K.</div><div className="mock-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div></div></div><span className="mock-pill ok">Reply drafted</span></div>
-<div className="mock-row"><div className="mock-row-l"><div className="mock-avatar">&#9997;&#65039;</div><div><div className="mock-name">In your voice</div><div className="mock-sub">One tap to approve</div></div></div><span className="mock-pill ok">Ready</span></div>
+<div className="mock-row"><div className="mock-row-l"><div className="mock-avatar"><Star size={16} strokeWidth={1.8} style={{ color: "var(--accent-ink)" }} aria-hidden /></div><div><div className="mock-name">5-star from Sarah K.</div><div className="mock-stars">★★★★★</div></div></div><span className="mock-pill ok">Reply drafted</span></div>
+<div className="mock-row"><div className="mock-row-l"><div className="mock-avatar"><PenLine size={16} strokeWidth={1.8} style={{ color: "var(--accent-ink)" }} aria-hidden /></div><div><div className="mock-name">In your voice</div><div className="mock-sub">One tap to approve</div></div></div><span className="mock-pill ok">Ready</span></div>
 </div>
 </div>
 </div>
@@ -196,7 +197,7 @@ export default function Page() {
 <section id="why">
 <div className="wrap">
 <div className="sl reveal">Why Janice</div>
-<h2 className="st reveal d1">Not Your <span className="a">Average Bot.</span></h2>
+<h2 className="st reveal d1">Built Around <span className="a">Your Business.</span></h2>
 <p className="sd reveal d2">Janice is not a generic chatbot bolted on. She is built around your business, and plugs straight into the software you already run, so everything stays in sync.</p>
 
 <div className="jhub reveal d2" role="img" aria-label="Janice connects your calls, bookings, reviews, cancellations, reminders and tools in real time">
@@ -209,17 +210,17 @@ export default function Page() {
 <path className="jhub-wire" style={{ animationDelay: "-.75s" }} d="M765,395 Q590,320 450,235"></path>
 </svg>
 <div className="jhub-core"><b>Janice</b><em>Your AI Employee</em></div>
-<div className="jhub-node jn1"><span className="jic">📞</span><div><b>Missed calls</b><i>texted back in seconds</i><span className="jsw"><span>OpenPhone</span><span>RingCentral</span></span></div></div>
-<div className="jhub-node jn2"><span className="jic">📅</span><div><b>Bookings</b><i>into your calendar</i><span className="jsw"><span>Google Cal</span><span>Calendly</span></span></div></div>
-<div className="jhub-node jn3"><span className="jic">⭐</span><div><b>Reviews</b><i>replied on-brand</i><span className="jsw"><span>Google</span><span>Yelp</span></span></div></div>
-<div className="jhub-node jn4"><span className="jic">💬</span><div><b>Cancellations</b><i>filled from the waitlist</i><span className="jsw"><span>Square</span><span>Vagaro</span></span></div></div>
-<div className="jhub-node jn5"><span className="jic">🔔</span><div><b>Reminders</b><i>so people show up</i><span className="jsw"><span>Twilio</span><span>Mailchimp</span></span></div></div>
-<div className="jhub-node jn6"><span className="jic">🗂️</span><div><b>Your tools</b><i>synced in real time</i><span className="jsw"><span>HubSpot</span><span>QuickBooks</span><span className="more">+ more</span></span></div></div>
+<div className="jhub-node jn1"><span className="jic"><PhoneMissed size={16} strokeWidth={1.8} style={{ color: "var(--accent-ink)" }} aria-hidden /></span><div><b>Missed calls</b><i>texted back in seconds</i><span className="jsw"><span>OpenPhone</span><span>RingCentral</span></span></div></div>
+<div className="jhub-node jn2"><span className="jic"><CalendarCheck size={16} strokeWidth={1.8} style={{ color: "var(--accent-ink)" }} aria-hidden /></span><div><b>Bookings</b><i>into your calendar</i><span className="jsw"><span>Google Cal</span><span>Calendly</span></span></div></div>
+<div className="jhub-node jn3"><span className="jic"><Star size={16} strokeWidth={1.8} style={{ color: "var(--accent-ink)" }} aria-hidden /></span><div><b>Reviews</b><i>replied on-brand</i><span className="jsw"><span>Google</span><span>Yelp</span></span></div></div>
+<div className="jhub-node jn4"><span className="jic"><RefreshCw size={16} strokeWidth={1.8} style={{ color: "var(--accent-ink)" }} aria-hidden /></span><div><b>Cancellations</b><i>filled from the waitlist</i><span className="jsw"><span>Square</span><span>Vagaro</span></span></div></div>
+<div className="jhub-node jn5"><span className="jic"><Bell size={16} strokeWidth={1.8} style={{ color: "var(--accent-ink)" }} aria-hidden /></span><div><b>Reminders</b><i>so people show up</i><span className="jsw"><span>Twilio</span><span>Mailchimp</span></span></div></div>
+<div className="jhub-node jn6"><span className="jic"><Blocks size={16} strokeWidth={1.8} style={{ color: "var(--accent-ink)" }} aria-hidden /></span><div><b>Your tools</b><i>synced in real time</i><span className="jsw"><span>HubSpot</span><span>QuickBooks</span><span className="more">+ more</span></span></div></div>
 </div>
 <div className="jhub-foot reveal d3">
-<span><b>⚙️ Custom-built</b>, not a template</span>
-<span><b>📍 Vancouver team</b>, that gets local business</span>
-<span><b>🔌 Plugged in</b>, to your phone, calendar &amp; tools</span>
+<span><b>Custom-built</b>, not a template</span>
+<span><b>Vancouver team</b>, that gets local business</span>
+<span><b>Plugged in</b>, to your phone, calendar &amp; tools</span>
 </div>
 </div>
 </section>
@@ -232,11 +233,11 @@ export default function Page() {
 <h2 className="st reveal d1">One Janice, <span className="a">Every Channel.</span></h2>
 <p className="sd reveal d2 sd-c">She works across the ways your customers already reach you, all from one place.</p>
 <div className="channels reveal d2">
-<span className="channel"><span>&#128222;</span>Phone calls</span>
-<span className="channel"><span>&#128241;</span>SMS</span>
-<span className="channel"><span>&#128247;</span>Instagram</span>
-<span className="channel"><span>&#128172;</span>Web chat</span>
-<span className="channel"><span>&#9993;&#65039;</span>Email</span>
+<span className="channel"><span><Phone size={14} strokeWidth={1.8} style={{ color: "var(--accent-ink)" }} aria-hidden /></span>Phone calls</span>
+<span className="channel"><span><Smartphone size={14} strokeWidth={1.8} style={{ color: "var(--accent-ink)" }} aria-hidden /></span>SMS</span>
+<span className="channel"><span><Camera size={14} strokeWidth={1.8} style={{ color: "var(--accent-ink)" }} aria-hidden /></span>Instagram</span>
+<span className="channel"><span><MessageCircle size={14} strokeWidth={1.8} style={{ color: "var(--accent-ink)" }} aria-hidden /></span>Web chat</span>
+<span className="channel"><span><Mail size={14} strokeWidth={1.8} style={{ color: "var(--accent-ink)" }} aria-hidden /></span>Email</span>
 </div>
 </div>
 </section>
@@ -270,11 +271,11 @@ export default function Page() {
 <span><i></i>Vancouver-based</span>
 </div>
 <div className="xlinks reveal d3">
-<a href="/restaurants" className="xlink"><span>&#127869;&#65039;</span>Restaurants</a>
-<a href="/salons" className="xlink"><span>&#128134;</span>Salons &amp; Spas</a>
-<a href="/trades" className="xlink"><span>&#128295;</span>Trades</a>
-<a href="/retail" className="xlink"><span>&#128717;&#65039;</span>Retail</a>
-<a href="/dental" className="xlink"><span>&#129463;</span>Dental</a>
+<a href="/restaurants" className="xlink"><span><Utensils size={14} strokeWidth={1.8} style={{ color: "var(--accent-ink)" }} aria-hidden /></span>Restaurants</a>
+<a href="/salons" className="xlink"><span><Scissors size={14} strokeWidth={1.8} style={{ color: "var(--accent-ink)" }} aria-hidden /></span>Salons &amp; Spas</a>
+<a href="/trades" className="xlink"><span><Wrench size={14} strokeWidth={1.8} style={{ color: "var(--accent-ink)" }} aria-hidden /></span>Trades</a>
+<a href="/retail" className="xlink"><span><ShoppingBag size={14} strokeWidth={1.8} style={{ color: "var(--accent-ink)" }} aria-hidden /></span>Retail</a>
+<a href="/dental" className="xlink"><span><Smile size={14} strokeWidth={1.8} style={{ color: "var(--accent-ink)" }} aria-hidden /></span>Dental</a>
 </div>
 </div>
 </section>

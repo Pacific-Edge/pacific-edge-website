@@ -1,4 +1,5 @@
 import type { Metadata } from "next"
+import { Handshake, MapPin, MessageSquare, Puzzle, Target, Zap } from "lucide-react"
 import SiteShell from "@/components/site/SiteShell"
 
 export const metadata: Metadata = {
@@ -25,11 +26,11 @@ export default function Page() {
               <a href="#founders" className="btn-ghost">Meet the Founders</a>
             </div>
             <div className="cr-chips reveal d5">
-              <div className="cr-chip"><span>📍</span>Vancouver, BC</div>
-              <div className="cr-chip"><span>⚡</span>Prototype in week one</div>
-              <div className="cr-chip"><span>🧩</span>Custom, not off-the-shelf</div>
-              <div className="cr-chip"><span>🤝</span>Founder-led</div>
-              <div className="cr-chip"><span>💬</span>Plain English, always</div>
+              <div className="cr-chip"><span><MapPin size={14} strokeWidth={1.8} style={{ color: "var(--accent-ink)" }} aria-hidden /></span>Vancouver, BC</div>
+              <div className="cr-chip"><span><Zap size={14} strokeWidth={1.8} style={{ color: "var(--accent-ink)" }} aria-hidden /></span>Prototype in week one</div>
+              <div className="cr-chip"><span><Puzzle size={14} strokeWidth={1.8} style={{ color: "var(--accent-ink)" }} aria-hidden /></span>Custom, not off-the-shelf</div>
+              <div className="cr-chip"><span><Handshake size={14} strokeWidth={1.8} style={{ color: "var(--accent-ink)" }} aria-hidden /></span>Founder-led</div>
+              <div className="cr-chip"><span><MessageSquare size={14} strokeWidth={1.8} style={{ color: "var(--accent-ink)" }} aria-hidden /></span>Plain English, always</div>
             </div>
           </div>
         </header>
@@ -50,10 +51,10 @@ export default function Page() {
                 <p>Most AI companies sell technology. We sell time back. Every automation we build starts with one question: what&apos;s costing you the most hours and dollars right now? Then we fix that first.</p>
                 <p>We&apos;re based in Vancouver, we work face-to-face when you want it, and we don&apos;t disappear after launch. Your success is our case study.</p>
                 <div className="about-values">
-                  <div className="about-val"><div className="about-val-num">01</div><div className="about-val-ico">💬</div><h4>No jargon</h4><p>We explain everything in plain English. If you don&apos;t understand it, we haven&apos;t done our job.</p></div>
-                  <div className="about-val"><div className="about-val-num">02</div><div className="about-val-ico">⚡</div><h4>Speed to value</h4><p>Working prototype in week one. Not month three. Not after a &ldquo;strategy phase.&rdquo;</p></div>
-                  <div className="about-val"><div className="about-val-num">03</div><div className="about-val-ico">🎯</div><h4>Built to deliver</h4><p>6-month engagements with transparent pricing upfront. Long enough to deliver real ROI, never longer than the value justifies.</p></div>
-                  <div className="about-val"><div className="about-val-num">04</div><div className="about-val-ico">📍</div><h4>Local &amp; hands-on</h4><p>Vancouver-based. We&apos;ll meet you at your shop, learn your workflow, and build around it.</p></div>
+                  <div className="about-val"><div className="about-val-num">01</div><div className="about-val-ico"><MessageSquare size={19} strokeWidth={1.8} style={{ color: "var(--accent-ink)" }} aria-hidden /></div><h4>No jargon</h4><p>We explain everything in plain English. If you don&apos;t understand it, we haven&apos;t done our job.</p></div>
+                  <div className="about-val"><div className="about-val-num">02</div><div className="about-val-ico"><Zap size={19} strokeWidth={1.8} style={{ color: "var(--accent-ink)" }} aria-hidden /></div><h4>Speed to value</h4><p>Working prototype in week one. Not month three. Not after a &ldquo;strategy phase.&rdquo;</p></div>
+                  <div className="about-val"><div className="about-val-num">03</div><div className="about-val-ico"><Target size={19} strokeWidth={1.8} style={{ color: "var(--accent-ink)" }} aria-hidden /></div><h4>Built to deliver</h4><p>6-month engagements with transparent pricing upfront. Long enough to deliver real ROI, never longer than the value justifies.</p></div>
+                  <div className="about-val"><div className="about-val-num">04</div><div className="about-val-ico"><MapPin size={19} strokeWidth={1.8} style={{ color: "var(--accent-ink)" }} aria-hidden /></div><h4>Local &amp; hands-on</h4><p>Vancouver-based. We&apos;ll meet you at your shop, learn your workflow, and build around it.</p></div>
                 </div>
               </div>
               <div className="about-highlight reveal d2">
@@ -85,6 +86,14 @@ export default function Page() {
           <p className="tac" style={{ margin: "30px auto 0", fontSize: "12px", color: "var(--text3)", fontFamily: "var(--mono)", letterSpacing: ".5px" }}>How we like to work</p>
         </div>
 
+        {/* VANCOUVER */}
+        <div className="pband reveal" style={{ paddingTop: 56 }}>
+          <figure className="photo-band">
+            <img src="/img/vancouver.jpg" alt="Downtown Vancouver and Coal Harbour at golden hour" loading="lazy" />
+            <figcaption>Vancouver, BC · Home base</figcaption>
+          </figure>
+        </div>
+
         {/* FOUNDERS */}
         <section id="founders">
           <div className="wrap">
@@ -93,14 +102,14 @@ export default function Page() {
             <p className="sd reveal d2 tac" style={{ margin: "0 auto" }}>Two operators who watched capable owners lose their nights to busywork, and decided to build the software that hands those hours back.</p>
             <div className="founders" style={{ marginTop: "48px" }}>
               <div className="founder-card reveal d1">
-                <div className="founder-photo"><img src="/leone.png" alt="Leone Jiwani, co-founder of Pacific Edge AI" loading="lazy" width={124} height={124} /></div>
+                <div className="founder-photo"><img src="/img/leone.jpg" alt="Leone Jiwani, co-founder of Pacific Edge AI" loading="lazy" width={124} height={124} /></div>
                 <div className="founder-info">
                   <div className="founder-name">Leone Jiwani <span className="founder-role">Co-Founder</span></div>
                   <p className="founder-bio">A BBA graduate of BCIT, Leone has spent years building and scaling real ventures, leading finance for the BCIT Real Estate Association, running special projects at Concord Pacific, and growing his own brand, Glarehawks, past 23,500 followers. Across all of it, one pattern kept repeating: capable owners losing their nights to admin that good software could finish in minutes. He started Pacific Edge to hand that time back, without the enterprise price tag.</p>
                 </div>
               </div>
               <div className="founder-card reveal d2">
-                <div className="founder-photo"><img src="/sam.jpg" alt="Sam Rezaei, co-founder of Pacific Edge AI" loading="lazy" width={124} height={124} /></div>
+                <div className="founder-photo"><img src="/img/sam.jpg" alt="Sam Rezaei, co-founder of Pacific Edge AI" loading="lazy" width={124} height={124} /></div>
                 <div className="founder-info">
                   <div className="founder-name">Sam Rezaei <span className="founder-role">Co-Founder</span></div>
                   <p className="founder-bio">A finance student at UBC Sauder and Dean&rsquo;s List honoree, Sam has worked on institutional real estate and finance at QuadReal and Wesgroup, and spent three years coordinating projects at a rebar fabrication plant, where he watched capable teams buried under busywork the right tools could have erased. He co-founded Pacific Edge AI to give local businesses that leverage: less manual work, and clear answers from the data they already have.</p>

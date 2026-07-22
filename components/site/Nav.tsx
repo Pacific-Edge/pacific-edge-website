@@ -3,22 +3,35 @@
 import Link from "next/link"
 import { useEffect, useState } from "react"
 import { usePathname } from "next/navigation"
+import {
+  Bot,
+  Building2,
+  GraduationCap,
+  Scissors,
+  ShoppingBag,
+  Stethoscope,
+  UtensilsCrossed,
+  Wrench,
+  type LucideIcon,
+} from "lucide-react"
 import Logo from "./Logo"
 import { getLenis } from "@/lib/lenis"
 
-const PRODUCTS = [
-  { href: "/ai-employee", icon: "🤖", name: "AI Employee (Janice)", desc: "Your AI front desk, 24/7" },
-  { href: "/custom-builds", icon: "🛠️", name: "Custom Builds", desc: "Bespoke software for your business" },
-  { href: "/ai-training", icon: "🎓", name: "AI Training", desc: "Get your team using AI well & safely" },
+const NAV_ICON = { size: 18, strokeWidth: 1.8 } as const
+
+const PRODUCTS: { href: string; Icon: LucideIcon; name: string; desc: string }[] = [
+  { href: "/ai-employee", Icon: Bot, name: "AI Employee (Janice)", desc: "Your AI front desk, 24/7" },
+  { href: "/custom-builds", Icon: Wrench, name: "Custom Builds", desc: "Bespoke software for your business" },
+  { href: "/ai-training", Icon: GraduationCap, name: "AI Training", desc: "Get your team using AI well & safely" },
 ]
 
-const INDUSTRIES = [
-  { href: "/dental", icon: "🦷", name: "Dental & Health Clinics", desc: "New patients, recalls" },
-  { href: "/real-estate", icon: "🏡", name: "Real Estate", desc: "Agents, brokerages & developers" },
-  { href: "/restaurants", icon: "🍽️", name: "Restaurants & Food", desc: "Bookings, reviews, no-shows" },
-  { href: "/salons", icon: "💆", name: "Salons & Spas", desc: "Booking, rebooking, no-shows" },
-  { href: "/trades", icon: "🔧", name: "Trades & Home Services", desc: "Missed calls, quotes, jobs" },
-  { href: "/retail", icon: "🛍️", name: "Retail & Local Shops", desc: "Questions, repeat customers" },
+const INDUSTRIES: { href: string; Icon: LucideIcon; name: string; desc: string }[] = [
+  { href: "/dental", Icon: Stethoscope, name: "Dental & Health Clinics", desc: "New patients, recalls" },
+  { href: "/real-estate", Icon: Building2, name: "Real Estate", desc: "Agents, brokerages & developers" },
+  { href: "/restaurants", Icon: UtensilsCrossed, name: "Restaurants & Food", desc: "Bookings, reviews, no-shows" },
+  { href: "/salons", Icon: Scissors, name: "Salons & Spas", desc: "Booking, rebooking, no-shows" },
+  { href: "/trades", Icon: Wrench, name: "Trades & Home Services", desc: "Missed calls, quotes, jobs" },
+  { href: "/retail", Icon: ShoppingBag, name: "Retail & Local Shops", desc: "Questions, repeat customers" },
 ]
 
 export default function Nav({ variant = "full" }: { variant?: "full" | "minimal" }) {
@@ -70,6 +83,7 @@ export default function Nav({ variant = "full" }: { variant?: "full" | "minimal"
           <Link href="/ai-employee" className="nav-back">AI Employee</Link>
           <Link href="/custom-builds" className="nav-back">Custom Builds</Link>
           <Link href="/ai-training" className="nav-back">AI Training</Link>
+          <Link href="/roi-calculator" className="nav-back">ROI Calculator</Link>
           <Link href="/about" className="nav-back">About</Link>
           <a href="/login.html" className="nav-back">Client Login</a>
           <a
@@ -107,7 +121,7 @@ export default function Nav({ variant = "full" }: { variant?: "full" | "minimal"
           <div className="nav-dd-panel">
             {PRODUCTS.map((i) => (
               <Link key={i.href} href={i.href} className="nav-dd-item">
-                <span className="nav-dd-ico">{i.icon}</span>
+                <span className="nav-dd-ico"><i.Icon {...NAV_ICON} style={{ color: "var(--accent-ink)" }} aria-hidden /></span>
                 <span>
                   <span className="nav-dd-name">{i.name}</span>
                   <span className="nav-dd-desc">{i.desc}</span>
@@ -138,7 +152,7 @@ export default function Nav({ variant = "full" }: { variant?: "full" | "minimal"
           <div className="nav-dd-panel">
             {INDUSTRIES.map((i) => (
               <Link key={i.href} href={i.href} className="nav-dd-item">
-                <span className="nav-dd-ico">{i.icon}</span>
+                <span className="nav-dd-ico"><i.Icon {...NAV_ICON} style={{ color: "var(--accent-ink)" }} aria-hidden /></span>
                 <span>
                   <span className="nav-dd-name">{i.name}</span>
                   <span className="nav-dd-desc">{i.desc}</span>
@@ -153,6 +167,9 @@ export default function Nav({ variant = "full" }: { variant?: "full" | "minimal"
         </li>
         <li>
           <Link href="/dental">Dental</Link>
+        </li>
+        <li>
+          <Link href="/roi-calculator">ROI Calculator</Link>
         </li>
         <li>
           <Link href="/#coverage">Coverage</Link>

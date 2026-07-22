@@ -1,5 +1,4 @@
 import type { Metadata } from "next"
-import Script from "next/script"
 import SiteShell from "@/components/site/SiteShell"
 import HomeContent from "@/components/home/HomeContent"
 import { homeJsonLd } from "@/lib/seo/homeJsonLd"
@@ -37,13 +36,6 @@ export default function HomePage() {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(homeJsonLd) }}
       />
-      <Script
-        src="https://www.googletagmanager.com/gtag/js?id=G-113R1XTVJH"
-        strategy="afterInteractive"
-      />
-      <Script id="ga-config" strategy="afterInteractive">
-        {`window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-113R1XTVJH');`}
-      </Script>
       <SiteShell variant="full">
         <HomeContent />
       </SiteShell>

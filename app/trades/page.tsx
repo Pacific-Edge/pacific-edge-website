@@ -1,5 +1,25 @@
 import type { Metadata } from "next"
 import Link from "next/link"
+import {
+  CalendarX,
+  CheckCircle2,
+  Clock,
+  Droplet,
+  Droplets,
+  Flame,
+  Moon,
+  Phone,
+  PhoneMissed,
+  Receipt,
+  RefreshCw,
+  Scissors,
+  ShoppingBag,
+  Snowflake,
+  Star,
+  Stethoscope,
+  UtensilsCrossed,
+  Wrench,
+} from "lucide-react"
 import SiteShell from "@/components/site/SiteShell"
 
 const CAL = "https://cal.com/pacificedge"
@@ -35,7 +55,7 @@ export default function TradesPage() {
           </div>
           <div className="ihero-actions reveal d4">
             <a href={CAL} target="_blank" rel="noopener" className="btn-primary">Book a Free 15-Min Demo</a>
-            <a href="/trades-savings-calculator.html" className="btn-calc">📊 What Missed Calls Cost You</a>
+            <a href="/roi-calculator?industry=trades" className="btn-calc">What Missed Calls Cost You</a>
             <a href="#problems" className="btn-ghost">See How It Helps</a>
           </div>
           <div className="ihero-stats reveal d5">
@@ -49,6 +69,13 @@ export default function TradesPage() {
         </div>
       </header>
 
+<div className="pband reveal">
+<figure className="photo-band">
+<img src="/img/trades.jpg" alt="A plumber repairing a sink on a service call" loading="lazy" />
+</figure>
+</div>
+
+
       <div className="divhr" />
 
       <section id="problems">
@@ -57,12 +84,12 @@ export default function TradesPage() {
           <h2 className="st reveal d1">Sound <span className="a">Familiar?</span></h2>
           <p className="sd reveal d2">If this is your week, you are handing paid work to the competitor who simply answered first.</p>
           <div className="prob-grid">
-            <div className="prob reveal d1"><div className="prob-ico">📞</div><h3>Calls missed on the job</h3><p>Your hands are full and the phone rings out. The homeowner does not leave a message, they just dial the next number on the list.</p><div className="prob-cost">A missed call is a job you never quoted</div></div>
-            <div className="prob reveal d2"><div className="prob-ico">❄️</div><h3>Quotes go cold</h3><p>You send an estimate and never hear back. There was no follow-up, so a job you already priced quietly went to someone else.</p><div className="prob-cost">An un-followed quote is a job given away</div></div>
-            <div className="prob reveal d3"><div className="prob-ico">🌙</div><h3>After-hours emergencies unanswered</h3><p>A burst pipe at 9pm is your best-margin call of the week, and it goes straight to a voicemail box no one checks until morning.</p><div className="prob-cost">Emergency calls are your best margin</div></div>
-            <div className="prob reveal d1"><div className="prob-ico">🗓️</div><h3>Scheduling chaos and double-books</h3><p>Jobs get penciled in three different places. A missed slot or a double-booking means a wasted truck roll across the city.</p><div className="prob-cost">A blown slot is a wasted truck roll</div></div>
-            <div className="prob reveal d2"><div className="prob-ico">⭐</div><h3>No reviews to prove the work</h3><p>You do solid work all week, but the reviews never get asked for, so online you look quieter than the guy who does half the job.</p><div className="prob-cost">Homeowners hire the trade with reviews</div></div>
-            <div className="prob reveal d3"><div className="prob-ico">🔁</div><h3>Repeat and seasonal work forgotten</h3><p>Last year&apos;s furnace customer would happily book a tune-up, but with no follow-up they have already forgotten your company name.</p><div className="prob-cost">Last year&apos;s customer forgot you exist</div></div>
+            <div className="prob reveal d1"><div className="prob-ico"><Phone size={20} strokeWidth={1.8} style={{ color: "var(--accent2)" }} aria-hidden /></div><h3>Calls missed on the job</h3><p>Your hands are full and the phone rings out. The homeowner does not leave a message, they just dial the next number on the list.</p><div className="prob-cost">A missed call is a job you never quoted</div></div>
+            <div className="prob reveal d2"><div className="prob-ico"><Snowflake size={20} strokeWidth={1.8} style={{ color: "var(--accent2)" }} aria-hidden /></div><h3>Quotes go cold</h3><p>You send an estimate and never hear back. There was no follow-up, so a job you already priced quietly went to someone else.</p><div className="prob-cost">An un-followed quote is a job given away</div></div>
+            <div className="prob reveal d3"><div className="prob-ico"><Moon size={20} strokeWidth={1.8} style={{ color: "var(--accent2)" }} aria-hidden /></div><h3>After-hours emergencies unanswered</h3><p>A burst pipe at 9pm is your best-margin call of the week, and it goes straight to a voicemail box no one checks until morning.</p><div className="prob-cost">Emergency calls are your best margin</div></div>
+            <div className="prob reveal d1"><div className="prob-ico"><CalendarX size={20} strokeWidth={1.8} style={{ color: "var(--accent2)" }} aria-hidden /></div><h3>Scheduling chaos and double-books</h3><p>Jobs get penciled in three different places. A missed slot or a double-booking means a wasted truck roll across the city.</p><div className="prob-cost">A blown slot is a wasted truck roll</div></div>
+            <div className="prob reveal d2"><div className="prob-ico"><Star size={20} strokeWidth={1.8} style={{ color: "var(--accent2)" }} aria-hidden /></div><h3>No reviews to prove the work</h3><p>You do solid work all week, but the reviews never get asked for, so online you look quieter than the guy who does half the job.</p><div className="prob-cost">Homeowners hire the trade with reviews</div></div>
+            <div className="prob reveal d3"><div className="prob-ico"><RefreshCw size={20} strokeWidth={1.8} style={{ color: "var(--accent2)" }} aria-hidden /></div><h3>Repeat and seasonal work forgotten</h3><p>Last year&apos;s furnace customer would happily book a tune-up, but with no follow-up they have already forgotten your company name.</p><div className="prob-cost">Last year&apos;s customer forgot you exist</div></div>
           </div>
         </div>
       </section>
@@ -90,8 +117,8 @@ export default function TradesPage() {
                 <div className="mock" data-live>
                   <div className="mock-head"><span className="mock-dot" /><span className="mock-title">Missed Call · Recovered</span></div>
                   <div className="mock-typing" data-typing="1300">Texting the caller back<i /><i /><i /></div>
-                  <div className="mock-row"><div className="mock-row-l"><div className="mock-avatar">📞</div><div><div className="mock-name">+1 (604) 555-0192</div><div className="mock-sub">Missed at 2:38 PM</div></div></div><span className="mock-pill ok">Texted · 16s</span></div>
-                  <div className="mock-row"><div className="mock-row-l"><div className="mock-avatar">💧</div><div><div className="mock-name">Water heater leak</div><div className="mock-sub">Booked for today 4 PM</div></div></div><span className="mock-pill ok">Booked</span></div>
+                  <div className="mock-row"><div className="mock-row-l"><div className="mock-avatar"><PhoneMissed size={16} strokeWidth={1.8} style={{ color: "var(--accent-ink)" }} aria-hidden /></div><div><div className="mock-name">+1 (604) 555-0192</div><div className="mock-sub">Missed at 2:38 PM</div></div></div><span className="mock-pill ok">Texted · 16s</span></div>
+                  <div className="mock-row"><div className="mock-row-l"><div className="mock-avatar"><Droplet size={16} strokeWidth={1.8} style={{ color: "var(--accent-ink)" }} aria-hidden /></div><div><div className="mock-name">Water heater leak</div><div className="mock-sub">Booked for today 4 PM</div></div></div><span className="mock-pill ok">Booked</span></div>
                 </div>
               </div>
             </div>
@@ -109,8 +136,8 @@ export default function TradesPage() {
               <div className="frow-visual reveal d2">
                 <div className="mock" data-live>
                   <div className="mock-head"><span className="mock-dot" /><span className="mock-title">Quotes · This week</span></div>
-                  <div className="mock-row"><div className="mock-row-l"><div className="mock-avatar">🧾</div><div><div className="mock-name">Panel upgrade · $2,400</div><div className="mock-sub">Follow-up sent · day 1</div></div></div><span className="mock-pill ok">Accepted</span></div>
-                  <div className="mock-row"><div className="mock-row-l"><div className="mock-avatar">🧾</div><div><div className="mock-name">Furnace install · $5,800</div><div className="mock-sub">Reminder sent · awaiting</div></div></div><span className="mock-pill warn">Following up</span></div>
+                  <div className="mock-row"><div className="mock-row-l"><div className="mock-avatar"><Receipt size={16} strokeWidth={1.8} style={{ color: "var(--accent-ink)" }} aria-hidden /></div><div><div className="mock-name">Panel upgrade · $2,400</div><div className="mock-sub">Follow-up sent · day 1</div></div></div><span className="mock-pill ok">Accepted</span></div>
+                  <div className="mock-row"><div className="mock-row-l"><div className="mock-avatar"><Receipt size={16} strokeWidth={1.8} style={{ color: "var(--accent-ink)" }} aria-hidden /></div><div><div className="mock-name">Furnace install · $5,800</div><div className="mock-sub">Reminder sent · awaiting</div></div></div><span className="mock-pill warn">Following up</span></div>
                 </div>
               </div>
             </div>
@@ -129,8 +156,8 @@ export default function TradesPage() {
                 <div className="mock" data-live>
                   <div className="mock-head"><span className="mock-dot" /><span className="mock-title">Dispatch · Confirm first</span></div>
                   <div className="mock-typing" data-typing="1300">Checking the day&apos;s schedule<i /><i /><i /></div>
-                  <div className="mock-row"><div className="mock-row-l"><div className="mock-avatar">🕐</div><div><div className="mock-name">Water heater · 4–6 PM</div><div className="mock-sub">Held · awaiting your OK</div></div></div><span className="mock-pill warn">Pending</span></div>
-                  <div className="mock-row"><div className="mock-row-l"><div className="mock-avatar">✅</div><div><div className="mock-name">Confirmed by your team</div><div className="mock-sub">Customer sent the locked-in time</div></div></div><span className="mock-pill ok">Booked</span></div>
+                  <div className="mock-row"><div className="mock-row-l"><div className="mock-avatar"><Clock size={16} strokeWidth={1.8} style={{ color: "var(--accent-ink)" }} aria-hidden /></div><div><div className="mock-name">Water heater · 4–6 PM</div><div className="mock-sub">Held · awaiting your OK</div></div></div><span className="mock-pill warn">Pending</span></div>
+                  <div className="mock-row"><div className="mock-row-l"><div className="mock-avatar"><CheckCircle2 size={16} strokeWidth={1.8} style={{ color: "var(--accent-ink)" }} aria-hidden /></div><div><div className="mock-name">Confirmed by your team</div><div className="mock-sub">Customer sent the locked-in time</div></div></div><span className="mock-pill ok">Booked</span></div>
                 </div>
               </div>
             </div>
@@ -158,7 +185,7 @@ export default function TradesPage() {
                 <div className="phone-notch" />
                 <div className="phone-screen">
                   <div className="phone-top">
-                    <div className="phone-av">🔧</div>
+                    <div className="phone-av"><Wrench size={16} strokeWidth={1.8} style={{ color: "#fff" }} aria-hidden /></div>
                     <div><div className="phone-top-name">Coastal Plumbing &amp; Heating</div><div className="phone-top-sub">AI line · confirms before booking</div></div>
                   </div>
                   <div className="chat" data-chat>
@@ -171,7 +198,7 @@ export default function TradesPage() {
                     <div className="bubble me" data-delay="200">Holding 4–6 PM and checking with the team now, one sec…</div>
                     <div className="typing" data-typing="1200"><i /><i /><i /></div>
                     <div className="bubble me" data-delay="200">Confirmed! Mike&apos;s locked in for 4–6 PM and will text when he&apos;s on the way. If anything changes, I&apos;ll reach out right away.</div>
-                    <div className="chat-badge" data-delay="650"><span className="chat-badge-ico">✅</span><span>Held, confirmed with your team, then booked, so a tech is never promised when they can&apos;t make it.</span></div>
+                    <div className="chat-badge" data-delay="650"><span className="chat-badge-ico"><CheckCircle2 size={14} strokeWidth={1.8} style={{ color: "#4af0c0" }} aria-hidden /></span><span>Held, confirmed with your team, then booked, so a tech is never promised when they can&apos;t make it.</span></div>
                   </div>
                 </div>
               </div>
@@ -198,11 +225,11 @@ export default function TradesPage() {
             <div className="sig-visual reveal d2">
               <div className="sig-panel">
                 <div className="sig-head"><span className="sig-live"><i />Dispatch · Live</span><span className="sig-num"><span className="count" data-to="6">0</span> jobs today</span></div>
-                <div className="disp-radar"><span className="ring" /><span className="ring" /><span className="ring" /><span className="disp-pin">🔧</span><span className="disp-eta">Tech en route · ETA 4–6 PM</span></div>
+                <div className="disp-radar"><span className="ring" /><span className="ring" /><span className="ring" /><span className="disp-pin"><Wrench size={20} strokeWidth={1.8} style={{ color: "#04130f" }} aria-hidden /></span><span className="disp-eta">Tech en route · ETA 4–6 PM</span></div>
                 <div className="disp-jobs">
-                  <div className="disp-job"><span>🚰</span>Water heater · Kitsilano<span className="pill new">Confirm</span></div>
-                  <div className="disp-job"><span>🔥</span>Furnace tune-up · Burnaby<span className="pill">Booked</span></div>
-                  <div className="disp-job"><span>💧</span>Drain clear · Richmond<span className="pill">Booked</span></div>
+                  <div className="disp-job"><Droplets size={14} strokeWidth={1.8} style={{ color: "var(--accent-ink)" }} aria-hidden />Water heater · Kitsilano<span className="pill new">Confirm</span></div>
+                  <div className="disp-job"><Flame size={14} strokeWidth={1.8} style={{ color: "var(--accent-ink)" }} aria-hidden />Furnace tune-up · Burnaby<span className="pill">Booked</span></div>
+                  <div className="disp-job"><Droplet size={14} strokeWidth={1.8} style={{ color: "var(--accent-ink)" }} aria-hidden />Drain clear · Richmond<span className="pill">Booked</span></div>
                 </div>
               </div>
             </div>
@@ -268,17 +295,17 @@ export default function TradesPage() {
           <h2 className="icta-title reveal d1">Ready To Win<br /><span className="a">Every Lead?</span></h2>
           <p className="icta-desc reveal d2">Start with a free 15-minute call. We will show you exactly which automations would capture the most jobs you are missing right now. No pitch, no obligation.</p>
           <a href={CAL} target="_blank" rel="noopener" className="btn-primary reveal d2">Book a Free 15-Min Demo</a>
-          <div className="reveal d2" style={{ marginTop: 18 }}><a href="/trades-savings-calculator.html" className="btn-ghost">📊 See What Your Missed Calls Are Worth →</a></div>
+          <div className="reveal d2" style={{ marginTop: 18 }}><a href="/roi-calculator?industry=trades" className="btn-ghost">See What Your Missed Calls Are Worth →</a></div>
           <div className="icta-bullets reveal d3">
             <span><i />Free discovery call</span>
             <span><i />Working prototype in about a week</span>
             <span><i />Vancouver-based</span>
           </div>
           <div className="xlinks reveal d3">
-            <Link href="/restaurants" className="xlink"><span>🍽️</span>Restaurants</Link>
-            <Link href="/salons" className="xlink"><span>💆</span>Salons &amp; Spas</Link>
-            <Link href="/retail" className="xlink"><span>🛍️</span>Retail</Link>
-            <Link href="/dental" className="xlink"><span>🦷</span>Dental</Link>
+            <Link href="/restaurants" className="xlink"><UtensilsCrossed size={14} strokeWidth={1.8} style={{ color: "var(--accent-ink)" }} aria-hidden />Restaurants</Link>
+            <Link href="/salons" className="xlink"><Scissors size={14} strokeWidth={1.8} style={{ color: "var(--accent-ink)" }} aria-hidden />Salons &amp; Spas</Link>
+            <Link href="/retail" className="xlink"><ShoppingBag size={14} strokeWidth={1.8} style={{ color: "var(--accent-ink)" }} aria-hidden />Retail</Link>
+            <Link href="/dental" className="xlink"><Stethoscope size={14} strokeWidth={1.8} style={{ color: "var(--accent-ink)" }} aria-hidden />Dental</Link>
           </div>
         </div>
       </section>

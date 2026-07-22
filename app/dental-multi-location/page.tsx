@@ -1,5 +1,8 @@
 import type { Metadata } from "next"
 import SiteShell from "@/components/site/SiteShell"
+import {
+  Bot, Eye, Globe, Home, LineChart, MapPin, Moon, PhoneCall, ShieldCheck, Sparkles, Stethoscope,
+} from "lucide-react"
 
 export const metadata: Metadata = {
   title: { absolute: "AI for Multi-Location Dental Groups & DSOs | Pacific Edge AI" },
@@ -31,9 +34,9 @@ export default function Page() {
 <div className="dnotch"></div>
 <div className="dscreen">
 <div className="dhead"><span className="ddot"></span>Janice &middot; All Locations</div>
-<div className="dloc"><span className="dloc-name"><i>&#128205;</i>Burnaby</span><span className="dloc-stat">Booked &#10003;</span></div>
-<div className="dloc"><span className="dloc-name"><i>&#128205;</i>Kitsilano</span><span className="dloc-stat">Recovered &#10003;</span></div>
-<div className="dloc"><span className="dloc-name"><i>&#128205;</i>Richmond</span><span className="dloc-stat">Rebooked &#10003;</span></div>
+<div className="dloc"><span className="dloc-name"><i><MapPin size={14} strokeWidth={1.8} style={{ color: "var(--accent-ink)" }} aria-hidden /></i>Burnaby</span><span className="dloc-stat">Booked &#10003;</span></div>
+<div className="dloc"><span className="dloc-name"><i><MapPin size={14} strokeWidth={1.8} style={{ color: "var(--accent-ink)" }} aria-hidden /></i>Kitsilano</span><span className="dloc-stat">Recovered &#10003;</span></div>
+<div className="dloc"><span className="dloc-name"><i><MapPin size={14} strokeWidth={1.8} style={{ color: "var(--accent-ink)" }} aria-hidden /></i>Richmond</span><span className="dloc-stat">Rebooked &#10003;</span></div>
 <div className="dbadge"><i>&#10003;</i>One standard &middot; every site</div>
 </div>
 </div>
@@ -48,9 +51,9 @@ export default function Page() {
 <div className="sl reveal sl-c tac">The Problem</div>
 <h2 className="st reveal d1 tac">Every Location Is <span className="a">A Different Front Desk.</span></h2>
 <div className="pgrid">
-<div className="pcard reveal d1"><div className="pcard-ico">&#127760;</div><h4>Different at every site</h4><p>One location books beautifully, another lets calls ring out. Service depends on who picks up.</p></div>
-<div className="pcard reveal d2"><div className="pcard-ico">&#128065;&#65039;</div><h4>No central visibility</h4><p>You can't see which site is dropping calls until month-end, when those patients are long gone.</p></div>
-<div className="pcard reveal d3"><div className="pcard-ico">&#127769;</div><h4>After-hours gaps, multiplied</h4><p>Every location's nights and weekends are unanswered booking hours. Across a group, a big leak.</p></div>
+<div className="pcard reveal d1"><div className="pcard-ico"><Globe size={22} strokeWidth={1.8} style={{ color: "var(--accent-ink)" }} aria-hidden /></div><h4>Different at every site</h4><p>One location books beautifully, another lets calls ring out. Service depends on who picks up.</p></div>
+<div className="pcard reveal d2"><div className="pcard-ico"><Eye size={22} strokeWidth={1.8} style={{ color: "var(--accent-ink)" }} aria-hidden /></div><h4>No central visibility</h4><p>You can't see which site is dropping calls until month-end, when those patients are long gone.</p></div>
+<div className="pcard reveal d3"><div className="pcard-ico"><Moon size={22} strokeWidth={1.8} style={{ color: "var(--accent-ink)" }} aria-hidden /></div><h4>After-hours gaps, multiplied</h4><p>Every location's nights and weekends are unanswered booking hours. Across a group, a big leak.</p></div>
 </div>
 </div>
 </section>
@@ -76,10 +79,10 @@ export default function Page() {
 <div className="sl reveal sl-c tac">What You Get</div>
 <h2 className="st reveal d1 tac">Consistency, <span className="a">At Scale.</span></h2>
 <div className="tiles">
-<div className="tile reveal d1"><div className="tile-ico">&#127913;</div><h4>One experience</h4><p>Every caller, every site, gets the same calm answer.</p></div>
-<div className="tile reveal d2"><div className="tile-ico">&#128222;</div><h4>Recovery everywhere</h4><p>Missed calls caught &amp; texted back at each location.</p></div>
-<div className="tile reveal d3"><div className="tile-ico">&#128202;</div><h4>Central reporting</h4><p>One dashboard, group roll-up, per-site drill-down.</p></div>
-<div className="tile reveal d4"><div className="tile-ico">&#9874;&#65039;</div><h4>Always consistent</h4><p>Service no longer depends on who's working that day.</p></div>
+<div className="tile reveal d1"><div className="tile-ico"><Sparkles size={20} strokeWidth={1.8} style={{ color: "var(--accent-ink)" }} aria-hidden /></div><h4>One experience</h4><p>Every caller, every site, gets the same calm answer.</p></div>
+<div className="tile reveal d2"><div className="tile-ico"><PhoneCall size={20} strokeWidth={1.8} style={{ color: "var(--accent-ink)" }} aria-hidden /></div><h4>Recovery everywhere</h4><p>Missed calls caught &amp; texted back at each location.</p></div>
+<div className="tile reveal d3"><div className="tile-ico"><LineChart size={20} strokeWidth={1.8} style={{ color: "var(--accent-ink)" }} aria-hidden /></div><h4>Central reporting</h4><p>One dashboard, group roll-up, per-site drill-down.</p></div>
+<div className="tile reveal d4"><div className="tile-ico"><ShieldCheck size={20} strokeWidth={1.8} style={{ color: "var(--accent-ink)" }} aria-hidden /></div><h4>Always consistent</h4><p>Service no longer depends on who's working that day.</p></div>
 </div>
 </div>
 </section>
@@ -117,9 +120,9 @@ export default function Page() {
 <p className="icta-desc reveal d2">A free 15-minute call. We'll map where each site is leaking calls and what one standard would recover.</p>
 <a href="https://cal.com/pacificedge" target="_blank" rel="noopener" className="btn-primary reveal d2">Book a Free 15-Min Demo</a>
 <div className="xlinks reveal d3">
-<a href="/dental" className="xlink"><span>&#129463;</span>Dental overview</a>
-<a href="/dental-single-location" className="xlink"><span>&#127973;</span>Single-location clinics</a>
-<a href="/ai-employee" className="xlink"><span>&#129302;</span>Meet Janice</a>
+<a href="/dental" className="xlink"><span><Stethoscope size={14} strokeWidth={1.8} style={{ color: "var(--accent-ink)" }} aria-hidden /></span>Dental overview</a>
+<a href="/dental-single-location" className="xlink"><span><Home size={14} strokeWidth={1.8} style={{ color: "var(--accent-ink)" }} aria-hidden /></span>Single-location clinics</a>
+<a href="/ai-employee" className="xlink"><span><Bot size={14} strokeWidth={1.8} style={{ color: "var(--accent-ink)" }} aria-hidden /></span>Meet Janice</a>
 </div>
 </div>
 </section>

@@ -15,20 +15,42 @@ type Area = {
   biz: Biz[]
 }
 
-// Ported verbatim from the old index.html map init.
+// Lucide-style inline SVG icons. Popups/markers are raw Leaflet HTML strings,
+// so these must be plain SVG markup (not React components).
+const svgIcon = (paths: string) =>
+  `<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">${paths}</svg>`
+
+const ICONS: Record<string, string> = {
+  utensils: svgIcon('<path d="M3 2v7c0 1.1.9 2 2 2h4a2 2 0 0 0 2-2V2"/><path d="M7 2v20"/><path d="M21 15V2a5 5 0 0 0-5 5v6c0 1.1.9 2 2 2h3Zm0 0v7"/>'),
+  coffee: svgIcon('<path d="M10 2v2"/><path d="M14 2v2"/><path d="M16 8a1 1 0 0 1 1 1v8a4 4 0 0 1-4 4H7a4 4 0 0 1-4-4V9a1 1 0 0 1 1-1h14a4 4 0 1 1 0 8h-1"/><path d="M6 2v2"/>'),
+  scissors: svgIcon('<circle cx="6" cy="6" r="3"/><path d="M8.12 8.12 12 12"/><path d="M20 4 8.12 15.88"/><circle cx="6" cy="18" r="3"/><path d="M14.8 14.8 20 20"/>'),
+  gem: svgIcon('<path d="M6 3h12l4 6-10 13L2 9Z"/><path d="M11 3 8 9l4 13 4-13-3-6"/><path d="M2 9h20"/>'),
+  building: svgIcon('<path d="M6 22V4a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v18Z"/><path d="M6 12H4a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2h2"/><path d="M18 9h2a2 2 0 0 1 2 2v9a2 2 0 0 1-2 2h-2"/><path d="M10 6h4"/><path d="M10 10h4"/><path d="M10 14h4"/><path d="M10 18h4"/>'),
+  briefcase: svgIcon('<path d="M16 20V4a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/><rect width="20" height="14" x="2" y="6" rx="2"/>'),
+  wrench: svgIcon('<path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/>'),
+  activity: svgIcon('<polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/>'),
+  cart: svgIcon('<circle cx="8" cy="21" r="1"/><circle cx="19" cy="21" r="1"/><path d="M2.05 2.05h2l2.66 12.42a2 2 0 0 0 2 1.58h9.78a2 2 0 0 0 1.95-1.57l1.65-7.43H5.12"/>'),
+  film: svgIcon('<rect width="18" height="18" x="3" y="3" rx="2"/><path d="M7 3v18"/><path d="M17 3v18"/><path d="M3 7.5h4"/><path d="M3 12h18"/><path d="M3 16.5h4"/><path d="M17 7.5h4"/><path d="M17 16.5h4"/>'),
+  beer: svgIcon('<path d="M17 11h1a3 3 0 0 1 0 6h-1"/><path d="M9 12v6"/><path d="M13 12v6"/><path d="M14 7.5c-1 0-1.44.5-3 .5s-2-.5-3-.5-1.72.5-2.5.5a2.5 2.5 0 0 1 0-5c.78 0 1.57.5 2.5.5S9.44 2 11 2s2 1.5 3 1.5 1.72-.5 2.5-.5a2.5 2.5 0 0 1 0 5c-.78 0-1.5-.5-2.5-.5Z"/><path d="M5 8v12a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V8"/>'),
+  dollar: svgIcon('<line x1="12" x2="12" y1="2" y2="22"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/>'),
+  mountain: svgIcon('<path d="m8 3 4 8 5-5 5 15H2L8 3z"/>'),
+  pin: svgIcon('<path d="M20 10c0 6-8 12-8 12S4 16 4 10a8 8 0 1 1 16 0Z"/><circle cx="12" cy="10" r="3"/>'),
+}
+
+// Ported from the old index.html map init (emoji icons replaced with SVG icon keys).
 const AREAS: Area[] = [
-  { n: "Vancouver", lat: 49.2827, lng: -123.1207, s: 34, main: true, type: "HEADQUARTERS", biz: [{ i: "🍣", n: "Downtown Fine Dining", c: "FINE DINING" }, { i: "💇", n: "City Salon & Spa", c: "BEAUTY" }, { i: "🏢", n: "Downtown Law Group", c: "PROFESSIONAL SERVICES" }, { i: "☕", n: "Corner Cafe", c: "CAFE" }] },
-  { n: "North Vancouver", lat: 49.32, lng: -123.0724, s: 22, type: "NORTH SHORE", biz: [{ i: "🎿", n: "Mountain View Lodge", c: "HOSPITALITY" }, { i: "🔧", n: "North Shore Plumbing Co.", c: "TRADES" }, { i: "🧘", n: "North Shore Yoga", c: "WELLNESS" }] },
-  { n: "West Vancouver", lat: 49.328, lng: -123.16, s: 16, type: "NORTH SHORE", biz: [{ i: "🍽", n: "Waterfront Bistro", c: "RESTAURANT" }, { i: "💎", n: "West Side Beauty Bar", c: "SPA" }] },
-  { n: "Burnaby", lat: 49.2488, lng: -122.9805, s: 22, type: "BURNABY & NEW WEST", biz: [{ i: "🍜", n: "East Side Noodle House", c: "RESTAURANT" }, { i: "💼", n: "Burnaby Accounting Co.", c: "ACCOUNTING" }, { i: "💆", n: "Studio Salon", c: "BEAUTY" }] },
-  { n: "New Westminster", lat: 49.2057, lng: -122.911, s: 16, type: "BURNABY & NEW WEST", biz: [{ i: "🎬", n: "River City Studios", c: "FILM PRODUCTION" }, { i: "🍰", n: "Heritage Bakery", c: "FOOD SERVICE" }] },
-  { n: "Coquitlam", lat: 49.2838, lng: -122.7932, s: 18, type: "TRI-CITIES", biz: [{ i: "🏥", n: "Valley Physiotherapy", c: "HEALTH & WELLNESS" }, { i: "⚙️", n: "Tri-City Heating & Cooling", c: "TRADES" }, { i: "🛒", n: "Eastgate Shopping", c: "RETAIL" }] },
-  { n: "Port Moody", lat: 49.2783, lng: -122.8608, s: 14, type: "TRI-CITIES", biz: [{ i: "🍺", n: "Inlet Brewing Co.", c: "BREWERY" }, { i: "🏋️", n: "Shoreline Fitness", c: "WELLNESS" }] },
-  { n: "Richmond", lat: 49.1666, lng: -123.1336, s: 22, type: "RICHMOND & DELTA", biz: [{ i: "🍣", n: "Garden City Dim Sum", c: "RESTAURANT" }, { i: "🛒", n: "South Arm Mall", c: "RETAIL" }, { i: "💰", n: "Pacific Wealth Group", c: "FINANCE" }] },
-  { n: "Delta", lat: 49.0847, lng: -123.0587, s: 14, type: "RICHMOND & DELTA", biz: [{ i: "🌾", n: "Fraser Valley Market", c: "RETAIL" }, { i: "🔧", n: "Delta Electrical Services", c: "TRADES" }] },
-  { n: "Surrey", lat: 49.1913, lng: -122.849, s: 22, type: "SURREY & LANGLEY", biz: [{ i: "🏥", n: "Surrey Spine & Sport", c: "HEALTH" }, { i: "🍔", n: "Newton Eats", c: "FOOD SERVICE" }, { i: "💼", n: "Fraser Accounting", c: "ACCOUNTING" }] },
-  { n: "Langley", lat: 49.1044, lng: -122.6615, s: 16, type: "LANGLEY", biz: [{ i: "🐎", n: "Valley Riding Club", c: "RECREATION" }, { i: "🍽️", n: "Langley Craft Brewery", c: "HOSPITALITY" }, { i: "⚙️", n: "Fraser Roofing Co.", c: "TRADES" }] },
-  { n: "White Rock", lat: 49.0253, lng: -122.8026, s: 14, type: "SOUTH SURREY", biz: [{ i: "🌊", n: "Pier Street Cafe", c: "HOSPITALITY" }, { i: "💇", n: "Beachside Wellness Spa", c: "WELLNESS" }] },
+  { n: "Vancouver", lat: 49.2827, lng: -123.1207, s: 34, main: true, type: "HEADQUARTERS", biz: [{ i: "utensils", n: "Downtown Fine Dining", c: "FINE DINING" }, { i: "scissors", n: "City Salon & Spa", c: "BEAUTY" }, { i: "building", n: "Downtown Law Group", c: "PROFESSIONAL SERVICES" }, { i: "coffee", n: "Corner Cafe", c: "CAFE" }] },
+  { n: "North Vancouver", lat: 49.32, lng: -123.0724, s: 22, type: "NORTH SHORE", biz: [{ i: "mountain", n: "Mountain View Lodge", c: "HOSPITALITY" }, { i: "wrench", n: "North Shore Plumbing Co.", c: "TRADES" }, { i: "activity", n: "North Shore Yoga", c: "WELLNESS" }] },
+  { n: "West Vancouver", lat: 49.328, lng: -123.16, s: 16, type: "NORTH SHORE", biz: [{ i: "utensils", n: "Waterfront Bistro", c: "RESTAURANT" }, { i: "gem", n: "West Side Beauty Bar", c: "SPA" }] },
+  { n: "Burnaby", lat: 49.2488, lng: -122.9805, s: 22, type: "BURNABY & NEW WEST", biz: [{ i: "utensils", n: "East Side Noodle House", c: "RESTAURANT" }, { i: "briefcase", n: "Burnaby Accounting Co.", c: "ACCOUNTING" }, { i: "scissors", n: "Studio Salon", c: "BEAUTY" }] },
+  { n: "New Westminster", lat: 49.2057, lng: -122.911, s: 16, type: "BURNABY & NEW WEST", biz: [{ i: "film", n: "River City Studios", c: "FILM PRODUCTION" }, { i: "utensils", n: "Heritage Bakery", c: "FOOD SERVICE" }] },
+  { n: "Coquitlam", lat: 49.2838, lng: -122.7932, s: 18, type: "TRI-CITIES", biz: [{ i: "activity", n: "Valley Physiotherapy", c: "HEALTH & WELLNESS" }, { i: "wrench", n: "Tri-City Heating & Cooling", c: "TRADES" }, { i: "cart", n: "Eastgate Shopping", c: "RETAIL" }] },
+  { n: "Port Moody", lat: 49.2783, lng: -122.8608, s: 14, type: "TRI-CITIES", biz: [{ i: "beer", n: "Inlet Brewing Co.", c: "BREWERY" }, { i: "activity", n: "Shoreline Fitness", c: "WELLNESS" }] },
+  { n: "Richmond", lat: 49.1666, lng: -123.1336, s: 22, type: "RICHMOND & DELTA", biz: [{ i: "utensils", n: "Garden City Dim Sum", c: "RESTAURANT" }, { i: "cart", n: "South Arm Mall", c: "RETAIL" }, { i: "dollar", n: "Pacific Wealth Group", c: "FINANCE" }] },
+  { n: "Delta", lat: 49.0847, lng: -123.0587, s: 14, type: "RICHMOND & DELTA", biz: [{ i: "cart", n: "Fraser Valley Market", c: "RETAIL" }, { i: "wrench", n: "Delta Electrical Services", c: "TRADES" }] },
+  { n: "Surrey", lat: 49.1913, lng: -122.849, s: 22, type: "SURREY & LANGLEY", biz: [{ i: "activity", n: "Surrey Spine & Sport", c: "HEALTH" }, { i: "utensils", n: "Newton Eats", c: "FOOD SERVICE" }, { i: "briefcase", n: "Fraser Accounting", c: "ACCOUNTING" }] },
+  { n: "Langley", lat: 49.1044, lng: -122.6615, s: 16, type: "LANGLEY", biz: [{ i: "pin", n: "Valley Riding Club", c: "RECREATION" }, { i: "beer", n: "Langley Craft Brewery", c: "HOSPITALITY" }, { i: "wrench", n: "Fraser Roofing Co.", c: "TRADES" }] },
+  { n: "White Rock", lat: 49.0253, lng: -122.8026, s: 14, type: "SOUTH SURREY", biz: [{ i: "coffee", n: "Pier Street Cafe", c: "HOSPITALITY" }, { i: "scissors", n: "Beachside Wellness Spa", c: "WELLNESS" }] },
 ]
 
 const REGIONS = [
@@ -57,7 +79,7 @@ function popupHtml(a: Area): string {
   p += `<div style="font-size:15px;font-weight:700;color:#eeeef2;margin:0 0 4px">${a.n}</div>`
   p += `<div style="font-size:10px;color:#4af0c0;font-family:monospace;letter-spacing:2px;margin-bottom:12px">${a.type}</div>`
   a.biz.forEach((b) => {
-    p += `<div style="display:flex;align-items:center;gap:8px;padding:7px 0;border-top:1px solid rgba(74,240,192,.08)"><span style="font-size:16px">${b.i}</span><div><div style="font-size:12px;color:#ccc;font-weight:500">${b.n}</div><div style="font-size:9px;color:rgba(74,240,192,.6);font-family:monospace;letter-spacing:1px">${b.c}</div></div></div>`
+    p += `<div style="display:flex;align-items:center;gap:8px;padding:7px 0;border-top:1px solid rgba(74,240,192,.08)"><span style="flex:none;display:flex;align-items:center;justify-content:center;width:16px;color:#4af0c0">${ICONS[b.i] ?? ""}</span><div><div style="font-size:12px;color:#ccc;font-weight:500">${b.n}</div><div style="font-size:9px;color:rgba(74,240,192,.6);font-family:monospace;letter-spacing:1px">${b.c}</div></div></div>`
   })
   p += `</div>`
   return p

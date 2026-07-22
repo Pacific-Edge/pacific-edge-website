@@ -1,4 +1,22 @@
 import type { Metadata } from "next"
+import {
+  CheckCircle2,
+  Mail,
+  MessageSquare,
+  Package,
+  Phone,
+  RefreshCw,
+  Scissors,
+  ShoppingBag,
+  ShoppingCart,
+  Star,
+  Stethoscope,
+  Tag,
+  TrendingDown,
+  User,
+  UtensilsCrossed,
+  Wrench,
+} from "lucide-react"
 import SiteShell from "@/components/site/SiteShell"
 
 export const metadata: Metadata = {
@@ -20,7 +38,7 @@ export default function Page() {
 <div className="ihero-pain reveal d3">How many first-time customers this month will you never see walk in again?</div>
 <div className="ihero-actions reveal d4">
 <a href="https://cal.com/pacificedge" target="_blank" rel="noopener" className="btn-primary">Book a Free 15-Min Demo</a>
-<a href="/retail-savings-calculator.html" className="btn-calc">&#128202; What Missed Sales Cost You</a>
+<a href="/roi-calculator?industry=retail" className="btn-calc">What Missed Sales Cost You</a>
 <a href="#problems" className="btn-ghost">See How It Helps</a>
 </div>
 <div className="ihero-stats reveal d5">
@@ -32,6 +50,13 @@ export default function Page() {
 </div>
 </header>
 
+<div className="pband reveal">
+<figure className="photo-band">
+<img src="/img/retail.jpg" alt="A modern retail space with seating and shelving" loading="lazy" />
+</figure>
+</div>
+
+
 <div className="divhr"></div>
 
 <section id="problems">
@@ -40,12 +65,12 @@ export default function Page() {
 <h2 className="st reveal d1">Sound <span className="a">Familiar?</span></h2>
 <p className="sd reveal d2">If this is your shop, you are working hard to win customers you then quietly let slip away.</p>
 <div className="prob-grid">
-<div className="prob reveal d1"><div className="prob-ico">&#128257;</div><h3>First-time buyers never return</h3><p>Someone makes a great first purchase, then disappears. With no follow-up, every sale is really just a goodbye.</p><div className="prob-cost">Without follow-up, every sale is a goodbye</div></div>
-<div className="prob reveal d2"><div className="prob-ico">&#128242;</div><h3>DMs and questions go unanswered</h3><p>Do you have this in medium, are you open today, can you ship it. The questions pile up and the ready-to-buy customer drifts off.</p><div className="prob-cost">A question unanswered is a sale lost</div></div>
-<div className="prob reveal d3"><div className="prob-ico">&#9742;&#65039;</div><h3>The same questions all day</h3><p>Your staff spends the day on hours, stock, and parking instead of helping the customers standing in front of them.</p><div className="prob-cost">Your staff answers the phone, not customers</div></div>
-<div className="prob reveal d1"><div className="prob-ico">&#128201;</div><h3>Slow weeks with no way to drive traffic</h3><p>A quiet Tuesday rolls around and there is no quick way to get past customers back through the door this week.</p><div className="prob-cost">Quiet weeks shouldn't be a mystery</div></div>
-<div className="prob reveal d2"><div className="prob-ico">&#11088;</div><h3>Reviews and ratings ignored</h3><p>Shoppers check reviews before they visit, but yours barely get asked for, so your storefront looks quieter than it really is.</p><div className="prob-cost">Shoppers check reviews before they visit</div></div>
-<div className="prob reveal d3"><div className="prob-ico">&#128232;</div><h3>No list to bring people back</h3><p>You do not actually own a way to reach the people who already love your shop, so every promotion starts from scratch.</p><div className="prob-cost">You don't own a way to reach your customers</div></div>
+<div className="prob reveal d1"><div className="prob-ico"><RefreshCw size={20} strokeWidth={1.8} style={{ color: "var(--accent2)" }} aria-hidden /></div><h3>First-time buyers never return</h3><p>Someone makes a great first purchase, then disappears. With no follow-up, every sale is really just a goodbye.</p><div className="prob-cost">Without follow-up, every sale is a goodbye</div></div>
+<div className="prob reveal d2"><div className="prob-ico"><MessageSquare size={20} strokeWidth={1.8} style={{ color: "var(--accent2)" }} aria-hidden /></div><h3>DMs and questions go unanswered</h3><p>Do you have this in medium, are you open today, can you ship it. The questions pile up and the ready-to-buy customer drifts off.</p><div className="prob-cost">A question unanswered is a sale lost</div></div>
+<div className="prob reveal d3"><div className="prob-ico"><Phone size={20} strokeWidth={1.8} style={{ color: "var(--accent2)" }} aria-hidden /></div><h3>The same questions all day</h3><p>Your staff spends the day on hours, stock, and parking instead of helping the customers standing in front of them.</p><div className="prob-cost">Your staff answers the phone, not customers</div></div>
+<div className="prob reveal d1"><div className="prob-ico"><TrendingDown size={20} strokeWidth={1.8} style={{ color: "var(--accent2)" }} aria-hidden /></div><h3>Slow weeks with no way to drive traffic</h3><p>A quiet Tuesday rolls around and there is no quick way to get past customers back through the door this week.</p><div className="prob-cost">Quiet weeks shouldn't be a mystery</div></div>
+<div className="prob reveal d2"><div className="prob-ico"><Star size={20} strokeWidth={1.8} style={{ color: "var(--accent2)" }} aria-hidden /></div><h3>Reviews and ratings ignored</h3><p>Shoppers check reviews before they visit, but yours barely get asked for, so your storefront looks quieter than it really is.</p><div className="prob-cost">Shoppers check reviews before they visit</div></div>
+<div className="prob reveal d3"><div className="prob-ico"><Mail size={20} strokeWidth={1.8} style={{ color: "var(--accent2)" }} aria-hidden /></div><h3>No list to bring people back</h3><p>You do not actually own a way to reach the people who already love your shop, so every promotion starts from scratch.</p><div className="prob-cost">You don't own a way to reach your customers</div></div>
 </div>
 </div>
 </section>
@@ -75,8 +100,8 @@ export default function Page() {
 <div className="mock" data-live="">
 <div className="mock-head"><span className="mock-dot"></span><span className="mock-title">Questions &middot; Today</span></div>
 <div className="mock-typing" data-typing="1300">Drafting a reply<i></i><i></i><i></i></div>
-<div className="mock-row"><div className="mock-row-l"><div className="mock-avatar">&#128242;</div><div><div className="mock-name">Olive linen jacket &middot; M</div><div className="mock-sub">In stock &middot; held at counter</div></div></div><span className="mock-pill ok">Held</span></div>
-<div className="mock-row"><div className="mock-row-l"><div className="mock-avatar">&#128722;</div><div><div className="mock-name">Open today?</div><div className="mock-sub">Answered instantly</div></div></div><span className="mock-pill ok">Replied</span></div>
+<div className="mock-row"><div className="mock-row-l"><div className="mock-avatar"><MessageSquare size={16} strokeWidth={1.8} style={{ color: "var(--accent-ink)" }} aria-hidden /></div><div><div className="mock-name">Olive linen jacket &middot; M</div><div className="mock-sub">In stock &middot; held at counter</div></div></div><span className="mock-pill ok">Held</span></div>
+<div className="mock-row"><div className="mock-row-l"><div className="mock-avatar"><ShoppingCart size={16} strokeWidth={1.8} style={{ color: "var(--accent-ink)" }} aria-hidden /></div><div><div className="mock-name">Open today?</div><div className="mock-sub">Answered instantly</div></div></div><span className="mock-pill ok">Replied</span></div>
 </div>
 </div>
 </div>
@@ -95,8 +120,8 @@ export default function Page() {
 <div className="frow-visual reveal d2">
 <div className="mock" data-live="">
 <div className="mock-head"><span className="mock-dot"></span><span className="mock-title">Win-back &middot; This week</span></div>
-<div className="mock-row"><div className="mock-row-l"><div className="mock-avatar">&#128257;</div><div><div className="mock-name">Last visit 60 days ago</div><div className="mock-sub">Win-back sent &middot; came in</div></div></div><span className="mock-pill ok">Returned</span></div>
-<div className="mock-row"><div className="mock-row-l"><div className="mock-avatar">&#11088;</div><div><div className="mock-name">Repeat customer</div><div className="mock-sub">Review request sent</div></div></div><span className="mock-pill ok">5-star</span></div>
+<div className="mock-row"><div className="mock-row-l"><div className="mock-avatar"><RefreshCw size={16} strokeWidth={1.8} style={{ color: "var(--accent-ink)" }} aria-hidden /></div><div><div className="mock-name">Last visit 60 days ago</div><div className="mock-sub">Win-back sent &middot; came in</div></div></div><span className="mock-pill ok">Returned</span></div>
+<div className="mock-row"><div className="mock-row-l"><div className="mock-avatar"><Star size={16} strokeWidth={1.8} style={{ color: "var(--accent-ink)" }} aria-hidden /></div><div><div className="mock-name">Repeat customer</div><div className="mock-sub">Review request sent</div></div></div><span className="mock-pill ok">5-star</span></div>
 </div>
 </div>
 </div>
@@ -115,8 +140,8 @@ export default function Page() {
 <div className="frow-visual reveal d2">
 <div className="mock" data-live="">
 <div className="mock-head"><span className="mock-dot"></span><span className="mock-title">Campaign &middot; New arrivals</span></div>
-<div className="mock-row"><div className="mock-row-l"><div className="mock-avatar">&#127991;&#65039;</div><div><div className="mock-name">Fall drop &middot; 240 sent</div><div className="mock-sub">To engaged customers</div></div></div><span className="mock-pill ok">38 redeemed</span></div>
-<div className="mock-row"><div className="mock-row-l"><div className="mock-avatar">&#128722;</div><div><div className="mock-name">Slow Tuesday offer</div><div className="mock-sub">Sent 9 AM &middot; in-store only</div></div></div><span className="mock-pill ok">Driving traffic</span></div>
+<div className="mock-row"><div className="mock-row-l"><div className="mock-avatar"><Tag size={16} strokeWidth={1.8} style={{ color: "var(--accent-ink)" }} aria-hidden /></div><div><div className="mock-name">Fall drop &middot; 240 sent</div><div className="mock-sub">To engaged customers</div></div></div><span className="mock-pill ok">38 redeemed</span></div>
+<div className="mock-row"><div className="mock-row-l"><div className="mock-avatar"><ShoppingCart size={16} strokeWidth={1.8} style={{ color: "var(--accent-ink)" }} aria-hidden /></div><div><div className="mock-name">Slow Tuesday offer</div><div className="mock-sub">Sent 9 AM &middot; in-store only</div></div></div><span className="mock-pill ok">Driving traffic</span></div>
 </div>
 </div>
 </div>
@@ -145,7 +170,7 @@ export default function Page() {
 <div className="phone-notch"></div>
 <div className="phone-screen">
 <div className="phone-top">
-<div className="phone-av">&#128717;&#65039;</div>
+<div className="phone-av"><ShoppingBag size={16} strokeWidth={1.8} style={{ color: "#fff" }} aria-hidden /></div>
 <div><div className="phone-top-name">North Arm Goods</div><div className="phone-top-sub">AI shop &middot; restock alert</div></div>
 </div>
 <div className="chat" data-chat="">
@@ -154,7 +179,7 @@ export default function Page() {
 <div className="typing" data-typing="1200"><i></i><i></i><i></i></div>
 <div className="bubble them" data-delay="200">Yes!! Please hold it</div>
 <div className="bubble me" data-delay="900">Done, holding 1 for you at the counter until 6 PM tomorrow. See you soon!</div>
-<div className="chat-badge" data-delay="650"><span className="chat-badge-ico">&#9989;</span><span>A sold-out &ldquo;sorry, no&rdquo; turned into a sale the second stock landed.</span></div>
+<div className="chat-badge" data-delay="650"><span className="chat-badge-ico"><CheckCircle2 size={14} strokeWidth={1.8} style={{ color: "#4af0c0" }} aria-hidden /></span><span>A sold-out &ldquo;sorry, no&rdquo; turned into a sale the second stock landed.</span></div>
 </div>
 </div>
 </div>
@@ -180,11 +205,11 @@ export default function Page() {
 <div className="sig-visual reveal d2">
 <div className="sig-panel">
 <div className="sig-head"><span className="sig-live"><i></i>Waitlist &middot; Live</span><span className="sig-num"><span className="count" data-to="7">0</span> sales</span></div>
-<div className="rstk-banner"><span>&#128230;</span>Olive linen jacket, back in stock</div>
+<div className="rstk-banner"><Package size={16} strokeWidth={1.8} style={{ color: "var(--accent-ink)" }} aria-hidden />Olive linen jacket, back in stock</div>
 <div className="rstk-rows">
-<div className="rstk-row"><span>&#128100;</span>Mara T. &middot; size M<span className="pill sold">Sold</span></div>
-<div className="rstk-row"><span>&#128100;</span>Devin K. &middot; size L<span className="pill sold">Sold</span></div>
-<div className="rstk-row"><span>&#128100;</span>Priya S. &middot; size S<span className="pill">Notified</span></div>
+<div className="rstk-row"><User size={14} strokeWidth={1.8} style={{ color: "var(--accent-ink)" }} aria-hidden />Mara T. &middot; size M<span className="pill sold">Sold</span></div>
+<div className="rstk-row"><User size={14} strokeWidth={1.8} style={{ color: "var(--accent-ink)" }} aria-hidden />Devin K. &middot; size L<span className="pill sold">Sold</span></div>
+<div className="rstk-row"><User size={14} strokeWidth={1.8} style={{ color: "var(--accent-ink)" }} aria-hidden />Priya S. &middot; size S<span className="pill">Notified</span></div>
 </div>
 </div>
 </div>
@@ -235,17 +260,17 @@ export default function Page() {
 <h2 className="icta-title reveal d1">Ready To Build<br /><span className="a">A Base Of Regulars?</span></h2>
 <p className="icta-desc reveal d2">Start with a free 15-minute call. We will show you exactly which automations would bring the most customers back through your door. No pitch, no obligation.</p>
 <a href="https://cal.com/pacificedge" target="_blank" rel="noopener" className="btn-primary reveal d2">Book a Free 15-Min Demo</a>
-<div className="reveal d2" style={{ marginTop: "18px" }}><a href="/retail-savings-calculator.html" className="btn-ghost">&#128202; See What Your Missed Customers Are Worth &rarr;</a></div>
+<div className="reveal d2" style={{ marginTop: "18px" }}><a href="/roi-calculator?industry=retail" className="btn-ghost">See What Your Missed Customers Are Worth &rarr;</a></div>
 <div className="icta-bullets reveal d3">
 <span><i></i>Free discovery call</span>
 <span><i></i>Working prototype in about a week</span>
 <span><i></i>Vancouver-based</span>
 </div>
 <div className="xlinks reveal d3">
-<a href="/restaurants" className="xlink"><span>&#127869;&#65039;</span>Restaurants</a>
-<a href="/salons" className="xlink"><span>&#128134;</span>Salons &amp; Spas</a>
-<a href="/trades" className="xlink"><span>&#128295;</span>Trades</a>
-<a href="/dental" className="xlink"><span>&#129463;</span>Dental</a>
+<a href="/restaurants" className="xlink"><UtensilsCrossed size={14} strokeWidth={1.8} style={{ color: "var(--accent-ink)" }} aria-hidden />Restaurants</a>
+<a href="/salons" className="xlink"><Scissors size={14} strokeWidth={1.8} style={{ color: "var(--accent-ink)" }} aria-hidden />Salons &amp; Spas</a>
+<a href="/trades" className="xlink"><Wrench size={14} strokeWidth={1.8} style={{ color: "var(--accent-ink)" }} aria-hidden />Trades</a>
+<a href="/dental" className="xlink"><Stethoscope size={14} strokeWidth={1.8} style={{ color: "var(--accent-ink)" }} aria-hidden />Dental</a>
 </div>
 </div>
 </section>

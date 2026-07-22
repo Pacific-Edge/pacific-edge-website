@@ -12,3 +12,10 @@
 /careers.html                   /careers                   301
 /dental-single-location.html    /dental-single-location    301
 /dental-multi-location.html     /dental-multi-location     301
+
+# Old standalone savings calculators -> the universal ROI calculator
+/dental-savings-calculator.html       /roi-calculator?industry=dental       301
+/restaurants-savings-calculator.html  /roi-calculator?industry=restaurants  301
+/salons-savings-calculator.html       /roi-calculator?industry=salons       301
+/trades-savings-calculator.html       /roi-calculator?industry=trades      301
+/retail-savings-calculator.html       /roi-calculator?industry=retail      301

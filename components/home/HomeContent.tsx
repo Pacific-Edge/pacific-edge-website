@@ -2,6 +2,32 @@
 
 import { useEffect, useRef, useState } from "react"
 import Link from "next/link"
+import {
+  Ban,
+  Bot,
+  Building2,
+  CalendarCheck,
+  Clock,
+  DollarSign,
+  GraduationCap,
+  KeyRound,
+  LineChart,
+  Lock,
+  MessageSquare,
+  Moon,
+  Phone,
+  PhoneMissed,
+  RefreshCw,
+  Scissors,
+  ShieldCheck,
+  ShoppingBag,
+  Star,
+  Stethoscope,
+  TrendingUp,
+  UtensilsCrossed,
+  Wrench,
+  type LucideIcon,
+} from "lucide-react"
 import CoverageMap from "./CoverageMap"
 import { useContactModal } from "@/components/site/ContactModalProvider"
 import { getLenis } from "@/lib/lenis"
@@ -20,29 +46,35 @@ const SCENES = [
   { i: 3, h: "Custom-built around your business", p: "Not a template. We map how your business actually runs, then build the workflows and a live dashboard that fit the tools you already have." },
 ]
 
-const COMPARE = [
-  { ico: "🌙", cat: "After-hours coverage", before: "Leads go cold overnight", after: "Answered 24/7, in seconds" },
-  { ico: "📞", cat: "Missed calls", before: "Lost lead, gone by morning", after: "Texted back in 23 seconds, booked" },
-  { ico: "⭐", cat: "Reviews", before: "Hours to reply, if at all", after: "Drafted in seconds, you approve" },
-  { ico: "⏱️", cat: "Your time", before: "14+ hours a week on admin", after: "18+ hours handed back to you" },
-  { ico: "📊", cat: "Visibility", before: "Best guess on what's working", after: "Live dashboard on every lead" },
-  { ico: "💸", cat: "Revenue", before: "$3K+ leaking out monthly", after: "Recovered revenue, every month" },
+const COMPARE: { Ico: LucideIcon; cat: string; before: string; after: string }[] = [
+  { Ico: Moon, cat: "After-hours coverage", before: "Leads go cold overnight", after: "Answered 24/7, in seconds" },
+  { Ico: PhoneMissed, cat: "Missed calls", before: "Lost lead, gone by morning", after: "Texted back in seconds, booked" },
+  { Ico: Star, cat: "Reviews", before: "Hours to reply, if at all", after: "Drafted in seconds, you approve" },
+  { Ico: Clock, cat: "Your time", before: "14+ hours a week on admin", after: "Most of those hours handed back" },
+  { Ico: LineChart, cat: "Visibility", before: "Best guess on what's working", after: "Live dashboard on every lead" },
+  { Ico: DollarSign, cat: "Revenue", before: "$3K+ leaking out monthly", after: "Recovered revenue, every month" },
 ]
 
-const JED = [
-  { i: "📞", t: "Missed call answered", s: "Texted back in 19 seconds", p: "Booked" },
-  { i: "🔁", t: "Cancellation refilled", s: "Offered to your waitlist", p: "+$220" },
-  { i: "⭐", t: "New 5-star review", s: "On-brand reply drafted", p: "Ready" },
-  { i: "📅", t: "After-hours message", s: "Appointment booked", p: "Done" },
+const JED: { Ico: LucideIcon; t: string; s: string; p: string }[] = [
+  { Ico: Phone, t: "Missed call answered", s: "Texted back in 19 seconds", p: "Booked" },
+  { Ico: RefreshCw, t: "Cancellation refilled", s: "Offered to your waitlist", p: "+$220" },
+  { Ico: Star, t: "New 5-star review", s: "On-brand reply drafted", p: "Ready" },
+  { Ico: CalendarCheck, t: "After-hours message", s: "Appointment booked", p: "Done" },
 ]
 
-const INDUSTRIES = [
-  { href: "/dental", icon: "🦷", name: "Dental & Health Clinics", desc: "New-patient calls to voicemail, no-shows, missed recalls. We keep the schedule full and the front desk free.", more: "Explore dental AI" },
-  { href: "/real-estate", icon: "🏡", name: "Real Estate", desc: "Leads that go cold in minutes, after-hours inquiries, showings missed. We answer first and book the showing, for agents & developers.", more: "Explore real estate AI" },
-  { href: "/restaurants", icon: "🍽️", name: "Restaurants & Food Service", desc: "Missed reservation calls, unanswered reviews, no-shows. We turn the dinner rush into booked tables.", more: "Explore restaurant AI" },
-  { href: "/salons", icon: "💆", name: "Salons, Spas & Wellness", desc: "Empty chairs, after-hours DMs, clients who never rebook. We keep your calendar full and your regulars regular.", more: "Explore salon & spa AI" },
-  { href: "/trades", icon: "🔧", name: "Trades & Home Services", desc: "Calls missed on the job, quotes gone cold. We capture every lead and follow up, completely hands-free.", more: "Explore trades AI" },
-  { href: "/retail", icon: "🛍️", name: "Retail & Local Shops", desc: "One-time buyers, unanswered questions, slow weeks. We turn first-time shoppers into loyal regulars.", more: "Explore retail AI" },
+const INDUSTRIES: { href: string; Icon: LucideIcon; name: string; desc: string; more: string }[] = [
+  { href: "/dental", Icon: Stethoscope, name: "Dental & Health Clinics", desc: "New-patient calls to voicemail, no-shows, missed recalls. We keep the schedule full and the front desk free.", more: "Explore dental AI" },
+  { href: "/real-estate", Icon: Building2, name: "Real Estate", desc: "Leads that go cold in minutes, after-hours inquiries, showings missed. We answer first and book the showing, for agents & developers.", more: "Explore real estate AI" },
+  { href: "/restaurants", Icon: UtensilsCrossed, name: "Restaurants & Food Service", desc: "Missed reservation calls, unanswered reviews, no-shows. We turn the dinner rush into booked tables.", more: "Explore restaurant AI" },
+  { href: "/salons", Icon: Scissors, name: "Salons, Spas & Wellness", desc: "Empty chairs, after-hours DMs, clients who never rebook. We keep your calendar full and your regulars regular.", more: "Explore salon & spa AI" },
+  { href: "/trades", Icon: Wrench, name: "Trades & Home Services", desc: "Calls missed on the job, quotes gone cold. We capture every lead and follow up, completely hands-free.", more: "Explore trades AI" },
+  { href: "/retail", Icon: ShoppingBag, name: "Retail & Local Shops", desc: "One-time buyers, unanswered questions, slow weeks. We turn first-time shoppers into loyal regulars.", more: "Explore retail AI" },
+]
+
+const PRODUCTS_TRIO: { href: string; Icon: LucideIcon; name: string; desc: string; cta: string }[] = [
+  { href: "/ai-employee", Icon: Bot, name: "AI Employee (Janice)", desc: "A done-for-you AI receptionist that answers every call and message, books appointments, and follows up 24/7.", cta: "Explore the AI Employee" },
+  { href: "/custom-builds", Icon: Wrench, name: "Custom Builds", desc: "Bespoke automations, dashboards, and software designed around how your business already runs.", cta: "Explore Custom Builds" },
+  { href: "/ai-training", Icon: GraduationCap, name: "AI Training", desc: "Hands-on workshops that get your team using AI confidently, safely, and well.", cta: "Explore AI Training" },
 ]
 
 type IntgCard = { c: string; ini: string; name: string; img?: string }
@@ -70,27 +102,27 @@ const INTG: { key: string; label: string; cards: IntgCard[] }[] = [
 ]
 
 const STEPS = [
-  { h: "Discovery Call", p: "15 minutes. We learn about your business, find where you're bleeding time and money, and identify the highest-impact automations. No sales pitch - just clarity." },
+  { h: "Discovery Call", p: "15 minutes. We learn about your business, find where you're bleeding time and money, and identify the highest-impact automations. No sales pitch, just clarity." },
   { h: "Deep-Dive Session", p: "A focused 60-minute session where we map out your entire workflow, pinpoint the bottlenecks costing you the most time and money, and identify exactly which automations will move the needle for your business." },
-  { h: "Custom Build", p: "We design and build your AI workflows using battle-tested tools. You see a working prototype within the first week - not a slide deck, real software." },
+  { h: "Custom Build", p: "We design and build your AI workflows using battle-tested tools. You see a working prototype within the first week: not a slide deck, real software." },
   { h: "Launch & Train", p: "We deploy everything, walk your team through it in plain English, and make sure you're comfortable before we step back. No orphaned systems." },
-  { h: "Optimize & Support", p: "Ongoing monitoring and tweaking. As your business grows, we scale your automations with you. You focus on running the business - we keep the systems humming." },
+  { h: "Optimize & Support", p: "Ongoing monitoring and tweaking. As your business grows, we scale your automations with you. You focus on running the business, we keep the systems humming." },
 ]
 
-const DASH_ROWS = [
-  { icon: "📞", label: "Missed call response", before: "~4 HRS", after: "INSTANT", src: "3" },
-  { icon: "⭐", label: "Review response rate", before: "~36%", after: "~100%", src: "4" },
-  { icon: "💬", label: "Customer follow-ups", before: "MANUAL", after: "AUTO" },
-  { icon: "🕑", label: "Admin hours / week", before: "15+ HRS", after: "~5 HRS", src: "6" },
-  { icon: "💰", label: "Revenue leaking", before: "$3K+/MO", after: "CAPTURED", src: "7" },
-  { icon: "🚀", label: "Growth bottleneck", before: "YOU", after: "SOLVED" },
+const DASH_ROWS: { Icon: LucideIcon; label: string; before: string; after: string; src?: string }[] = [
+  { Icon: Phone, label: "Missed call response", before: "~4 HRS", after: "INSTANT", src: "3" },
+  { Icon: Star, label: "Review response rate", before: "~36%", after: "~100%", src: "4" },
+  { Icon: MessageSquare, label: "Customer follow-ups", before: "MANUAL", after: "AUTO" },
+  { Icon: Clock, label: "Admin hours / week", before: "15+ HRS", after: "~5 HRS", src: "6" },
+  { Icon: DollarSign, label: "Revenue leaking", before: "$3K+/MO", after: "CAPTURED", src: "7" },
+  { Icon: TrendingUp, label: "Growth bottleneck", before: "YOU", after: "SOLVED" },
 ]
 
-const TRUST = [
-  { ico: "🔒", h: "Encrypted end to end", p: "Every conversation and customer record is encrypted in transit and at rest, protected the whole way through." },
-  { ico: "🇨🇦", h: "Canadian privacy first", p: "Built to align with PIPEDA and BC's privacy rules, with personal information treated as exactly that, personal." },
-  { ico: "🚫", h: "Never sold or shared", p: "Your data is yours. We never sell it, rent it, or hand it to third parties. Full stop." },
-  { ico: "🔑", h: "You stay in control", p: "Strict access, only what is needed is ever touched. And if we ever part ways, everything is documented and handed back." },
+const TRUST: { Ico: LucideIcon; h: string; p: string }[] = [
+  { Ico: Lock, h: "Encrypted end to end", p: "Every conversation and customer record is encrypted in transit and at rest, protected the whole way through." },
+  { Ico: ShieldCheck, h: "Canadian privacy first", p: "Built to align with PIPEDA and BC's privacy rules, with personal information treated as exactly that, personal." },
+  { Ico: Ban, h: "Never sold or shared", p: "Your data is yours. We never sell it, rent it, or hand it to third parties. Full stop." },
+  { Ico: KeyRound, h: "You stay in control", p: "Strict access, only what is needed is ever touched. And if we ever part ways, everything is documented and handed back." },
 ]
 
 const TESTIMONIALS = [
@@ -273,15 +305,26 @@ export default function HomeContent() {
     }
   }, [])
 
-  // Dashboard iframe autosize
+  // Dashboard iframe autosize. Grow-only: tabs report different heights, and
+  // applying every report makes the page jump. Settle at the tallest tab and
+  // only re-baseline when the viewport resizes.
   useEffect(() => {
+    let maxH = 0
     const onMsg = (e: MessageEvent) => {
       if (e.data && e.data.type === "pe-dash-height" && e.data.height > 200 && iframeRef.current) {
-        iframeRef.current.style.height = e.data.height + "px"
+        if (e.data.height > maxH) {
+          maxH = e.data.height
+          iframeRef.current.style.height = maxH + "px"
+        }
       }
     }
+    const onResize = () => { maxH = 0 }
     window.addEventListener("message", onMsg)
-    return () => window.removeEventListener("message", onMsg)
+    window.addEventListener("resize", onResize)
+    return () => {
+      window.removeEventListener("message", onMsg)
+      window.removeEventListener("resize", onResize)
+    }
   }, [])
 
   const toTop = () => {
@@ -302,7 +345,7 @@ export default function HomeContent() {
         <div className="hero-orb hero-orb-2" />
         <div className="hero-label">
           <span className="hero-label-dot" />
-          AI Consulting · Vancouver, BC
+          Done-For-You AI · Vancouver, BC
         </div>
         <h1>
           The Unfair Edge
@@ -349,6 +392,24 @@ export default function HomeContent() {
         </div>
       </section>
 
+      {/* WHAT WE DO: three products, right under the hero */}
+      <section className="pt" aria-label="What we do">
+        <div className="pt-head r">
+          <div className="sl">What We Do</div>
+          <h2 className="st">Three Ways We <span className="a">Put AI To Work.</span></h2>
+        </div>
+        <div className="pt-grid">
+          {PRODUCTS_TRIO.map((prod, i) => (
+            <div className={`pt-card r rd${i + 1}`} key={prod.href}>
+              <div className="pt-ico"><prod.Icon size={22} strokeWidth={1.7} style={{ color: "var(--accent-ink)" }} aria-hidden /></div>
+              <h3>{prod.name}</h3>
+              <p>{prod.desc}</p>
+              <Link href={prod.href} className="pt-btn">{prod.cta}<span className="arr">→</span></Link>
+            </div>
+          ))}
+        </div>
+      </section>
+
       {/* MARQUEE */}
       <div className="marquee">
         <div className="marquee-inner">
@@ -382,8 +443,8 @@ export default function HomeContent() {
                       onClick={() => setScene(s.i)}
                     >
                       <span className="sw-rail" />
-                      <h3>{s.h}</h3>
-                      <p>{s.p}</p>
+                      <span className="sw-h">{s.h}</span>
+                      <span className="sw-p">{s.p}</span>
                     </button>
                   ))}
                 </div>
@@ -402,7 +463,7 @@ export default function HomeContent() {
                       <div className="sw-bub them">Missed call · 9:42 PM</div>
                       <div className="sw-bub me">Hi! Sorry we missed you, how can we help?</div>
                       <div className="sw-bub them">Need a quote for a bathroom reno</div>
-                      <div className="sw-tag">⚡ Replied in 18s</div>
+                      <div className="sw-tag">Replied in 18s</div>
                     </div>
                   </div>
                 </div>
@@ -426,7 +487,7 @@ export default function HomeContent() {
                     <div className="swc-bar"><b>Your Dashboard</b><span>Live</span></div>
                     <div className="dash-tiles"><div className="dash-tile"><b>48</b><span>Calls answered</span></div><div className="dash-tile"><b>31</b><span>Jobs booked</span></div><div className="dash-tile"><b>9</b><span>Slots saved</span></div></div>
                     <div className="dash-chart"><i /><i /><i /><i /><i /><i /></div>
-                    <div className="dash-int"><span>📞 Phone</span><span>📅 Calendar</span><span>⭐ Reviews</span><span>📁 Your CRM</span></div>
+                    <div className="dash-int"><span>Phone</span><span>Calendar</span><span>Reviews</span><span>Your CRM</span></div>
                   </div>
                 </div>
               </div>
@@ -452,7 +513,7 @@ export default function HomeContent() {
           </div>
           {COMPARE.map((row, i) => (
             <div className={`cmp-row r rd${i + 1}`} key={row.cat}>
-              <div className="cmp-cell cmp-cat"><span className="cmp-ico">{row.ico}</span>{row.cat}</div>
+              <div className="cmp-cell cmp-cat"><span className="cmp-ico"><row.Ico size={17} strokeWidth={1.8} style={{ color: "var(--accent-ink)" }} aria-hidden /></span>{row.cat}</div>
               <div className="cmp-cell cmp-before">
                 <span className="cmp-x"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#cf4444" strokeWidth="3.4" strokeLinecap="round"><path d="M6 6l12 12M18 6L6 18" /></svg></span>
                 {row.before}
@@ -496,7 +557,7 @@ export default function HomeContent() {
             <div className="jed-feed" id="jedFeed">
               {JED.map((x, i) => (
                 <div className={`jed-item ${feed === i ? "show" : ""}`} key={x.t}>
-                  <div className="jed-ico">{x.i}</div>
+                  <div className="jed-ico"><x.Ico size={15} strokeWidth={1.8} style={{ color: "var(--accent-ink)" }} aria-hidden /></div>
                   <div><div className="jed-txt">{x.t}</div><div className="jed-sub">{x.s}</div></div>
                   <span className="jed-pill">{x.p}</span>
                 </div>
@@ -519,7 +580,7 @@ export default function HomeContent() {
         <div className="ind-grid">
           {INDUSTRIES.map((ind, i) => (
             <Link href={ind.href} className={`ind r rd${i + 1}`} key={ind.href}>
-              <span className="ind-icon">{ind.icon}</span>
+              <span className="ind-icon"><ind.Icon size={24} strokeWidth={1.7} style={{ color: "var(--accent-ink)" }} aria-hidden /></span>
               <h4>{ind.name}</h4>
               <p>{ind.desc}</p>
               <span className="ind-more">{ind.more} <span className="arr">→</span></span>
@@ -558,7 +619,7 @@ export default function HomeContent() {
       {/* INTEGRATIONS */}
       <section className="intg">
         <div className="r">
-          <div className="sl">Plays Nice</div>
+          <div className="sl">Integrations</div>
           <h2 className="st">Works With The Tools<br /><span className="a">You Already Run On.</span></h2>
           <p className="sd" style={{ margin: "0 auto" }}>No rip-and-replace. Janice plugs into your calendar, booking, payments, and inbox so everything keeps flowing in one place.</p>
         </div>
@@ -613,7 +674,7 @@ export default function HomeContent() {
             <div className="pd-body" id="dashBody">
               {DASH_ROWS.map((row) => (
                 <div className="pd-row" key={row.label}>
-                  <div className="pd-row-label"><div className="pd-row-icon">{row.icon}</div>{row.label}</div>
+                  <div className="pd-row-label"><div className="pd-row-icon"><row.Icon size={13} strokeWidth={1.9} style={{ color: "var(--accent-ink)" }} aria-hidden /></div>{row.label}</div>
                   <div>
                     <span className="pd-row-val before" data-before={row.before} data-after={row.after} data-current="before">{row.before}</span>
                     {row.src ? <a href="#sources" className="stat-src">[{row.src}]</a> : null}
@@ -648,7 +709,7 @@ export default function HomeContent() {
         <div className="trust-grid">
           {TRUST.map((t, i) => (
             <div className={`trust-card r rd${i + 1}`} key={t.h}>
-              <div className="trust-ico">{t.ico}</div><h3>{t.h}</h3><p>{t.p}</p>
+              <div className="trust-ico"><t.Ico size={21} strokeWidth={1.7} style={{ color: "var(--accent-ink)" }} aria-hidden /></div><h3>{t.h}</h3><p>{t.p}</p>
             </div>
           ))}
         </div>

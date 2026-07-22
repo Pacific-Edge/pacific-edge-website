@@ -1,4 +1,5 @@
 import type { Metadata } from "next"
+import Script from "next/script"
 import { Bebas_Neue, Outfit, JetBrains_Mono } from "next/font/google"
 import "./globals.css"
 import "@/styles/legacy.css"
@@ -105,6 +106,14 @@ export default function RootLayout({
               "<style>.reveal{opacity:1 !important;transform:none !important}</style>",
           }}
         />
+        {/* Analytics on every route (was home-only, which missed all sub-page visits) */}
+        <Script
+          src="https://www.googletagmanager.com/gtag/js?id=G-113R1XTVJH"
+          strategy="afterInteractive"
+        />
+        <Script id="ga-config" strategy="afterInteractive">
+          {`window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-113R1XTVJH');`}
+        </Script>
       </body>
     </html>
   )

@@ -123,14 +123,24 @@ export default function LegacyBehaviors() {
     })
 
     // ── dashboard iframe autosize ──
+    // Grow-only: each tab in dashboard-mock.html reports its own height, so
+    // applying every report makes the page jump as tabs shrink/grow. Settle at
+    // the tallest tab instead, and only re-baseline when the viewport resizes.
+    let dashMaxH = 0
     const onMsg = (e: MessageEvent) => {
       if (e.data && e.data.type === "pe-dash-height" && e.data.height > 200) {
         const f = document.getElementById("idash") as HTMLIFrameElement | null
-        if (f) f.style.height = e.data.height + "px"
+        if (f && e.data.height > dashMaxH) {
+          dashMaxH = e.data.height
+          f.style.height = dashMaxH + "px"
+        }
       }
     }
+    const onDashResize = () => { dashMaxH = 0 }
     window.addEventListener("message", onMsg)
+    window.addEventListener("resize", onDashResize)
     cleanups.push(() => window.removeEventListener("message", onMsg))
+    cleanups.push(() => window.removeEventListener("resize", onDashResize))
 
     return () => {
       observers.forEach((o) => o.disconnect())

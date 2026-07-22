@@ -1,4 +1,17 @@
 import type { Metadata } from "next"
+import {
+  Brain,
+  Building2,
+  Coffee,
+  GraduationCap,
+  Handshake,
+  Home,
+  Laptop,
+  MapPin,
+  Rocket,
+  Sprout,
+  TrendingUp,
+} from "lucide-react"
 import SiteShell from "@/components/site/SiteShell"
 
 export const metadata: Metadata = {
@@ -22,11 +35,11 @@ export default function Page() {
 <a href="mailto:hello@pacificedge.ai?subject=Pacific%20Edge%20AI%20-%20Careers" className="btn-ghost">Email Us</a>
 </div>
 <div className="cr-chips reveal d5">
-<div className="cr-chip"><span>&#129504;</span>Real AI impact</div>
-<div className="cr-chip"><span>&#128640;</span>Move fast</div>
-<div className="cr-chip"><span>&#129309;</span>Founder-level ownership</div>
-<div className="cr-chip"><span>&#128205;</span>Vancouver + remote</div>
-<div className="cr-chip"><span>&#127793;</span>Ground floor</div>
+<div className="cr-chip"><Brain size={14} strokeWidth={1.8} style={{ color: "var(--accent-ink)" }} aria-hidden />Real AI impact</div>
+<div className="cr-chip"><Rocket size={14} strokeWidth={1.8} style={{ color: "var(--accent-ink)" }} aria-hidden />Move fast</div>
+<div className="cr-chip"><Handshake size={14} strokeWidth={1.8} style={{ color: "var(--accent-ink)" }} aria-hidden />Founder-level ownership</div>
+<div className="cr-chip"><MapPin size={14} strokeWidth={1.8} style={{ color: "var(--accent-ink)" }} aria-hidden />Vancouver + remote</div>
+<div className="cr-chip"><Sprout size={14} strokeWidth={1.8} style={{ color: "var(--accent-ink)" }} aria-hidden />Ground floor</div>
 </div>
 </div>
 </header>
@@ -104,12 +117,12 @@ export default function Page() {
 <div className="sig-panel" style={{ minHeight: "auto" }}>
 <div className="sig-head"><span className="sig-live"><i></i>Perks &amp; the deal</span></div>
 <div className="cr-perks" style={{ marginTop: "6px", justifyContent: "flex-start" }}>
-<div className="cr-perk"><span>&#129521;</span>Ground-floor equity</div>
-<div className="cr-perk"><span>&#127968;</span>Flexible &amp; remote-friendly</div>
-<div className="cr-perk"><span>&#128218;</span>Learning budget</div>
-<div className="cr-perk"><span>&#128187;</span>Top gear, your setup</div>
-<div className="cr-perk"><span>&#127881;</span>Real ownership &amp; upside</div>
-<div className="cr-perk"><span>&#9749;</span>Vancouver team days</div>
+<div className="cr-perk"><Building2 size={14} strokeWidth={1.8} style={{ color: "var(--accent-ink)" }} aria-hidden />Ground-floor equity</div>
+<div className="cr-perk"><Home size={14} strokeWidth={1.8} style={{ color: "var(--accent-ink)" }} aria-hidden />Flexible &amp; remote-friendly</div>
+<div className="cr-perk"><GraduationCap size={14} strokeWidth={1.8} style={{ color: "var(--accent-ink)" }} aria-hidden />Learning budget</div>
+<div className="cr-perk"><Laptop size={14} strokeWidth={1.8} style={{ color: "var(--accent-ink)" }} aria-hidden />Top gear, your setup</div>
+<div className="cr-perk"><TrendingUp size={14} strokeWidth={1.8} style={{ color: "var(--accent-ink)" }} aria-hidden />Real ownership &amp; upside</div>
+<div className="cr-perk"><Coffee size={14} strokeWidth={1.8} style={{ color: "var(--accent-ink)" }} aria-hidden />Vancouver team days</div>
 </div>
 </div>
 </div>

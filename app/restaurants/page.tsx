@@ -1,6 +1,26 @@
 import type { Metadata } from "next"
 import Link from "next/link"
+import {
+  CalendarX,
+  Check,
+  CheckCircle2,
+  Headset,
+  Mail,
+  Phone,
+  PhoneCall,
+  PhoneMissed,
+  RefreshCw,
+  Scissors,
+  ShoppingBag,
+  Star,
+  Stethoscope,
+  UtensilsCrossed,
+  Wrench,
+  X,
+} from "lucide-react"
 import SiteShell from "@/components/site/SiteShell"
+import RoiCalculator from "@/components/calculator/RoiCalculator"
+import "@/styles/calculator.css"
 
 const CAL = "https://cal.com/pacificedge"
 
@@ -35,7 +55,7 @@ export default function RestaurantsPage() {
           </div>
           <div className="ihero-actions reveal d4">
             <a href={CAL} target="_blank" rel="noopener" className="btn-primary">Book a Free 15-Min Demo</a>
-            <a href="/restaurants-savings-calculator.html" className="btn-calc">📊 What Empty Tables Cost You</a>
+            <a href="#roi" className="btn-calc">What Empty Tables Cost You</a>
             <a href="#problems" className="btn-ghost">See How It Helps</a>
           </div>
           <div className="ihero-stats reveal d5">
@@ -49,7 +69,11 @@ export default function RestaurantsPage() {
         </div>
       </header>
 
-      <div className="divhr" />
+      <div className="pband reveal">
+        <figure className="photo-band">
+          <img src="/img/restaurant.jpg" alt="A full dining room at an upscale restaurant" loading="lazy" />
+        </figure>
+      </div>
 
       <section id="problems">
         <div className="wrap">
@@ -57,12 +81,12 @@ export default function RestaurantsPage() {
           <h2 className="st reveal d1">Sound <span className="a">Familiar?</span></h2>
           <p className="sd reveal d2">If your evenings look anything like this, you are leaving money on the table. Literally.</p>
           <div className="prob-grid">
-            <div className="prob reveal d1"><div className="prob-ico">📞</div><h3>Calls ring out during the rush</h3><p>The phone goes while you are plating six tables. By the time anyone gets to it, the guest has already called the place down the street.</p><div className="prob-cost">A missed call is a table you never seat</div></div>
-            <div className="prob reveal d2"><div className="prob-ico">⭐</div><h3>Reviews pile up unanswered</h3><p>Replying to every Google and Yelp review takes hours you do not have, so most just sit there while your rating drifts.</p><div className="prob-cost">Diners read reviews before they pick you</div></div>
-            <div className="prob reveal d3"><div className="prob-ico">📅</div><h3>No-shows leave empty tables</h3><p>A party of six books for Friday and never turns up. That prime-time table sat empty all night with no chance to refill it.</p><div className="prob-cost">An empty Friday 6-top is gone for good</div></div>
-            <div className="prob reveal d1"><div className="prob-ico">☎️</div><h3>The same questions, all day</h3><p>Hours, parking, do you take walk-ins, are you dog friendly. Your host answers the phone more than they greet guests.</p><div className="prob-cost">Your host is a receptionist, not a closer</div></div>
-            <div className="prob reveal d2"><div className="prob-ico">📩</div><h3>Big inquiries go cold</h3><p>Catering and large-party emails come in after close. By morning the customer has booked with whoever replied first.</p><div className="prob-cost">High-value bookings go to the fastest reply</div></div>
-            <div className="prob reveal d3"><div className="prob-ico">🔁</div><h3>One-time diners never return</h3><p>Someone has a great night, then you never hear from them again because there is no time to follow up and bring them back.</p><div className="prob-cost">Regulars are built on follow-up you skip</div></div>
+            <div className="prob reveal d1"><div className="prob-ico"><PhoneMissed size={20} strokeWidth={1.8} style={{ color: "var(--accent2)" }} aria-hidden /></div><h3>Calls ring out during the rush</h3><p>The phone goes while you are plating six tables. By the time anyone gets to it, the guest has already called the place down the street.</p><div className="prob-cost">A missed call is a table you never seat</div></div>
+            <div className="prob reveal d2"><div className="prob-ico"><Star size={20} strokeWidth={1.8} style={{ color: "var(--accent2)" }} aria-hidden /></div><h3>Reviews pile up unanswered</h3><p>Replying to every Google and Yelp review takes hours you do not have, so most just sit there while your rating drifts.</p><div className="prob-cost">Diners read reviews before they pick you</div></div>
+            <div className="prob reveal d3"><div className="prob-ico"><CalendarX size={20} strokeWidth={1.8} style={{ color: "var(--accent2)" }} aria-hidden /></div><h3>No-shows leave empty tables</h3><p>A party of six books for Friday and never turns up. That prime-time table sat empty all night with no chance to refill it.</p><div className="prob-cost">An empty Friday 6-top is gone for good</div></div>
+            <div className="prob reveal d1"><div className="prob-ico"><Phone size={20} strokeWidth={1.8} style={{ color: "var(--accent2)" }} aria-hidden /></div><h3>The same questions, all day</h3><p>Hours, parking, do you take walk-ins, are you dog friendly. Your host answers the phone more than they greet guests.</p><div className="prob-cost">Your host is a receptionist, not a closer</div></div>
+            <div className="prob reveal d2"><div className="prob-ico"><Mail size={20} strokeWidth={1.8} style={{ color: "var(--accent2)" }} aria-hidden /></div><h3>Big inquiries go cold</h3><p>Catering and large-party emails come in after close. By morning the customer has booked with whoever replied first.</p><div className="prob-cost">High-value bookings go to the fastest reply</div></div>
+            <div className="prob reveal d3"><div className="prob-ico"><RefreshCw size={20} strokeWidth={1.8} style={{ color: "var(--accent2)" }} aria-hidden /></div><h3>One-time diners never return</h3><p>Someone has a great night, then you never hear from them again because there is no time to follow up and bring them back.</p><div className="prob-cost">Regulars are built on follow-up you skip</div></div>
           </div>
         </div>
       </section>
@@ -73,9 +97,29 @@ export default function RestaurantsPage() {
         <div className="wrap">
           <div className="sl reveal">What We Automate</div>
           <h2 className="st reveal d1">Built For The <span className="a">Dinner Rush.</span></h2>
-          <p className="sd reveal d2">Empty tables, missed calls, no-shows. We turn the moments that quietly cost you the most into booked, confirmed covers.</p>
+          <p className="sd reveal d2">An AI receptionist on your phones, plus the follow-up work nobody has time for. We turn the moments that quietly cost you the most into booked, confirmed covers.</p>
           <div className="frows">
             <div className="frow">
+              <div className="frow-text reveal">
+                <div className="sl">AI Receptionist</div>
+                <h3>Every Call <span className="a">Answered Live.</span></h3>
+                <p>Janice is your AI receptionist. She picks up when your team is slammed, speaks in your restaurant&apos;s voice, answers guest questions, and takes the reservation right on the call. After close, she is the front desk.</p>
+                <ul className="frow-list">
+                  <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M5 13l4 4L19 7" stroke="#0a9d76" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round" /></svg>Answers 24/7, trained on your menu, hours and policies</li>
+                  <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M5 13l4 4L19 7" stroke="#0a9d76" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round" /></svg>Books reservations and takeout straight into your system</li>
+                  <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M5 13l4 4L19 7" stroke="#0a9d76" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round" /></svg>Hands complex calls to your team, with full context</li>
+                </ul>
+              </div>
+              <div className="frow-visual reveal d2">
+                <div className="mock" data-live>
+                  <div className="mock-head"><span className="mock-dot" /><span className="mock-title">Incoming Call · Answered</span></div>
+                  <div className="mock-row"><div className="mock-row-l"><div className="mock-avatar"><PhoneCall size={15} strokeWidth={1.8} style={{ color: "var(--accent-ink)" }} aria-hidden /></div><div><div className="mock-name">Incoming call · 7:02 PM</div><div className="mock-sub">Answered on the second ring</div></div></div><span className="mock-pill ok">Live</span></div>
+                  <div className="mock-row"><div className="mock-row-l"><div className="mock-avatar"><UtensilsCrossed size={15} strokeWidth={1.8} style={{ color: "var(--accent-ink)" }} aria-hidden /></div><div><div className="mock-name">Party of 6 · Friday 7:00 PM</div><div className="mock-sub">Booked on the call</div></div></div><span className="mock-pill ok">Confirmed</span></div>
+                  <div className="mock-row"><div className="mock-row-l"><div className="mock-avatar"><Headset size={15} strokeWidth={1.8} style={{ color: "var(--accent-ink)" }} aria-hidden /></div><div><div className="mock-name">Catering inquiry</div><div className="mock-sub">Routed to the manager, with notes</div></div></div><span className="mock-pill warn">Handed off</span></div>
+                </div>
+              </div>
+            </div>
+            <div className="frow rev">
               <div className="frow-text reveal">
                 <div className="sl">Auto-Fill Cancellations</div>
                 <h3>Fill Every <span className="a">Cancelled Table.</span></h3>
@@ -90,12 +134,12 @@ export default function RestaurantsPage() {
                 <div className="mock" data-live>
                   <div className="mock-head"><span className="mock-dot" /><span className="mock-title">Cancellation · Refilled</span></div>
                   <div className="mock-typing" data-typing="1300">Refilling the table<i /><i /><i /></div>
-                  <div className="mock-row"><div className="mock-row-l"><div className="mock-avatar">❌</div><div><div className="mock-name">8:00 PM table freed</div><div className="mock-sub">Offered to 5 on waitlist</div></div></div><span className="mock-pill warn">Open</span></div>
-                  <div className="mock-row"><div className="mock-row-l"><div className="mock-avatar">🔁</div><div><div className="mock-name">Rebooked in 7 min</div><div className="mock-sub">Party of 4 from waitlist</div></div></div><span className="mock-pill ok">Refilled · +$220</span></div>
+                  <div className="mock-row"><div className="mock-row-l"><div className="mock-avatar"><X size={15} strokeWidth={2} style={{ color: "var(--accent2)" }} aria-hidden /></div><div><div className="mock-name">8:00 PM table freed</div><div className="mock-sub">Offered to 5 on waitlist</div></div></div><span className="mock-pill warn">Open</span></div>
+                  <div className="mock-row"><div className="mock-row-l"><div className="mock-avatar"><RefreshCw size={15} strokeWidth={1.8} style={{ color: "var(--accent-ink)" }} aria-hidden /></div><div><div className="mock-name">Rebooked in 7 min</div><div className="mock-sub">Party of 4 from waitlist</div></div></div><span className="mock-pill ok">Refilled · +$220</span></div>
                 </div>
               </div>
             </div>
-            <div className="frow rev">
+            <div className="frow">
               <div className="frow-text reveal">
                 <div className="sl">Missed-Call Text-Back</div>
                 <h3>Never Miss A <span className="a">Reservation.</span></h3>
@@ -109,12 +153,12 @@ export default function RestaurantsPage() {
               <div className="frow-visual reveal d2">
                 <div className="mock" data-live>
                   <div className="mock-head"><span className="mock-dot" /><span className="mock-title">Missed Call · Recovered</span></div>
-                  <div className="mock-row"><div className="mock-row-l"><div className="mock-avatar">📞</div><div><div className="mock-name">+1 (604) 555-0148</div><div className="mock-sub">Missed at 7:14 PM</div></div></div><span className="mock-pill ok">Texted · 19s</span></div>
-                  <div className="mock-row"><div className="mock-row-l"><div className="mock-avatar">🍽️</div><div><div className="mock-name">Table for 4 · 7:45 PM</div><div className="mock-sub">Booked by AI</div></div></div><span className="mock-pill ok">Confirmed</span></div>
+                  <div className="mock-row"><div className="mock-row-l"><div className="mock-avatar"><PhoneMissed size={15} strokeWidth={1.8} style={{ color: "var(--accent-ink)" }} aria-hidden /></div><div><div className="mock-name">+1 (604) 555-0148</div><div className="mock-sub">Missed at 7:14 PM</div></div></div><span className="mock-pill ok">Texted · 19s</span></div>
+                  <div className="mock-row"><div className="mock-row-l"><div className="mock-avatar"><UtensilsCrossed size={15} strokeWidth={1.8} style={{ color: "var(--accent-ink)" }} aria-hidden /></div><div><div className="mock-name">Table for 4 · 7:45 PM</div><div className="mock-sub">Booked by AI</div></div></div><span className="mock-pill ok">Confirmed</span></div>
                 </div>
               </div>
             </div>
-            <div className="frow">
+            <div className="frow rev">
               <div className="frow-text reveal">
                 <div className="sl">Review Management</div>
                 <h3>Own Your <span className="a">Google Reviews.</span></h3>
@@ -157,7 +201,7 @@ export default function RestaurantsPage() {
                 <div className="phone-notch" />
                 <div className="phone-screen">
                   <div className="phone-top">
-                    <div className="phone-av">🍽️</div>
+                    <div className="phone-av"><UtensilsCrossed size={16} strokeWidth={1.9} style={{ color: "#fff" }} aria-hidden /></div>
                     <div><div className="phone-top-name">Wildfire Kitchen</div><div className="phone-top-sub">AI host · replies instantly</div></div>
                   </div>
                   <div className="chat" data-chat>
@@ -168,7 +212,7 @@ export default function RestaurantsPage() {
                     <div className="bubble them" data-delay="900">Perfect, yes please</div>
                     <div className="typing" data-typing="1100"><i /><i /><i /></div>
                     <div className="bubble me" data-delay="200">Booked for 7:45, party of 4 under your name. Reply C to change anytime. See you tonight!</div>
-                    <div className="chat-badge" data-delay="650"><span className="chat-badge-ico">✅</span><span>Table booked and added to tonight&apos;s covers. Zero host time spent.</span></div>
+                    <div className="chat-badge" data-delay="650"><span className="chat-badge-ico"><CheckCircle2 size={14} strokeWidth={2} style={{ color: "#4af0c0" }} aria-hidden /></span><span>Table booked and added to tonight&apos;s covers. Zero host time spent.</span></div>
                   </div>
                 </div>
               </div>
@@ -197,7 +241,7 @@ export default function RestaurantsPage() {
                 <div className="sig-head"><span className="sig-live"><i />Tonight · Live</span><span className="sig-num"><span className="count" data-to="58">0</span> covers</span></div>
                 <div className="cov-bar"><i /></div>
                 <div className="cov-tiles"><i /><i /><i /><i /><i /><i /><i /><i /><i /><i /><i /><i /></div>
-                <div className="cov-toast" style={{ marginTop: "auto" }}><span style={{ fontSize: 17 }}>🍽️</span><div><b style={{ display: "block", fontSize: 13 }}>Table for 4 · 7:45 PM</b><span style={{ fontSize: 11, color: "var(--text3)" }}>Just booked by Janice</span></div><span className="mock-pill ok" style={{ marginLeft: "auto", alignSelf: "center" }}>+$220</span></div>
+                <div className="cov-toast" style={{ marginTop: "auto" }}><span style={{ display: "inline-flex" }}><UtensilsCrossed size={17} strokeWidth={1.8} style={{ color: "var(--accent-ink)" }} aria-hidden /></span><div><b style={{ display: "block", fontSize: 13 }}>Table for 4 · 7:45 PM</b><span style={{ fontSize: 11, color: "var(--text3)" }}>Just booked by Janice</span></div><span className="mock-pill ok" style={{ marginLeft: "auto", alignSelf: "center" }}>+$220</span></div>
               </div>
             </div>
           </div>
@@ -213,6 +257,42 @@ export default function RestaurantsPage() {
         </div>
         <p className="tac" style={{ margin: "30px auto 0", fontSize: 12, color: "var(--text3)", fontFamily: "var(--mono)", letterSpacing: ".5px" }}>Outcomes we design toward for Vancouver restaurants</p>
       </div>
+
+      <div className="divhr" />
+
+      <section id="roi">
+        <div className="wrap">
+          <div className="sl reveal sl-c tac">Savings Estimator</div>
+          <h2 className="st reveal d1 tac">What Are Your <span className="a">Empty Tables Worth?</span></h2>
+          <p className="sd reveal d2 tac" style={{ margin: "0 auto 44px" }}>Answer a few quick questions about your restaurant and see what Janice could recover from missed reservations and no-show tables, every month and year.</p>
+          <div className="reveal d2">
+            <RoiCalculator lockedIndustry="restaurants" />
+          </div>
+        </div>
+      </section>
+
+      <div className="divhr" />
+
+      <section id="compare">
+        <div className="wrap">
+          <div className="sl reveal sl-c tac">Your Options</div>
+          <h2 className="st reveal d1 tac">Voicemail, An Answering Service, <span className="a">Or Janice.</span></h2>
+          <p className="sd reveal d2 tac" style={{ margin: "0 auto" }}>An honest look at the three ways restaurants handle the phone, and what each one actually does for you.</p>
+          <div className="cmp2-wrap reveal d2">
+            <div className="cmp2">
+              <div className="cmp2-row"><div className="cmp2-cell">What you get</div><div className="cmp2-cell">Voicemail</div><div className="cmp2-cell">Answering service</div><div className="cmp2-cell us">Janice (Pacific Edge)</div></div>
+              <div className="cmp2-row"><div className="cmp2-cell">Picks up 24/7</div><div className="cmp2-cell"><X size={15} strokeWidth={2.4} style={{ color: "var(--accent2)" }} aria-hidden /></div><div className="cmp2-cell"><Check size={15} strokeWidth={2.6} style={{ color: "var(--accent-bright)" }} aria-hidden /></div><div className="cmp2-cell us"><Check size={15} strokeWidth={2.6} style={{ color: "var(--accent-bright)" }} aria-hidden /></div></div>
+              <div className="cmp2-row"><div className="cmp2-cell">Knows your menu, hours &amp; policies</div><div className="cmp2-cell"><X size={15} strokeWidth={2.4} style={{ color: "var(--accent2)" }} aria-hidden /></div><div className="cmp2-cell"><X size={15} strokeWidth={2.4} style={{ color: "var(--accent2)" }} aria-hidden /></div><div className="cmp2-cell us"><Check size={15} strokeWidth={2.6} style={{ color: "var(--accent-bright)" }} aria-hidden /></div></div>
+              <div className="cmp2-row"><div className="cmp2-cell">Books into your reservation system</div><div className="cmp2-cell"><X size={15} strokeWidth={2.4} style={{ color: "var(--accent2)" }} aria-hidden /></div><div className="cmp2-cell"><X size={15} strokeWidth={2.4} style={{ color: "var(--accent2)" }} aria-hidden /></div><div className="cmp2-cell us"><Check size={15} strokeWidth={2.6} style={{ color: "var(--accent-bright)" }} aria-hidden /></div></div>
+              <div className="cmp2-row"><div className="cmp2-cell">Texts back missed calls in seconds</div><div className="cmp2-cell"><X size={15} strokeWidth={2.4} style={{ color: "var(--accent2)" }} aria-hidden /></div><div className="cmp2-cell"><X size={15} strokeWidth={2.4} style={{ color: "var(--accent2)" }} aria-hidden /></div><div className="cmp2-cell us"><Check size={15} strokeWidth={2.6} style={{ color: "var(--accent-bright)" }} aria-hidden /></div></div>
+              <div className="cmp2-row"><div className="cmp2-cell">Drafts your review replies</div><div className="cmp2-cell"><X size={15} strokeWidth={2.4} style={{ color: "var(--accent2)" }} aria-hidden /></div><div className="cmp2-cell"><X size={15} strokeWidth={2.4} style={{ color: "var(--accent2)" }} aria-hidden /></div><div className="cmp2-cell us"><Check size={15} strokeWidth={2.6} style={{ color: "var(--accent-bright)" }} aria-hidden /></div></div>
+              <div className="cmp2-row"><div className="cmp2-cell">Flat monthly price</div><div className="cmp2-cell"><Check size={15} strokeWidth={2.6} style={{ color: "var(--accent-bright)" }} aria-hidden /></div><div className="cmp2-cell"><X size={15} strokeWidth={2.4} style={{ color: "var(--accent2)" }} aria-hidden /></div><div className="cmp2-cell us"><Check size={15} strokeWidth={2.6} style={{ color: "var(--accent-bright)" }} aria-hidden /></div></div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <div className="divhr" />
 
       <section>
         <div className="wrap">
@@ -247,17 +327,17 @@ export default function RestaurantsPage() {
           <h2 className="icta-title reveal d1">Ready To Fill<br /><span className="a">Every Table?</span></h2>
           <p className="icta-desc reveal d2">Start with a free 15-minute call. We will show you exactly which automations would put the most covers back on your books. No pitch, no obligation.</p>
           <a href={CAL} target="_blank" rel="noopener" className="btn-primary reveal d2">Book a Free 15-Min Demo</a>
-          <div className="reveal d2" style={{ marginTop: 18 }}><a href="/restaurants-savings-calculator.html" className="btn-ghost">📊 See What Your Empty Tables Are Worth →</a></div>
+          <div className="reveal d2" style={{ marginTop: 18 }}><a href="#roi" className="btn-ghost">See What Your Empty Tables Are Worth →</a></div>
           <div className="icta-bullets reveal d3">
             <span><i />Free discovery call</span>
             <span><i />Working prototype in about a week</span>
             <span><i />Vancouver-based</span>
           </div>
           <div className="xlinks reveal d3">
-            <Link href="/salons" className="xlink"><span>💆</span>Salons &amp; Spas</Link>
-            <Link href="/trades" className="xlink"><span>🔧</span>Trades</Link>
-            <Link href="/retail" className="xlink"><span>🛍️</span>Retail</Link>
-            <Link href="/dental" className="xlink"><span>🦷</span>Dental</Link>
+            <Link href="/salons" className="xlink"><span><Scissors size={14} strokeWidth={1.8} style={{ color: "var(--accent-ink)" }} aria-hidden /></span>Salons &amp; Spas</Link>
+            <Link href="/trades" className="xlink"><span><Wrench size={14} strokeWidth={1.8} style={{ color: "var(--accent-ink)" }} aria-hidden /></span>Trades</Link>
+            <Link href="/retail" className="xlink"><span><ShoppingBag size={14} strokeWidth={1.8} style={{ color: "var(--accent-ink)" }} aria-hidden /></span>Retail</Link>
+            <Link href="/dental" className="xlink"><span><Stethoscope size={14} strokeWidth={1.8} style={{ color: "var(--accent-ink)" }} aria-hidden /></span>Dental</Link>
           </div>
         </div>
       </section>

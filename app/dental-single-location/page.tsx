@@ -1,5 +1,8 @@
 import type { Metadata } from "next"
 import SiteShell from "@/components/site/SiteShell"
+import {
+  Bot, Building2, CheckCircle2, Moon, PhoneCall, PhoneMissed, RefreshCw, Star, Stethoscope, User,
+} from "lucide-react"
 
 export const metadata: Metadata = {
   title: { absolute: "AI for Independent & Single-Location Dental Clinics | Pacific Edge AI" },
@@ -31,9 +34,9 @@ export default function Page() {
 <div className="dnotch"></div>
 <div className="dscreen">
 <div className="dhead"><span className="ddot"></span>Janice &middot; Cedar Dental</div>
-<div className="dmsg miss">&#128222; Missed call &middot; 7:42 PM</div>
+<div className="dmsg miss">Missed call &middot; 7:42 PM</div>
 <div className="dmsg them">Hi! It's Janice from Cedar Dental, want me to book you an exam?</div>
-<div className="dmsg me">Yes please, tomorrow if you can &#128591;</div>
+<div className="dmsg me">Yes please, tomorrow if you can</div>
 <div className="dbadge"><i>&#10003;</i>Booked &middot; Tue 10:40 AM</div>
 </div>
 </div>
@@ -48,9 +51,9 @@ export default function Page() {
 <div className="sl reveal sl-c tac">The Problem</div>
 <h2 className="st reveal d1 tac">When It's Just <span className="a">One Phone.</span></h2>
 <div className="pgrid">
-<div className="pcard reveal d1"><div className="pcard-ico">&#128222;</div><h4>One busy line loses the patient</h4><p>Already on a call? The new patient hits voicemail and dials the clinic down the street.</p></div>
-<div className="pcard reveal d2"><div className="pcard-ico">&#127769;</div><h4>After-hours calls vanish</h4><p>Evenings and weekends are prime booking hours your phone simply isn't open for.</p></div>
-<div className="pcard reveal d3"><div className="pcard-ico">&#129485;</div><h4>No backup when it's just you</h4><p>Lunch, a sick day, a packed lobby, and your phone coverage drops to zero.</p></div>
+<div className="pcard reveal d1"><div className="pcard-ico"><PhoneMissed size={22} strokeWidth={1.8} style={{ color: "var(--accent-ink)" }} aria-hidden /></div><h4>One busy line loses the patient</h4><p>Already on a call? The new patient hits voicemail and dials the clinic down the street.</p></div>
+<div className="pcard reveal d2"><div className="pcard-ico"><Moon size={22} strokeWidth={1.8} style={{ color: "var(--accent-ink)" }} aria-hidden /></div><h4>After-hours calls vanish</h4><p>Evenings and weekends are prime booking hours your phone simply isn't open for.</p></div>
+<div className="pcard reveal d3"><div className="pcard-ico"><User size={22} strokeWidth={1.8} style={{ color: "var(--accent-ink)" }} aria-hidden /></div><h4>No backup when it's just you</h4><p>Lunch, a sick day, a packed lobby, and your phone coverage drops to zero.</p></div>
 </div>
 </div>
 </section>
@@ -76,10 +79,10 @@ export default function Page() {
 <div className="sl reveal sl-c tac">What You Get</div>
 <h2 className="st reveal d1 tac">One Front Desk, <span className="a">Never Off Duty.</span></h2>
 <div className="tiles">
-<div className="tile reveal d1"><div className="tile-ico">&#9742;&#65039;</div><h4>Answers everything</h4><p>Every call &amp; text caught in seconds, day or night.</p></div>
-<div className="tile reveal d2"><div className="tile-ico">&#128257;</div><h4>Fills cancellations</h4><p>Open chairs offered to your waitlist and rebooked.</p></div>
-<div className="tile reveal d3"><div className="tile-ico">&#9989;</div><h4>Cuts no-shows</h4><p>Confirmations and recall nudges, fully automatic.</p></div>
-<div className="tile reveal d4"><div className="tile-ico">&#11088;</div><h4>Grows reviews</h4><p>Happy patients asked, treatment plans followed up.</p></div>
+<div className="tile reveal d1"><div className="tile-ico"><PhoneCall size={20} strokeWidth={1.8} style={{ color: "var(--accent-ink)" }} aria-hidden /></div><h4>Answers everything</h4><p>Every call &amp; text caught in seconds, day or night.</p></div>
+<div className="tile reveal d2"><div className="tile-ico"><RefreshCw size={20} strokeWidth={1.8} style={{ color: "var(--accent-ink)" }} aria-hidden /></div><h4>Fills cancellations</h4><p>Open chairs offered to your waitlist and rebooked.</p></div>
+<div className="tile reveal d3"><div className="tile-ico"><CheckCircle2 size={20} strokeWidth={1.8} style={{ color: "var(--accent-ink)" }} aria-hidden /></div><h4>Cuts no-shows</h4><p>Confirmations and recall nudges, fully automatic.</p></div>
+<div className="tile reveal d4"><div className="tile-ico"><Star size={20} strokeWidth={1.8} style={{ color: "var(--accent-ink)" }} aria-hidden /></div><h4>Grows reviews</h4><p>Happy patients asked, treatment plans followed up.</p></div>
 </div>
 </div>
 </section>
@@ -117,9 +120,9 @@ export default function Page() {
 <p className="icta-desc reveal d2">A free 15-minute call. We'll show you exactly which calls you're missing and how Janice catches them.</p>
 <a href="https://cal.com/pacificedge" target="_blank" rel="noopener" className="btn-primary reveal d2">Book a Free 15-Min Demo</a>
 <div className="xlinks reveal d3">
-<a href="/dental" className="xlink"><span>&#129463;</span>Dental overview</a>
-<a href="/dental-multi-location" className="xlink"><span>&#127970;</span>Multi-location &amp; DSOs</a>
-<a href="/ai-employee" className="xlink"><span>&#129302;</span>Meet Janice</a>
+<a href="/dental" className="xlink"><span><Stethoscope size={14} strokeWidth={1.8} style={{ color: "var(--accent-ink)" }} aria-hidden /></span>Dental overview</a>
+<a href="/dental-multi-location" className="xlink"><span><Building2 size={14} strokeWidth={1.8} style={{ color: "var(--accent-ink)" }} aria-hidden /></span>Multi-location &amp; DSOs</a>
+<a href="/ai-employee" className="xlink"><span><Bot size={14} strokeWidth={1.8} style={{ color: "var(--accent-ink)" }} aria-hidden /></span>Meet Janice</a>
 </div>
 </div>
 </section>

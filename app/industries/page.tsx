@@ -1,5 +1,20 @@
 import type { Metadata } from "next"
 import Link from "next/link"
+import {
+  Bell,
+  Check,
+  Footprints,
+  Home,
+  MessageSquare,
+  Moon,
+  PhoneMissed,
+  Scissors,
+  ShoppingBag,
+  Stethoscope,
+  UtensilsCrossed,
+  Wrench,
+  X,
+} from "lucide-react"
 import SiteShell from "@/components/site/SiteShell"
 
 const CAL = "https://cal.com/pacificedge"
@@ -26,12 +41,12 @@ export default function IndustriesPage() {
             <Link href="/ai-employee" className="btn-ghost">Meet Janice</Link>
           </div>
           <div className="qnav reveal d4">
-            <a href="#restaurants"><span>🍽️</span>Restaurants</a>
-            <a href="#salons"><span>💅</span>Salons &amp; Spas</a>
-            <a href="#trades"><span>🔧</span>Trades</a>
-            <a href="#retail"><span>🛍️</span>Retail</a>
-            <a href="#dental"><span>🦷</span>Dental</a>
-            <a href="#real-estate"><span>🏡</span>Real Estate</a>
+            <a href="#restaurants"><UtensilsCrossed size={14} strokeWidth={1.8} style={{ color: "var(--accent-ink)" }} aria-hidden />Restaurants</a>
+            <a href="#salons"><Scissors size={14} strokeWidth={1.8} style={{ color: "var(--accent-ink)" }} aria-hidden />Salons &amp; Spas</a>
+            <a href="#trades"><Wrench size={14} strokeWidth={1.8} style={{ color: "var(--accent-ink)" }} aria-hidden />Trades</a>
+            <a href="#retail"><ShoppingBag size={14} strokeWidth={1.8} style={{ color: "var(--accent-ink)" }} aria-hidden />Retail</a>
+            <a href="#dental"><Stethoscope size={14} strokeWidth={1.8} style={{ color: "var(--accent-ink)" }} aria-hidden />Dental</a>
+            <a href="#real-estate"><Home size={14} strokeWidth={1.8} style={{ color: "var(--accent-ink)" }} aria-hidden />Real Estate</a>
           </div>
         </div>
       </header>
@@ -39,7 +54,7 @@ export default function IndustriesPage() {
       <section className="dind" id="restaurants">
         <div className="wrap dind-row">
           <div className="dind-text reveal">
-            <div className="dind-ico">🍽️</div>
+            <div className="dind-ico"><UtensilsCrossed size={22} strokeWidth={1.8} style={{ color: "var(--accent-ink)" }} aria-hidden /></div>
             <div className="sl">Restaurants &amp; Food</div>
             <h2 className="st">Keep Every Table <span className="a">Full.</span></h2>
             <p className="dind-lead">Every missed call and no-show is an empty table. Janice answers 24/7, books the reservation, and refills last-minute cancellations from your waitlist, automatically.</p>
@@ -62,7 +77,7 @@ export default function IndustriesPage() {
       <section className="dind" id="salons">
         <div className="wrap dind-row flip">
           <div className="dind-text reveal">
-            <div className="dind-ico">💅</div>
+            <div className="dind-ico"><Scissors size={22} strokeWidth={1.8} style={{ color: "var(--accent-ink)" }} aria-hidden /></div>
             <div className="sl">Salons &amp; Spas</div>
             <h2 className="st">Every Chair, <span className="a">Booked Solid.</span></h2>
             <p className="dind-lead">A late cancellation is an empty chair and a lost afternoon. Janice fills it from your waitlist within minutes, and rebooks clients before they leave the chair.</p>
@@ -76,8 +91,8 @@ export default function IndustriesPage() {
             <div className="viz">
               <div className="viz-top"><b>Chair 2 · 2:30 PM</b><span className="viz-live">Auto-fill</span></div>
               <div className="vf-slot">
-                <div className="vf-state vf-open">✕&nbsp; Cancelled, open chair</div>
-                <div className="vf-state vf-filled"><span className="vf-av">RP</span><b>Riley P.</b><em>✓ filled in 4 min</em></div>
+                <div className="vf-state vf-open"><X size={13} strokeWidth={2.4} aria-hidden />Cancelled, open chair</div>
+                <div className="vf-state vf-filled"><span className="vf-av">RP</span><b>Riley P.</b><em>filled in 4 min</em></div>
               </div>
               <div className="vf-wait"><span className="lbl">Waitlist</span><span className="vf-chip go">Riley P.</span><span className="vf-chip">Sam K.</span></div>
             </div>
@@ -88,7 +103,7 @@ export default function IndustriesPage() {
       <section className="dind" id="trades">
         <div className="wrap dind-row">
           <div className="dind-text reveal">
-            <div className="dind-ico">🔧</div>
+            <div className="dind-ico"><Wrench size={22} strokeWidth={1.8} style={{ color: "var(--accent-ink)" }} aria-hidden /></div>
             <div className="sl">Trades &amp; Home Services</div>
             <h2 className="st">Win The Job, <span className="a">Even On A Ladder.</span></h2>
             <p className="dind-lead">When your hands are full, the call goes to the next guy. Janice texts every missed call back in seconds and books the job before they dial the competition.</p>
@@ -101,9 +116,9 @@ export default function IndustriesPage() {
           <div className="dind-viz reveal d1">
             <div className="viz viz-call">
               <div className="vc-flow">
-                <div className="vc-row miss"><span className="vc-ic">📞</span><div><b>Missed call</b><em>9:42 PM · from the jobsite</em></div><span className="vc-meta">missed</span></div>
-                <div className="vc-row text"><span className="vc-ic">💬</span><div><b>“Sorry we missed you, can I book you in?”</b><em>auto-texted back</em></div><span className="vc-meta">18s</span></div>
-                <div className="vc-row won">✓&nbsp; Job booked, before the competition called back</div>
+                <div className="vc-row miss"><span className="vc-ic"><PhoneMissed size={16} strokeWidth={1.8} style={{ color: "var(--accent-ink)" }} aria-hidden /></span><div><b>Missed call</b><em>9:42 PM · from the jobsite</em></div><span className="vc-meta">missed</span></div>
+                <div className="vc-row text"><span className="vc-ic"><MessageSquare size={16} strokeWidth={1.8} style={{ color: "var(--accent-ink)" }} aria-hidden /></span><div><b>“Sorry we missed you, can I book you in?”</b><em>auto-texted back</em></div><span className="vc-meta">18s</span></div>
+                <div className="vc-row won"><Check size={14} strokeWidth={2.6} aria-hidden />Job booked, before the competition called back</div>
               </div>
             </div>
           </div>
@@ -113,7 +128,7 @@ export default function IndustriesPage() {
       <section className="dind" id="retail">
         <div className="wrap dind-row flip">
           <div className="dind-text reveal">
-            <div className="dind-ico">🛍️</div>
+            <div className="dind-ico"><ShoppingBag size={22} strokeWidth={1.8} style={{ color: "var(--accent-ink)" }} aria-hidden /></div>
             <div className="sl">Retail &amp; Local Shops</div>
             <h2 className="st">Turn Browsers Into <span className="a">Regulars.</span></h2>
             <p className="dind-lead">Sold-out items and one-time buyers cost you. Janice answers stock questions instantly and texts customers the moment their size is back, so they come back too.</p>
@@ -125,12 +140,12 @@ export default function IndustriesPage() {
           </div>
           <div className="dind-viz reveal d1">
             <div className="viz">
-              <div className="vs-prod"><span className="vs-img">👟</span><div><b>Trail Runner</b><em>Size 9</em></div></div>
+              <div className="vs-prod"><span className="vs-img"><Footprints size={20} strokeWidth={1.8} style={{ color: "var(--accent-ink)" }} aria-hidden /></span><div><b>Trail Runner</b><em>Size 9</em></div></div>
               <div className="vs-status">
-                <div className="vs-state vs-out">✕&nbsp; Sold out</div>
-                <div className="vs-state vs-back"><span className="bell">🔔</span> Back in your size!</div>
+                <div className="vs-state vs-out"><X size={13} strokeWidth={2.4} aria-hidden />Sold out</div>
+                <div className="vs-state vs-back"><span className="bell"><Bell size={14} strokeWidth={2} aria-hidden /></span> Back in your size!</div>
               </div>
-              <div className="vs-sold">✓ Sold, to a returning customer</div>
+              <div className="vs-sold">Sold, to a returning customer</div>
             </div>
           </div>
         </div>
@@ -139,7 +154,7 @@ export default function IndustriesPage() {
       <section className="dind" id="dental">
         <div className="wrap dind-row">
           <div className="dind-text reveal">
-            <div className="dind-ico">🦷</div>
+            <div className="dind-ico"><Stethoscope size={22} strokeWidth={1.8} style={{ color: "var(--accent-ink)" }} aria-hidden /></div>
             <div className="sl">Dental &amp; Health Clinics</div>
             <h2 className="st">A Schedule That <span className="a">Stays Full.</span></h2>
             <p className="dind-lead">Recalls slip and hygiene chairs sit empty. Janice books new patients 24/7 and quietly rebooks overdue ones, so the schedule stays full and the front desk stays calm.</p>
@@ -168,7 +183,7 @@ export default function IndustriesPage() {
       <section className="dind" id="real-estate">
         <div className="wrap dind-row flip">
           <div className="dind-text reveal">
-            <div className="dind-ico">🏡</div>
+            <div className="dind-ico"><Home size={22} strokeWidth={1.8} style={{ color: "var(--accent-ink)" }} aria-hidden /></div>
             <div className="sl">Real Estate</div>
             <h2 className="st">First To Reply, <span className="a">First To Close.</span></h2>
             <p className="dind-lead">In real estate the fastest reply wins. Janice answers every lead in seconds, day or night, qualifies the buyer, books the showing, and nurtures for months, for agents, brokerages, and property developers alike.</p>
@@ -184,9 +199,9 @@ export default function IndustriesPage() {
           <div className="dind-viz reveal d1">
             <div className="viz viz-call">
               <div className="vc-flow">
-                <div className="vc-row miss"><span className="vc-ic">🌙</span><div><b>New lead · 9:42 PM</b><em>from your listing</em></div><span className="vc-meta">after hours</span></div>
-                <div className="vc-row text"><span className="vc-ic">💬</span><div><b>&ldquo;Yes, it&apos;s available! Are you pre-approved?&rdquo;</b><em>auto-replied &amp; qualified</em></div><span className="vc-meta">18s</span></div>
-                <div className="vc-row won">✓&nbsp; Showing booked, while rivals slept</div>
+                <div className="vc-row miss"><span className="vc-ic"><Moon size={16} strokeWidth={1.8} style={{ color: "var(--accent-ink)" }} aria-hidden /></span><div><b>New lead · 9:42 PM</b><em>from your listing</em></div><span className="vc-meta">after hours</span></div>
+                <div className="vc-row text"><span className="vc-ic"><MessageSquare size={16} strokeWidth={1.8} style={{ color: "var(--accent-ink)" }} aria-hidden /></span><div><b>&ldquo;Yes, it&apos;s available! Are you pre-approved?&rdquo;</b><em>auto-replied &amp; qualified</em></div><span className="vc-meta">18s</span></div>
+                <div className="vc-row won"><Check size={14} strokeWidth={2.6} aria-hidden />Showing booked, while rivals slept</div>
               </div>
             </div>
           </div>
