@@ -149,6 +149,17 @@ nav.hide { transform: translateY(-100%); }
 .form-field textarea { resize: vertical; min-height: 96px; line-height: 1.5; }
 .form-field input::placeholder, .form-field textarea::placeholder { color: color-mix(in oklab, var(--color-text) 18%, transparent); }
 .form-field input:focus, .form-field textarea:focus { outline: none; border-color: var(--accent); background: color-mix(in oklab, var(--color-accent) 4%, transparent); }
+
+/* Error / validation state — see DESIGN-SYSTEM.md §4.6. Toggle via a `has-error` class on
+   `.form-field`; no new hue (token discipline over a full accessibility pass right now) — border
+   weight + icon + copy carry the "invalid" signal instead of color alone. */
+.form-field.has-error label { color: var(--text); }
+.form-field.has-error input, .form-field.has-error textarea { border-color: var(--text); background: color-mix(in oklab, var(--color-text) 5%, transparent); }
+.form-field.has-error input:focus, .form-field.has-error textarea:focus { border-color: var(--text); }
+.form-field-msg { display: flex; align-items: center; gap: 6px; margin-top: 2px; font-family: var(--body); font-size: 11.5px; line-height: 1.4; color: var(--text2); }
+.form-field-msg svg { flex-shrink: 0; }
+.form-field.has-error .form-field-msg { color: var(--text); font-weight: 500; }
+
 .contact-submit { background: var(--accent); color: var(--on-accent); font-family: var(--body); font-weight: 600; font-size: 14px; padding: 14px 28px; border: none; border-radius:var(--radius); cursor: pointer; display: inline-flex; align-items: center; justify-content: center; gap: 10px; transition: all .25s; margin-top: 8px; letter-spacing: .2px; }
 .contact-submit:hover { box-shadow: 0 0 32px color-mix(in oklab, var(--color-accent) 30%, transparent); transform: translateY(-1px); }
 .contact-submit:disabled { opacity: .5; cursor: not-allowed; transform: none; }
