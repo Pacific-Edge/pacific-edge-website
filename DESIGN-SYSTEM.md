@@ -13,6 +13,32 @@
 
 ---
 
+## Quickstart (TL;DR)
+
+The whole system on one screen — everything below is detail.
+
+- **4 colors, nothing else.** White `--color-bg`, near-black ink `--color-text`, gray (ink via
+  `color-mix`), one mint `--color-accent`. Every other shade is `color-mix(in oklab, <token> X%,
+  transparent)`. **Never a raw hex or `rgb()/rgba()`** for a brand color — stylelint fails the build if
+  you do (§1.1).
+- **3 buttons, never a 4th.** `.btn-mint` (the one primary per view) · `.btn-dark` (secondary) ·
+  `EmbedLink` (tertiary). Icon-only actions use `.icon-btn` (§4.1).
+- **3 shadows.** `--shadow-float` · `--shadow-float-lg` · `--shadow-mock` (§3.5). No bespoke shadows.
+- **1 radius.** `--radius: 4px` everywhere; only true circles (`50%`) are exempt (§3.4).
+- **Type scale** (§3.2): Bebas display (H1/H2/big numbers) · Outfit body (everything else) · JetBrains
+  Mono (data/labels). Pick a heading by semantic level, never by "what looks right for this section."
+- **Layout tokens** (§3.3): `--container` 1200 / `--container-wide` 1320 / `--container-narrow` 1120 /
+  `--measure` 600; section rhythm `--space-section-y` 88px. Core breakpoints: 1080 / 960 / 680 / 600.
+- **Two tiers** (§2): the landing page (`/`) is full-expression (shaders, gradients, `StyledContainer`);
+  **every other page is restrained** — flat token fills, no gradients, no decorative primitives. ESLint
+  blocks landing-only imports on sub-pages (§1.1).
+
+**The 5 don'ts:** (1) no raw hex / `rgba()` for a brand color; (2) no 5th color — ink *is* the dark
+register; (3) no two `.btn-mint` in one actions row; (4) no `StyledContainer` / shader / gradient on a
+sub-page; (5) no bespoke shadow or one-off radius.
+
+---
+
 ## 0. What this system actually is
 
 Read this before anything else, because it corrects the two places this doc's predecessor
@@ -49,6 +75,23 @@ Read this before anything else, because it corrects the two places this doc's pr
   and shader in this system has a static fallback. New motion must ship with one too.
 - **Content is verbatim to the Pacific Edge brand voice** (the "Janice" AI-employee persona, plain
   English, no jargon) — that's a copy rule, not a visual one, but it constrains tone: see §7.
+
+### 1.1 Automated enforcement (stylelint + ESLint)
+
+Two guardrails make the highest-value rules structural, not trust-based (added Phase 1):
+
+- **stylelint** (`stylelint.config.mjs`) bans raw hex and `rgb()/rgba()/hsl()` for brand colors,
+  forcing every color through a token + `color-mix()` (the §3.1 rule). It runs as `npm run lint:css`
+  and is wired into `prebuild`, so **`npm run build` hard-fails on a raw brand-color literal.** The
+  config carries a small, documented, *shrinking* allowlist of files that still hold sanctioned or
+  not-yet-tokenized literals: `app/globals.css` (the base-token hex source) and `styles/containers.css`
+  (the `--shadow-*` rgba + mask blacks) are permanent; the `TODO(phase-2)` entries for `legacy.css`,
+  `home.css`, `pages.css`/`dental.css`, and `chrome.css` get deleted as §11.4 tokenizes each file.
+- **ESLint** (`eslint.config.mjs`, `no-restricted-imports`) forbids importing the landing-only
+  decorative primitives (`StyledContainer`, `SoftAurora`, `ColorBends`, `CardCurveBackground`,
+  `SpeedLatticeBackground`, `TiltParallax`) into any sub-page under `app/**`, making the §2.2/§4.11
+  prohibition impossible to violate by accident. `app/page.tsx` (home) is exempt; `custom-builds` and
+  `ai-training` are temporarily exempt for their known landing-weight tilt (`TODO(phase-2)`, §4.3/§11.3).
 
 ---
 
@@ -196,27 +239,33 @@ live example).
 
 ### 3.3 Spacing & layout
 
-There is no single named spacing scale (`--space-*` tokens) yet — see §11.5. In practice, most
-surfaces converge on a small set of recurring numbers; treat these as the working scale until
-tokens exist:
+Named layout tokens now exist in `app/globals.css` (`@theme`) — use them for any new component. They
+were sized from the values most surfaces already cluster around, with the **landing page as the
+canonical anchor** (§11.2); existing raw CSS converges onto them during the Phase 2 componentization.
 
-- **Section vertical rhythm:** `88px 56px` on the home page (`home.css:199`), `80px 56px` on
-  sub-pages (`legacy.css:70`) — close enough to read as one rhythm, not close enough to literally be
-  the same value (§11.5). Both step down to `~72–80px 20px` under `680px` and further under `600px`.
-- **Content container:** `max-width: 1200px` for the general sub-page `.wrap` (`legacy.css:71`),
-  `1320px` for the wider footer/CTA panels (`legacy.css:405`, `home.css:345`) — 1320px is the widest
-  container in the system; don't introduce a wider one without a reason.
-  `1120px` (`.ind-alt`, `home.css:302`) is the narrower "alternating feature row" container.
-- **Readable copy measure:** `520–600px` for a lead paragraph (`.sd`), `440px` for a supporting
-  column (`.map-text`), `760px` for a wide single-line subtitle (`.sd-oneline`). Pick from this set;
-  don't invent a new max-width for a one-off paragraph.
+| Token | Value | Use |
+|---|---|---|
+| `--container` | `1200px` | General content max-width (the sub-page `.wrap`) |
+| `--container-wide` | `1320px` | Widest surface — footer / CTA panels. The widest in the system; don't introduce anything wider without a reason. |
+| `--container-narrow` | `1120px` | Alternating feature-row container (`.ind-alt`) |
+| `--measure` | `600px` | Readable copy measure for a lead paragraph |
+| `--space-section-y` | `88px` | **Canonical** section vertical rhythm — the home value is the anchor; sub-pages' `80px` converges onto it in Phase 2 (§11.2) |
+| `--space-section-x` | `56px` | Section horizontal padding |
+| `--space-section-y-sm` | `72px` | Section vertical rhythm, step-down under `680px` |
+
+- **Readable copy measure:** `--measure` (600px) for a lead paragraph. `440px` (a supporting column,
+  `.map-text`) and `760px` (a wide single-line subtitle, `.sd-oneline`) remain page-specific one-offs —
+  don't invent a *new* max-width for an ordinary paragraph; reach for `--measure` first.
 - **Card padding:** `28-56px` (clamp) for a hero-weight card (`.ts-card`), `32-36px` for a bento/
   pillar card, `16-20px` for a compact mock/preview card, `26-28px` for a standard grid card
-  (`.icard`, `.prob`, `.svc`, `.px-card`).
-- **Core breakpoints:** `1080px`, `960px`, `680px`, `600px` are the ones nearly every stylesheet steps
-  down at. A component-specific breakpoint outside that set (`900px`, `880px`, `860px`, `760px`,
-  `380px`) is fine when the *component's own* content genuinely needs it (e.g. a 3-column grid
-  breaking before a 2-column one would) — but default to the core four first.
+  (`.icard`, `.prob`, `.svc`, `.px-card`). Not yet tokenized — a card-padding token set is a natural
+  Phase 2 addition once the `<Card>` component (§4.3 / Phase 2 taxonomy) lands.
+- **Core breakpoints:** `1080px`, `960px`, `680px`, `600px` are the mandated four — nearly every
+  stylesheet steps down at them. **These are deliberately *not* custom properties:** a CSS `@media`
+  condition cannot consume `var()`, so a `--breakpoint-*` token would be unusable in the raw media
+  queries the sub-pages actually use. Treat the four as a documented constant. A component-specific
+  breakpoint outside that set (`900px`, `880px`, `860px`, `760px`, `380px`) is fine when the
+  *component's own* content genuinely needs it — but default to the core four first.
 
 ### 3.4 Radius
 
@@ -273,9 +322,19 @@ shimmer sweep. `<Button>` exposes `size="sm" | "default" | "lg"` (`components/ui
 prefer it over hand-rolled `<a className="btn-mint">` markup in new components so loading/disabled/
 icon-slot states can be added centrally later.
 
-A fourth, non-CTA control exists for icon-only actions (carousel prev/next, pagination dots) — see
-`components/home/TrustProofSection.tsx:74-104` for the current pattern (circular, bordered, no
-shimmer). Formalize this as a named `.icon-btn` before a second instance appears elsewhere.
+**`.icon-btn` — icon-only actions (not a CTA).** For controls that carry no text label: carousel
+prev/next, pagination dots, a modal close, the mobile hamburger. It is *not* a fourth CTA — it never
+competes as a call to action, so it's exempt from the "three roles" rule. Spec:
+
+- Shape: a true circle (`border-radius: 50%`) for round controls, or a `var(--radius)` square.
+- A `var(--color-border)` hairline → `--color-border-a` on hover; a `--color-text2` icon (`lucide-react`
+  or inline SVG).
+- **No shimmer sweep and no `scale(1.03)` bounce** — that hover language belongs to the CTA buttons
+  only; an icon-btn's hover is just the border/color shift.
+- **Always ships an `aria-label`** (§8) — there is no visible text to name the control.
+
+Reference implementation: `components/home/TrustProofSection.tsx:74-104`. Reuse it before hand-rolling
+another icon-only button; Phase 2 promotes it to a real component alongside `<Button>`.
 
 ```tsx
 // Primary + secondary pairing (the only two-button pattern)
@@ -420,6 +479,29 @@ wiring it to real field checks is separate follow-up work, not done in this pass
 sub-page (a booking form, a calculator) should use this same `.form-field`/`.has-error`/
 `.form-field-msg` pattern rather than inventing its own.
 
+**Data forms with a live backend (Phase 3 contract).** The contact modal composes a `mailto:` and has
+no server round-trip. Phase 3 brings a real POST endpoint (`functions/api/lead.ts` → Cloudflare KV), so
+a form can actually submit. Any data-capture form (the ROI calculator, a booking form) is built to this
+contract, on top of the `.form-field`/`.has-error`/`.form-field-msg` primitives above:
+
+- **Work-email gate.** Where a form trades a result for contact info, gate on a work email — reject
+  free/consumer domains (gmail, outlook, yahoo, …) with the `.has-error` state + a `.form-field-msg`
+  ("Use your work email"). This is client-side UX only; it is **never** the security boundary — the
+  endpoint re-validates every field server-side.
+- **Multi-step wizard.** For anything longer than ~3 fields, step it: one decision per screen, a
+  progress indicator, and back/next controls (next = `.btn-mint`, back = `.btn-dark` or an `EmbedLink`).
+  Keep step/field state **lifted out of the step components** so inputs don't remount and lose focus on
+  each keystroke (a real risk — see the Phase 3 calculator note in the master plan).
+- **Four explicit states**, never a dead button: `idle` → `submitting` (button shows a spinner, is
+  `disabled` + `aria-busy`) → `success` (a confirmation *view*, not just a toast, for a lead capture) →
+  `error` (a `.form-field-msg`-style banner with a retry; entered data is preserved). Loading/disabled
+  styling is centralized in `<Button>` (§4.1) — use it, don't re-style per form.
+- **Privacy microcopy.** One line under submit ("We'll only use this to send your breakdown — no spam"),
+  in `--color-text3`. If the copy promises a deliverable (an email, a PDF), something must actually send
+  it — KV is a lead *store*, not an ESP; wire real delivery or soften the copy (Phase 3).
+
+Reuse the same field/error primitives across every form; never fork a second form-field convention.
+
 ### 4.7 Toast
 
 `components/site/ToastProvider.tsx` (`useToast()` hook) + `.pe-toast` (`chrome.css:173-174`) — a
@@ -551,10 +633,24 @@ should look like.)
   pattern in `TrustProofSection.tsx` and `Nav.tsx`; keep it when adding new icon-only buttons.
 - `prefers-reduced-motion: reduce` must collapse every animation to its end state — see §3.6. Test
   new components with the OS-level reduced-motion setting on, not just by reading the media query.
-- **A formal contrast audit is deferred, by decision, not forgotten (§2.4).** Token discipline is the
-  current priority. Whenever that audit happens, `--color-accent-ink` on white for small body/link
-  text is the first pairing worth checking — everything else in the palette follows from getting the
-  four base tokens right.
+- **Base text-pairing contrast check (done — Phase 1).** The core pairings were measured against the
+  *actual* oklab `color-mix()` output values (not the token names). Thresholds are WCAG 2.1: 4.5:1 for
+  normal text, 3:1 for large text (≥24px, or ≥18.66px bold) and UI components.
+
+  | Pairing | Ratio | Verdict |
+  |---|---|---|
+  | `--color-text` (#0a0a0a) on white | ~19.7:1 | ✅ AA + AAA |
+  | `--color-text2` (62% ink) on white | 6.83:1 | ✅ AA (normal text) |
+  | `--color-accent-ink` (#20785f) on white | 5.36:1 | ✅ AA (normal text) |
+  | `--color-text3` (42% ink) on white | 3.35:1 | ✅ meta/labels only (large/UI ≥3:1); ✗ for normal body |
+  | `--color-accent-bright` (#2fa382) on white | 3.13:1 | ✅ at its large-only use; ✗ for normal text |
+
+  **Decision: no token change.** `--color-accent-ink` — the pairing previously suspected of failing AA
+  for small link/body text — passes at 5.36:1. `--color-accent-bright` and `--color-text3` sit below
+  4.5:1, but each is only ever used at large sizes (logo, headline spans, big stat numbers) or for
+  meta/labels, where 3:1 is the bar; using either for small body text is a *misuse to avoid*, not a
+  token defect. A **full** WCAG audit (every component state, focus rings, disabled text, hover
+  contrast) remains deferred per §2.4 — this check covered the base text pairings only.
 
 ---
 
@@ -612,6 +708,32 @@ Quick lookup of where each primitive lives:
 | Decorative primitives (landing-only, §4.11) | `components/ui/CardCurveBackground.tsx`, `SoftAurora.tsx`, `ColorBends.tsx`, `SpeedLatticeBackground.tsx`, `components/site/TiltParallax.tsx` |
 | Unused photography assets | `public/clinic.jpg`, `spa.webp`, `trades.jpg`, `food.webp`, `founders/` |
 
+### 10.1 Phase 2 component taxonomy (the build contract)
+
+Phase 2 replaces the raw-global-class mechanism on sub-pages with composed, reusable React components
+(styling lives in the component; tokens under the hood; Tailwind `[var(--token)]` for one-offs — the
+`WhyUsSection`/`OpsDashVisual`/`button.tsx` reference pattern). **This table is the contract** — the
+target components, what each replaces, and where it's reused. The current look is preserved (near-zero
+visual diff); the win is entirely in the code.
+
+| Component | Replaces (raw class) | Reuse / notes |
+|---|---|---|
+| `<Hero>` | `.ihero` block | 15/17 pages — eyebrow, accent-span title, subcopy, pain line, CTA actions, stats strip |
+| `<Eyebrow>` | `.eyebrow` / `.sl` | 13+ pages — the tracked uppercase micro-label |
+| `<SectionHeader>` | `.sl`/`.st`/`.sd` triad | every sub-page, repeated per section |
+| `<Section>` | section wrapper | applies the `--space-section-*` rhythm + `--container` tokens (§3.3) — the first real consumer of the layout tokens |
+| `<Card>` (density/tier props) | `.prob`/`.icard`/`.mock`/flat | collapses the §4.3 "family of recipes" into one prop-driven API |
+| `<CardGrid>` | `.prob-grid` etc. | n-up responsive grid |
+| `<StatBand>` / `<Stat>` | `.statband` + count-up | 8 pages |
+| `<BeforeAfter>` | `.cmp-row` | 3+ pages — extract the duplicated inline check/X SVGs |
+| `<FaqList>` / `<FaqItem>` | `.faq-item` | 10 pages — keep the `LegacyBehaviors` one-open behavior or fold it into the component |
+| `<CtaPanel>` | `.icta` | 14 pages — eyebrow, title, desc, CTA, bullets, cross-links |
+| `<FeatureRow>` | `.frow` | 5 pages, alternating layout |
+
+Bespoke per-industry signature visuals (`.sig-grid`/`.show-grid`) are the *least* duplicated — leave
+them as per-page components; don't force-extract. As each block becomes a component, its slice of
+`legacy.css` is folded in and deleted (the §11.4 tokenization happens as part of that move).
+
 ---
 
 ## 11. Known deviations & cleanup backlog
@@ -621,45 +743,41 @@ drifted example for the intended pattern. These are unintentional drift/bugs —
 deliberate, decided-on scope split in §2 and the deferrals in §2.4. Ranked roughly by how likely a new
 page is to copy the mistake.
 
-### 11.1 `CLAUDE.md`'s design-system section is stale
+### 11.1 `CLAUDE.md`'s design-system section is stale — ✅ resolved (Phase 1)
 
-`CLAUDE.md`'s "Design system (warm / original)" section still describes the *previous* revision —
-cream `#f4f1ea` background, `--radius-btn 8px` / `--radius-card 20px` / `--radius-pill 100px`,
-terracotta as a live accent, `SiteShell` taking a `variant="full" | "minimal"` prop. None of that
-matches the current codebase: `SiteShell.tsx` no longer takes a `variant` prop at all (one nav for
-every page), the color system is white/black/mint with one radius, and terracotta is retired. It also
-references a "CLAUDE.md 'Color governance'" section (`app/globals.css:6`) that doesn't currently
-exist in `CLAUDE.md`. **This document is now the source of truth for the design system; `CLAUDE.md`'s
-design-system section should be updated to point here rather than re-describing it** — flagging this
-rather than editing `CLAUDE.md` unilaterally, since it's a project-instructions file.
+`CLAUDE.md`'s "Design system (warm / original)" section used to describe the *previous* revision
+(cream `#f4f1ea`, `8px/20px/100px` radii, live terracotta, a `SiteShell variant` prop). It has been
+**replaced with a one-line pointer to this document**, and the stale `SiteShell`/`Nav` `variant`
+description in its "Shared components" section was corrected (there is one nav for every page; neither
+takes a `variant` prop). The dangling `app/globals.css:6` comment that pointed at a non-existent
+`CLAUDE.md "Color governance"` section now points here (§3.1). `DESIGN-SYSTEM.md` is the single source
+of truth for the design system.
 
-### 11.2 Home vs. sub-page type/spacing scale hasn't fully converged
+### 11.2 Home vs. sub-page type/spacing scale hasn't fully converged — ⏳ partly resolved
 
-Documented as the working scale in §3.2/§3.3, but the two sides are near-duplicates, not identical:
-`.st` is `clamp(40px,6vw,72px)` on home vs. `clamp(34px,5vw,60px)` on sub-pages (`home.css:205` vs.
-`legacy.css:74`) — a real, visible size difference at the same semantic level, not just a token
-mismatch. `.sl` tracks at `4px` on home vs. `2px` on sub-pages (`home.css:202` vs. `legacy.css:72`).
-Section padding is `88px` vs `80px`. None of these break anything on their own page, but a component
-moved between contexts (e.g. promoting a sub-page section to the home page) will visibly resize.
+**Spacing (resolved in principle):** the canonical section rhythm is now decided and tokenized —
+`--space-section-y: 88px` (the home value, §3.3), with sub-pages' `80px` converging onto it during the
+Phase 2 componentization (`<Section>` consumes the token). **Type scale (still open, Phase 2):** two
+near-duplicate sizes remain at the same semantic level — `.st` is `clamp(40px,6vw,72px)` on home vs.
+`clamp(34px,5vw,60px)` on sub-pages (`home.css:205` vs. `legacy.css:74`); `.sl` tracks `4px` on home
+vs. `2px` on sub-pages. The **home values are the canonical target** (§3.2) and sub-pages converge onto
+them in Phase 2 — a documented "preserve look" edge (small sub-page heading shifts are acceptable;
+landing stays the anchor). Until then, a component moved between contexts will visibly resize.
 
-### 11.3 Off-token "forest" hex colors in two files
+### 11.3 Off-token "forest" hex colors in two files — ✅ resolved (Phase 1)
 
-`styles/pages.css:8` (`--px-forest:#063a2a; --px-forest2:#04170f`) and `styles/dental.css:11-12`
-(`--dx-forest`/`--dx-forest2`, same values) both define a private dark-green pair used for "featured"
-card fills (`.px-aud.feat`, `.dx-tier.feat`) — outside the four-color rule stated in
-`globals.css:3-9`. `dental.css`'s own header comment (line 4) still says it "reuses the warm brand
-tokens (--accent mint, forest ink, terracotta)" — terracotta doesn't exist anymore, so the comment
-itself documents a color that was already retired. Fix: replace both `--*-forest`/`--*-forest2` pairs
-with `var(--color-text)` (or a `color-mix()` darkening of it) so "featured" reads as the ink register
-plus a mint hairline, matching how `.ts-ai`/`.sc-bg-black` already do "dark/premium" elsewhere. Note
-both `.px-aud.feat`/`.dx-tier.feat` are landing-weight card variants (§4.3) — under §2.2 they shouldn't
-appear on a rebuilt sub-page at all, which resolves this by removal rather than a color swap wherever
-that rebuild happens first.
-
-Related: several hover-shadow literals in the same two files use `rgba(30,27,22,…)` — a warm brown-
-black that doesn't match `--color-text` (`#0a0a0a`) — instead of a `--shadow-*` token:
-`.px-card:hover` (`pages.css:20`), `.px-aud:hover` (`pages.css:46`), `.dx-tier:hover`
-(`dental.css:38`). These read as leftover values from the pre-revision warm-ink palette.
+`styles/pages.css` and `styles/dental.css` defined a private dark-green pair (`#063a2a`/`#04170f`) for
+"featured" card fills (`.px-aud.feat`, `.dx-tier.feat`) — a 5th color outside the four-color rule. Both
+`--*-forest`/`--*-forest2` pairs are now `var(--color-text)` + a `color-mix()` darkening, so a featured
+card renders in the **ink register** (matching how `.ts-ai`/`.sc-bg-black` do "dark/premium"); the
+`#fff` text on those cards is now `var(--bg)`; and the warm brown-black hover-shadow literals
+(`rgba(30,27,22,…)` on `.px-card:hover`, `.px-aud:hover`, `.dx-tier:hover`, `.dx-cap:hover`) are now
+`color-mix(in oklab, var(--color-text) X%, transparent)`. `dental.css`'s stale "reuses … terracotta"
+header comment is corrected. **This is a deliberate, minor color correction** — the featured cards shift
+from dark-green to near-black ink, not a pure no-op. Those cards remain landing-weight (§4.3); under
+§2.2 they shouldn't appear on a rebuilt sub-page at all, so Phase 2 may remove them outright. The
+remaining mint-crosshatch / white-alpha `rgba()` in both files are Phase-2 tokenization residuals
+(§11.4), exempted in the stylelint allowlist (§1.1) until then.
 
 ### 11.4 The four-color rule is enforced on home/chrome/containers, not on `legacy.css`
 
@@ -681,24 +799,31 @@ Also un-tokenized: `components/site/chrome.css:45-46`'s nav-dropdown-panel shado
 inconsistency within the same file, not just the same class of literal as this section's `legacy.css`
 finding.
 
-### 11.5 No named spacing/breakpoint tokens yet
+**Status (Phase 1):** `legacy.css`, `home.css`, `pages.css`/`dental.css`, and `chrome.css` are the
+`TODO(phase-2)` entries on the stylelint allowlist (§1.1) — the hex/rgba guardrail is live for the rest
+of the codebase, and each allowlist entry is deleted as its file is tokenized during the Phase 2
+componentization (§10.1). `pages.css`/`dental.css` are already hex-clean (Phase 1, §11.3); only their
+mint-crosshatch `rgba()` keeps them on the list.
 
-§3.3 documents the *working* scale (the numbers most surfaces already cluster around), but none of
-it is backed by `--space-*` / `--container-*` custom properties — each file still writes `88px 56px`,
-`1320px`, `680px` etc. literally. Low urgency (the values are consistent enough to describe as a
-scale today) but worth tokenizing before a third page family (beyond home + sub-pages) is added, so
-the scale can't silently drift a third way.
+### 11.5 No named spacing/breakpoint tokens yet — ✅ resolved (Phase 1)
 
-### 11.6 `.eyebrow` is defined twice, with conflicting values, and the cascade silently picks one
+Container and section-rhythm custom properties now exist in `app/globals.css` (`--container`,
+`--container-wide`, `--container-narrow`, `--measure`, `--space-section-y`, `--space-section-x`,
+`--space-section-y-sm`), documented as the canonical scale in §3.3. They're *defined* now and *consumed*
+during Phase 2 — existing raw CSS still writes the literals until each block is componentized (§10.1).
+Breakpoints (`1080/960/680/600`) are intentionally left as a documented constant, not tokens — a CSS
+`@media` condition can't consume `var()` (§3.3). Card-padding tokens are the one remaining gap, deferred
+to Phase 2 alongside the `<Card>` component.
 
-`app/globals.css:135-143` defines `.eyebrow` inside `@layer components` with `letter-spacing: 1.5px`
-and `font-weight: 600`. `styles/legacy.css:60` defines `.eyebrow` again — outside any `@layer`, with
-`letter-spacing: 3px` and no `font-weight` override. Per the CSS cascade, **unlayered rules always
-beat layered rules regardless of source order** — so `legacy.css`'s version wins everywhere both are
-loaded, and `globals.css`'s `font-weight: 600` never applies. This is a live bug, not a style
-disagreement: fix by deleting one definition (keep `legacy.css`'s, since it's the one actually
-rendering, and fold `font-weight: 600` into it if that weight was intended) rather than by editing
-`globals.css`'s copy and expecting it to take effect.
+### 11.6 `.eyebrow` was defined twice, with conflicting values — ✅ resolved (Phase 1)
+
+`.eyebrow` was declared in both `app/globals.css` (inside `@layer components`, `letter-spacing: 1.5px`,
+`font-weight: 600`) and `styles/legacy.css:60` (unlayered, `letter-spacing: 3px`, no weight). Because
+unlayered rules always beat layered ones, `legacy.css`'s version won everywhere and the globals
+`font-weight: 600` never applied. The dead `globals.css` copy has been **deleted**, leaving
+`legacy.css:60` as the sole definition. The `600` was intentionally *not* folded in: since it never
+actually rendered, adding it would bolden every eyebrow site-wide — a visual change Phase 1 avoids, so
+the rendered look is unchanged.
 
 Two footer stylesheets is a deliberate structural pattern, not a bug, by contrast: `Footer.tsx`'s
 markup is styled by both `legacy.css:403-426` (sub-pages) and `home.css:343-364` (home, nested inside
@@ -713,19 +838,32 @@ third. Per §4.1, mint should be the one primary action per view — compare
 `app/dental/page.tsx:74-75`, which correctly pairs one `.btn-mint` with one `.btn-dark`. Fix by
 demoting the restaurants savings-calculator link to `.btn-dark` or an `EmbedLink`.
 
-### 11.8 Confirmed-dead code, safe to remove
+**Deferred to Phase 2** (Phase 1 decision): this is a page-file edit, folded into the restaurants
+page's componentization pass rather than done as a standalone change now.
 
-The `.mj-phone`/`.mj-screen`/`.mj-bubble` "Meet Janice" phone-chat CSS block (`home.css:529-564`) is
-not rendered anywhere on the current home page (superseded by `ScriptedChatDemo`, §4.10) and ships
-several off-token hex values (`#0d0d15`, `#262633`, `#7a7a8a`, `#0a6a50`, `#9af5d6`, …) that would
-otherwise look like sanctioned exceptions. Flagged as removable in the previous audit pass and still
-present — low risk, pure deletion, worth doing in a small standalone commit.
+### 11.8 Confirmed-dead code — ✅ resolved (Phase 1)
+
+The `.mj-phone`/`.mj-screen`/`.mj-bubble` "Meet Janice" phone-chat CSS block (`home.css`, ~35 lines)
+plus its `@keyframes mjtype` were unused anywhere on the site (superseded by `ScriptedChatDemo`, §4.10)
+and shipped several off-token hex values (`#0d0d15`, `#262633`, `#7a7a8a`, `#0a6a50`, `#9af5d6`, …).
+Both have been **deleted** (confirmed no `.mj-*` references remain in any component). `home.css` still
+carries other residual white/black hex + `rgba()` unrelated to this block — those are the §11.4 Phase-2
+tokenization item.
 
 ---
 
 ## Document history
 
-- **This revision**: added §2 (landing page vs. category/sub-page scope split — the restrained/
+- **This revision (Phase 1 — design system finished, doc + tokens + guardrails)**: added the Quickstart
+  TL;DR; recorded the base text-pairing contrast results (§8 — accent-ink passes AA at 5.36:1, no token
+  change); added container/section-rhythm layout tokens (§3.3), the Phase 2 component taxonomy (§10.1),
+  and the forms-with-a-backend contract (§4.6); formalized `.icon-btn` (§4.1); added automated
+  enforcement (§1.1 — stylelint hex/rgba ban wired into `prebuild`, ESLint landing-only import boundary).
+  Applied the cheap deviation fixes: neutralized `CLAUDE.md`'s stale design section (§11.1), deleted the
+  duplicate `.eyebrow` (§11.6), tokenized the off-token "forest"/warm-black literals in
+  `pages.css`/`dental.css` (§11.3), removed the dead `.mj-phone` block (§11.8). §11.2/§11.4 partly
+  resolved; §11.7 (a page-file edit) deferred to Phase 2.
+- **Prior revision**: added §2 (landing page vs. category/sub-page scope split — the restrained/
   informational tier for sub-pages, with an explicit reuse list and an explicit prohibition list),
   §5 (imagery guidance), and real error/validation-state CSS in §4.6 (now implemented in
   `components/site/chrome.css`). Reframed §6.2's sub-page section sequence from "the template to

@@ -39,29 +39,18 @@ With `output: "export"` a route `/dental` emits `out/dental.html`, the **same pa
 keep a `public/<name>.html` that matches a React route** (especially `index.html`). When porting a new
 page, delete its `public/*.html` in the same step. Do **not** add `trailingSlash`. Keep `images.unoptimized`.
 
-## Design system (warm / original — NOT the old electric-blue redesign)
+## Design system
 
-`app/globals.css` `@theme` is the single source of truth. Tokens:
-
-- **Surfaces:** `--color-bg #f4f1ea` (cream), `--color-bg2 #ebe6da`, `--color-card`.
-- **Ink:** `--color-text #1e1b16`, `--color-text2`, `--color-text3`.
-- **Mint accent:** `--color-accent #4af0c0`, `--color-accent-ink #0a7d5d`, `--color-accent-bright #0a9d76`,
-  `--color-on-accent #04130f`. **Terracotta:** `--color-accent2 #c75d3c`.
-- **Radius:** `--radius-btn 8px`, `--radius-card 20px`, `--radius-pill 100px` (rounded, not sharp).
-- Bare aliases (`--bg`, `--accent`, `--grad`, `--glow`, …) are mirrored in `:root` so verbatim-ported CSS resolves.
-- Textures: fixed 2% SVG-noise overlay (`body::after`), cursor-follow mint glow (`components/site/CursorGlow.tsx`),
-  hero particle canvas (`#p` in `HomeContent`).
-
-**Fonts** (via `next/font/google` in `app/layout.tsx`): **Bebas Neue** → `--font-display`, **Outfit** →
-`--font-body`, **JetBrains Mono** → `--font-mono` (eyebrows/labels).
-
-**Buttons:** `components/ui/button.tsx` — variants `primary` (mint fill), `ghost` (hairline), `calc`
-(mint tint). The ported markup mostly uses the raw `.btn-primary`/`.btn-ghost`/`.btn-calc` classes from
-the stylesheets below, which match.
+**`DESIGN-SYSTEM.md` is the single source of truth for the design system** — colors, type, spacing,
+radius, shadows, components, the landing-page-vs-sub-page scope split, and the enforcement guardrails.
+Do not re-describe tokens here; they drift. `app/globals.css` `@theme` is the token *implementation*,
+but read `DESIGN-SYSTEM.md` first. In brief: white canvas / near-black ink / one mint accent, a single
+`--radius: 4px`, Bebas Neue (display) + Outfit (body) + JetBrains Mono (labels). The cream/mint/
+terracotta multi-radius scheme described in older docs is **retired** — ignore any mention of it.
 
 ### Stylesheets
 
-- `app/globals.css` — tokens, reset, base, `.eyebrow`, noise/glow.
+- `app/globals.css` — tokens, reset, base, noise/glow.
 - `styles/legacy.css` — the old `industry.css` (base/`:root` stripped) + page-specific inline styles.
   Styles **every sub-page** (minimal nav, `.sl/.st/.sd` section headers, `.reveal`, buttons, footer,
   `.ihero/.prob/.frow/.mock/.show/.sig/.stat/.faq/.icta`, dental `#practice-types`, etc.). Global import.
@@ -71,10 +60,10 @@ the stylesheets below, which match.
 
 ## Shared components
 
-- `components/site/SiteShell.tsx` — wraps every marketing page: `<Nav variant>` + `<main>` + `<Footer>` +
-  `<ScrollReveal>` + `<LegacyBehaviors>`. **Home uses `variant="full"` (mega-menu); all sub-pages use
-  `variant="minimal"`.**
-- `components/site/Nav.tsx` (full mega-menu / minimal), `Footer.tsx`, `Logo.tsx`, `CursorGlow.tsx`,
+- `components/site/SiteShell.tsx` — wraps every marketing page: `<Nav>` + `<main>` + `<Footer>` +
+  `<ScrollReveal>` + `<LegacyBehaviors>`. **One nav for the whole site** (a single mega-menu on every
+  page); `SiteShell`/`Nav` take no `variant` prop.
+- `components/site/Nav.tsx` (one mega-menu, hide-on-scroll, mobile drawer), `Footer.tsx`, `Logo.tsx`, `CursorGlow.tsx`,
   `ContactModalProvider.tsx` (+ `useContactModal`), `ToastProvider.tsx`, `HashScroll.tsx`.
 - `components/providers/LenisProvider.tsx` — smooth scroll (reused; exposes `window.__lenis`, read via `lib/lenis.ts`).
 - `components/home/HomeContent.tsx` (client — all home interactions) + `CoverageMap.tsx` (client — lazy Leaflet map).

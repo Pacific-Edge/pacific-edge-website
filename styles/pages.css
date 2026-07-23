@@ -5,7 +5,8 @@
    section headers from legacy.css. 3D tilt is driven by
    components/site/TiltParallax.tsx ([data-tilt] / [data-parallax]).
    ========================================================================= */
-:root{--px-forest:#063a2a;--px-forest2:#04170f}
+/* featured-card dark fill — ink register (was off-token "forest green"; DESIGN-SYSTEM.md §11.3) */
+:root{--px-forest:var(--color-text);--px-forest2:color-mix(in oklab, var(--color-text) 70%, black)}
 
 /* inline emphasis (replaces faux-italic <em>, which overhangs into the next word) */
 .cb-emph{font-weight:600;color:var(--text)}
@@ -17,7 +18,7 @@
 .px-card{position:relative;background:var(--bg);border:1px solid var(--border);border-radius:var(--radius);padding:28px 26px;box-shadow:var(--shadow-float);
   overflow:hidden;transition:transform .4s cubic-bezier(.16,1,.3,1),box-shadow .4s ease,border-color .4s ease}
 @media(hover:hover){
-  .px-card:hover{transform:translateY(-7px);box-shadow:0 22px 46px -18px rgba(30,27,22,.22);border-color:var(--border-a)}
+  .px-card:hover{transform:translateY(-7px);box-shadow:0 22px 46px -18px color-mix(in oklab, var(--color-text) 22%, transparent);border-color:var(--border-a)}
   .px-card:hover .px-card-ico{transform:scale(1.14) rotate(-6deg)}
 }
 .px-card-ico{font-size:28px;line-height:1;display:inline-flex;width:56px;height:56px;align-items:center;justify-content:center;
@@ -43,7 +44,7 @@
   background:var(--bg);box-shadow:var(--shadow-float);
   transform-style:preserve-3d;transition:transform .55s cubic-bezier(.16,1,.3,1),box-shadow .5s ease}
 .px-aud.dx-tilting{transition:transform .12s ease-out,box-shadow .5s ease}
-@media(hover:hover){.px-aud:hover{box-shadow:0 30px 66px -24px rgba(30,27,22,.32)}}
+@media(hover:hover){.px-aud:hover{box-shadow:0 30px 66px -24px color-mix(in oklab, var(--color-text) 32%, transparent)}}
 .px-aud-shine{position:absolute;inset:0;border-radius:var(--radius);pointer-events:none;opacity:0;transition:opacity .4s ease;
   background:radial-gradient(circle at var(--mx,50%) var(--my,50%),rgba(255,255,255,.4),transparent 48%)}
 .px-aud.dx-tilting .px-aud-shine{opacity:1}
@@ -54,9 +55,9 @@
 .px-aud-list li{display:flex;gap:10px;font-size:14.5px;color:var(--text);line-height:1.42}
 .px-aud-list li svg{flex-shrink:0;margin-top:2px}
 .px-aud-list li svg path{stroke:var(--accent-bright)}
-.px-aud.feat{background-image:repeating-linear-gradient(45deg,rgba(74,240,192,.14) 0,rgba(74,240,192,.14) 1px,transparent 1px,transparent 24px),repeating-linear-gradient(-45deg,rgba(74,240,192,.14) 0,rgba(74,240,192,.14) 1px,transparent 1px,transparent 24px),linear-gradient(165deg,var(--px-forest),var(--px-forest2));border-color:transparent;color:#fff;
+.px-aud.feat{background-image:repeating-linear-gradient(45deg,rgba(74,240,192,.14) 0,rgba(74,240,192,.14) 1px,transparent 1px,transparent 24px),repeating-linear-gradient(-45deg,rgba(74,240,192,.14) 0,rgba(74,240,192,.14) 1px,transparent 1px,transparent 24px),linear-gradient(165deg,var(--px-forest),var(--px-forest2));border-color:transparent;color:var(--bg);
   box-shadow:var(--shadow-float-lg)}
-.px-aud.feat h3{color:#fff}.px-aud.feat p{color:rgba(255,255,255,.7)}
+.px-aud.feat h3{color:var(--bg)}.px-aud.feat p{color:rgba(255,255,255,.7)}
 .px-aud.feat .px-aud-list li{color:rgba(255,255,255,.92)}
 .px-aud.feat .px-aud-list li svg path{stroke:var(--accent)}
 .px-aud.feat .px-aud-shine{background:radial-gradient(circle at var(--mx,50%) var(--my,50%),rgba(74,240,192,.3),transparent 50%)}

@@ -3,7 +3,7 @@
 /* ═══════════════════════════════════════════════════════════════════════
    PACIFIC EDGE — DESIGN TOKENS  (mono + mint)
    White canvas · black ink · gray (derived from ink) · a single mint accent.
-   Exactly four colors exist in this system — see CLAUDE.md "Color governance".
+   Exactly four colors exist in this system — see DESIGN-SYSTEM.md §3.1.
    Every mint shade below is derived from --color-accent via color-mix; every
    gray is derived from --color-text the same way. No standalone hexes.
    Single source of truth for colour, radius, and type. Tailwind v4 reads
@@ -43,6 +43,19 @@
   --font-mono:    var(--font-jetbrains), ui-monospace, monospace;
   /* Apple system font — for the iOS phone chat demo only (components/demo). */
   --font-system:  -apple-system, BlinkMacSystemFont, "SF Pro Text", "Segoe UI", system-ui, sans-serif;
+
+  /* ── Layout — container widths + section rhythm. Canonical values are the
+        landing page's (the anchor, DESIGN-SYSTEM.md §3.3 / §11.2). Defined here
+        for Phase 2 components to consume; existing raw CSS converges onto them
+        during componentization. Breakpoints (1080/960/680/600px) are documented
+        in §3.3 but are NOT tokens — CSS @media conditions can't consume var(). ── */
+  --container:          1200px;   /* general content max-width */
+  --container-wide:     1320px;   /* widest surface — footer / CTA panels */
+  --container-narrow:   1120px;   /* alternating feature-row container */
+  --measure:            600px;    /* readable copy measure (lead paragraph) */
+  --space-section-y:    88px;     /* section vertical rhythm */
+  --space-section-x:    56px;     /* section horizontal padding */
+  --space-section-y-sm: 72px;     /* section vertical rhythm, step-down under 680px */
 }
 
 /* Bare-name aliases so verbatim-ported CSS (var(--accent), var(--grad), …)
@@ -124,21 +137,5 @@ body::after {
     animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;
     scroll-behavior: auto !important;
-  }
-}
-
-/* ═══════════════════════════════════════════════════════════════════════
-   SHARED TYPE HELPERS
-   ═══════════════════════════════════════════════════════════════════════ */
-
-@layer components {
-  /* Section eyebrow — DM Sans, uppercase tracked micro-label */
-  .eyebrow {
-    font-family: var(--body);
-    font-size: 11px;
-    font-weight: 600;
-    letter-spacing: 1.5px;
-    text-transform: uppercase;
-    color: var(--accent-ink);
   }
 }
