@@ -209,7 +209,7 @@ export default function ColorBends({
       alpha: true
     });
     rendererRef.current = renderer;
-    (renderer as any).outputColorSpace = (THREE as any).SRGBColorSpace;
+    renderer.outputColorSpace = THREE.SRGBColorSpace;
     // Cap DPR — the per-pixel shader cost scales with pixel count; retina
     // displays otherwise render ~4x the fragments for no visible gain on a
     // soft background effect (mirrors SoftAurora).
@@ -220,7 +220,8 @@ export default function ColorBends({
     renderer.domElement.style.display = 'block';
     container.appendChild(renderer.domElement);
 
-    const clock = new THREE.Clock();
+    const timer = new THREE.Timer();
+    timer.connect(document);
 
     const handleResize = () => {
       const w = container.clientWidth || 1;
@@ -239,9 +240,10 @@ export default function ColorBends({
       (window as Window).addEventListener('resize', handleResize);
     }
 
-    const renderFrame = () => {
-      const dt = clock.getDelta();
-      const elapsed = clock.elapsedTime;
+    const renderFrame = (timestamp?: number) => {
+      timer.update(timestamp);
+      const dt = timer.getDelta();
+      const elapsed = timer.getElapsed();
       material.uniforms.uTime.value = elapsed;
 
       const deg = (rotationRef.current % 360) + autoRotateRef.current * elapsed;
@@ -258,8 +260,8 @@ export default function ColorBends({
       renderer.render(scene, camera);
     };
 
-    const loop = () => {
-      renderFrame();
+    const loop = (timestamp: number) => {
+      renderFrame(timestamp);
       rafRef.current = requestAnimationFrame(loop);
     };
 
@@ -276,7 +278,7 @@ export default function ColorBends({
           if (nowInView === inView) return;
           inView = nowInView;
           if (inView) {
-            clock.getDelta(); // drop the paused gap so time doesn't lurch
+            timer.reset(); // drop the paused gap so time doesn't lurch
             rafRef.current = requestAnimationFrame(loop);
           } else if (rafRef.current !== null) {
             cancelAnimationFrame(rafRef.current);
@@ -294,6 +296,7 @@ export default function ColorBends({
       if (intersectionObserverRef.current) intersectionObserverRef.current.disconnect();
       if (resizeObserverRef.current) resizeObserverRef.current.disconnect();
       else (window as Window).removeEventListener('resize', handleResize);
+      timer.dispose();
       geometry.dispose();
       material.dispose();
       renderer.dispose();
