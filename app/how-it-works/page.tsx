@@ -1,6 +1,8 @@
 import type { Metadata } from "next"
 import { Phone, Star, MessageSquare, Clock, DollarSign, Zap } from "lucide-react"
 import SiteShell from "@/components/site/SiteShell"
+import { GetStartedSection } from "@/components/subpage-sections"
+import { Divider, Hero, Section } from "@/components/ui/sections"
 
 export const metadata: Metadata = {
   title: { absolute: "How It Works | Pacific Edge AI" },
@@ -29,19 +31,16 @@ const DASH_ROWS = [
 export default function HowItWorksPage() {
   return (
     <SiteShell>
-      <header className="ihero">
-        <div className="ihero-orb ihero-orb-1"></div>
-        <div className="ihero-orb ihero-orb-2"></div>
-        <div className="ihero-inner">
-          <div className="eyebrow reveal"><span className="eyebrow-dot"></span>How It Works</div>
-          <h1 className="reveal d1">Simple Process,<br /><span className="a">Powerful</span> Results</h1>
-          <p className="ihero-sub reveal d2">Clear terms, no technical jargon. Here&apos;s how we build your AI workflows, starting with a working prototype in your first week.</p>
-        </div>
-      </header>
+      <div className="pe-sub">
+      <Hero
+        eyebrow="How It Works"
+        title={<>Simple Process,<br /><span className="a">Powerful</span> Results</>}
+        sub={<>Clear terms, no technical jargon. Here&apos;s how we build your AI workflows, starting with a working prototype in your first week.</>}
+      />
 
-      <div className="divhr" />
+      <Divider />
 
-      <section id="process">
+      <Section id="process">
         <div className="process-wrapper">
           <div className="steps-tl">
             {STEPS.map((s, i) => (
@@ -74,16 +73,15 @@ export default function HowItWorksPage() {
             </div>
           </div>
         </div>
-      </section>
+      </Section>
 
-      <section className="icta">
-        <div className="ihero-inner" style={{ margin: "0 auto" }}>
-          <div className="sl reveal sl-c" style={{ justifyContent: "center" }}>No-Risk Start</div>
-          <h2 className="icta-title reveal d1">One Month<br /><span className="a">On Us.</span></h2>
-          <p className="icta-desc reveal d2">Start with a free 15-minute discovery call. If Janice isn&apos;t the right fit after your first month, you can walk away with no obligation.</p>
-          <a href="https://cal.com/pacificedge" target="_blank" rel="noopener" className="btn-mint reveal d2">Book a Free 15-Min Demo</a>
-        </div>
-      </section>
+      <GetStartedSection
+        eyebrow="No-Risk Start"
+        title={<>One Month<br /><span className="a">On Us.</span></>}
+        desc="Start with a free 15-minute discovery call. If Janice isn't the right fit after your first month, you can walk away with no obligation."
+        action={<a href="https://cal.com/pacificedge" target="_blank" rel="noopener" className="btn-mint">Book a Free 15-Min Demo</a>}
+      />
+      </div>
     </SiteShell>
   )
 }

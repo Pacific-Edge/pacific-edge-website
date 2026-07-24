@@ -277,7 +277,7 @@ export default function HomeContent() {
           <a href={CAL} target="_blank" rel="noopener" className="btn-mint">
             Book a Free 15-Min Demo
           </a>
-          <a href="#two-sides" className="btn-dark">
+          <a href="#what-we-do" className="btn-dark">
             See What We Do
           </a>
         </div>
@@ -317,7 +317,7 @@ export default function HomeContent() {
       </div>
 
       {/* TWO SIDES TO OUR BUSINESS — full section */}
-      <section className="twosides" id="two-sides">
+      <section className="twosides" id="what-we-do">
         <span className="sn">01</span>
         <div className="r">
           <div className="sl">What We Do</div>
@@ -451,7 +451,7 @@ export default function HomeContent() {
       <div className="divhr" />
 
       {/* WHY US */}
-      <section className="about" id="about">
+      <section className="about" id="why-us">
         <span className="sn">05</span>
         <div className="r" style={{ textAlign: "center" }}>
           <div className="sl" style={{ justifyContent: "center" }}>Why Us</div>
@@ -467,7 +467,7 @@ export default function HomeContent() {
       <div className="divhr" />
 
       {/* TRUST + TESTIMONIALS */}
-      <section id="testimonials">
+      <section id="trust-proof">
         <div className="r" style={{ textAlign: "center" }}>
           <div className="sl" style={{ justifyContent: "center" }}>Trust &amp; Proof</div>
           <h2 className="st" style={{ margin: "0 auto 18px" }}>Trustworthy, <span className="a">Privacy-Focused </span><span style={{ color: "var(--color-text)" }}>Service.</span></h2>

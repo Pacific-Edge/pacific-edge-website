@@ -14,7 +14,7 @@ interface WhatItLooksLikeSectionProps {
   steps: ShowStep[]
 }
 
-export function WhatItLooksLikeSection({ id = "example", industry, title, lead, steps }: WhatItLooksLikeSectionProps) {
+export function WhatItLooksLikeSection({ id = "walkthrough", industry, title, lead, steps }: WhatItLooksLikeSectionProps) {
   return (
     <Section id={id}>
       <PhoneShowcase industry={industry} eyebrow="What It Looks Like" title={title} lead={lead} steps={steps} />

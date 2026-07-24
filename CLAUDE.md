@@ -29,14 +29,15 @@ emits `out/`, which Cloudflare Pages serves.
   (one `components/tools/SavingsCalculator.tsx` driven by `lib/savings-calculators.ts`) and
   `/dental-pricing`. Routes are **flat, mirroring the old filenames** so URLs are preserved.
   `/retail` and `/careers` were removed (see `public/_redirects` for where they now point).
-- **Auth surface = React routes** `/login` and `/app`, wrapped in `components/auth/AuthShell.tsx`
-  (a minimal shared bar — site Logo + back/logout — NOT the marketing mega-nav). Mock session lives
-  in `lib/clientAuth.ts` (front-end only, `pe_client` key). `/app` still embeds the kept-static
-  `dashboard-mock.html` via `<iframe id="idash" src="/dashboard-mock.html?ind=…">` + a `postMessage`
-  height contract.
-- **Only `dashboard-mock.html` remains a kept-static page in `public/`** (nav-less iframe widget,
-  no route). The home page and each industry page also embed it via `components/ui/DashboardEmbed.tsx`.
-  The old calculators, `login.html`, and `app.html` are now React routes (deleted from `public/`).
+- **Auth surface: `/login` only, and it's a placeholder.** `components/auth/LoginForm.tsx` renders
+  the sign-in card with a disabled "Coming soon" submit button — no session logic, no redirect.
+  `components/auth/AuthShell.tsx` is still live (minimal shared bar — site Logo + back link — NOT
+  the marketing mega-nav) and wraps the login page. The real client dashboard (`/dashboard`, formerly
+  `/app`) and everything backing it (session mock, mock data, the `Dashboard` component) is **archived**
+  under `archive/` — see "Archived (2026-07-24)" below. The route no longer exists; `/dashboard` 404s.
+- **`dashboard-mock.html` remains a kept-static page in `public/`** (nav-less iframe widget, no route).
+  It is unrelated to the archived client dashboard — the home page and the dental/trades pages still
+  embed it live via `components/ui/DashboardEmbed.tsx` as a marketing preview. Do not archive it.
 - **`public/industry.css`, `public/industry.js`, `public/smooth-scroll.js`, `public/vendor/lenis.min.js`
   exist only to serve those kept-static pages — do NOT delete them.** (The React app has its own copies
   of the styles/behaviors; see below.)
@@ -141,9 +142,37 @@ paragraphs, cut anything that isn't load-bearing.
 - **ai-employee**: the standard chat/mock/count animations work; any bespoke inline-JS demos from the old
   page were not ported (that content renders static).
 - Per-industry JSON-LD from the old sub-pages was not ported (home carries the main graph).
-- The 5 calculators, `login.html`, `app.html`, `dashboard-mock.html` are still raw static HTML — port to
-  React later if desired (remember the collision rule).
+- `dashboard-mock.html` is still raw static HTML (used only as the live `DashboardEmbed` marketing
+  preview) — port to React later if desired (remember the collision rule).
 
-  ## TODO
+## Archived (2026-07-24)
+
+The client dashboard was a front-end-only mock (fake session, fake data, no backend) that read as
+a real product demo. `/login` is now a disabled placeholder and `/dashboard` no longer resolves.
+All of its code was moved out of the live app into `archive/dashboard/` rather than deleted, in
+case the real dashboard gets built later:
+
+- `archive/dashboard/page.tsx` — the former `app/dashboard/page.tsx` (`/dashboard` route, formerly `/app`)
+- `archive/dashboard/Dashboard.tsx` — the former `components/app/Dashboard.tsx` (main dashboard UI: schedule/convos/reviews views)
+- `archive/dashboard/dashboard-mock-data.ts` — the former `lib/dashboard-mock-data.ts` (fake calls/reviews/convos fixtures)
+- `archive/dashboard/clientAuth.ts` — the former `lib/clientAuth.ts` (mock `pe_client` session, front-end only, no backend)
+- `archive/dashboard/LoginForm.tsx` — the former functional `components/auth/LoginForm.tsx` (validated locally, wrote a mock session, redirected to the dashboard)
+- `archive/dashboard/dashboard.css` — the former `styles/dashboard.css` (styles for `Dashboard.tsx`)
+
+**Still live, not archived:** `components/auth/AuthShell.tsx` (shared minimal chrome, now wraps the
+placeholder login page), `styles/auth.css` (styles the login card), and `public/dashboard-mock.html`
++ `components/ui/DashboardEmbed.tsx` (the unrelated marketing preview iframe embedded on the home,
+dental, and trades pages — this was never part of the client dashboard and was intentionally left
+untouched).
+
+The archived files import each other with relative paths and are excluded from the Next.js route
+tree (they live outside `app/`), so they don't affect the build. They're not wired to anything live.
+
+## TODO
 [] Develop and document consistent and stylish design system based on landing page style that can be propogated consistently to all subpages
+[] Replace white bg colour token with cream
+[] Cool Hero background 
 [] Responsiveness passes
+[] Develop consistent, defined product UI system for dashboard graphics and animated components – purpose is to create a unified product design so it doesn't look like we haven't built anything. We should draw on a product design system to make it look like we actually have a product we're actually showcasing and preveiwing rather htan just making up and claiming. Apply to dashboard preview, animated graphical components/elements on landing page and subpages. This is brand and product consistency enforcement.
+[] Frontend Design taste pass
+[] Improve font system to be more unique, less generic

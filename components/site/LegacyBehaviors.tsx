@@ -4,10 +4,10 @@ import { useEffect } from "react"
 
 /**
  * Ports the interactive behaviors from the old industry.js so sub-pages can be
- * plain static markup: count-up (.count[data-to]), scripted chat ([data-chat]),
- * animated mock feeds (.mock[data-live]), one-open FAQ (<details.faq-item>), and
- * the embedded dashboard iframe autosize (#idash). Scroll-reveal (.reveal/.r)
- * lives in ScrollReveal. Reduced-motion collapses everything to its end state.
+ * plain static markup: count-up (.count[data-to]), animated mock feeds
+ * (.mock[data-live]), one-open FAQ (<details.pe-faq-item>), and the embedded
+ * dashboard iframe autosize (#idash). Scroll-reveal (.reveal/.r) lives in
+ * ScrollReveal. Reduced-motion collapses everything to its end state.
  */
 export default function LegacyBehaviors() {
   useEffect(() => {
@@ -48,38 +48,6 @@ export default function LegacyBehaviors() {
       observers.push(obs)
     }
 
-    // ── scripted chat ──
-    const playChat = (chat: Element) => {
-      const nodes = Array.from(chat.children)
-      if (reduce) {
-        nodes.forEach((n) => { if (n.classList.contains("typing")) n.remove(); else n.classList.add("in") })
-        return
-      }
-      let i = 0
-      const next = () => {
-        if (i >= nodes.length) return
-        const n = nodes[i] as HTMLElement
-        if (n.classList.contains("typing")) {
-          const hold = parseInt(n.getAttribute("data-typing") || "1100", 10)
-          n.classList.add("in")
-          setTimeout(() => { n.classList.remove("in"); setTimeout(() => { i++; next() }, 160) }, hold)
-        } else if (n.classList.contains("bubble") || n.classList.contains("chat-badge")) {
-          const wait = parseInt(n.getAttribute("data-delay") || "260", 10)
-          setTimeout(() => { n.classList.add("in"); (chat as HTMLElement).scrollTop = chat.scrollHeight; i++; next() }, wait)
-        } else { n.classList.add("in"); i++; next() }
-      }
-      next()
-    }
-    const chats = Array.from(document.querySelectorAll("[data-chat]"))
-    if (chats.length) {
-      const obs = new IntersectionObserver(
-        (entries) => entries.forEach((e) => { if (e.isIntersecting) { playChat(e.target); obs.unobserve(e.target) } }),
-        { threshold: 0.35 },
-      )
-      chats.forEach((c) => obs.observe(c))
-      observers.push(obs)
-    }
-
     // ── animated mock feed ──
     const playMock = (mock: Element) => {
       const rows = Array.from(mock.children).filter(
@@ -115,7 +83,7 @@ export default function LegacyBehaviors() {
     }
 
     // ── FAQ: one <details> open at a time ──
-    const faqItems = Array.from(document.querySelectorAll("details.faq-item, details.pe-faq-item")) as HTMLDetailsElement[]
+    const faqItems = Array.from(document.querySelectorAll("details.pe-faq-item")) as HTMLDetailsElement[]
     faqItems.forEach((item) => {
       const onToggle = () => { if (item.open) faqItems.forEach((o) => { if (o !== item) o.open = false }) }
       item.addEventListener("toggle", onToggle)

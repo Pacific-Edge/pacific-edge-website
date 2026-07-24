@@ -185,7 +185,7 @@ nav.hide{transform:translateY(-100%)}
   .ts-phone{justify-self:center;width:clamp(210px,72vw,260px)}
   .ts-inline{justify-content:center}
   .ts-proof{text-align:left}
-  .ts-cb-dash{width:100%}
+  .ts-cb-dash{display:none}
   .ts-card{padding:36px 20px}
   .ts-h{font-size:22px}
 }

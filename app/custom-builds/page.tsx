@@ -1,8 +1,18 @@
 import type { Metadata } from "next"
-import Link from "next/link"
+import {
+  BarChart3,
+  CalendarDays,
+  Clock,
+  DoorOpen,
+  FileStack,
+  Folder,
+  Link2,
+  Puzzle,
+  Settings,
+} from "lucide-react"
 import SiteShell from "@/components/site/SiteShell"
-import TiltParallax from "@/components/site/TiltParallax"
-import "@/styles/pages.css"
+import { FaqSection, GetStartedSection, ProcessStepsSection } from "@/components/subpage-sections"
+import { Card, CardGrid, Divider, Hero, Section, SectionHeader } from "@/components/ui/sections"
 
 const CAL = "https://cal.com/pacificedge"
 
@@ -13,131 +23,119 @@ export const metadata: Metadata = {
   alternates: { canonical: "/custom-builds" },
 }
 
-const check = (
-  <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M5 13l4 4L19 7" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round" /></svg>
-)
-
 export default function CustomBuildsPage() {
   return (
     <SiteShell>
-      <TiltParallax />
-      <header className="ihero">
-        <div className="ihero-orb ihero-orb-1" data-parallax="26" />
-        <div className="ihero-orb ihero-orb-2" data-parallax="-40" />
-        <div className="ihero-inner">
-          <div className="eyebrow reveal"><span className="eyebrow-dot" />Custom Builds · Software Built Around You</div>
-          <h1 className="reveal d1">
-            When Janice Doesn&apos;t Cover It,<br />
-            <span className="a">We Build It.</span>
-          </h1>
-          <p className="ihero-sub reveal d2">
-            Janice runs the front desk: calls, texts, bookings, no-show follow-ups, reviews. For most local
-            businesses that&apos;s the whole job. But sometimes the thing eating your week is specific to how{" "}
-            <span className="cb-emph">you</span>{" "}
-            run. That&apos;s a Custom Build.
-          </p>
-          <div className="ihero-actions reveal d3">
-            <a href={CAL} target="_blank" rel="noopener" className="btn-mint">Book a Free 15-Min Demo</a>
-            <a href="#what" className="btn-dark">See What We Build ↓</a>
-          </div>
-          <div className="ihero-trust reveal d4">
-            Scoped &amp; quoted per project · No templates, no bloat · Vancouver-based
-          </div>
-        </div>
-      </header>
+      <div className="pe-sub">
+        <Hero
+          eyebrow="Custom Builds · Software Built Around You"
+          title={
+            <>
+              When Janice Doesn&apos;t Cover It,<br />
+              <span className="a">We Build It.</span>
+            </>
+          }
+          sub={
+            <>
+              Janice runs the front desk: calls, texts, bookings, no-show follow-ups, reviews. For most local
+              businesses that&apos;s the whole job. But sometimes the thing eating your week is specific to how{" "}
+              <strong>you</strong> run. That&apos;s a Custom Build.
+            </>
+          }
+          actions={
+            <>
+              <a href={CAL} target="_blank" rel="noopener" className="btn-mint">Book a Free 15-Min Demo</a>
+              <a href="#what-we-build" className="btn-dark">See What We Build ↓</a>
+            </>
+          }
+          trust={<>Scoped &amp; quoted per project · No templates, no bloat · Vancouver-based</>}
+        />
 
-      <div className="divhr" />
+        <Divider />
 
-      {/* Intro — Sam's copy */}
-      <section id="what">
-        <div className="wrap">
-          <div className="sl reveal">What Is A Custom Build?</div>
-          <h2 className="st reveal d1">Just The Thing You <span className="a">Actually Need.</span></h2>
-          <p className="sd reveal d2">
-            A booking flow nobody else has. An internal tool your team keeps wishing existed. A piece of software
-            no off-the-shelf product actually sells. We sit down, learn exactly how your business works, and build
-            software that fits it: a tailored CRM, an internal dashboard, an automation that kills the one task
-            that keeps stealing your time.
-          </p>
-          <div className="px-grid tilt">
-            <article className="px-card reveal d1" data-tilt><div className="px-card-shine" aria-hidden="true" /><span className="px-card-ico">🗂️</span><h3>Tailored CRM</h3><p>A CRM built around your pipeline and your terminology, not a fixed template.</p></article>
-            <article className="px-card reveal d2" data-tilt><div className="px-card-shine" aria-hidden="true" /><span className="px-card-ico">📊</span><h3>Internal dashboards</h3><p>One screen that pulls your numbers together instead of tracking them across separate spreadsheets.</p></article>
-            <article className="px-card reveal d3" data-tilt><div className="px-card-shine" aria-hidden="true" /><span className="px-card-ico">⚙️</span><h3>Workflow automations</h3><p>The repetitive task on your team's plate, automated from start to finish.</p></article>
-            <article className="px-card reveal d1" data-tilt><div className="px-card-shine" aria-hidden="true" /><span className="px-card-ico">📅</span><h3>Custom booking flows</h3><p>A booking or intake flow built around how your business actually takes in work.</p></article>
-            <article className="px-card reveal d2" data-tilt><div className="px-card-shine" aria-hidden="true" /><span className="px-card-ico">🔗</span><h3>Tool integrations</h3><p>Two systems that don&apos;t talk to each other, connected and kept in sync.</p></article>
-            <article className="px-card reveal d3" data-tilt><div className="px-card-shine" aria-hidden="true" /><span className="px-card-ico">🚪</span><h3>Client &amp; team portals</h3><p>A simple, branded place for clients or staff to do the one thing they need to do.</p></article>
-          </div>
-        </div>
-      </section>
+        <Section id="what-we-build">
+          <SectionHeader
+            eyebrow="What Is A Custom Build?"
+            title={<>Just The Thing You <span className="a">Actually Need.</span></>}
+            lead="A booking flow nobody else has. An internal tool your team keeps wishing existed. A piece of software no off-the-shelf product actually sells. We sit down, learn exactly how your business works, and build software that fits it: a tailored CRM, an internal dashboard, an automation that kills the one task that keeps stealing your time."
+          />
+          <CardGrid cols={3}>
+            <Card reveal={1} icon={<Folder size={22} strokeWidth={1.8} />} title="Tailored CRM">
+              A CRM built around your pipeline and your terminology, not a fixed template.
+            </Card>
+            <Card reveal={2} icon={<BarChart3 size={22} strokeWidth={1.8} />} title="Internal dashboards">
+              One screen that pulls your numbers together instead of tracking them across separate spreadsheets.
+            </Card>
+            <Card reveal={3} icon={<Settings size={22} strokeWidth={1.8} />} title="Workflow automations">
+              The repetitive task on your team&apos;s plate, automated from start to finish.
+            </Card>
+            <Card reveal={1} icon={<CalendarDays size={22} strokeWidth={1.8} />} title="Custom booking flows">
+              A booking or intake flow built around how your business actually takes in work.
+            </Card>
+            <Card reveal={2} icon={<Link2 size={22} strokeWidth={1.8} />} title={<>Tool integrations</>}>
+              Two systems that don&apos;t talk to each other, connected and kept in sync.
+            </Card>
+            <Card reveal={3} icon={<DoorOpen size={22} strokeWidth={1.8} />} title={<>Client &amp; team portals</>}>
+              A simple, branded place for clients or staff to do the one thing they need to do.
+            </Card>
+          </CardGrid>
+        </Section>
 
-      <div className="divhr" />
+        <Divider />
 
-      {/* When to reach for a custom build */}
-      <section>
-        <div className="wrap">
-          <div className="sl reveal">When It&apos;s Worth It</div>
-          <h2 className="st reveal d1">When A Custom Build <span className="a">Makes Sense.</span></h2>
-          <div className="px-grid">
-            <div className="px-card reveal d1"><span className="px-card-ico">🕓</span><h3>A repetitive manual task</h3><p>If a task is repetitive, rule-based, and takes real time, it can usually be automated.</p></div>
-            <div className="px-card reveal d2"><span className="px-card-ico">🧩</span><h3>Off-the-shelf tools don&apos;t fit</h3><p>If you&apos;ve had to adjust your process to fit a tool, we build software that fits your process instead.</p></div>
-            <div className="px-card reveal d3"><span className="px-card-ico">📑</span><h3>Records split across tools</h3><p>If your records are split across tabs and inboxes, one purpose-built tool usually pays for itself fast.</p></div>
-          </div>
-        </div>
-      </section>
+        <Section>
+          <SectionHeader
+            eyebrow="When It's Worth It"
+            title={<>When A Custom Build <span className="a">Makes Sense.</span></>}
+          />
+          <CardGrid cols={3}>
+            <Card reveal={1} icon={<Clock size={22} strokeWidth={1.8} />} title="A repetitive manual task">
+              If a task is repetitive, rule-based, and takes real time, it can usually be automated.
+            </Card>
+            <Card reveal={2} icon={<Puzzle size={22} strokeWidth={1.8} />} title={<>Off-the-shelf tools don&apos;t fit</>}>
+              If you&apos;ve had to adjust your process to fit a tool, we build software that fits your process instead.
+            </Card>
+            <Card reveal={3} icon={<FileStack size={22} strokeWidth={1.8} />} title="Records split across tools">
+              If your records are split across tabs and inboxes, one purpose-built tool usually pays for itself fast.
+            </Card>
+          </CardGrid>
+        </Section>
 
-      <div className="divhr" />
+        <Divider />
 
-      {/* Process */}
-      <section>
-        <div className="wrap">
-          <div className="sl reveal sl-c tac" style={{ justifyContent: "center" }}>How It Works</div>
-          <h2 className="st reveal d1 tac">From Idea To <span className="a">Working Software.</span></h2>
-          <p className="sd reveal d2" style={{ textAlign: "center", margin: "0 auto" }}>You see progress in weeks, and you own what we build.</p>
-          <div className="px-steps">
-            <div className="px-step reveal d1"><h3>We learn your business</h3><p>We map how you actually work, where the time goes, and what&apos;s genuinely worth building.</p></div>
-            <div className="px-step reveal d2"><h3>We scope &amp; quote</h3><p>You get a clear plan, a fixed scope, and a per-project price before any work starts.</p></div>
-            <div className="px-step reveal d3"><h3>We build &amp; iterate</h3><p>We build in the open, show you working versions early, and adjust until it fits.</p></div>
-            <div className="px-step reveal d4"><h3>We support it</h3><p>It&apos;s yours. We stay on to maintain, tweak, and grow it as your business changes.</p></div>
-          </div>
-        </div>
-      </section>
+        <ProcessStepsSection
+          center
+          eyebrow="How It Works"
+          title={<>From Idea To <span className="a">Working Software.</span></>}
+          lead="You see progress in weeks, and you own what we build."
+          steps={[
+            { title: "We learn your business", body: <>We map how you actually work, where the time goes, and what&apos;s genuinely worth building.</> },
+            { title: <>We scope &amp; quote</>, body: "You get a clear plan, a fixed scope, and a per-project price before any work starts." },
+            { title: <>We build &amp; iterate</>, body: "We build in the open, show you working versions early, and adjust until it fits." },
+            { title: "We support it", body: <>It&apos;s yours. We stay on to maintain, tweak, and grow it as your business changes.</> },
+          ]}
+        />
 
-      <div className="divhr" />
+        <Divider />
 
-      {/* FAQ */}
-      <section id="faq">
-        <div className="wrap">
-          <div className="sl reveal sl-c tac">Questions</div>
-          <h2 className="st reveal d1 tac">Before You <span className="a">Ask Us.</span></h2>
-          <div className="faq-list">
-            <details className="faq-item reveal"><summary>How is this different from Janice?<span className="faq-ico" /></summary><div className="faq-body">Janice is our ready-to-go AI front desk that answers calls and texts, books, and follows up. A Custom Build is bespoke software we design and build around a need Janice doesn&apos;t cover, like a tailored CRM or an internal tool.</div></details>
-            <details className="faq-item reveal"><summary>What does it cost?<span className="faq-ico" /></summary><div className="faq-body">Every build is scoped and quoted per project after a free call. No templates, no surprise bloat. You approve the plan and the price before we start.</div></details>
-            <details className="faq-item reveal"><summary>How long does it take?<span className="faq-ico" /></summary><div className="faq-body">It depends on scope. We break the work into small, working milestones so you see real progress in weeks, not months, and can steer as we go.</div></details>
-            <details className="faq-item reveal"><summary>Do we own what you build?<span className="faq-ico" /></summary><div className="faq-body">Yes. It&apos;s built for your business and it belongs to you. We stay on for support and improvements only if you want us to.</div></details>
-            <details className="faq-item reveal"><summary>Can it work with the tools we already use?<span className="faq-ico" /></summary><div className="faq-body">That&apos;s usually the point. A big part of what we do is connecting the systems you already run so they finally talk to each other.</div></details>
-          </div>
-        </div>
-      </section>
+        <FaqSection
+          title={<>Before You <span className="a">Ask Us.</span></>}
+          items={[
+            { q: "How is this different from Janice?", a: "Janice is our ready-to-go AI front desk that answers calls and texts, books, and follows up. A Custom Build is bespoke software we design and build around a need Janice doesn't cover, like a tailored CRM or an internal tool." },
+            { q: "What does it cost?", a: "Every build is scoped and quoted per project after a free call. No templates, no surprise bloat. You approve the plan and the price before we start." },
+            { q: "How long does it take?", a: "It depends on scope. We break the work into small, working milestones so you see real progress in weeks, not months, and can steer as we go." },
+            { q: "Do we own what you build?", a: "Yes. It's built for your business and it belongs to you. We stay on for support and improvements only if you want us to." },
+            { q: "Can it work with the tools we already use?", a: "That's usually the point. A big part of what we do is connecting the systems you already run so they finally talk to each other." },
+          ]}
+        />
 
-      {/* CTA — Sam's closing line */}
-      <section className="icta">
-        <div className="ihero-inner" style={{ margin: "0 auto" }}>
-          <div className="sl reveal sl-c" style={{ justifyContent: "center" }}>Get Started</div>
-          <h2 className="icta-title reveal d1">Got Something<br /><span className="a">Specific In Mind?</span></h2>
-          <p className="icta-desc reveal d2">Tell us about it on a free 15-minute call. We&apos;ll tell you whether it&apos;s a fit, roughly what it takes, and where to start.</p>
-          <a href={CAL} target="_blank" rel="noopener" className="btn-mint reveal d2">Book a Free 15-Min Demo</a>
-          <div className="icta-bullets reveal d3">
-            <span><i />Free scoping call</span>
-            <span><i />Fixed per-project price</span>
-            <span><i />You own what we build</span>
-          </div>
-          <div className="xlinks reveal d3">
-            <Link href="/ai-employee" className="xlink"><span>🤖</span>Meet Janice</Link>
-            <Link href="/ai-training" className="xlink"><span>🎓</span>AI Training</Link>
-            <Link href="/industries" className="xlink"><span>🏙️</span>Industries</Link>
-          </div>
-        </div>
-      </section>
+        <GetStartedSection
+          title={<>Got Something<br /><span className="a">Specific In Mind?</span></>}
+          desc="Tell us about it on a free 15-minute call. We'll tell you whether it's a fit, roughly what it takes, and where to start."
+          action={<a href={CAL} target="_blank" rel="noopener" className="btn-mint">Book a Free 15-Min Demo</a>}
+          bullets={["Free scoping call", "Fixed per-project price", "You own what we build"]}
+        />
+      </div>
     </SiteShell>
   )
 }

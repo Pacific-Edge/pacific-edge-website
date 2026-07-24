@@ -3,7 +3,7 @@ import SiteShell from "@/components/site/SiteShell"
 import { Divider } from "@/components/ui/sections"
 import {
   HeroSection,
-  WhatJaniceHandlesSection,
+  AlternatingTextSection,
   WhatItLooksLikeSection,
   MetricsBandSection,
   LiveDashboardSection,
@@ -20,9 +20,6 @@ import {
   Wrench,
   Flame,
   Waves,
-  UtensilsCrossed,
-  Sparkles,
-  Stethoscope,
 } from "lucide-react"
 
 const CAL = "https://cal.com/pacificedge"
@@ -61,7 +58,7 @@ export default function TradesPage() {
 
         <Divider />
 
-        <WhatJaniceHandlesSection
+        <AlternatingTextSection
           title={<>Built For The <span className="a">Jobsite.</span></>}
           lead="Janice, your AI employee, answers missed calls, follows up on quotes, and books the job while you stay on the tools."
           rows={[
@@ -165,7 +162,7 @@ export default function TradesPage() {
 
         <Divider />
 
-        <FaqSection title={<>Frequently Asked <span className="a">Questions.</span></>} items={FAQ} />
+        <FaqSection title={<>Tradespeople <span className="a">Ask Us.</span></>} items={FAQ} />
 
         <GetStartedSection
           title={<>Ready To Stop<br /><span className="a">Missing Calls?</span></>}
@@ -177,11 +174,6 @@ export default function TradesPage() {
             </>
           }
           bullets={["Free discovery call", "Working prototype in about a week", "Vancouver-based"]}
-          crossLinks={[
-            { href: "/restaurants", icon: <UtensilsCrossed size={14} strokeWidth={2} />, label: "Restaurants" },
-            { href: "/salons", icon: <Sparkles size={14} strokeWidth={2} />, label: "Salons & Spas" },
-            { href: "/dental", icon: <Stethoscope size={14} strokeWidth={2} />, label: "Dental" },
-          ]}
         />
       </div>
     </SiteShell>

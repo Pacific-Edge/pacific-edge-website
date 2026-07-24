@@ -3,9 +3,12 @@ import { CtaPanel, type CrossLink } from "@/components/ui/sections"
 
 /**
  * "Get Started" closing CTA panel. `action` is a ReactNode passthrough since
- * pages differ (most pass two buttons, dental passes one).
+ * pages differ (most pass two buttons, dental passes one). `eyebrow` defaults
+ * to "Get Started"; override only where the page's existing copy differs
+ * (e.g. "No-Risk Start" on /faq, "Free Trial" on /contact).
  */
 interface GetStartedSectionProps {
+  eyebrow?: ReactNode
   title: ReactNode
   desc: ReactNode
   action: ReactNode
@@ -13,8 +16,8 @@ interface GetStartedSectionProps {
   crossLinks?: CrossLink[]
 }
 
-export function GetStartedSection({ title, desc, action, bullets, crossLinks }: GetStartedSectionProps) {
+export function GetStartedSection({ eyebrow = "Get Started", title, desc, action, bullets, crossLinks }: GetStartedSectionProps) {
   return (
-    <CtaPanel eyebrow="Get Started" title={title} desc={desc} action={action} bullets={bullets} crossLinks={crossLinks} />
+    <CtaPanel eyebrow={eyebrow} title={title} desc={desc} action={action} bullets={bullets} crossLinks={crossLinks} />
   )
 }

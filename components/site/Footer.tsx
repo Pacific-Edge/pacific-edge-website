@@ -91,6 +91,10 @@ export default function Footer() {
       <div className="footer-bottom">
         <span>&copy; {year} Pacific Edge AI. All rights reserved.</span>
         <span>Vancouver, British Columbia, Canada</span>
+        <span className="footer-legal-links">
+          <Link href="/privacy">Privacy Policy</Link>
+          <Link href="/terms">Terms of Service</Link>
+        </span>
       </div>
     </footer>
   )

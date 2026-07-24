@@ -55,7 +55,8 @@ export const NAV_CATEGORIES: NavCategory[] = [
     key: "get-started",
     label: "Get Started",
     items: [
-      { href: "/how-it-works", name: "Process", desc: "How an engagement actually runs" },
+      { href: "/how-it-works", name: "How It Works", desc: "How an engagement actually runs" },
+      { href: "/dental-savings-calculator", name: "Savings Calculator", desc: "Estimate what missed bookings cost you" },
       { href: "/contact", name: "Contact", desc: "Reach the team directly" },
       { href: "/login", name: "Client Login", desc: "Access your dashboard" },
     ],

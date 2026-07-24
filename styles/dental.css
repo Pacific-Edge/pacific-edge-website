@@ -28,8 +28,6 @@
    1. TIER SHOWCASE — three 3D-tilt cards mirroring the pricing plans
    ========================================================================= */
 .dx-tiers{position:relative;overflow:hidden}
-.dx-tiers-glow{position:absolute;top:-10%;left:50%;transform:translateX(-50%);width:min(900px,90%);height:520px;
-  background:radial-gradient(ellipse at center,rgba(74,240,192,.18),transparent 68%);pointer-events:none;filter:blur(6px);z-index:0}
 .dx-tier-grid{position:relative;z-index:1;display:grid;grid-template-columns:repeat(3,1fr);gap:22px;margin-top:54px;
   perspective:1500px}
 .dx-tier{position:relative;background:var(--bg);border:1px solid var(--border);border-radius:var(--radius);padding:34px 28px 30px;

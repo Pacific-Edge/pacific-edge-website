@@ -5,7 +5,7 @@ import "@/styles/dental.css"
 import { Divider } from "@/components/ui/sections"
 import {
   HeroSection,
-  WhatJaniceHandlesSection,
+  AlternatingTextSection,
   WhatItLooksLikeSection,
   MetricsBandSection,
   LiveDashboardSection,
@@ -36,8 +36,6 @@ import {
   CreditCard,
   Sprout,
   Globe,
-  UtensilsCrossed,
-  Sparkles,
 } from "lucide-react"
 
 const CAL = "https://cal.com/pacificedge"
@@ -168,7 +166,7 @@ export default function DentalPage() {
 
         <Divider />
 
-        <WhatJaniceHandlesSection
+        <AlternatingTextSection
           title={<>Built For A <span className="a">Full Chair.</span></>}
           lead="Janice, your AI employee, turns missed calls, empty chairs, and slipped recalls into booked, confirmed visits, and frees up your front desk's time."
           rows={[
@@ -300,10 +298,6 @@ export default function DentalPage() {
             <a href={CAL} target="_blank" rel="noopener" className="btn-mint">Book a Free 15-Min Demo</a>
           }
           bullets={["Free discovery call", "Working prototype in about a week", "Vancouver-based"]}
-          crossLinks={[
-            { href: "/restaurants", icon: <UtensilsCrossed size={14} strokeWidth={2} />, label: "Restaurants" },
-            { href: "/salons", icon: <Sparkles size={14} strokeWidth={2} />, label: "Salons & Spas" },
-          ]}
         />
       </div>
     </SiteShell>

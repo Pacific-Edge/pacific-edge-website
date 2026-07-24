@@ -578,7 +578,7 @@ export default function WhyUsSection() {
         // Fill utilities are dropped for StyledContainer cards (`.sc-bg-*` owns the fill);
         // index 2 (Built to deliver) keeps its bg utility since it stays a plain <article>.
         const cardClass = cn(
-          "r group relative flex min-h-[24rem] flex-col p-8 shadow-[var(--shadow-float)] transition-transform duration-300 hover:-translate-y-1 sm:min-h-[26rem] sm:p-9 lg:min-h-[30rem]",
+          "r group relative flex min-h-0 flex-col p-8 shadow-[var(--shadow-float)] transition-transform duration-300 hover:-translate-y-1 sm:min-h-[26rem] sm:p-9 lg:min-h-[30rem]",
           isLocal ? "overflow-visible" : "overflow-hidden",
           isSpeed
             ? "border border-[var(--color-accent-ink)]/25"
@@ -619,7 +619,7 @@ export default function WhyUsSection() {
               {pillar.description}
             </p>
 
-            <div className={cn("relative", isLocal ? "mt-4 flex flex-1 items-center pt-2" : "mt-auto pt-8")}>
+            <div className={cn("relative hidden sm:block", isLocal ? "mt-4 sm:flex sm:flex-1 sm:items-center sm:pt-2" : "mt-auto sm:pt-8")}>
               <div
                 className={cn(
                   "w-full",

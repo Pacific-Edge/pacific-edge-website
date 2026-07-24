@@ -1,6 +1,24 @@
 "use client"
 
 import { useEffect } from "react"
+import {
+  BUBBLE_RECEIVED_CLASS,
+  BUBBLE_SENT_CLASS,
+  TYPING_INDICATOR_CLASS,
+} from "@/components/demo/phone-chat-styles"
+
+/* Injected-node styles matching ScriptedChatDemo's badge + typing dots.
+ * `.pe-je-anim` (styles/components.css) supplies the fade-up entrance the
+ * shared Tailwind constants don't carry. */
+const BADGE_CLASS =
+  "mx-2 rounded-lg border border-neutral-400/30 bg-neutral-400/10 px-2.5 py-1.5 text-center font-system text-[10px] leading-snug text-neutral-800"
+const TYPING_DOT_CLASS = "h-1.5 w-1.5 rounded-full bg-neutral-900/35 animate-pulse"
+
+/* Inline check mark for the injected booking badge (replaces the old emoji
+ * prefix; mirrors components/ui/icons CheckMark, as a DOM string because the
+ * badge is built imperatively). */
+const BADGE_CHECK_SVG =
+  '<svg width="11" height="11" viewBox="0 0 24 24" fill="none" aria-hidden="true" class="mr-1 inline align-[-1px]"><path d="M5 13l4 4L19 7" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg>'
 
 /* eslint-disable @typescript-eslint/no-explicit-any */
 
@@ -90,10 +108,10 @@ export default function JaniceDemo() {
       if (hit(t, ["book it","lock it in","book me in","just book it","book me"])) { ctx.offer = null; return bookReply(t) }
       if ((hit(t, AFFIRM) || hit(t, PICK)) && !asksQuestion(t)) {
         if (ctx.offer === "times") { ctx.offer = null; return bookReply(t) }
-        if (ctx.offer === "pricelist") { ctx.offer = "times"; return { text: "Done, I've sent the full price list to your phone. 📄 Want me to get you booked in too?" } }
-        if (ctx.offer === "menu") { ctx.offer = "times"; return { text: "Sent! 📋 The full menu's on its way to your phone. Want me to book you a time?" } }
-        if (ctx.offer === "directions") { ctx.offer = null; return { text: "On their way! 📍 Directions are headed to your phone. Anything else I can do?" } }
-        if (ctx.offer === "callback") { ctx.offer = null; return { text: "Perfect, someone from the team will give you a quick call shortly. 📞" } }
+        if (ctx.offer === "pricelist") { ctx.offer = "times"; return { text: "Done, I've sent the full price list to your phone. Want me to get you booked in too?" } }
+        if (ctx.offer === "menu") { ctx.offer = "times"; return { text: "Sent! The full menu's on its way to your phone. Want me to book you a time?" } }
+        if (ctx.offer === "directions") { ctx.offer = null; return { text: "On their way! Directions are headed to your phone. Anything else I can do?" } }
+        if (ctx.offer === "callback") { ctx.offer = null; return { text: "Perfect, someone from the team will give you a quick call shortly." } }
         ctx.offer = "times"; return { text: "Happy to! I've got tomorrow at 2:30 PM or Saturday at 11 AM open, which works better?" }
       }
       let best: Intent | null = null, bestScore = 0
@@ -113,21 +131,28 @@ export default function JaniceDemo() {
     const scrollDown = () => { chat.scrollTop = chat.scrollHeight }
     const bubble = (text: string, who: string) => {
       const b = document.createElement("div")
-      b.className = "bubble " + who
+      b.className = (who === "me" ? BUBBLE_SENT_CLASS : BUBBLE_RECEIVED_CLASS) + " pe-je-anim"
       b.textContent = text
       chat.appendChild(b)
       requestAnimationFrame(() => { b.classList.add("in"); scrollDown() })
     }
     const badge = (text: string) => {
-      const w = document.createElement("div"); w.className = "chat-badge"
-      const i = document.createElement("span"); i.className = "chat-badge-ico"; i.textContent = "✅"
+      const w = document.createElement("div"); w.className = BADGE_CLASS + " pe-je-anim"
+      const i = document.createElement("span"); i.innerHTML = BADGE_CHECK_SVG
       const s = document.createElement("span"); s.textContent = text
       w.appendChild(i); w.appendChild(s); chat.appendChild(w)
       requestAnimationFrame(() => { w.classList.add("in"); scrollDown() })
     }
     const typing = () => {
-      const t = document.createElement("div"); t.className = "typing"
-      t.innerHTML = "<i></i><i></i><i></i>"
+      const t = document.createElement("div")
+      t.className = TYPING_INDICATOR_CLASS + " pe-je-anim"
+      t.setAttribute("aria-hidden", "true")
+      for (let i = 0; i < 3; i++) {
+        const dot = document.createElement("span")
+        dot.className = TYPING_DOT_CLASS
+        dot.style.animationDelay = `${i * 150}ms`
+        t.appendChild(dot)
+      }
       chat.appendChild(t)
       requestAnimationFrame(() => { t.classList.add("in"); scrollDown() })
       return t

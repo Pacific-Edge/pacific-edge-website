@@ -49,7 +49,17 @@ export default function Nav() {
   return (
     <nav id="siteNav" className={hidden ? "hide" : ""}>
       <Logo href="/" />
-      <ul className={`nav-links ${menuOpen ? "open" : ""}`} id="navLinks">
+      <ul className={`nav-links ${menuOpen ? "open" : ""}`} id="navLinks" data-lenis-prevent>
+        <li className="nav-links-cta-mobile nav-links-cta-mobile-demo">
+          <a
+            href="https://cal.com/pacificedge"
+            target="_blank"
+            rel="noopener"
+            className="btn-mint nav-nolift"
+          >
+            Book a Demo
+          </a>
+        </li>
         {NAV_CATEGORIES.map((cat) => (
           <li className="nav-dd" key={cat.key}>
             <Link href={cat.items[0].href} className="nav-dd-trigger">

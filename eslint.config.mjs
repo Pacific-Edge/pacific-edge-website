@@ -19,14 +19,7 @@ const eslintConfig = defineConfig([
   // exempt; every other page under app/**/*.tsx is a sub-page and is restricted.
   {
     files: ["app/**/*.tsx"],
-    ignores: [
-      "app/page.tsx",
-      // TODO(phase-2): custom-builds + ai-training are showcase sub-pages that still use the
-      // landing-weight [data-tilt] cards driven by TiltParallax (a known deviation, §4.3/§11.3).
-      // Phase 2 removes the tilt on their rebuild; delete these two exemptions then.
-      "app/custom-builds/page.tsx",
-      "app/ai-training/page.tsx",
-    ],
+    ignores: ["app/page.tsx"],
     rules: {
       "no-restricted-imports": [
         "error",

@@ -281,6 +281,16 @@
   transform: translateY(-2px);
   box-shadow: 0 0 40px var(--auth-glow);
 }
+.pe-auth .btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  transform: none;
+  box-shadow: none;
+}
+.pe-auth input:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
 .pe-auth .btn .arr {
   transition: transform 0.25s;
 }

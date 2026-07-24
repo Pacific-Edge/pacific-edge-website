@@ -1,6 +1,8 @@
 import type { Metadata } from "next"
 import ContactEmailButton from "@/components/contact/ContactEmailButton"
 import SiteShell from "@/components/site/SiteShell"
+import { GetStartedSection } from "@/components/subpage-sections"
+import { Divider, Hero } from "@/components/ui/sections"
 
 export const metadata: Metadata = {
   title: { absolute: "Contact Pacific Edge AI | One Month On Us" },
@@ -12,40 +14,28 @@ export const metadata: Metadata = {
 export default function ContactPage() {
   return (
     <SiteShell>
-      <header className="ihero">
-        <div className="ihero-orb ihero-orb-1"></div>
-        <div className="ihero-orb ihero-orb-2"></div>
-        <div className="ihero-inner">
-          <div className="eyebrow reveal"><span className="eyebrow-dot"></span>Contact</div>
-          <h1 className="reveal d1">Reach The<br /><span className="a">Team Directly.</span></h1>
-          <p className="ihero-sub reveal d2">You&apos;ll talk directly to the people who build and run Janice, not a call centre or a scripted chatbot.</p>
-        </div>
-      </header>
+      <div className="pe-sub">
+        <Hero
+          eyebrow="Contact"
+          title={<>Reach The<br /><span className="a">Team Directly.</span></>}
+          sub="You'll talk directly to the people who build and run Janice, not a call centre or a scripted chatbot."
+        />
 
-      <div className="divhr" />
+        <Divider />
 
-      <section className="icta">
-        <div className="ihero-inner" style={{ margin: "0 auto" }}>
-          <div className="sl reveal sl-c" style={{ justifyContent: "center" }}>Free Trial</div>
-          <h2 className="icta-title reveal d1">One Month<br /><span className="a">On Us.</span></h2>
-          <p className="icta-desc reveal d2">
-            Run Janice in your business for a full month at no cost. Review the bookings she catches and the
-            hours she saves, then decide whether to continue. Cancel anytime during the trial.
-          </p>
-          <div className="reveal d2" style={{ display: "inline-flex", alignItems: "center", gap: 32, flexWrap: "wrap", justifyContent: "center" }}>
-            <a href="https://cal.com/pacificedge" target="_blank" rel="noopener" className="btn-mint" style={{ fontSize: 16, padding: "18px 44px" }}>
-              Book a Free 15-Min Demo
-            </a>
-            <ContactEmailButton />
-          </div>
-          <div className="icta-bullets reveal d3">
-            <span><i />Free discovery call</span>
-            <span><i />Transparent pricing</span>
-            <span><i />Working prototype in ~1 week</span>
-            <span><i />Vancouver-based</span>
-          </div>
-        </div>
-      </section>
+        <GetStartedSection
+          eyebrow="Free Trial"
+          title={<>One Month<br /><span className="a">On Us.</span></>}
+          desc="Run Janice in your business for a full month at no cost. Review the bookings she catches and the hours she saves, then decide whether to continue. Cancel anytime during the trial."
+          action={
+            <>
+              <a href="https://cal.com/pacificedge" target="_blank" rel="noopener" className="btn-mint">Book a Free 15-Min Demo</a>
+              <ContactEmailButton />
+            </>
+          }
+          bullets={["Free discovery call", "Transparent pricing", "Working prototype in ~1 week", "Vancouver-based"]}
+        />
+      </div>
     </SiteShell>
   )
 }

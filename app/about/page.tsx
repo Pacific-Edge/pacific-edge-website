@@ -1,5 +1,7 @@
 import type { Metadata } from "next"
+import Image from "next/image"
 import SiteShell from "@/components/site/SiteShell"
+import { Divider, Hero, Section, SectionHeader } from "@/components/ui/sections"
 
 export const metadata: Metadata = {
   title: { absolute: "About Pacific Edge AI | Built By Operators, For Local Business" },
@@ -11,44 +13,44 @@ export const metadata: Metadata = {
 export default function AboutPage() {
   return (
     <SiteShell>
-      <header className="ihero">
-        <div className="ihero-orb ihero-orb-1"></div>
-        <div className="ihero-orb ihero-orb-2"></div>
-        <div className="ihero-inner">
-          <div className="eyebrow reveal"><span className="eyebrow-dot"></span>About Us</div>
-          <h1 className="reveal d1">Built By Operators,<br /><span className="a">For Local Business.</span></h1>
-          <p className="ihero-sub reveal d2">We&apos;re business owners who spent years doing the admin work ourselves before we started building the software to handle it.</p>
-        </div>
-      </header>
+      <div className="pe-sub">
+        <Hero
+          eyebrow="About Us"
+          title={<>Built By Operators,<br /><span className="a">For Local Business.</span></>}
+          sub="We're business owners who spent years doing the admin work ourselves before we started building the software to handle it."
+        />
 
-      <div className="divhr" />
+        <Divider />
 
-      <section id="story">
-        <div className="wrap">
-          <div className="r" style={{ maxWidth: 720, margin: "0 auto", textAlign: "center" }}>
-            <h2 className="st reveal d1">We Start With<br /><span className="a">The Cost.</span></h2>
-            <p className="sd reveal d2">
-              Every automation we build starts with one question: what&apos;s costing you the most hours and
-              dollars right now? We fix that first.
-            </p>
-            <p className="sd reveal d3">
-              We&apos;re based in Vancouver, we meet in person when you want to, and we stay on the account
-              after launch instead of handing you off to a support queue.
-            </p>
-          </div>
-        </div>
-      </section>
+        <Section id="approach">
+          <SectionHeader
+            center
+            title={<>We Start With<br /><span className="a">The Cost.</span></>}
+            lead={
+              <>
+                Every automation we build starts with one question: what&apos;s costing you the most hours and
+                dollars right now? We fix that first.
+                <br />
+                <br />
+                We&apos;re based in Vancouver, we meet in person when you want to, and we stay on the account
+                after launch instead of handing you off to a support queue.
+              </>
+            }
+          />
+        </Section>
 
-      <div className="divhr" />
+        <Divider />
 
-      <section id="founders">
-        <div className="wrap">
-          <div className="sl reveal sl-c tac">The Founders</div>
-          <h2 className="st reveal d1 tac">Who&apos;s Behind<br /><span className="a">The Build.</span></h2>
+        <Section id="founders">
+          <SectionHeader
+            center
+            eyebrow="The Founders"
+            title={<>Who&apos;s Behind<br /><span className="a">The Build.</span></>}
+          />
           <div className="founders">
             <div className="founder-card r rd1">
               <div className="founder-photo">
-                <img src="/leone.png" alt="Leone Jiwani, co-founder of Pacific Edge AI" loading="lazy" width={124} height={124} />
+                <Image src="/leone.png" alt="Leone Jiwani, co-founder of Pacific Edge AI" loading="lazy" width={124} height={124} />
               </div>
               <div className="founder-info">
                 <div className="founder-name">Leone Jiwani <span className="founder-role">Co-Founder</span></div>
@@ -57,7 +59,7 @@ export default function AboutPage() {
             </div>
             <div className="founder-card r rd2">
               <div className="founder-photo">
-                <img src="/sam.jpg" alt="Sam Rezaei, co-founder of Pacific Edge AI" loading="lazy" width={124} height={124} />
+                <Image src="/sam.jpg" alt="Sam Rezaei, co-founder of Pacific Edge AI" loading="lazy" width={124} height={124} />
               </div>
               <div className="founder-info">
                 <div className="founder-name">Sam Rezaei <span className="founder-role">Co-Founder</span></div>
@@ -65,17 +67,8 @@ export default function AboutPage() {
               </div>
             </div>
           </div>
-        </div>
-      </section>
-
-      <section className="icta">
-        <div className="ihero-inner" style={{ margin: "0 auto" }}>
-          <div className="sl reveal sl-c" style={{ justifyContent: "center" }}>No-Risk Start</div>
-          <h2 className="icta-title reveal d1">One Month<br /><span className="a">On Us.</span></h2>
-          <p className="icta-desc reveal d2">Start with a free 15-minute call. If Janice isn&apos;t the right fit after the first month, cancel at no cost.</p>
-          <a href="https://cal.com/pacificedge" target="_blank" rel="noopener" className="btn-mint reveal d2">Book a Free 15-Min Demo</a>
-        </div>
-      </section>
+        </Section>
+      </div>
     </SiteShell>
   )
 }

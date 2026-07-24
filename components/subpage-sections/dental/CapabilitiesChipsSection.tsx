@@ -1,16 +1,11 @@
 import type { ReactNode } from "react"
-import { Section, SectionHeader } from "@/components/ui/sections"
+import { ChipsSection, type Capability } from "../ChipsSection"
 
 /**
- * "Everything She Handles" capability-chip grid (dental only). Chips reuse
- * the pe-chip system in styles/components.css, with reveal delays cycling
- * d1-d4 across the grid.
+ * "Everything She Handles" capability-chip grid, the dental preset of the
+ * generic ChipsSection (kept as a thin wrapper so /dental is unchanged).
  */
-export interface Capability {
-  icon: ReactNode
-  label: string
-  soon?: boolean
-}
+export type { Capability }
 
 interface CapabilitiesChipsSectionProps {
   title: ReactNode
@@ -19,18 +14,5 @@ interface CapabilitiesChipsSectionProps {
 }
 
 export function CapabilitiesChipsSection({ title, lead, capabilities }: CapabilitiesChipsSectionProps) {
-  return (
-    <Section tight>
-      <SectionHeader center eyebrow="Everything She Handles" title={title} lead={lead} />
-      <div className="pe-chips">
-        {capabilities.map(({ icon, label, soon }, i) => (
-          <span key={label} className={`pe-chip reveal d${(i % 4) + 1}`}>
-            {icon}
-            {label}
-            {soon && <span className="pe-chip-soon">SOON</span>}
-          </span>
-        ))}
-      </div>
-    </Section>
-  )
+  return <ChipsSection eyebrow="Everything She Handles" title={title} lead={lead} chips={capabilities} />
 }

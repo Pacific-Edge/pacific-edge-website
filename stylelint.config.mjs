@@ -46,7 +46,7 @@ export default {
     { files: ["styles/auth.css"], rules: { "color-no-hex": null, "function-disallowed-list": null } },
     { files: ["styles/dashboard.css"], rules: { "color-no-hex": null, "function-disallowed-list": null } },
     // TODO(phase-2): residual mint-crosshatch / white-alpha rgba (hex already tokenized in Phase 1).
-    { files: ["styles/pages.css", "styles/dental.css"], rules: { "function-disallowed-list": null } },
+    { files: ["styles/dental.css"], rules: { "function-disallowed-list": null } },
     // TODO(phase-2): nav-panel shadow/background rgba at chrome.css:45-46 (§11.4).
     { files: ["components/site/chrome.css"], rules: { "function-disallowed-list": null } },
   ],

@@ -1,9 +1,10 @@
 import type { Metadata } from "next"
+import { Star } from "lucide-react"
 import SiteShell from "@/components/site/SiteShell"
 import { Divider } from "@/components/ui/sections"
 import {
   HeroSection,
-  WhatJaniceHandlesSection,
+  AlternatingTextSection,
   WhatItLooksLikeSection,
   MetricsBandSection,
   FaqSection,
@@ -49,7 +50,7 @@ export default function RestaurantsPage() {
 
         <Divider />
 
-        <WhatJaniceHandlesSection
+        <AlternatingTextSection
           title={<>What <span className="a">Janice Handles.</span></>}
           lead="Missed calls, no-shows, and unanswered reviews cost restaurants covers every week. Janice, your AI employee, turns them into booked, confirmed tables."
           rows={[
@@ -103,8 +104,8 @@ export default function RestaurantsPage() {
                 <MockFeedCard
                   headTitle="Reviews · Auto-drafted"
                   rows={[
-                    { avatar: "G", name: "Sarah M.", sub: "★★★★★", stars: true, pill: { label: "Reply sent", tone: "ok" } },
-                    { avatar: "★", name: "Dishan P.", sub: "★★★☆☆", stars: true, pill: { label: "Flagged for you", tone: "warn" } },
+                    { avatar: "G", name: "Sarah M.", sub: <><Star size={11} fill="currentColor" strokeWidth={0} /><Star size={11} fill="currentColor" strokeWidth={0} /><Star size={11} fill="currentColor" strokeWidth={0} /><Star size={11} fill="currentColor" strokeWidth={0} /><Star size={11} fill="currentColor" strokeWidth={0} /></>, stars: true, pill: { label: "Reply sent", tone: "ok" } },
+                    { avatar: <Star size={15} strokeWidth={2} />, name: "Dishan P.", sub: <><Star size={11} fill="currentColor" strokeWidth={0} /><Star size={11} fill="currentColor" strokeWidth={0} /><Star size={11} fill="currentColor" strokeWidth={0} /><Star size={11} strokeWidth={1.5} /><Star size={11} strokeWidth={1.5} /></>, stars: true, pill: { label: "Flagged for you", tone: "warn" } },
                   ]}
                 />
               ),

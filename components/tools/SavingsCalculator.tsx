@@ -1,8 +1,8 @@
 "use client"
 
 import { useEffect, useRef, useState } from "react"
-import Link from "next/link"
 import { SAVINGS_CALCULATORS, type CalcIndustry } from "@/lib/savings-calculators"
+import { GetStartedSection } from "@/components/subpage-sections"
 import "@/styles/savings-calculator.css"
 
 const CAL = "https://cal.com/pacificedge"
@@ -258,29 +258,13 @@ export default function SavingsCalculator({ industry }: { industry: CalcIndustry
         </div>
       </div>
 
-      <section className="icta">
-        <div className="ihero-inner" style={{ margin: "0 auto" }}>
-          <div className="sl reveal sl-c" style={{ justifyContent: "center" }}>
-            See It For Real
-          </div>
-          <h2 className="icta-title reveal d1">
-            {cfg.icta.line1} <br />
-            <span className="a">{cfg.icta.line2}</span>
-          </h2>
-          <p className="icta-desc reveal d2">{cfg.icta.desc}</p>
-          <a href={CAL} target="_blank" rel="noopener" className="btn-mint reveal d2">
-            Book a Free 15-Min Demo
-          </a>
-          <div className="xlinks reveal d3">
-            {cfg.icta.crossLinks.map((x) => (
-              <Link key={x.href} href={x.href} className="xlink">
-                <span>{x.icon}</span>
-                {x.label}
-              </Link>
-            ))}
-          </div>
-        </div>
-      </section>
+      <GetStartedSection
+        eyebrow="See It For Real"
+        title={<>{cfg.icta.line1} <br /><span className="a">{cfg.icta.line2}</span></>}
+        desc={cfg.icta.desc}
+        action={<a href={CAL} target="_blank" rel="noopener" className="btn-mint">Book a Free 15-Min Demo</a>}
+        crossLinks={cfg.icta.crossLinks.map((x) => ({ href: x.href, icon: x.icon, label: x.label }))}
+      />
     </>
   )
 }

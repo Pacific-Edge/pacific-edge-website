@@ -2,13 +2,15 @@
  * Barrel for the subpage section layer: full page sections composed from the
  * components/ui/sections primitives. Every industry subpage is built from
  * these in the template order:
- *   HeroSection -> Divider -> WhatJaniceHandlesSection -> Divider ->
+ *   HeroSection -> Divider -> AlternatingTextSection -> Divider ->
  *   WhatItLooksLikeSection -> MetricsBandSection -> FaqSection -> GetStartedSection
  * with LiveDashboardSection (dental + trades) and the dental/* sections as
  * the only page-specific extras.
  */
 export { HeroSection, type HeroCta } from "./HeroSection"
-export { WhatJaniceHandlesSection, type WhatRow } from "./WhatJaniceHandlesSection"
+export { AlternatingTextSection, type WhatRow } from "./AlternatingTextSection"
+export { ChipsSection } from "./ChipsSection"
+export { ProcessStepsSection, type ProcessStep } from "./ProcessStepsSection"
 export { WhatItLooksLikeSection } from "./WhatItLooksLikeSection"
 export { MetricsBandSection } from "./MetricsBandSection"
 export { FaqSection } from "./FaqSection"

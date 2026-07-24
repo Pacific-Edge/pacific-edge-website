@@ -10,11 +10,13 @@ import { revealCls } from "@/lib/reveal"
  * plus `.btn-dark`/EmbedLink secondaries (never two mints; §4.1).
  */
 export interface HeroStat {
-  value: string
+  value: ReactNode
   label: string
 }
 
 interface HeroProps {
+  /** Decorative element rendered above the eyebrow (e.g. an avatar mark). */
+  pre?: ReactNode
   eyebrow?: ReactNode
   title: ReactNode
   sub?: ReactNode
@@ -25,10 +27,11 @@ interface HeroProps {
   trust?: ReactNode
 }
 
-export function Hero({ eyebrow, title, sub, pain, actions, sublinks, stats, trust }: HeroProps) {
+export function Hero({ pre, eyebrow, title, sub, pain, actions, sublinks, stats, trust }: HeroProps) {
   return (
     <header className="pe-hero">
       <div className="pe-hero-inner">
+        {pre && <div className={revealCls()}>{pre}</div>}
         {eyebrow && <div className={cn("pe-eyebrow", "pe-eyebrow--center", revealCls())}>{eyebrow}</div>}
         <h1 className={revealCls(1)}>{title}</h1>
         {sub && <p className={cn("pe-hero-sub", revealCls(2))}>{sub}</p>}

@@ -74,11 +74,11 @@ nav.hide { transform: translateY(-100%); }
 .nav-links-cta-mobile { display: none; }
 
 @media (max-width: 960px) {
-  nav { padding: 0 18px; height: 64px; }
+  nav, nav.hide { padding: 0 18px; height: 64px; background: #fff; backdrop-filter: none; -webkit-backdrop-filter: none; transform: none !important; }
   .nav-burger { display: block; order: 3; }
   .nav-actions { order: 2; gap: 0; }
   .nav-login { display: none; }
-  .nav-cta { padding: 11px 16px; font-size: 10px; letter-spacing: 0.5px; min-height: 38px; display: inline-flex; align-items: center; }
+  .nav-cta { display: none; }
   .nav-logo { order: 1; }
   .nav-logo .nav-text, .nav-logo { font-size: 15px; }
   .nav-slash i { height: 12px; }
@@ -88,9 +88,7 @@ nav.hide { transform: translateY(-100%); }
     display: flex;
     position: fixed; top: 64px; left: 0; right: 0;
     flex-direction: column;
-    background: rgba(255, 255, 255, 0.98);
-    backdrop-filter: blur(28px);
-    -webkit-backdrop-filter: blur(28px);
+    background: #fff;
     padding: 24px 24px 32px;
     gap: 0; margin: 0;
     border-bottom: 1px solid var(--border);
@@ -100,6 +98,8 @@ nav.hide { transform: translateY(-100%); }
     transition: transform .4s cubic-bezier(.16, 1, .3, 1), opacity .3s ease, visibility .4s;
     max-height: calc(100vh - 64px);
     overflow-y: auto;
+    overscroll-behavior: contain;
+    -webkit-overflow-scrolling: touch;
     list-style: none;
   }
   .nav-links.open { transform: translateY(0); opacity: 1; visibility: visible; }
@@ -109,6 +109,7 @@ nav.hide { transform: translateY(-100%); }
   .nav-links li:last-child a, .nav-links-cta-mobile a { border-bottom: none !important; }
   .nav-links-cta-mobile { display: block; margin-top: 8px; }
   .nav-links-cta-mobile a { padding: 14px 20px !important; font-size: 13px !important; text-align: center; justify-content: center; color: var(--on-accent) !important; }
+  .nav-links-cta-mobile-demo { margin-top: 0; margin-bottom: 20px; }
   body.menu-open { overflow: hidden; }
 
   /* Mega-dropdown → inline indented list inside the drawer */

@@ -148,6 +148,22 @@ export const SCRIPTED_CHATS: Record<string, ScriptedChatScript> = {
       },
     ],
   },
+  "dental-single-location": {
+    industry: "dental-single-location",
+    businessName: "Cedar Dental",
+    headerSub: "Front desk · auto-reply",
+    bubbles: [
+      { type: "timestamp", text: "Missed call · 7:42 PM" },
+      { type: "typing", durationMs: 1100 },
+      {
+        type: "assistant",
+        text: "Hi! It's Janice from Cedar Dental, want me to book you an exam?",
+        delayMs: 200,
+      },
+      { type: "customer", text: "Yes please, tomorrow if you can", delayMs: 800 },
+      { type: "badge", text: "Booked · Tue 10:40 AM", delayMs: 650 },
+    ],
+  },
   "front-desk-demo": {
     industry: "front-desk-demo",
     businessName: "Eaglewood Dental",

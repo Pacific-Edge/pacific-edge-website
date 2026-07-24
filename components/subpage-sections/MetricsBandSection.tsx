@@ -7,7 +7,7 @@ import { StatBand, type StatItem } from "@/components/ui/sections"
  */
 interface MetricsBandSectionProps {
   stats: StatItem[]
-  note: ReactNode
+  note?: ReactNode
 }
 
 export function MetricsBandSection({ stats, note }: MetricsBandSectionProps) {

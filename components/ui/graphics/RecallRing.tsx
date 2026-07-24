@@ -1,4 +1,5 @@
 import type { ReactNode } from "react"
+import { CheckMark } from "@/components/ui/icons"
 
 /**
  * Recall progress signal panel: circular done/total ring plus a list of
@@ -42,7 +43,7 @@ export function RecallRing({ liveLabel, done, total, caption, rows }: RecallRing
       </div>
       <div className="rec-rows">
         {rows.map((row, i) => (
-          <div key={i} className="rec-row"><span className="ck">✓</span>{row.label}<span className="pill">{row.pill}</span></div>
+          <div key={i} className="rec-row"><span className="ck"><CheckMark size={12} strokeWidth={3} /></span>{row.label}<span className="pill">{row.pill}</span></div>
         ))}
       </div>
     </div>

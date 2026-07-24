@@ -9,41 +9,40 @@
 <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
 <style>
 :root{--radius:4px;
-  --bg:#f4f1ea; --bg2:#ece7db;
-  --card:#ffffff;
+  --bg:#ffffff; --bg2:#f6f7f8;
+  --card:rgba(0,0,0,0.04);
   --card-strong:#ffffff;
-  --border:rgba(28,25,20,0.10);
-  --border-a:rgba(74,240,192,0.30);
-  --text:#1e1b16; --text2:rgba(30,27,22,0.55); --text3:rgba(30,27,22,0.32);
-  --accent:#4af0c0;--accent-ink:#0a7d5d;--accent-bright:#0a9d76;--on-accent:#04130f; --accent2:#c75d3c;
+  --border:rgba(0,0,0,0.10);
+  --border-a:rgba(74,240,192,0.28);
+  --text:#0a0a0a; --text2:rgba(10,10,10,0.62); --text3:rgba(10,10,10,0.42);
+  --accent:#4af0c0;--accent-ink:#0a7d5d;--accent-bright:#0a9d76;--on-accent:#04130f;
   --warn:#c7791f; --error:#cf4444; --gold:#b8860b;
   --mono:'JetBrains Mono',ui-monospace,monospace;
   --body:'Outfit',system-ui,sans-serif;
 }
 *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
-html,body{background:#f4f1ea;color:var(--text);font-family:var(--body);-webkit-font-smoothing:antialiased;min-height:100vh;overflow-x:hidden;width:100%;max-width:100vw}
+html,body{background:var(--bg);color:var(--text);font-family:var(--body);-webkit-font-smoothing:antialiased;min-height:100vh;overflow-x:hidden;width:100%;max-width:100vw}
 body{
   padding:48px 24px;
   display:flex;align-items:center;justify-content:center;
   background:
     radial-gradient(circle at 15% 10%, rgba(74,240,192,0.08), transparent 40%),
-    radial-gradient(circle at 85% 90%, rgba(199,93,60,0.06), transparent 45%),
-    #f4f1ea;
+    var(--bg);
 }
 
 .dash{
   width:100%;max-width:1240px;
-  background:linear-gradient(160deg,rgba(243,239,230,0.85),rgba(244,241,234,0.95));
+  background:linear-gradient(160deg,rgba(255,255,255,0.85),var(--bg));
   border:1px solid var(--border);
   border-radius:var(--radius);
   overflow:hidden;
   position:relative;
-  box-shadow:0 40px 100px -40px rgba(28,25,20,0.22), 0 0 0 1px rgba(28,25,20,0.05);
+  box-shadow:0 40px 100px -40px rgba(10,10,10,0.22), 0 0 0 1px rgba(10,10,10,0.05);
   backdrop-filter:blur(20px);
 }
 .dash::before{
   content:'';position:absolute;inset:0;
-  background-image:radial-gradient(circle, rgba(28,25,20,0.05) 1px, transparent 1px);
+  background-image:radial-gradient(circle, rgba(10,10,10,0.05) 1px, transparent 1px);
   background-size:24px 24px;
   opacity:0.5;pointer-events:none;
 }
@@ -65,7 +64,7 @@ body{
 .dh-mark i:nth-child(3){opacity:.45}
 .dh-brand-text{font-weight:700;font-size:14px;letter-spacing:-0.2px}
 .dh-brand-text .ai{color:var(--accent-ink)}
-.dh-tabs{display:flex;gap:4px;background:rgba(28,25,20,0.02);border:1px solid var(--border);border-radius:var(--radius);padding:4px}
+.dh-tabs{display:flex;gap:4px;background:rgba(10,10,10,0.02);border:1px solid var(--border);border-radius:var(--radius);padding:4px}
 .dh-tabs button{background:transparent;border:none;color:var(--text2);font-family:var(--body);font-size:12px;font-weight:500;letter-spacing:0.2px;padding:8px 14px;border-radius:var(--radius);cursor:pointer;transition:all .2s}
 .dh-tabs button:hover{color:var(--text)}
 .dh-tabs button.active{background:rgba(74,240,192,0.10);color:var(--accent-ink);box-shadow:inset 0 0 0 1px rgba(74,240,192,0.18)}
@@ -110,15 +109,15 @@ body{
 
 /* Map card */
 .map-card{padding-bottom:0}
-.map-stage{position:relative;border-radius:var(--radius);overflow:hidden;height:230px;background:#ece7db;border:1px solid var(--border);margin:0 -4px -4px}
+.map-stage{position:relative;border-radius:var(--radius);overflow:hidden;height:230px;background:#f6f7f8;border:1px solid var(--border);margin:0 -4px -4px}
 .map-svg{position:absolute;inset:0;width:100%;height:100%;opacity:0.7}
 .pin{position:absolute;width:10px;height:10px;border-radius:50%;background:var(--accent);box-shadow:0 0 0 4px rgba(74,240,192,0.15),0 0 12px rgba(74,240,192,0.6);transform:translate(-50%,-50%)}
 .pin.alt{background:var(--warn);box-shadow:0 0 0 4px rgba(199,121,31,0.18),0 0 12px rgba(199,121,31,0.5)}
 .pin.dim{width:6px;height:6px;background:rgba(74,240,192,0.6);box-shadow:0 0 0 3px rgba(74,240,192,0.08)}
-.pin-label{position:absolute;top:12px;left:50%;transform:translateX(-50%);font-family:var(--mono);font-size:9px;color:var(--text);background:rgba(244,241,234,0.85);padding:3px 7px;border-radius:var(--radius);border:1px solid var(--border);white-space:nowrap;letter-spacing:0.5px}
-.map-overlay-stats{position:absolute;left:14px;bottom:14px;display:flex;gap:18px;font-family:var(--mono);font-size:10px;color:var(--text2);letter-spacing:1px;z-index:2;background:rgba(244,241,234,0.6);backdrop-filter:blur(8px);padding:8px 14px;border-radius:var(--radius);border:1px solid var(--border)}
+.pin-label{position:absolute;top:12px;left:50%;transform:translateX(-50%);font-family:var(--mono);font-size:9px;color:var(--text);background:rgba(255,255,255,0.85);padding:3px 7px;border-radius:var(--radius);border:1px solid var(--border);white-space:nowrap;letter-spacing:0.5px}
+.map-overlay-stats{position:absolute;left:14px;bottom:14px;display:flex;gap:18px;font-family:var(--mono);font-size:10px;color:var(--text2);letter-spacing:1px;z-index:2;background:rgba(255,255,255,0.6);backdrop-filter:blur(8px);padding:8px 14px;border-radius:var(--radius);border:1px solid var(--border)}
 .map-overlay-stats strong{color:var(--text);font-weight:700}
-.map-corner-tag{position:absolute;top:12px;right:12px;font-family:var(--mono);font-size:9px;color:var(--text3);letter-spacing:1px;background:rgba(244,241,234,0.8);padding:5px 9px;border-radius:var(--radius);border:1px solid var(--border);z-index:2}
+.map-corner-tag{position:absolute;top:12px;right:12px;font-family:var(--mono);font-size:9px;color:var(--text3);letter-spacing:1px;background:rgba(255,255,255,0.8);padding:5px 9px;border-radius:var(--radius);border:1px solid var(--border);z-index:2}
 
 /* CUSTOMER CARDS */
 .cust-row{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-bottom:18px}
@@ -129,11 +128,11 @@ body{
 .cust-time{font-family:var(--mono);font-size:9px;color:var(--text3);letter-spacing:1px;text-transform:uppercase}
 .cust-arrow{color:var(--text3);font-size:14px;transform:rotate(-45deg);transition:transform .3s,color .3s}
 .cust:hover .cust-arrow{color:var(--accent-ink);transform:rotate(0deg)}
-.cust-viz{position:relative;height:90px;background:#ece7db;border:1px solid var(--border);border-radius:var(--radius);margin-bottom:14px;display:flex;align-items:center;justify-content:center;overflow:hidden}
+.cust-viz{position:relative;height:90px;background:#f6f7f8;border:1px solid var(--border);border-radius:var(--radius);margin-bottom:14px;display:flex;align-items:center;justify-content:center;overflow:hidden}
 .phone-wire{width:36px;height:60px;position:relative;opacity:0.85}
 .phone-wire svg{width:100%;height:100%}
-.cust-viz-mini-map{position:absolute;left:8px;bottom:8px;width:90px;height:48px;border-radius:var(--radius);border:1px solid var(--border);background:#ece7db;overflow:hidden}
-.cust-viz-mini-map::before{content:'';position:absolute;inset:0;background-image:linear-gradient(rgba(28,25,20,0.04) 1px,transparent 1px),linear-gradient(90deg,rgba(28,25,20,0.04) 1px,transparent 1px);background-size:8px 8px}
+.cust-viz-mini-map{position:absolute;left:8px;bottom:8px;width:90px;height:48px;border-radius:var(--radius);border:1px solid var(--border);background:#f6f7f8;overflow:hidden}
+.cust-viz-mini-map::before{content:'';position:absolute;inset:0;background-image:linear-gradient(rgba(10,10,10,0.04) 1px,transparent 1px),linear-gradient(90deg,rgba(10,10,10,0.04) 1px,transparent 1px);background-size:8px 8px}
 .cust-viz-mini-map svg{position:absolute;inset:0;width:100%;height:100%}
 .cust-viz-mini-map .pin{width:6px;height:6px;box-shadow:0 0 0 2px rgba(74,240,192,0.15),0 0 6px rgba(74,240,192,0.5)}
 .cust-status-tag{position:absolute;top:8px;right:8px;font-family:var(--mono);font-size:9px;letter-spacing:1px;color:var(--accent-ink);background:rgba(74,240,192,0.08);padding:4px 8px;border-radius:var(--radius);border:1px solid rgba(74,240,192,0.18)}
@@ -162,13 +161,13 @@ body{
 .spark-wrap[data-hoverable]{cursor:crosshair}
 .spark-line{stroke:var(--accent);stroke-width:1.5;fill:none;stroke-linejoin:round;stroke-linecap:round}
 .spark-fill{fill:url(#sparkGrad);opacity:0.4}
-.spark-target{stroke:rgba(28,25,20,0.15);stroke-width:1;stroke-dasharray:3 3;fill:none}
-.spark-marker{fill:var(--accent);stroke:#f4f1ea;stroke-width:2;transition:opacity .2s}
+.spark-target{stroke:rgba(10,10,10,0.15);stroke-width:1;stroke-dasharray:3 3;fill:none}
+.spark-marker{fill:var(--accent);stroke:var(--bg);stroke-width:2;transition:opacity .2s}
 .spark-marker-glow{fill:rgba(74,240,192,0.3);filter:blur(3px);transition:opacity .2s}
 
 /* Hover guide */
 .spark-guide{stroke:rgba(74,240,192,0.35);stroke-width:1;stroke-dasharray:2 3;opacity:0;transition:opacity .18s ease;pointer-events:none}
-.spark-hover-dot{fill:var(--accent);stroke:#f4f1ea;stroke-width:2;opacity:0;transition:opacity .18s ease;pointer-events:none}
+.spark-hover-dot{fill:var(--accent);stroke:var(--bg);stroke-width:2;opacity:0;transition:opacity .18s ease;pointer-events:none}
 .spark-hover-glow{fill:rgba(74,240,192,0.55);filter:blur(4px);opacity:0;transition:opacity .18s ease;pointer-events:none}
 .spark-wrap.hovering .spark-guide,
 .spark-wrap.hovering .spark-hover-dot,
@@ -179,13 +178,13 @@ body{
 /* Floating tooltip */
 .spark-tooltip{
   position:absolute;
-  background:rgba(244,241,234,0.94);
+  background:rgba(255,255,255,0.94);
   border:1px solid rgba(74,240,192,0.25);
   padding:8px 12px;
   border-radius:var(--radius);
   pointer-events:none;
   white-space:nowrap;
-  box-shadow:0 8px 28px rgba(0,0,0,0.55), inset 0 1px 0 rgba(28,25,20,0.04);
+  box-shadow:0 8px 28px rgba(0,0,0,0.55), inset 0 1px 0 rgba(10,10,10,0.04);
   backdrop-filter:blur(10px);
   -webkit-backdrop-filter:blur(10px);
   z-index:10;
@@ -199,7 +198,7 @@ body{
   content:'';position:absolute;
   bottom:-4px;left:50%;
   width:7px;height:7px;
-  background:rgba(244,241,234,0.94);
+  background:rgba(255,255,255,0.94);
   border-right:1px solid rgba(74,240,192,0.25);
   border-bottom:1px solid rgba(74,240,192,0.25);
   transform:translateX(-50%) rotate(45deg);
@@ -231,7 +230,7 @@ body{
 .rating-dist{display:flex;flex-direction:column;gap:10px}
 .rating-row{display:flex;align-items:center;gap:10px;font-size:11px}
 .rating-stars{font-family:var(--mono);font-size:11px;color:var(--gold);width:46px}
-.rating-bar{flex:1;height:8px;background:rgba(28,25,20,0.04);border-radius:var(--radius);overflow:hidden}
+.rating-bar{flex:1;height:8px;background:rgba(10,10,10,0.04);border-radius:var(--radius);overflow:hidden}
 .rating-fill{height:100%;background:linear-gradient(90deg,rgba(184,134,11,0.6),rgba(184,134,11,0.9));border-radius:var(--radius)}
 .rating-fill.dim{background:linear-gradient(90deg,rgba(199,121,31,0.3),rgba(199,121,31,0.5))}
 .rating-fill.low{background:linear-gradient(90deg,rgba(207,68,68,0.3),rgba(207,68,68,0.5))}
@@ -239,7 +238,7 @@ body{
 
 /* WORKFLOW STATUS GRID */
 .wf-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:10px}
-.wf-row{display:flex;align-items:center;gap:10px;padding:10px 12px;background:rgba(28,25,20,0.02);border:1px solid var(--border);border-radius:var(--radius);font-size:12px}
+.wf-row{display:flex;align-items:center;gap:10px;padding:10px 12px;background:rgba(10,10,10,0.02);border:1px solid var(--border);border-radius:var(--radius);font-size:12px}
 .wf-dot{width:8px;height:8px;border-radius:50%;background:var(--accent);box-shadow:0 0 6px rgba(74,240,192,0.4);flex-shrink:0}
 .wf-dot.paused{background:var(--text3);box-shadow:none}
 .wf-name{flex:1;color:var(--text);font-weight:500}
@@ -247,7 +246,7 @@ body{
 
 /* FUNNEL */
 .funnel{display:flex;flex-direction:column;gap:8px;padding:10px 0}
-.funnel-step{position:relative;padding:14px 18px;border:1px solid var(--border);border-radius:var(--radius);background:rgba(28,25,20,0.02);display:flex;justify-content:space-between;align-items:center}
+.funnel-step{position:relative;padding:14px 18px;border:1px solid var(--border);border-radius:var(--radius);background:rgba(10,10,10,0.02);display:flex;justify-content:space-between;align-items:center}
 .funnel-step:nth-child(1){width:100%}
 .funnel-step:nth-child(2){width:75%;align-self:center}
 .funnel-step:nth-child(3){width:50%;align-self:center;border-color:var(--border-a);background:rgba(74,240,192,0.05)}
@@ -520,10 +519,10 @@ body{
           <div class="map-stage">
             <span class="map-corner-tag">VAN · 49.28°N</span>
             <svg class="map-svg" viewBox="0 0 700 230" preserveAspectRatio="xMidYMid slice">
-              <defs><linearGradient id="terrainGrad" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#e3dccc"/><stop offset="100%" stop-color="#ece7db"/></linearGradient></defs>
+              <defs><linearGradient id="terrainGrad" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#ffffff"/><stop offset="100%" stop-color="#f6f7f8"/></linearGradient></defs>
               <rect width="700" height="230" fill="url(#terrainGrad)"/>
               <g stroke="rgba(74,240,192,0.07)" fill="none" stroke-width="0.7"><path d="M-20,40 Q 100,30 200,55 T 400,60 T 700,50"/><path d="M-20,90 Q 120,80 240,105 T 470,95 T 720,110"/><path d="M-20,150 Q 130,140 260,160 T 480,155 T 720,170"/><path d="M-20,200 Q 140,195 270,215 T 490,210 T 720,220"/></g>
-              <g stroke="rgba(28,25,20,0.04)" stroke-width="0.5" fill="none"><line x1="100" y1="0" x2="100" y2="230"/><line x1="240" y1="0" x2="240" y2="230"/><line x1="380" y1="0" x2="380" y2="230"/><line x1="520" y1="0" x2="520" y2="230"/><line x1="0" y1="60" x2="700" y2="60"/><line x1="0" y1="130" x2="700" y2="130"/></g>
+              <g stroke="rgba(10,10,10,0.04)" stroke-width="0.5" fill="none"><line x1="100" y1="0" x2="100" y2="230"/><line x1="240" y1="0" x2="240" y2="230"/><line x1="380" y1="0" x2="380" y2="230"/><line x1="520" y1="0" x2="520" y2="230"/><line x1="0" y1="60" x2="700" y2="60"/><line x1="0" y1="130" x2="700" y2="130"/></g>
               <path d="M120,180 Q 220,140 340,120 T 540,80" stroke="rgba(74,240,192,0.25)" stroke-width="1" stroke-dasharray="4 4" fill="none"/>
             </svg>
             <div class="pin" style="top:35%;left:48%"><div class="pin-label">Yaletown · live call</div></div>
@@ -567,7 +566,7 @@ body{
             <div class="cust-channels"><span><i class="dot"></i>WEB</span></div>
             <span class="cust-status-tag">CONFIRMED</span>
             <div class="phone-wire"><svg viewBox="0 0 60 60" fill="none" stroke="rgba(74,240,192,0.6)" stroke-width="0.7"><rect x="6" y="10" width="48" height="42" rx="3"/><line x1="6" y1="20" x2="54" y2="20"/><line x1="18" y1="6" x2="18" y2="14" stroke-width="1.2"/><line x1="42" y1="6" x2="42" y2="14" stroke-width="1.2"/><rect x="26" y="32" width="8" height="8" rx="1" fill="rgba(74,240,192,0.7)"/><g stroke="rgba(74,240,192,0.25)" stroke-width="0.4"><line x1="14" y1="28" x2="50" y2="28"/><line x1="14" y1="36" x2="50" y2="36"/><line x1="14" y1="44" x2="50" y2="44"/><line x1="22" y1="22" x2="22" y2="50"/><line x1="30" y1="22" x2="30" y2="50"/><line x1="38" y1="22" x2="38" y2="50"/><line x1="46" y1="22" x2="46" y2="50"/></g></svg></div>
-            <div class="cust-viz-mini-map"><svg viewBox="0 0 90 48"><line x1="0" y1="14" x2="90" y2="14" stroke="rgba(28,25,20,0.06)" stroke-width="0.5"/><line x1="0" y1="28" x2="90" y2="28" stroke="rgba(28,25,20,0.06)" stroke-width="0.5"/><path d="M5,32 L20,32 L20,18 L40,18 L40,28 L70,28 L70,12 L88,12" stroke="rgba(74,240,192,0.4)" fill="none" stroke-width="0.6"/></svg><div class="pin" style="top:25%;left:80%"></div></div>
+            <div class="cust-viz-mini-map"><svg viewBox="0 0 90 48"><line x1="0" y1="14" x2="90" y2="14" stroke="rgba(10,10,10,0.06)" stroke-width="0.5"/><line x1="0" y1="28" x2="90" y2="28" stroke="rgba(10,10,10,0.06)" stroke-width="0.5"/><path d="M5,32 L20,32 L20,18 L40,18 L40,28 L70,28 L70,12 L88,12" stroke="rgba(74,240,192,0.4)" fill="none" stroke-width="0.6"/></svg><div class="pin" style="top:25%;left:80%"></div></div>
           </div>
           <div class="cust-grid"><div><div class="cust-grid-label">Slot</div><div class="cust-grid-val">Sat · 6:30 PM</div></div><div><div class="cust-grid-label">Value</div><div class="cust-grid-val mint">$185</div></div></div>
         </div>
@@ -610,7 +609,7 @@ body{
           <div class="donut-wrap">
             <div class="donut">
               <svg viewBox="0 0 100 100">
-                <circle cx="50" cy="50" r="38" fill="none" stroke="rgba(28,25,20,0.04)" stroke-width="14"/>
+                <circle cx="50" cy="50" r="38" fill="none" stroke="rgba(10,10,10,0.04)" stroke-width="14"/>
                 <circle class="donut-seg seg-1" cx="50" cy="50" r="38" fill="none" stroke="#4af0c0" stroke-width="14" stroke-dasharray="148 240" stroke-dashoffset="0"/>
                 <circle class="donut-seg seg-2" cx="50" cy="50" r="38" fill="none" stroke="rgba(74,240,192,0.55)" stroke-width="14" stroke-dasharray="60 240" stroke-dashoffset="-148"/>
                 <circle class="donut-seg seg-3" cx="50" cy="50" r="38" fill="none" stroke="rgba(199,121,31,0.7)" stroke-width="14" stroke-dasharray="32 240" stroke-dashoffset="-208"/>
@@ -691,12 +690,12 @@ body{
         <div class="card">
           <div class="card-header"><span class="card-label">Live Review Feed</span><span class="card-meta">last 24h</span></div>
           <div style="display:flex;flex-direction:column;gap:10px">
-            <div style="padding:12px;background:rgba(28,25,20,0.02);border:1px solid var(--border);border-radius:var(--radius)">
+            <div style="padding:12px;background:rgba(10,10,10,0.02);border:1px solid var(--border);border-radius:var(--radius)">
               <div style="display:flex;justify-content:space-between;margin-bottom:6px"><span style="color:var(--gold);font-size:12px">★★★★★</span><span class="cust-time">14:18</span></div>
               <div style="font-size:11px;color:var(--text2);line-height:1.5">"Honestly the easiest booking experience I've had. Fast reply, friendly staff..."</div>
               <div style="margin-top:8px;font-family:var(--mono);font-size:9px;color:var(--accent-ink);letter-spacing:1px">DRAFT REPLY READY</div>
             </div>
-            <div style="padding:12px;background:rgba(28,25,20,0.02);border:1px solid var(--border);border-radius:var(--radius)">
+            <div style="padding:12px;background:rgba(10,10,10,0.02);border:1px solid var(--border);border-radius:var(--radius)">
               <div style="display:flex;justify-content:space-between;margin-bottom:6px"><span style="color:var(--gold);font-size:12px">★★★★★</span><span class="cust-time">11:42</span></div>
               <div style="font-size:11px;color:var(--text2);line-height:1.5">"Quick to respond when I missed the first call. Loved it!"</div>
               <div style="margin-top:8px;font-family:var(--mono);font-size:9px;color:var(--accent-ink);letter-spacing:1px">✓ AUTO-REPLIED</div>
@@ -788,7 +787,7 @@ body{
 
         <div class="cust">
           <div class="cust-head"><div><div class="cust-id">Review Drafter</div><div class="cust-time">RUNNING · 31 today</div></div><div class="cust-arrow">↗</div></div>
-          <div class="cust-viz"><span class="cust-status-tag">ACTIVE</span><div class="phone-wire"><svg viewBox="0 0 60 60" fill="none" stroke="rgba(74,240,192,0.6)" stroke-width="0.7"><rect x="10" y="14" width="40" height="32" rx="3"/><line x1="14" y1="22" x2="46" y2="22" stroke-width="0.4"/><line x1="14" y1="28" x2="38" y2="28" stroke-width="0.4"/><line x1="14" y1="34" x2="42" y2="34" stroke-width="0.4"/><circle cx="50" cy="48" r="6" fill="rgba(74,240,192,0.7)"/><path d="M48,48 l1.5,1.5 l3,-3" stroke="#f4f1ea" stroke-width="1"/></svg></div></div>
+          <div class="cust-viz"><span class="cust-status-tag">ACTIVE</span><div class="phone-wire"><svg viewBox="0 0 60 60" fill="none" stroke="rgba(74,240,192,0.6)" stroke-width="0.7"><rect x="10" y="14" width="40" height="32" rx="3"/><line x1="14" y1="22" x2="46" y2="22" stroke-width="0.4"/><line x1="14" y1="28" x2="38" y2="28" stroke-width="0.4"/><line x1="14" y1="34" x2="42" y2="34" stroke-width="0.4"/><circle cx="50" cy="48" r="6" fill="rgba(74,240,192,0.7)"/><path d="M48,48 l1.5,1.5 l3,-3" stroke="var(--bg)" stroke-width="1"/></svg></div></div>
           <div class="cust-grid"><div><div class="cust-grid-label">Trigger</div><div class="cust-grid-val">New review</div></div><div><div class="cust-grid-label">Approval</div><div class="cust-grid-val">1-tap</div></div></div>
         </div>
 
@@ -824,7 +823,7 @@ body{
               <defs><linearGradient id="revGrad" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#4af0c0" stop-opacity="0.4"/><stop offset="100%" stop-color="#4af0c0" stop-opacity="0"/></linearGradient></defs>
               <path fill="url(#revGrad)" opacity="0.5" d="M0,90 L75,82 L150,78 L225,68 L300,72 L375,55 L450,48 L525,38 L600,28 L600,120 L0,120 Z"/>
               <path class="spark-line" d="M0,90 L75,82 L150,78 L225,68 L300,72 L375,55 L450,48 L525,38 L600,28"/>
-              <g fill="var(--accent)" stroke="#f4f1ea" stroke-width="2">
+              <g fill="var(--accent)" stroke="var(--bg)" stroke-width="2">
                 <circle cx="0" cy="90" r="3"/><circle cx="75" cy="82" r="3"/><circle cx="150" cy="78" r="3"/><circle cx="225" cy="68" r="3"/>
                 <circle cx="300" cy="72" r="3"/><circle cx="375" cy="55" r="3"/><circle cx="450" cy="48" r="3"/><circle cx="525" cy="38" r="3"/>
               </g>

@@ -18,7 +18,8 @@
 /trades-savings-calculator.html       /trades-savings-calculator       301
 /dental-pricing.html                  /dental-pricing                  301
 /login.html                           /login                           301
-/app.html                             /app                             301
+/app.html                             /dashboard                       301
+/app                                   /dashboard                      301
 
 # Removed pages — send old inbound links somewhere sensible instead of a 404.
 /careers.html                         /about                           301

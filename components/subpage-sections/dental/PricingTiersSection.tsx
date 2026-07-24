@@ -38,7 +38,6 @@ function TierCheck() {
 export function PricingTiersSection({ eyebrow, title, lead, tiers, flagLabel = "MOST HIRED", ctaHref, ctaLabel, note }: PricingTiersSectionProps) {
   return (
     <section className="dx-tiers dx-sec">
-      <div className="dx-tiers-glow" aria-hidden="true" />
       <div className="wrap">
         <div className="sl reveal sl-c tac" style={{ justifyContent: "center" }}>{eyebrow}</div>
         <h2 className="st reveal d1 tac">{title}</h2>

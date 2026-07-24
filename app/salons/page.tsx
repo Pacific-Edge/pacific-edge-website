@@ -1,13 +1,16 @@
 import type { Metadata } from "next"
 import SiteShell from "@/components/site/SiteShell"
+import DentalInteractive from "@/components/dental/DentalInteractive"
+import "@/styles/dental.css"
 import { Divider } from "@/components/ui/sections"
 import {
   HeroSection,
-  WhatJaniceHandlesSection,
+  AlternatingTextSection,
   WhatItLooksLikeSection,
   MetricsBandSection,
   FaqSection,
   GetStartedSection,
+  PricingTiersSection,
 } from "@/components/subpage-sections"
 import { MockFeedCard } from "@/components/ui/graphics/MockFeedCard"
 import {
@@ -17,8 +20,9 @@ import {
   Star,
   X,
   Scissors,
-  UtensilsCrossed,
-  Stethoscope,
+  Phone,
+  MessagesSquare,
+  CalendarCheck2,
 } from "lucide-react"
 
 const CAL = "https://cal.com/pacificedge"
@@ -28,7 +32,7 @@ const FAQ = [
   { q: "Do I need to change my booking software?", a: "No. It works alongside the booking tools and phone number you already use. There is nothing new for your front desk to learn." },
   { q: "Can it take deposits or enforce a cancellation policy?", a: "Yes. We can build in deposit requests and clear cancellation reminders so late cancels and no-shows stop eating into your day." },
   { q: "How long until it is live?", a: "Usually about a week from our first call. We set it up, you test it, and we fine-tune it before a single client sees it." },
-  { q: "How much does it cost?", a: "It depends on what you automate. The 15-minute discovery call is free, and we scope a flat-priced plan around your chairs and booking volume." },
+  { q: "How much does it cost?", a: "Plans start at $149/mo for voice, $179/mo with texting, and $199/mo with scheduling and reminders included. There is a $100 one-time setup fee, and the 15-minute discovery call is free." },
 ]
 
 export const metadata: Metadata = {
@@ -41,6 +45,7 @@ export const metadata: Metadata = {
 export default function Page() {
   return (
     <SiteShell>
+      <DentalInteractive />
       <div className="pe-sub">
         <HeroSection
           title={
@@ -57,7 +62,61 @@ export default function Page() {
 
         <Divider />
 
-        <WhatJaniceHandlesSection
+        <PricingTiersSection
+          eyebrow="Pricing"
+          title={<>Pricing &amp; <span className="a">Plans.</span></>}
+          lead="Flat-priced, month-to-month. Start with voice, add texting and scheduling as your salon needs it."
+          tiers={[
+            {
+              badge: "VOICE",
+              icon: <Phone size={32} strokeWidth={1.5} />,
+              title: "Covers what you miss",
+              sub: "Janice answers missed and after-hours calls, and takes booking requests for your team to confirm.",
+              features: [
+                "500 call minutes included",
+                <>Missed &amp; after-hours calls answered</>,
+                "Repeat questions handled instantly",
+                "Booking requests taken for your team",
+              ],
+              fromPrice: "$149",
+            },
+            {
+              badge: "VOICE + TEXT",
+              featured: true,
+              icon: <MessagesSquare size={32} strokeWidth={1.5} />,
+              title: "Answers texts too",
+              sub: "Everything in Voice, plus a texting line clients can message directly.",
+              features: [
+                "500 minutes + 200 messages",
+                "Everything in Voice",
+                <>Direct client texting line</>,
+                "Answers from the same knowledge base as the phone",
+              ],
+              fromPrice: "$179",
+            },
+            {
+              badge: "+ SCHEDULING",
+              icon: <CalendarCheck2 size={32} strokeWidth={1.5} />,
+              title: "Books straight into your calendar",
+              sub: "Everything in Voice + Text, plus Janice books appointments and sends reminders at no extra cost.",
+              features: [
+                "500 minutes + 200 messages",
+                "Everything in Voice + Text",
+                <>Books straight into your calendar</>,
+                "Automated appointment reminders",
+              ],
+              fromPrice: "$199",
+            },
+          ]}
+          flagLabel="MOST POPULAR"
+          ctaHref={CAL}
+          ctaLabel={<>Book a Free 15-Min Call <span className="arr">→</span></>}
+          note="$100 one-time setup · extra minutes $0.50 · extra messages $0.10 · 30-day money-back guarantee on the monthly fee"
+        />
+
+        <Divider />
+
+        <AlternatingTextSection
           title={<>Built For A <span className="a">Full Book.</span></>}
           lead="Janice, your AI employee, handles empty chairs, no-shows, and missed messages, turning them into booked appointments, and frees up your front desk's time."
           rows={[
@@ -156,10 +215,6 @@ export default function Page() {
             </>
           }
           bullets={["Free discovery call", "Working prototype in about a week", "Vancouver-based"]}
-          crossLinks={[
-            { href: "/restaurants", icon: <UtensilsCrossed size={14} strokeWidth={2} />, label: "Restaurants" },
-            { href: "/dental", icon: <Stethoscope size={14} strokeWidth={2} />, label: "Dental" },
-          ]}
         />
       </div>
     </SiteShell>

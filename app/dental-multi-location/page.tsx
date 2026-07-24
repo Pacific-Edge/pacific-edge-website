@@ -1,5 +1,10 @@
 import type { Metadata } from "next"
+import { BarChart3, Bot, Building, EyeOff, Globe, MapPin, MessageCircle, Moon, Phone, Stethoscope, Wrench } from "lucide-react"
 import SiteShell from "@/components/site/SiteShell"
+import { FaqSection, GetStartedSection, MetricsBandSection } from "@/components/subpage-sections"
+import { Card, CardGrid, Divider, Hero, Section, SectionHeader } from "@/components/ui/sections"
+import { MockFeedCard } from "@/components/ui/graphics/MockFeedCard"
+import { CheckMark } from "@/components/ui/icons"
 
 export const metadata: Metadata = {
   title: { absolute: "AI for Multi-Location Dental Groups & DSOs | Pacific Edge AI" },
@@ -10,119 +15,151 @@ export const metadata: Metadata = {
 export default function Page() {
   return (
     <SiteShell>
-<header className="dhero">
-<div className="dhero-grid">
-<div className="dh-copy">
-<div className="dh-eyebrow reveal">For Multi-Location Groups &amp; DSOs</div>
-<h1 className="reveal d1">Consistent Answers.<br /><span className="a">At Every Location.</span></h1>
-<p className="dh-sub reveal d2">One consistent front desk across every site, Janice answers, books, and recovers missed calls, with everything rolled into a single dashboard.</p>
-<div className="dh-actions reveal d3">
-<a href="https://cal.com/pacificedge" target="_blank" rel="noopener" className="btn-mint">Book a Free 15-Min Demo</a>
-<a href="#flow" className="btn-dark">See How It Works</a>
-</div>
-<div className="dh-stats reveal d4">
-<div className="dh-stat"><b>1</b><span>Standard, every site</span></div>
-<div className="dh-stat"><b>24/7</b><span>At all locations</span></div>
-<div className="dh-stat"><b>1</b><span>Dashboard for the group</span></div>
-</div>
-</div>
-<div className="dvisual reveal d2">
-<div className="dphone">
-<div className="dnotch"></div>
-<div className="dscreen">
-<div className="dhead"><span className="ddot"></span>Janice &middot; All Locations</div>
-<div className="dloc"><span className="dloc-name"><i>&#128205;</i>Burnaby</span><span className="dloc-stat">Booked &#10003;</span></div>
-<div className="dloc"><span className="dloc-name"><i>&#128205;</i>Kitsilano</span><span className="dloc-stat">Recovered &#10003;</span></div>
-<div className="dloc"><span className="dloc-name"><i>&#128205;</i>Richmond</span><span className="dloc-stat">Rebooked &#10003;</span></div>
-<div className="dbadge"><i>&#10003;</i>One standard &middot; every site</div>
-</div>
-</div>
-</div>
-</div>
-</header>
+      <div className="pe-sub">
+        <Hero
+          eyebrow={<>For Multi-Location Groups &amp; DSOs</>}
+          title={<>Consistent Answers.<br /><span className="a">At Every Location.</span></>}
+          sub="One consistent front desk across every site, Janice answers, books, and recovers missed calls, with everything rolled into a single dashboard."
+          actions={
+            <>
+              <a href="https://cal.com/pacificedge" target="_blank" rel="noopener" className="btn-mint">Book a Free 15-Min Demo</a>
+              <a href="#flow" className="btn-dark">See How It Works</a>
+            </>
+          }
+          stats={[
+            { value: "1", label: "Standard, every site" },
+            { value: "24/7", label: "At all locations" },
+            { value: "1", label: "Dashboard for the group" },
+          ]}
+        />
 
-<div className="divhr"></div>
+        <Divider />
 
-<section id="problem">
-<div className="wrap">
-<div className="sl reveal sl-c tac">The Problem</div>
-<h2 className="st reveal d1 tac">Every Location Is <span className="a">A Different Front Desk.</span></h2>
-<div className="pgrid">
-<div className="pcard reveal d1"><div className="pcard-ico">&#127760;</div><h4>Different at every site</h4><p>One location books every call, another lets them ring to voicemail. Service depends on who picks up.</p></div>
-<div className="pcard reveal d2"><div className="pcard-ico">&#128065;&#65039;</div><h4>No central visibility</h4><p>You can't see which site is dropping calls until the month-end report, after those patients have already booked elsewhere.</p></div>
-<div className="pcard reveal d3"><div className="pcard-ico">&#127769;</div><h4>After-hours gaps, multiplied</h4><p>Each location's nights and weekends go unanswered. Across a multi-site group, that adds up to a lot of missed bookings.</p></div>
-</div>
-</div>
-</section>
+        <Section id="problem">
+          <SectionHeader
+            center
+            eyebrow="The Problem"
+            title={<>Every Location Is <span className="a">A Different Front Desk.</span></>}
+          />
+          <CardGrid cols={3}>
+            <Card reveal={1} icon={<Globe size={22} strokeWidth={1.8} />} title="Different at every site">
+              One location books every call, another lets them ring to voicemail. Service depends on who picks up.
+            </Card>
+            <Card reveal={2} icon={<EyeOff size={22} strokeWidth={1.8} />} title="No central visibility">
+              You can&apos;t see which site is dropping calls until the month-end report, after those patients have already booked elsewhere.
+            </Card>
+            <Card reveal={3} icon={<Moon size={22} strokeWidth={1.8} />} title="After-hours gaps, multiplied">
+              Each location&apos;s nights and weekends go unanswered. Across a multi-site group, that adds up to a lot of missed bookings.
+            </Card>
+          </CardGrid>
+        </Section>
 
-<div className="divhr"></div>
+        <Divider />
 
-<section id="flow">
-<div className="wrap">
-<div className="sl reveal sl-c tac">How It Works</div>
-<h2 className="st reveal d1 tac">The Same Setup, <span className="a">Rolled Out To Every Site.</span></h2>
-<div className="flow">
-<div className="fcard reveal d1"><div className="fnum">1</div><h4>Set one standard</h4><p>We capture how your best location answers and books, and turn it into a single playbook.</p></div>
-<div className="fcard reveal d2"><div className="fnum">2</div><h4>Roll out to every site</h4><p>That standard deploys to each location's existing phone and scheduling, tuned to local details.</p></div>
-<div className="fcard reveal d3"><div className="fnum">3</div><h4>See it all in one place</h4><p>Calls, bookings, and recovered calls roll up into one dashboard, with drill-down by location.</p></div>
-</div>
-</div>
-</section>
+        <Section id="flow">
+          <div className="pe-show">
+            <div className="pe-show-text">
+              <div className="pe-eyebrow reveal">How It Works</div>
+              <h2 className="pe-sechead-title reveal d1">The Same Setup, <span className="a">Rolled Out To Every Site.</span></h2>
+              <div className="pe-show-steps">
+                <div className="pe-show-step reveal d2">
+                  <div className="pe-show-step-n">1</div>
+                  <div>
+                    <h4>Set one standard</h4>
+                    <p>We capture how your best location answers and books, and turn it into a single playbook.</p>
+                  </div>
+                </div>
+                <div className="pe-show-step reveal d3">
+                  <div className="pe-show-step-n">2</div>
+                  <div>
+                    <h4>Roll out to every site</h4>
+                    <p>That standard deploys to each location&apos;s existing phone and scheduling, tuned to local details.</p>
+                  </div>
+                </div>
+                <div className="pe-show-step reveal d4">
+                  <div className="pe-show-step-n">3</div>
+                  <div>
+                    <h4>See it all in one place</h4>
+                    <p>Calls, bookings, and recovered calls roll up into one dashboard, with drill-down by location.</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div className="reveal d2">
+              <MockFeedCard
+                headTitle={<>Janice &middot; All Locations</>}
+                live
+                rows={[
+                  { avatar: <MapPin size={15} strokeWidth={2} />, name: "Burnaby", sub: "", pill: { label: <>Booked <CheckMark size={11} strokeWidth={3} /></>, tone: "ok" } },
+                  { avatar: <MapPin size={15} strokeWidth={2} />, name: "Kitsilano", sub: "", pill: { label: <>Recovered <CheckMark size={11} strokeWidth={3} /></>, tone: "ok" } },
+                  { avatar: <MapPin size={15} strokeWidth={2} />, name: "Richmond", sub: "", pill: { label: <>Rebooked <CheckMark size={11} strokeWidth={3} /></>, tone: "ok" } },
+                ]}
+              />
+              <div className="pe-mock-caption">
+                <span className="mock-pill ok"><CheckMark size={11} strokeWidth={3} /> One standard &middot; every site</span>
+              </div>
+            </div>
+          </div>
+        </Section>
 
-<div className="divhr"></div>
+        <Divider />
 
-<section id="handles">
-<div className="wrap">
-<div className="sl reveal sl-c tac">What You Get</div>
-<h2 className="st reveal d1 tac">The Same Standard, <span className="a">At Every Site.</span></h2>
-<div className="tiles">
-<div className="tile reveal d1"><div className="tile-ico">&#127913;</div><h4>Consistent answers</h4><p>Callers get the same response no matter which location they reach.</p></div>
-<div className="tile reveal d2"><div className="tile-ico">&#128222;</div><h4>Missed-call recovery</h4><p>Missed calls caught &amp; texted back at each location.</p></div>
-<div className="tile reveal d3"><div className="tile-ico">&#128202;</div><h4>Central reporting</h4><p>One dashboard, group roll-up, per-site drill-down.</p></div>
-<div className="tile reveal d4"><div className="tile-ico">&#9874;&#65039;</div><h4>Consistent service</h4><p>Service no longer depends on who's working that day.</p></div>
-</div>
-</div>
-</section>
+        <Section id="capabilities">
+          <SectionHeader
+            center
+            eyebrow="What You Get"
+            title={<>The Same Standard, <span className="a">At Every Site.</span></>}
+          />
+          <CardGrid cols={4}>
+            <Card reveal={1} icon={<MessageCircle size={22} strokeWidth={1.8} />} title="Consistent answers">
+              Callers get the same response no matter which location they reach.
+            </Card>
+            <Card reveal={2} icon={<Phone size={22} strokeWidth={1.8} />} title="Missed-call recovery">
+              Missed calls caught &amp; texted back at each location.
+            </Card>
+            <Card reveal={3} icon={<BarChart3 size={22} strokeWidth={1.8} />} title="Central reporting">
+              One dashboard, group roll-up, per-site drill-down.
+            </Card>
+            <Card reveal={4} icon={<Wrench size={22} strokeWidth={1.8} />} title="Consistent service">
+              Service no longer depends on who&apos;s working that day.
+            </Card>
+          </CardGrid>
+        </Section>
 
-<div className="divhr"></div>
+        <Divider />
 
-<div className="statband">
-<div className="stat-row">
-<div className="stat-cell reveal"><div className="stat-big"><span className="count" data-to="95">0</span><span className="u">%</span></div><div className="stat-lbl">Of calls answered at every site</div></div>
-<div className="stat-cell reveal d1"><div className="stat-big"><span className="count" data-to="30">0</span><span className="u">%</span></div><div className="stat-lbl">Fewer no-shows across the group</div></div>
-<div className="stat-cell reveal d2"><div className="stat-big"><span className="count" data-to="100">0</span><span className="u">+</span></div><div className="stat-lbl">Calls recovered per location monthly</div></div>
-<div className="stat-cell reveal d3"><div className="stat-big"><span className="count" data-to="1">0</span><span className="u"></span></div><div className="stat-lbl">Dashboard for all your locations</div></div>
-</div>
-</div>
+        <MetricsBandSection
+          stats={[
+            { to: 95, unit: "%", label: "Of calls answered at every site" },
+            { to: 30, unit: "%", label: "Fewer no-shows across the group" },
+            { to: 100, unit: "+", label: "Calls recovered per location monthly" },
+            { to: 1, label: "Dashboard for all your locations" },
+          ]}
+        />
 
-<div className="divhr"></div>
+        <Divider />
 
-<section id="faq">
-<div className="wrap">
-<div className="sl reveal sl-c tac">Questions</div>
-<h2 className="st reveal d1 tac">Quick <span className="a">Answers.</span></h2>
-<div className="faq-list">
-<details className="faq-item reveal"><summary>Can you roll one setup out to every location?<span className="faq-ico"></span></summary><div className="faq-body">Yes. We build one standard once, then deploy it to each location, so every site answers, books, and follows up the same way, with room for location-specific details.</div></details>
-<details className="faq-item reveal"><summary>Do we get reporting per location?<span className="faq-ico"></span></summary><div className="faq-body">Yes. One dashboard rolls up across the group with drill-down into each location, so you can compare call volume, bookings, and recovered calls site by site.</div></details>
-<details className="faq-item reveal"><summary>Will it work with the software each office uses?<span className="faq-ico"></span></summary><div className="faq-body">Yes. Janice works alongside the phone numbers and scheduling tools each location already has, so bookings land where each team works.</div></details>
-<details className="faq-item reveal"><summary>How is access and privacy handled across sites?<span className="faq-ico"></span></summary><div className="faq-body">Each location's data stays scoped to that location, with group-level visibility for owners, and sensitive health details stay out of automated messages.</div></details>
-</div>
-</div>
-</section>
+        <FaqSection
+          title={<>Quick <span className="a">Answers.</span></>}
+          items={[
+            { q: "Can you roll one setup out to every location?", a: "Yes. We build one standard once, then deploy it to each location, so every site answers, books, and follows up the same way, with room for location-specific details." },
+            { q: "Do we get reporting per location?", a: "Yes. One dashboard rolls up across the group with drill-down into each location, so you can compare call volume, bookings, and recovered calls site by site." },
+            { q: "Will it work with the software each office uses?", a: "Yes. Janice works alongside the phone numbers and scheduling tools each location already has, so bookings land where each team works." },
+            { q: "How is access and privacy handled across sites?", a: "Each location's data stays scoped to that location, with group-level visibility for owners, and sensitive health details stay out of automated messages." },
+          ]}
+        />
 
-<section className="icta">
-<div className="ihero-inner" style={{ margin: "0 auto" }}>
-<div className="sl reveal sl-c" style={{ justifyContent: "center" }}>Get Started</div>
-<h2 className="icta-title reveal d1">Consistent Answers.<br /><span className="a">At Every Location.</span></h2>
-<p className="icta-desc reveal d2">A free 15-minute call. We'll look at where each location is missing calls and what one standard would recover.</p>
-<a href="https://cal.com/pacificedge" target="_blank" rel="noopener" className="btn-mint reveal d2">Book a Free 15-Min Demo</a>
-<div className="xlinks reveal d3">
-<a href="/dental" className="xlink"><span>&#129463;</span>Dental overview</a>
-<a href="/dental-single-location" className="xlink"><span>&#127973;</span>Single-location clinics</a>
-<a href="/ai-employee" className="xlink"><span>&#129302;</span>Meet Janice</a>
-</div>
-</div>
-</section>
+        <GetStartedSection
+          title={<>Consistent Answers.<br /><span className="a">At Every Location.</span></>}
+          desc="A free 15-minute call. We'll look at where each location is missing calls and what one standard would recover."
+          action={<a href="https://cal.com/pacificedge" target="_blank" rel="noopener" className="btn-mint">Book a Free 15-Min Demo</a>}
+          crossLinks={[
+            { href: "/dental", icon: <Stethoscope size={16} strokeWidth={1.8} />, label: "Dental overview" },
+            { href: "/dental-single-location", icon: <Building size={16} strokeWidth={1.8} />, label: "Single-location clinics" },
+            { href: "/ai-employee", icon: <Bot size={16} strokeWidth={1.8} />, label: "Meet Janice" },
+          ]}
+        />
+      </div>
     </SiteShell>
   )
 }
