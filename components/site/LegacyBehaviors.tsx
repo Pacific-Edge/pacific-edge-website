@@ -115,7 +115,7 @@ export default function LegacyBehaviors() {
     }
 
     // ── FAQ: one <details> open at a time ──
-    const faqItems = Array.from(document.querySelectorAll("details.faq-item")) as HTMLDetailsElement[]
+    const faqItems = Array.from(document.querySelectorAll("details.faq-item, details.pe-faq-item")) as HTMLDetailsElement[]
     faqItems.forEach((item) => {
       const onToggle = () => { if (item.open) faqItems.forEach((o) => { if (o !== item) o.open = false }) }
       item.addEventListener("toggle", onToggle)
