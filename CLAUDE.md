@@ -11,7 +11,7 @@
 ## What this is
 
 Marketing site for **Pacific Edge AI**, a Vancouver done-for-you AI-operations software startup for
-local businesses (dental/clinics, restaurants, salons, trades, retail). Content is a **faithful port
+local businesses (dental/clinics, restaurants, salons, trades). Content is a **faithful port
 of the old site** — same copy, same "Janice" persona, same sections. Do not invent or trim content.
 
 **Stack (fixed — do not change):** Next.js 16 App Router · React 19 · TypeScript · Tailwind CSS v4
@@ -22,12 +22,21 @@ emits `out/`, which Cloudflare Pages serves.
 ## Architecture
 
 - **Marketing pages = React routes** under `app/`: `/` (home), `/dental` `/restaurants` `/salons`
-  `/trades` `/retail` (industries), `/industries` (hub), `/ai-employee` (Janice), `/careers`,
-  `/dental-single-location` `/dental-multi-location`. Routes are **flat, mirroring the old filenames**
-  so URLs are preserved.
-- **Kept-static utility pages live in `public/`** and are served verbatim (not yet ported): the 5
-  `*-savings-calculator.html`, `login.html`, `app.html`, `dashboard-mock.html`. The home page and
-  each industry page embed `dashboard-mock.html` via `<iframe id="idash">`.
+  `/trades` (industries), `/industries` (hub), `/ai-employee` (Janice),
+  `/dental-single-location` `/dental-multi-location`, `/about` `/contact` `/faq` `/how-it-works`
+  `/custom-builds` `/ai-training`, and the ported tools/pricing: `/dental-savings-calculator`
+  `/restaurants-savings-calculator` `/salons-savings-calculator` `/trades-savings-calculator`
+  (one `components/tools/SavingsCalculator.tsx` driven by `lib/savings-calculators.ts`) and
+  `/dental-pricing`. Routes are **flat, mirroring the old filenames** so URLs are preserved.
+  `/retail` and `/careers` were removed (see `public/_redirects` for where they now point).
+- **Auth surface = React routes** `/login` and `/app`, wrapped in `components/auth/AuthShell.tsx`
+  (a minimal shared bar — site Logo + back/logout — NOT the marketing mega-nav). Mock session lives
+  in `lib/clientAuth.ts` (front-end only, `pe_client` key). `/app` still embeds the kept-static
+  `dashboard-mock.html` via `<iframe id="idash" src="/dashboard-mock.html?ind=…">` + a `postMessage`
+  height contract.
+- **Only `dashboard-mock.html` remains a kept-static page in `public/`** (nav-less iframe widget,
+  no route). The home page and each industry page also embed it via `components/ui/DashboardEmbed.tsx`.
+  The old calculators, `login.html`, and `app.html` are now React routes (deleted from `public/`).
 - **`public/industry.css`, `public/industry.js`, `public/smooth-scroll.js`, `public/vendor/lenis.min.js`
   exist only to serve those kept-static pages — do NOT delete them.** (The React app has its own copies
   of the styles/behaviors; see below.)

@@ -57,7 +57,7 @@ export const NAV_CATEGORIES: NavCategory[] = [
     items: [
       { href: "/how-it-works", name: "Process", desc: "How an engagement actually runs" },
       { href: "/contact", name: "Contact", desc: "Reach the team directly" },
-      { href: "/login.html", name: "Client Login", desc: "Access your dashboard" },
+      { href: "/login", name: "Client Login", desc: "Access your dashboard" },
     ],
     footLabel: "Ready to start?",
     footHref: "https://cal.com/pacificedge",

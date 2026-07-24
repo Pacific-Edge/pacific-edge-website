@@ -277,7 +277,7 @@ export default function HomeContent() {
           <a href={CAL} target="_blank" rel="noopener" className="btn-mint">
             Book a Free 15-Min Demo
           </a>
-          <a href="#services" className="btn-dark">
+          <a href="#two-sides" className="btn-dark">
             See What We Do
           </a>
         </div>

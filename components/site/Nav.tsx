@@ -88,13 +88,13 @@ export default function Nav() {
           </li>
         ))}
         <li className="nav-links-cta-mobile">
-          <a href="/login.html" className="btn-mint nav-nolift" style={{ marginTop: 16 }}>
+          <a href="/login" className="btn-mint nav-nolift" style={{ marginTop: 16 }}>
             Client Login
           </a>
         </li>
       </ul>
       <div className="nav-actions">
-        <a href="/login.html" className="nav-login">Client Login</a>
+        <a href="/login" className="nav-login">Client Login</a>
         <a
           href="https://cal.com/pacificedge"
           target="_blank"

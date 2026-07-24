@@ -1,11 +1,27 @@
 # Cloudflare Pages redirects — old .html URLs → clean React routes.
-# Ported marketing pages only; kept-static pages (calculators, login, app,
-# dashboard-mock) keep serving at their .html path and get NO rule here.
-/index.html                     /                          301
-/dental.html                    /dental                    301
-/restaurants.html               /restaurants               301
-/salons.html                    /salons                    301
-/industries.html                /industries                301
-/ai-employee.html               /ai-employee               301
-/dental-single-location.html    /dental-single-location    301
-/dental-multi-location.html     /dental-multi-location     301
+# Only dashboard-mock.html remains a kept-static file (iframe widget, no route)
+# and gets no rule. Everything else below now has a real React route.
+/index.html                           /                                301
+/dental.html                          /dental                          301
+/restaurants.html                     /restaurants                     301
+/salons.html                          /salons                          301
+/trades.html                          /trades                          301
+/industries.html                      /industries                      301
+/ai-employee.html                     /ai-employee                     301
+/dental-single-location.html          /dental-single-location          301
+/dental-multi-location.html           /dental-multi-location           301
+
+# Ported tools / pricing / auth (were kept-static .html, now React routes)
+/dental-savings-calculator.html       /dental-savings-calculator       301
+/restaurants-savings-calculator.html  /restaurants-savings-calculator  301
+/salons-savings-calculator.html       /salons-savings-calculator       301
+/trades-savings-calculator.html       /trades-savings-calculator       301
+/dental-pricing.html                  /dental-pricing                  301
+/login.html                           /login                           301
+/app.html                             /app                             301
+
+# Removed pages — send old inbound links somewhere sensible instead of a 404.
+/careers.html                         /about                           301
+/careers                              /about                           301
+/retail.html                          /industries                      301
+/retail                               /industries                      301

@@ -56,7 +56,7 @@ export default function TradesPage() {
           }
           sub="Janice answers calls when your hands are full, follows up on quotes, and books the job. Built for plumbers, electricians, HVAC, roofers, and contractors across the Lower Mainland."
           primaryCta={{ href: CAL, label: "Book a Free 15-Min Demo" }}
-          secondaryCta={{ href: "/trades-savings-calculator.html", label: "See What Missed Calls Cost You" }}
+          secondaryCta={{ href: "/trades-savings-calculator", label: "See What Missed Calls Cost You" }}
         />
 
         <Divider />
@@ -173,7 +173,7 @@ export default function TradesPage() {
           action={
             <>
               <a href={CAL} target="_blank" rel="noopener" className="btn-mint">Book a Free 15-Min Demo</a>
-              <a href="/trades-savings-calculator.html" className="btn-dark"><BarChart3 size={16} strokeWidth={2} /> See What Your Missed Calls Are Worth <span className="arr">→</span></a>
+              <a href="/trades-savings-calculator" className="btn-dark"><BarChart3 size={16} strokeWidth={2} /> See What Your Missed Calls Are Worth <span className="arr">→</span></a>
             </>
           }
           bullets={["Free discovery call", "Working prototype in about a week", "Vancouver-based"]}

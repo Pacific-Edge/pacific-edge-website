@@ -39,6 +39,12 @@ export default {
     { files: ["styles/legacy.css"], rules: { "color-no-hex": null, "function-disallowed-list": null } },
     // TODO(phase-2): residual white/black hex + rgba in home.css (§11.4).
     { files: ["styles/home.css"], rules: { "color-no-hex": null, "function-disallowed-list": null } },
+    // TODO(phase-2): verbatim-ported static pages (savings calculators, dental pricing, auth
+    // surface, client dashboard) — carry the retired cream palette pending a design-system restyle.
+    { files: ["styles/savings-calculator.css"], rules: { "color-no-hex": null, "function-disallowed-list": null } },
+    { files: ["styles/dental-pricing.css"], rules: { "color-no-hex": null, "function-disallowed-list": null } },
+    { files: ["styles/auth.css"], rules: { "color-no-hex": null, "function-disallowed-list": null } },
+    { files: ["styles/dashboard.css"], rules: { "color-no-hex": null, "function-disallowed-list": null } },
     // TODO(phase-2): residual mint-crosshatch / white-alpha rgba (hex already tokenized in Phase 1).
     { files: ["styles/pages.css", "styles/dental.css"], rules: { "function-disallowed-list": null } },
     // TODO(phase-2): nav-panel shadow/background rgba at chrome.css:45-46 (§11.4).

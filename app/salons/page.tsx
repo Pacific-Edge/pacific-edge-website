@@ -52,7 +52,7 @@ export default function Page() {
           }
           sub="Janice answers booking requests, follows up on no-shows, and reminds clients to rebook. Built for how a busy salon, spa, or clinic runs, from the front desk to the treatment room."
           primaryCta={{ href: CAL, label: "Book a Free 15-Min Demo" }}
-          secondaryCta={{ href: "/salons-savings-calculator.html", label: "See What Empty Chairs Cost You" }}
+          secondaryCta={{ href: "/salons-savings-calculator", label: "See What Empty Chairs Cost You" }}
         />
 
         <Divider />
@@ -152,7 +152,7 @@ export default function Page() {
           action={
             <>
               <a href={CAL} target="_blank" rel="noopener" className="btn-mint">Book a Free 15-Min Demo</a>
-              <a href="/salons-savings-calculator.html" className="btn-dark"><BarChart3 size={16} strokeWidth={2} /> See What Your Empty Chairs Are Worth <span className="arr">→</span></a>
+              <a href="/salons-savings-calculator" className="btn-dark"><BarChart3 size={16} strokeWidth={2} /> See What Your Empty Chairs Are Worth <span className="arr">→</span></a>
             </>
           }
           bullets={["Free discovery call", "Working prototype in about a week", "Vancouver-based"]}

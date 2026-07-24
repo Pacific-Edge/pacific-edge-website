@@ -44,7 +44,7 @@ export default function RestaurantsPage() {
           }
           sub="Janice answers missed reservation calls, replies to Google reviews, and sends reminders that cut no-shows, built for how a Vancouver restaurant runs service."
           primaryCta={{ href: CAL, label: "Book a Free 15-Min Demo" }}
-          secondaryCta={{ href: "/restaurants-savings-calculator.html", label: "See What Empty Tables Cost You" }}
+          secondaryCta={{ href: "/restaurants-savings-calculator", label: "See What Empty Tables Cost You" }}
         />
 
         <Divider />
@@ -143,7 +143,7 @@ export default function RestaurantsPage() {
           action={
             <>
               <a href={CAL} target="_blank" rel="noopener" className="btn-mint">Book a Free 15-Min Demo</a>
-              <a href="/restaurants-savings-calculator.html" className="btn-dark"><BarChart3 size={16} strokeWidth={2} /> See What Your Empty Tables Are Worth <span className="arr">→</span></a>
+              <a href="/restaurants-savings-calculator" className="btn-dark"><BarChart3 size={16} strokeWidth={2} /> See What Your Empty Tables Are Worth <span className="arr">→</span></a>
             </>
           }
           bullets={["Free discovery call", "Working prototype in about a week", "Vancouver-based"]}

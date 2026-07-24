@@ -87,7 +87,7 @@ export default function DentalPage() {
           }
           sub="Janice answers new-patient calls, confirms appointments, and books recalls. Custom AI built for dental offices, orthodontists, and health clinics across Greater Vancouver, from the front desk to follow-up."
           primaryCta={{ href: CAL, label: "Book a Free 15-Min Demo" }}
-          secondaryCta={{ href: "/dental-pricing.html", label: <><DollarSign size={16} strokeWidth={2} /> See Pricing &amp; Plans</> }}
+          secondaryCta={{ href: "/dental-pricing", label: <><DollarSign size={16} strokeWidth={2} /> See Pricing &amp; Plans</> }}
         />
 
         <Divider />
@@ -109,7 +109,7 @@ export default function DentalPage() {
               href: "/dental-multi-location",
             },
           ]}
-          calculatorHref="/dental-savings-calculator.html"
+          calculatorHref="/dental-savings-calculator"
           calculatorLabel={<><BarChart3 size={16} strokeWidth={2} /> Estimate What Filling Them Is Worth <span className="arr">→</span></>}
         />
 
@@ -161,7 +161,7 @@ export default function DentalPage() {
               fromPrice: "$1,999",
             },
           ]}
-          ctaHref="/dental-pricing.html"
+          ctaHref="/dental-pricing"
           ctaLabel={<>See Full Plan Details <span className="arr">→</span></>}
           note="Full feature-by-feature comparison · Priced in CAD + GST"
         />
