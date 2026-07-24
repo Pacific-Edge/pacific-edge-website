@@ -44,8 +44,7 @@ export const NAV_CATEGORIES: NavCategory[] = [
     key: "company",
     label: "Company",
     items: [
-      { href: "/about", name: "About", desc: "Built by operators, not agencies" },
-      { href: "/careers", name: "Careers", desc: "Join the team" },
+      { href: "/about", name: "About", desc: "The team behind Pacific Edge AI" },
       { href: "/faq", name: "FAQ", desc: "Common questions, answered" },
     ],
     footLabel: "Want to talk?",
