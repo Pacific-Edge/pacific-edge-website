@@ -426,7 +426,7 @@ export default function HomeContent() {
               {DASH_ROWS.map((row) => (
                 <div className="pd-row" key={row.label}>
                   <div className="pd-row-label"><div className="pd-row-icon"><row.Icon size={15} strokeWidth={2} /></div>{row.label}</div>
-                  <div>
+                  <div className="pd-row-value">
                     <span className="pd-row-val before" data-before={row.before} data-after={row.after} data-current="before">{row.before}</span>
                     {row.src ? <a href="#sources" className="stat-src">[{row.src}]</a> : null}
                   </div>
