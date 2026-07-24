@@ -31,7 +31,7 @@ export default function CoverageBadges() {
       <div className="r">
         <div className="sl">Coverage</div>
         <h2 className="st">
-          Proudly Serving
+          Serving
           <br />
           <span className="a">Greater Vancouver</span>
         </h2>
@@ -46,14 +46,13 @@ export default function CoverageBadges() {
         </div>
         <div className="map-info r rd2">
           <h3>
-            Your Neighborhood.
+            We Work Where
             <br />
-            <span className="a">Our Priority.</span>
+            <span className="a">You Do.</span>
           </h3>
           <p>
-            We work with businesses across the Lower Mainland. Whether you&apos;re in downtown
-            Vancouver or out in the Fraser Valley, we&apos;re close enough to meet face-to-face and
-            understand the local market your business operates in.
+            We work with businesses across the Lower Mainland, from downtown Vancouver to the
+            Fraser Valley, and we&apos;re close enough to meet in person.
           </p>
           <div className="map-areas">
             {REGIONS.map((r) => (

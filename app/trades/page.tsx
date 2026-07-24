@@ -49,12 +49,12 @@ export default function TradesPage() {
         <HeroSection
           title={
             <>
-              Win The Job.
+              Answer The Call.
               <br />
               <span className="a">Even On A Ladder.</span>
             </>
           }
-          sub="Every call answered while your hands are full, every quote followed up, every job booked. Custom AI built for plumbers, electricians, HVAC, roofers, and contractors across the Lower Mainland."
+          sub="Janice answers calls when your hands are full, follows up on quotes, and books the job. Built for plumbers, electricians, HVAC, roofers, and contractors across the Lower Mainland."
           primaryCta={{ href: CAL, label: "Book a Free 15-Min Demo" }}
           secondaryCta={{ href: "/trades-savings-calculator.html", label: "See What Missed Calls Cost You" }}
         />
@@ -63,11 +63,11 @@ export default function TradesPage() {
 
         <WhatJaniceHandlesSection
           title={<>Built For The <span className="a">Jobsite.</span></>}
-          lead="Missed calls, cold quotes, scheduling chaos. Janice, your AI employee, captures the lead, follows up, and books the job while you stay on the tools."
+          lead="Janice, your AI employee, answers missed calls, follows up on quotes, and books the job while you stay on the tools."
           rows={[
             {
-              title: <>Answer Every Call, <span className="a">Hands-Free.</span></>,
-              body: "Your hands are full, the phone rings out, and the homeowner just dials the next number on the list. Now the second a call goes unanswered, day or night, your AI texts them back, finds out what they need, and qualifies the job. Even the 9pm burst pipe, your best-margin call of the week, gets answered instead of dying in a voicemail box.",
+              title: <>Answer Calls, <span className="a">Hands-Free.</span></>,
+              body: "The moment a call goes unanswered, day or night, Janice texts the caller back, finds out what they need, and qualifies the job. That includes after-hours calls like a burst pipe at 9pm, which otherwise go to voicemail.",
               points: [
                 "Texts back missed calls in seconds",
                 "Captures the job type, address and urgency",
@@ -86,8 +86,8 @@ export default function TradesPage() {
               ),
             },
             {
-              title: <>Follow Up On <span className="a">Every Quote.</span></>,
-              body: "You price a job, send the estimate, and never hear back, so work you already quoted quietly goes to someone else. Your AI checks in after every quote, answers the common pricing questions, and nudges the customer to say yes. And when last year's furnace customer is due for a tune-up, it reaches out before they forget your company name. After a job wraps, it asks the happy customer for the review that wins you the next one.",
+              title: <>Follow Up On <span className="a">Quotes.</span></>,
+              body: "After you send an estimate, Janice checks in, answers common pricing questions, and asks the customer for a decision. It also reaches out to past customers when they're due for seasonal work, like a furnace tune-up, and asks for a review after a job wraps.",
               points: [
                 "Automatic follow-up the day after a quote",
                 "Books the job the moment they approve",
@@ -105,10 +105,10 @@ export default function TradesPage() {
               ),
             },
             {
-              title: <>Never Promise A Slot <span className="a">You Can&apos;t Keep.</span></>,
+              title: <>Confirm Slots <span className="a">Before They&apos;re Booked.</span></>,
               body: (
                 <>
-                  Jobs penciled into three different places end in double-books and a customer waiting on a tech who can&apos;t make it. So on time-sensitive work, your AI <strong>holds</strong> the slot and confirms with your team before it&apos;s locked in, then sends the customer the real time. If the day slips, it reschedules them before anyone&apos;s left waiting, and your whole day stays routed without a wasted truck roll.
+                  On time-sensitive work, Janice <strong>holds</strong> the slot and confirms with your team before it&apos;s locked in, then sends the customer the confirmed time. If the schedule slips, it reschedules them before they&apos;re left waiting.
                 </>
               ),
               points: [
@@ -138,12 +138,12 @@ export default function TradesPage() {
 
         <WhatItLooksLikeSection
           industry="trades"
-          title={<>A Missed Call,<br /><span className="a">Won.</span></>}
-          lead="Here is a flow your customers would see. You stay on the job while the lead gets captured, confirmed with your team, and booked, no slot promised that you can't keep."
+          title={<>A Missed Call,<br /><span className="a">Recovered.</span></>}
+          lead="Here is what your customer would see. Janice captures the lead, confirms with your team, and books the job, while you stay on the tools."
           steps={[
-            { title: "The call comes in mid-job", body: "You are under a sink with both hands full. The phone rings out, like it does most afternoons." },
-            { title: "It holds a slot and checks with your team", body: "It finds out the problem and how urgent it is, holds the first real window, and confirms with your team before promising the customer a time." },
-            { title: "The confirmed job lands on your dashboard", body: "You finish what you are doing and the locked-in job is already there, with the address and details." },
+            { title: "The call comes in mid-job", body: "You are under a sink with both hands full and the phone rings out." },
+            { title: "Janice holds a slot and checks with your team", body: "It finds out the problem and how urgent it is, holds the first available window, and confirms with your team before promising the customer a time." },
+            { title: "The confirmed job lands on your dashboard", body: "The locked-in job is waiting for you, with the address and details, once you're free." },
           ]}
         />
 
@@ -159,17 +159,17 @@ export default function TradesPage() {
 
         <LiveDashboardSection
           industry="trades"
-          title={<>Every Lead And Job, <span className="a">In One View.</span></>}
+          title={<>Leads And Jobs, <span className="a">In One View.</span></>}
           lead="Calls recovered, quotes followed up, jobs booked, revenue counted. Click any tab to explore."
         />
 
         <Divider />
 
-        <FaqSection title={<>Contractors <span className="a">Ask Us.</span></>} items={FAQ} />
+        <FaqSection title={<>Frequently Asked <span className="a">Questions.</span></>} items={FAQ} />
 
         <GetStartedSection
-          title={<>Ready To Win<br /><span className="a">Every Lead?</span></>}
-          desc="Start with a free 15-minute call. We will show you exactly which automations would capture the most jobs you are missing right now. No pitch, no obligation."
+          title={<>Ready To Stop<br /><span className="a">Missing Calls?</span></>}
+          desc="Start with a free 15-minute call. We'll walk through which automations would capture the jobs you're missing right now."
           action={
             <>
               <a href={CAL} target="_blank" rel="noopener" className="btn-mint">Book a Free 15-Min Demo</a>

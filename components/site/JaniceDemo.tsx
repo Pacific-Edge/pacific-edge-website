@@ -29,7 +29,7 @@ export default function JaniceDemo() {
     const PICK = ["saturday","sat","11","11am","11 am","morning","second","the second","tomorrow","2","2:30","230","2 30","afternoon","first","the first","either","whatever"]
 
     const INTENTS: Intent[] = [
-      { id:"capabilities", keys:["what can you do","what do you do","what can you help","what can you help with","what can i ask","what can you handle","what are you capable","everything you can do","what else can you do","what can you do for me","how can you help","what all can you do","what can you do for my business","what are you able"], reply:["Lots! 😊 I answer every call and text 24/7, book and reschedule appointments, fill last-minute cancellations from your waitlist, send reminders so people actually show up, answer questions like hours and pricing, and even reply to your reviews, all in your business's own voice. Want to try booking a time with me?"], offer:"times" },
+      { id:"capabilities", keys:["what can you do","what do you do","what can you help","what can you help with","what can i ask","what can you handle","what are you capable","everything you can do","what else can you do","what can you do for me","how can you help","what all can you do","what can you do for my business","what are you able"], reply:["I answer calls and texts 24/7, book and reschedule appointments, fill last-minute cancellations from your waitlist, send reminders, answer questions like hours and pricing, and reply to reviews, in your business's own voice. Want to try booking a time with me?"], offer:"times" },
       { id:"complaint", keys:["complaint","complain","unhappy","disappointed","refund","bad experience","terrible","awful","upset","issue with","problem with","not happy","worst","rude","was late"], reply:["I'm really sorry to hear that, that's not the experience we want you to have. I'm flagging this to the team right now so a real person can make it right. What's the best number to reach you on?"], offer:"callback" },
       { id:"cancel", keys:["cancel","reschedule","move my","change my","push back","cant make","can't make","running late","rebook my","need to change my"], reply:["No problem at all. What's your name and the day you're booked? I'll move it, and offer your old slot to the waitlist so it doesn't go to waste."], offer:null },
       { id:"cancelpolicy", keys:["cancellation policy","cancel policy","cancellation fee","fee for cancel","charge for cancel","late fee","no show fee","no-show fee","if i cancel"], reply:["No scary fine print, just give as much notice as you can, and I'll offer your spot to someone on the waitlist so nobody loses out. Need to change a booking you already have?"], offer:null },
@@ -44,16 +44,16 @@ export default function JaniceDemo() {
       { id:"languages", keys:["speak french","speak spanish","speak punjabi","speak mandarin","speak cantonese","other language","other languages","do you speak","another language","en francais","habla espanol","translate"], reply:["I chat in clear, friendly English here, and the team can set me up to handle the other languages your customers speak too, Vancouver's wonderfully multilingual. How can I help?"], offer:null },
       { id:"urgent", keys:["urgent","emergency","asap","right now","as soon as","soonest","first available","earliest","need someone now","same day","today please"], reply:["Let's get you in fast. The soonest I've got is tomorrow at 2:30 PM, or Saturday at 11 AM, want me to grab the earliest one?"], offer:"times" },
       { id:"group", keys:["group","large party","big group","for a group","party of","table for","group booking","bridal","for my team","corporate","bunch of us","few of us"], reply:["Love a group booking! Tell me roughly how many people and your preferred day, and I'll line it up, for bigger events I'll loop in the team so it's perfect. Want to start with a date?"], offer:"times" },
-      { id:"giftcard", keys:["gift card","gift cards","giftcard","giftcards","gift certificate","voucher","as a gift"], reply:["Gift cards make a great gift 🎁, the team can set one up for you. Want someone to give you a quick call to sort it out?"], offer:"callback" },
+      { id:"giftcard", keys:["gift card","gift cards","giftcard","giftcards","gift certificate","voucher","as a gift"], reply:["The team can set up a gift card for you. Want someone to give you a quick call to sort it out?"], offer:"callback" },
       { id:"accommodate", keys:["wheelchair","accessible","accessibility","kids","children","family friendly","bring my dog","pets","allergy","allergies","vegan","vegetarian","gluten"], reply:["Great question, I'll add that to your booking and flag anything the team should prep for. Want me to find you a time and pop the details on?"], offer:"times" },
-      { id:"firsttime", keys:["first time","new customer","new here","never been","im new","i'm new","first visit","new patient","new client"], reply:["Welcome! 🎉 First visits are easy, I'll get you set up and send everything you need beforehand. Want me to find you a time?"], offer:"times" },
+      { id:"firsttime", keys:["first time","new customer","new here","never been","im new","i'm new","first visit","new patient","new client"], reply:["Welcome. First visits are easy, I'll get you set up and send everything you need beforehand. Want me to find you a time?"], offer:"times" },
       { id:"human", keys:["real person","human","robot","bot","a person","speak to someone","talk to someone","real human","are you a","is this a","automated","machine","are you ai"], reply:["Good question, I'm Janice, an AI employee from Pacific Edge AI. I handle the calls and texts so a real person never misses one, and I pass anything tricky straight to the team. How can I help?"], offer:null },
       { id:"howworks", keys:["how does this work","how do you work","what is this","how it works"], reply:["I'm an AI employee, I answer calls and texts 24/7, book appointments, fill cancellations, and reply to reviews, all in your business's own voice. Go on, try asking me to book a time!"], offer:null },
-      { id:"getjanice", keys:["my business","for my","sign up","get janice","want this","interested in this","how do i get","hire you","use you for","our shop","our store","our restaurant","my shop","my store","my company"], reply:["Love that! The Pacific Edge team can set me up for your business, usually live within about a week. Tap “Book a Free 15-Min Demo” up top 👆 and they'll walk you through it."], offer:null },
-      { id:"compliment", keys:["love this","you are great","youre great","you are awesome","amazing","so cool","impressive","you are helpful","best bot","love it","this is great","so helpful","well done","you are smart"], reply:["Aw, thank you! 🙌 That means a lot. I'm here 24/7, want me to book you in or help with anything else?"], offer:null },
-      { id:"thanks", keys:["thanks","thank you","thank","ty","cheers","appreciate"], reply:["Anytime! 🙌 I'm here 24/7 if you need anything else."], offer:null },
-      { id:"greeting", keys:["hi","hello","hey","heya","yo","sup","howdy","good morning","good afternoon","good evening","greetings","hiya"], reply:["Hey there! 👋 I can check hours, share pricing, or get you booked in. What do you need?"], offer:null },
-      { id:"bye", keys:["bye","goodbye","see ya","see you","later","gotta go","that is all","thats all","nothing else","im done","i'm done"], reply:["Take care! 👋 I'm here 24/7 whenever you need me, just text anytime."], offer:null },
+      { id:"getjanice", keys:["my business","for my","sign up","get janice","want this","interested in this","how do i get","hire you","use you for","our shop","our store","our restaurant","my shop","my store","my company"], reply:["The Pacific Edge team can set me up for your business, usually live within about a week. Tap “Book a Free 15-Min Demo” up top and they'll walk you through it."], offer:null },
+      { id:"compliment", keys:["love this","you are great","youre great","you are awesome","amazing","so cool","impressive","you are helpful","best bot","love it","this is great","so helpful","well done","you are smart"], reply:["Thanks. I'm here 24/7, want me to book you in or help with anything else?"], offer:null },
+      { id:"thanks", keys:["thanks","thank you","thank","ty","cheers","appreciate"], reply:["Anytime. I'm here 24/7 if you need anything else."], offer:null },
+      { id:"greeting", keys:["hi","hello","hey","heya","yo","sup","howdy","good morning","good afternoon","good evening","greetings","hiya"], reply:["Hi there. I can check hours, share pricing, or get you booked in. What do you need?"], offer:null },
+      { id:"bye", keys:["bye","goodbye","see ya","see you","later","gotta go","that is all","thats all","nothing else","im done","i'm done"], reply:["Take care. I'm here 24/7 whenever you need me, just text anytime."], offer:null },
       { id:"book", keys:["book","booking","appointment","appointments","appt","reserve","reservation","schedule","availability","available","slot","slots","opening","openings","table","spot","come in","fit me in","squeeze me in","any openings","do you have anything","this week","next week","weekend","sunday","monday","tuesday","wednesday","thursday","friday"], reply:["Happy to help! I've got tomorrow at 2:30 PM or Saturday at 11 AM open. Which works better?","Of course, I've got a couple of openings: tomorrow at 2:30 PM or Saturday at 11 AM. Which suits you?"], offer:"times" },
     ]
     const FALLBACK = [
@@ -77,7 +77,7 @@ export default function JaniceDemo() {
     const bookReply = (t: string) => {
       const sat = hit(t, ["saturday","sat","11","11am","11 am","morning","second","the second"])
       const when = sat ? "Saturday at 11 AM" : "tomorrow at 2:30 PM"
-      return { text: "Done! ✅ You're booked for " + when + ". I'll text a reminder beforehand so it never slips. Anything else?", badge: "Booked in seconds, even after hours. Reminder scheduled." as string | undefined }
+      return { text: "You're booked for " + when + ". I'll text a reminder beforehand. Anything else?", badge: "Booked in seconds, even after hours. Reminder scheduled." as string | undefined }
     }
     const asksQuestion = (t: string) => {
       for (let i = 0; i < INTENTS.length; i++) if (QUESTION[INTENTS[i].id] && hit(t, INTENTS[i].keys)) return true
@@ -86,7 +86,7 @@ export default function JaniceDemo() {
 
     const pick = (text: string): { text: string; badge?: string } => {
       const t = norm(text)
-      if (hit(t, DECLINE)) { ctx.offer = null; return { text: vary(["No worries at all! I'm here 24/7 whenever you're ready. 👋","All good, just text me anytime you'd like to book or have a question."], "dec") } }
+      if (hit(t, DECLINE)) { ctx.offer = null; return { text: vary(["No problem, I'm here 24/7 whenever you're ready.","All good, just text me anytime you'd like to book or have a question."], "dec") } }
       if (hit(t, ["book it","lock it in","book me in","just book it","book me"])) { ctx.offer = null; return bookReply(t) }
       if ((hit(t, AFFIRM) || hit(t, PICK)) && !asksQuestion(t)) {
         if (ctx.offer === "times") { ctx.offer = null; return bookReply(t) }
@@ -170,7 +170,7 @@ export default function JaniceDemo() {
       const t = typing()
       setTimeout(() => {
         if (t.parentNode) t.parentNode.removeChild(t)
-        bubble("Hi! I'm Janice 👋 the AI employee from Pacific Edge AI. I answer calls and texts for local businesses 24/7. Go ahead, text me like you're one of your customers.", "them")
+        bubble("Hi, I'm Janice, the AI employee from Pacific Edge AI. I answer calls and texts for local businesses 24/7. Go ahead, text me like you're one of your customers.", "them")
       }, 900)
     }
     const io = new IntersectionObserver((ents) => {

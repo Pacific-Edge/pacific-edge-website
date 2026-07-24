@@ -85,7 +85,7 @@ export default function DentalPage() {
               <span className="a">Reduce No-Shows.</span>
             </>
           }
-          sub="Every new-patient call answered, every appointment confirmed, every recall booked. Custom AI built for dental offices, orthodontists, and health clinics across Greater Vancouver, from the front desk to follow-up."
+          sub="Janice answers new-patient calls, confirms appointments, and books recalls. Custom AI built for dental offices, orthodontists, and health clinics across Greater Vancouver, from the front desk to follow-up."
           primaryCta={{ href: CAL, label: "Book a Free 15-Min Demo" }}
           secondaryCta={{ href: "/dental-pricing.html", label: <><DollarSign size={16} strokeWidth={2} /> See Pricing &amp; Plans</> }}
         />
@@ -93,19 +93,19 @@ export default function DentalPage() {
         <Divider />
 
         <PracticeTypesSection
-          title={<>Built For Every Type Of <span className="a">Practice.</span></>}
-          lead="From a single front desk to a multi-location group, Janice scales to exactly how your practice runs."
+          title={<>Built For Any Type Of <span className="a">Practice.</span></>}
+          lead="Janice adapts to how your practice runs, from a single front desk to a multi-location group."
           cards={[
             {
               visual: <PracticeTypeMap variant="single" />,
               title: "Single-Location Clinics",
-              points: ["Reduce front-desk stress", "Capture every missed call", <>Handle after-hours &amp; overflow</>],
+              points: ["Reduce front-desk stress", "Capture missed calls", <>Handle after-hours &amp; overflow</>],
               href: "/dental-single-location",
             },
             {
               visual: <PracticeTypeMap variant="multi" />,
               title: <>Multi-Location &amp; DSOs</>,
-              points: ["Standardize workflows across sites", "Centralize reporting", "Grow revenue at scale"],
+              points: ["Standardize workflows across sites", "Centralize reporting", "Grow revenue across locations"],
               href: "/dental-multi-location",
             },
           ]}
@@ -116,18 +116,18 @@ export default function DentalPage() {
         <Divider />
 
         <PricingTiersSection
-          eyebrow="How You Hire Her"
-          title={<>Three Ways To Put <span className="a">Janice To Work.</span></>}
-          lead="Start with the gaps that cost you the most, then scale up as she earns her keep. Flat-priced, month-to-month after your term, first month free."
+          eyebrow="Pricing"
+          title={<>Pricing &amp; <span className="a">Plans.</span></>}
+          lead="Start with the gaps that cost you the most, then add more as your practice needs it. Flat-priced, month-to-month after your term, first month free."
           tiers={[
             {
               badge: "PART-TIME",
               icon: <CalendarDays size={32} strokeWidth={1.5} />,
               title: "Covers what you miss",
-              sub: "Janice answers every text and refills every cancelled chair, around the clock.",
+              sub: "Janice answers texts and refills cancelled chairs, around the clock.",
               features: [
                 <>24/7 text replies in your clinic&apos;s voice</>,
-                "Unlimited cancellation recovery",
+                "Cancellation recovery",
                 <>Appointment reminders &amp; confirmations</>,
                 "Monthly ROI report",
               ],
@@ -137,8 +137,8 @@ export default function DentalPage() {
               badge: "FULL-TIME",
               featured: true,
               icon: <Zap size={32} strokeWidth={1.5} />,
-              title: "Every channel, working ahead",
-              sub: "She books straight into your schedule and keeps the whole book full, weeks out.",
+              title: "Books your schedule weeks ahead",
+              sub: "Janice books straight into your schedule and keeps it full, weeks out.",
               features: [
                 "Everything in Part-Time",
                 <>Books &amp; reschedules in your software</>,
@@ -151,18 +151,18 @@ export default function DentalPage() {
               badge: "PARTNER",
               icon: <Rocket size={32} strokeWidth={1.5} />,
               title: <>Fills chairs &amp; grows the book</>,
-              sub: "Marketing muscle on top of the full front desk, for practices going on offence.",
+              sub: "Adds marketing campaigns on top of the full front desk, for practices focused on growth.",
               features: [
                 "Everything in Full-Time",
                 <>Reactivation &amp; referral campaigns</>,
                 <>Benefits-expiry &amp; win-back waves</>,
-                "Every add-on included + quarterly strategy",
+                "All add-ons included, plus quarterly strategy",
               ],
               fromPrice: "$1,999",
             },
           ]}
           ctaHref="/dental-pricing.html"
-          ctaLabel={<>See Every Plan In Detail <span className="arr">→</span></>}
+          ctaLabel={<>See Full Plan Details <span className="arr">→</span></>}
           note="Full feature-by-feature comparison · Priced in CAD + GST"
         />
 
@@ -170,13 +170,13 @@ export default function DentalPage() {
 
         <WhatJaniceHandlesSection
           title={<>Built For A <span className="a">Full Chair.</span></>}
-          lead="Empty chairs, missed new-patient calls, recalls that slip. Janice, your AI employee, turns the gaps that waste clinical time into booked, confirmed visits, and gives your front desk its time back."
+          lead="Janice, your AI employee, turns missed calls, empty chairs, and slipped recalls into booked, confirmed visits, and frees up your front desk's time."
           rows={[
             {
-              title: <>Fill Every <span className="a">Cancelled Chair.</span></>,
-              body: "A patient forgets and a block of clinical time is simply gone. Now the moment a chair frees up, your AI offers the open slot to your waitlist and rebooks it, often within minutes, while reminders keep no-shows low in the first place.",
+              title: <>Fill <span className="a">Cancelled Chairs.</span></>,
+              body: "When a patient cancels, that block of clinical time is empty until it's filled. Janice offers the open slot to your waitlist and rebooks it, often within minutes, while reminders keep no-shows low in the first place.",
               points: [
-                "Cancellations offered to your waitlist instantly",
+                "Cancellations offered to your waitlist automatically",
                 "Rebooks the first patient to say yes",
                 "Reminders that cut no-shows and late cancels",
               ],
@@ -192,8 +192,8 @@ export default function DentalPage() {
               ),
             },
             {
-              title: <>Answer Every <span className="a">New-Patient Call.</span></>,
-              body: "When the front desk is on two lines, a brand-new patient gets voicemail and calls the clinic down the block. Instead, your AI answers or texts the caller back in seconds, day or night, covers the basics like insurance and reason for visit, and books a first exam.",
+              title: <>Answer <span className="a">New-Patient Calls.</span></>,
+              body: "When the front desk is on two lines, a new patient can get voicemail and call another clinic instead. Janice answers or texts back within seconds, day or night, covers basics like insurance and reason for visit, and books the first exam.",
               points: [
                 "Answers or texts back missed calls in seconds",
                 "Confirms insurance basics and reason for visit",
@@ -211,8 +211,8 @@ export default function DentalPage() {
               ),
             },
             {
-              title: <>Recalls &amp; Reminders, <span className="a">On Autopilot.</span></>,
-              body: "Patients due for a cleaning never get the nudge, so they quietly drift to another practice. Janice watches who is overdue, reaches out in your practice's voice with a real open time, and keeps hygiene chairs filled weeks ahead, while confirmations cut no-shows on everything already booked.",
+              title: <>Recalls &amp; Reminders, <span className="a">Handled Automatically.</span></>,
+              body: "Patients due for a cleaning don't always get a reminder and drift to another practice. Janice tracks who is overdue, reaches out in your practice's voice with an open time, and keeps hygiene chairs filled weeks ahead, while confirmations cut no-shows on what's already booked.",
               points: [
                 "Overdue patients spotted and gently chased",
                 "Recall reminders that rebook hygiene visits",
@@ -234,7 +234,7 @@ export default function DentalPage() {
             },
             {
               title: <>Follow Up On <span className="a">Treatment Plans.</span></>,
-              body: "A patient agrees to a crown, leaves without scheduling it, and the care gets forgotten. Your AI sends a gentle, professional reminder to book it, and asks your happiest patients for the review that finally makes your online reputation match the care.",
+              body: "A patient agrees to a crown, leaves without scheduling it, and it gets forgotten. Janice sends a gentle, professional reminder to book it, and asks satisfied patients for a review.",
               points: [
                 "Gentle nudges to book recommended treatment",
                 "Review requests sent to happy patients",
@@ -294,8 +294,8 @@ export default function DentalPage() {
         <FaqSection title={<>Clinic Owners <span className="a">Ask Us.</span></>} items={FAQ} />
 
         <GetStartedSection
-          title={<>Ready To Fill<br /><span className="a">Every Chair?</span></>}
-          desc="Start with a free 15-minute call. We will show you exactly which automations would keep your schedule full and your front desk free. No pitch, no obligation."
+          title={<>Ready To Fill<br /><span className="a">Your Schedule?</span></>}
+          desc="Start with a free 15-minute call. We'll walk through which automations fit your practice and what they'd save your front desk. No pitch, no obligation."
           action={
             <a href={CAL} target="_blank" rel="noopener" className="btn-mint">Book a Free 15-Min Demo</a>
           }

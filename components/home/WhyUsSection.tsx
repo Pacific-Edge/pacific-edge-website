@@ -8,15 +8,15 @@ import { cn } from "@/lib/utils"
 const WHY_US_PILLARS = [
   {
     title: "No jargon",
-    description: "We explain everything in plain English. If you don't understand it, we haven't done our job.",
+    description: "We explain what we build in plain English. If it doesn't make sense, we haven't done our job.",
   },
   {
     title: "Speed to value",
-    description: "Working prototype in week one. Not month three. Not after a “strategy phase.”",
+    description: "Working prototype in week one.",
   },
   {
     title: "Built to deliver",
-    description: "6-month engagements with transparent pricing upfront. Long enough to deliver real ROI, never longer than the value justifies.",
+    description: "Six-month engagements with pricing quoted upfront.",
   },
   {
     title: "Local & hands-on",

@@ -106,8 +106,8 @@ export default function ContactModalProvider({
                 <span className="a">your business.</span>
               </h3>
               <p className="contact-desc">
-                The more you tell us, the sharper our reply. Our team reviews every message and
-                responds in the order received.
+                The more detail you give us, the more useful our reply. Our team reviews every
+                message and responds in the order received.
               </p>
               <form className="contact-form" onSubmit={onSubmit} noValidate>
                 <p className="hp">

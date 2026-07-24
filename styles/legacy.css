@@ -448,7 +448,7 @@ a.footer-meta-item{cursor:pointer}
 
 /* ═══════════════════════════════════════════════════════════════════
    PAGE-SPECIFIC INLINE STYLES — extracted from the old sub-page bodies
-   (practice-type mockups, ai-employee/careers extras, etc). Section/ID
+   (practice-type mockups, ai-employee extras, etc). Section/ID
    scoped, so globally safe. Appended so ported markup needs no per-page CSS.
    ═══════════════════════════════════════════════════════════════════ */
 /* ── inline styles from dental.html ── */
@@ -605,36 +605,6 @@ a.footer-meta-item{cursor:pointer}
 }
 @media(prefers-reduced-motion:reduce){.vt-grid i,.vf-open,.vf-filled,.vf-chip.go,.vc-row,.vs-out,.vs-back,.vs-back .bell,.vs-sold,.vcal-col i.gap,.viz-live::before{animation:none}.vf-filled,.vc-row,.vs-back{opacity:1}.vf-open,.vs-out{opacity:0}.vt-grid i,.vcal-col i.gap{background:rgba(74,240,192,.32)}}
 
-/* head styles from careers.html */
-/* ===== Careers page extras ===== */
-.cr-chips{display:flex;flex-wrap:wrap;gap:12px;justify-content:center;margin-top:44px;perspective:900px}
-.cr-chip{display:inline-flex;align-items:center;gap:9px;padding:12px 19px;border-radius:var(--radius);background:linear-gradient(160deg,rgba(255,255,255,.95),rgba(255,255,255,.78));backdrop-filter:blur(8px);border:1px solid rgba(255,255,255,.92);box-shadow:0 20px 36px -16px rgba(10,10,10,.3);font-size:14px;font-weight:600;color:var(--text);animation:crFloat 5.5s ease-in-out infinite}
-.cr-chip span{font-size:17px}
-.cr-chip:nth-child(2){animation-delay:.7s}.cr-chip:nth-child(3){animation-delay:1.4s}.cr-chip:nth-child(4){animation-delay:2.1s}.cr-chip:nth-child(5){animation-delay:2.8s}
-@keyframes crFloat{0%,100%{transform:translateY(0) rotate(-.6deg)}50%{transform:translateY(-11px) rotate(.6deg)}}
-
-.role-grid{display:flex;flex-direction:column;gap:16px;margin-top:52px;max-width:940px;margin-left:auto;margin-right:auto}
-.role{display:flex;align-items:center;gap:26px;padding:26px 30px;border:1px solid var(--border);border-radius:var(--radius);background-color:var(--card);background-image:repeating-linear-gradient(45deg,rgba(10,10,10,.016) 0,rgba(10,10,10,.016) 1px,transparent 1px,transparent 26px),repeating-linear-gradient(-45deg,rgba(10,10,10,.016) 0,rgba(10,10,10,.016) 1px,transparent 1px,transparent 26px);box-shadow:var(--shadow-float);transition:transform .4s cubic-bezier(.16,1,.3,1),border-color .35s,box-shadow .35s;position:relative;overflow:hidden}
-.role::before{content:'';position:absolute;left:0;top:0;bottom:0;width:3px;background:var(--grad);opacity:0;transition:opacity .35s}
-.role:hover{border-color:var(--border-a);transform:translateY(-3px);box-shadow:0 28px 64px -32px rgba(0,0,0,.20)}
-.role:hover::before{opacity:1}
-.role-main{flex:1;min-width:0}
-.role-title{font-size:19px;font-weight:600;letter-spacing:-.3px;margin-bottom:9px}
-.role-meta{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:11px}
-.role-tag{font-family:var(--body);font-size:10px;letter-spacing:.6px;text-transform:uppercase;color:var(--accent-ink);background:rgba(74,240,192,.10);border:1px solid var(--border-a);border-radius:var(--radius);padding:4px 11px}
-.role-desc{font-size:14.5px;color:var(--text2);line-height:1.6;font-weight:300}
-.role-apply{flex-shrink:0;display:inline-flex;align-items:center;gap:8px;font-weight:600;font-size:14px;color:var(--on-accent);background:var(--accent);padding:12px 22px;border-radius:var(--radius);text-decoration:none;transition:transform .3s,box-shadow .3s}
-.role-apply .arr{transition:transform .3s}.role-apply:hover{box-shadow:0 0 30px var(--glow);transform:translateY(-2px)}.role-apply:hover .arr{transform:translateX(3px)}
-.role-open{display:flex;align-items:center;justify-content:space-between;gap:20px;flex-wrap:wrap;margin-top:18px;padding:22px 30px;border:1px dashed var(--border-a);border-radius:var(--radius);background:rgba(74,240,192,.04);max-width:940px;margin-left:auto;margin-right:auto}
-.role-open p{font-size:15px;color:var(--text2);font-weight:300}
-.role-open b{color:var(--text);font-weight:600}
-@media(max-width:680px){.role{flex-direction:column;align-items:flex-start;gap:16px}.role-apply{width:100%;justify-content:center}}
-
-.cr-perks{display:flex;flex-wrap:wrap;gap:13px;justify-content:center;margin-top:44px;max-width:880px;margin-left:auto;margin-right:auto}
-.cr-perk{display:inline-flex;align-items:center;gap:10px;font-size:14px;color:var(--text2);padding:12px 18px;border:1px solid var(--border);border-radius:var(--radius);background:var(--card);transition:transform .3s,border-color .3s}
-.cr-perk:hover{transform:translateY(-2px);border-color:var(--border-a)}
-.cr-perk span{font-size:18px}
-@media(prefers-reduced-motion:reduce){.cr-chip{animation:none}}
 /* === Apply modal (shown on desktop; mobile uses the mail app) === */
 .contact-modal{position:fixed;inset:0;z-index:99998;display:flex;align-items:center;justify-content:center;padding:24px;pointer-events:none;opacity:0;visibility:hidden;transition:opacity .3s ease,visibility .3s}
 .contact-modal.open{opacity:1;pointer-events:auto;visibility:visible}

@@ -19,9 +19,9 @@ export default function IndustriesPage() {
         <div className="ihero-orb ihero-orb-1" />
         <div className="ihero-orb ihero-orb-2" />
         <div className="ihero-inner">
-          <div className="eyebrow reveal"><span className="eyebrow-dot" />Every Industry We Serve · Vancouver, BC</div>
-          <h1 className="reveal d1">Built Around How<br /><span className="a">You Actually Work.</span></h1>
-          <p className="ihero-sub reveal d2">We don&apos;t sell one-size-fits-all software. We map the way your business actually runs, the calls, the bookings, the cancellations, the follow-ups, then build an AI employee, Janice, that quietly handles it. Here&apos;s exactly what that looks like in your world.</p>
+          <div className="eyebrow reveal"><span className="eyebrow-dot" />Industries We Serve · Vancouver, BC</div>
+          <h1 className="reveal d1">Built Around How<br /><span className="a">Your Business Runs.</span></h1>
+          <p className="ihero-sub reveal d2">Every industry books, cancels, and follows up differently. We map how yours works, then build an AI employee, Janice, to handle it. Below is what that looks like for restaurants, salons and spas, and dental clinics.</p>
           <div className="ihero-actions reveal d3">
             <a href={CAL} target="_blank" rel="noopener" className="btn-mint">Book a Free 15-Min Demo</a>
             <Link href="/ai-employee" className="btn-dark">Meet Janice</Link>
@@ -39,8 +39,8 @@ export default function IndustriesPage() {
           <div className="dind-text reveal">
             <div className="dind-ico"><UtensilsCrossed size={24} strokeWidth={1.75} /></div>
             <div className="sl">Restaurants &amp; Food</div>
-            <h2 className="st">Keep Every Table <span className="a">Full.</span></h2>
-            <p className="dind-lead">Every missed call and no-show is an empty table. Janice answers 24/7, books the reservation, and refills last-minute cancellations from your waitlist, automatically.</p>
+            <h2 className="st">Keep Tables <span className="a">Full.</span></h2>
+            <p className="dind-lead">A missed call or a no-show is an empty table. Janice answers calls 24/7, books the reservation, and fills last-minute cancellations from your waitlist.</p>
             <div className="dind-build">
               <span className="dind-tag">Reservation text-line</span>
               <span className="dind-tag">Waitlist auto-fill</span>
@@ -62,8 +62,8 @@ export default function IndustriesPage() {
           <div className="dind-text reveal">
             <div className="dind-ico"><Sparkles size={24} strokeWidth={1.75} /></div>
             <div className="sl">Salons &amp; Spas</div>
-            <h2 className="st">Every Chair, <span className="a">Booked Solid.</span></h2>
-            <p className="dind-lead">A late cancellation is an empty chair and a lost afternoon. Janice fills it from your waitlist within minutes, and rebooks clients before they leave the chair.</p>
+            <h2 className="st">Keep Chairs <span className="a">Booked.</span></h2>
+            <p className="dind-lead">A late cancellation leaves an empty chair. Janice fills it from your waitlist within minutes and rebooks clients before they leave.</p>
             <div className="dind-build">
               <span className="dind-tag">Booking text-line</span>
               <span className="dind-tag">Waitlist back-fill</span>
@@ -88,8 +88,8 @@ export default function IndustriesPage() {
           <div className="dind-text reveal">
             <div className="dind-ico"><Stethoscope size={24} strokeWidth={1.75} /></div>
             <div className="sl">Dental &amp; Health Clinics</div>
-            <h2 className="st">A Schedule That <span className="a">Stays Full.</span></h2>
-            <p className="dind-lead">Recalls slip and hygiene chairs sit empty. Janice books new patients 24/7 and quietly rebooks overdue ones, so the schedule stays full and the front desk stays calm.</p>
+            <h2 className="st">Keep the Schedule <span className="a">Full.</span></h2>
+            <p className="dind-lead">Recalls slip and hygiene chairs sit empty. Janice books new patients 24/7 and rebooks overdue recalls, so the schedule stays full.</p>
             <div className="dind-build">
               <span className="dind-tag">New-patient intake line</span>
               <span className="dind-tag">Recall automation</span>
@@ -118,8 +118,8 @@ export default function IndustriesPage() {
         <div className="wrap">
           <div className="dcta-box reveal">
             <div className="sl" style={{ justifyContent: "center", display: "flex" }}>Get Started</div>
-            <h2 className="st reveal d1">Don&apos;t See Your Industry?<br /><span className="a">We Still Build For You.</span></h2>
-            <p className="sd reveal d2">If your business runs on calls, bookings, or repeat customers, Janice can help. Book a free 15-minute call and we&apos;ll map out exactly what she&apos;d do for you, no pitch deck, no pressure.</p>
+            <h2 className="st reveal d1">Don&apos;t See Your Industry?<br /><span className="a">We Build For You Too.</span></h2>
+            <p className="sd reveal d2">If your business runs on calls, bookings, or repeat customers, Janice can help. Book a free 15-minute call and we&apos;ll map out what she&apos;d do for your business.</p>
             <div className="ihero-actions reveal d3" style={{ justifyContent: "center", marginTop: "8px" }}>
               <a href={CAL} target="_blank" rel="noopener" className="btn-mint">Book a Free 15-Min Demo</a>
               <Link href="/ai-employee" className="btn-dark">Meet Janice</Link>

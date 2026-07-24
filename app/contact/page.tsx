@@ -18,7 +18,7 @@ export default function ContactPage() {
         <div className="ihero-inner">
           <div className="eyebrow reveal"><span className="eyebrow-dot"></span>Contact</div>
           <h1 className="reveal d1">Reach The<br /><span className="a">Team Directly.</span></h1>
-          <p className="ihero-sub reveal d2">No call centre, no chatbot script. You&apos;ll talk to the people who actually build and run Janice.</p>
+          <p className="ihero-sub reveal d2">You&apos;ll talk directly to the people who build and run Janice, not a call centre or a scripted chatbot.</p>
         </div>
       </header>
 
@@ -26,11 +26,11 @@ export default function ContactPage() {
 
       <section className="icta">
         <div className="ihero-inner" style={{ margin: "0 auto" }}>
-          <div className="sl reveal sl-c" style={{ justifyContent: "center" }}>No-Risk Start</div>
+          <div className="sl reveal sl-c" style={{ justifyContent: "center" }}>Free Trial</div>
           <h2 className="icta-title reveal d1">One Month<br /><span className="a">On Us.</span></h2>
           <p className="icta-desc reveal d2">
-            Put Janice to work in your business for a full month, on us. See the bookings she catches and the
-            hours she saves, then decide. If she is not the right fit, walk away. No strings.
+            Run Janice in your business for a full month at no cost. Review the bookings she catches and the
+            hours she saves, then decide whether to continue. Cancel anytime during the trial.
           </p>
           <div className="reveal d2" style={{ display: "inline-flex", alignItems: "center", gap: 32, flexWrap: "wrap", justifyContent: "center" }}>
             <a href="https://cal.com/pacificedge" target="_blank" rel="noopener" className="btn-mint" style={{ fontSize: 16, padding: "18px 44px" }}>

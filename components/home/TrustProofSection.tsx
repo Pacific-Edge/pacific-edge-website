@@ -6,10 +6,10 @@ import { ChevronLeft, ChevronRight, Lock, ShieldCheck, Ban, KeyRound } from "luc
 import { cn } from "@/lib/utils"
 
 const TRUST = [
-  { Ico: Lock, h: "Encrypted end to end", p: "Every conversation and customer record is encrypted in transit and at rest, protected the whole way through." },
-  { Ico: ShieldCheck, h: "Canadian privacy first", p: "Built to align with PIPEDA and BC's privacy rules, with personal information treated as exactly that, personal." },
-  { Ico: Ban, h: "Never sold or shared", p: "Your data is yours. We never sell it, rent it, or hand it to third parties. Full stop." },
-  { Ico: KeyRound, h: "You stay in control", p: "Strict access, only what is needed is ever touched. And if we ever part ways, everything is documented and handed back." },
+  { Ico: Lock, h: "Encrypted end to end", p: "Every conversation and customer record is encrypted in transit and at rest." },
+  { Ico: ShieldCheck, h: "Canadian privacy first", p: "Built to align with PIPEDA and BC's privacy rules." },
+  { Ico: Ban, h: "Never sold or shared", p: "Your data is yours. We never sell it, rent it, or hand it to third parties." },
+  { Ico: KeyRound, h: "You stay in control", p: "Access is limited to what's needed for the work. If we ever part ways, everything is documented and handed back." },
 ] as const
 
 const TESTIMONIALS = [

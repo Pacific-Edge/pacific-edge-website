@@ -45,12 +45,12 @@ export default function Page() {
         <HeroSection
           title={
             <>
-              Keep Every Chair Full.
+              Fill More Chairs.
               <br />
               <span className="a">Lose Fewer Clients.</span>
             </>
           }
-          sub="Every booking request answered, every no-show headed off, every client reminded to rebook. Custom AI built for how a busy salon, spa, or clinic actually runs, from the front desk to the treatment room."
+          sub="Janice answers booking requests, follows up on no-shows, and reminds clients to rebook. Built for how a busy salon, spa, or clinic runs, from the front desk to the treatment room."
           primaryCta={{ href: CAL, label: "Book a Free 15-Min Demo" }}
           secondaryCta={{ href: "/salons-savings-calculator.html", label: "See What Empty Chairs Cost You" }}
         />
@@ -59,11 +59,11 @@ export default function Page() {
 
         <WhatJaniceHandlesSection
           title={<>Built For A <span className="a">Full Book.</span></>}
-          lead="Empty chairs, no-shows, missed DMs. Janice, your AI employee, turns the gaps that quietly drain your week into booked, confirmed appointments, and gives your front desk its time back."
+          lead="Janice, your AI employee, handles empty chairs, no-shows, and missed messages, turning them into booked appointments, and frees up your front desk's time."
           rows={[
             {
-              title: <>Fill Every <span className="a">Cancelled Chair.</span></>,
-              body: "A late cancellation used to mean an empty chair. Now the moment a client cancels, your AI offers the slot to your waitlist and rebooks it, while reminders and optional deposits keep no-shows away.",
+              title: <>Fill <span className="a">Cancelled Chairs.</span></>,
+              body: "A late cancellation used to mean an empty chair. Now, when a client cancels, Janice offers the slot to your waitlist and rebooks it. Reminders and optional deposits reduce no-shows.",
               points: [
                 "Cancellations offered to your waitlist instantly",
                 "Rebooks the first client to say yes",
@@ -101,7 +101,7 @@ export default function Page() {
             },
             {
               title: <>Rebookings <span className="a">On Autopilot.</span></>,
-              body: "Your AI follows up after every visit and reminds clients to rebook at the right time, so the gap between appointments shrinks and your regulars actually stay regular. Review requests go to your happiest clients, with you approving the voice, so your online presence finally matches the work.",
+              body: "Janice follows up after each visit and reminds clients to rebook at the right time, shortening the gap between appointments. Review requests go to your happiest clients, with you approving the voice, so your online reviews reflect the work you're doing.",
               points: [
                 "Timed rebooking nudges after each visit",
                 "Win-back texts for clients who drifted away",
@@ -126,7 +126,7 @@ export default function Page() {
         <WhatItLooksLikeSection
           industry="salons"
           title={<>A Cancellation,<br /><span className="a">Refilled.</span></>}
-          lead="Here is the flow that quietly saves your day. A last-minute cancel, refilled from your waitlist before the chair ever sits empty."
+          lead="A last-minute cancellation, refilled from your waitlist before the chair sits empty."
           steps={[
             { title: "A client cancels last-minute", body: "It is Saturday morning and a balayage cancels. That chair would normally sit empty all afternoon." },
             { title: "Your AI texts your waitlist", body: "It offers the open slot to the next client in line and books the first to say yes, often within minutes." },
@@ -144,10 +144,10 @@ export default function Page() {
           note="Outcomes we design toward for Vancouver salons and spas"
         />
 
-        <FaqSection title={<>Salon Owners <span className="a">Ask Us.</span></>} items={FAQ} />
+        <FaqSection title={<>Salon Owner <span className="a">FAQ.</span></>} items={FAQ} />
 
         <GetStartedSection
-          title={<>Ready To Keep<br /><span className="a">Every Chair Full?</span></>}
+          title={<>Ready To<br /><span className="a">Fill More Chairs?</span></>}
           desc="Start with a free 15-minute call. We will show you exactly which automations would put the most appointments back on your calendar. No pitch, no obligation."
           action={
             <>

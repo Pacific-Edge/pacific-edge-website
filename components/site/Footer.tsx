@@ -34,8 +34,8 @@ export default function Footer() {
             </span>
           </div>
           <p className="footer-tagline">
-            AI consulting and automation for local Vancouver small businesses. Done-for-you.
-            Transparent terms. Real results.
+            AI consulting and automation for local Vancouver small businesses, delivered
+            done-for-you with transparent terms.
           </p>
           <div className="footer-meta">
             <button type="button" className="footer-meta-item" onClick={open}>

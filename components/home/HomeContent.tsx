@@ -49,7 +49,7 @@ const INDUSTRIES: IndustryDef[] = [
   },
   {
     href: "/restaurants", name: "Restaurants & Food Service",
-    desc: "Turn the dinner rush into booked tables.", more: "Explore restaurant AI",
+    desc: "Fill more tables during your dinner rush.", more: "Explore restaurant AI",
     tools: [
       { ini: "OT", name: "OpenTable" }, { ini: "To", name: "Toast", img: "/logos/toast.png" },
       { ini: "Sq", name: "Square" }, { ini: "Cl", name: "Clover" },
@@ -65,7 +65,7 @@ const INDUSTRIES: IndustryDef[] = [
   },
   {
     href: "/trades", name: "Trades & Home Services",
-    desc: "Win the job, even off the truck.", more: "Explore trades AI",
+    desc: "Win the job while you're still on site.", more: "Explore trades AI",
     tools: [
       { ini: "QB", name: "QuickBooks" }, { ini: "HS", name: "HomeStars" }, { ini: "Jb", name: "Jobber" },
       { ini: "ST", name: "ServiceTitan" },
@@ -111,7 +111,7 @@ function IndustryRow({ ind, index, progress }: { ind: IndustryDef; index: number
 const STEPS = [
   { h: "Discovery Call", p: "15 minutes to learn your business, find where time and money are slipping, and identify what to automate first. No sales pitch." },
   { h: "Deep-Dive Session", p: "A focused 60-minute session mapping your workflow to find what's costing you the most and which automations matter most." },
-  { h: "Custom Build", p: "We design and build your AI workflows with proven tools. You see a working prototype within the first week - real software, not a slide deck." },
+  { h: "Custom Build", p: "We design and build your AI workflows with proven tools. You see a working prototype within the first week." },
   { h: "Launch & Train", p: "We roll everything out, train your team, and confirm you're comfortable before we step back." },
   { h: "Optimize & Support", p: "Ongoing monitoring and refinement. As your business grows, we scale your automations with you." },
 ]
@@ -272,7 +272,7 @@ export default function HomeContent() {
           <span className="accent-line">Your Business Deserves.</span>
         </h1>
         <div className="hero-rule" />
-        <p className="hero-sub">Recover every missed call, answer every review, track every booking. AI systems and custom software built around how your business runs.</p>
+        <p className="hero-sub">AI systems and custom software that answer missed calls, respond to reviews, and track bookings, built around how your business runs.</p>
         <div className="hero-actions">
           <a href={CAL} target="_blank" rel="noopener" className="btn-mint">
             Book a Free 15-Min Demo
@@ -322,14 +322,14 @@ export default function HomeContent() {
         <div className="r">
           <div className="sl">What We Do</div>
           <h2 className="st">How We <span className="a">Grow Your Business.</span></h2>
-          <p className="sd">Two ways we help local businesses run smarter, from ready-to-go AI agents that go live in days to custom software built around exactly how you work.</p>
+          <p className="sd">Two ways we help local businesses: AI agents that go live in days, and custom software built around how you work.</p>
         </div>
         <div className="ts-grid">
           <StyledContainer background="black" pattern="diag-wide" className="ts-card ts-ai">
             <div className="ts-body">
               <div className="ts-copy">
                 <h3 className="ts-h">AI Solutions</h3>
-                <p className="ts-p">We build AI agents that answer every call, chat with customers on your site, and get your team trained on the tools from day one.</p>
+                <p className="ts-p">We build AI agents that answer calls, chat with customers on your site, and train your team on the tools from day one.</p>
                 <ul className="ts-inline">
                   <li>AI Voice Receptionist</li>
                   <li>AI Inquiry Chatbot</li>
@@ -357,7 +357,7 @@ export default function HomeContent() {
             <div className="ts-body">
               <div className="ts-copy">
                 <h3 className="ts-h">Custom Software Builds</h3>
-                <p className="ts-p">We build bespoke backend systems that bring clients in the door, help you manage them once they&apos;re booked, and keep the whole operation running smoothly.</p>
+                <p className="ts-p">We build backend systems that bring clients in the door, help you manage them once they&apos;re booked, and run the day-to-day operation.</p>
                 <ul className="ts-inline">
                   <li>Appointment Cancellation Management Software</li>
                   <li>CRM / Lead Tracking &amp; Sourcing</li>
@@ -404,7 +404,7 @@ export default function HomeContent() {
         <div className="r">
           <div className="sl">How It Works</div>
           <h2 className="st">Simple Process,<br /><span className="a">Powerful</span> Results</h2>
-          <p className="sd">Here&apos;s how we get your business running smarter in days, not months.</p>
+          <p className="sd">Here&apos;s how we take your business from first call to live automation.</p>
         </div>
         <div className="process-wrapper">
           <div className="steps-tl">
@@ -455,8 +455,8 @@ export default function HomeContent() {
         <span className="sn">05</span>
         <div className="r" style={{ textAlign: "center" }}>
           <div className="sl" style={{ justifyContent: "center" }}>Why Us</div>
-          <h2 className="st">Built By Operators, <span className="a">Not Agencies</span></h2>
-          <p className="sd" style={{ maxWidth: 720, marginLeft: "auto", marginRight: "auto" }}>We&apos;re business owners, not a dev shop, building the automation we wished we had.</p>
+          <h2 className="st">We&apos;re Business Owners, <span className="a">Building For Business Owners</span></h2>
+          <p className="sd" style={{ maxWidth: 720, marginLeft: "auto", marginRight: "auto" }}>We built the automation we wished we had running our own businesses.</p>
         </div>
         <WhyUsSection />
         <div style={{ textAlign: "center", marginTop: 48 }}>

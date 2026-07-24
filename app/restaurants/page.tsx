@@ -37,12 +37,12 @@ export default function RestaurantsPage() {
         <HeroSection
           title={
             <>
-              Fill More Tables.
+              Recover Missed Calls.
               <br />
-              <span className="a">Lose Fewer Guests.</span>
+              <span className="a">Book More Tables.</span>
             </>
           }
-          sub="Custom AI that answers every missed reservation call, replies to every review, and heads off every no-show, built for how a Vancouver restaurant actually runs."
+          sub="Janice answers missed reservation calls, replies to Google reviews, and sends reminders that cut no-shows, built for how a Vancouver restaurant runs service."
           primaryCta={{ href: CAL, label: "Book a Free 15-Min Demo" }}
           secondaryCta={{ href: "/restaurants-savings-calculator.html", label: "See What Empty Tables Cost You" }}
         />
@@ -50,11 +50,11 @@ export default function RestaurantsPage() {
         <Divider />
 
         <WhatJaniceHandlesSection
-          title={<>See What <span className="a">Janice Handles.</span></>}
-          lead="Missed calls, no-shows, silent reviews. Janice, your AI employee, turns the moments that quietly cost you the most into booked, confirmed covers."
+          title={<>What <span className="a">Janice Handles.</span></>}
+          lead="Missed calls, no-shows, and unanswered reviews cost restaurants covers every week. Janice, your AI employee, turns them into booked, confirmed tables."
           rows={[
             {
-              title: <>Fill Every <span className="a">Cancelled Table.</span></>,
+              title: <>Fill <span className="a">Cancelled Tables.</span></>,
               body: "The moment a table frees up, your AI fills it from your waitlist and sends reminders that stop most no-shows before they happen.",
               points: [
                 "Freed tables offered to your waitlist instantly",
@@ -74,7 +74,7 @@ export default function RestaurantsPage() {
               ),
             },
             {
-              title: <>Never Miss A <span className="a">Reservation.</span></>,
+              title: <>Recover Missed <span className="a">Reservations.</span></>,
               body: "When you can't pick up, your AI texts the guest back in seconds and books the table straight into your system.",
               points: [
                 "Texts back in under 30 seconds, day or night",
@@ -92,8 +92,8 @@ export default function RestaurantsPage() {
               ),
             },
             {
-              title: <>Own Your <span className="a">Google Reviews.</span></>,
-              body: "Your AI drafts a warm, on-brand reply to every review in seconds, and follows up after a great night to bring guests back.",
+              title: <>Reply To <span className="a">Google Reviews.</span></>,
+              body: "Your AI drafts a warm, on-brand reply to each review within seconds, and follows up after a great night to bring guests back.",
               points: [
                 "On-brand drafts for Google and Yelp",
                 "Angry reviews flagged, never auto-posted",
@@ -138,7 +138,7 @@ export default function RestaurantsPage() {
         <FaqSection title={<>Restaurant Owners <span className="a">Ask Us.</span></>} items={FAQ} />
 
         <GetStartedSection
-          title={<>Ready To Fill Every <span className="a">Table?</span></>}
+          title={<>Ready To Fill <span className="a">More Tables?</span></>}
           desc="Start with a free 15-minute call. We will show you exactly which automations would put the most covers back on your books. No pitch, no obligation."
           action={
             <>

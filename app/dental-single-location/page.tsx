@@ -76,9 +76,9 @@ export default function Page() {
 <div className="sl reveal sl-c tac">What You Get</div>
 <h2 className="st reveal d1 tac">One Front Desk, <span className="a">Never Off Duty.</span></h2>
 <div className="tiles">
-<div className="tile reveal d1"><div className="tile-ico">&#9742;&#65039;</div><h4>Answers everything</h4><p>Every call &amp; text caught in seconds, day or night.</p></div>
+<div className="tile reveal d1"><div className="tile-ico">&#9742;&#65039;</div><h4>Answers calls and texts</h4><p>Calls and texts answered in seconds, day or night.</p></div>
 <div className="tile reveal d2"><div className="tile-ico">&#128257;</div><h4>Fills cancellations</h4><p>Open chairs offered to your waitlist and rebooked.</p></div>
-<div className="tile reveal d3"><div className="tile-ico">&#9989;</div><h4>Cuts no-shows</h4><p>Confirmations and recall nudges, fully automatic.</p></div>
+<div className="tile reveal d3"><div className="tile-ico">&#9989;</div><h4>Cuts no-shows</h4><p>Confirmations and recall nudges sent automatically.</p></div>
 <div className="tile reveal d4"><div className="tile-ico">&#11088;</div><h4>Grows reviews</h4><p>Happy patients asked, treatment plans followed up.</p></div>
 </div>
 </div>
@@ -114,7 +114,7 @@ export default function Page() {
 <div className="ihero-inner" style={{ margin: "0 auto" }}>
 <div className="sl reveal sl-c" style={{ justifyContent: "center" }}>Get Started</div>
 <h2 className="icta-title reveal d1">Stop Missing<br /><span className="a">Patients.</span></h2>
-<p className="icta-desc reveal d2">A free 15-minute call. We'll show you exactly which calls you're missing and how Janice catches them.</p>
+<p className="icta-desc reveal d2">A free 15-minute call. We'll show you which calls you're missing and how Janice catches them.</p>
 <a href="https://cal.com/pacificedge" target="_blank" rel="noopener" className="btn-mint reveal d2">Book a Free 15-Min Demo</a>
 <div className="xlinks reveal d3">
 <a href="/dental" className="xlink"><span>&#129463;</span>Dental overview</a>

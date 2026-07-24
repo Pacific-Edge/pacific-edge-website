@@ -23,8 +23,8 @@ export default function AiTrainingPage() {
         <div className="ihero-inner">
           <div className="eyebrow reveal"><span className="eyebrow-dot" />AI Training · Corporations &amp; SMBs</div>
           <h1 className="reveal d1">
-            Your Team, Using AI<br />
-            <span className="a">Like They Mean It.</span>
+            Hands-On AI Training<br />
+            <span className="a">For Your Whole Team.</span>
           </h1>
           <p className="ihero-sub reveal d2">
             Your people are already using AI, whether it&apos;s sanctioned or not. We turn scattered,
@@ -57,9 +57,9 @@ export default function AiTrainingPage() {
           <h2 className="st reveal d1">Three Ways Teams <span className="a">Get AI Wrong.</span></h2>
           <p className="sd reveal d2">Most companies aren&apos;t short on AI enthusiasm. They&apos;re short on the habits that make it pay off safely. We fix all three.</p>
           <div className="px-grid">
-            <div className="px-card reveal d1"><span className="px-card-ico">🧠</span><h3>They barely scratch the surface</h3><p>People use AI like a fancy search box and miss the 10x workflows. We show your team what it&apos;s genuinely capable of on your real work.</p></div>
+            <div className="px-card reveal d1"><span className="px-card-ico">🧠</span><h3>They barely scratch the surface</h3><p>People use AI for basic lookups and skip the workflows that save real time. We show your team what it can do on your actual work.</p></div>
             <div className="px-card reveal d2"><span className="px-card-ico">💸</span><h3>They quietly waste money</h3><p>Overpowered models for tiny tasks, bloated prompts, re-sending the same context. Small habits that add up to a big bill.</p></div>
-            <div className="px-card reveal d3"><span className="px-card-ico">🔓</span><h3>They leak data without knowing</h3><p>Confidential info pasted into personal accounts on plans that can train on it. Convenient, and a real exposure.</p></div>
+            <div className="px-card reveal d3"><span className="px-card-ico">🔓</span><h3>They leak data without knowing</h3><p>Confidential info pasted into personal accounts on plans that can train on it. That&apos;s convenient, and it&apos;s a real exposure.</p></div>
           </div>
         </div>
       </section>
@@ -76,7 +76,7 @@ export default function AiTrainingPage() {
             <article className="px-card reveal d1" data-tilt><div className="px-card-shine" aria-hidden="true" /><span className="px-card-ico">🧭</span><h3>Foundations &amp; judgment</h3><p>What today&apos;s AI is genuinely good at, and where it quietly makes things up, so your team trusts it in the right places.</p></article>
             <article className="px-card reveal d2" data-tilt><div className="px-card-shine" aria-hidden="true" /><span className="px-card-ico">✍️</span><h3>Prompting that works</h3><p>Repeatable prompts and templates for your real tasks, so results are good on the first try, not the fifth.</p></article>
             <article className="px-card reveal d3" data-tilt><div className="px-card-shine" aria-hidden="true" /><span className="px-card-ico">🎯</span><h3>The right tool for the job</h3><p>Which model and which tool for which task, so you stop overpaying for simple work and underusing AI for hard work.</p></article>
-            <article className="px-card reveal d1" data-tilt><div className="px-card-shine" aria-hidden="true" /><span className="px-card-ico">🔁</span><h3>Into your workflow</h3><p>We embed AI into the tools and processes you already use, not a shiny thing nobody opens twice.</p></article>
+            <article className="px-card reveal d1" data-tilt><div className="px-card-shine" aria-hidden="true" /><span className="px-card-ico">🔁</span><h3>Into your workflow</h3><p>We embed AI into the tools and processes you already use, so it becomes part of daily work instead of a tool people try once and drop.</p></article>
             <article className="px-card reveal d2" data-tilt><div className="px-card-shine" aria-hidden="true" /><span className="px-card-ico">🤝</span><h3>Your own assistants</h3><p>Build internal assistants loaded with your policies, docs, and tone of voice, ready for the whole team to use.</p></article>
             <article className="px-card reveal d3" data-tilt><div className="px-card-shine" aria-hidden="true" /><span className="px-card-ico">📈</span><h3>Measuring the payoff</h3><p>Track adoption and time saved so you can prove the value and double down on what actually works.</p></article>
           </div>
@@ -109,7 +109,7 @@ export default function AiTrainingPage() {
           <h2 className="st reveal d1">Stop Burning <span className="a">Tokens.</span></h2>
           <p className="sd reveal d2">Most AI bills are bigger than they need to be, not because teams use AI too much, but because they use it inefficiently. A few habits cut the cost of every result.</p>
           <div className="px-grid">
-            <div className="px-card reveal d1"><span className="px-card-ico">⚖️</span><h3>Right-size the model</h3><p>Using a top-tier model for a one-line task is like couriering a sticky note. We match the model to the job.</p></div>
+            <div className="px-card reveal d1"><span className="px-card-ico">⚖️</span><h3>Right-size the model</h3><p>A top-tier model for a one-line task costs more than the task is worth. We match the model to the job.</p></div>
             <div className="px-card reveal d2"><span className="px-card-ico">✂️</span><h3>Trim the prompt</h3><p>Bloated prompts and dumped documents burn tokens for no gain. Tighter inputs, same or better output.</p></div>
             <div className="px-card reveal d3"><span className="px-card-ico">♻️</span><h3>Cache &amp; reuse</h3><p>Prompt caching and reusable templates mean you stop paying to re-send the same context again and again.</p></div>
             <div className="px-card reveal d1"><span className="px-card-ico">🔍</span><h3>Retrieve, don&apos;t dump</h3><p>Pull only the relevant passage from your documents instead of pasting the whole manual into every request.</p></div>
@@ -143,7 +143,7 @@ export default function AiTrainingPage() {
               <div className="px-aud-shine" aria-hidden="true" />
               <div className="px-aud-ico">🚀</div>
               <h3>For SMBs</h3>
-              <p>Punch above your weight. A lean team that uses AI well does the work of a much bigger one.</p>
+              <p>A lean team that uses AI well gets more done without adding headcount.</p>
               <ul className="px-aud-list">
                 <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M5 13l4 4L19 7" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round" /></svg>Practical, no-jargon sessions</li>
                 <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M5 13l4 4L19 7" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round" /></svg>Templates your team keeps using</li>
@@ -161,7 +161,7 @@ export default function AiTrainingPage() {
       <section>
         <div className="wrap">
           <div className="sl reveal sl-c tac" style={{ justifyContent: "center" }}>How It Works</div>
-          <h2 className="st reveal d1 tac">Trained Once. <span className="a">Sticks For Good.</span></h2>
+          <h2 className="st reveal d1 tac">A Program Built To <span className="a">Stick.</span></h2>
           <div className="px-steps">
             <div className="px-step reveal d1"><h3>Assess</h3><p>We look at how your team works today and where AI will actually save time, and where it won&apos;t.</p></div>
             <div className="px-step reveal d2"><h3>Train</h3><p>Hands-on sessions on your real tasks, not generic slides. Everyone leaves able to use it.</p></div>
@@ -192,7 +192,7 @@ export default function AiTrainingPage() {
       <section className="icta">
         <div className="ihero-inner" style={{ margin: "0 auto" }}>
           <div className="sl reveal sl-c" style={{ justifyContent: "center" }}>Get Started</div>
-          <h2 className="icta-title reveal d1">Ready To Make AI<br /><span className="a">Actually Pay Off?</span></h2>
+          <h2 className="icta-title reveal d1">Ready To Make AI<br /><span className="a">Pay Off?</span></h2>
           <p className="icta-desc reveal d2">Start with a free 15-minute call. We&apos;ll learn how your team works, show you the quickest wins, and lay out a training plan that fits. No pitch, no obligation.</p>
           <a href={CAL} target="_blank" rel="noopener" className="btn-mint reveal d2">Book a Free 15-Min Demo</a>
           <div className="icta-bullets reveal d3">

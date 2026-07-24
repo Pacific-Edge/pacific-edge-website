@@ -79,11 +79,35 @@ Everything is `prefers-reduced-motion` guarded.
 
 ## Content principles
 
-- **Verbatim to the old site.** Keep "Janice", keep every section (Before/After, stats, testimonials,
-  sources). The previous redesign's "remove Janice / trim / show-don't-tell" rules **no longer apply**.
+- **Structure (sections, features, stats, testimonials, sources) stays verbatim to the old site.** Keep
+  "Janice" as the AI-employee product identity, keep every section (Before/After, stats, testimonials,
+  sources). Do not invent or cut sections.
+- **All prose (headlines, subheads, section labels, body copy, CTAs) must follow `brand-voice.md`.**
+  This supersedes any "verbatim wording" assumption — the old site's copy was written in a slogan-heavy,
+  overcompensating tone (anthropomorphized one-liners, "not your average X" comparisons, pain-mirroring)
+  that is retired. Port the *content* (what a section says), rewrite the *wording* to be literal,
+  grounded, and concise per `brand-voice.md`. See that file's before/after table for concrete examples.
 - One primary CTA: **Book a Free 15-Min Call** → `https://cal.com/pacificedge` (external). Secondary:
   **Client Login** → `/login.html`. The contact modal (email links) opens site-wide.
-- Emoji ARE used (industry nav icons, dropdown, mocks) — that's the old brand; keep it.
+- Emoji ARE used (industry nav icons, dropdown, mocks) — that's the old brand; keep it. This is a visual
+  convention, unrelated to prose tone.
+
+## Brand voice (enforced)
+
+**`brand-voice.md` is the single source of truth for tone/copywriting on this site — read it before
+writing or editing any user-facing text.** One-line summary: write like you're describing the product
+to a smart, skeptical customer who will notice every exaggeration. Literal, grounded, concise, confident.
+
+Banned: anthropomorphized folksiness ("how Janice earns her keep"), slogan syntax / antithesis
+("one hire, endless shifts"), defensive comparisons ("not your average bot"), pain-mirroring that
+belittles the customer ("it lives in 10 spreadsheets"), absolute/superlative over-claims ("endless",
+"every channel", "seamless", "effortless", "powerful"), cutesy section labels ("Three ways to put
+Janice to work" instead of "Pricing"), and fragment-punchiness/wink copy.
+
+Required: literal specific claims, confidence through restraint (not adjectives), declarative not
+comparative framing, section labels that are true rather than clever, and never claiming capability
+the product doesn't actually have today. Less is more — a subtitle can be one sentence, bullets beat
+paragraphs, cut anything that isn't load-bearing.
 
 ## Routing & SEO
 

@@ -60,11 +60,11 @@ export default function CustomBuildsPage() {
             that keeps stealing your time.
           </p>
           <div className="px-grid tilt">
-            <article className="px-card reveal d1" data-tilt><div className="px-card-shine" aria-hidden="true" /><span className="px-card-ico">🗂️</span><h3>Tailored CRM</h3><p>A CRM shaped around your pipeline and your words, not a generic template you fight with every day.</p></article>
-            <article className="px-card reveal d2" data-tilt><div className="px-card-shine" aria-hidden="true" /><span className="px-card-ico">📊</span><h3>Internal dashboards</h3><p>One screen that pulls your numbers together, so you stop stitching spreadsheets by hand every week.</p></article>
-            <article className="px-card reveal d3" data-tilt><div className="px-card-shine" aria-hidden="true" /><span className="px-card-ico">⚙️</span><h3>Workflow automations</h3><p>The repetitive task that eats your week, handled automatically from start to finish.</p></article>
-            <article className="px-card reveal d1" data-tilt><div className="px-card-shine" aria-hidden="true" /><span className="px-card-ico">📅</span><h3>Custom booking flows</h3><p>A booking or intake flow built exactly the way your business actually takes work in.</p></article>
-            <article className="px-card reveal d2" data-tilt><div className="px-card-shine" aria-hidden="true" /><span className="px-card-ico">🔗</span><h3>Tool integrations</h3><p>The two systems that don&apos;t talk to each other, finally connected and kept in sync.</p></article>
+            <article className="px-card reveal d1" data-tilt><div className="px-card-shine" aria-hidden="true" /><span className="px-card-ico">🗂️</span><h3>Tailored CRM</h3><p>A CRM built around your pipeline and your terminology, not a fixed template.</p></article>
+            <article className="px-card reveal d2" data-tilt><div className="px-card-shine" aria-hidden="true" /><span className="px-card-ico">📊</span><h3>Internal dashboards</h3><p>One screen that pulls your numbers together instead of tracking them across separate spreadsheets.</p></article>
+            <article className="px-card reveal d3" data-tilt><div className="px-card-shine" aria-hidden="true" /><span className="px-card-ico">⚙️</span><h3>Workflow automations</h3><p>The repetitive task on your team's plate, automated from start to finish.</p></article>
+            <article className="px-card reveal d1" data-tilt><div className="px-card-shine" aria-hidden="true" /><span className="px-card-ico">📅</span><h3>Custom booking flows</h3><p>A booking or intake flow built around how your business actually takes in work.</p></article>
+            <article className="px-card reveal d2" data-tilt><div className="px-card-shine" aria-hidden="true" /><span className="px-card-ico">🔗</span><h3>Tool integrations</h3><p>Two systems that don&apos;t talk to each other, connected and kept in sync.</p></article>
             <article className="px-card reveal d3" data-tilt><div className="px-card-shine" aria-hidden="true" /><span className="px-card-ico">🚪</span><h3>Client &amp; team portals</h3><p>A simple, branded place for clients or staff to do the one thing they need to do.</p></article>
           </div>
         </div>
@@ -76,11 +76,11 @@ export default function CustomBuildsPage() {
       <section>
         <div className="wrap">
           <div className="sl reveal">When It&apos;s Worth It</div>
-          <h2 className="st reveal d1">Sound Like <span className="a">Your Week?</span></h2>
+          <h2 className="st reveal d1">When A Custom Build <span className="a">Makes Sense.</span></h2>
           <div className="px-grid">
-            <div className="px-card reveal d1"><span className="px-card-ico">🕓</span><h3>&ldquo;I do this by hand every week&rdquo;</h3><p>If a task is repetitive, rule-based, and steals hours, it can almost always be automated away.</p></div>
-            <div className="px-card reveal d2"><span className="px-card-ico">🧩</span><h3>&ldquo;No software does it our way&rdquo;</h3><p>You&apos;ve tried the off-the-shelf tools and end up bending your business to fit them. Build it your way instead.</p></div>
-            <div className="px-card reveal d3"><span className="px-card-ico">📑</span><h3>&ldquo;It lives in ten spreadsheets&rdquo;</h3><p>When the truth is scattered across tabs and inboxes, one purpose-built tool pays for itself fast.</p></div>
+            <div className="px-card reveal d1"><span className="px-card-ico">🕓</span><h3>A repetitive manual task</h3><p>If a task is repetitive, rule-based, and takes real time, it can usually be automated.</p></div>
+            <div className="px-card reveal d2"><span className="px-card-ico">🧩</span><h3>Off-the-shelf tools don&apos;t fit</h3><p>If you&apos;ve had to adjust your process to fit a tool, we build software that fits your process instead.</p></div>
+            <div className="px-card reveal d3"><span className="px-card-ico">📑</span><h3>Records split across tools</h3><p>If your records are split across tabs and inboxes, one purpose-built tool usually pays for itself fast.</p></div>
           </div>
         </div>
       </section>
@@ -92,7 +92,7 @@ export default function CustomBuildsPage() {
         <div className="wrap">
           <div className="sl reveal sl-c tac" style={{ justifyContent: "center" }}>How It Works</div>
           <h2 className="st reveal d1 tac">From Idea To <span className="a">Working Software.</span></h2>
-          <p className="sd reveal d2" style={{ textAlign: "center", margin: "0 auto" }}>No mystery, no lock-in. You see progress in weeks and own what we build.</p>
+          <p className="sd reveal d2" style={{ textAlign: "center", margin: "0 auto" }}>You see progress in weeks, and you own what we build.</p>
           <div className="px-steps">
             <div className="px-step reveal d1"><h3>We learn your business</h3><p>We map how you actually work, where the time goes, and what&apos;s genuinely worth building.</p></div>
             <div className="px-step reveal d2"><h3>We scope &amp; quote</h3><p>You get a clear plan, a fixed scope, and a per-project price before any work starts.</p></div>
@@ -124,7 +124,7 @@ export default function CustomBuildsPage() {
         <div className="ihero-inner" style={{ margin: "0 auto" }}>
           <div className="sl reveal sl-c" style={{ justifyContent: "center" }}>Get Started</div>
           <h2 className="icta-title reveal d1">Got Something<br /><span className="a">Specific In Mind?</span></h2>
-          <p className="icta-desc reveal d2">Tell us about it. Start with a free 15-minute call. We&apos;ll tell you honestly whether it&apos;s a fit, roughly what it takes, and where to start. No pitch, no obligation.</p>
+          <p className="icta-desc reveal d2">Tell us about it on a free 15-minute call. We&apos;ll tell you whether it&apos;s a fit, roughly what it takes, and where to start.</p>
           <a href={CAL} target="_blank" rel="noopener" className="btn-mint reveal d2">Book a Free 15-Min Demo</a>
           <div className="icta-bullets reveal d3">
             <span><i />Free scoping call</span>

@@ -2,9 +2,9 @@ import type { Metadata } from "next"
 import SiteShell from "@/components/site/SiteShell"
 
 export const metadata: Metadata = {
-  title: { absolute: "About Pacific Edge AI | Built By Operators, Not Agencies" },
+  title: { absolute: "About Pacific Edge AI | Built By Operators, For Local Business" },
   description:
-    "Pacific Edge AI was founded by Leone Jiwani and Sam Rezaei, Vancouver operators who got tired of watching local businesses drown in admin work machines should be handling.",
+    "Pacific Edge AI was founded by Leone Jiwani and Sam Rezaei, Vancouver operators who build the AI software that handles the admin work they used to do by hand.",
   alternates: { canonical: "/about" },
 }
 
@@ -16,8 +16,8 @@ export default function AboutPage() {
         <div className="ihero-orb ihero-orb-2"></div>
         <div className="ihero-inner">
           <div className="eyebrow reveal"><span className="eyebrow-dot"></span>About Us</div>
-          <h1 className="reveal d1">Built By Operators,<br /><span className="a">Not Agencies.</span></h1>
-          <p className="ihero-sub reveal d2">We&apos;re not a faceless dev shop. We&apos;re business owners who got tired of watching local companies drown in admin work that machines should be handling.</p>
+          <h1 className="reveal d1">Built By Operators,<br /><span className="a">For Local Business.</span></h1>
+          <p className="ihero-sub reveal d2">We&apos;re business owners who spent years doing the admin work ourselves before we started building the software to handle it.</p>
         </div>
       </header>
 
@@ -26,14 +26,14 @@ export default function AboutPage() {
       <section id="story">
         <div className="wrap">
           <div className="r" style={{ maxWidth: 720, margin: "0 auto", textAlign: "center" }}>
-            <h2 className="st reveal d1">We speak business,<br /><span className="a">not just code.</span></h2>
+            <h2 className="st reveal d1">We Start With<br /><span className="a">The Cost.</span></h2>
             <p className="sd reveal d2">
-              Most AI companies sell technology. We sell time back. Every automation we build starts with one
-              question: what&apos;s costing you the most hours and dollars right now? Then we fix that first.
+              Every automation we build starts with one question: what&apos;s costing you the most hours and
+              dollars right now? We fix that first.
             </p>
             <p className="sd reveal d3">
-              We&apos;re based in Vancouver, we work face-to-face when you want it, and we don&apos;t disappear
-              after launch. Your success is our case study.
+              We&apos;re based in Vancouver, we meet in person when you want to, and we stay on the account
+              after launch instead of handing you off to a support queue.
             </p>
           </div>
         </div>
@@ -72,7 +72,7 @@ export default function AboutPage() {
         <div className="ihero-inner" style={{ margin: "0 auto" }}>
           <div className="sl reveal sl-c" style={{ justifyContent: "center" }}>No-Risk Start</div>
           <h2 className="icta-title reveal d1">One Month<br /><span className="a">On Us.</span></h2>
-          <p className="icta-desc reveal d2">Start with a free 15-minute discovery call. If Janice isn&apos;t the right fit after your first month, walk away. No strings.</p>
+          <p className="icta-desc reveal d2">Start with a free 15-minute call. If Janice isn&apos;t the right fit after the first month, cancel at no cost.</p>
           <a href="https://cal.com/pacificedge" target="_blank" rel="noopener" className="btn-mint reveal d2">Book a Free 15-Min Demo</a>
         </div>
       </section>

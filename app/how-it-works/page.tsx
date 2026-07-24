@@ -5,16 +5,16 @@ import SiteShell from "@/components/site/SiteShell"
 export const metadata: Metadata = {
   title: { absolute: "How It Works | Pacific Edge AI" },
   description:
-    "From a 15-minute discovery call to a working prototype in week one. Here's exactly how Pacific Edge AI gets your Vancouver business running smarter, in days, not months.",
+    "From a 15-minute discovery call to a working prototype in your first week. Here's how Pacific Edge AI builds and deploys AI workflows for your Vancouver business.",
   alternates: { canonical: "/how-it-works" },
 }
 
 const STEPS = [
-  { h: "Discovery Call", p: "15 minutes. We learn about your business, find where you're bleeding time and money, and identify the highest-impact automations. No sales pitch - just clarity." },
-  { h: "Deep-Dive Session", p: "A focused 60-minute session where we map out your entire workflow, pinpoint the bottlenecks costing you the most time and money, and identify exactly which automations will move the needle for your business." },
-  { h: "Custom Build", p: "We design and build your AI workflows using battle-tested tools. You see a working prototype within the first week - not a slide deck, real software." },
-  { h: "Launch & Train", p: "We deploy everything, walk your team through it in plain English, and make sure you're comfortable before we step back. No orphaned systems." },
-  { h: "Optimize & Support", p: "Ongoing monitoring and tweaking. As your business grows, we scale your automations with you. You focus on running the business - we keep the systems humming." },
+  { h: "Discovery Call", p: "15 minutes. We learn about your business, find where time and money are being lost, and identify the highest-impact automations. There's no sales pitch." },
+  { h: "Deep-Dive Session", p: "A focused 60-minute session where we map your workflow, find the bottlenecks costing you the most time and money, and determine which automations to build first." },
+  { h: "Custom Build", p: "We design and build your AI workflows. Within the first week you see a working prototype: real software, not a slide deck." },
+  { h: "Launch & Train", p: "We deploy everything, walk your team through it in plain English, and confirm you're comfortable using it before we step back." },
+  { h: "Optimize & Support", p: "Ongoing monitoring and adjustments. As your business grows, we scale your automations with it." },
 ]
 
 const DASH_ROWS = [
@@ -35,7 +35,7 @@ export default function HowItWorksPage() {
         <div className="ihero-inner">
           <div className="eyebrow reveal"><span className="eyebrow-dot"></span>How It Works</div>
           <h1 className="reveal d1">Simple Process,<br /><span className="a">Powerful</span> Results</h1>
-          <p className="ihero-sub reveal d2">Transparent terms, no confusing tech talk. Here&apos;s how we get your business running smarter in days, not months.</p>
+          <p className="ihero-sub reveal d2">Clear terms, no technical jargon. Here&apos;s how we build your AI workflows, starting with a working prototype in your first week.</p>
         </div>
       </header>
 
@@ -80,7 +80,7 @@ export default function HowItWorksPage() {
         <div className="ihero-inner" style={{ margin: "0 auto" }}>
           <div className="sl reveal sl-c" style={{ justifyContent: "center" }}>No-Risk Start</div>
           <h2 className="icta-title reveal d1">One Month<br /><span className="a">On Us.</span></h2>
-          <p className="icta-desc reveal d2">Start with a free 15-minute discovery call. If Janice isn&apos;t the right fit after your first month, walk away. No strings.</p>
+          <p className="icta-desc reveal d2">Start with a free 15-minute discovery call. If Janice isn&apos;t the right fit after your first month, you can walk away with no obligation.</p>
           <a href="https://cal.com/pacificedge" target="_blank" rel="noopener" className="btn-mint reveal d2">Book a Free 15-Min Demo</a>
         </div>
       </section>
